@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12" xmlns="http://www.fatturapa.gov.it/sdi/fatturapa/v1.2">
+  <FatturaElettronicaHeader xmlns="">
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05744121210</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>B00322019</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>R&amp;BCONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Crescenzio</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02716500646</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>02716500646</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>PrestitoSi Finance S.p.A.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Circonvallazione Clodia, 163/171</Indirizzo>
+        <CAP>00195</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody xmlns="">
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-02-28</Data>
+        <Numero>B/0032/2019</Numero>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Corso PV OAM</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>40.00</PrezzoUnitario>
+        <PrezzoTotale>80.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>Corso IVASS 60h</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>90.00</PrezzoUnitario>
+        <PrezzoTotale>90.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>170.00</ImponibileImporto>
+        <Imposta>37.40</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP01</CondizioniPagamento>
+      <DettaglioPagamento>
+        <Beneficiario>R&amp;BCONSULTING S.R.L</Beneficiario>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <ImportoPagamento>207.40</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

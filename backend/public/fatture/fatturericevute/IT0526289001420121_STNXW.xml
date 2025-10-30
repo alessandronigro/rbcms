@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <FatturaElettronicaHeader>
+		        <DatiTrasmissione>
+	                <IdTrasmittente>
+				           <IdPaese>IT</IdPaese>
+				           <IdCodice>05262890014</IdCodice>
+			        </IdTrasmittente>
+                    <ProgressivoInvio>D202000430</ProgressivoInvio>
+                    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+                    <CodiceDestinatario>0000000</CodiceDestinatario>
+                </DatiTrasmissione>
+                <CedentePrestatore>
+                    <DatiAnagrafici>
+                        <IdFiscaleIVA>
+                            <IdPaese>IT</IdPaese>
+                            <IdCodice>09771701001</IdCodice>
+                        </IdFiscaleIVA>
+                        <Anagrafica>
+                            <Denominazione>TELEPASS SPA</Denominazione>
+                        </Anagrafica>
+                        <RegimeFiscale>RF01</RegimeFiscale>
+                    </DatiAnagrafici>
+                    <Sede>
+                        <Indirizzo>VIA A.BERGAMINI, 50</Indirizzo>
+                        <CAP>00159</CAP>
+                        <Comune>ROMA</Comune>
+                        <Nazione>IT</Nazione>
+                    </Sede>
+                    <IscrizioneREA>
+                        <Ufficio>RM</Ufficio>
+                        <NumeroREA>1188554</NumeroREA>
+                        <CapitaleSociale>26000000.00</CapitaleSociale>
+                        <StatoLiquidazione>LN</StatoLiquidazione>
+                    </IscrizioneREA>
+                </CedentePrestatore>
+                <CessionarioCommittente>
+                    <DatiAnagrafici>
+                        <IdFiscaleIVA>
+                            <IdPaese>IT</IdPaese>
+                            <IdCodice>05744121210</IdCodice>
+                        </IdFiscaleIVA>
+                        <Anagrafica>
+                            <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+                        </Anagrafica>
+                    </DatiAnagrafici>
+                    <Sede>
+                        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+                        <CAP>00193</CAP>
+                        <Comune>ROMA</Comune>
+                        <Nazione>IT</Nazione>
+                    </Sede>
+                </CessionarioCommittente>
+            </FatturaElettronicaHeader>
+            <FatturaElettronicaBody>
+                <DatiGenerali>
+                    <DatiGeneraliDocumento>
+                        <TipoDocumento>TD01</TipoDocumento>
+                        <Divisa>EUR</Divisa>
+                        <Data>2020-04-30</Data>
+                        <Numero>57796086/T</Numero>
+                        <ImportoTotaleDocumento>3.31</ImportoTotaleDocumento>
+                        <Arrotondamento>-0.01</Arrotondamento>
+                        <Causale>Codice cliente: 141641999</Causale>
+                    </DatiGeneraliDocumento>
+                </DatiGenerali>
+                <DatiBeniServizi>
+                    <DettaglioLinee>
+                        <NumeroLinea>1</NumeroLinea>
+                        <Descrizione>CANONE TELEPASS</Descrizione>
+                        <PrezzoUnitario>2.07</PrezzoUnitario>
+                        <PrezzoTotale>2.07</PrezzoTotale>
+                        <AliquotaIVA>22.00</AliquotaIVA>
+                    </DettaglioLinee>
+                    <DettaglioLinee>
+                        <NumeroLinea>2</NumeroLinea>
+                        <Descrizione>CANONE PREMIUM BASE</Descrizione>
+                        <PrezzoUnitario>0.64</PrezzoUnitario>
+                        <PrezzoTotale>0.64</PrezzoTotale>
+                        <AliquotaIVA>22.00</AliquotaIVA>
+                    </DettaglioLinee>
+                    <DatiRiepilogo>
+                        <AliquotaIVA>22.00</AliquotaIVA>
+                        <ImponibileImporto>2.71</ImponibileImporto>
+                        <Imposta>0.60</Imposta>
+                    </DatiRiepilogo>
+                </DatiBeniServizi>
+                <DatiPagamento>
+                    <CondizioniPagamento>TP02</CondizioniPagamento>
+                    <DettaglioPagamento>
+                        <Beneficiario>TELEPASS</Beneficiario>
+                        <ModalitaPagamento>MP19</ModalitaPagamento>
+                        <DataScadenzaPagamento>2020-04-30</DataScadenzaPagamento>
+                        <ImportoPagamento>3.30</ImportoPagamento>
+                    </DettaglioPagamento>
+                </DatiPagamento>
+            </FatturaElettronicaBody>
+</p:FatturaElettronica>

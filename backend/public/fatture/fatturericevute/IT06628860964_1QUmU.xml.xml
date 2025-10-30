@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>06628860964</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>7932099071</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>14458691004</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>14458691004</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>MARBEA SRL</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA DELLA POSTA VECCHIA</Indirizzo>
+        <NumeroCivico>4</NumeroCivico>
+        <CAP>00186</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Telefono>066780968</Telefono>
+        <Fax>0669782047</Fax>
+        <Email>direzionemarbea@gmail.com</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>ReB CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO</Indirizzo>
+        <NumeroCivico>125</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>06628860964</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>06628860964</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>PA DIGITALE S.P.A.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-11-14</Data>
+        <Numero>351-FE</Numero>
+        <ImportoTotaleDocumento>680.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>56 - CENA AZIENDALE
+ ( Business dinner )</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>ND</UnitaMisura>
+        <PrezzoUnitario>618.181818</PrezzoUnitario>
+        <PrezzoTotale>618.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>AswTRiga</TipoDato>
+          <RiferimentoTesto>Normale #NO#</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Riga ausiliaria contenente informazioni tecniche e aggiuntive del documento</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>AswTRiga</TipoDato>
+          <RiferimentoTesto>Informazioni documento #ID#</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>AswRelStd</TipoDato>
+          <RiferimentoTesto>Versione #Asw0103#</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>AswTipoDoc</TipoDato>
+          <RiferimentoTesto>Fattura #TPD01#</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>AswCarDoc</TipoDato>
+          <RiferimentoTesto>Vendita Diretta (Fatturazione al Banco) #CD01#</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>AswTratSco</TipoDato>
+          <RiferimentoTesto>Percentuali come righe sconto #PRS#</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>AswTratSco</TipoDato>
+          <RiferimentoTesto>Valori come righe sconto #PRS#</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>AswTipoPag</TipoDato>
+          <RiferimentoTesto>Carta di credito #TP10#</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>618.18</ImponibileImporto>
+        <Imposta>61.82</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>680.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+    <Allegati>
+      <NomeAttachment>FATTURA_num_351-FE_2019.pdf</NomeAttachment>
+      <FormatoAttachment>PDF</FormatoAttachment>
+      <DescrizioneAttachment>FATTURA n° 351-FE/2019 #AL01#</DescrizioneAttachment>
+      <Attachment>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bmRvYmoKMTEgMCBvYmoKWyAyNzcgMCAwIDAgMCAwIDAgMCAzMzMgMzMzIDAgMCAyNzcgMzMzIDI3NyAyNzcgNTU2IDU1NiA1NTYgMCA1NTYgNTU2IDU1NiAwIDU1NiA1NTYgMjc3IDAgMCAwIDAgNTU2IDAgNjY2IDAgNzIyIDcyMiA2NjYgNjEwIDAgNzIyIDI3NyAwIDAgNTU2IDgzMyAwIDc3NyA2NjYgMCA3MjIgNjY2IDYxMCAwIDY2NiAwIDAgMCAwIDAgMCAwIDAgMCAwIDU1NiAwIDAgMCA1NTYgMCAwIDAgMjIyIDAgMCAwIDAgNTU2IDU1NiAwIDAgMzMzIDUwMCAyNzcgXQplbmRvYmoKMTIgMCBvYmoKPDwgL0FzY2VudCA3MjguMDMKL0l0YWxpY0FuZ2xlIDAKL0NhcEhlaWdodCA2OTkuNzEKL0ZvbnRCQm94IFsgLTY2NC4wMCAtMzI0LjAwIDIwMDAuMDAgMTAzOS4wMCBdCi9EZXNjZW50IC0yMTAuNDUKL1N0ZW1WIDgwCi9GbGFncyAzMgovVHlwZSAvRm9udERlc2NyaXB0b3IKL0ZvbnROYW1lIC9BcmlhbE1UCj4+CmVuZG9iagoxMyAwIG9iago8PCAvU3VidHlwZSAvVHJ1ZVR5cGUKL0ZvbnREZXNjcmlwdG9yIDE1IDAgUgovRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZwovV2lkdGhzIDE0IDAgUgovRmlyc3RDaGFyIDMyCi9MYXN0Q2hhciAyMjQKL1R5cGUgL0ZvbnQKL0Jhc2VGb250IC9BcmlhbE5hcnJvdy1Cb2xkCj4+CmVuZG9iagoxNCAwIG9iagpbIDIyOCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAyNzIgMCAwIDAgNDU2IDAgNDU2IDAgNDU2IDAgMCAwIDAgMCAwIDAgMCAwIDUwMCAwIDU5MSA1OTEgNTkxIDU5MSA1NDYgNTAwIDYzOCAwIDIyOCAwIDAgNTAwIDAgNTkxIDYzOCA1NDYgNjM4IDU5MSA1NDYgNTAwIDU5MSA1NDYgMCAwIDAgMCAwIDAgMCAwIDAgMCA0NTYgMCA0NTYgMCA0NTYgMCAwIDAgMjI4IDAgMCAyMjggMCA1MDAgNTAwIDAgMCAzMTggNDU2IDI3MiA1MDAgMCAwIDAgMCA0MTAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDM5OSAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgNDU2IF0KZW5kb2JqCjE1IDAgb2JqCjw8IC9Bc2NlbnQgNzI4LjAzCi9JdGFsaWNBbmdsZSAwCi9DYXBIZWlnaHQgNjk5LjcxCi9Gb250QkJveCBbIC0xMzcuMDAgLTMwNi4wMCA5OTkuMDAgMTEwOC4wMCBdCi9EZXNjZW50IC0yMTAuNDUKL1N0ZW1WIDgwCi9GbGFncyAyNjIxNzYKL1R5cGUgL0ZvbnREZXNjcmlwdG9yCi9Gb250TmFtZSAvQXJpYWxOYXJyb3ctQm9sZAo+PgplbmRvYmoKMTYgMCBvYmoKPDwgL1N1YnR5cGUgL1RydWVUeXBlCi9Gb250RGVzY3JpcHRvciAxOCAwIFIKL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcKL1dpZHRocyAxNyAwIFIKL0ZpcnN0Q2hhciAzMgovTGFzdENoYXIgMTI4Ci9UeXBlIC9Gb250Ci9CYXNlRm9udCAvQXJpYWxOYXJyb3cKPj4KZW5kb2JqCjE3IDAgb2JqClsgMjI4IDAgMCAwIDAgNzI5IDAgMCAyNzIgMjcyIDAgMCAyMjggMjcyIDIyOCAyMjggNDU2IDQ1NiA0NTYgNDU2IDQ1NiA0NTYgNDU2IDQ1NiA0NTYgNDU2IDIyOCAwIDAgMCAwIDQ1NiAwIDU0NiA1NDYgNTkxIDU5MSA1NDYgMCAwIDU5MSAyMjggMCA1NDYgNDU2IDY4MyA1OTEgNjM4IDU0NiAwIDU5MSA1NDYgNTAwIDAgNTQ2IDAgMCAwIDUwMCAwIDAgMCAwIDAgMCA0NTYgNDU2IDAgNDU2IDQ1NiAwIDAgMCAxODIgMCAwIDE4MiA2ODMgNDU2IDQ1NiA0NTYgMCAyNzIgNDEwIDIyOCA0NTYgMCAwIDAgMCAwIDAgMCAwIDAgMCA0NTYgXQplbmRvYmoKMTggMCBvYmoKPDwgL0FzY2VudCA3MjguMDMKL0l0YWxpY0FuZ2xlIDAKL0NhcEhlaWdodCA2OTkuNzEKL0ZvbnRCQm94IFsgLTE4Mi4wMCAtMzA2LjAwIDk5OS4wMCAxMDg1LjAwIF0KL0Rlc2NlbnQgLTIxMC40NQovU3RlbVYgODAKL0ZsYWdzIDMyCi9UeXBlIC9Gb250RGVzY3JpcHRvcgovRm9udE5hbWUgL0FyaWFsTmFycm93Cj4+CmVuZG9iagoxOSAwIG9iago8PCAvU3VidHlwZSAvVHJ1ZVR5cGUKL0ZvbnREZXNjcmlwdG9yIDIxIDAgUgovRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZwovV2lkdGhzIDIwIDAgUgovRmlyc3RDaGFyIDMyCi9MYXN0Q2hhciAxOTIKL1R5cGUgL0ZvbnQKL0Jhc2VGb250IC9DYWxpYnJpLUJvbGQKPj4KZW5kb2JqCjIwIDAgb2JqClsgMjI2IDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDQ2MyAwIDYwNSAwIDUyOSA2MzAgNDg3IDAgNjM3IDAgMjY2IDAgMCA0MjIgODc0IDY1OCA2NzYgNTMyIDAgMCAwIDQ5NSAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCA0OTMgMCA0MTggNTM2IDUwMyAwIDAgMCAyNDUgMCAwIDI0NSAwIDAgNTM3IDAgMCAzNTUgMCAzNDYgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgNjA1IF0KZW5kb2JqCjIxIDAgb2JqCjw8IC9Bc2NlbnQgNzUwLjAwCi9JdGFsaWNBbmdsZSAwCi9DYXBIZWlnaHQgNjk5LjcxCi9Gb250QkJveCBbIC01MTguMDAgLTM0OS4wMCAxMjYyLjAwIDEwMzkuMDAgXQovRGVzY2VudCAtMjUwLjAwCi9TdGVtViA4MAovRmxhZ3MgMjYyMTc2Ci9UeXBlIC9Gb250RGVzY3JpcHRvcgovRm9udE5hbWUgL0NhbGlicmktQm9sZAo+PgplbmRvYmoKMjIgMCBvYmoKPDwgL1N1YnR5cGUgL1RydWVUeXBlCi9Gb250RGVzY3JpcHRvciAyNCAwIFIKL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcKL1dpZHRocyAyMyAwIFIKL0ZpcnN0Q2hhciAzMgovTGFzdENoYXIgMjMyCi9UeXBlIC9Gb250Ci9CYXNlRm9udCAvQ2FsaWJyaQo+PgplbmRvYmoKMjMgMCBvYmoKWyAyMjYgMCA0MDAgMCAwIDAgMCAyMjAgMzAzIDMwMyAwIDAgMjQ5IDMwNiAyNTIgMzg2IDUwNiA1MDYgNTA2IDUwNiA1MDYgNTA2IDUwNiA1MDYgNTA2IDUwNiAyNjcgMCAwIDAgMCA0NjMgODk0IDU3OCA1NDMgNTMzIDYxNSA0ODggNDU5IDAgNjIzIDI1MSAwIDAgNDIwIDg1NCAwIDY2MiA1MTYgMCA1NDIgNDU5IDQ4NyAwIDU2NyA4ODkgMCAwIDAgMCAwIDAgMCAwIDAgNDc5IDUyNSA0MjIgNTI1IDQ5NyAzMDUgNDcwIDAgMjI5IDAgMCAyMjkgNzk4IDUyNSA1MjcgNTI1IDAgMzQ4IDM5MSAzMzQgNTI1IDQ1MSA3MTQgMCAwIDM5NSAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDQ5NyBdCmVuZG9iagoyNCAwIG9iago8PCAvQXNjZW50IDc1MC4wMAovSXRhbGljQW5nbGUgMAovQ2FwSGVpZ2h0IDY5OS43MQovRm9udEJCb3ggWyAtNTAyLjAwIC0zMTIuMDAgMTI0MC4wMCAxMDI2LjAwIF0KL0Rlc2NlbnQgLTI1MC4wMAovU3RlbVYgODAKL0ZsYWdzIDMyCi9UeXBlIC9Gb250RGVzY3JpcHRvcgovRm9udE5hbWUgL0NhbGlicmkKPj4KZW5kb2JqCnhyZWYKMCAyNQowMDAwMDAwMDAwIDY1NTM2IGYNCjAwMDAwMDAwMTUgMDAwMDAgbg0KMDAwMDAwMDEyNCAwMDAwMCBuDQowMDAwMDAwMTgzIDAwMDAwIG4NCjAwMDAwMDAyOTMgMDAwMDAgbg0KMDAwMDAwMDU1MiAwMDAwMCBuDQowMDAwMDAyMDE3IDAwMDAwIG4NCjAwMDAwMDM4MzIgMDAwMDAgbg0KMDAwMDAwMzk5OCAwMDAwMCBuDQowMDAwMDA0MTM5IDAwMDAwIG4NCjAwMDAwMDQzNDEgMDAwMDAgbg0KMDAwMDAwNDUwNiAwMDAwMCBuDQowMDAwMDA0Nzc2IDAwMDAwIG4NCjAwMDAwMDQ5NzAgMDAwMDAgbg0KMDAwMDAwNTE0NCAwMDAwMCBuDQowMDAwMDA1NjI2IDAwMDAwIG4NCjAwMDAwMDU4MzIgMDAwMDAgbg0KMDAwMDAwNjAwMSAwMDAwMCBuDQowMDAwMDA2MzIxIDAwMDAwIG4NCjAwMDAwMDY1MTggMDAwMDAgbg0KMDAwMDAwNjY4OCAwMDAwMCBuDQowMDAwMDA3MDc4IDAwMDAwIG4NCjAwMDAwMDcyODEgMDAwMDAgbg0KMDAwMDAwNzQ0NiAwMDAwMCBuDQowMDAwMDA3OTg4IDAwMDAwIG4NCnRyYWlsZXIKPDwgL1NpemUgMjUKL1Jvb3QgMSAwIFIKL0luZm8gMyAwIFIKPj4Kc3RhcnR4cmVmCjgxODIKJSVFT0YK</Attachment>
+    </Allegati>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

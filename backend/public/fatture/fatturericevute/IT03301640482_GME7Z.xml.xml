@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01841220740</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>004A6</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <ContattiTrasmittente>
+        <Telefono>0802255000</Telefono>
+      </ContattiTrasmittente>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01841220740</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>01841220740</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>EGNATHIA INIZIATIVE TURISTICHE - E.I.T. S.p.A. </Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Claudio Monteverdi, 16</Indirizzo>
+        <CAP>00198</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RM</Ufficio>
+        <NumeroREA>1253762</NumeroREA>
+        <CapitaleSociale>200000.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>0802255000</Telefono>
+        <Fax>0802255001</Fax>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>R&amp;B Consulting Srl </Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Crescenzio,25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2021-09-30</Data>
+        <Numero>01-FT 12101443</Numero>
+        <ImportoTotaleDocumento>525.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Acconto IVA 10%  R&amp;B Consulting Srl </Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-09-30</DataInizioPeriodo>
+        <DataFinePeriodo>2021-09-30</DataFinePeriodo>
+        <PrezzoUnitario>477.27</PrezzoUnitario>
+        <PrezzoTotale>477.27</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>477.27</ImponibileImporto>
+        <Imposta>47.73</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

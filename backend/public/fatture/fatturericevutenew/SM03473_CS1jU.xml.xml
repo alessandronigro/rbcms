@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>SM</IdPaese>
+        <IdCodice>03473</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>5AE9801114</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>09390061217</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>BELLEDONNE SRL</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA MONTE DI DIO 66</Indirizzo>
+        <CAP>80132</CAP>
+        <Comune>NAPOLI</Comune>
+        <Provincia>NA</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>NA</Ufficio>
+        <NumeroREA>1029308</NumeroREA>
+        <CapitaleSociale>100000.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Email>amministrazione@magnolianapoli.com</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>SM</IdPaese>
+          <IdCodice>03473</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Passepartout S.p.A</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-11-07</Data>
+        <Numero>1114/O</Numero>
+        <ImportoTotaleDocumento>200.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Quota alla romana 10%</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>141.24</PrezzoUnitario>
+        <PrezzoTotale>141.24</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>Quota alla romana 10% euro 155,37</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>Quota alla romana BEVERAGE euro 26,45 IVA BEVERAGE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>7 Coperto IVA FOOD</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>6 TANQUERAY 10</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 COCA COLA ZERO</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>3 Les Cretes Chardonnay IVA BEVERAGE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 HENDRICK'S</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Capesante dragon Rolls</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>3 Tiradito Hamachi</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 Edamame</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Acqua S Pellegrino 75</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 Acqua Panna</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>3 Ravioli di Wagyu</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 Sushi Sashimi Mix Set 18 pz</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 Wagyu Giappone 80 gr</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 CHICKEN THIGH</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Salmone special roll</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Gamberi Tempura e Ricciola alapegno roll</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Lobster roll</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Otoro roll speciale dello chef</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 Gianduia Otoro</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Mochi</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Quota alla romana BEVERAGE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>24.05</PrezzoUnitario>
+        <PrezzoTotale>24.05</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>Quota alla romana 10% euro 155,37</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>Quota alla romana BEVERAGE euro 26,45 IVA BEVERAGE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>7 Coperto IVA FOOD</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>6 TANQUERAY 10</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 COCA COLA ZERO</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>3 Les Cretes Chardonnay IVA BEVERAGE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 HENDRICK'S</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Capesante dragon Rolls</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>3 Tiradito Hamachi</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 Edamame</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Acqua S Pellegrino 75</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 Acqua Panna</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>3 Ravioli di Wagyu</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 Sushi Sashimi Mix Set 18 pz</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 Wagyu Giappone 80 gr</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 CHICKEN THIGH</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Salmone special roll</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Gamberi Tempura e Ricciola alapegno roll</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Lobster roll</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Otoro roll speciale dello chef</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>2 Gianduia Otoro</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>DETT.QUOTA</TipoDato>
+          <RiferimentoTesto>1 Mochi</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>SERVIZIO (aliquota 10%)</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>pz</UnitaMisura>
+        <PrezzoUnitario>14.12</PrezzoUnitario>
+        <PrezzoTotale>14.12</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>SERVIZIO (aliquota BEVERAGE)</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>pz</UnitaMisura>
+        <PrezzoUnitario>2.40</PrezzoUnitario>
+        <PrezzoTotale>2.40</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <Arrotondamento>0.01</Arrotondamento>
+        <ImponibileImporto>181.82</ImponibileImporto>
+        <Imposta>18.18</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <RiferimentoNormativo>10</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

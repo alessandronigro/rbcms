@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+    <FatturaElettronicaHeader>
+        <DatiTrasmissione>
+            <IdTrasmittente>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>00488410010</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>Sgt8v</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>0000000</CodiceDestinatario>
+        </DatiTrasmissione>
+        <CedentePrestatore>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>00488410010</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>00488410010</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>TIM  S.p.A.</Denominazione>
+                </Anagrafica>
+                <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>Via Gaetano Negri</Indirizzo>
+                <NumeroCivico>1</NumeroCivico>
+                <CAP>20123</CAP>
+                <Comune>MILANO</Comune>
+                <Provincia>MI</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+            <IscrizioneREA>
+                <Ufficio>MI</Ufficio>
+                <NumeroREA>1580695</NumeroREA>
+                <CapitaleSociale>11677002855.10</CapitaleSociale>
+                <SocioUnico>SM</SocioUnico>
+                <StatoLiquidazione>LN</StatoLiquidazione>
+            </IscrizioneREA>
+        </CedentePrestatore>
+        <CessionarioCommittente>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>05744121210</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>05744121210</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+                </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>V. CRESCENZIO 25</Indirizzo>
+                <CAP>00193</CAP>
+                <Comune>ROMA</Comune>
+                <Provincia>RM</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+        </CessionarioCommittente>
+    </FatturaElettronicaHeader>
+    <FatturaElettronicaBody>
+        <DatiGenerali>
+            <DatiGeneraliDocumento>
+                <TipoDocumento>TD01</TipoDocumento>
+                <Divisa>EUR</Divisa>
+                <Data>2022-07-11</Data>
+                <Numero>7X02894965</Numero>
+                <ImportoTotaleDocumento>43.88</ImportoTotaleDocumento>
+                <Causale>Fattura Luglio 22: Periodo 1/06/22 - 30/06/22</Causale>
+            </DatiGeneraliDocumento>
+            <DatiContratto>
+                <IdDocumento>888012176474</IdDocumento>
+                <CodiceCommessaConvenzione>UTTT4</CodiceCommessaConvenzione>
+            </DatiContratto>
+        </DatiGenerali>
+        <DatiBeniServizi>
+            <DettaglioLinee>
+                <NumeroLinea>1</NumeroLinea>
+                <Descrizione>Contributo Tim Deluxe Plus 01/06/22 - 30/06/22</Descrizione>
+                <PrezzoUnitario>35.97</PrezzoUnitario>
+                <PrezzoTotale>35.97</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <AltriDatiGestionali>
+                    <TipoDato>RIC.TELEF.</TipoDato>
+                    <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <ImponibileImporto>35.97</ImponibileImporto>
+                <Imposta>7.91</Imposta>
+                <RiferimentoNormativo>22%</RiferimentoNormativo>
+            </DatiRiepilogo>
+        </DatiBeniServizi>
+        <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+                <ModalitaPagamento>MP19</ModalitaPagamento>
+                <DataScadenzaPagamento>2022-08-11</DataScadenzaPagamento>
+                <ImportoPagamento>43.88</ImportoPagamento>
+                <CodicePagamento>312430880217647478</CodicePagamento>
+            </DettaglioPagamento>
+        </DatiPagamento>
+    
+    </FatturaElettronicaBody>
+</p:FatturaElettronica>

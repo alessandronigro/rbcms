@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>06628860964</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>1913372890</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01338040619</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>01338040619</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>VANESSA SOUND S.R.L. UNIPERSONALE</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA GENNARO TESCIONE  N. 74</Indirizzo>
+        <CAP>81100</CAP>
+        <Comune>CASERTA</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>CE</Ufficio>
+        <NumeroREA>CE-106176</NumeroREA>
+        <CapitaleSociale>150000.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>0823305445</Telefono>
+        <Email>vanessasound@pec.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING SRL </Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA DEI VECCHI PINI 13</Indirizzo>
+        <CAP>81100</CAP>
+        <Comune>CASERTA</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>06628860964</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>06628860964</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>PA DIGITALE S.P.A.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2025-04-07</Data>
+        <Numero>0104-001563</Numero>
+      </DatiGeneraliDocumento>
+      <DatiTrasporto>
+        <CausaleTrasporto>SCARICHI DA COMMISSIONI</CausaleTrasporto>
+      </DatiTrasporto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>  NS. RIF.: CORC/000000 DEL 07/04/2025 - RIF. : 006699M001E225 </Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>  NS. RIF.: COMM/006699 DEL 24/03/2025 - ID SPEZZA : C03148355</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+          <CodiceValore>0718203       </CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>COMF RCC197WH2 CONG.ORIZZ. 143LT CE.E BIANCO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N  </UnitaMisura>
+        <PrezzoUnitario>176.23</PrezzoUnitario>
+        <PrezzoTotale>176.23</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+          <CodiceValore>104503.       </CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>0000 GIA' ORDINATO PRODOTTO GIA' IN ORDINE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N  </UnitaMisura>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+          <CodiceValore>111356.       </CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>0000 -CONSERCAM72 CONSEGNA SERVIZI CAMPANIA 72H 0823/336712</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N  </UnitaMisura>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+          <CodiceValore>RITIRO.       </CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>0000 -RITIRO SERVIZIO RITIRO (SOLO MERCE INTEGRA CON ACCESSORI)</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N  </UnitaMisura>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+          <CodiceValore>112086.       </CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>0000 -CON30 CONS + INST + COLLAUDO + RITIRO GRATUITO - 30</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N  </UnitaMisura>
+        <PrezzoUnitario>24.59</PrezzoUnitario>
+        <PrezzoTotale>24.59</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>DEDOTTO ACCONTO </Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>-200.82</PrezzoUnitario>
+        <PrezzoTotale>-200.82</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>--------------------</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>NF</TipoDato>
+          <RiferimentoTesto>DEDOTTO ACCONTO DI EUR 245,00 DALLA FATTURA DI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>NF</TipoDato>
+          <RiferimentoTesto>ACCONTO N.RO 0104-001327 DEL 24/03/2025</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>0.00</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP01</ModalitaPagamento>
+        <DataScadenzaPagamento>2025-04-07</DataScadenzaPagamento>
+        <ImportoPagamento>0.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

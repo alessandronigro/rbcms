@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturapro_v1.2.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<FatturaElettronicaHeader>
+		<DatiTrasmissione>
+<IdTrasmittente>
+<IdPaese>IT</IdPaese>
+<IdCodice>06628860964</IdCodice>
+</IdTrasmittente>
+<ProgressivoInvio>2979124011</ProgressivoInvio>
+<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+</DatiTrasmissione>
+		<CedentePrestatore>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>09134321216</IdCodice>
+				</IdFiscaleIVA>
+				<CodiceFiscale>09134321216</CodiceFiscale>
+				<Anagrafica>
+					<Denominazione>EVENTI SRL</Denominazione>
+				</Anagrafica>
+				<RegimeFiscale>RF01</RegimeFiscale>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>VIA M CERVANTES DE SAVAEDRA 64</Indirizzo>
+				<CAP>80133</CAP>
+				<Comune>NAPOLI</Comune>
+				<Provincia>NA</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+			<IscrizioneREA>
+				<Ufficio>NA</Ufficio>
+				<NumeroREA>1010682</NumeroREA>
+				<SocioUnico>SM</SocioUnico>
+				<StatoLiquidazione>LN</StatoLiquidazione>
+			</IscrizioneREA>
+		</CedentePrestatore>
+		<CessionarioCommittente>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>05744121210</IdCodice>
+				</IdFiscaleIVA>
+				<CodiceFiscale>05744121210</CodiceFiscale>
+				<Anagrafica>
+					<Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+				</Anagrafica>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>VIA CRESCENZIO 2</Indirizzo>
+				<CAP>00193</CAP>
+				<Comune>ROMA</Comune>
+				<Provincia>RM</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+		</CessionarioCommittente><TerzoIntermediarioOSoggettoEmittente>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>06628860964</IdCodice>
+</IdFiscaleIVA>
+<CodiceFiscale>06628860964</CodiceFiscale>
+<Anagrafica>
+<Denominazione>PA DIGITALE S.P.A.</Denominazione>
+</Anagrafica>
+</DatiAnagrafici>
+</TerzoIntermediarioOSoggettoEmittente><SoggettoEmittente>TZ</SoggettoEmittente>
+	</FatturaElettronicaHeader>
+	<FatturaElettronicaBody>
+		<DatiGenerali>
+			<DatiGeneraliDocumento>
+				<TipoDocumento>TD01</TipoDocumento>
+				<Divisa>EUR</Divisa>
+				<Data>2023-07-14</Data>
+				<Numero>17</Numero>
+				<ScontoMaggiorazione>
+					<Tipo>SC</Tipo>
+					<Importo>0.21</Importo>
+				</ScontoMaggiorazione>
+				<ImportoTotaleDocumento>530.21</ImportoTotaleDocumento>
+			</DatiGeneraliDocumento>
+		</DatiGenerali>
+		<DatiBeniServizi>
+			<DettaglioLinee>
+				<NumeroLinea>1</NumeroLinea>
+				<Descrizione>regali vari</Descrizione>
+				<Quantita>20.00</Quantita>
+				<UnitaMisura>n</UnitaMisura>
+				<PrezzoUnitario>21.73</PrezzoUnitario>
+				<PrezzoTotale>434.60</PrezzoTotale>
+				<AliquotaIVA>22.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DettaglioLinee>
+				<NumeroLinea>2</NumeroLinea>
+				<Descrizione>Riga ausiliaria contenente informazioni relative agli altri dati gestionali</Descrizione>
+				<PrezzoUnitario>0.00</PrezzoUnitario>
+				<PrezzoTotale>0.00</PrezzoTotale>
+				<AliquotaIVA>22.00</AliquotaIVA>
+				<AltriDatiGestionali>
+					<TipoDato>N.DOC.COMM</TipoDato>
+					<RiferimentoTesto>0001</RiferimentoTesto>
+					<RiferimentoData>2023-07-14</RiferimentoData>
+				</AltriDatiGestionali>
+			</DettaglioLinee>
+			<DatiRiepilogo>
+				<AliquotaIVA>22.00</AliquotaIVA>
+				<ImponibileImporto>434.60</ImponibileImporto>
+				<Imposta>95.61</Imposta>
+				<EsigibilitaIVA>I</EsigibilitaIVA>
+				<RiferimentoNormativo>ALIQUOTA 22%</RiferimentoNormativo>
+			</DatiRiepilogo>
+		</DatiBeniServizi>
+		<DatiPagamento>
+			<CondizioniPagamento>TP02</CondizioniPagamento>
+			<DettaglioPagamento>
+				<ModalitaPagamento>MP01</ModalitaPagamento>
+				<ImportoPagamento>530.00</ImportoPagamento>
+				<IstitutoFinanziario>INTESA SANPAOLO SPA</IstitutoFinanziario>
+				<IBAN>IT67J0306914935100000005612</IBAN>
+				<ABI>03069</ABI>
+				<CAB>14935</CAB>
+			</DettaglioPagamento>
+		</DatiPagamento>
+	</FatturaElettronicaBody>
+</p:FatturaElettronica>

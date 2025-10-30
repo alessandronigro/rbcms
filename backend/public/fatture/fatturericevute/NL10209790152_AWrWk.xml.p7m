@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FatturaElettronica xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12" xmlns="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader xmlns="">
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>10209790152</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>640</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03953810615</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>03953810615</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>LIGHT GAME SAS DI ACHILLE RAMIREZ</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIALE VINCENZO LAMBERTI</Indirizzo>
+        <NumeroCivico>19/21</NumeroCivico>
+        <CAP>81100</CAP>
+        <Comune>Caserta</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>CE</Ufficio>
+        <NumeroREA>0286602</NumeroREA>
+        <CapitaleSociale>5000.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti />
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R &amp; B CONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA crescenzio</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00164</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody xmlns="">
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2022-10-26</Data>
+        <Numero>15</Numero>
+        <ImportoTotaleDocumento>356.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Meeteng aziendale svolto c/o la nostra sede</Descrizione>
+        <PrezzoUnitario>323.63636364</PrezzoUnitario>
+        <PrezzoTotale>323.64</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>323.64</ImponibileImporto>
+        <Imposta>32.36</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <DataScadenzaPagamento>2022-10-26</DataScadenzaPagamento>
+        <ImportoPagamento>356.00</ImportoPagamento>
+        <IstitutoFinanziario>CREDITO EMILIANO SPA</IstitutoFinanziario>
+        <IBAN>IT12F0303275010010000005203</IBAN>
+        <ABI>03032</ABI>
+        <CAB>75010</CAB>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</FatturaElettronica>

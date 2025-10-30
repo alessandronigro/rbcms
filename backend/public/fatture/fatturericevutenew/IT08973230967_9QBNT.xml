@@ -1,0 +1,103 @@
+<ns2:FatturaElettronica xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione><IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>08973230967</IdCodice></IdTrasmittente><ProgressivoInvio>9QBNT</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>0000000</CodiceDestinatario></DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>08973230967</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Amazon EU S.a r.l., Succursale Italiana</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>38 avenue John F. Kennedy</Indirizzo>
+            <CAP>01855</CAP>
+            <Comune>Luxemburgo</Comune>
+            <Nazione>LU</Nazione>
+         </Sede>
+         <StabileOrganizzazione>
+            <Indirizzo>Viale Monte Grappa 3/5</Indirizzo>
+            <CAP>20124</CAP>
+            <Comune>Milano</Comune>
+            <Nazione>IT</Nazione>
+         </StabileOrganizzazione>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>17044041006</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>RB Consulting Srl</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>via Crescenzio, 25</Indirizzo>
+            <CAP>00194</CAP>
+            <Comune>Roma</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2024-06-26</Data>
+            <Numero>IT24-AEUI-7845086</Numero>
+            <ImportoTotaleDocumento>259.98</ImportoTotaleDocumento>
+            <Arrotondamento>0.00</Arrotondamento>
+         </DatiGeneraliDocumento>
+         <DatiContratto>
+            <RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
+            <RiferimentoNumeroLinea>2</RiferimentoNumeroLinea>
+            <IdDocumento>403-3972535-1809123</IdDocumento>
+            <Data>2024-06-26</Data>
+         </DatiContratto>
+         <FatturaPrincipale>
+            <NumeroFatturaPrincipale>IT24-AEUI-7845086</NumeroFatturaPrincipale>
+            <DataFatturaPrincipale>2024-06-26</DataFatturaPrincipale>
+         </FatturaPrincipale>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Tecnoware UPS ERA PLUS 1500 Gruppo di Continuita - 2 Uscite Schuko - Autonomia fino a 20 min con 1 PC o 80 min con Modem Router - Potenza 1500 VA</Descrizione>
+            <Quantita>2.00</Quantita>
+            <DataInizioPeriodo>2024-06-26</DataInizioPeriodo>
+            <DataFinePeriodo>2024-06-26</DataFinePeriodo>
+            <PrezzoUnitario>106.55</PrezzoUnitario>
+            <PrezzoTotale>213.10</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Costi di spedizione</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2024-06-26</DataInizioPeriodo>
+            <DataFinePeriodo>2024-06-26</DataFinePeriodo>
+            <PrezzoUnitario>0.00</PrezzoUnitario>
+            <PrezzoTotale>0.00</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <Arrotondamento>-0.01</Arrotondamento>
+            <ImponibileImporto>213.09</ImponibileImporto>
+            <Imposta>46.88</Imposta>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP08</ModalitaPagamento>
+            <ImportoPagamento>259.98</ImportoPagamento>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</ns2:FatturaElettronica>

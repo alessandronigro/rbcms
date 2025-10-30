@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+<FatturaElettronicaHeader>
+  <DatiTrasmissione>
+    <IdTrasmittente>
+      <IdPaese>IT</IdPaese>
+      <IdCodice>04839740489</IdCodice>
+    </IdTrasmittente>
+    <ProgressivoInvio>00037076A7</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>0000000</CodiceDestinatario>
+    <PECDestinatario>POSTMASTER@PEC.RBCONSULENZA.COM</PECDestinatario>
+  </DatiTrasmissione>
+  <CedentePrestatore>
+    <DatiAnagrafici>
+      <IdFiscaleIVA>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>13029381004</IdCodice>
+      </IdFiscaleIVA>
+      <Anagrafica>
+        <Denominazione>Alitalia - S.A.I. S.p.A. in amministrazione straordinaria</Denominazione>
+      </Anagrafica>
+      <RegimeFiscale>RF01</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+      <Indirizzo>Via A. Nassetti - PAL ALFA</Indirizzo>
+      <CAP>00054</CAP>
+      <Comune>Fiumicino</Comune>
+      <Provincia>RM</Provincia>
+      <Nazione>IT</Nazione>
+    </Sede>
+    <IscrizioneREA>
+      <Ufficio>RM</Ufficio>
+      <NumeroREA>1418603</NumeroREA>
+      <CapitaleSociale>103105126.99</CapitaleSociale>
+      <StatoLiquidazione>LN</StatoLiquidazione>
+    </IscrizioneREA>
+  </CedentePrestatore>
+  <CessionarioCommittente>
+    <DatiAnagrafici>
+      <IdFiscaleIVA>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05744121210</IdCodice>
+      </IdFiscaleIVA>
+      <Anagrafica>
+        <Denominazione>RB CONSULTING SRL </Denominazione>
+      </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+      <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+      <CAP>00193</CAP>
+      <Comune>ROMA</Comune>
+      <Nazione>IT</Nazione>
+    </Sede>
+  </CessionarioCommittente>
+</FatturaElettronicaHeader><FatturaElettronicaBody>
+  <DatiGenerali>
+    <DatiGeneraliDocumento>
+      <TipoDocumento>TD01</TipoDocumento>
+      <Divisa>EUR</Divisa>
+      <Data>2020-01-29</Data>
+      <Numero>2206031361</Numero>
+      <ImportoTotaleDocumento>203.13 </ImportoTotaleDocumento>
+      <Causale>Ben.volo GIUSEPPE RUSSO</Causale>
+    </DatiGeneraliDocumento>
+  </DatiGenerali>
+  <DatiBeniServizi>
+    <DettaglioLinee>
+      <NumeroLinea>1</NumeroLinea>
+      <Descrizione> N° TICKET 0552348996277 Tratta NAP\LIN TARIFFA</Descrizione>
+      <PrezzoUnitario>150.91</PrezzoUnitario>
+      <PrezzoTotale>150.91</PrezzoTotale>
+      <AliquotaIVA>10.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>2</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE</Descrizione>
+      <PrezzoUnitario>2.68</PrezzoUnitario>
+      <PrezzoTotale>2.68</PrezzoTotale>
+      <AliquotaIVA>10.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>3</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE</Descrizione>
+      <PrezzoUnitario>10.00</PrezzoUnitario>
+      <PrezzoTotale>10.00</PrezzoTotale>
+      <AliquotaIVA>10.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>4</NumeroLinea>
+      <Descrizione> TASSE E SUPPL.</Descrizione>
+      <PrezzoUnitario>21.07</PrezzoUnitario>
+      <PrezzoTotale>21.07</PrezzoTotale>
+      <AliquotaIVA>10.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>10.00</AliquotaIVA>
+      <ImponibileImporto>184.66</ImponibileImporto>
+      <Imposta>18.47</Imposta>
+      <RiferimentoNormativo>FT ATT.     IVA 10%</RiferimentoNormativo>
+    </DatiRiepilogo>
+  </DatiBeniServizi>
+  <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+      <ModalitaPagamento>MP05</ModalitaPagamento>
+      <DataRiferimentoTerminiPagamento>2020-01-22</DataRiferimentoTerminiPagamento>
+      <DataScadenzaPagamento>2020-01-22</DataScadenzaPagamento>
+      <ImportoPagamento>203.13 </ImportoPagamento>
+      <IstitutoFinanziario>Intesa Sanpaolo S.p.A.</IstitutoFinanziario>
+      <IBAN>IT30H0306949633100000007825</IBAN>
+      <BIC>BCITITMM</BIC>
+    </DettaglioPagamento>
+  </DatiPagamento>
+</FatturaElettronicaBody>
+</p:FatturaElettronica>

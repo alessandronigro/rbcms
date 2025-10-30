@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet  type="text/xsl" href="fatturaordinaria_v1.2.1.xsl"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12">
+	<FatturaElettronicaHeader>
+		<DatiTrasmissione>
+			<IdTrasmittente>
+				<IdPaese>IT</IdPaese>
+				<IdCodice>08245660017</IdCodice>
+			</IdTrasmittente>
+			<ProgressivoInvio>5222</ProgressivoInvio>
+			<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+			<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+		</DatiTrasmissione>
+		<CedentePrestatore>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>02571860614</IdCodice>
+				</IdFiscaleIVA>
+				<CodiceFiscale>02571860614</CodiceFiscale>
+				<Anagrafica>
+					<Denominazione>BE.GA. Sud S.r.l.</Denominazione>
+				</Anagrafica>
+				<RegimeFiscale>RF01</RegimeFiscale>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>Via G.Deledda 1</Indirizzo>
+				<CAP>81100</CAP>
+				<Comune>CASERTA</Comune>
+				<Provincia>CE</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+			<IscrizioneREA>
+				<Ufficio>CE</Ufficio>
+				<NumeroREA>40911/99</NumeroREA>
+				<CapitaleSociale>20000000.00</CapitaleSociale>
+				<StatoLiquidazione>LN</StatoLiquidazione>
+			</IscrizioneREA>
+			<Contatti>
+				<Telefono>0823471618</Telefono>
+			</Contatti>
+		</CedentePrestatore>
+		<CessionarioCommittente>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>05744121210</IdCodice>
+				</IdFiscaleIVA>
+				<Anagrafica>
+					<Denominazione>R &amp;  B   CONSULTING</Denominazione>
+				</Anagrafica>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>VIA DEI VECCHI PINI N° 9</Indirizzo>
+				<CAP>81100</CAP>
+				<Comune>CASERTA</Comune>
+				<Provincia>CE</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+		</CessionarioCommittente>
+	</FatturaElettronicaHeader>
+	<FatturaElettronicaBody>
+		<DatiGenerali>
+			<DatiGeneraliDocumento>
+				<TipoDocumento>TD01</TipoDocumento>
+				<Divisa>EUR</Divisa>
+				<Data>2019-06-11</Data>
+				<Numero>4466</Numero>
+				<ImportoTotaleDocumento>42.63</ImportoTotaleDocumento>
+				<Causale>Fattura di vendita</Causale>
+			</DatiGeneraliDocumento>
+			<DatiTrasporto>
+				<CausaleTrasporto>VENDITA</CausaleTrasporto>
+				<NumeroColli>20</NumeroColli>
+				<Descrizione>A VISTA</Descrizione>
+				<DataInizioTrasporto>2019-06-11</DataInizioTrasporto>
+				<IndirizzoResa>
+					<Indirizzo>VIA DEI VECCHI PINI N° 9</Indirizzo>
+					<CAP>81100</CAP>
+					<Comune>CASERTA</Comune>
+					<Provincia>CE</Provincia>
+					<Nazione>IT</Nazione>
+				</IndirizzoResa>
+			</DatiTrasporto>
+		</DatiGenerali>
+		<DatiBeniServizi>
+			<DettaglioLinee>
+				<NumeroLinea>1</NumeroLinea>
+				<Descrizione>ACQUA SANTAGATA LT 1,5</Descrizione>
+				<Quantita>60.00000000</Quantita>
+				<UnitaMisura>PZ</UnitaMisura>
+				<PrezzoUnitario>0.30060000</PrezzoUnitario>
+				<PrezzoTotale>18.04000000</PrezzoTotale>
+				<AliquotaIVA>22.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DettaglioLinee>
+				<NumeroLinea>2</NumeroLinea>
+				<Descrizione>ACQUA PRATA LT 2 PL</Descrizione>
+				<Quantita>60.00000000</Quantita>
+				<UnitaMisura>PZ</UnitaMisura>
+				<PrezzoUnitario>0.27330000</PrezzoUnitario>
+				<PrezzoTotale>16.40000000</PrezzoTotale>
+				<AliquotaIVA>22.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DettaglioLinee>
+				<NumeroLinea>3</NumeroLinea>
+				<TipoCessionePrestazione>AC</TipoCessionePrestazione>
+				<Descrizione>Rivalsa spese varie</Descrizione>
+				<PrezzoUnitario>0.50000000</PrezzoUnitario>
+				<PrezzoTotale>0.50000000</PrezzoTotale>
+				<AliquotaIVA>22.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DatiRiepilogo>
+				<AliquotaIVA>22.00</AliquotaIVA>
+				<ImponibileImporto>34.94</ImponibileImporto>
+				<Imposta>7.69</Imposta>
+				<EsigibilitaIVA>I</EsigibilitaIVA>
+				<RiferimentoNormativo>22%</RiferimentoNormativo>
+			</DatiRiepilogo>
+		</DatiBeniServizi>
+		<DatiPagamento>
+			<CondizioniPagamento>TP02</CondizioniPagamento>
+			<DettaglioPagamento>
+				<ModalitaPagamento>MP01</ModalitaPagamento>
+				<DataRiferimentoTerminiPagamento>2019-06-11</DataRiferimentoTerminiPagamento>
+				<DataScadenzaPagamento>2019-06-11</DataScadenzaPagamento>
+				<ImportoPagamento>42.63</ImportoPagamento>
+			</DettaglioPagamento>
+		</DatiPagamento>
+	</FatturaElettronicaBody>
+</p:FatturaElettronica>
+

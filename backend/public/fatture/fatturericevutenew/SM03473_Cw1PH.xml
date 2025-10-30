@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12" SistemaEmittente="FEL18 v213">
+    <FatturaElettronicaHeader>
+        <DatiTrasmissione><IdTrasmittente><IdPaese>SM</IdPaese><IdCodice>03473</IdCodice></IdTrasmittente><ProgressivoInvio>0010r</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>KRRH6B9</CodiceDestinatario></DatiTrasmissione>
+        <CedentePrestatore>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>06717470634</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>06717470634</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>FLASH SRL</Denominazione>
+                </Anagrafica>
+                <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>CORSO UMBERTO I</Indirizzo>
+                <NumeroCivico>80/82</NumeroCivico>
+                <CAP>80138</CAP>
+                <Comune>NAPOLI</Comune>
+                <Provincia>NA</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+            <IscrizioneREA>
+                <Ufficio>NA</Ufficio>
+                <NumeroREA>516288</NumeroREA>
+                <StatoLiquidazione>LN</StatoLiquidazione>
+            </IscrizioneREA>
+        </CedentePrestatore>
+        <CessionarioCommittente>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>17044041006</IdCodice>
+                </IdFiscaleIVA>
+                <Anagrafica>
+                    <Denominazione>RB CONSULTING SRL</Denominazione>
+                </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>VIA DEI VECCHI PINI</Indirizzo>
+                <NumeroCivico>13</NumeroCivico>
+                <CAP>81100</CAP>
+                <Comune>CASERTA</Comune>
+                <Provincia>CE</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+        </CessionarioCommittente>
+    </FatturaElettronicaHeader>
+    <FatturaElettronicaBody>
+        <DatiGenerali>
+            <DatiGeneraliDocumento>
+                <TipoDocumento>TD01</TipoDocumento>
+                <Divisa>EUR</Divisa>
+                <Data>2025-01-18</Data>
+                <Numero>009/05</Numero>
+                <ImportoTotaleDocumento>359.88</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+        </DatiGenerali>
+        <DatiBeniServizi>
+            <DettaglioLinee>
+                <NumeroLinea>1</NumeroLinea>
+                <Descrizione>FATTURA COME DA SCONTRINO FISCALE N. 0001 DEL 16/01/25 EMESSO DAL P.V. GENIUS C/O LA REGGIA OUTLET - MARCIANISE (CE)</Descrizione>
+                <Quantita>1.00</Quantita>
+                <UnitaMisura>NR</UnitaMisura>
+                <PrezzoUnitario>294.98</PrezzoUnitario>
+                <PrezzoTotale>294.98</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <ImponibileImporto>294.98</ImponibileImporto>
+                <Imposta>64.90</Imposta>
+            </DatiRiepilogo>
+        </DatiBeniServizi>
+        <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+                <ModalitaPagamento>MP08</ModalitaPagamento>
+                <ImportoPagamento>359.88</ImportoPagamento>
+            </DettaglioPagamento>
+        </DatiPagamento>
+    </FatturaElettronicaBody>
+</p:FatturaElettronica>

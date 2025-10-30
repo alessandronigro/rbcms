@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05006900962</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>ckdnzA40XL</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+      <PECDestinatario>POSTMASTER@PEC.RBCONSULENZA.COM</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01174651008</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>03238610582</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>DAL BOLOGNESE S.R.L.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Piazza del Popolo</Indirizzo>
+        <NumeroCivico>1/2</NumeroCivico>
+        <CAP>00187</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Email>roma@dalbolognese.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>ReB CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05006900962</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05006900962</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>Zucchetti S.p.A.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2022-10-27</Data>
+        <Numero>1209/A</Numero>
+        <ImportoTotaleDocumento>168.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>BICC. ROSSO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>7.272727</PrezzoUnitario>
+        <PrezzoTotale>7.272727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Bic FRANCIACORTA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>9.090909</PrezzoUnitario>
+        <PrezzoTotale>9.090909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>ACQUA MINERALE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>3.636364</PrezzoUnitario>
+        <PrezzoTotale>3.636364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>CARPACCIO BLACK ANGUS</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>20.00</PrezzoUnitario>
+        <PrezzoTotale>20.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>CAPRESE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>14.545455</PrezzoUnitario>
+        <PrezzoTotale>14.545455</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>BOLLITO MISTO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>27.272727</PrezzoUnitario>
+        <PrezzoTotale>27.272727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>COSTOLETTA MILANO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>30.909091</PrezzoUnitario>
+        <PrezzoTotale>30.909091</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>PORCINI ARROSTO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>22.727273</PrezzoUnitario>
+        <PrezzoTotale>22.727273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>FRAGOLINE CON GELATO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>14.545455</PrezzoUnitario>
+        <PrezzoTotale>14.545455</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>CAFFE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>2.727273</PrezzoUnitario>
+        <PrezzoTotale>2.727273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>152.73</ImponibileImporto>
+        <Imposta>15.27</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>168.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

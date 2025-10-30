@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01879020517</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>35039</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <PECDestinatario>FATTURAZIONE@PEC.RBCONSULENZA.COM</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01964390924</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>AGENZIA VIAGGI PRESENT DI BALLOCCU LUIGI</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF11</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA ITALIA 302</Indirizzo>
+        <CAP>09010</CAP>
+        <Comune>S.ANNA ARRESI</Comune>
+        <Provincia>CI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO, 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-08-02</Data>
+        <Numero>6710/1/24</Numero>
+        <DatiBollo>
+          <BolloVirtuale>SI</BolloVirtuale>
+          <ImportoBollo>2.00</ImportoBollo>
+        </DatiBollo>
+        <ImportoTotaleDocumento>1077.50</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>BGT TNK245894278 RUSSO GIUSEPPE 03/08/2024 NAPOLI PALERMO PALERMO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>492.45</PrezzoUnitario>
+        <PrezzoTotale>492.45</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>FEE SU BGT TNK245894278 RUSSO GIUSEPPE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>13.11</PrezzoUnitario>
+        <PrezzoTotale>13.11</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>BGT TNK245894315 RUSSO GIUSEPPE 26/08/2024 PALERMO NAPOLI NAPOLI</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>525.95</PrezzoUnitario>
+        <PrezzoTotale>525.95</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>FEE SU BGT TNK245894315 RUSSO GIUSEPPE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>35.33</PrezzoUnitario>
+        <PrezzoTotale>35.33</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>48.44</ImponibileImporto>
+        <Imposta>10.66</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+        <ImponibileImporto>1018.40</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <RiferimentoNormativo>ESCLUSO ART.15</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>SM</IdPaese>
+        <IdCodice>03473</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>11</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <PECDestinatario>postmaster@pec.rbconsulenza.com</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>06831990582</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>MSTMTR58C50H501P</CodiceFiscale>
+        <Anagrafica>
+          <Nome>MARIA TERESA</Nome>
+          <Cognome>MASTRANGELO</Cognome>
+        </Anagrafica>
+        <RegimeFiscale>RF19</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA MADONNA DEL RIPOSO75</Indirizzo>
+        <CAP>00100</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Telefono>066623164</Telefono>
+        <Email>tmastrangelo@libero.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Crescenzio 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>SM</IdPaese>
+          <IdCodice>03473</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Passepartout S.p.A</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD06</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2022-10-18</Data>
+        <Numero>11</Numero>
+        <DatiBollo>
+          <BolloVirtuale>SI</BolloVirtuale>
+          <ImportoBollo>2.00</ImportoBollo>
+        </DatiBollo>
+        <DatiCassaPrevidenziale>
+          <TipoCassa>TC01</TipoCassa>
+          <AlCassa>4.00</AlCassa>
+          <ImportoContributoCassa>800.00</ImportoContributoCassa>
+          <ImponibileCassa>20000.00</ImponibileCassa>
+          <AliquotaIVA>0.00</AliquotaIVA>
+          <Natura>N2.2</Natura>
+        </DatiCassaPrevidenziale>
+        <ImportoTotaleDocumento>20800.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>PROPRIETARIO</CodiceTipo>
+          <CodiceValore>PRESTAZ</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>consulenza
+Studio e parere su progetti assicurativi e relativa compliance                                                                                                                               
+</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>20000.00</PrezzoUnitario>
+        <PrezzoTotale>20000.00</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N2.2</Natura>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N2.2</Natura>
+        <ImponibileImporto>20800.00</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <RiferimentoNormativo>Operazione in franchigia IVA - L.190/2014</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

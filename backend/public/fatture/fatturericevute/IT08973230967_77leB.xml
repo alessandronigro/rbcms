@@ -1,0 +1,103 @@
+<ns2:FatturaElettronica xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione><IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>08973230967</IdCodice></IdTrasmittente><ProgressivoInvio>77leB</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>KRRH6B9</CodiceDestinatario><PECDestinatario>fatturazione@pec.rbconsulenza.com</PECDestinatario></DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>08973230967</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Amazon EU S.a r.l., Succursale Italiana</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>38 avenue John F. Kennedy</Indirizzo>
+            <CAP>01855</CAP>
+            <Comune>Luxemburgo</Comune>
+            <Nazione>LU</Nazione>
+         </Sede>
+         <StabileOrganizzazione>
+            <Indirizzo>Viale Monte Grappa 3/5</Indirizzo>
+            <CAP>20124</CAP>
+            <Comune>Milano</Comune>
+            <Nazione>IT</Nazione>
+         </StabileOrganizzazione>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05744121210</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>R&amp;B Consulting Srl</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>via Crescenzio, 25</Indirizzo>
+            <CAP>00193</CAP>
+            <Comune>Roma</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2023-09-01</Data>
+            <Numero>IT23-AEUI-9990932</Numero>
+            <ImportoTotaleDocumento>519.90</ImportoTotaleDocumento>
+            <Arrotondamento>0.00</Arrotondamento>
+         </DatiGeneraliDocumento>
+         <DatiContratto>
+            <RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
+            <RiferimentoNumeroLinea>2</RiferimentoNumeroLinea>
+            <IdDocumento>403-3242755-1059545</IdDocumento>
+            <Data>2023-08-31</Data>
+         </DatiContratto>
+         <FatturaPrincipale>
+            <NumeroFatturaPrincipale>IT23-AEUI-9990932</NumeroFatturaPrincipale>
+            <DataFatturaPrincipale>2023-09-01</DataFatturaPrincipale>
+         </FatturaPrincipale>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Samsung Monitor Gaming Odyssey G7 (C27G73), Curvo (1000R), 27", 2560x1440 (WQHD 2K), HDR 600, VA, 240 Hz, 1ms, FreeSync Pro, G-Sync, HDMI, USB 3.0, Display Port, Ingresso Audio, HAS, Pivot, PIP, PBP</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2023-09-01</DataInizioPeriodo>
+            <DataFinePeriodo>2023-09-01</DataFinePeriodo>
+            <PrezzoUnitario>426.15</PrezzoUnitario>
+            <PrezzoTotale>426.15</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Costi di spedizione</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2023-09-01</DataInizioPeriodo>
+            <DataFinePeriodo>2023-09-01</DataFinePeriodo>
+            <PrezzoUnitario>0.00</PrezzoUnitario>
+            <PrezzoTotale>0.00</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <Arrotondamento>-0.01</Arrotondamento>
+            <ImponibileImporto>426.14</ImponibileImporto>
+            <Imposta>93.75</Imposta>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP08</ModalitaPagamento>
+            <ImportoPagamento>519.90</ImportoPagamento>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</ns2:FatturaElettronica>

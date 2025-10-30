@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+<FatturaElettronicaHeader>
+  <DatiTrasmissione>
+    <IdTrasmittente>
+      <IdPaese>IT</IdPaese>
+      <IdCodice>04839740489</IdCodice>
+    </IdTrasmittente>
+    <ProgressivoInvio>000D67976F</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>0000000</CodiceDestinatario>
+  </DatiTrasmissione>
+  <CedentePrestatore>
+    <DatiAnagrafici>
+      <IdFiscaleIVA>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>13378520152</IdCodice>
+      </IdFiscaleIVA>
+      <CodiceFiscale>02517580920</CodiceFiscale>
+      <Anagrafica>
+        <Denominazione>Wind Tre S.p.A.</Denominazione>
+      </Anagrafica>
+      <RegimeFiscale>RF08</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+      <Indirizzo>Largo Metropolitana</Indirizzo>
+      <NumeroCivico>5</NumeroCivico>
+      <CAP>20017</CAP>
+      <Comune>Rho</Comune>
+      <Provincia>MI</Provincia>
+      <Nazione>IT</Nazione>
+    </Sede>
+    <IscrizioneREA>
+      <Ufficio>MI</Ufficio>
+      <NumeroREA>02517580920</NumeroREA>
+      <CapitaleSociale>474303795.00</CapitaleSociale>
+      <SocioUnico>SU</SocioUnico>
+      <StatoLiquidazione>LN</StatoLiquidazione>
+    </IscrizioneREA>
+    <RiferimentoAmministrazione>6700270363</RiferimentoAmministrazione>
+  </CedentePrestatore>
+  <CessionarioCommittente>
+    <DatiAnagrafici>
+      <IdFiscaleIVA>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05744121210</IdCodice>
+      </IdFiscaleIVA>
+      <Anagrafica>
+        <Denominazione>R&amp;B CONSULTING S.R.L.</Denominazione>
+      </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+      <Indirizzo>Via CRESCENZIO, 25</Indirizzo>
+      <CAP>00193</CAP>
+      <Comune>ROMA</Comune>
+      <Provincia>RM</Provincia>
+      <Nazione>IT</Nazione>
+    </Sede>
+  </CessionarioCommittente>
+</FatturaElettronicaHeader><FatturaElettronicaBody>
+  <DatiGenerali>
+    <DatiGeneraliDocumento>
+      <TipoDocumento>TD01</TipoDocumento>
+      <Divisa>EUR</Divisa>
+      <Data>2022-05-21</Data>
+      <Numero>2022F000011998</Numero>
+      <ImportoTotaleDocumento>35.97</ImportoTotaleDocumento>
+      <Causale>Wind Tre S.p.A. con Socio Unico - Direzione e Coordinamento VIP - CKH Luxembourg S.à r.l.</Causale>
+      <Causale>Documento emesso ai sensi degli art. 21 DPR 633/1972 e 4 c. 1 DM. n. 366/2000. L'IVA è stata assolta, ai sensi dell'art. 74, comma 1, lettera d, DPR n. 633/1972, da Wind Tre S.p.A. - P.IVA 13378520152</Causale>
+    </DatiGeneraliDocumento>
+  </DatiGenerali>
+  <DatiBeniServizi>
+    <DettaglioLinee>
+      <NumeroLinea>1</NumeroLinea>
+      <Descrizione>SUPER Unlimited dal 30/03/2022 al 31/03/2022</Descrizione>
+      <Quantita>1.00</Quantita>
+      <PrezzoUnitario>1.29</PrezzoUnitario>
+      <PrezzoTotale>1.29</PrezzoTotale>
+      <AliquotaIVA>22.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>2</NumeroLinea>
+      <Descrizione>SUPER Unlimited dal 01/04/2022 al 30/04/2022</Descrizione>
+      <Quantita>1.00</Quantita>
+      <PrezzoUnitario>19.99</PrezzoUnitario>
+      <PrezzoTotale>19.99</PrezzoTotale>
+      <AliquotaIVA>22.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>3</NumeroLinea>
+      <Descrizione>Ricarica Automatica a soglia (10,00) - Quantità 1 ricariche</Descrizione>
+      <Quantita>1.00</Quantita>
+      <PrezzoUnitario>8.20</PrezzoUnitario>
+      <PrezzoTotale>8.20</PrezzoTotale>
+      <AliquotaIVA>22.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>22.00</AliquotaIVA>
+      <ImponibileImporto>29.48</ImponibileImporto>
+      <Imposta>6.49</Imposta>
+      <EsigibilitaIVA>I</EsigibilitaIVA>
+      <RiferimentoNormativo>IVA Art.74 c. 1 let. d DPR 633/72 assolta da Wind Tre P.IVA 13378520152</RiferimentoNormativo>
+    </DatiRiepilogo>
+  </DatiBeniServizi>
+  <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+      <ModalitaPagamento>MP20</ModalitaPagamento>
+      <DataScadenzaPagamento>2022-06-20</DataScadenzaPagamento>
+      <ImportoPagamento>35.97</ImportoPagamento>
+    </DettaglioPagamento>
+  </DatiPagamento>
+</FatturaElettronicaBody>
+</p:FatturaElettronica>

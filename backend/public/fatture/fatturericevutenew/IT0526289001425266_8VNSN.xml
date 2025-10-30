@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<FatturaElettronicaHeader>
+<DatiTrasmissione>
+<IdTrasmittente>
+<IdPaese>IT</IdPaese>
+<IdCodice>05262890014</IdCodice>
+</IdTrasmittente>
+<ProgressivoInvio>D0250923</ProgressivoInvio>
+<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+</DatiTrasmissione>
+<CedentePrestatore>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>09771701001</IdCodice>
+</IdFiscaleIVA>
+<Anagrafica>
+<Denominazione>TELEPASS S.P.A.</Denominazione>
+</Anagrafica>
+<RegimeFiscale>RF01</RegimeFiscale>
+</DatiAnagrafici>
+<Sede>
+<Indirizzo>Via Laurentina n.  449</Indirizzo>
+<CAP>00142</CAP>
+<Comune>ROMA</Comune>
+<Nazione>IT</Nazione>
+</Sede>
+<IscrizioneREA>
+<Ufficio>RM</Ufficio>
+<NumeroREA>1188554</NumeroREA>
+<CapitaleSociale>26000000.00</CapitaleSociale>
+<StatoLiquidazione>LN</StatoLiquidazione>
+</IscrizioneREA>
+</CedentePrestatore>
+<CessionarioCommittente>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>17044041006</IdCodice>
+</IdFiscaleIVA>
+<Anagrafica>
+<Denominazione>RB CONSULTING S.R.L.</Denominazione>
+</Anagrafica>
+</DatiAnagrafici>
+<Sede>
+<Indirizzo>VIA CRESCENZIO,25</Indirizzo>
+<CAP>00193</CAP>
+<Comune>ROMA</Comune>
+<Nazione>IT</Nazione>
+</Sede>
+</CessionarioCommittente>
+</FatturaElettronicaHeader>
+<FatturaElettronicaBody>
+<DatiGenerali>
+<DatiGeneraliDocumento>
+<TipoDocumento>TD01</TipoDocumento>
+<Divisa>EUR</Divisa>
+<Data>2025-09-23</Data>
+<Numero>000000068651580T</Numero>
+<ImportoTotaleDocumento>14.64</ImportoTotaleDocumento>
+<Causale>Codice cliente: 310859586</Causale>
+</DatiGeneraliDocumento>
+</DatiGenerali>
+<DatiBeniServizi>
+<DettaglioLinee>
+<NumeroLinea>1</NumeroLinea>
+<Descrizione>Canone T Business FAS S - Servizi Telepass</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>12.00</PrezzoUnitario>
+<PrezzoTotale>12.00</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DatiRiepilogo>
+<AliquotaIVA>22.00</AliquotaIVA>
+<ImponibileImporto>12.00</ImponibileImporto>
+<Imposta>2.64</Imposta>
+</DatiRiepilogo>
+</DatiBeniServizi>
+<DatiPagamento>
+<CondizioniPagamento>TP02</CondizioniPagamento>
+<DettaglioPagamento>
+<Beneficiario>TELEPASS</Beneficiario>
+<ModalitaPagamento>MP19</ModalitaPagamento>
+<DataScadenzaPagamento>2025-09-23</DataScadenzaPagamento>
+<ImportoPagamento>14.64</ImportoPagamento>
+</DettaglioPagamento>
+</DatiPagamento>
+</FatturaElettronicaBody>
+</p:FatturaElettronica>

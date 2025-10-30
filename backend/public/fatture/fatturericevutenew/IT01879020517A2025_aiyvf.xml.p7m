@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FatturaElettronica versione="FPR12" xmlns="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader xmlns="">
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01879020517</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>2</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>15407901006</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>PLMMTT97A05H501J</CodiceFiscale>
+        <Anagrafica>
+          <Nome>Mattia</Nome>
+          <Cognome>Palma</Cognome>
+          <Titolo>Geometra</Titolo>
+        </Anagrafica>
+        <AlboProfessionale>Collegio Geometri</AlboProfessionale>
+        <ProvinciaAlbo>RM</ProvinciaAlbo>
+        <NumeroIscrizioneAlbo>11634</NumeroIscrizioneAlbo>
+        <RegimeFiscale>RF19</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Berna</Indirizzo>
+        <NumeroCivico>20</NumeroCivico>
+        <CAP>00144</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Telefono>3392043121</Telefono>
+        <Email>info@geometrapalma.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>17044041006</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody xmlns="">
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2025-01-08</Data>
+        <Numero>FPR 2/25</Numero>
+        <DatiCassaPrevidenziale>
+          <TipoCassa>TC03</TipoCassa>
+          <AlCassa>5.00</AlCassa>
+          <ImportoContributoCassa>7.50</ImportoContributoCassa>
+          <ImponibileCassa>150.00</ImponibileCassa>
+          <AliquotaIVA>0.00</AliquotaIVA>
+          <Natura>N1</Natura>
+        </DatiCassaPrevidenziale>
+        <ImportoTotaleDocumento>178.50</ImportoTotaleDocumento>
+        <Causale>Operazione non soggetta a ritenuta alla fonte a titolo di acconto ai sensi dell'articolo 1, comma 67, l. n. 190 del 2014 e successive modificazioni</Causale>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>SCIA CESSAZIONE ATTIVITA'</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>150.00</PrezzoUnitario>
+        <PrezzoTotale>150.00</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N2.2</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>SPESE DIRITTI SEGRETERIA COMUNE DI ROMA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>21.00</PrezzoUnitario>
+        <PrezzoTotale>21.00</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N2.2</Natura>
+        <ImponibileImporto>150.00</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <RiferimentoNormativo>Non soggette - altri casi</RiferimentoNormativo>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+        <ImponibileImporto>28.50</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <RiferimentoNormativo>Escluso Art. 15 DPR 633/72</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <Beneficiario>MATTIA PALMA</Beneficiario>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2025-01-08</DataScadenzaPagamento>
+        <ImportoPagamento>178.50</ImportoPagamento>
+        <IstitutoFinanziario>Unicredit</IstitutoFinanziario>
+        <IBAN>IT72X0200805340000105774901</IBAN>
+        <BIC>UNCRITM1B50</BIC>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</FatturaElettronica>

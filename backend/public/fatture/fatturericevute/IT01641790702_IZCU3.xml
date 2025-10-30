@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><ns3:FatturaElettronica xmlns:ns3="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" versione="FPR12">
+    <FatturaElettronicaHeader>
+        <DatiTrasmissione>
+            <IdTrasmittente>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>01641790702</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>14AAE</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>0000000</CodiceDestinatario>
+            <ContattiTrasmittente>
+                <Telefono>0874-60561</Telefono>
+            </ContattiTrasmittente>
+        </DatiTrasmissione>
+        <CedentePrestatore>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>04367650969</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>04367650969</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>LOCAUTO RENT S.P.A.</Denominazione>
+                </Anagrafica>
+                <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>PIAZZA SILVIO PELLICO 5</Indirizzo>
+                <CAP>38122</CAP>
+                <Comune>TRENTO</Comune>
+                <Provincia>TN</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+        </CedentePrestatore>
+        <CessionarioCommittente>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>05744121210</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>05744121210</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+                </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>Via Crescenzio, 25</Indirizzo>
+                <CAP>00193</CAP>
+                <Comune>ROMA</Comune>
+                <Provincia>RM</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+        </CessionarioCommittente>
+        <TerzoIntermediarioOSoggettoEmittente>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>01641790702</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>01641790702</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>TEAMSYSTEM SERVICE SRL</Denominazione>
+                </Anagrafica>
+            </DatiAnagrafici>
+        </TerzoIntermediarioOSoggettoEmittente>
+        <SoggettoEmittente>TZ</SoggettoEmittente>
+    </FatturaElettronicaHeader>
+    <FatturaElettronicaBody>
+        <DatiGenerali>
+            <DatiGeneraliDocumento>
+                <TipoDocumento>TD01</TipoDocumento>
+                <Divisa>EUR</Divisa>
+                <Data>2022-04-08</Data>
+                <Numero>R40420015</Numero>
+                <ImportoTotaleDocumento>25.00</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+        </DatiGenerali>
+        <DatiBeniServizi>
+            <DettaglioLinee>
+                <NumeroLinea>1</NumeroLinea>
+                <Descrizione>Contratto di noleggio: 2022-PA-242 -- Location di ritiro: Palermo Aeroporto -- Location di rientro: Palermo Aeroporto -- Driver: RUSSO  GIUSEPPE  -- Data ritiro: 24/01/2022 08:04 -- Data di rientro: 25/01/2022 15:19 -- Targa: GF566NP -- Modello: VW POLO 1.0TSI 95CV COMFORTLINE -- Gruppo fatturato: C -- Voucher:  -- KmOut: 17044 -- KmIn: 17281 -- LtOut: 40 -- LtIn: 40 - Numero verbale: F552736/2022 del 25/01/2022 14:55</Descrizione>
+                <PrezzoUnitario>0.00000000</PrezzoUnitario>
+                <PrezzoTotale>0.00</PrezzoTotale>
+                <AliquotaIVA>0.00</AliquotaIVA>
+                <Natura>N1</Natura>
+                <AltriDatiGestionali>
+                    <TipoDato>AswTRiga</TipoDato>
+                    <RiferimentoTesto>Descrittivo #DE#</RiferimentoTesto>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>AswCodIVA</TipoDato>
+                    <RiferimentoTesto>Escluso dalla base imponibile art.15 #N010100#</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>2</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>AswArtFor</CodiceTipo>
+                    <CodiceValore>034</CodiceValore>
+                </CodiceArticolo>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+                    <CodiceValore>034</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Penale ex art. 7 CGN / Penalty ex art. 7 GRC</Descrizione>
+                <Quantita>1.00</Quantita>
+                <PrezzoUnitario>25.00000000</PrezzoUnitario>
+                <PrezzoTotale>25.00</PrezzoTotale>
+                <AliquotaIVA>0.00</AliquotaIVA>
+                <Natura>N1</Natura>
+                <AltriDatiGestionali>
+                    <TipoDato>AswTRiga</TipoDato>
+                    <RiferimentoTesto>Normale #NO#</RiferimentoTesto>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>AswCodIVA</TipoDato>
+                    <RiferimentoTesto>Escluso dalla base imponibile art.15 #N010100#</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>3</NumeroLinea>
+                <Descrizione>Riga ausiliaria contenente informazioni tecniche e aggiuntive del documento</Descrizione>
+                <PrezzoUnitario>0.00000000</PrezzoUnitario>
+                <PrezzoTotale>0.00</PrezzoTotale>
+                <AliquotaIVA>0.00</AliquotaIVA>
+                <Natura>N1</Natura>
+                <AltriDatiGestionali>
+                    <TipoDato>AswRelStd</TipoDato>
+                    <RiferimentoTesto>Versione #Asw0106#</RiferimentoTesto>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>AswSwHouse</TipoDato>
+                    <RiferimentoTesto>TeamSystem S.p.a. / TS Enterprise</RiferimentoTesto>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>AswTipoDoc</TipoDato>
+                    <RiferimentoTesto>Fattura #TPD01#</RiferimentoTesto>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>AswCarDoc</TipoDato>
+                    <RiferimentoTesto>Vendita Diretta (Fatturazione al Banco) #CD01#</RiferimentoTesto>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>AswTratSco</TipoDato>
+                    <RiferimentoTesto>Percentuali come righe sconto #PRS#</RiferimentoTesto>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>AswTratSco</TipoDato>
+                    <RiferimentoTesto>Valori come righe sconto #PRS#</RiferimentoTesto>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>AswTRiga</TipoDato>
+                    <RiferimentoTesto>Informazioni documento #ID#</RiferimentoTesto>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>AswCodIVA</TipoDato>
+                    <RiferimentoTesto>Escluso dalla base imponibile art.15 #N010100#</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+                <AliquotaIVA>0.00</AliquotaIVA>
+                <Natura>N1</Natura>
+                <ImponibileImporto>25.00</ImponibileImporto>
+                <Imposta>0.00</Imposta>
+                <RiferimentoNormativo>Escluso dalla base imponibile art.15 #N010100#</RiferimentoNormativo>
+            </DatiRiepilogo>
+        </DatiBeniServizi>
+        <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+                <ModalitaPagamento>MP08</ModalitaPagamento>
+                <DataRiferimentoTerminiPagamento>2022-04-08</DataRiferimentoTerminiPagamento>
+                <GiorniTerminiPagamento>0</GiorniTerminiPagamento>
+                <DataScadenzaPagamento>2022-04-08</DataScadenzaPagamento>
+                <ImportoPagamento>25.00</ImportoPagamento>
+            </DettaglioPagamento>
+        </DatiPagamento>
+    </FatturaElettronicaBody>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="id-1417dfbedfa619aaa1aa64ab54b6f7f3"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"><dsig-xpath:XPath xmlns:dsig-xpath="http://www.w3.org/2002/06/xmldsig-filter2" Filter="subtract">/descendant::ds:Signature</dsig-xpath:XPath></ds:Transform><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>6e93nzWVIuudyMEeIPmBOJ/Ar+LKYxfRdiDqvCs33eA=</ds:DigestValue></ds:Reference><ds:Reference URI="#keyinfo-id-1417dfbedfa619aaa1aa64ab54b6f7f3"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>C6JbH85pm5T3kDHHpuZCRc4a7nYWYYJdmE/RNrSjmBs=</ds:DigestValue></ds:Reference><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#xades-id-1417dfbedfa619aaa1aa64ab54b6f7f3"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>FaSYZrMqNX/jbocgRzOCcND0/4r8F5eE7d+1M39k1Jo=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="value-id-1417dfbedfa619aaa1aa64ab54b6f7f3">oBKV1qmVWa5TCsNGWLP90T9oPKWo4RPG5HLg5Thi29YXrNmvHiVqwQZ8JDsfg2PmbZPvEEyCKcWcRDtHzDPhQOxvoLX13cEp8nX2puP0SB5Y3l5fRG4i0VaQtz6meuog1VjmajrVCq/X09uDrNEFfDAaar1E7gQM5lgnRkkUYDpqxu+ZeZxLSCSsA1I0E6fLqMOrHGiZExkFA8jkvlhurXXHYRi2LqCZT4bDvoaiPp6VCZWLwr1L/tOB7XujF50HBnMlEdUiRuC04wulzqU0RAbeNaDpPQ6Uggq7O3EscejKYltR0rwRHKpqW/w8Nwdt+14q9Z+Z0ukCtoOmf1zzQQ==</ds:SignatureValue><ds:KeyInfo Id="keyinfo-id-1417dfbedfa619aaa1aa64ab54b6f7f3"><ds:X509Data><ds:X509Certificate>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</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="#id-1417dfbedfa619aaa1aa64ab54b6f7f3"><xades:SignedProperties Id="xades-id-1417dfbedfa619aaa1aa64ab54b6f7f3"><xades:SignedSignatureProperties><xades:SigningTime>2022-04-13T16:31:58Z</xades:SigningTime><xades:SigningCertificateV2><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>Yp5L3w4leUw3QWd5L2BkeYc8X5ckMe9LRH+CvtmUjks=</ds:DigestValue></xades:CertDigest><xades:IssuerSerialV2>MIGOMIGBpH8wfTELMAkGA1UEBhMCSVQxJDAiBgNVBAoMG05hbWlyaWFsIFMucC5BLi8wMjA0NjU3MDQyNjEgMB4GA1UECwwXQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkxJjAkBgNVBAMMHU5hbWlyaWFsIENBIEZpcm1hIFF1YWxpZmljYXRhAggUExWgsMqAJw==</xades:IssuerSerialV2></xades:Cert></xades:SigningCertificateV2></xades:SignedSignatureProperties><xades:SignedDataObjectProperties><xades:DataObjectFormat ObjectReference="#null"><xades:MimeType>application/octet-stream</xades:MimeType></xades:DataObjectFormat></xades:SignedDataObjectProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object></ds:Signature></ns3:FatturaElettronica>

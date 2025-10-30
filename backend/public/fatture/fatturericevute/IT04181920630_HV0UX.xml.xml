@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>08245660017</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>0201198WQQ</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03598141210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>04181920630</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>MARINA DI STABIA S.P.A.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA ALCIDE DE GASPERI 313</Indirizzo>
+        <CAP>80053</CAP>
+        <Comune>CASTELLAMMARE Di STABIA</Comune>
+        <Provincia>NA</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>NA</Ufficio>
+        <NumeroREA>351924</NumeroREA>
+        <CapitaleSociale>603482.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZO 25</Indirizzo>
+        <CAP>00164</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>08245660017</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Sistemi S.p.A.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-05-30</Data>
+        <Numero>27/2019</Numero>
+        <ImportoTotaleDocumento>136.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>888888</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>COPERTO</Descrizione>
+        <Quantita>2.00</Quantita>
+        <UnitaMisura>gr</UnitaMisura>
+        <PrezzoUnitario>2.7273</PrezzoUnitario>
+        <PrezzoTotale>5.4546</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>248</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ACQUA MINERALE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>gr</UnitaMisura>
+        <PrezzoUnitario>2.7273</PrezzoUnitario>
+        <PrezzoTotale>2.7273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>262</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CRUDO MARE</Descrizione>
+        <Quantita>2.00</Quantita>
+        <UnitaMisura>gr</UnitaMisura>
+        <PrezzoUnitario>22.7273</PrezzoUnitario>
+        <PrezzoTotale>45.4546</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>270</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>SECONDO GIORNO</Descrizione>
+        <Quantita>2.00</Quantita>
+        <UnitaMisura>gr</UnitaMisura>
+        <PrezzoUnitario>23.6364</PrezzoUnitario>
+        <PrezzoTotale>47.2728</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>1547</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LACRYMA ROSATO C. DEL VESUVIO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>gr</UnitaMisura>
+        <PrezzoUnitario>22.7273</PrezzoUnitario>
+        <PrezzoTotale>22.7273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>123.64</ImponibileImporto>
+        <Imposta>12.36</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

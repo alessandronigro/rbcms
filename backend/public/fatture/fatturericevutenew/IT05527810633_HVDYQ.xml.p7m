@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturaordinaria_v1.2.2.xsl" ?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12">
+	<FatturaElettronicaHeader>
+		<DatiTrasmissione>
+			<IdTrasmittente>
+				<IdPaese>IT</IdPaese>
+				<IdCodice>08245660017</IdCodice>
+			</IdTrasmittente>
+			<ProgressivoInvio>10083</ProgressivoInvio>
+			<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+			<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+		</DatiTrasmissione>
+		<CedentePrestatore>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>01434531214</IdCodice>
+				</IdFiscaleIVA>
+				<CodiceFiscale>05527810633</CodiceFiscale>
+				<Anagrafica>
+					<Denominazione>HOTEL MARAD</Denominazione>
+				</Anagrafica>
+				<RegimeFiscale>RF01</RegimeFiscale>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>Via Benedetto Croce,20</Indirizzo>
+				<CAP>80059</CAP>
+				<Comune>TORRE DEL GRECO</Comune>
+				<Provincia>NA</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+		</CedentePrestatore>
+		<CessionarioCommittente>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>17044041006</IdCodice>
+				</IdFiscaleIVA>
+				<Anagrafica>
+					<Denominazione>RB CONSULTING S.R.L.</Denominazione>
+				</Anagrafica>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+				<CAP>00193</CAP>
+				<Comune>ROMA</Comune>
+				<Provincia>RM</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+		</CessionarioCommittente>
+		<TerzoIntermediarioOSoggettoEmittente>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>08245660017</IdCodice>
+				</IdFiscaleIVA>
+				<Anagrafica>
+					<Denominazione>Sistemi S.p.A.</Denominazione>
+				</Anagrafica>
+			</DatiAnagrafici>
+		</TerzoIntermediarioOSoggettoEmittente>
+		<SoggettoEmittente>TZ</SoggettoEmittente>
+	</FatturaElettronicaHeader>
+	<FatturaElettronicaBody>
+		<DatiGenerali>
+			<DatiGeneraliDocumento>
+				<TipoDocumento>TD01</TipoDocumento>
+				<Divisa>EUR</Divisa>
+				<Data>2024-01-18</Data>
+				<Numero>55A</Numero>
+				<ImportoTotaleDocumento>145.00</ImportoTotaleDocumento>
+				<Causale>Giuseppe Russo 17-01-2024 - 18-01-2024</Causale>
+			</DatiGeneraliDocumento>
+			<DatiOrdineAcquisto>
+				<IdDocumento>10083</IdDocumento>
+			</DatiOrdineAcquisto>
+		</DatiGenerali>
+		<DatiBeniServizi>
+			<DettaglioLinee>
+				<NumeroLinea>1</NumeroLinea>
+				<Descrizione>Colazione</Descrizione>
+				<Quantita>1.00000000</Quantita>
+				<DataInizioPeriodo>2024-01-17</DataInizioPeriodo>
+				<DataFinePeriodo>2024-01-18</DataFinePeriodo>
+				<PrezzoUnitario>23.64000000</PrezzoUnitario>
+				<PrezzoTotale>23.64000000</PrezzoTotale>
+				<AliquotaIVA>10.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DettaglioLinee>
+				<NumeroLinea>2</NumeroLinea>
+				<Descrizione>Pernottamento</Descrizione>
+				<Quantita>1.00000000</Quantita>
+				<DataInizioPeriodo>2024-01-17</DataInizioPeriodo>
+				<DataFinePeriodo>2024-01-18</DataFinePeriodo>
+				<PrezzoUnitario>103.64000000</PrezzoUnitario>
+				<PrezzoTotale>103.64000000</PrezzoTotale>
+				<AliquotaIVA>10.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DettaglioLinee>
+				<NumeroLinea>3</NumeroLinea>
+				<Descrizione>Frigo Bar</Descrizione>
+				<Quantita>1.00000000</Quantita>
+				<DataInizioPeriodo>2024-01-17</DataInizioPeriodo>
+				<DataFinePeriodo>2024-01-18</DataFinePeriodo>
+				<PrezzoUnitario>4.55000000</PrezzoUnitario>
+				<PrezzoTotale>4.55000000</PrezzoTotale>
+				<AliquotaIVA>10.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DatiRiepilogo>
+				<AliquotaIVA>10.00</AliquotaIVA>
+				<ImponibileImporto>131.82</ImponibileImporto>
+				<Imposta>13.18</Imposta>
+				<EsigibilitaIVA>I</EsigibilitaIVA>
+			</DatiRiepilogo>
+		</DatiBeniServizi>
+		<DatiPagamento>
+			<CondizioniPagamento>TP02</CondizioniPagamento>
+			<DettaglioPagamento>
+				<ModalitaPagamento>MP08</ModalitaPagamento>
+				<ImportoPagamento>145.00</ImportoPagamento>
+			</DettaglioPagamento>
+		</DatiPagamento>
+	</FatturaElettronicaBody>
+</p:FatturaElettronica>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?><FatturaElettronica xmlns="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" versione="FPR12">
+<FatturaElettronicaHeader xmlns="">
+<DatiTrasmissione>
+<IdTrasmittente>
+<IdPaese>IT</IdPaese>
+<IdCodice>07945211006</IdCodice>
+</IdTrasmittente>
+<ProgressivoInvio>1</ProgressivoInvio>
+<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+</DatiTrasmissione>
+<CedentePrestatore>
+<DatiAnagrafici xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>02992760963</IdCodice>
+</IdFiscaleIVA>
+<Anagrafica>
+<Denominazione>Ikea Italia Retail Srl</Denominazione>
+</Anagrafica>
+<RegimeFiscale>RF01</RegimeFiscale>
+</DatiAnagrafici>
+<Sede xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Indirizzo>Strada provinciale 208</Indirizzo>
+<NumeroCivico>3</NumeroCivico>
+<CAP>20061</CAP>
+<Comune>Carugate</Comune>
+<Nazione>IT</Nazione>
+</Sede>
+<IscrizioneREA xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Ufficio>MI</Ufficio>
+<NumeroREA>1562374</NumeroREA>
+<StatoLiquidazione>LN</StatoLiquidazione>
+</IscrizioneREA>
+</CedentePrestatore>
+<CessionarioCommittente>
+<DatiAnagrafici xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>05744121210</IdCodice>
+</IdFiscaleIVA>
+<Anagrafica>
+<Denominazione>RB Consulting</Denominazione>
+</Anagrafica>
+</DatiAnagrafici>
+<Sede xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Indirizzo>Via Crescenzio 25</Indirizzo>
+<CAP>00193</CAP>
+<Comune>Roma</Comune>
+<Nazione>IT</Nazione>
+</Sede>
+</CessionarioCommittente>
+<TerzoIntermediarioOSoggettoEmittente>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>07945211006</IdCodice>
+</IdFiscaleIVA>
+<Anagrafica>
+<Denominazione>InfoCert S.p.A.</Denominazione>
+</Anagrafica>
+</DatiAnagrafici>
+</TerzoIntermediarioOSoggettoEmittente>
+<SoggettoEmittente>TZ</SoggettoEmittente>
+</FatturaElettronicaHeader>
+<FatturaElettronicaBody xmlns="">
+<DatiGenerali xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<DatiGeneraliDocumento>
+<TipoDocumento>TD01</TipoDocumento>
+<Divisa>EUR</Divisa>
+<Data>2020-07-01</Data>
+<Numero>EC_2020_0591301</Numero>
+<ImportoTotaleDocumento>50.05</ImportoTotaleDocumento>
+</DatiGeneraliDocumento>
+</DatiGenerali>
+<DatiBeniServizi xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<DettaglioLinee>
+<NumeroLinea>1</NumeroLinea>
+<CodiceArticolo>
+<CodiceTipo>10225952</CodiceTipo>
+<CodiceValore>10225952</CodiceValore>
+</CodiceArticolo>
+<Descrizione>KONCIS frusta rot inox</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>3.28000000</PrezzoUnitario>
+<PrezzoTotale>3.28000000</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DettaglioLinee>
+<NumeroLinea>2</NumeroLinea>
+<CodiceArticolo>
+<CodiceTipo>20291324</CodiceTipo>
+<CodiceValore>20291324</CodiceValore>
+</CodiceArticolo>
+<Descrizione>GUBBRORA pennello dolci rosa/blu</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>0.82000000</PrezzoUnitario>
+<PrezzoTotale>0.82000000</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DettaglioLinee>
+<NumeroLinea>3</NumeroLinea>
+<CodiceArticolo>
+<CodiceTipo>30290362</CodiceTipo>
+<CodiceValore>30290362</CodiceValore>
+</CodiceArticolo>
+<Descrizione>SKUBB N custodia 44x55x19 bianco</Descrizione>
+<Quantita>2.00</Quantita>
+<PrezzoUnitario>4.05500000</PrezzoUnitario>
+<PrezzoTotale>8.11000000</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DettaglioLinee>
+<NumeroLinea>4</NumeroLinea>
+<CodiceArticolo>
+<CodiceTipo>80012853</CodiceTipo>
+<CodiceValore>80012853</CodiceValore>
+</CodiceArticolo>
+<Descrizione>VARIERA rivest cass trasparente</Descrizione>
+<Quantita>4.00</Quantita>
+<PrezzoUnitario>2.41750000</PrezzoUnitario>
+<PrezzoTotale>9.67000000</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DettaglioLinee>
+<NumeroLinea>5</NumeroLinea>
+<CodiceArticolo>
+<CodiceTipo>90225731</CodiceTipo>
+<CodiceValore>90225731</CodiceValore>
+</CodiceArticolo>
+<Descrizione>GUBBRORA spatola gomma verde/rosa/blu/bianco</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>1.23000000</PrezzoUnitario>
+<PrezzoTotale>1.23000000</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DettaglioLinee>
+<NumeroLinea>6</NumeroLinea>
+<CodiceArticolo>
+<CodiceTipo>90294989</CodiceTipo>
+<CodiceValore>90294989</CodiceValore>
+</CodiceArticolo>
+<Descrizione>SKUBB custodia 69x55x19 bianco</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>6.52000000</PrezzoUnitario>
+<PrezzoTotale>6.52000000</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DettaglioLinee>
+<NumeroLinea>7</NumeroLinea>
+<CodiceArticolo>
+<CodiceTipo>29269074</CodiceTipo>
+<CodiceValore>29269074</CodiceValore>
+</CodiceArticolo>
+<Descrizione>IKEA 365+ cont/cop 1.8 l rett vet/plast</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>4.92000000</PrezzoUnitario>
+<PrezzoTotale>4.92000000</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DettaglioLinee>
+<NumeroLinea>8</NumeroLinea>
+<CodiceArticolo>
+<CodiceTipo>39269120</CodiceTipo>
+<CodiceValore>39269120</CodiceValore>
+</CodiceArticolo>
+<Descrizione>IKEA 365+ cont/cop 600 ml quadrato vetro/plastica</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>2.46000000</PrezzoUnitario>
+<PrezzoTotale>2.46000000</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DettaglioLinee>
+<NumeroLinea>9</NumeroLinea>
+<CodiceArticolo>
+<CodiceTipo>50000597</CodiceTipo>
+<CodiceValore>50000597</CodiceValore>
+</CodiceArticolo>
+<Descrizione>Consegna pacchi leggeri</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>4.02000000</PrezzoUnitario>
+<PrezzoTotale>4.02000000</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DatiRiepilogo>
+<AliquotaIVA>22.00</AliquotaIVA>
+<ImponibileImporto>41.02</ImponibileImporto>
+<Imposta>9.03</Imposta>
+</DatiRiepilogo>
+</DatiBeniServizi>
+</FatturaElettronicaBody>
+<ds:Signature Id="id-8179013029ca4b4512a674cd900acfa4" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference Id="r-id-1" URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116"><ds:XPath>not(ancestor-or-self::ds:Signature)</ds:XPath></ds:Transform><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>T2P6viSQCs1KbGZTteWqgcQPFkhFUlpNUn8SUOQxMsE=</ds:DigestValue></ds:Reference><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#xades-id-8179013029ca4b4512a674cd900acfa4"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>Zhk+JMkHdyxK8+marNsxEIJ7+OfROzV5gJ8yScDK1J0=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="value-id-8179013029ca4b4512a674cd900acfa4">gsoM2FFcCjH6rwO53iJxoUhG6xka4aGlKBGpEGEjrSjZMVO/bKOEC0MA8bOOmJAx6fiyZSlACCFM1KE1TZ316lCbv+vqLF7iRD8KZThrkIOYNu5WK3HFE+yzm6VexdGPnhl2wvmJFMwIhjNVW28D7JvisfN4akf+vsDSGUw9M/1Fxod9aSUYDBNp2KYt0XmFMAL1X6wqT08hRTM3fZmyp6tWiiSsLn6ayCELRhg7izsUhqvvLqyYnJmfaEiI4Hk3ZjWUk6xbNS3fH6GFRUpZUHZ/1yLQvmv44kJvRksBwNxn/5EnsX82nQ6RrLKrvkDTuHme4g+26f6ynKfvZBCpCA==</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>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</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="#id-8179013029ca4b4512a674cd900acfa4"><xades:SignedProperties Id="xades-id-8179013029ca4b4512a674cd900acfa4"><xades:SignedSignatureProperties><xades:SigningTime>2020-07-03T13:02:17Z</xades:SigningTime><xades:SigningCertificateV2><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>V11Eh4gFKqrxa5n5HEnSqoxDgEcLwLzJYt3ScbBOUvU=</ds:DigestValue></xades:CertDigest><xades:IssuerSerialV2>MIGUMIGLpIGIMIGFMQswCQYDVQQGEwJJVDEVMBMGA1UECgwMSU5GT0NFUlQgU1BBMSIwIAYDVQQLDBlDZXJ0aWZpY2F0b3JlIEFjY3JlZGl0YXRvMRQwEgYDVQQFEwswNzk0NTIxMTAwNjElMCMGA1UEAwwcSW5mb0NlcnQgRmlybWEgUXVhbGlmaWNhdGEgMgIEALrAfA==</xades:IssuerSerialV2></xades:Cert></xades:SigningCertificateV2></xades:SignedSignatureProperties><xades:SignedDataObjectProperties><xades:DataObjectFormat ObjectReference="#r-id-1"><xades:MimeType>application/octet-stream</xades:MimeType></xades:DataObjectFormat></xades:SignedDataObjectProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object></ds:Signature></FatturaElettronica>

@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01394200362</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>ITNA0007HM</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03840210409</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>03840210409</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>HOTELS &amp; RESTAURANTS S.R.L.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA DEL CARPINO N.8</Indirizzo>
+        <CAP>47822</CAP>
+        <Comune>SANTARCANGELO DI ROMAGNA</Comune>
+        <Provincia>RN</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RN</Ufficio>
+        <NumeroREA>310867</NumeroREA>
+        <CapitaleSociale>100000.00</CapitaleSociale>
+        <SocioUnico>SU</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>08806580968</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>08806580968</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>INDICOM EDOCUMENT CARE SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-06-27</Data>
+        <Numero>1088</Numero>
+        <ImportoTotaleDocumento>109.50</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>COPERTO RISTO</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>2.725</PrezzoUnitario>
+        <PrezzoTotale>5.45</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>ACQUA NATURALE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>1.82</PrezzoUnitario>
+        <PrezzoTotale>1.82</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>ECCE DRAGO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>27.27</PrezzoUnitario>
+        <PrezzoTotale>27.27</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>AFFETTATO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>12.73</PrezzoUnitario>
+        <PrezzoTotale>12.73</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>SQUACQ E RUCOLA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>7.73</PrezzoUnitario>
+        <PrezzoTotale>7.73</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>INTERCOSTATA SCOTTONA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>18.18</PrezzoUnitario>
+        <PrezzoTotale>18.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>ACQUA NATURALE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>1.82</PrezzoUnitario>
+        <PrezzoTotale>1.82</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>SELEZIONE FORMAGGI</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>12.73</PrezzoUnitario>
+        <PrezzoTotale>12.73</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>PATATE AL FORNO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>4.55</PrezzoUnitario>
+        <PrezzoTotale>4.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>PINZIMONIO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>5.45</PrezzoUnitario>
+        <PrezzoTotale>5.45</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione>CAFFE'</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>1.82</PrezzoUnitario>
+        <PrezzoTotale>1.82</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <Arrotondamento>0.00</Arrotondamento>
+        <ImponibileImporto>99.55</ImponibileImporto>
+        <Imposta>9.95</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

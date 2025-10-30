@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>10209790152</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>3860</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02261020610</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>02261020610</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>SERGENTE S.N.C DI ANTONINO CRISTAUDO &amp; F.LLI</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA SAN CARLO</Indirizzo>
+        <NumeroCivico>129</NumeroCivico>
+        <CAP>81100</CAP>
+        <Comune>Caserta</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>CE</Ufficio>
+        <NumeroREA>149375</NumeroREA>
+        <CapitaleSociale>0.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>0823326279</Telefono>
+        <Fax>08231871080</Fax>
+        <Email>STUDIOROSSI.ASSOCIATI@TIN.IT</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>17044041006</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>RB consulting s.r.l.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>via dei vecchi pini</Indirizzo>
+        <NumeroCivico>13</NumeroCivico>
+        <CAP>81100</CAP>
+        <Comune>Caserta</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-03-18</Data>
+        <Numero>70</Numero>
+        <ImportoTotaleDocumento>750.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>fornitura e posa in opera kit conversione d.m./c.e. per porta blindata; serratura cisa c.e. a cremagliera con dispositivo trappola; defender disec serie bd200 con antishock ; cilindro dz dormakaba serie expert con sistema sat ; minuteria e ferramenta.</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>pz</UnitaMisura>
+        <PrezzoUnitario>614.75</PrezzoUnitario>
+        <PrezzoTotale>614.75</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>614.75</ImponibileImporto>
+        <Imposta>135.25</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2024-03-18</DataScadenzaPagamento>
+        <ImportoPagamento>750.00</ImportoPagamento>
+        <IstitutoFinanziario>Intesa Sanpaolo Spa</IstitutoFinanziario>
+        <IBAN>IT50N0306914937100000019492</IBAN>
+        <ABI>03069</ABI>
+        <CAB>14937</CAB>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

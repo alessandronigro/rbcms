@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05006900962</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>9818</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+      <PECDestinatario>POSTMASTER@PEC.RBCONSULENZA.COM</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00950281006</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>00995220589</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>ALBERGO VALADIER SRL - HOTEL VALADIER</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>DELLA FONTANELLA,15</Indirizzo>
+        <CAP>00187</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RM</Ufficio>
+        <NumeroREA>248258</NumeroREA>
+        <CapitaleSociale>46481.12</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO, 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05006900962</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05006900962</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>Zucchetti S.p.A.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2021-03-18</Data>
+        <Numero>563/2021-VALF-H</Numero>
+        <ImportoTotaleDocumento>976.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Bed and Breakfast - RUSSO GIUSEPPE</Descrizione>
+        <DataInizioPeriodo>2021-03-17</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-17</DataFinePeriodo>
+        <PrezzoUnitario>145.45454545</PrezzoUnitario>
+        <PrezzoTotale>145.45454545</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Assolto Contributo di Soggiorno</Descrizione>
+        <DataInizioPeriodo>2021-03-17</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-17</DataFinePeriodo>
+        <PrezzoUnitario>6.00</PrezzoUnitario>
+        <PrezzoTotale>6.00</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N2.2</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>Assolto Contributo di Soggiorno</Descrizione>
+        <DataInizioPeriodo>2021-03-17</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-17</DataFinePeriodo>
+        <PrezzoUnitario>6.00</PrezzoUnitario>
+        <PrezzoTotale>6.00</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N2.2</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>Ristorante - RUSSO GIUSEPPE</Descrizione>
+        <DataInizioPeriodo>2021-03-17</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-17</DataFinePeriodo>
+        <PrezzoUnitario>187.27272727</PrezzoUnitario>
+        <PrezzoTotale>187.27272727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>Ristorante - RUSSO GIUSEPPE</Descrizione>
+        <DataInizioPeriodo>2021-03-17</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-17</DataFinePeriodo>
+        <PrezzoUnitario>357.27272727</PrezzoUnitario>
+        <PrezzoTotale>357.27272727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>Frigobar - 6 BIRRE - RUSSO GIUSEPPE</Descrizione>
+        <DataInizioPeriodo>2021-03-18</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-18</DataFinePeriodo>
+        <PrezzoUnitario>27.27272727</PrezzoUnitario>
+        <PrezzoTotale>27.27272727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>Frigobar - 2 BIRRE - RUSSO GIUSEPPE</Descrizione>
+        <DataInizioPeriodo>2021-03-18</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-18</DataFinePeriodo>
+        <PrezzoUnitario>9.09090909</PrezzoUnitario>
+        <PrezzoTotale>9.09090909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>Late Check Out - RUSSO GIUSEPPE</Descrizione>
+        <DataInizioPeriodo>2021-03-18</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-18</DataFinePeriodo>
+        <PrezzoUnitario>45.45454545</PrezzoUnitario>
+        <PrezzoTotale>45.45454545</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>Ristorante - RUSSO GIUSEPPE</Descrizione>
+        <DataInizioPeriodo>2021-03-18</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-18</DataFinePeriodo>
+        <PrezzoUnitario>68.18181818</PrezzoUnitario>
+        <PrezzoTotale>68.18181818</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>Ristorante - RUSSO GIUSEPPE</Descrizione>
+        <DataInizioPeriodo>2021-03-18</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-18</DataFinePeriodo>
+        <PrezzoUnitario>10.90909091</PrezzoUnitario>
+        <PrezzoTotale>10.90909091</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione>Ristorante - RUSSO GIUSEPPE</Descrizione>
+        <DataInizioPeriodo>2021-03-18</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-18</DataFinePeriodo>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <Descrizione>Ristorante - RUSSO GIUSEPPE</Descrizione>
+        <DataInizioPeriodo>2021-03-18</DataInizioPeriodo>
+        <DataFinePeriodo>2021-03-18</DataFinePeriodo>
+        <PrezzoUnitario>25.45454545</PrezzoUnitario>
+        <PrezzoTotale>25.45454545</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <Arrotondamento>0.00363634</Arrotondamento>
+        <ImponibileImporto>876.36</ImponibileImporto>
+        <Imposta>87.64</Imposta>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N2.2</Natura>
+        <Arrotondamento>0.00</Arrotondamento>
+        <ImponibileImporto>12.00</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <RiferimentoNormativo>Fuori campo IVA</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

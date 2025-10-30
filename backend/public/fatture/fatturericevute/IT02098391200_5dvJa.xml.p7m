@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese><IdCodice>02098391200</IdCodice>
+      </IdTrasmittente><ProgressivoInvio>5dvJa</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione><CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese><IdCodice>05403151003</IdCodice>
+        </IdFiscaleIVA><CodiceFiscale>05403151003</CodiceFiscale><Anagrafica><Denominazione>TRENITALIA S.p.A. - SOCIETA' CON SOCIO UNICO</Denominazione></Anagrafica><RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici><Sede>
+        <Indirizzo>Piazza della Croce Rossa, 1</Indirizzo><CAP>00161</CAP><Comune>Roma</Comune><Provincia>RM</Provincia><Nazione>IT</Nazione>
+      </Sede><IscrizioneREA>
+        <Ufficio>RM</Ufficio><NumeroREA>360679</NumeroREA><CapitaleSociale>1417782000.00</CapitaleSociale><SocioUnico>SU</SocioUnico><StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore><CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese><IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA><CodiceFiscale>05744121210</CodiceFiscale><Anagrafica><Denominazione>R&amp;B CONSULTING Srl   </Denominazione></Anagrafica>
+      </DatiAnagrafici><Sede>
+        <Indirizzo>Via Crescenzio</Indirizzo><NumeroCivico>25</NumeroCivico><CAP>00193</CAP><Comune>ROMA</Comune><Provincia>RM</Provincia><Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente><TerzoIntermediarioOSoggettoEmittente><DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese><IdCodice>02098391200</IdCodice>
+        </IdFiscaleIVA><Anagrafica><Denominazione>UNIMATICA-RGI S.P.A.</Denominazione></Anagrafica>
+      </DatiAnagrafici></TerzoIntermediarioOSoggettoEmittente><SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader><FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD24</TipoDocumento><Divisa>EUR</Divisa><Data>2023-03-31</Data><Numero>4600021424</Numero><ImportoTotaleDocumento>104.40</ImportoTotaleDocumento><Causale>art.21 comma 4 lettera a del DPR 633 1972</Causale>
+      </DatiGeneraliDocumento><DatiContratto><IdDocumento>4600021424</IdDocumento></DatiContratto>
+    </DatiGenerali><DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>0001</NumeroLinea><Descrizione>RIMBORSI TRAFFICO NAZIONALE</Descrizione><PrezzoUnitario>-47.45</PrezzoUnitario><PrezzoTotale>-47.45</PrezzoTotale><AliquotaIVA>10.00</AliquotaIVA><AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato><RiferimentoData>2023-03-14</RiferimentoData>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato><RiferimentoTesto>2KHLFN</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato><RiferimentoTesto>1848124827</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato><RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato><RiferimentoNumero>-47.45</RiferimentoNumero>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>Doc. Fatt.</TipoDato><RiferimentoTesto>4600021424</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee><DettaglioLinee>
+        <NumeroLinea>0002</NumeroLinea><Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione><PrezzoUnitario>47.45</PrezzoUnitario><PrezzoTotale>47.45</PrezzoTotale><AliquotaIVA>10.00</AliquotaIVA><AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato><RiferimentoData>2023-03-14</RiferimentoData>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato><RiferimentoTesto>2KHLFN</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato><RiferimentoTesto>1848124827</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato><RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato><RiferimentoNumero>47.45</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee><DettaglioLinee>
+        <NumeroLinea>0003</NumeroLinea><Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione><PrezzoUnitario>47.45</PrezzoUnitario><PrezzoTotale>47.45</PrezzoTotale><AliquotaIVA>10.00</AliquotaIVA><AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato><RiferimentoData>2023-03-16</RiferimentoData>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato><RiferimentoTesto>BGA7V5</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato><RiferimentoTesto>1849660996</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato><RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato><RiferimentoNumero>47.45</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee><DettaglioLinee>
+        <NumeroLinea>0004</NumeroLinea><Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione><PrezzoUnitario>47.45</PrezzoUnitario><PrezzoTotale>47.45</PrezzoTotale><AliquotaIVA>10.00</AliquotaIVA><AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato><RiferimentoData>2023-03-14</RiferimentoData>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato><RiferimentoTesto>2KHLFN</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato><RiferimentoTesto>1848134903</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato><RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali><AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato><RiferimentoNumero>47.45</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee><DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA><ImponibileImporto>94.91</ImponibileImporto><Imposta>9.49</Imposta><EsigibilitaIVA>I</EsigibilitaIVA><RiferimentoNormativo>IVA vendite 10%</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi><DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento><DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento><DataScadenzaPagamento>2023-03-31</DataScadenzaPagamento><ImportoPagamento>104.40</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

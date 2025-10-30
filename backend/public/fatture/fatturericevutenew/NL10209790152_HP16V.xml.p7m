@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FatturaElettronica xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12" xmlns="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader xmlns="">
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>10209790152</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>28</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03088590843</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>03088590843</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>RB RENT SRL</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>CORTILE CORTILE CALVACCA</Indirizzo>
+        <NumeroCivico>82</NumeroCivico>
+        <CAP>92019</CAP>
+        <Comune>Sciacca</Comune>
+        <Provincia>AG</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>AG</Ufficio>
+        <NumeroREA>0226129</NumeroREA>
+        <CapitaleSociale>2500.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti />
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>17044041006</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>RB Consulting Srl</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>via Crescenzio</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody xmlns="">
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-11-04</Data>
+        <Numero>14</Numero>
+        <ImportoTotaleDocumento>1464.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Noleggio Auto - Novembre 2024</Descrizione>
+        <PrezzoUnitario>1000.00</PrezzoUnitario>
+        <PrezzoTotale>1000.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Oneri accessori</Descrizione>
+        <PrezzoUnitario>200.00</PrezzoUnitario>
+        <PrezzoTotale>200.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>1200.00</ImponibileImporto>
+        <Imposta>264.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2024-11-04</DataScadenzaPagamento>
+        <ImportoPagamento>1464.00</ImportoPagamento>
+        <IstitutoFinanziario>Credito Emiliano Spa</IstitutoFinanziario>
+        <IBAN>IT71W0303203200010000907995</IBAN>
+        <ABI>03032</ABI>
+        <CAB>03200</CAB>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</FatturaElettronica>

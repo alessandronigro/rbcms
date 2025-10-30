@@ -1,0 +1,103 @@
+<ns2:FatturaElettronica xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione><IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>08973230967</IdCodice></IdTrasmittente><ProgressivoInvio>9QBEP</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>0000000</CodiceDestinatario></DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>08973230967</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Amazon EU S.a r.l., Succursale Italiana</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>38 avenue John F. Kennedy</Indirizzo>
+            <CAP>01855</CAP>
+            <Comune>Luxemburgo</Comune>
+            <Nazione>LU</Nazione>
+         </Sede>
+         <StabileOrganizzazione>
+            <Indirizzo>Viale Monte Grappa 3/5</Indirizzo>
+            <CAP>20124</CAP>
+            <Comune>Milano</Comune>
+            <Nazione>IT</Nazione>
+         </StabileOrganizzazione>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>17044041006</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>RB Consulting Srl</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>via Crescenzio, 25</Indirizzo>
+            <CAP>00194</CAP>
+            <Comune>Roma</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2024-06-26</Data>
+            <Numero>IT24-AEUI-7844669</Numero>
+            <ImportoTotaleDocumento>139.95</ImportoTotaleDocumento>
+            <Arrotondamento>0.00</Arrotondamento>
+         </DatiGeneraliDocumento>
+         <DatiContratto>
+            <RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
+            <RiferimentoNumeroLinea>2</RiferimentoNumeroLinea>
+            <IdDocumento>403-3972535-1809123</IdDocumento>
+            <Data>2024-06-26</Data>
+         </DatiContratto>
+         <FatturaPrincipale>
+            <NumeroFatturaPrincipale>IT24-AEUI-7844669</NumeroFatturaPrincipale>
+            <DataFatturaPrincipale>2024-06-26</DataFatturaPrincipale>
+         </FatturaPrincipale>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Green Cell(R) Gruppo di continuita UPS Potenza 1500VA (900W) 230V Alimentatore protezione da sovratensioni line interactive AVR USB/RJ45 4X Schuko IEC Uscite con Display LCD</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2024-06-26</DataInizioPeriodo>
+            <DataFinePeriodo>2024-06-26</DataFinePeriodo>
+            <PrezzoUnitario>114.71</PrezzoUnitario>
+            <PrezzoTotale>114.71</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Costi di spedizione</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2024-06-26</DataInizioPeriodo>
+            <DataFinePeriodo>2024-06-26</DataFinePeriodo>
+            <PrezzoUnitario>0.00</PrezzoUnitario>
+            <PrezzoTotale>0.00</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <Arrotondamento>0.02</Arrotondamento>
+            <ImponibileImporto>114.73</ImponibileImporto>
+            <Imposta>25.24</Imposta>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP08</ModalitaPagamento>
+            <ImportoPagamento>139.95</ImportoPagamento>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</ns2:FatturaElettronica>

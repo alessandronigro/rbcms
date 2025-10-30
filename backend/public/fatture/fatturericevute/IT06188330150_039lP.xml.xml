@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>06188330150</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>752519</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02066400405</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>06188330150</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>MAGGIOLI SPA</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via del Carpino, 8</Indirizzo>
+        <CAP>47822</CAP>
+        <Comune>Santarcangelo di Romagna</Comune>
+        <Provincia>RN</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RN</Ufficio>
+        <NumeroREA>219107</NumeroREA>
+        <CapitaleSociale>2215200.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>0541628111</Telefono>
+        <Email>maggiolispa@maggioli.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R B CONSULTING SRL </Denominazione>
+          <Titolo>0001130181</Titolo>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-02-07</Data>
+        <Numero>0005804544</Numero>
+        <ImportoTotaleDocumento>41.40</ImportoTotaleDocumento>
+        <Causale>FORNITURA DI LIBRI</Causale>
+      </DatiGeneraliDocumento>
+      <DatiDDT>
+        <NumeroDDT>0005804544</NumeroDDT>
+        <DataDDT>2019-02-07</DataDDT>
+      </DatiDDT>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE</CodiceTipo>
+          <CodiceValore>8891615442</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione> TILLI NICOLA: L'AGENTE DI ASSICURAZIONE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>COP</UnitaMisura>
+        <PrezzoUnitario>41.40</PrezzoUnitario>
+        <PrezzoTotale>41.40</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N5</Natura>
+        <AltriDatiGestionali>
+          <TipoDato>Dest.Merci</TipoDato>
+          <RiferimentoTesto>ZANOLI RICCARDO E C. SAS - 41049 SASSUOLO MO</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N5</Natura>
+        <ImponibileImporto>41.40</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <RiferimentoNormativo>Art. 74 Comma 1 Let.C. DPR 633/72 - VENDITE</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2019-03-31</DataScadenzaPagamento>
+        <ImportoPagamento>41.40</ImportoPagamento>
+        <IBAN>IT82Q0100524200000000013010</IBAN>
+        <BIC>BNLIITRR</BIC>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

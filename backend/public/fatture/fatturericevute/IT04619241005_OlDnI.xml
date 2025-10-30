@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:FatturaElettronica xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+    <FatturaElettronicaHeader>
+        <DatiTrasmissione>
+            <IdTrasmittente>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>02714390362</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>37621</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>0000000</CodiceDestinatario>
+        </DatiTrasmissione>
+        <CedentePrestatore>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>04619241005</IdCodice>
+                </IdFiscaleIVA>
+                <Anagrafica>
+                    <Denominazione>Sky Italia S.r.l.</Denominazione>
+                </Anagrafica>
+                <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>VIA MONTE PENICE</Indirizzo>
+                <NumeroCivico>7</NumeroCivico>
+                <CAP>20138</CAP>
+                <Comune>MILANO</Comune>
+                <Provincia>MI</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+            <IscrizioneREA>
+                <Ufficio>MI</Ufficio>
+                <NumeroREA>1726765</NumeroREA>
+                <CapitaleSociale>261507000.00</CapitaleSociale>
+                <SocioUnico>SU</SocioUnico>
+                <StatoLiquidazione>LN</StatoLiquidazione>
+            </IscrizioneREA>
+        </CedentePrestatore>
+        <CessionarioCommittente>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>05744121210</IdCodice>
+                </IdFiscaleIVA>
+                <Anagrafica>
+                    <Denominazione>RB CONSULTING</Denominazione>
+                </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>VIA CRESCENZIO,</Indirizzo>
+                <NumeroCivico>25</NumeroCivico>
+                <CAP>00193</CAP>
+                <Comune>ROMA</Comune>
+                <Provincia>RM</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+        </CessionarioCommittente>
+    </FatturaElettronicaHeader>
+    <FatturaElettronicaBody>
+        <DatiGenerali>
+            <DatiGeneraliDocumento>
+                <TipoDocumento>TD01</TipoDocumento>
+                <Divisa>EUR</Divisa>
+                <Data>2024-05-01</Data>
+                <Numero>652159306</Numero>
+                <ImportoTotaleDocumento>99.88</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+            <DatiContratto>
+                <IdDocumento>13654514</IdDocumento>
+            </DatiContratto>
+        </DatiGenerali>
+        <DatiBeniServizi>
+            <DettaglioLinee>
+                <NumeroLinea>1</NumeroLinea>
+                <Descrizione>Sky TV + Intrattenimento plus| con Netflix Premium + Kids + Cinema| + Sport + Calcio</Descrizione>
+                <DataInizioPeriodo>2024-05-01</DataInizioPeriodo>
+                <DataFinePeriodo>2024-05-31</DataFinePeriodo>
+                <PrezzoUnitario>67.22</PrezzoUnitario>
+                <PrezzoTotale>67.22</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>2</NumeroLinea>
+                <Descrizione>Sky Ultra HD</Descrizione>
+                <DataInizioPeriodo>2024-05-01</DataInizioPeriodo>
+                <DataFinePeriodo>2024-05-31</DataFinePeriodo>
+                <PrezzoUnitario>4.10</PrezzoUnitario>
+                <PrezzoTotale>4.10</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>3</NumeroLinea>
+                <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+                <Descrizione>Sconto Sky Ultra HD</Descrizione>
+                <DataInizioPeriodo>2024-05-01</DataInizioPeriodo>
+                <DataFinePeriodo>2024-05-31</DataFinePeriodo>
+                <PrezzoUnitario>-4.10</PrezzoUnitario>
+                <PrezzoTotale>-4.10</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>4</NumeroLinea>
+                <Descrizione>Sky Multiscreen</Descrizione>
+                <DataInizioPeriodo>2024-05-01</DataInizioPeriodo>
+                <DataFinePeriodo>2024-05-31</DataFinePeriodo>
+                <PrezzoUnitario>8.11</PrezzoUnitario>
+                <PrezzoTotale>8.11</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>5</NumeroLinea>
+                <Descrizione>Mindcage - Mente Criminale</Descrizione>
+                <DataInizioPeriodo>2024-04-10</DataInizioPeriodo>
+                <DataFinePeriodo>2024-04-10</DataFinePeriodo>
+                <PrezzoUnitario>4.09</PrezzoUnitario>
+                <PrezzoTotale>4.09</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>6</NumeroLinea>
+                <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+                <Descrizione>Sconto Evento Prima Fila</Descrizione>
+                <DataInizioPeriodo>2024-04-10</DataInizioPeriodo>
+                <DataFinePeriodo>2024-04-10</DataFinePeriodo>
+                <PrezzoUnitario>-0.82</PrezzoUnitario>
+                <PrezzoTotale>-0.82</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>7</NumeroLinea>
+                <Descrizione>Mob Land</Descrizione>
+                <DataInizioPeriodo>2024-04-28</DataInizioPeriodo>
+                <DataFinePeriodo>2024-04-28</DataFinePeriodo>
+                <PrezzoUnitario>4.09</PrezzoUnitario>
+                <PrezzoTotale>4.09</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>8</NumeroLinea>
+                <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+                <Descrizione>Sconto Evento Prima Fila</Descrizione>
+                <DataInizioPeriodo>2024-04-28</DataInizioPeriodo>
+                <DataFinePeriodo>2024-04-28</DataFinePeriodo>
+                <PrezzoUnitario>-0.82</PrezzoUnitario>
+                <PrezzoTotale>-0.82</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <Arrotondamento>0.00</Arrotondamento>
+                <ImponibileImporto>81.87</ImponibileImporto>
+                <Imposta>18.01</Imposta>
+                <EsigibilitaIVA>I</EsigibilitaIVA>
+            </DatiRiepilogo>
+        </DatiBeniServizi>
+        <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+                <ModalitaPagamento>MP19</ModalitaPagamento>
+                <DataScadenzaPagamento>2024-05-30</DataScadenzaPagamento>
+                <ImportoPagamento>203.75</ImportoPagamento>
+                <IstitutoFinanziario>UNICREDIT S.P.A. - FIL. OPERATIVA MILANO</IstitutoFinanziario>
+            </DettaglioPagamento>
+        </DatiPagamento>
+    </FatturaElettronicaBody>
+</ns3:FatturaElettronica>

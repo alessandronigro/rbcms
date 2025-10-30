@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+<FatturaElettronicaHeader>
+  <DatiTrasmissione>
+    <IdTrasmittente>
+      <IdPaese>IT</IdPaese>
+      <IdCodice>04839740489</IdCodice>
+    </IdTrasmittente>
+    <ProgressivoInvio>00037A3218</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>0000000</CodiceDestinatario>
+    <PECDestinatario>INFO@RBCONSULENZA.COM</PECDestinatario>
+  </DatiTrasmissione>
+  <CedentePrestatore>
+    <DatiAnagrafici>
+      <IdFiscaleIVA>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>13029381004</IdCodice>
+      </IdFiscaleIVA>
+      <Anagrafica>
+        <Denominazione>Alitalia - S.A.I. S.p.A. in amministrazione straordinaria</Denominazione>
+      </Anagrafica>
+      <RegimeFiscale>RF01</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+      <Indirizzo>Via A. Nassetti - PAL ALFA</Indirizzo>
+      <CAP>00054</CAP>
+      <Comune>Fiumicino</Comune>
+      <Provincia>RM</Provincia>
+      <Nazione>IT</Nazione>
+    </Sede>
+    <IscrizioneREA>
+      <Ufficio>RM</Ufficio>
+      <NumeroREA>1418603</NumeroREA>
+      <CapitaleSociale>103105126.99</CapitaleSociale>
+      <StatoLiquidazione>LN</StatoLiquidazione>
+    </IscrizioneREA>
+  </CedentePrestatore>
+  <CessionarioCommittente>
+    <DatiAnagrafici>
+      <IdFiscaleIVA>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05744121210</IdCodice>
+      </IdFiscaleIVA>
+      <Anagrafica>
+        <Denominazione>RB CONSULTING SRL </Denominazione>
+      </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+      <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+      <CAP>00193</CAP>
+      <Comune>ROMA</Comune>
+      <Nazione>IT</Nazione>
+    </Sede>
+  </CessionarioCommittente>
+</FatturaElettronicaHeader><FatturaElettronicaBody>
+  <DatiGenerali>
+    <DatiGeneraliDocumento>
+      <TipoDocumento>TD01</TipoDocumento>
+      <Divisa>EUR</Divisa>
+      <Data>2020-02-07</Data>
+      <Numero>2206037743</Numero>
+      <DatiBollo>
+        <BolloVirtuale>SI</BolloVirtuale>
+        <ImportoBollo>2.00</ImportoBollo>
+      </DatiBollo>
+      <ImportoTotaleDocumento>212.96 </ImportoTotaleDocumento>
+      <Causale>Ben.volo GIUSEPPE RUSSO</Causale>
+    </DatiGeneraliDocumento>
+  </DatiGenerali>
+  <DatiBeniServizi>
+    <DettaglioLinee>
+      <NumeroLinea>1</NumeroLinea>
+      <Descrizione> N° TICKET 0552349131327 Tratta MLA\FCO TARIFFA INT.</Descrizione>
+      <PrezzoUnitario>25.42</PrezzoUnitario>
+      <PrezzoTotale>25.42</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N2</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>2</NumeroLinea>
+      <Descrizione> TARIFFA NAZ.</Descrizione>
+      <PrezzoUnitario>15.58</PrezzoUnitario>
+      <PrezzoTotale>15.58</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N3</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>3</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE INT.</Descrizione>
+      <PrezzoUnitario>27.28</PrezzoUnitario>
+      <PrezzoTotale>27.28</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N2</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>4</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE INT.</Descrizione>
+      <PrezzoUnitario>1.83</PrezzoUnitario>
+      <PrezzoTotale>1.83</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N2</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>5</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE NAZ.</Descrizione>
+      <PrezzoUnitario>16.72</PrezzoUnitario>
+      <PrezzoTotale>16.72</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N3</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>6</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE NAZ.</Descrizione>
+      <PrezzoUnitario>1.12</PrezzoUnitario>
+      <PrezzoTotale>1.12</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N3</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>7</NumeroLinea>
+      <Descrizione> TASSE E SUPPL. INT.</Descrizione>
+      <PrezzoUnitario>11.49</PrezzoUnitario>
+      <PrezzoTotale>11.49</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N2</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>8</NumeroLinea>
+      <Descrizione> TASSE E SUPPL. NAZ.</Descrizione>
+      <PrezzoUnitario>7.04</PrezzoUnitario>
+      <PrezzoTotale>7.04</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N3</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>9</NumeroLinea>
+      <Descrizione> N° TICKET 0552349131328 Tratta MLA\FCO TARIFFA INT.</Descrizione>
+      <PrezzoUnitario>25.42</PrezzoUnitario>
+      <PrezzoTotale>25.42</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N2</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>10</NumeroLinea>
+      <Descrizione> TARIFFA NAZ.</Descrizione>
+      <PrezzoUnitario>15.58</PrezzoUnitario>
+      <PrezzoTotale>15.58</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N3</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>11</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE INT.</Descrizione>
+      <PrezzoUnitario>1.83</PrezzoUnitario>
+      <PrezzoTotale>1.83</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N2</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>12</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE INT.</Descrizione>
+      <PrezzoUnitario>27.28</PrezzoUnitario>
+      <PrezzoTotale>27.28</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N2</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>13</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE NAZ.</Descrizione>
+      <PrezzoUnitario>1.12</PrezzoUnitario>
+      <PrezzoTotale>1.12</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N3</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>14</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE NAZ.</Descrizione>
+      <PrezzoUnitario>16.72</PrezzoUnitario>
+      <PrezzoTotale>16.72</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N3</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>15</NumeroLinea>
+      <Descrizione> TASSE E SUPPL. INT.</Descrizione>
+      <PrezzoUnitario>11.49</PrezzoUnitario>
+      <PrezzoTotale>11.49</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N2</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>16</NumeroLinea>
+      <Descrizione> TASSE E SUPPL. NAZ.</Descrizione>
+      <PrezzoUnitario>7.04</PrezzoUnitario>
+      <PrezzoTotale>7.04</PrezzoTotale>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N3</Natura>
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N3</Natura>
+      <ImponibileImporto>80.92</ImponibileImporto>
+      <Imposta>0.00</Imposta>
+      <EsigibilitaIVA>I</EsigibilitaIVA>
+      <RiferimentoNormativo> FT ATT.     NON IMP. Art. 9 1°c DPR 633/72</RiferimentoNormativo>
+    </DatiRiepilogo>
+    <DatiRiepilogo>
+      <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N2</Natura>
+      <ImponibileImporto>132.04</ImponibileImporto>
+      <Imposta>0.00</Imposta>
+      <EsigibilitaIVA>I</EsigibilitaIVA>
+      <RiferimentoNormativo>FT ATT.     FUORI CAMPO Art. 7Quater  DPR 633/72</RiferimentoNormativo>
+    </DatiRiepilogo>
+  </DatiBeniServizi>
+  <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+      <ModalitaPagamento>MP05</ModalitaPagamento>
+      <DataRiferimentoTerminiPagamento>2020-01-29</DataRiferimentoTerminiPagamento>
+      <DataScadenzaPagamento>2020-01-29</DataScadenzaPagamento>
+      <ImportoPagamento>212.96 </ImportoPagamento>
+      <IstitutoFinanziario>Intesa Sanpaolo S.p.A.</IstitutoFinanziario>
+      <IBAN>IT30H0306949633100000007825</IBAN>
+      <BIC>BCITITMM</BIC>
+    </DettaglioPagamento>
+  </DatiPagamento>
+</FatturaElettronicaBody>
+</p:FatturaElettronica>

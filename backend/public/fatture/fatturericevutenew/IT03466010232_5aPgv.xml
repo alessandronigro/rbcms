@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><p:FatturaElettronica xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SistemaEmittente="JFE V8.4.3" versione="FPR12">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>03466010232</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>0082560249</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02959800612</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Medi Store S.r.l.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Cilea, 12</Indirizzo>
+        <CAP>81100</CAP>
+        <Comune>Caserta</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>CE</Ufficio>
+        <NumeroREA>208481</NumeroREA>
+        <CapitaleSociale>260000.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RBCONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA DEI VECCHI PINI ,13</Indirizzo>
+        <CAP>81100</CAP>
+        <Comune>CASERTA</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03466010232</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>enerJ srl</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-11-28</Data>
+        <Numero>192/52</Numero>
+        <ImportoTotaleDocumento>68.58</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Rif. scontr. 163 del 27/11/2024</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Mis. fisc. matricola 99IEC016165</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>920363</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PATATE KG.2</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.875</PrezzoUnitario>
+        <PrezzoTotale>2.875</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>134454</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>MCCAIN KID SMILE 650GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.40909091</PrezzoUnitario>
+        <PrezzoTotale>2.40909091</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>149124</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>FINDUS SOFFICINI X4 POMOD.250G</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.5909091</PrezzoUnitario>
+        <PrezzoTotale>2.5909091</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>149127</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>FINDUS SOFFICINI X4 PROSC.250G</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.5909091</PrezzoUnitario>
+        <PrezzoTotale>2.5909091</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>190573</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>FILENI LEGG.SALS.POL/TAC 330GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>3.90</PrezzoUnitario>
+        <PrezzoTotale>3.90</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>190573</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>FILENI LEGG.SALS.POL/TAC 330GR</Descrizione>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>-0.72727273</PrezzoUnitario>
+        <PrezzoTotale>-0.72727273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>L71367</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>AVICOLA DEL PRETE SPINACINE DI POLLO GR.200</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.26363637</PrezzoUnitario>
+        <PrezzoTotale>1.26363637</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>138255</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>NEGRONI GOLOSINO POLLO 100GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.53636364</PrezzoUnitario>
+        <PrezzoTotale>0.53636364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>740150</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>FETTE REALI SAL.T.MILANO 60GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.90909091</PrezzoUnitario>
+        <PrezzoTotale>0.90909091</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>740150</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>FETTE REALI SAL.T.MILANO 60GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.90909091</PrezzoUnitario>
+        <PrezzoTotale>0.90909091</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>13</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>138255</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>NEGRONI GOLOSINO POLLO 100GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.53636364</PrezzoUnitario>
+        <PrezzoTotale>0.53636364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>14</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>L30455</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>GOLOSITA' PROSCIUTTO COTTO S/POLIF. GR.90</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.36363637</PrezzoUnitario>
+        <PrezzoTotale>1.36363637</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>15</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>892109</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>KINDER PINGUI T8 240GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>3.62727273</PrezzoUnitario>
+        <PrezzoTotale>3.62727273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>16</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>L57393</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>GOLOSITA' PETTO DI TACCHINO ARROSTO GR.100</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.36363637</PrezzoUnitario>
+        <PrezzoTotale>1.36363637</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>17</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>104494</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>GRANTERRE PROSC.COTTO AQ 110GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.17272728</PrezzoUnitario>
+        <PrezzoTotale>2.17272728</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>18</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>751536</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ROBERTO PANE PANFIOCCO 400GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.39423077</PrezzoUnitario>
+        <PrezzoTotale>2.39423077</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>19</NumeroLinea>
+        <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>751536</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ROBERTO PANE PANFIOCCO 400GR</Descrizione>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>-0.76923077</PrezzoUnitario>
+        <PrezzoTotale>-0.76923077</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>20</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>907824</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ARANCE NAVEL IMPACCATO        I 6 IT CS 2STR</Descrizione>
+        <Quantita>0.608</Quantita>
+        <UnitaMisura>KG</UnitaMisura>
+        <PrezzoUnitario>1.91358805</PrezzoUnitario>
+        <PrezzoTotale>1.16346154</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>21</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>132000</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>VIROSAC ROT.BIO200ST.35X60</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.01639345</PrezzoUnitario>
+        <PrezzoTotale>0.01639345</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>22</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>910141</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CACHI PERSIMON                     PAD</Descrizione>
+        <Quantita>0.735</Quantita>
+        <UnitaMisura>KG</UnitaMisura>
+        <PrezzoUnitario>2.39403454</PrezzoUnitario>
+        <PrezzoTotale>1.75961539</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>23</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>132000</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>VIROSAC ROT.BIO200ST.35X60</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.01639345</PrezzoUnitario>
+        <PrezzoTotale>0.01639345</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>24</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>141695</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PAN DI STELLE BISCOTTO 700GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>3.62727273</PrezzoUnitario>
+        <PrezzoTotale>3.62727273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>25</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>141695</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PAN DI STELLE BISCOTTO 700GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>3.62727273</PrezzoUnitario>
+        <PrezzoTotale>3.62727273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>26</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>917351</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>FINOCCHI                      PD 16 FR IT</Descrizione>
+        <Quantita>1.118</Quantita>
+        <UnitaMisura>KG</UnitaMisura>
+        <PrezzoUnitario>2.20173387</PrezzoUnitario>
+        <PrezzoTotale>2.46153847</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>27</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>132000</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>VIROSAC ROT.BIO200ST.35X60</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.01639345</PrezzoUnitario>
+        <PrezzoTotale>0.01639345</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>28</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>915961</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LATTUGA ICEBERG GR.300</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.43269231</PrezzoUnitario>
+        <PrezzoTotale>1.43269231</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>29</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>116767</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PHILADELPHIA YOGURT GRECO 175G</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.10576924</PrezzoUnitario>
+        <PrezzoTotale>2.10576924</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>30</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>127266</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PHILADELPHIA LIGHT 80GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.14423077</PrezzoUnitario>
+        <PrezzoTotale>1.14423077</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>31</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>127266</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PHILADELPHIA LIGHT 80GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.14423077</PrezzoUnitario>
+        <PrezzoTotale>1.14423077</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>32</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>087379</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BULGARI BULGARINO X6 120GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.22727273</PrezzoUnitario>
+        <PrezzoTotale>1.22727273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>33</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>087379</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BULGARI BULGARINO X6 120GR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.22727273</PrezzoUnitario>
+        <PrezzoTotale>1.22727273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>34</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>595421</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>GALBUSERA FR.LEGGERI CIOC.260G</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.44545455</PrezzoUnitario>
+        <PrezzoTotale>2.44545455</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>35</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>595421</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>GALBUSERA FR.LEGGERI CIOC.260G</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.44545455</PrezzoUnitario>
+        <PrezzoTotale>2.44545455</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>36</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>221416</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>TWININGS TE VANILLA 25F</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>3.80909091</PrezzoUnitario>
+        <PrezzoTotale>3.80909091</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>37</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>148176</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>L ANGELICA TIS.CAC/LAM/VAN.15F</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.71818182</PrezzoUnitario>
+        <PrezzoTotale>2.71818182</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>38</NumeroLinea>
+        <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>148176</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>L ANGELICA TIS.CAC/LAM/VAN.15F</Descrizione>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>-0.63636364</PrezzoUnitario>
+        <PrezzoTotale>-0.63636364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>39</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>139228</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>L ANGELICA TIS.CAC/COC/CAR.15F</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.71818182</PrezzoUnitario>
+        <PrezzoTotale>2.71818182</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>40</NumeroLinea>
+        <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>139228</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>L ANGELICA TIS.CAC/COC/CAR.15F</Descrizione>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>-0.63636364</PrezzoUnitario>
+        <PrezzoTotale>-0.63636364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>41</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>177930</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>STERILGARDA LAT.UHT PS 3X250ML</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.8173077</PrezzoUnitario>
+        <PrezzoTotale>1.8173077</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>42</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>177930</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>STERILGARDA LAT.UHT PS 3X250ML</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.8173077</PrezzoUnitario>
+        <PrezzoTotale>1.8173077</PrezzoTotale>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>43</NumeroLinea>
+        <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>104494</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>GRANTERRE PROSC.COTTO AQ 110GR</Descrizione>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>-0.45454546</PrezzoUnitario>
+        <PrezzoTotale>-0.45454546</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>44</NumeroLinea>
+        <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>149124</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>FINDUS SOFFICINI X4 POMOD.250G</Descrizione>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>-0.78181819</PrezzoUnitario>
+        <PrezzoTotale>-0.78181819</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>45</NumeroLinea>
+        <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+        <CodiceArticolo>
+          <CodiceTipo>CODICE FORNITORE</CodiceTipo>
+          <CodiceValore>149127</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>FINDUS SOFFICINI X4 PROSC.250G</Descrizione>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>-0.78181819</PrezzoUnitario>
+        <PrezzoTotale>-0.78181819</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>99IEC016165</RiferimentoTesto>
+          <RiferimentoNumero>163.00</RiferimentoNumero>
+          <RiferimentoData>2024-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>4.00</AliquotaIVA>
+        <Arrotondamento>-0.00384611</Arrotondamento>
+        <ImponibileImporto>19.35</ImponibileImporto>
+        <Imposta>0.77</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <Arrotondamento>0.00000005</Arrotondamento>
+        <ImponibileImporto>44.00</ImponibileImporto>
+        <Imposta>4.40</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <Arrotondamento>-0.00081965</Arrotondamento>
+        <ImponibileImporto>0.05</ImponibileImporto>
+        <Imposta>0.01</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP01</ModalitaPagamento>
+        <ImportoPagamento>68.58</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+<ds:Signature Id="Signer-T-1732773961371"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2006/12/xml-c14n11#WithComments"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference Id="r-doc-Signer-T-1732773961371" URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"><XPath xmlns="http://www.w3.org/2002/06/xmldsig-filter2" Filter="subtract">/descendant::ds:Signature</XPath></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>M8L2gEBHLmTWQLxhPxi+eBbE8FEk+G0jNArZw3ji70c=</ds:DigestValue></ds:Reference><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#SignedProperties-Signer-T-1732773961371"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>pAh3mWpIo5y1MEvrbB+9g0pyqMnPB5a395BMI/SaMxU=</ds:DigestValue></ds:Reference><ds:Reference Id="r-keyinfo-Signer-T-1732773961371" URI="#KeyInfo-Signer-T-1732773961371"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>TIyk1G6q2jhLOjNXBwdw8icQK1W5iKyZAPtPJAuzg+Y=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="SignatureValue-Signer-T-1732773961371">bDH6g7Jq8VppMFCksYqC4DcnoexHr/0fZGM6yKYOGBVHwwhI+s1tqEHNt5HOAcuY7KcDVq1v4Q5Q&#13;
+surBsQoLBlvn26u47AYjvw9fg9CTgBnGRhUo7mquC5rlKZpnLf5EAgRZ5bkUKi9iNn4boCDOfQuM&#13;
+SGRrjBUFbLD2uRzOdTsqEKn3knc6bQO+1Ahzda4bVjToq+fV1trTScmU01yYDcIQIYKDsz+VcuXC&#13;
+twMU5/c1HrdBPmdCyGg8h8c7IEmrZWMU9Cgil+7y5C1VRd7LW11MoIOsLXby5uTNc/T2F5BmY2CV&#13;
+Ou1/v/imDcmsMHFJ9SPkKezvkoi4GaApGzm4/Q==</ds:SignatureValue><ds:KeyInfo Id="KeyInfo-Signer-T-1732773961371"><ds:X509Data><ds:X509Certificate>MIIITzCCBjegAwIBAgIQOEdcS+K8FEKlYwiV2LxsCDANBgkqhkiG9w0BAQsFADCBujELMAkGA1UE&#13;
+BhMCSVQxGTAXBgNVBAcMEFBvbnRlIFNhbiBQaWV0cm8xFzAVBgNVBAoMDkFjdGFsaXMgUy5wLkEu&#13;
+MRowGAYDVQRhDBFWQVRJVC0wMzM1ODUyMDk2NzEpMCcGA1UECwwgUXVhbGlmaWVkIFRydXN0IFNl&#13;
+cnZpY2UgUHJvdmlkZXIxMDAuBgNVBAMMJ0FjdGFsaXMgRVUgUXVhbGlmaWVkIENlcnRpZmljYXRl&#13;
+cyBDQSBHMTAeFw0yMjAyMjgwNzQ5MjVaFw0yNTAyMjgwNzQ5MjVaMIHaMQswCQYDVQQGEwJJVDES&#13;
+MBAGA1UECgwJRU5FUkogU1JMMRowGAYDVQRhDBFWQVRJVC0wMzQ2NjAxMDIzMjEXMBUGA1UEDAwO&#13;
+QU1NSU5JU1RSQVRPUkUxEDAOBgNVBAQMB0F1bGV0dGExEzARBgNVBCoMCkZlcmRpbmFuZG8xHzAd&#13;
+BgNVBAUTFlRJTklULUxUVEZETjc0SDA4TDc4MVoxGzAZBgNVBAMMEkZlcmRpbmFuZG8gQXVsZXR0&#13;
+YTEdMBsGA1UELhMUV1NSRUYtMTcxNzM5MzI3OTA3NjUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw&#13;
+ggEKAoIBAQCe3qUMUxpjzgBYlSSh772ginmNFiGc4oRwovgr3ahGrGCORZctonXku8EiSOkufT+1&#13;
+bfsNibasAON1jCOxRdfXquJEzPrsm2AuX9ZVl1875cIQeZupWs2um2FVj39jpWl+8x8LVMkgK+HA&#13;
+cck/A1dihAWdCfkNET0FOfnmgz0W5zddM8aPvJ1VsyStJnVX+7AcQG0vm1KQIypJamgNYssiZVfU&#13;
+anF+srOure+3/63mEXPLVpETfKj9X9b5sGDvoB10UbOGH2vDOPRUgCfQcpBRF7uXCWQdP/jSdPqt&#13;
+SjPWUa8vYJaJ62qQTBS4d39rCjEgwftTx9APak+FcAXWzZ3DAgMBAAGjggMtMIIDKTAfBgNVHSME&#13;
+GDAWgBTYtwHxlnOW0mk6QTwuRTkfboH+njCBhQYIKwYBBQUHAQEEeTB3MDsGCCsGAQUFBzAChi9o&#13;
+dHRwOi8vY2FjZXJ0LmFjdGFsaXMuaXQvY2VydHMvYWN0YWxpcy1laWRhcy1nMTA4BggrBgEFBQcw&#13;
+AYYsaHR0cDovL29jc3AwOC5hY3RhbGlzLml0L3ZhL2FjdGFsaXMtZWlkYXMtZzEwGgYDVR0SBBMw&#13;
+EYEPaW5mb0BhY3RhbGlzLml0MIIBJwYDVR0gBIIBHjCCARowCQYHBACL7EABAjCCAQMGBiuBHwoC&#13;
+ATCB+DBEBggrBgEFBQcCARY4aHR0cHM6Ly93d3cuYWN0YWxpcy5pdC9yZXBvc2l0b3J5L2FjdGFs&#13;
+aXMtcXVhbGlmLWNwcy5wZGYwga8GCCsGAQUFBwICMIGiDIGfSWwgcHJlc2VudGUgY2VydGlmaWNh&#13;
+dG8gw6ggdmFsaWRvIHNvbG8gcGVyIGZpcm1lIGFwcG9zdGUgY29uIHByb2NlZHVyYSBhdXRvbWF0&#13;
+aWNhLiBUaGUgY2VydGlmaWNhdGUgbWF5IG9ubHkgYmUgdXNlZCBmb3IgdW5hdHRlbmRlZC9hdXRv&#13;
+bWF0aWMgZGlnaXRhbCBzaWduYXR1cmUuMAYGBCtMEAYwgcUGCCsGAQUFBwEDBIG4MIG1MAgGBgQA&#13;
+jkYBATALBgYEAI5GAQMCARQwCAYGBACORgEEMIGRBgYEAI5GAQUwgYYwQRY7aHR0cHM6Ly93d3cu&#13;
+YWN0YWxpcy5pdC9yZXBvc2l0b3J5L2FjdGFsaXMtcXVhbGlmLXBkcy1pdC5wZGYTAml0MEEWO2h0&#13;
+dHBzOi8vd3d3LmFjdGFsaXMuaXQvcmVwb3NpdG9yeS9hY3RhbGlzLXF1YWxpZi1wZHMtZW4ucGRm&#13;
+EwJlbjBABgNVHR8EOTA3MDWgM6Axhi9odHRwOi8vY3JsMDguYWN0YWxpcy5pdC92YS9hY3RhbGlz&#13;
+LWVpZGFzLWcxL2NybDAdBgNVHQ4EFgQUzSAaUNeH8ooFX5qVAhEi3J8HOc0wDgYDVR0PAQH/BAQD&#13;
+AgZAMA0GCSqGSIb3DQEBCwUAA4ICAQAsdR5NNM+i8xLKyNSmYfDj+9wAU/BIpFnHTxg0XWRKL7YA&#13;
+ckbmfGqWmQQTiHUqgrZjot0n0rk8FFK0Kb/AC72yiMDdggVf/RqDKCQJ96F9rRA5khIKq5EToOMz&#13;
+lCROdABInJgUEA0XxCyFS8x2ZJWnq/1ZJW3bTI3SNs+xyg6M09fworqhXQFNwsyRRKa5/sdNom+b&#13;
+k9ubiRKj93ugZLvYjyMB8ljgCARVmqoRYIbMFBJO8PuOtDqoSRHoghLupiFq/b5JojQoHwXlJAQl&#13;
+KbicacWPR+1xPnPRQ0vpmUCUlI6QzF+VNLe+h5Y2hHR8gIfHl9UpnKFEYtYVpvXVR6KKb2FL00m1&#13;
+coxbqIDezsPKUnTcZ9Rf5z6wwbuV+62E+S7xug0rW0KKAtCeQsbu2ZdesoSIAKhjUoQR/QP6t48C&#13;
+MK/Vpd0f6aD4dNw7wUkV/8YuZ1QE+9dMOksaELSmVoDkVi3VhB7fDnZ4A+qZfRrNbGKwOoZ6OBXC&#13;
+H+9kzkzYYpoLv3dMPb818EZdT0fnKAD+G89bBTck6Q7Jd9JQNel0QcE4wms++tVjXIJgzZ/t6JFL&#13;
+t1UgeBPdqbSYVmNBcOzD45Cp3peJdwCTLSwdX4WDNmXVnntJNVLHVvLvrISOZuLuuMoOAgnkYm4X&#13;
+7mjonyn5H/sku0h65c4way3+oYdASQ==</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="#Signer-T-1732773961371">
+		<xades:SignedProperties Id="SignedProperties-Signer-T-1732773961371">
+			<xades:SignedSignatureProperties>
+				<xades:SigningTime>2024-11-28T07:06:01+01:00</xades:SigningTime>
+				<xades:SigningCertificate>
+					<xades:Cert>
+						<xades:CertDigest>
+							<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+							<ds:DigestValue>ATMRcvpuQCG75CZNhnGTxAN9J+eHdM67fAsJDGlUGWE=</ds:DigestValue>
+						</xades:CertDigest>
+						<xades:IssuerSerial><ds:X509IssuerName>CN=Actalis EU Qualified Certificates CA G1,OU=Qualified Trust Service Provider,2.5.4.97=#0c1156415449542d3033333538353230393637,O=Actalis S.p.A.,L=Ponte San Pietro,C=IT</ds:X509IssuerName><ds:X509SerialNumber>74807292834877972118186863831000312840</ds:X509SerialNumber></xades:IssuerSerial>
+					</xades:Cert>
+				</xades:SigningCertificate>
+			</xades:SignedSignatureProperties>
+		
+			<xades:SignedDataObjectProperties>
+				<xades:DataObjectFormat ObjectReference="#r-doc-Signer-T-1732773961371">
+					<xades:MimeType>text/xml</xades:MimeType>
+				</xades:DataObjectFormat>
+			
+				<xades:DataObjectFormat ObjectReference="#r-keyinfo-Signer-T-1732773961371">
+					<xades:MimeType>text/xml</xades:MimeType>
+				</xades:DataObjectFormat>
+			</xades:SignedDataObjectProperties>
+		</xades:SignedProperties>
+	</xades:QualifyingProperties></ds:Object></ds:Signature></p:FatturaElettronica>

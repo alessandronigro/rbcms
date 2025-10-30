@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><P:FatturaElettronica xmlns:P="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>02448510046</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>PAIWC</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6BP</CodiceDestinatario>
+      <ContattiTrasmittente>
+        <Telefono>0823259142</Telefono>
+        <Email>euronicscasapulla@gruppotufano.it</Email>
+      </ContattiTrasmittente>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>06341721212</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>TUFANO NET S.R.L.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA PRINCIPE DI PIEMONTE,199</Indirizzo>
+        <CAP>80026</CAP>
+        <Comune>CASORIA</Comune>
+        <Provincia>NA</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>NA</Ufficio>
+        <NumeroREA>809639</NumeroREA>
+        <CapitaleSociale>100000.00</CapitaleSociale>
+        <SocioUnico>SU</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>0823259142</Telefono>
+        <Email>euronicscasapulla@gruppotufano.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+        <CAP>00100</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2023-07-25</Data>
+        <Numero>1278</Numero>
+        <ImportoTotaleDocumento>589.99</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>AUDI</CodiceTipo>
+          <CodiceValore>JBLPARTYBOX310</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>DIFF.BOX AMPL.BLT/MIC/CHIT/USB/BATT</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>483.60000</PrezzoUnitario>
+        <PrezzoTotale>483.60</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>483.60</ImponibileImporto>
+        <Imposta>106.39</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+<ds:Signature Id="S-626798a8-eacc-4702-ae80-afef80d3fb54">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2006/12/xml-c14n11"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+<ds:Reference Id="R-8aea5d0b-4ea1-4f68-a1ac-36854264d3ae" URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2">
+<dsig-xpath:XPath xmlns:dsig-xpath="http://www.w3.org/2002/06/xmldsig-filter2" Filter="subtract">/descendant::ds:Signature</dsig-xpath:XPath>
+</ds:Transform>
+<ds:Transform Algorithm="http://www.w3.org/2006/12/xml-c14n11"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>lF3xxF5XE3E64fSeZTg9Qpud5DayEMAr18TvQoEViQ4=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#SP-1227331f-e61a-47af-9ab6-f9513a69ed64">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2006/12/xml-c14n11"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>hJU3xLuwg013geciX0USSfj+38pw3VuSOa1H3X6ylLE=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>
+Ppx+KNZPgZZYc3seFbmrqCgF0TjOSva5sGZZg7Lw9forZKopXX9yeAnyjgKHC21gn1xwr9fOOrK7
+ZgsfMRld1Z5TZQPN5Ii9V0jsnbUVqdLvDkrx82AqAnHELbjPSVsaMaS3DOedp1XMyOhSIaCkZqcX
+aXExCqr1scegF4hqy531VVyf8wmbqDmX58uRYdpHgAtYoZCgace35LimZcFg6SrpTgAxQb8ny2BV
+JkRZqFWnxYJ30PccZhdAyxeSeZlIgKbGiajX32QAZ9+yk8NV4rCh6863dX6P7ezTWuB5DBdbm3P0
+aO9764dzAoiUp8ydSzzorJNofGx5wJblZVy5IQ==
+</ds:SignatureValue>
+<ds:KeyInfo>
+<ds:X509Data>
+<ds:X509Certificate>
+MIIHVDCCBjygAwIBAgIIKNDat4r5t+0wDQYJKoZIhvcNAQELBQAwfTELMAkGA1UEBhMCSVQxJDAi
+BgNVBAoMG05hbWlyaWFsIFMucC5BLi8wMjA0NjU3MDQyNjEgMB4GA1UECwwXQ2VydGlmaWNhdGlv
+biBBdXRob3JpdHkxJjAkBgNVBAMMHU5hbWlyaWFsIENBIEZpcm1hIFF1YWxpZmljYXRhMB4XDTIx
+MTEyODIxNDQwMFoXDTI0MTEzMDIzMDAwMFowgYsxCzAJBgNVBAYTAklUMRIwEAYDVQQEDAlDQUZB
+UkVMTEkxDjAMBgNVBCoMBUxVSUdJMR8wHQYDVQQFExZUSU5JVC1DRlJMR1U2MUIwMUY4MzlZMRgw
+FgYDVQQDDA9DQUZBUkVMTEkgTFVJR0kxHTAbBgNVBC4TFEFVQ0wyMDIxMTEyODI4OTI2MTY2MIIB
+IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3dDF281GwUlUhpczA5A56NBKdBel9cqbAIB2
+VxHe96yppAJ2049yHuW+yEcYDvhovqwLbpzv9dQK+HLMZYwkXtR1SCnQQqV6nESlaRoEbEmjsxFD
+D44yF89j4FdQ2/lF2iweiAN14qssp8XzEQ+MvvrZMBkHXDAV1fvZqt7+4e5c2L+/6M7DBa6G3+G+
+37yagg8F/t5HjP86MUBRnYx+cvF0nXJcZ+ewdSwB0R1ASjgmskiwPs1oPds9aAfa+DuPed0AYXr6
+QGymReCrLufIP4GAwOTm5RFnsT1Q3uubA5vR/p8lagkL2YV1+SLZMi8BQxN5p1vo9xNqrvKQ8pE3
+DQIDAQABo4IDxzCCA8MwgZwGCCsGAQUFBwEBBIGPMIGMMFEGCCsGAQUFBzAChkVodHRwczovL2Rv
+Y3MubmFtaXJpYWx0c3AuY29tL2RvY3VtZW50cy9OYW1pcmlhbENBRmlybWFRdWFsaWZpY2F0YS5j
+cnQwNwYIKwYBBQUHMAGGK2h0dHA6Ly9vY3NwLm5hbWlyaWFsdHNwLmNvbS9vY3NwL2NlcnRzdGF0
+dXMwHQYDVR0OBBYEFOUfnF39DZD9dngBsgJhsI1Rp4YYMB8GA1UdIwQYMBaAFGP97eaMYkdIz+oJ
+QXN2EeJkYnsQMIHNBggrBgEFBQcBAwSBwDCBvTAIBgYEAI5GAQEwCwYGBACORgEDAgEUMAgGBgQA
+jkYBBDATBgYEAI5GAQYwCQYHBACORgEGATCBhAYGBACORgEFMHowOxY1aHR0cHM6Ly9kb2NzLm5h
+bWlyaWFsdHNwLmNvbS9kb2N1bWVudHMvUERTL1BEU19lbi5wZGYTAmVuMDsWNWh0dHBzOi8vZG9j
+cy5uYW1pcmlhbHRzcC5jb20vZG9jdW1lbnRzL1BEUy9QRFNfaXQucGRmEwJpdDCCAbgGA1UdIASC
+Aa8wggGrMAkGBwQAi+xAAQIwCAYGBACPegECMIIBkgYLKwYBBAGCmmsBAQMwggGBMCkGCCsGAQUF
+BwIBFh1odHRwczovL2RvY3MubmFtaXJpYWx0c3AuY29tLzCCAVIGCCsGAQUFBwICMIIBRB6CAUAA
+SQBsACAAcAByAGUAcwBlAG4AdABlACAAYwBlAHIAdABpAGYAaQBjAGEAdABvACAA6AAgAHYAYQBs
+AGkAZABvACAAcwBvAGwAbwAgAHAAZQByACAAZgBpAHIAbQBlACAAYQBwAHAAbwBzAHQAZQAgAGMA
+bwBuACAAcAByAG8AYwBlAGQAdQByAGEAIABhAHUAdABvAG0AYQB0AGkAYwBhAC4ALwBUAGgAaQBz
+ACAAYwBlAHIAdABpAGYAaQBjAGEAdABlACAAbQBhAHkAIABvAG4AbAB5ACAAYgBlACAAdQBzAGUA
+ZAAgAGYAbwByACAAdQBuAGEAdAB0AGUAbgBkAGUAZAAvAGEAdQB0AG8AbQBhAHQAZQBkACAAZABp
+AGcAaQB0AGEAbAAgAHMAaQBnAG4AYQB0AHUAcgBlAHMALjBGBgNVHR8EPzA9MDugOaA3hjVodHRw
+Oi8vY3JsLm5hbWlyaWFsdHNwLmNvbS9GaXJtYUNlcnRhUXVhbGlmaWNhdGExLmNybDAOBgNVHQ8B
+Af8EBAMCBkAwDQYJKoZIhvcNAQELBQADggEBAF7htWwnYGq22RTFOkA0tkZrkl4rj4nKWvS8w6F8
+awXEnQ7XLckcy4r7BXfHSXo63sRlF1WR+y6T+ia+7WtqBmwx21ib8SXGAJmMhM8lZJ8LT/heqeBe
+idqT4oeU0NAHbAA5RY1EAwlnXzo8r3mGAm4UmOGhRbfpdheyPcSYS487I60RjCJ3tqiA5/XdjSMx
+xHmxlsmyBTuv2W0tzBd51gi2O/moRU7lLcZnVHYd+7/nItHMGA2lrlaUYPaR9TXvxxFGQa30RYO6
+PzU1EPaXPPQQ8NnI6IkbAvmdEQKnSH7aoNmBxnGP6D1x/VAZ1/t1acz2UQRXDlivKdCT63rml+A=
+</ds:X509Certificate>
+</ds:X509Data>
+</ds:KeyInfo>
+<ds:Object>
+<xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="#S-626798a8-eacc-4702-ae80-afef80d3fb54">
+<xades:SignedProperties Id="SP-1227331f-e61a-47af-9ab6-f9513a69ed64">
+<xades:SignedSignatureProperties>
+<xades:SigningTime>2023-07-25T21:25:31Z</xades:SigningTime>
+<xades:SigningCertificate>
+<xades:Cert>
+<xades:CertDigest>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>A6G41K7Yfm15C3SyrXIP6zXrqqzjC4wzvKSVmxliI2g=</ds:DigestValue>
+</xades:CertDigest>
+<xades:IssuerSerial>
+<ds:X509IssuerName>CN=Namirial CA Firma Qualificata,OU=Certification Authority,O=Namirial S.p.A./02046570426,C=IT</ds:X509IssuerName>
+<ds:X509SerialNumber>2941091038518425581</ds:X509SerialNumber>
+</xades:IssuerSerial>
+</xades:Cert>
+</xades:SigningCertificate>
+</xades:SignedSignatureProperties>
+<xades:SignedDataObjectProperties>
+<xades:DataObjectFormat ObjectReference="#R-8aea5d0b-4ea1-4f68-a1ac-36854264d3ae">
+<xades:MimeType>application/xml</xades:MimeType>
+</xades:DataObjectFormat>
+</xades:SignedDataObjectProperties>
+</xades:SignedProperties>
+</xades:QualifyingProperties>
+</ds:Object>
+</ds:Signature></P:FatturaElettronica>

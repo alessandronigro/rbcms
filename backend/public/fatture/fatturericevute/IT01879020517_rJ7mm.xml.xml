@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01879020517</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>ZU096</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01573850516</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>04552920482</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>Aruba S.p.A.</Denominazione>
+        </Anagrafica>
+        <DataIscrizioneAlbo>1900-01-01</DataIscrizioneAlbo>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via San Clemente 53</Indirizzo>
+        <CAP>24036</CAP>
+        <Comune>Ponte San Pietro</Comune>
+        <Provincia>BG</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>BG</Ufficio>
+        <NumeroREA>434483</NumeroREA>
+        <CapitaleSociale>4000000.00</CapitaleSociale>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>05750505</Telefono>
+        <Fax>0575862000</Fax>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>rbconsulting </Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Crescenzio, 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2020-09-23</Data>
+        <Numero>20B2553932</Numero>
+        <ImportoTotaleDocumento>129.77</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>FORN</CodiceTipo>
+          <CodiceValore>ANT</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ANTICIPO PER PAGAMENTO RICEVUTO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Nr</UnitaMisura>
+        <PrezzoUnitario>5.00</PrezzoUnitario>
+        <PrezzoTotale>5.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Rif. Ordine n.r. 100926558</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>Rif. Ord.Cli. ORD100926558 del 07/09/2020</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>FORN</CodiceTipo>
+          <CodiceValore>ANT</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ANTICIPO PER PAGAMENTO RICEVUTO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Nr</UnitaMisura>
+        <PrezzoUnitario>12.99</PrezzoUnitario>
+        <PrezzoTotale>12.99</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>Rif. Ordine n.r. 100956432</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>Rif. Ord.Cli. ORD100956432 del 08/09/2020</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>FORN</CodiceTipo>
+          <CodiceValore>ANT</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ANTICIPO PER PAGAMENTO RICEVUTO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Nr</UnitaMisura>
+        <PrezzoUnitario>20.49</PrezzoUnitario>
+        <PrezzoTotale>20.49</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>Rif. Ordine n.r. 100956444</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>Rif. Ord.Cli. ORD100956444 del 08/09/2020</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>FORN</CodiceTipo>
+          <CodiceValore>ANT</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ANTICIPO PER PAGAMENTO RICEVUTO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Nr</UnitaMisura>
+        <PrezzoUnitario>50.00</PrezzoUnitario>
+        <PrezzoTotale>50.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione>Rif. Ordine n.r. 101138838</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <Descrizione>Rif. Ord.Cli. ORD101138838 del 12/09/2020</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>13</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>FORN</CodiceTipo>
+          <CodiceValore>ANT</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ANTICIPO PER PAGAMENTO RICEVUTO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Nr</UnitaMisura>
+        <PrezzoUnitario>9.99</PrezzoUnitario>
+        <PrezzoTotale>9.99</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>14</NumeroLinea>
+        <Descrizione>Rif. Ordine n.r. 101159729</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>15</NumeroLinea>
+        <Descrizione>Rif. Ord.Cli. ORD101159729 del 13/09/2020</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>16</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>FORN</CodiceTipo>
+          <CodiceValore>ANT</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ANTICIPO PER PAGAMENTO RICEVUTO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Nr</UnitaMisura>
+        <PrezzoUnitario>7.90</PrezzoUnitario>
+        <PrezzoTotale>7.90</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>17</NumeroLinea>
+        <Descrizione>Rif. Ordine n.r. 101478878</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>18</NumeroLinea>
+        <Descrizione>Rif. Ord.Cli. ORD101478878 del 21/09/2020</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>106.37</ImponibileImporto>
+        <Imposta>23.40</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <DataRiferimentoTerminiPagamento>2020-09-23</DataRiferimentoTerminiPagamento>
+        <GiorniTerminiPagamento>1</GiorniTerminiPagamento>
+        <DataScadenzaPagamento>2020-09-24</DataScadenzaPagamento>
+        <ImportoPagamento>129.77</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

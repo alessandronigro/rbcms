@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<FatturaElettronicaHeader>
+<DatiTrasmissione>
+<IdTrasmittente>
+<IdPaese>IT</IdPaese>
+<IdCodice>05262890014</IdCodice>
+</IdTrasmittente>
+<ProgressivoInvio>D0250323</ProgressivoInvio>
+<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+</DatiTrasmissione>
+<CedentePrestatore>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>03166090633</IdCodice>
+</IdFiscaleIVA>
+<Anagrafica>
+<Denominazione>GE.S.A.C. S.p.A. Societa Gestione S</Denominazione>
+</Anagrafica>
+<RegimeFiscale>RF01</RegimeFiscale>
+</DatiAnagrafici>
+<Sede>
+<Indirizzo>Via del Riposo,95</Indirizzo>
+<CAP>80144</CAP>
+<Comune>NAPOLI</Comune>
+<Nazione>IT</Nazione>
+</Sede>
+<IscrizioneREA>
+<Ufficio>NA</Ufficio>
+<NumeroREA>324314</NumeroREA>
+<CapitaleSociale>27368432.00</CapitaleSociale>
+<StatoLiquidazione>LN</StatoLiquidazione>
+</IscrizioneREA>
+</CedentePrestatore>
+<CessionarioCommittente>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>17044041006</IdCodice>
+</IdFiscaleIVA>
+<Anagrafica>
+<Denominazione>RB CONSULTING S.R.L.</Denominazione>
+</Anagrafica>
+</DatiAnagrafici>
+<Sede>
+<Indirizzo>VIA CRESCENZIO,25</Indirizzo>
+<CAP>00193</CAP>
+<Comune>ROMA</Comune>
+<Nazione>IT</Nazione>
+</Sede>
+</CessionarioCommittente>
+<TerzoIntermediarioOSoggettoEmittente>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>09771701001</IdCodice>
+</IdFiscaleIVA>
+<Anagrafica>
+<Denominazione>TELEPASS S.P.A.</Denominazione>
+</Anagrafica>
+</DatiAnagrafici>
+</TerzoIntermediarioOSoggettoEmittente>
+<SoggettoEmittente>TZ</SoggettoEmittente>
+</FatturaElettronicaHeader>
+<FatturaElettronicaBody>
+<DatiGenerali>
+<DatiGeneraliDocumento>
+<TipoDocumento>TD01</TipoDocumento>
+<Divisa>EUR</Divisa>
+<Data>2025-03-23</Data>
+<Numero>000000310004454P</Numero>
+<ImportoTotaleDocumento>55.00</ImportoTotaleDocumento>
+<Causale>Codice cliente: 310859586</Causale>
+</DatiGeneraliDocumento>
+</DatiGenerali>
+<DatiBeniServizi>
+<DettaglioLinee>
+<NumeroLinea>1</NumeroLinea>
+<Descrizione>SOSTE PARCHEGGI</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>45.08</PrezzoUnitario>
+<PrezzoTotale>45.08</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DatiRiepilogo>
+<AliquotaIVA>22.00</AliquotaIVA>
+<ImponibileImporto>45.08</ImponibileImporto>
+<Imposta>9.92</Imposta>
+</DatiRiepilogo>
+</DatiBeniServizi>
+<DatiPagamento>
+<CondizioniPagamento>TP02</CondizioniPagamento>
+<DettaglioPagamento>
+<Beneficiario>TELEPASS</Beneficiario>
+<ModalitaPagamento>MP19</ModalitaPagamento>
+<DataScadenzaPagamento>2025-03-23</DataScadenzaPagamento>
+<ImportoPagamento>55.00</ImportoPagamento>
+</DettaglioPagamento>
+</DatiPagamento>
+</FatturaElettronicaBody>
+</p:FatturaElettronica>

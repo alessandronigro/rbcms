@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.1.xsl"?>
+<FatturaElettronica xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versione="FPR12" xmlns="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader xmlns="">
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01879020517</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>776</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <ContattiTrasmittente />
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>15171431008</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>15171431008</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>PEPENERO SRL</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CREMERA, 11</Indirizzo>
+        <CAP>00198</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti />
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO ,25</Indirizzo>
+        <CAP>00164</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody xmlns="">
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2023-06-02</Data>
+        <Numero>773/CE</Numero>
+        <ImportoTotaleDocumento>88.50</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>SERVIZIO</Descrizione>
+        <Quantita>7.00</Quantita>
+        <PrezzoUnitario>1.81857143</PrezzoUnitario>
+        <PrezzoTotale>12.73</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>GARGAN SUGO</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>6.36500000</PrezzoUnitario>
+        <PrezzoTotale>12.73</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>ACQUA NAT 75 CL</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>2.27000000</PrezzoUnitario>
+        <PrezzoTotale>2.27</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>COCA COLA ZERO</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>2.72500000</PrezzoUnitario>
+        <PrezzoTotale>5.45</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>ZITI RAGU NAPOLETAN</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>10.00000000</PrezzoUnitario>
+        <PrezzoTotale>10.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>REGINA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>6.36000000</PrezzoUnitario>
+        <PrezzoTotale>6.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>MARGHERITA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>6.36000000</PrezzoUnitario>
+        <PrezzoTotale>6.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>CAPRICCIOSA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>7.27000000</PrezzoUnitario>
+        <PrezzoTotale>7.27</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>FRITTAFORNO EMILIANA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>11.82000000</PrezzoUnitario>
+        <PrezzoTotale>11.82</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>COCA COLA ZERO</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>2.72500000</PrezzoUnitario>
+        <PrezzoTotale>5.45</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <Arrotondamento>0.01</Arrotondamento>
+        <ImponibileImporto>80.45</ImponibileImporto>
+        <Imposta>8.05</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</FatturaElettronica>

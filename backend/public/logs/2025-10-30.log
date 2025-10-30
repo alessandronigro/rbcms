@@ -1,0 +1,35 @@
+[11:01:13] PDF generato: /var/www/rbcms/backend/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:01:13] ❌ Errore attestatoGenerico: pdfPath is not defined
+[11:01:13] ❌ sendcertificate ERR: ReferenceError: pdfPath is not defined
+[11:02:10] PDF generato: /var/www/rbcms/backend/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:02:10] ✅ Attestato generico creato: https://rbcms.formazioneintermediari.com/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:02:10] gettime ERR: Request failed with status code 500
+[11:02:10] getlasttest ERR: Request failed with status code 500
+[11:02:11] ✅ sendcertificate: Attestato inviato a alessandro.nigro78@gmail.com (alessandro.nigro78@gmail.com<br>)
+[11:21:29] PDF generato: /var/www/rbcms/backend/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:21:29] ✅ Attestato generico creato: https://rbcms.formazioneintermediari.com/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:21:29] ⚠️ Errore salvataggio learning_attestati: Duplicate entry '20-21541' for key 'PRIMARY'
+[11:21:38] PDF generato: /var/www/rbcms/backend/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:21:38] ✅ Attestato generico creato: https://rbcms.formazioneintermediari.com/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:21:38] ⚠️ Errore salvataggio learning_attestati: Duplicate entry '20-21541' for key 'PRIMARY'
+[11:25:58] PDF generato: /var/www/rbcms/backend/backend/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:25:58] ✅ Attestato generico creato: https://rbcms.formazioneintermediari.com/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:25:58] ⚠️ Errore salvataggio learning_attestati: Duplicate entry '20-21541' for key 'PRIMARY'
+[11:26:16] PDF generato: /var/www/rbcms/backend/backend/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:26:16] ✅ Attestato generico creato: https://rbcms.formazioneintermediari.com/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:26:16] ⚠️ Errore salvataggio learning_attestati: Duplicate entry '20-21541' for key 'PRIMARY'
+[11:26:54] PDF generato: /var/www/rbcms/backend/backend/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:26:54] ✅ Attestato generico creato: https://rbcms.formazioneintermediari.com/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:26:54] ⚠️ Errore salvataggio learning_attestati: Duplicate entry '20-21541' for key 'PRIMARY'
+[11:27:31] PDF generato: /var/www/rbcms/backend/backend/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:27:31] ✅ Attestato generico creato: https://rbcms.formazioneintermediari.com/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:27:31] ⚠️ Errore salvataggio learning_attestati: Duplicate entry '20-21541' for key 'PRIMARY'
+[11:30:37] PDF generato: /var/www/rbcms/backend/backend/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:30:37] ✅ Attestato generico creato: https://rbcms.formazioneintermediari.com/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:30:37] ⚠️ Errore salvataggio learning_attestati: Duplicate entry '20-21541' for key 'PRIMARY'
+[11:30:58] PDF generato: /var/www/rbcms/backend/backend/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:30:58] ✅ Attestato generico creato: https://rbcms.formazioneintermediari.com/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:30:58] ⚠️ Errore salvataggio learning_attestati: Duplicate entry '20-21541' for key 'PRIMARY'
+[11:37:25] PDF generato: /var/www/rbcms/backend/backend/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:37:25] ✅ Attestato generico creato: https://rbcms.formazioneintermediari.com/certificati/Attestato - codOAM3035 - Alessandro Nigro - 21541 .pdf
+[11:37:25] ⚠️ Errore salvataggio learning_attestati: Duplicate entry '20-21541' for key 'PRIMARY'

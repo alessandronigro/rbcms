@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>02098391200</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>3C0nd</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05403151003</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05403151003</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>TRENITALIA S.p.A. - SOCIETA' CON SOCIO UNICO</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Piazza della Croce Rossa, 1</Indirizzo>
+        <CAP>00161</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RM</Ufficio>
+        <NumeroREA>360679</NumeroREA>
+        <CapitaleSociale>1417782000.00</CapitaleSociale>
+        <SocioUnico>SU</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R&amp;B Consulting   </Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZiO</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02098391200</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Unimatica S.p.a</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2020-02-29</Data>
+        <Numero>4600011515</Numero>
+        <ImportoTotaleDocumento>75.30</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+      <DatiContratto>
+        <IdDocumento>4600011515</IdDocumento>
+      </DatiContratto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-19</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>DJ6BZ5</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1324224877</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-03</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>T2VRPN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1314165490</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>RIMBORSI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-20</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>DJ4C95</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1324231408</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Doc. Fatt.</TipoDato>
+          <RiferimentoTesto>4600011515</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-24</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>HJXAFN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1327331513</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-03</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>T2VRPN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1314245552</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-19</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>DJ4C95</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1324231408</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-24</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>HJZADN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1327462278</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-20</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>DJ4C95</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1325191012</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>31.18</PrezzoUnitario>
+        <PrezzoTotale>31.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-11</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>ZTBSDN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1318837786</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>CASERTA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>31.18</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>37.27</PrezzoUnitario>
+        <PrezzoTotale>37.27</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-11</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>ZTBSDN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1318837787</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - CASERTA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>37.27</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-24</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>HJZADN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1327508873</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <Descrizione>RIMBORSI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-03</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>T2VRPN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1311955997</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Doc. Fatt.</TipoDato>
+          <RiferimentoTesto>4600001573</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>13</NumeroLinea>
+        <Descrizione>RIMBORSI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-03</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>T2VRPN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1314165490</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Doc. Fatt.</TipoDato>
+          <RiferimentoTesto>4600011515</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>14</NumeroLinea>
+        <Descrizione>RIMBORSI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-24</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>HJZADN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1327462278</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Doc. Fatt.</TipoDato>
+          <RiferimentoTesto>4600011515</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>15</NumeroLinea>
+        <Descrizione>RIMBORSI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-24</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>HJZADN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1327334701</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Doc. Fatt.</TipoDato>
+          <RiferimentoTesto>4600011515</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>16</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2020-02-24</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>HJZADN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1327334701</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>68.45</ImponibileImporto>
+        <Imposta>6.85</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <RiferimentoNormativo>IVA vendite 10%</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <DataScadenzaPagamento>2020-02-29</DataScadenzaPagamento>
+        <ImportoPagamento>75.30</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

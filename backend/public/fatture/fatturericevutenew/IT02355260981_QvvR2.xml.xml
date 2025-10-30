@@ -1,0 +1,815 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>02355260981</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>QvvR2</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <ContattiTrasmittente>
+        <Telefono>0309650688</Telefono>
+        <Email>ABLETECH@PEC.IT</Email>
+      </ContattiTrasmittente>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05647000636</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05647000636</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>CAPRI SRL</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Caracciolo, 15</Indirizzo>
+        <NumeroCivico>15</NumeroCivico>
+        <CAP>80122</CAP>
+        <Comune>Napoli</Comune>
+        <Provincia>NA</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RD CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO 25 00193 ROMA</Indirizzo>
+        <NumeroCivico>.</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-05-18</Data>
+        <Numero>G031/2024/107</Numero>
+        <ImportoTotaleDocumento>2799.00</ImportoTotaleDocumento>
+        <Causale>SF 1705-0001 del 18-05-2024 - 72MU1057093</Causale>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>PA3922UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PANTALONI DOPPIA PINCE IN PURO LINO   - PANTALONI DOPPIA PINCE IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>64.75</PrezzoUnitario>
+        <PrezzoTotale>64.75</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>MA1487UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>POLO IN MAGLIA IN COTONE MC   - POLO IN MAGLIA IN COTONE MC</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>MA1487UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>POLO IN MAGLIA IN COTONE MC   - POLO IN MAGLIA IN COTONE MC</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>MA1487UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>POLO IN MAGLIA IN COTONE MC   - POLO IN MAGLIA IN COTONE MC</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>MA1487UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>POLO IN MAGLIA IN COTONE MC   - POLO IN MAGLIA IN COTONE MC</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>MA1487UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>POLO IN MAGLIA IN COTONE MC   - POLO IN MAGLIA IN COTONE MC</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>MA1487UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>POLO IN MAGLIA IN COTONE MC   - POLO IN MAGLIA IN COTONE MC</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>MA0104UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>POLO IN MAGLIA TRAFORATA MC   - POLO IN MAGLIA TRAFORATA MC</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>MA0104UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>POLO IN MAGLIA TRAFORATA MC   - POLO IN MAGLIA TRAFORATA MC</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>BE4016GUY13</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BERMUDA DI  BABY TWILL  DI COTONE   - BERMUDA DI  BABY TWILL  DI COTONE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>23.77</PrezzoUnitario>
+        <PrezzoTotale>23.77</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>BE4016GUY13</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BERMUDA DI  BABY TWILL  DI COTONE   - BERMUDA DI  BABY TWILL  DI COTONE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>23.77</PrezzoUnitario>
+        <PrezzoTotale>23.77</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>BE4016GUY13</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BERMUDA DI  BABY TWILL  DI COTONE   - BERMUDA DI  BABY TWILL  DI COTONE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>23.77</PrezzoUnitario>
+        <PrezzoTotale>23.77</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>13</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>BE4016GUY13</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BERMUDA DI  BABY TWILL  DI COTONE   - BERMUDA DI  BABY TWILL  DI COTONE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>23.77</PrezzoUnitario>
+        <PrezzoTotale>23.77</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>14</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF790GULUY3O</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO COREANO IN PURO LINO   - CAMICIA COLLO COREANO IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>56.56</PrezzoUnitario>
+        <PrezzoTotale>56.56</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>15</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF4LUWUOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO COREANO IN PURO LINO   - CAMICIA COLLO COREANO IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>56.56</PrezzoUnitario>
+        <PrezzoTotale>56.56</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>16</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF4LUWUOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO COREANO IN PURO LINO   - CAMICIA COLLO COREANO IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>56.56</PrezzoUnitario>
+        <PrezzoTotale>56.56</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>17</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF1LR3UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA IN LINO RIGATA CON COLLO SEMIFRANCESE   - CAMICIA IN LINO RIGATA CON COLLO SEMIFRANCESE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>64.75</PrezzoUnitario>
+        <PrezzoTotale>64.75</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>18</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF1LUWUOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO SEMI FRANCESE IN PURO LINO   - CAMICIA COLLO SEMI FRANCESE IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>56.56</PrezzoUnitario>
+        <PrezzoTotale>56.56</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>19</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF1LUWUOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO SEMI FRANCESE IN PURO LINO   - CAMICIA COLLO SEMI FRANCESE IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>56.56</PrezzoUnitario>
+        <PrezzoTotale>56.56</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>20</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF1LUWUOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO SEMI FRANCESE IN PURO LINO   - CAMICIA COLLO SEMI FRANCESE IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>56.56</PrezzoUnitario>
+        <PrezzoTotale>56.56</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>21</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF1LUWUOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO SEMI FRANCESE IN PURO LINO   - CAMICIA COLLO SEMI FRANCESE IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>56.56</PrezzoUnitario>
+        <PrezzoTotale>56.56</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>22</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF4LUWUOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO COREANO IN PURO LINO   - CAMICIA COLLO COREANO IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>56.56</PrezzoUnitario>
+        <PrezzoTotale>56.56</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>23</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF4LUWUOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO COREANO IN PURO LINO   - CAMICIA COLLO COREANO IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>56.56</PrezzoUnitario>
+        <PrezzoTotale>56.56</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>24</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF772GUOX4X4</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO SEMIFRANCESE OXFORD   - CAMICIA COLLO SEMIFRANCESE OXFORD</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>25</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF772GUOX4X4</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO SEMIFRANCESE OXFORD   - CAMICIA COLLO SEMIFRANCESE OXFORD</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>26</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF787GUPSOG</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA SMOKING COLLO DIPLOMATICO,PLASTRON,GEMELLO   - CAMICIA SMOKING COLLO DIPLOMATICO,PLASTRON,GEMELLO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>48.36</PrezzoUnitario>
+        <PrezzoTotale>48.36</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>27</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF772GUOX4X4</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO SEMIFRANCESE OXFORD   - CAMICIA COLLO SEMIFRANCESE OXFORD</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>28</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF772GUOX4X4</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO SEMIFRANCESE OXFORD   - CAMICIA COLLO SEMIFRANCESE OXFORD</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>29</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF787GUC1</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA SMOKING COLLO DIPLOMATICO CON PLASTRON   - CAMICIA SMOKING COLLO DIPLOMATICO CON PLASTRON</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>40.16</PrezzoUnitario>
+        <PrezzoTotale>40.16</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>30</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>SC1193GUY13</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>SCARPA IN SUEDE E CANVAS   - SCARPA IN SUEDE E CANVAS</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>64.75</PrezzoUnitario>
+        <PrezzoTotale>64.75</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>31</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>SC1342UOGU</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>MOCASSINO SUMMER IN SUEDE   - MOCASSINO SUMMER IN SUEDE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>97.54</PrezzoUnitario>
+        <PrezzoTotale>97.54</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>32</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>SC1193GUY13</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>SCARPA IN SUEDE E CANVAS   - SCARPA IN SUEDE E CANVAS</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>64.75</PrezzoUnitario>
+        <PrezzoTotale>64.75</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>33</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>CF1LUWUOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAMICIA COLLO SEMI FRANCESE IN PURO LINO   - CAMICIA COLLO SEMI FRANCESE IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>56.56</PrezzoUnitario>
+        <PrezzoTotale>56.56</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>34</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>PA3922UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PANTALONI DOPPIA PINCE IN PURO LINO   - PANTALONI DOPPIA PINCE IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>64.75</PrezzoUnitario>
+        <PrezzoTotale>64.75</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>35</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>PA3922UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PANTALONI DOPPIA PINCE IN PURO LINO   - PANTALONI DOPPIA PINCE IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>64.75</PrezzoUnitario>
+        <PrezzoTotale>64.75</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>36</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>PA3922UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PANTALONI DOPPIA PINCE IN PURO LINO   - PANTALONI DOPPIA PINCE IN PURO LINO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>64.75</PrezzoUnitario>
+        <PrezzoTotale>64.75</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>37</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>PA0063UOGY14</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PANTALONE CON DOPPIA PINCES E CINTURINI LATERALI   - PANTALONE CON DOPPIA PINCES E CINTURINI LATERALI</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>64.75</PrezzoUnitario>
+        <PrezzoTotale>64.75</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>38</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>GI1502GUY13</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>GIACCA IN LINO COTONE CON TASCA A TOPPA   - GIACCA IN LINO COTONE CON TASCA A TOPPA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>105.74</PrezzoUnitario>
+        <PrezzoTotale>105.74</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>39</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>GI736UOGU</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>GIACCA PER ABITO IN COTONE ARMATURATO   - GIACCA PER ABITO IN COTONE ARMATURATO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>130.33</PrezzoUnitario>
+        <PrezzoTotale>130.33</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>40</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>GI1502GUY13</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>GIACCA IN LINO COTONE CON TASCA A TOPPA   - GIACCA IN LINO COTONE CON TASCA A TOPPA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>105.74</PrezzoUnitario>
+        <PrezzoTotale>105.74</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>41</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>CodiceFornitore</CodiceTipo>
+          <CodiceValore>GI1502GUY13</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>GIACCA IN LINO COTONE CON TASCA A TOPPA   - GIACCA IN LINO COTONE CON TASCA A TOPPA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>105.74</PrezzoUnitario>
+        <PrezzoTotale>105.74</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Doc.comm.</TipoDato>
+          <RiferimentoTesto>1705-0001 del 18-05-2024   72MU1057093</RiferimentoTesto>
+          <RiferimentoNumero>1.00</RiferimentoNumero>
+          <RiferimentoData>2024-05-18</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>2294.26</ImponibileImporto>
+        <Imposta>504.74</Imposta>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

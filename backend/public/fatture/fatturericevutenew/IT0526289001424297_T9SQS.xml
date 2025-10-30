@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<FatturaElettronicaHeader>
+<DatiTrasmissione>
+<IdTrasmittente>
+<IdPaese>IT</IdPaese>
+<IdCodice>05262890014</IdCodice>
+</IdTrasmittente>
+<ProgressivoInvio>D0241023</ProgressivoInvio>
+<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+</DatiTrasmissione>
+<CedentePrestatore>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>07516911000</IdCodice>
+</IdFiscaleIVA>
+<Anagrafica>
+<Denominazione>AUTOSTRADE PER L'ITALIA S.P.A.</Denominazione>
+</Anagrafica>
+<RegimeFiscale>RF01</RegimeFiscale>
+</DatiAnagrafici>
+<Sede>
+<Indirizzo>VIA A.BERGAMINI,50</Indirizzo>
+<CAP>00159</CAP>
+<Comune>ROMA</Comune>
+<Nazione>IT</Nazione>
+</Sede>
+<IscrizioneREA>
+<Ufficio>RM</Ufficio>
+<NumeroREA>1037417</NumeroREA>
+<CapitaleSociale>622027000.00</CapitaleSociale>
+<StatoLiquidazione>LN</StatoLiquidazione>
+</IscrizioneREA>
+</CedentePrestatore>
+<CessionarioCommittente>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>17044041006</IdCodice>
+</IdFiscaleIVA>
+<Anagrafica>
+<Denominazione>RB CONSULTING S.R.L.</Denominazione>
+</Anagrafica>
+</DatiAnagrafici>
+<Sede>
+<Indirizzo>VIA CRESCENZIO,25</Indirizzo>
+<CAP>00193</CAP>
+<Comune>ROMA</Comune>
+<Nazione>IT</Nazione>
+</Sede>
+</CessionarioCommittente>
+</FatturaElettronicaHeader>
+<FatturaElettronicaBody>
+<DatiGenerali>
+<DatiGeneraliDocumento>
+<TipoDocumento>TD01</TipoDocumento>
+<Divisa>EUR</Divisa>
+<Data>2024-10-23</Data>
+<Numero>000000013161120D</Numero>
+<ImportoTotaleDocumento>123.80</ImportoTotaleDocumento>
+<Causale>Codice cliente: 310859586</Causale>
+</DatiGeneraliDocumento>
+</DatiGenerali>
+<DatiBeniServizi>
+<DettaglioLinee>
+<NumeroLinea>1</NumeroLinea>
+<Descrizione>PEDAGGI AUTOSTRADALI</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>102.95</PrezzoUnitario>
+<PrezzoTotale>102.95</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DettaglioLinee>
+<NumeroLinea>2</NumeroLinea>
+<Descrizione>RIDUZIONE SPN TARIFFA DIFFER.</Descrizione>
+<Quantita>1.00</Quantita>
+<PrezzoUnitario>-1.48</PrezzoUnitario>
+<PrezzoTotale>-1.48</PrezzoTotale>
+<AliquotaIVA>22.00</AliquotaIVA>
+</DettaglioLinee>
+<DatiRiepilogo>
+<AliquotaIVA>22.00</AliquotaIVA>
+<ImponibileImporto>101.47</ImponibileImporto>
+<Imposta>22.33</Imposta>
+</DatiRiepilogo>
+</DatiBeniServizi>
+<DatiPagamento>
+<CondizioniPagamento>TP02</CondizioniPagamento>
+<DettaglioPagamento>
+<Beneficiario>TELEPASS</Beneficiario>
+<ModalitaPagamento>MP19</ModalitaPagamento>
+<DataScadenzaPagamento>2024-10-23</DataScadenzaPagamento>
+<ImportoPagamento>123.80</ImportoPagamento>
+</DettaglioPagamento>
+</DatiPagamento>
+</FatturaElettronicaBody>
+</p:FatturaElettronica>

@@ -1,0 +1,120 @@
+<ns2:FatturaElettronica xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione><IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>08973230967</IdCodice></IdTrasmittente><ProgressivoInvio>3PtQV</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>KRRH6B9</CodiceDestinatario><PECDestinatario>fatturazione@pec.rbconsulenza.com</PECDestinatario></DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>07963401216</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>DORA SRL</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>Via scafati 259</Indirizzo>
+            <CAP>80050</CAP>
+            <Comune>SANTA MARIA LA CARITA'</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05744121210</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>R&amp;B Consulting Srl</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>via Crescenzio, 25</Indirizzo>
+            <CAP>00193</CAP>
+            <Comune>Roma</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+      <TerzoIntermediarioOSoggettoEmittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>00161809991</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Amazon Services Europe S.à r.l.</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+      </TerzoIntermediarioOSoggettoEmittente>
+      <SoggettoEmittente>TZ</SoggettoEmittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2021-10-26</Data>
+            <Numero>IT21-40565I-1226</Numero>
+            <ScontoMaggiorazione>
+               <Tipo>SC</Tipo>
+               <Importo>0.46</Importo>
+            </ScontoMaggiorazione>
+            <ImportoTotaleDocumento>7.98</ImportoTotaleDocumento>
+            <Arrotondamento>0.00</Arrotondamento>
+         </DatiGeneraliDocumento>
+         <DatiOrdineAcquisto>
+            <IdDocumento>Maria 5</IdDocumento>
+         </DatiOrdineAcquisto>
+         <DatiContratto>
+            <RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
+            <RiferimentoNumeroLinea>2</RiferimentoNumeroLinea>
+            <IdDocumento>402-4148929-9757928</IdDocumento>
+            <Data>2021-10-26</Data>
+         </DatiContratto>
+         <FatturaPrincipale>
+            <NumeroFatturaPrincipale>IT21-40565I-1226</NumeroFatturaPrincipale>
+            <DataFatturaPrincipale>2021-10-26</DataFatturaPrincipale>
+         </FatturaPrincipale>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>150 Bicchierini Caffe Carta Espresso Tazzine Biodegradabili 75ml + 150 Pz Palettine Legno Monouso + 150 Pz Bustine di Zucchero Extra Fine di Alta Qualita - KIT ACCESSORI AURACAFFE</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2021-10-26</DataInizioPeriodo>
+            <DataFinePeriodo>2021-10-26</DataFinePeriodo>
+            <PrezzoUnitario>7.72</PrezzoUnitario>
+            <ScontoMaggiorazione>
+               <Tipo>SC</Tipo>
+               <Importo>0.46</Importo>
+            </ScontoMaggiorazione>
+            <PrezzoTotale>7.26</PrezzoTotale>
+            <AliquotaIVA>10.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Costi di spedizione</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2021-10-26</DataInizioPeriodo>
+            <DataFinePeriodo>2021-10-26</DataFinePeriodo>
+            <PrezzoUnitario>0.00</PrezzoUnitario>
+            <PrezzoTotale>0.00</PrezzoTotale>
+            <AliquotaIVA>10.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>10.00</AliquotaIVA>
+            <Arrotondamento>-0.06</Arrotondamento>
+            <ImponibileImporto>7.20</ImponibileImporto>
+            <Imposta>0.72</Imposta>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP08</ModalitaPagamento>
+            <ImportoPagamento>7.98</ImportoPagamento>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</ns2:FatturaElettronica>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="windows-1252"?>                                                                                                                                                                               
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>                                                                                                                                                                
+<p:FatturaElettronica versione="FPR12"                                                                                                                                                                                      
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"                                                                                                                                                                               
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"                                                                                                                                                     
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">                                                                                                                                                                      
+  <FatturaElettronicaHeader>
+   <DatiTrasmissione>
+    <IdTrasmittente>
+     <IdPaese>SM</IdPaese>
+                            <IdCodice>03473</IdCodice>
+    </IdTrasmittente>
+          <ProgressivoInvio>1/81</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+   </DatiTrasmissione>
+   <CedentePrestatore>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>04688331216</IdCodice>
+     </IdFiscaleIVA>
+          <CodiceFiscale>04688331216</CodiceFiscale>
+     <Anagrafica>
+                                                                     <Denominazione>KADOA UOMO S.R.L.</Denominazione>
+     </Anagrafica>
+     <RegimeFiscale>RF01</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+                                         <Indirizzo>Via Leonardo Da Vinci 10</Indirizzo>
+     <CAP>80028</CAP>
+                                                     <Comune>GRUMO NEVANO</Comune>
+     <Provincia>NA</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+    <Contatti>
+     <Email>info@kadoauomo.it</Email>                                           
+    </Contatti>
+   </CedentePrestatore>
+   <CessionarioCommittente>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>17044041006</IdCodice>
+     </IdFiscaleIVA>
+     <Anagrafica>
+                                                                     <Denominazione>RB CONSULTING SRL</Denominazione>
+     </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+                                                 <Indirizzo>VIA CRESCENZO 25</Indirizzo>
+     <CAP>00193</CAP>
+                                                             <Comune>ROMA</Comune>
+     <Provincia>RM</Provincia>
+     <Nazione>IT</Nazione>
+    </Sede>
+   </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+   <DatiGenerali>
+    <DatiGeneraliDocumento>
+     <TipoDocumento>TD01</TipoDocumento>
+     <Divisa>EUR</Divisa>
+     <Data>2024-05-16</Data>
+                     <Numero>1/81</Numero>
+     <ScontoMaggiorazione>
+      <Tipo>SC</Tipo>
+      <Importo>           0.01</Importo>
+     </ScontoMaggiorazione>
+     <ImportoTotaleDocumento>         445.00</ImportoTotaleDocumento>
+     <Causale>VENDITA</Causale>                                                                                                                                                                                             
+    </DatiGeneraliDocumento>
+    <DatiTrasporto>
+     <DataOraRitiro>2024-05-16T11:58:00</DataOraRitiro>
+     <DataInizioTrasporto>2024-05-16</DataInizioTrasporto>
+    </DatiTrasporto>
+   </DatiGenerali>
+   <DatiBeniServizi>
+    <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>PO</CodiceValore>                                 
+     </CodiceArticolo>
+     <Descrizione>POLO UOMO
+                                                                                                                                                                                              
+</Descrizione>                                                                                                                                                                                                        
+     <Quantita>             2.000000</Quantita>
+             <UnitaMisura>NU</UnitaMisura>
+     <PrezzoUnitario>            53.278600</PrezzoUnitario>
+     <PrezzoTotale>               106.56</PrezzoTotale>
+     <AliquotaIVA>22.00</AliquotaIVA> 
+    </DettaglioLinee>
+    <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>T-SHIRT</CodiceValore>                            
+     </CodiceArticolo>
+     <Descrizione>T-SHIRT
+                                                                                                                                                                                                
+</Descrizione>                                                                                                                                                                                                        
+     <Quantita>             7.000000</Quantita>
+             <UnitaMisura>NU</UnitaMisura>
+     <PrezzoUnitario>            36.885200</PrezzoUnitario>
+     <PrezzoTotale>               258.20</PrezzoTotale>
+     <AliquotaIVA>22.00</AliquotaIVA> 
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>22.00</AliquotaIVA>
+     <ImponibileImporto>364.76         </ImponibileImporto>
+     <Imposta>80.25          </Imposta>
+     <EsigibilitaIVA>I</EsigibilitaIVA>
+    </DatiRiepilogo>
+   </DatiBeniServizi>
+   <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+     <ModalitaPagamento>MP01</ModalitaPagamento>
+     <DataScadenzaPagamento>2024-05-16</DataScadenzaPagamento>
+     <ImportoPagamento>445.00</ImportoPagamento>         
+    </DettaglioPagamento>
+   </DatiPagamento>
+  </FatturaElettronicaBody>
+ </p:FatturaElettronica>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

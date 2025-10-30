@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xsl/fatturaPA_v1.2.1.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione>
+         <IdTrasmittente>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>08245660017</IdCodice>
+         </IdTrasmittente>
+         <ProgressivoInvio>0000001</ProgressivoInvio>
+         <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+         <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      </DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>02828980645</IdCodice>
+            </IdFiscaleIVA>
+            <CodiceFiscale>02828980645</CodiceFiscale>
+            <Anagrafica>
+               <Denominazione>FRAMARIGA SRL</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>LARGO DE LUCA DI MONTEFUSCO,5</Indirizzo>
+            <CAP>83100</CAP>
+            <Comune>AVELLINO</Comune>
+            <Provincia>AV</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+         <Contatti>
+            <Email>a.alvino@yahoo.it                                 </Email>
+         </Contatti>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05744121210</IdCodice>
+            </IdFiscaleIVA>
+            <CodiceFiscale>05744121210</CodiceFiscale>
+            <Anagrafica>
+               <Denominazione>RB CONSULTING</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+            <CAP>00193</CAP>
+            <Comune>ROMA</Comune>
+            <Provincia>RM</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+      <TerzoIntermediarioOSoggettoEmittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>08245660017</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Sistemi S.P.A.</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+      </TerzoIntermediarioOSoggettoEmittente>
+      <SoggettoEmittente>TZ</SoggettoEmittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2019-09-27</Data>
+            <Numero>64/002</Numero>
+            <ImportoTotaleDocumento>78.10</ImportoTotaleDocumento>
+            <Causale>Fattura attiva</Causale>
+         </DatiGeneraliDocumento>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Cena</Descrizione>
+            <Quantita>1.00000000</Quantita>
+            <PrezzoUnitario>71.00000000</PrezzoUnitario>
+            <PrezzoTotale>71.00000000</PrezzoTotale>
+            <AliquotaIVA>10.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>10.00</AliquotaIVA>
+            <ImponibileImporto>71.00</ImponibileImporto>
+            <Imposta>7.10</Imposta>
+            <EsigibilitaIVA>I</EsigibilitaIVA>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP08</ModalitaPagamento>
+            <DataScadenzaPagamento>2019-09-27</DataScadenzaPagamento>
+            <ImportoPagamento>78.10</ImportoPagamento>
+            <IBAN>IT96S0306903478100000005027</IBAN>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</p:FatturaElettronica>

@@ -1,0 +1,107 @@
+<ns2:FatturaElettronica xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione><IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>08973230967</IdCodice></IdTrasmittente><ProgressivoInvio>179V7</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>0000000</CodiceDestinatario></DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>08973230967</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Amazon EU S.à r.l., Succursale Italiana</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>38 avenue John F. Kennedy</Indirizzo>
+            <CAP>01855</CAP>
+            <Comune>Luxemburgo</Comune>
+            <Nazione>LU</Nazione>
+         </Sede>
+         <StabileOrganizzazione>
+            <Indirizzo>Viale Monte Grappa 3/5</Indirizzo>
+            <CAP>20124</CAP>
+            <Comune>Milano</Comune>
+            <Nazione>IT</Nazione>
+         </StabileOrganizzazione>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05744121210</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>R&amp;B Consulting Srl</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>Via Crescenzio, 25</Indirizzo>
+            <CAP>00193</CAP>
+            <Comune>Roma</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2019-03-21</Data>
+            <Numero>IT19-AEUI-1265427</Numero>
+            <ImportoTotaleDocumento>56.24</ImportoTotaleDocumento>
+            <Arrotondamento>0.00</Arrotondamento>
+         </DatiGeneraliDocumento>
+         <FatturaPrincipale>
+            <NumeroFatturaPrincipale>IT19-AEUI-1265427</NumeroFatturaPrincipale>
+            <DataFatturaPrincipale>2019-03-21</DataFatturaPrincipale>
+         </FatturaPrincipale>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Pavo - Portapenne girevole da scrivania con 9 accessori, colore: bianco/nero</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2019-03-21</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-21</DataFinePeriodo>
+            <PrezzoUnitario>11.52</PrezzoUnitario>
+            <PrezzoTotale>11.52</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Pavo - Portapenne girevole da scrivania con 9 accessori, colore: bianco/nero</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2019-03-21</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-21</DataFinePeriodo>
+            <PrezzoUnitario>11.52</PrezzoUnitario>
+            <PrezzoTotale>11.52</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>3</NumeroLinea>
+            <Descrizione>Pavo - Portapenne girevole da scrivania con 9 accessori, colore: bianco/nero</Descrizione>
+            <Quantita>2.00</Quantita>
+            <DataInizioPeriodo>2019-03-21</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-21</DataFinePeriodo>
+            <PrezzoUnitario>11.52</PrezzoUnitario>
+            <PrezzoTotale>23.04</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <Arrotondamento>0.10</Arrotondamento>
+            <ImponibileImporto>46.18</ImponibileImporto>
+            <Imposta>10.16</Imposta>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP08</ModalitaPagamento>
+            <ImportoPagamento>56.24</ImportoPagamento>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</ns2:FatturaElettronica>

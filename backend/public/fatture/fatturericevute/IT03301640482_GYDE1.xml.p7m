@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SistemaEmittente="Essenzia" versione="FPR12">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>03301640482</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>0000003039</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02871830648</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>02871830648</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>SAN GREGORIO S.R.L.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>LOCALITA' CERZA GROSSA</Indirizzo>
+        <CAP>83050</CAP>
+        <Comune>SORBO SERPICO</Comune>
+        <Provincia>AV</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>AV</Ufficio>
+        <NumeroREA>AV-189047</NumeroREA>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>0825986691</Telefono>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>rb consulting srl</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>via crescenzo 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03301640482</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>03301640482</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>Var Group SpA</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2021-10-15</Data>
+        <Numero>2021-FT09-0000233</Numero>
+        <ImportoTotaleDocumento>49.50</ImportoTotaleDocumento>
+        <Causale>Fattura San Gregorio ristorante Capodichino</Causale>
+      </DatiGeneraliDocumento>
+      <DatiTrasporto>
+        <MezzoTrasporto>VETTORE</MezzoTrasporto>
+        <IndirizzoResa>
+          <Indirizzo>via crescenzo 25</Indirizzo>
+          <CAP>00193</CAP>
+          <Comune>ROMA</Comune>
+          <Provincia>RM</Provincia>
+          <Nazione>IT</Nazione>
+        </IndirizzoResa>
+      </DatiTrasporto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>ASPORTO 10%</Descrizione>
+        <Quantita>1.000</Quantita>
+        <UnitaMisura>NR</UnitaMisura>
+        <PrezzoUnitario>6.818200</PrezzoUnitario>
+        <PrezzoTotale>6.82</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>ASPORTO 10%</Descrizione>
+        <Quantita>1.000</Quantita>
+        <UnitaMisura>NR</UnitaMisura>
+        <PrezzoUnitario>7.272700</PrezzoUnitario>
+        <PrezzoTotale>7.27</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>ASPORTO 10%</Descrizione>
+        <Quantita>1.000</Quantita>
+        <UnitaMisura>NR</UnitaMisura>
+        <PrezzoUnitario>15.454500</PrezzoUnitario>
+        <PrezzoTotale>15.45</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>ASPORTO 10%</Descrizione>
+        <Quantita>1.000</Quantita>
+        <UnitaMisura>NR</UnitaMisura>
+        <PrezzoUnitario>5.454500</PrezzoUnitario>
+        <PrezzoTotale>5.45</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>ASPORTO 10%</Descrizione>
+        <Quantita>1.000</Quantita>
+        <UnitaMisura>NR</UnitaMisura>
+        <PrezzoUnitario>3.636400</PrezzoUnitario>
+        <PrezzoTotale>3.64</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>ASPORTO 10%</Descrizione>
+        <Quantita>1.000</Quantita>
+        <UnitaMisura>NR</UnitaMisura>
+        <PrezzoUnitario>1.363600</PrezzoUnitario>
+        <PrezzoTotale>1.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>ASPORTO 10%</Descrizione>
+        <Quantita>1.000</Quantita>
+        <UnitaMisura>NR</UnitaMisura>
+        <PrezzoUnitario>1.363600</PrezzoUnitario>
+        <PrezzoTotale>1.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>ASPORTO 10%</Descrizione>
+        <Quantita>1.000</Quantita>
+        <UnitaMisura>NR</UnitaMisura>
+        <PrezzoUnitario>3.636400</PrezzoUnitario>
+        <PrezzoTotale>3.64</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>45.00</ImponibileImporto>
+        <Imposta>4.50</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP01</ModalitaPagamento>
+        <DataScadenzaPagamento>2021-10-15</DataScadenzaPagamento>
+        <ImportoPagamento>49.50</ImportoPagamento>
+        <CodicePagamento>RIMESSA DIRETTA PAGAB. SUBITO NO SCONTO</CodicePagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

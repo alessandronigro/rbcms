@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><p:FatturaElettronica xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SistemaEmittente="JFE V8.4.3" versione="FPR12">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>03466010232</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>0074359944</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03308370612</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>BRACERIA MACELERIA IOVINE SAS</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA NAZIONALE SANNITICA NR.2</Indirizzo>
+        <CAP>81100</CAP>
+        <Comune>VACCHERIA CASERTA</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03466010232</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>enerJ srl</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-04-28</Data>
+        <Numero>858/2024</Numero>
+        <ImportoTotaleDocumento>161.34</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>PANE E COPERTO</Descrizione>
+        <Quantita>3.00</Quantita>
+        <PrezzoUnitario>1.36363333</PrezzoUnitario>
+        <PrezzoTotale>4.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>BRUSCHETTA CON SALSICCIA E PROVOLA</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>1.8182</PrezzoUnitario>
+        <PrezzoTotale>3.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>BRUSCHETTA CON RAGU' ALLA BOLOGNESE</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>1.8182</PrezzoUnitario>
+        <PrezzoTotale>3.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>PIATTO CERIMONIA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>12.7273</PrezzoUnitario>
+        <PrezzoTotale>12.7273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>BISTECCA DI MANZETTA 980 g</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Kg</UnitaMisura>
+        <PrezzoUnitario>29.40</PrezzoUnitario>
+        <PrezzoTotale>29.40</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>BISTECCA DI LANDRACE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>9.0909</PrezzoUnitario>
+        <PrezzoTotale>9.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>SALSICCIA DI LANDRACE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>8.1818</PrezzoUnitario>
+        <PrezzoTotale>8.1818</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>PEPERONATA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>3.6364</PrezzoUnitario>
+        <PrezzoTotale>3.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>CARCIOFO MAX</Descrizione>
+        <Quantita>3.00</Quantita>
+        <PrezzoUnitario>4.54546667</PrezzoUnitario>
+        <PrezzoTotale>13.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>FILETTI DI MANZETTA  DEL MACELLAIO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>9.0909</PrezzoUnitario>
+        <PrezzoTotale>9.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione>STRACCETTI DI MANZETTA CRUDI</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>10.9091</PrezzoUnitario>
+        <PrezzoTotale>10.9091</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <Descrizione>ACQUA LETE "SERVITA"</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>1.3636</PrezzoUnitario>
+        <PrezzoTotale>1.3636</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>13</NumeroLinea>
+        <Descrizione>FALERNO DEL MASSICO " TAURUS "</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>25.4545</PrezzoUnitario>
+        <PrezzoTotale>25.4545</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>14</NumeroLinea>
+        <Descrizione>DOLCE DEL GIORNO</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>4.54545</PrezzoUnitario>
+        <PrezzoTotale>9.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>15</NumeroLinea>
+        <Descrizione>MELONCELLO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>2.7273</PrezzoUnitario>
+        <PrezzoTotale>2.7273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>146.67</ImponibileImporto>
+        <Imposta>14.67</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP01</ModalitaPagamento>
+        <DataScadenzaPagamento>2024-04-28</DataScadenzaPagamento>
+        <ImportoPagamento>161.34</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+<ds:Signature Id="Signer-T-1714309977323"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2006/12/xml-c14n11#WithComments"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference Id="r-doc-Signer-T-1714309977323" URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"><XPath xmlns="http://www.w3.org/2002/06/xmldsig-filter2" Filter="subtract">/descendant::ds:Signature</XPath></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>SfmiZXs+C9mHW2Qpk5wTb9M7zf2dNuGjo2YwIMk7s2A=</ds:DigestValue></ds:Reference><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#SignedProperties-Signer-T-1714309977323"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>McI4QmqhILxkA52S30/PsOHGQH+Xv057YJpBkAd7+RM=</ds:DigestValue></ds:Reference><ds:Reference Id="r-keyinfo-Signer-T-1714309977323" URI="#KeyInfo-Signer-T-1714309977323"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>ybj/ifqzduyF6V9oEEXgLLThR7hHQG7+64p4iNlhLHw=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="SignatureValue-Signer-T-1714309977323">cRPffKUDoWB0z+SqU9z1Phs5Tp3cOcZj41n2XKKmRAAL6wbQY9h8mq+3I7J+iAtiQFYdAByQUSro&#13;
+I7Qxx2U38G7aRF8fk/VuwviPSPjhkXmi+Os1MjzUOMjiqUMde/ZF8V79mYCeuOr9q+CdMnbwBAYe&#13;
+0dmF4tDZ007QDhZHugokmp+AcJOOrnE+ag+HLaLVlZHgo3yGzJ4CNYjrzxkYkqgXGeHwSNnzKf7D&#13;
+feuofa/w+Xo0FstxibSF62jBgSGK8gZKODJsyZzHaRbxSIdUB6dwlcv/6a5KpGVVKVkR7UQ5liFn&#13;
+P0pf0YH6EtcREmGZEss3kJsXCog9pc1GfFZrjQ==</ds:SignatureValue><ds:KeyInfo Id="KeyInfo-Signer-T-1714309977323"><ds:X509Data><ds:X509Certificate>MIIITzCCBjegAwIBAgIQOEdcS+K8FEKlYwiV2LxsCDANBgkqhkiG9w0BAQsFADCBujELMAkGA1UE&#13;
+BhMCSVQxGTAXBgNVBAcMEFBvbnRlIFNhbiBQaWV0cm8xFzAVBgNVBAoMDkFjdGFsaXMgUy5wLkEu&#13;
+MRowGAYDVQRhDBFWQVRJVC0wMzM1ODUyMDk2NzEpMCcGA1UECwwgUXVhbGlmaWVkIFRydXN0IFNl&#13;
+cnZpY2UgUHJvdmlkZXIxMDAuBgNVBAMMJ0FjdGFsaXMgRVUgUXVhbGlmaWVkIENlcnRpZmljYXRl&#13;
+cyBDQSBHMTAeFw0yMjAyMjgwNzQ5MjVaFw0yNTAyMjgwNzQ5MjVaMIHaMQswCQYDVQQGEwJJVDES&#13;
+MBAGA1UECgwJRU5FUkogU1JMMRowGAYDVQRhDBFWQVRJVC0wMzQ2NjAxMDIzMjEXMBUGA1UEDAwO&#13;
+QU1NSU5JU1RSQVRPUkUxEDAOBgNVBAQMB0F1bGV0dGExEzARBgNVBCoMCkZlcmRpbmFuZG8xHzAd&#13;
+BgNVBAUTFlRJTklULUxUVEZETjc0SDA4TDc4MVoxGzAZBgNVBAMMEkZlcmRpbmFuZG8gQXVsZXR0&#13;
+YTEdMBsGA1UELhMUV1NSRUYtMTcxNzM5MzI3OTA3NjUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw&#13;
+ggEKAoIBAQCe3qUMUxpjzgBYlSSh772ginmNFiGc4oRwovgr3ahGrGCORZctonXku8EiSOkufT+1&#13;
+bfsNibasAON1jCOxRdfXquJEzPrsm2AuX9ZVl1875cIQeZupWs2um2FVj39jpWl+8x8LVMkgK+HA&#13;
+cck/A1dihAWdCfkNET0FOfnmgz0W5zddM8aPvJ1VsyStJnVX+7AcQG0vm1KQIypJamgNYssiZVfU&#13;
+anF+srOure+3/63mEXPLVpETfKj9X9b5sGDvoB10UbOGH2vDOPRUgCfQcpBRF7uXCWQdP/jSdPqt&#13;
+SjPWUa8vYJaJ62qQTBS4d39rCjEgwftTx9APak+FcAXWzZ3DAgMBAAGjggMtMIIDKTAfBgNVHSME&#13;
+GDAWgBTYtwHxlnOW0mk6QTwuRTkfboH+njCBhQYIKwYBBQUHAQEEeTB3MDsGCCsGAQUFBzAChi9o&#13;
+dHRwOi8vY2FjZXJ0LmFjdGFsaXMuaXQvY2VydHMvYWN0YWxpcy1laWRhcy1nMTA4BggrBgEFBQcw&#13;
+AYYsaHR0cDovL29jc3AwOC5hY3RhbGlzLml0L3ZhL2FjdGFsaXMtZWlkYXMtZzEwGgYDVR0SBBMw&#13;
+EYEPaW5mb0BhY3RhbGlzLml0MIIBJwYDVR0gBIIBHjCCARowCQYHBACL7EABAjCCAQMGBiuBHwoC&#13;
+ATCB+DBEBggrBgEFBQcCARY4aHR0cHM6Ly93d3cuYWN0YWxpcy5pdC9yZXBvc2l0b3J5L2FjdGFs&#13;
+aXMtcXVhbGlmLWNwcy5wZGYwga8GCCsGAQUFBwICMIGiDIGfSWwgcHJlc2VudGUgY2VydGlmaWNh&#13;
+dG8gw6ggdmFsaWRvIHNvbG8gcGVyIGZpcm1lIGFwcG9zdGUgY29uIHByb2NlZHVyYSBhdXRvbWF0&#13;
+aWNhLiBUaGUgY2VydGlmaWNhdGUgbWF5IG9ubHkgYmUgdXNlZCBmb3IgdW5hdHRlbmRlZC9hdXRv&#13;
+bWF0aWMgZGlnaXRhbCBzaWduYXR1cmUuMAYGBCtMEAYwgcUGCCsGAQUFBwEDBIG4MIG1MAgGBgQA&#13;
+jkYBATALBgYEAI5GAQMCARQwCAYGBACORgEEMIGRBgYEAI5GAQUwgYYwQRY7aHR0cHM6Ly93d3cu&#13;
+YWN0YWxpcy5pdC9yZXBvc2l0b3J5L2FjdGFsaXMtcXVhbGlmLXBkcy1pdC5wZGYTAml0MEEWO2h0&#13;
+dHBzOi8vd3d3LmFjdGFsaXMuaXQvcmVwb3NpdG9yeS9hY3RhbGlzLXF1YWxpZi1wZHMtZW4ucGRm&#13;
+EwJlbjBABgNVHR8EOTA3MDWgM6Axhi9odHRwOi8vY3JsMDguYWN0YWxpcy5pdC92YS9hY3RhbGlz&#13;
+LWVpZGFzLWcxL2NybDAdBgNVHQ4EFgQUzSAaUNeH8ooFX5qVAhEi3J8HOc0wDgYDVR0PAQH/BAQD&#13;
+AgZAMA0GCSqGSIb3DQEBCwUAA4ICAQAsdR5NNM+i8xLKyNSmYfDj+9wAU/BIpFnHTxg0XWRKL7YA&#13;
+ckbmfGqWmQQTiHUqgrZjot0n0rk8FFK0Kb/AC72yiMDdggVf/RqDKCQJ96F9rRA5khIKq5EToOMz&#13;
+lCROdABInJgUEA0XxCyFS8x2ZJWnq/1ZJW3bTI3SNs+xyg6M09fworqhXQFNwsyRRKa5/sdNom+b&#13;
+k9ubiRKj93ugZLvYjyMB8ljgCARVmqoRYIbMFBJO8PuOtDqoSRHoghLupiFq/b5JojQoHwXlJAQl&#13;
+KbicacWPR+1xPnPRQ0vpmUCUlI6QzF+VNLe+h5Y2hHR8gIfHl9UpnKFEYtYVpvXVR6KKb2FL00m1&#13;
+coxbqIDezsPKUnTcZ9Rf5z6wwbuV+62E+S7xug0rW0KKAtCeQsbu2ZdesoSIAKhjUoQR/QP6t48C&#13;
+MK/Vpd0f6aD4dNw7wUkV/8YuZ1QE+9dMOksaELSmVoDkVi3VhB7fDnZ4A+qZfRrNbGKwOoZ6OBXC&#13;
+H+9kzkzYYpoLv3dMPb818EZdT0fnKAD+G89bBTck6Q7Jd9JQNel0QcE4wms++tVjXIJgzZ/t6JFL&#13;
+t1UgeBPdqbSYVmNBcOzD45Cp3peJdwCTLSwdX4WDNmXVnntJNVLHVvLvrISOZuLuuMoOAgnkYm4X&#13;
+7mjonyn5H/sku0h65c4way3+oYdASQ==</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="#Signer-T-1714309977323">
+		<xades:SignedProperties Id="SignedProperties-Signer-T-1714309977323">
+			<xades:SignedSignatureProperties>
+				<xades:SigningTime>2024-04-28T15:12:57+02:00</xades:SigningTime>
+				<xades:SigningCertificate>
+					<xades:Cert>
+						<xades:CertDigest>
+							<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+							<ds:DigestValue>ATMRcvpuQCG75CZNhnGTxAN9J+eHdM67fAsJDGlUGWE=</ds:DigestValue>
+						</xades:CertDigest>
+						<xades:IssuerSerial><ds:X509IssuerName>CN=Actalis EU Qualified Certificates CA G1,OU=Qualified Trust Service Provider,2.5.4.97=#0c1156415449542d3033333538353230393637,O=Actalis S.p.A.,L=Ponte San Pietro,C=IT</ds:X509IssuerName><ds:X509SerialNumber>74807292834877972118186863831000312840</ds:X509SerialNumber></xades:IssuerSerial>
+					</xades:Cert>
+				</xades:SigningCertificate>
+			</xades:SignedSignatureProperties>
+		
+			<xades:SignedDataObjectProperties>
+				<xades:DataObjectFormat ObjectReference="#r-doc-Signer-T-1714309977323">
+					<xades:MimeType>text/xml</xades:MimeType>
+				</xades:DataObjectFormat>
+			
+				<xades:DataObjectFormat ObjectReference="#r-keyinfo-Signer-T-1714309977323">
+					<xades:MimeType>text/xml</xades:MimeType>
+				</xades:DataObjectFormat>
+			</xades:SignedDataObjectProperties>
+		</xades:SignedProperties>
+	</xades:QualifyingProperties></ds:Object></ds:Signature></p:FatturaElettronica>

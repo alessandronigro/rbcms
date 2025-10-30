@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>02098391200</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>3mTOH</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05403151003</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05403151003</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>TRENITALIA S.p.A. - SOCIETA' CON SOCIO UNICO</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Piazza della Croce Rossa, 1</Indirizzo>
+        <CAP>00161</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RM</Ufficio>
+        <NumeroREA>360679</NumeroREA>
+        <CapitaleSociale>1417782000.00</CapitaleSociale>
+        <SocioUnico>SU</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R&amp;B Consulting   </Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZiO</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02098391200</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Unimatica S.p.a</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-06-30</Data>
+        <Numero>4600045818</Numero>
+        <ImportoTotaleDocumento>365.60</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+      <DatiContratto>
+        <IdDocumento>4600045818</IdDocumento>
+      </DatiContratto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>29.91</PrezzoUnitario>
+        <PrezzoTotale>29.91</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-06-17</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>SDCY25</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1147724196</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI CENTRALE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>29.91</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>53.18</PrezzoUnitario>
+        <PrezzoTotale>53.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-06-14</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>M9SCF5</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1145527218</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>53.18</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>53.18</PrezzoUnitario>
+        <PrezzoTotale>53.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-06-05</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>ETAWV5</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1138045952</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>53.18</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>29.91</PrezzoUnitario>
+        <PrezzoTotale>29.91</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-06-17</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>SDCY25</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1147724197</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI CENTRALE - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>29.91</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>29.91</PrezzoUnitario>
+        <PrezzoTotale>29.91</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-06-17</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>SDCY25</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1147724195</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI CENTRALE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>29.91</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>53.18</PrezzoUnitario>
+        <PrezzoTotale>53.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-06-13</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>MLKM9N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1144760181</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>53.18</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>53.18</PrezzoUnitario>
+        <PrezzoTotale>53.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-06-05</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>EWBKMN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1138388191</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>53.18</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>29.91</PrezzoUnitario>
+        <PrezzoTotale>29.91</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-06-17</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>SDCY25</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1147724198</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI CENTRALE - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>29.91</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>332.36</ImponibileImporto>
+        <Imposta>33.24</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <RiferimentoNormativo>IVA vendite 10%</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <DataScadenzaPagamento>2019-07-31</DataScadenzaPagamento>
+        <ImportoPagamento>365.60</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

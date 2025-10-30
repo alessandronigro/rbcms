@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/fatturapa_v1.2.xsl"?>
+<nm:FatturaElettronica versione="FPR12" xmlns:nm="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:prx="urn:sap.com:proxy:MEP:/1SAI/TAS81A7C5B6658EC85DE937:702">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>06188330150</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>2768255</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02066400405</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>06188330150</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>MAGGIOLI SPA</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via del Carpino</Indirizzo>
+        <CAP>47822</CAP>
+        <Comune>Santarcangelo di Romagna</Comune>
+        <Provincia>RN</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RN</Ufficio>
+        <NumeroREA>219107</NumeroREA>
+        <CapitaleSociale>2197920.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>0541628111</Telefono>
+        <Email>maggiolispa@maggioli.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R B CONSULTING SRL </Denominazione>
+          <Titolo>0001130181</Titolo>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD24</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-04-17</Data>
+        <Numero>0001120428</Numero>
+        <ImportoTotaleDocumento>40.66</ImportoTotaleDocumento>
+        <Causale>FATTURA INT. DI MORA</Causale>
+      </DatiGeneraliDocumento>
+      <DatiOrdineAcquisto>
+        <IdDocumento>0</IdDocumento>
+        <CodiceCommessaConvenzione>Ai sensi dell articolo 124, l autocertificazione del DURF e il DURF sono</CodiceCommessaConvenzione>
+      </DatiOrdineAcquisto>
+      <DatiOrdineAcquisto>
+        <IdDocumento>0</IdDocumento>
+        <CodiceCommessaConvenzione>disponibili al link: www.maggioli.it</CodiceCommessaConvenzione>
+      </DatiOrdineAcquisto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>INTERESSI SU FATTURA 2023 / 0005952270 DI              372.60 EUR DAL 20230701 AL 20231231 GG.       184 TASSO 12.0000000 %</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>22.54</PrezzoUnitario>
+        <PrezzoTotale>22.54</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>INTERESSI SU FATTURA 2023 / 0005952270 DI              372.60 EUR DAL 20240101 AL 20240331 GG.        91 TASSO 12.5000000 %</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>11.58</PrezzoUnitario>
+        <PrezzoTotale>11.58</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>INTERESSI SU FATTURA 2023 / 0005952270 DI              372.60 EUR DAL 20230501 AL 20230630 GG.        61 TASSO 10.5000000 %</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>6.54</PrezzoUnitario>
+        <PrezzoTotale>6.54</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+        <ImponibileImporto>40.66</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <RiferimentoNormativo>Art. 15 DPR633/72 ESCLUSO - VENDITE</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP01</ModalitaPagamento>
+        <ImportoPagamento>0.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</nm:FatturaElettronica>

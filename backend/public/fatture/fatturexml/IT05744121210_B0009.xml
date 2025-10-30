@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12" xmlns="http://www.fatturapa.gov.it/sdi/fatturapa/v1.2">
+  <FatturaElettronicaHeader xmlns="">
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05744121210</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>B00092019</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>R&amp;BCONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Crescenzio</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>07305361003</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>07305361003</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>ACEA Energia Spa</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Piazzale Ostiense, 2</Indirizzo>
+        <CAP>00154</CAP>
+        <Comune>Roma</Comune>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody xmlns="">
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD04</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-02-01</Data>
+        <Numero>B/0009/2019</Numero>
+        <DatiRitenuta>
+          <TipoRitenuta>RT02</TipoRitenuta>
+          <ImportoRitenuta>647.21</ImportoRitenuta>
+          <AliquotaRitenuta>23.00</AliquotaRitenuta>
+          <CausalePagamento>A</CausalePagamento>
+        </DatiRitenuta>
+        <DatiCassaPrevidenziale>
+          <TipoCassa>TC07</TipoCassa>
+          <AlCassa>1.00</AlCassa>
+          <ImportoContributoCassa>-140.70</ImportoContributoCassa>
+          <ImponibileCassa>14069.70</ImponibileCassa>
+          <AliquotaIVA>0.00</AliquotaIVA>
+          <Natura>N1</Natura>
+        </DatiCassaPrevidenziale>
+        <ImportoTotaleDocumento>1716503.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+      <DatiOrdineAcquisto>
+        <IdDocumento>4800020599</IdDocumento>
+      </DatiOrdineAcquisto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Dicembre - ODA 4800020599 - EM 5000030898  </Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>14069.70</PrezzoUnitario>
+        <PrezzoTotale>14069.70</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <Ritenuta>SI</Ritenuta>
+        <AltriDatiGestionali>
+          <TipoDato>EM</TipoDato>
+          <RiferimentoTesto>5000030898</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>14069.70</ImponibileImporto>
+        <Imposta>3095.33</Imposta>
+        <EsigibilitaIVA>S</EsigibilitaIVA>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N2</Natura>
+        <SpeseAccessorie>0.00</SpeseAccessorie>
+        <ImponibileImporto>-140.70</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <RiferimentoNormativo>Operazione N/IVA</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP01</CondizioniPagamento>
+      <DettaglioPagamento>
+        <Beneficiario>R&amp;BCONSULTING S.R.L</Beneficiario>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <ImportoPagamento>13281.80</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

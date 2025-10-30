@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="fe_wki_123.xsd"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                       xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"
+                       versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione>
+         <IdTrasmittente>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>10209790152</IdCodice>
+         </IdTrasmittente>
+         <ProgressivoInvio>E207100162</ProgressivoInvio>
+         <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+         <CodiceDestinatario>0000000</CodiceDestinatario>
+         <PECDestinatario>RBCONSULTINGSRL@PEC.IT</PECDestinatario>
+      </DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>US</IdPaese>
+               <IdCodice>99999999999</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>ZOOM VIDEO COMMUNICATION INC.</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF18</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>ALMADEN BLVD</Indirizzo>
+            <NumeroCivico>55</NumeroCivico>
+            <CAP>99999</CAP>
+            <Comune>SAN JOSE</Comune>
+            <Nazione>US</Nazione>
+         </Sede>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>17044041006</IdCodice>
+            </IdFiscaleIVA>
+            <CodiceFiscale>17044041006</CodiceFiscale>
+            <Anagrafica>
+               <Denominazione>RB CONSULTING SRL</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA CRESCENZIO</Indirizzo>
+            <NumeroCivico>25</NumeroCivico>
+            <CAP>00193</CAP>
+            <Comune>ROMA</Comune>
+            <Provincia>RM</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+      <SoggettoEmittente>CC</SoggettoEmittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD17</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2025-10-01</Data>
+            <Numero>0200042-131025RBC</Numero>
+            <ImportoTotaleDocumento>19.51</ImportoTotaleDocumento>
+         </DatiGeneraliDocumento>
+         <DatiFattureCollegate>
+            <IdDocumento>INV316953698</IdDocumento>
+            <Data>2025-08-10</Data>
+         </DatiFattureCollegate>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Integrazione fattura/autofattura   22 %</Descrizione>
+            <Quantita>1.000</Quantita>
+            <PrezzoUnitario>15.99000</PrezzoUnitario>
+            <PrezzoTotale>15.99</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Prestazioni di SERVIZI effettuate con riferimento al documento di acquisto originale, i cui estremi sono indicati nell'elemento DatiFattureCollegate</Descrizione>
+            <PrezzoUnitario>0.00000</PrezzoUnitario>
+            <PrezzoTotale>0.00</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <ImponibileImporto>15.99</ImponibileImporto>
+            <Imposta>3.52</Imposta>
+            <EsigibilitaIVA>I</EsigibilitaIVA>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+   </FatturaElettronicaBody>
+</p:FatturaElettronica>

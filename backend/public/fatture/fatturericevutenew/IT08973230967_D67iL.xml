@@ -1,0 +1,109 @@
+<ns2:FatturaElettronica xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione><IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>08973230967</IdCodice></IdTrasmittente><ProgressivoInvio>D67iL</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>0000000</CodiceDestinatario></DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>08171761219</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>EURO GROUP NETWORK S.R.L.</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>via Pittore 117</Indirizzo>
+            <CAP>80046</CAP>
+            <Comune>San Giorgio a Cremano</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>17044041006</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>RB Consulting Srl</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>via Crescenzio, 25</Indirizzo>
+            <CAP>00194</CAP>
+            <Comune>Roma</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+      <TerzoIntermediarioOSoggettoEmittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>00161809991</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Amazon Services Europe S.à r.l.</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+      </TerzoIntermediarioOSoggettoEmittente>
+      <SoggettoEmittente>TZ</SoggettoEmittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2025-09-19</Data>
+            <Numero>IT50013IOO317I</Numero>
+            <ImportoTotaleDocumento>29.65</ImportoTotaleDocumento>
+            <Arrotondamento>0.00</Arrotondamento>
+         </DatiGeneraliDocumento>
+         <DatiContratto>
+            <RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
+            <RiferimentoNumeroLinea>2</RiferimentoNumeroLinea>
+            <IdDocumento>403-2415279-6445925</IdDocumento>
+            <Data>2025-09-19</Data>
+         </DatiContratto>
+         <FatturaPrincipale>
+            <NumeroFatturaPrincipale>IT50013IOO317I</NumeroFatturaPrincipale>
+            <DataFatturaPrincipale>2025-09-19</DataFatturaPrincipale>
+         </FatturaPrincipale>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>KIT ACCESSORI CAFFE con 150 BUSTINE DI ZUCCHERO + 150 BICCHIERINI + 150 PALETTINE - EUROCHIBI(R) LINEA ALTA QUALITA</Descrizione>
+            <Quantita>4.00</Quantita>
+            <DataInizioPeriodo>2025-09-19</DataInizioPeriodo>
+            <DataFinePeriodo>2025-09-19</DataFinePeriodo>
+            <PrezzoUnitario>4.09</PrezzoUnitario>
+            <PrezzoTotale>16.36</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Costi di spedizione</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2025-09-19</DataInizioPeriodo>
+            <DataFinePeriodo>2025-09-19</DataFinePeriodo>
+            <PrezzoUnitario>7.93</PrezzoUnitario>
+            <PrezzoTotale>7.93</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <Arrotondamento>0.07</Arrotondamento>
+            <ImponibileImporto>24.36</ImponibileImporto>
+            <Imposta>5.36</Imposta>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP08</ModalitaPagamento>
+            <ImportoPagamento>29.65</ImportoPagamento>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</ns2:FatturaElettronica>

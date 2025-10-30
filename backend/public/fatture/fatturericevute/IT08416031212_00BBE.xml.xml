@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05006900962</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>zmjid00358</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>08416031212</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>08416031212</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>I DOLCI VIAGGI SRL</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF11</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA DOMENICO CIMAROSA, 69</Indirizzo>
+        <NumeroCivico>69</NumeroCivico>
+        <CAP>80127</CAP>
+        <Comune>NAPOLI</Comune>
+        <Provincia>NA</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R&amp;B CONSULTING</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO, 36</Indirizzo>
+        <CAP>00100</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-12-02</Data>
+        <Numero>158/F7</Numero>
+        <ImportoTotaleDocumento>128.10</ImportoTotaleDocumento>
+        <Causale>Fattura Immediata</Causale>
+      </DatiGeneraliDocumento>
+      <DatiOrdineAcquisto>
+        <IdDocumento>158/F7</IdDocumento>
+        <Data>2019-12-02</Data>
+      </DatiOrdineAcquisto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>20</NumeroLinea>
+        <Descrizione>Rif. Pratica: 2019/000139/S  del 02-12-2019viaggio bari lecceBARI                                    Durata dal 14-12-2019 al 16-12-2019</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N5</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>30</NumeroLinea>
+        <Descrizione>Hotel Re del Sale Lecce</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N.</UnitaMisura>
+        <PrezzoUnitario>49.50</PrezzoUnitario>
+        <PrezzoTotale>49.50</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N5</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>40</NumeroLinea>
+        <Descrizione>FSW  N 1273706780    del 02-12-2019 bari lecce sgueglia angela</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N.</UnitaMisura>
+        <PrezzoUnitario>10.80</PrezzoUnitario>
+        <PrezzoTotale>10.80</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N5</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>50</NumeroLinea>
+        <Descrizione>FSW  N -RZV8U5    del 02-12-2019 lecce caserta sgueglia angela</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N.</UnitaMisura>
+        <PrezzoUnitario>47.90</PrezzoUnitario>
+        <PrezzoTotale>47.90</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N5</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>60</NumeroLinea>
+        <Descrizione>FSW  N -RZYXU5    del 02-12-2019 caserta bari sgueglia angela</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N.</UnitaMisura>
+        <PrezzoUnitario>19.90</PrezzoUnitario>
+        <PrezzoTotale>19.90</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N5</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>70</NumeroLinea>
+        <Descrizione>Prestazioni rese nel territorio della Comunita' Europea         128,10</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N5</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>80</NumeroLinea>
+        <Descrizione>Imposta assolta ai sensi del regolamento emanato com DM 340/1999.La fattura non costituisce titolo per la detrazione dell'imposta.</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N5</Natura>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N5</Natura>
+        <ImponibileImporto>128.10</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <RiferimentoNormativo>ART 74 TER U.E.</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <DataScadenzaPagamento>2019-12-02</DataScadenzaPagamento>
+        <ImportoPagamento>128.10</ImportoPagamento>
+        <ScontoPagamentoAnticipato>0.00</ScontoPagamentoAnticipato>
+        <PenalitaPagamentiRitardati>0.00</PenalitaPagamentiRitardati>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.2.xsl"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                       xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"
+                       versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione>
+         <IdTrasmittente>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>10209790152</IdCodice>
+         </IdTrasmittente>
+         <ProgressivoInvio>E2071000Q0</ProgressivoInvio>
+         <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+         <CodiceDestinatario>0000000</CodiceDestinatario>
+         <PECDestinatario>RBCONSULTINGSRL@PEC.IT</PECDestinatario>
+      </DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>DE</IdPaese>
+               <IdCodice>267602842</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>CONTABO GMBH</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF18</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>ASCHAUER STRABE</Indirizzo>
+            <NumeroCivico>32A</NumeroCivico>
+            <CAP>99999</CAP>
+            <Comune>MONACO DI BAVIERA</Comune>
+            <Nazione>DE</Nazione>
+         </Sede>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>17044041006</IdCodice>
+            </IdFiscaleIVA>
+            <CodiceFiscale>17044041006</CodiceFiscale>
+            <Anagrafica>
+               <Denominazione>RB CONSULTING SRL</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA CRESCENZIO</Indirizzo>
+            <NumeroCivico>25</NumeroCivico>
+            <CAP>00193</CAP>
+            <Comune>ROMA</Comune>
+            <Provincia>RM</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+      <SoggettoEmittente>CC</SoggettoEmittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD17</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2024-10-31</Data>
+            <Numero>0200039-111124RBC</Numero>
+            <ImportoTotaleDocumento>84.70</ImportoTotaleDocumento>
+         </DatiGeneraliDocumento>
+         <DatiFattureCollegate>
+            <IdDocumento>47324200041</IdDocumento>
+            <Data>2024-10-31</Data>
+         </DatiFattureCollegate>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Integrazione fattura/autofattura   22 %</Descrizione>
+            <Quantita>1.000</Quantita>
+            <PrezzoUnitario>69.43000</PrezzoUnitario>
+            <PrezzoTotale>69.43</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Prestazioni di SERVIZI effettuate con riferimento al documento di acquisto originale, i cui estremi sono indicati nell'elemento DatiFattureCollegate</Descrizione>
+            <PrezzoUnitario>0.00000</PrezzoUnitario>
+            <PrezzoTotale>0.00</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <ImponibileImporto>69.43</ImponibileImporto>
+            <Imposta>15.27</Imposta>
+            <EsigibilitaIVA>I</EsigibilitaIVA>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+   </FatturaElettronicaBody>
+</p:FatturaElettronica>

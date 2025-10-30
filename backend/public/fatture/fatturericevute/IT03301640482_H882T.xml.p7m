@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<FatturaElettronica xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" versione="FPR12">
+  <FatturaElettronicaHeader xmlns="">
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01841220740</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>004IQ</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <ContattiTrasmittente>
+        <Telefono>0802255000</Telefono>
+      </ContattiTrasmittente>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01841220740</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>01841220740</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione><![CDATA[EGNATHIA INIZIATIVE TURISTICHE - E.I.T. S.p.A. ]]></Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo><![CDATA[Via Claudio Monteverdi, 16]]></Indirizzo>
+        <CAP>00198</CAP>
+        <Comune><![CDATA[ROMA]]></Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RM</Ufficio>
+        <NumeroREA>1253762</NumeroREA>
+        <CapitaleSociale>200000.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>0802255000</Telefono>
+        <Fax>0802255001</Fax>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione><![CDATA[R&B Consulting Srl ]]></Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo><![CDATA[Via Crescenzio,25]]></Indirizzo>
+        <CAP>00193</CAP>
+        <Comune><![CDATA[Roma]]></Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody xmlns="">
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2021-11-01</Data>
+        <Numero>01-FT 12101735</Numero>
+        <ImportoTotaleDocumento>551.68</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione><![CDATA[Room Service Conto C07-41080  Russo Giuseppe]]></Descrizione>
+        <Quantita>2.00</Quantita>
+        <DataInizioPeriodo>2021-10-29</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-29</DataFinePeriodo>
+        <PrezzoUnitario>14.55</PrezzoUnitario>
+        <PrezzoTotale>29.10</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione><![CDATA[Bar del Portico Conto C04-47647  Russo Giuseppe]]></Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-10-29</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-29</DataFinePeriodo>
+        <PrezzoUnitario>36.98</PrezzoUnitario>
+        <PrezzoTotale>36.98</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione><![CDATA[*Pernottamento BB 29.10.21/#168 Russo Giuseppe]]></Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-10-29</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-29</DataFinePeriodo>
+        <PrezzoUnitario>318.18</PrezzoUnitario>
+        <PrezzoTotale>318.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione><![CDATA[*Pernottamento BB 30.10.21/#168 Russo Giuseppe]]></Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-10-30</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-30</DataFinePeriodo>
+        <PrezzoUnitario>318.18</PrezzoUnitario>
+        <PrezzoTotale>318.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione><![CDATA[*Pernottamento BB 31.10.21/#168 Russo Giuseppe]]></Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-10-31</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-31</DataFinePeriodo>
+        <PrezzoUnitario>318.18</PrezzoUnitario>
+        <PrezzoTotale>318.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione><![CDATA[Room Service Conto C07-41210  Russo Giuseppe]]></Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-11-01</DataInizioPeriodo>
+        <DataFinePeriodo>2021-11-01</DataFinePeriodo>
+        <PrezzoUnitario>64.55</PrezzoUnitario>
+        <PrezzoTotale>64.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione><![CDATA[*Acconto IVA 10% 29.10.21 Russo Giuseppe]]></Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-10-29</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-29</DataFinePeriodo>
+        <PrezzoUnitario>-159.09</PrezzoUnitario>
+        <PrezzoTotale>-159.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione><![CDATA[*Acconto IVA 10% 29.10.21 Russo Giuseppe]]></Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-10-29</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-29</DataFinePeriodo>
+        <PrezzoUnitario>-477.27</PrezzoUnitario>
+        <PrezzoTotale>-477.27</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione><![CDATA[*City Tax  Russo Giuseppe]]></Descrizione>
+        <Quantita>2.00</Quantita>
+        <DataInizioPeriodo>2021-10-29</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-29</DataFinePeriodo>
+        <PrezzoUnitario>4.50</PrezzoUnitario>
+        <PrezzoTotale>9.00</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione><![CDATA[Golf Cart 18 buche 30/10/2021 08:00-30/10/2021 08:08  Russo Giuseppe]]></Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-10-30</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-30</DataFinePeriodo>
+        <PrezzoUnitario>32.79</PrezzoUnitario>
+        <PrezzoTotale>32.79</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione><![CDATA[*City Tax  Russo Giuseppe]]></Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-10-30</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-30</DataFinePeriodo>
+        <PrezzoUnitario>4.50</PrezzoUnitario>
+        <PrezzoTotale>4.50</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <Descrizione><![CDATA[*City Tax  Russo Giuseppe]]></Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-10-31</DataInizioPeriodo>
+        <DataFinePeriodo>2021-10-31</DataFinePeriodo>
+        <PrezzoUnitario>4.50</PrezzoUnitario>
+        <PrezzoTotale>4.50</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <Arrotondamento>-0.01</Arrotondamento>
+        <ImponibileImporto>448.80</ImponibileImporto>
+        <Imposta>44.88</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+        <ImponibileImporto>18.00</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <RiferimentoNormativo><![CDATA[IT Es. Art. 15]]></RiferimentoNormativo>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>32.79</ImponibileImporto>
+        <Imposta>7.21</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</FatturaElettronica>

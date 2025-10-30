@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>02098391200</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>5UHEk</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6BQ</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03521110837</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>BAKEDPASTA SRLS</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA PRESTI PAOLO</Indirizzo>
+        <NumeroCivico>27</NumeroCivico>
+        <CAP>98054</CAP>
+        <Comune>FURNARI</Comune>
+        <Provincia>ME</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Email>info@ristolaplaza.com</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via dei vecchi pini</Indirizzo>
+        <NumeroCivico>13</NumeroCivico>
+        <CAP>81100</CAP>
+        <Comune>Caserta</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02098391200</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>UNIMATICA S.P.A.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-08-10</Data>
+        <Numero>43</Numero>
+        <ImportoTotaleDocumento>153.00</ImportoTotaleDocumento>
+        <Arrotondamento>0.00</Arrotondamento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>PASTI  COMPLETI MENU' PESCE</Descrizione>
+        <Quantita>6.00</Quantita>
+        <UnitaMisura>n</UnitaMisura>
+        <PrezzoUnitario>23.182</PrezzoUnitario>
+        <PrezzoTotale>139.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <SpeseAccessorie>0.00</SpeseAccessorie>
+        <Arrotondamento>0.00</Arrotondamento>
+        <ImponibileImporto>139.09</ImponibileImporto>
+        <Imposta>13.91</Imposta>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <Beneficiario>BAKEDPASTA SRLS   </Beneficiario>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>153.00</ImportoPagamento>
+        <ScontoPagamentoAnticipato>0.00</ScontoPagamentoAnticipato>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

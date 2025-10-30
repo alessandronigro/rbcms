@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="windows-1252"?>                                                                                                                                                                               
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>                                                                                                                                                                
+<p:FatturaElettronica versione="FPR12"                                                                                                                                                                                      
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"                                                                                                                                                                               
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"                                                                                                                                                     
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">                                                                                                                                                                      
+  <FatturaElettronicaHeader>
+   <DatiTrasmissione>
+    <IdTrasmittente>
+     <IdPaese>SM</IdPaese>
+                            <IdCodice>03473</IdCodice>
+    </IdTrasmittente>
+          <ProgressivoInvio>1/16</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+   </DatiTrasmissione>
+   <CedentePrestatore>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>07752321211</IdCodice>
+     </IdFiscaleIVA>
+          <CodiceFiscale>07752321211</CodiceFiscale>
+     <Anagrafica>
+                                                                 <Denominazione>TANYA FUTURE S.R.L.S.</Denominazione>
+     </Anagrafica>
+     <RegimeFiscale>RF01</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+                                        <Indirizzo>VIA FRANCESCO PETRARCA 27</Indirizzo>
+     <CAP>80123</CAP>
+                                                           <Comune>NAPOLI</Comune>
+     <Provincia>NA</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+    <IscrizioneREA>
+     <Ufficio>NA</Ufficio>
+                   <NumeroREA>907346</NumeroREA>
+     <SocioUnico>SU</SocioUnico>
+     <StatoLiquidazione>LN</StatoLiquidazione>
+    </IscrizioneREA>
+    <Contatti>
+     <Email>INFOTANYAFUTURE@GMAIL.COM</Email>                                   
+    </Contatti>
+   </CedentePrestatore>
+   <CessionarioCommittente>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>05744121210</IdCodice>
+     </IdFiscaleIVA>
+     <Anagrafica>
+                                                                <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+     </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+                                                <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+     <CAP>00193</CAP>
+                                                             <Comune>ROMA</Comune>
+     <Provincia>RM</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+   </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+   <DatiGenerali>
+    <DatiGeneraliDocumento>
+     <TipoDocumento>TD01</TipoDocumento>
+     <Divisa>EUR</Divisa>
+     <Data>2020-07-01</Data>
+                     <Numero>1/16</Numero>
+     <ImportoTotaleDocumento>         550.00</ImportoTotaleDocumento>
+    </DatiGeneraliDocumento>
+   </DatiGenerali>
+   <DatiBeniServizi>
+    <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>SECT</CodiceValore>                               
+     </CodiceArticolo>
+                                                                             <Descrizione>EVENTO 11 LUGLIO 2020 ISCHIA</Descrizione>
+     <Quantita>             1.000000</Quantita>
+             <UnitaMisura>01</UnitaMisura>
+     <PrezzoUnitario>           500.000000</PrezzoUnitario>
+     <PrezzoTotale>               500.00</PrezzoTotale>
+     <AliquotaIVA>10.00</AliquotaIVA> 
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>10.00</AliquotaIVA>
+     <ImponibileImporto>500.00         </ImponibileImporto>
+     <Imposta>50.00          </Imposta>
+     <EsigibilitaIVA>I</EsigibilitaIVA>
+    </DatiRiepilogo>
+   </DatiBeniServizi>
+   <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+     <ModalitaPagamento>MP05</ModalitaPagamento>
+     <DataScadenzaPagamento>2020-07-01</DataScadenzaPagamento>
+     <ImportoPagamento>550.00</ImportoPagamento>         
+     <IstitutoFinanziario>BANCA PROMOS S.P.A.</IstitutoFinanziario>                                                             
+     <IBAN>IT59T0326503400000010134260</IBAN>       
+     <ABI>03265</ABI>
+     <CAB>03400</CAB>
+    </DettaglioPagamento>
+   </DatiPagamento>
+  </FatturaElettronicaBody>
+ </p:FatturaElettronica>

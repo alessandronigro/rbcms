@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>06628860964</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>8779452223</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01338040619</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>01338040619</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>VANESSA SOUND S.R.L. UNIPERSONALE</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA GENNARO TESCIONE  N. 74</Indirizzo>
+        <CAP>81100</CAP>
+        <Comune>CASERTA</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>CE</Ufficio>
+        <NumeroREA>CE-106176</NumeroREA>
+        <CapitaleSociale>150000.00</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>0823305445</Telefono>
+        <Email>vanessasound@pec.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING SRL </Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+        <CAP>00164</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>06628860964</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>06628860964</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>PA DIGITALE S.P.A.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2023-07-26</Data>
+        <Numero>0104-003374</Numero>
+        <ImportoTotaleDocumento>77.96</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+      <DatiTrasporto>
+        <CausaleTrasporto>SCARICHI DA COMMISSIONI</CausaleTrasporto>
+      </DatiTrasporto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>  NS. RIF.: CORC/000000 DEL 26/07/2023 - RIF. : 017010M001E223 </Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>  NS. RIF.: COMM/017010 DEL 26/07/2023 - ID SPEZZA : C02840435</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+          <CodiceValore>109604.       </CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>PRO. CHL200LU5 CAVO PROF. MICROF.JACK 6,3MM + 3P.FEM XLR 5MT</Descrizione>
+        <Quantita>2.00</Quantita>
+        <UnitaMisura>N  </UnitaMisura>
+        <PrezzoUnitario>8.19</PrezzoUnitario>
+        <PrezzoTotale>16.38</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+          <CodiceValore>0500844       </CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CELL TAACHUSB10WW CARICABATTERIA RETE TECH AWAY USB 10W BIANCO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N  </UnitaMisura>
+        <PrezzoUnitario>6.55</PrezzoUnitario>
+        <PrezzoTotale>6.55</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+          <CodiceValore>0555291       </CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CELL WATCHSTANDWIRMFIK CARICABATTERIE WIRELESS APPLE WATCH</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>N  </UnitaMisura>
+        <PrezzoUnitario>40.97</PrezzoUnitario>
+        <PrezzoTotale>40.97</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>--------------------</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>63.90</ImponibileImporto>
+        <Imposta>14.06</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <DataScadenzaPagamento>2023-07-26</DataScadenzaPagamento>
+        <ImportoPagamento>77.96</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

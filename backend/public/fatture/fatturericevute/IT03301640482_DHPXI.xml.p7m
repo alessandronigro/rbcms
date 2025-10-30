@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:FatturaElettronica xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>03731400929</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>1076</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03731400929</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>DOWNTOWN CAGLIARI SRL</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Nuoro 72</Indirizzo>
+        <CAP>09125</CAP>
+        <Comune>Cagliari</Comune>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>CA</Ufficio>
+        <NumeroREA>293567</NumeroREA>
+        <CapitaleSociale>100000.00</CapitaleSociale>
+        <SocioUnico>SU</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>R B Consulting srl</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Crescenzio, 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2021-03-29</Data>
+        <Numero>281</Numero>
+        <ImportoTotaleDocumento>1848.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Giuseppe Russo-American Bar Vivande Doglio</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-26</DataInizioPeriodo>
+        <PrezzoUnitario>43.63636364</PrezzoUnitario>
+        <PrezzoTotale>43.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Giuseppe Russo-American Bar Bevande Doglio</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-26</DataInizioPeriodo>
+        <PrezzoUnitario>69.09090909</PrezzoUnitario>
+        <PrezzoTotale>69.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>Giuseppe Russo-American Bar Bevande Doglio</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-26</DataInizioPeriodo>
+        <PrezzoUnitario>127.27272727</PrezzoUnitario>
+        <PrezzoTotale>127.2727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Transfer F.A.T. Non Imponibile Art. 15 - Minivan APT - HOTEL</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-26</DataInizioPeriodo>
+        <PrezzoUnitario>55.00</PrezzoUnitario>
+        <PrezzoTotale>55.00</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Camera e Colazione</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-26</DataInizioPeriodo>
+        <PrezzoUnitario>227.27272727</PrezzoUnitario>
+        <PrezzoTotale>227.2727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>Giuseppe Russo-American Bar Bevande Doglio - bottiglia belvedere</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-27</DataInizioPeriodo>
+        <PrezzoUnitario>136.36363636</PrezzoUnitario>
+        <PrezzoTotale>136.3636</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>Giuseppe Russo-American Bar Bevande Doglio</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-27</DataInizioPeriodo>
+        <PrezzoUnitario>3.18181818</PrezzoUnitario>
+        <PrezzoTotale>3.1818</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Room Service Vivande</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-27</DataInizioPeriodo>
+        <PrezzoUnitario>16.36363636</PrezzoUnitario>
+        <PrezzoTotale>16.3636</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Room Service Bevande</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-27</DataInizioPeriodo>
+        <PrezzoUnitario>21.81818182</PrezzoUnitario>
+        <PrezzoTotale>21.8182</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Minibar Bevande Doglio</Descrizione>
+        <Quantita>2.00</Quantita>
+        <DataInizioPeriodo>2021-03-27</DataInizioPeriodo>
+        <PrezzoUnitario>4.54545455</PrezzoUnitario>
+        <PrezzoTotale>9.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Minibar Bevande Doglio</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-27</DataInizioPeriodo>
+        <PrezzoUnitario>6.36363636</PrezzoUnitario>
+        <PrezzoTotale>6.3636</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Camera e Colazione</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-27</DataInizioPeriodo>
+        <PrezzoUnitario>227.27272727</PrezzoUnitario>
+        <PrezzoTotale>227.2727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>13</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Osteria del Forte Cena Vivande</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-28</DataInizioPeriodo>
+        <PrezzoUnitario>260.00</PrezzoUnitario>
+        <PrezzoTotale>260.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>14</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Osteria del Forte Cena Bevande</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-28</DataInizioPeriodo>
+        <PrezzoUnitario>102.27272727</PrezzoUnitario>
+        <PrezzoTotale>102.2727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>15</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Osteria del Forte Cena Bevande</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-28</DataInizioPeriodo>
+        <PrezzoUnitario>87.27272727</PrezzoUnitario>
+        <PrezzoTotale>87.2727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>16</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Room Service Vivande</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-28</DataInizioPeriodo>
+        <PrezzoUnitario>13.63636364</PrezzoUnitario>
+        <PrezzoTotale>13.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>17</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Room Service Bevande</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-28</DataInizioPeriodo>
+        <PrezzoUnitario>25.45454545</PrezzoUnitario>
+        <PrezzoTotale>25.4545</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>18</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Camera e Colazione</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-28</DataInizioPeriodo>
+        <PrezzoUnitario>227.27272727</PrezzoUnitario>
+        <PrezzoTotale>227.2727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>19</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Room Service Vivande</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-29</DataInizioPeriodo>
+        <PrezzoUnitario>13.63636364</PrezzoUnitario>
+        <PrezzoTotale>13.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>20</NumeroLinea>
+        <Descrizione>Giuseppe Russo-Room Service Bevande</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2021-03-29</DataInizioPeriodo>
+        <PrezzoUnitario>12.72727273</PrezzoUnitario>
+        <PrezzoTotale>12.7273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>1630.00</ImponibileImporto>
+        <Imposta>163.00</Imposta>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+        <ImponibileImporto>55.00</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <RiferimentoNormativo>Non Imp Art. 15</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>1848.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</ns2:FatturaElettronica>

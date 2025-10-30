@@ -1,0 +1,2453 @@
+﻿<html xmlns:a="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style type="text/css">
+					#fattura-container { width: 100%; position: relative; }
+
+					#fattura-elettronica { font-family: sans-serif; margin-left: auto; margin-right: auto; max-width: 1280px; min-width: 930px; padding: 0; }
+					#fattura-elettronica .versione { font-size: 11px; float:right; color: #777777; }
+					#fattura-elettronica h1 { padding: 20px 0 0 0; margin: 0; font-size: 30px; }
+					#fattura-elettronica h2 { padding: 20px 0 0 0; margin: 0; font-size: 20px; }
+					#fattura-elettronica h3 { padding: 20px 0 0 0; margin: 0; font-size: 25px; }
+					#fattura-elettronica h4 { padding: 20px 0 0 0; margin: 0; font-size: 20px; }
+					#fattura-elettronica h5 { padding: 15px 0 0 0; margin: 0;
+					font-size: 17px; font-style: italic; }
+					#fattura-elettronica ul { list-style-type: none; margin: 0 !important; padding: 15px 0 0 40px !important; }
+					#fattura-elettronica ul li {}
+					#fattura-elettronica ul li span { font-weight: bold; }
+					#fattura-elettronica div { padding: 0; margin: 0; }
+
+					#fattura-elettronica
+					div.page {
+					background-color: #fff !important;
+					position: relative;
+
+					margin: 20px 0
+					50px 0;
+					padding: 60px;
+
+					background: -moz-linear-gradient(0% 0 360deg, #FFFFFF, #F2F2F2 20%, #FFFFFF) repeat scroll 0 0 transparent;
+					border: 1px solid #CCCCCC;
+					-webkitbox-shadow: 0 0 10px rgba(0, 0, 0,
+					0.3);
+					-mozbox-shadow: 0
+					0 10px rgba(0, 0, 0, 0.3);
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+					background: url('logo_sdi_trasparente.jpg') 98% 50px no-repeat;
+					}
+					#fattura-elettronica div.footer { padding: 50px 0 0 0; margin: 0; font-size: 11px; text-align: center; color: #777777; }
+				</style>
+  </head>
+  <body>
+    <div id="fattura-container">
+      <div id="fattura-elettronica">
+        <h1>FATTURA ELETTRONICA</h1>
+        <div class="page">
+          <div class="versione">
+										Versione FPR12</div>
+          <div id="dati-trasmissione">
+            <h3>Dati relativi alla trasmissione</h3>
+            <ul>
+              <li>
+															Identificativo del trasmittente:
+															<span>IT01641790702</span></li>
+              <li>
+															Progressivo di invio:
+															<span>01876</span></li>
+              <li>
+															Formato Trasmissione:
+															<span>FPR12</span></li>
+              <li>
+															Codice Amministrazione destinataria:
+															<span>KRRH6B9</span></li>
+              <li>
+															Telefono del trasmittente:
+															<span>0874-60561</span></li>
+            </ul>
+          </div>
+          <div id="cedente">
+            <h3>Dati del cedente / prestatore</h3>
+            <h4>Dati anagrafici</h4>
+            <ul>
+              <li>
+																Identificativo fiscale ai fini IVA:
+																<span>IT03455270615</span></li>
+              <li>
+																Denominazione:
+																<span>SG DETERSIVI SRL</span></li>
+              <li>
+																Regime fiscale:
+																<span>RF01</span>
+																		(ordinario)
+																	</li>
+            </ul>
+            <h4>Dati della sede</h4>
+            <ul>
+              <li>
+																Indirizzo:
+																<span>VIA RUTA N.87</span></li>
+              <li>
+																CAP:
+																<span>81100</span></li>
+              <li>
+																Comune:
+																<span>CASERTA</span></li>
+              <li>
+																Provincia:
+																<span>CE</span></li>
+              <li>
+																Nazione:
+																<span>IT</span></li>
+            </ul>
+          </div>
+          <div id="cessionario">
+            <h3>Dati del cessionario / committente</h3>
+            <h4>Dati anagrafici</h4>
+            <ul>
+              <li>
+																Identificativo fiscale ai fini IVA:
+																<span>IT05744121210</span></li>
+              <li>
+																Denominazione:
+																<span>R&amp;B CONSULTING SRL</span></li>
+            </ul>
+            <h4>Dati della sede</h4>
+            <ul>
+              <li>
+																Indirizzo:
+																<span>VIA CRESCENZIO N.25</span></li>
+              <li>
+																CAP:
+																<span>00194</span></li>
+              <li>
+																Comune:
+																<span>ROMA</span></li>
+              <li>
+																Provincia:
+																<span>RM</span></li>
+              <li>
+																Nazione:
+																<span>IT</span></li>
+            </ul>
+          </div>
+          <div class="footer">
+										Versione prodotta con foglio di stile SdI
+										<a href="http://www.fatturapa.gov.it">www.fatturapa.gov.it</a></div>
+        </div>
+        <div class="page">
+          <div class="versione">
+										Versione FPR12</div>
+          <div id="dati-generali">
+            <div id="dati-generali-documento">
+              <h3>Dati generali del documento</h3>
+              <ul>
+                <li>
+																Tipologia documento:
+																<span>TD01</span>
+																		(fattura)
+																	</li>
+                <li>
+																Valuta importi:
+																<span>EUR</span></li>
+                <li>
+																Data documento:
+																<span>2021-09-10</span> (10 
+				Settembre
+			 2021)</li>
+                <li>
+																Numero documento:
+																<span>485</span></li>
+                <li>
+																Importo totale documento:
+																<span>208.00</span></li>
+              </ul>
+            </div>
+            <div id="dati-trasporto">
+              <h3>Dati relativi al trasporto</h3>
+              <h4>Altri dati</h4>
+              <ul>
+                <li>
+																		Causale trasporto:
+																		<span>vendita</span></li>
+              </ul>
+            </div>
+          </div>
+          <div id="dati-dettaglio-linee">
+            <div id="righe">
+              <h3>Dati relativi alle linee di dettaglio della fornitura</h3>
+              <h5>
+															Nr. linea:
+															<span>1</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>3014260262709</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>GILLETTE RICARICA VENUS PZ.4</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>6.9672</span></li>
+                <li>
+																	Valore totale:
+																	<span>6.97</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>2</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>3014260262709</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>GILLETTE RICARICA VENUS PZ.4</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>6.9672</span></li>
+                <li>
+																	Valore totale:
+																	<span>6.97</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>3</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>3384126003846</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>SPONTEX SPUGNE DOPPIOUSO PZ.2</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.8197</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.82</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>4</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>3384126003846</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>SPONTEX SPUGNE DOPPIOUSO PZ.2</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.8197</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.82</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>5</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>3574660067682</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CARAFREE SALVASLIP PZ.44</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.4344</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.43</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>6</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>4000388179004</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOVE SAPONE RICARICA ORIGINAL 500ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.0656</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.07</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>7</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>4005808399123</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>NIVEA BAGNO CARE &amp; DIAMOND 750ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.8852</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.89</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>8</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>4084500206014</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>VIAKAL 500 ML</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.3525</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.35</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>9</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>40883007</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOVE CORPO CREMA SILK CLASSICA 300ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.418</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.42</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>10</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>40883007</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOVE CORPO CREMA SILK CLASSICA 300ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.418</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.42</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>11</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>5010123703585</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>LISTERINE COLLUTTORIO ZERO 500ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.0492</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.05</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>12</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>5011417569344</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>FINISH SALE KG.3</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.418</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.42</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>13</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>7322540458381</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>TEMPO IGIENICA ROTOLONI PZ.4</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.5164</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.52</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>14</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>7322540458381</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>TEMPO IGIENICA ROTOLONI PZ.4</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.5164</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.52</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>15</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>7615400802746</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>LYSOFORM SPRAY ANIMALI DEO AMBIENTE 600ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.7951</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.80</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>16</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>7615400802746</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>LYSOFORM SPRAY ANIMALI DEO AMBIENTE 600ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.7951</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.80</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>17</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001250120830</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DE CECCO CLASSICA GNOCCHETTI SARDI GR.500</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.9615</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.96</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>18</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001250120830</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DE CECCO CLASSICA GNOCCHETTI SARDI GR.500</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.9615</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.96</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>19</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001280068027</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>FELCE AZZURRA BAGNO NARCISO 650ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.5984</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.60</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>20</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001280068089</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>FELCE AZZURRA BAGNO ORCHIDEA NERA 650ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.5984</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.60</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>21</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001410098542</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOMOPAK SACCHI NETTEZZA CM.52X54 ARANCIO PZ.15</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.9426</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.94</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>22</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001410098542</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOMOPAK SACCHI NETTEZZA CM.52X54 ARANCIO PZ.15</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.9426</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.94</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>23</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001410098566</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOMOPAK SACCHI NETTEZZA CM.52X54 VIOLA PZ.15</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.9426</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.94</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>24</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001410098566</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOMOPAK SACCHI NETTEZZA CM.52X54 VIOLA PZ.15</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.9426</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.94</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>25</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001410098566</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOMOPAK SACCHI NETTEZZA CM.52X54 VIOLA PZ.15</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.9426</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.94</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>26</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001410098566</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOMOPAK SACCHI NETTEZZA CM.52X54 VIOLA PZ.15</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.9426</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.94</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>27</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001480020979</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>ACE CANDEGGINA DENSO PIU'' 2.5LT.</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.0492</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.05</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>28</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001480059450</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>PAMPERS SALVIETTINE FRESH PZ.50</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.3115</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.31</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>29</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001480403833</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>LINES E'' ASSORBENTI ALI NOTTE PZ.18</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>5.3279</span></li>
+                <li>
+																	Valore totale:
+																	<span>5.33</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>30</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001480711143</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>ACE SPRAY + OXYGEN GENTILE 750ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.6393</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.64</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>31</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001841499086</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DASH LAVATRICE 50 LAVAGGI REGOLARE</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.8361</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.84</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>32</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001841499086</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DASH LAVATRICE 50 LAVAGGI REGOLARE</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.8361</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.84</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>33</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001841499086</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DASH LAVATRICE 50 LAVAGGI REGOLARE</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.8361</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.84</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>34</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001841499086</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DASH LAVATRICE 50 LAVAGGI REGOLARE</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.8361</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.84</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>35</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001841960210</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>FAIRY TABS PLATINUM REGULAR PZ.57</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>7.2951</span></li>
+                <li>
+																	Valore totale:
+																	<span>7.30</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>36</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001841960210</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>FAIRY TABS PLATINUM REGULAR PZ.57</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>7.2951</span></li>
+                <li>
+																	Valore totale:
+																	<span>7.30</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>37</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001940005133</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>WETTEX PANNO EXTRA MULTIUSO FORATO</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.8443</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.84</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>38</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8001940005133</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>WETTEX PANNO EXTRA MULTIUSO FORATO</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.8443</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.84</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>39</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8002230340705</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>APEROL SPRITZ CL.17X3</span></li>
+                <li>
+																	Quantità:
+																	<span>8.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.0984</span></li>
+                <li>
+																	Valore totale:
+																	<span>32.79</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>40</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8002295030528</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>MADEL SMACCHIATUTTO 250ml</span></li>
+                <li>
+																	Quantità:
+																	<span>4.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.2295</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.92</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>41</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8002470025356</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>BERTOLLI OLIO EXTRAVERGINE ROBUSTO 1LT.</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.0288</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.03</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>42</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8003510032501</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CLINIANS VISO MASCHERA ACIDO IALURONICO 15ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.8033</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.80</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>43</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8003510032518</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CLINIANS VISO MASCHERA ANTIRUGHE REPAIR 15ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.6393</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.64</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>44</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8004060287748</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>OMINO BIANCO FOGLI SALVATUTTO PZ.16+4</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.2131</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.21</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>45</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8004260238960</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>REGINA CARTA CUCINA WISH PZ.2</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.3852</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.39</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>46</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8004260264754</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>REGINA ASCIUGONI PZ.2</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.5164</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.52</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>47</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8006280010830</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>SELECT ASTUCCIO LENTICCHIE MIGNON GR.400</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.9135</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.91</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>48</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8006280010830</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>SELECT ASTUCCIO LENTICCHIE MIGNON GR.400</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.9135</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.91</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>49</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8006540002926</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>LENOR AMMORBIDENTE 40 LAVAGGI PRIMAVERILE 1LT.</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.8852</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.89</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>50</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8006540003091</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>LENOR AMMORBIDENTE 37 LAVAGGI CAPRI 925ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.5164</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.52</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>51</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8006540003091</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>LENOR AMMORBIDENTE 37 LAVAGGI CAPRI 925ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.5164</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.52</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>52</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8006540092293</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>LENOR AMMORBIDENTE 37 LAVAGGI CILIEGIO 925ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.5164</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.52</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>53</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8008731003514</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>QUASAR RICARICA VETRI 650ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.4344</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.43</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>54</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8008731003514</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>QUASAR RICARICA VETRI 650ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.4344</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.43</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>55</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8008731004283</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>QUASAR SPRAY ANTICALCARE 650ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.5984</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.60</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>56</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8015100569595</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>NELSEN PIATTI CRISTALLI 900ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.7295</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.73</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>57</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8015194515300</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CHANT SGRASS X2</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.418</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.42</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>58</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8033011700002</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CORONA TOVAGLIOLI MAXI SCORTA</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.6148</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.61</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>59</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8033011700002</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CORONA TOVAGLIOLI MAXI SCORTA</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.6148</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.61</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>60</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>803371242903</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>ENHANCE MASCHERINA 3 STRATI PZ.50</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.2857</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.29</span></li>
+                <li>
+																	IVA (%):
+																	<span>5.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>61</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8712561023566</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOVE SAPONE RICARICA VANILLA 500ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.0656</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.07</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>62</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8712561023566</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DOVE SAPONE RICARICA VANILLA 500ml</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.0656</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.07</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>63</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8718951286474</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>AIAX PAVIMENTI CLASSICO 1.3LT.</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.2295</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.23</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>64</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>EAN</span></li>
+                    <li>
+																					Valore:
+																					<span>8718951423299</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>FABULOSO PAVIMENTI MARINA 1.3LT.</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ </span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.2295</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.23</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+            </div>
+            <div id="riepilogo-aliquote-nature">
+              <h3>Dati di riepilogo per aliquota IVA e natura</h3>
+              <ul>
+                <li>
+																	Aliquota IVA (%):
+																	<span>4.00</span></li>
+                <li>
+																	Totale imponibile/importo:
+																	<span>7.78</span></li>
+                <li>
+																	Totale imposta:
+																	<span>0.31</span></li>
+                <li>
+																	Esigibilità IVA:
+																	<span>I</span>
+																			(esigibilità immediata)
+																		</li>
+              </ul>
+              <ul>
+                <li>
+																	Aliquota IVA (%):
+																	<span>22.00</span></li>
+                <li>
+																	Totale imponibile/importo:
+																	<span>160.17</span></li>
+                <li>
+																	Totale imposta:
+																	<span>35.24</span></li>
+                <li>
+																	Esigibilità IVA:
+																	<span>I</span>
+																			(esigibilità immediata)
+																		</li>
+              </ul>
+              <ul>
+                <li>
+																	Aliquota IVA (%):
+																	<span>5.00</span></li>
+                <li>
+																	Totale imponibile/importo:
+																	<span>4.29</span></li>
+                <li>
+																	Totale imposta:
+																	<span>0.21</span></li>
+                <li>
+																	Esigibilità IVA:
+																	<span>I</span>
+																			(esigibilità immediata)
+																		</li>
+              </ul>
+            </div>
+          </div>
+          <div id="dati-pagamento-condizioni">
+            <h3>Dati relativi al pagamento</h3>
+            <ul>
+              <li>
+															Condizioni di pagamento:
+															<span>TP02</span>
+																	(pagamento completo)
+																</li>
+              <h5>Dettaglio pagamento</h5>
+              <ul>
+                <li>
+																		Modalità:
+																		<span>MP01</span>
+																				(contanti)
+																			</li>
+                <li>
+																		Decorrenza termini di pagamento:
+																		<span>2021-09-10</span> (10 
+				Settembre
+			 2021)</li>
+                <li>
+																		Termini di pagamento (in giorni):
+																		<span>0</span></li>
+                <li>
+																		Data scadenza pagamento:
+																		<span>2021-09-10</span> (10 
+				Settembre
+			 2021)</li>
+                <li>
+																		Importo:
+																		<span>208.00</span></li>
+                <li>
+																		Codice IBAN:
+																		<span>IT87E0898714900000000332335</span></li>
+              </ul>
+            </ul>
+          </div>
+          <div class="footer">
+										Versione prodotta con foglio di stile SdI
+										<a href="http://www.fatturapa.gov.it">www.fatturapa.gov.it</a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

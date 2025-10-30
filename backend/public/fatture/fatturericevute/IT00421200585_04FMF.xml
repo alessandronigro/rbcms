@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:FatturaElettronica versione="FPR12" xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>00421200585</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>11376</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00886671007</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Hotel Invest Italiana s.r.l.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Aurelia Antica 415</Indirizzo>
+        <CAP>00165</CAP>
+        <Comune>Roma</Comune>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RM</Ufficio>
+        <NumeroREA>295085</NumeroREA>
+        <CapitaleSociale>1900000.00</CapitaleSociale>
+        <SocioUnico>SU</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO, 25</Indirizzo>
+        <CAP>00164</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-12-04</Data>
+        <Numero>B12359</Numero>
+        <ImportoTotaleDocumento>98.50</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>CASH/CC FATTURE RISTORANTE/BAR-Restaurant  Lunch - Food</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2019-12-04</DataInizioPeriodo>
+        <PrezzoUnitario>80.00</PrezzoUnitario>
+        <PrezzoTotale>80.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>CASH/CC FATTURE RISTORANTE/BAR-Restaurant Lunch - Beverage</Descrizione>
+        <Quantita>1.00</Quantita>
+        <DataInizioPeriodo>2019-12-04</DataInizioPeriodo>
+        <PrezzoUnitario>9.54545455</PrezzoUnitario>
+        <PrezzoTotale>9.5455</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>89.55</ImponibileImporto>
+        <Imposta>8.95</Imposta>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>98.50</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+<ds:Signature Id="xmldsig-422072f0-499f-42c2-9440-633471fe9a1a" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2006/12/xml-c14n11"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+<ds:Reference URI="#xmldsig-422072f0-499f-42c2-9440-633471fe9a1a-keyinfo">
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>76PdTu/LAor7W80Bl0+2DDEyF/eOoS00KbG9Buyc8EQ=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Id="xmldsig-422072f0-499f-42c2-9440-633471fe9a1a-ref0" URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"><dsig-xpath:XPath Filter="subtract" xmlns:dsig-xpath="http://www.w3.org/2002/06/xmldsig-filter2">/descendant::ds:Signature</dsig-xpath:XPath></ds:Transform>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>l8vwVZtI+GGz+HtGRwV6eerSHctboUiedlma4DUu0AE=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#xmldsig-422072f0-499f-42c2-9440-633471fe9a1a-signedprops">
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>r2wMK/pQ6p7Ni+GcuZRUuElrp9gtCgOmvnmLI/N77MU=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue Id="xmldsig-422072f0-499f-42c2-9440-633471fe9a1a-sigvalue">
+bE6GtuBoZIh8Czm3f4Fze4+5NwtuANzsr8JNPl9CrO317aWr1qzDhdbr3KZK+cuE+mO0H88l6iCM
+ZL1pV+4bID0DiujrTdIveO2+Bj5MSiGc3okE/BcWE/E1Vu9TX71eLgc0Wlwy8C97cy2oI7U2S+RO
+7EOrU1marSqFPHAYMR8uSR72Z99Sbs8hlF/j7JhZKwKhyQAHdxQaVbbNouHWgjpTbVLic3/Q7wAg
+kHoAu5td+A0cztGAZ7htQKF3/D80zF4a69BiJL3cAwoLgxmtIeYjNVWNK8X8/pUtP/0Yk9uedzQf
+bDOtm+puiW7MhS3PfvOOabyYLcTEur+eVmtCVg==
+</ds:SignatureValue>
+<ds:KeyInfo Id="xmldsig-422072f0-499f-42c2-9440-633471fe9a1a-keyinfo">
+<ds:X509Data>
+<ds:X509Certificate>
+MIIIzDCCB7SgAwIBAgIIC9M+oVrwdZQwDQYJKoZIhvcNAQELBQAwfTELMAkGA1UEBhMCSVQxJDAi
+BgNVBAoMG05hbWlyaWFsIFMucC5BLi8wMjA0NjU3MDQyNjEgMB4GA1UECwwXQ2VydGlmaWNhdGlv
+biBBdXRob3JpdHkxJjAkBgNVBAMMHU5hbWlyaWFsIENBIEZpcm1hIFF1YWxpZmljYXRhMB4XDTE4
+MTIxMzA5NDcwMFoXDTIxMTIxMjIzMDAwMFowgY0xCzAJBgNVBAYTAklUMQ4wDAYDVQQEDAVGQUxF
+WjETMBEGA1UEKgwKQUxFU1NBTkRSTzEfMB0GA1UEBRMWVElOSVQtRkxaTFNONTVEMTVINTAxTTEZ
+MBcGA1UEAwwQRkFMRVogQUxFU1NBTkRSTzEdMBsGA1UELhMUQVVGQTIwMTgxMjExMTA5Mjc5OTYw
+ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC/gn1q6pwmzM1NfcOyNi8IsZqsnxFDUIoZ
+C3j8t/FpykHjv6TgkzhZJaub+D3ZEB1lHRxFCVKG9evjPf3+emCys3QUQ4ui/E0CawaUJw99GZEB
+1XRqRkqATKbCUv75rJAix4tBneco5FEJS8qRbRhwO9HIuaNO4r9gs40Gj2i5iOuwFmz+HFEpJtUY
+FYorqrk/K9+TF3CX/OU0p36EpK8w+8vlE38J4hMVzyx8g+gjzPs5Sh3n+NWLgu4GapmvGWGYqZ+x
+r1mPTztvMd3UNQAmlexFPDQ1tFGQQJm9FMZvIoU7uUTs+NSOARTNKYjmQ+on49ryLY4+diTeGGcV
+X0ojAgMBAAGjggU9MIIFOTCBnAYIKwYBBQUHAQEEgY8wgYwwUQYIKwYBBQUHMAKGRWh0dHBzOi8v
+ZG9jcy5uYW1pcmlhbHRzcC5jb20vZG9jdW1lbnRzL05hbWlyaWFsQ0FGaXJtYVF1YWxpZmljYXRh
+LmNydDA3BggrBgEFBQcwAYYraHR0cDovL29jc3AubmFtaXJpYWx0c3AuY29tL29jc3AvY2VydHN0
+YXR1czAdBgNVHQ4EFgQUu1jRxIQCZf+OSPhTICaKkBaNkNMwHwYDVR0jBBgwFoAUY/3t5oxiR0jP
+6glBc3YR4mRiexAwgc0GCCsGAQUFBwEDBIHAMIG9MAgGBgQAjkYBATALBgYEAI5GAQMCARQwCAYG
+BACORgEEMBMGBgQAjkYBBjAJBgcEAI5GAQYBMIGEBgYEAI5GAQUwejA7FjVodHRwczovL2RvY3Mu
+bmFtaXJpYWx0c3AuY29tL2RvY3VtZW50cy9QRFMvUERTX2VuLnBkZhMCZW4wOxY1aHR0cHM6Ly9k
+b2NzLm5hbWlyaWFsdHNwLmNvbS9kb2N1bWVudHMvUERTL1BEU19pdC5wZGYTAml0MIIDLgYDVR0g
+BIIDJTCCAyEwCQYHBACL7EABAjAIBgYEAI96AQIwggMIBgsrBgEEAYKaawEBAzCCAvcwKQYIKwYB
+BQUHAgEWHWh0dHBzOi8vZG9jcy5uYW1pcmlhbHRzcC5jb20vMIIBUgYIKwYBBQUHAgIwggFEHoIB
+QABJAGwAIABwAHIAZQBzAGUAbgB0AGUAIABjAGUAcgB0AGkAZgBpAGMAYQB0AG8AIADoACAAdgBh
+AGwAaQBkAG8AIABzAG8AbABvACAAcABlAHIAIABmAGkAcgBtAGUAIABhAHAAcABvAHMAdABlACAA
+YwBvAG4AIABwAHIAbwBjAGUAZAB1AHIAYQAgAGEAdQB0AG8AbQBhAHQAaQBjAGEALgAvAFQAaABp
+AHMAIABjAGUAcgB0AGkAZgBpAGMAYQB0AGUAIABtAGEAeQAgAG8AbgBsAHkAIABiAGUAIAB1AHMA
+ZQBkACAAZgBvAHIAIAB1AG4AYQB0AHQAZQBuAGQAZQBkAC8AYQB1AHQAbwBtAGEAdABlAGQAIABk
+AGkAZwBpAHQAYQBsACAAcwBpAGcAbgBhAHQAdQByAGUAcwAuMIIBcgYIKwYBBQUHAgIwggFkHoIB
+YABWAGEAbABpAGQAbwAgAHMAbwBsAG8AIABwAGUAcgAgAGYAaQByAG0AZQAgAGQAaQAgAGYAYQB0
+AHQAdQByAGUAIAByAGUAZwBpAHMAdAByAGkAIABJAFYAQQAgAGcAaQBvAHIAbgBhAGwAaQAgAGIA
+bwBsAGwAYQB0AGkAIABiAGkAbABhAG4AYwBpACAAaQBuAHYAZQBuAHQAYQByAGkALwBWAGEAbABp
+AGQAIABvAG4AbAB5ACAAZgBvAHIAIABzAGkAZwBuAGkAbgBnACAAaQBuAHYAbwBpAGMAZQBzACAA
+VgBBAFQAIABiAG8AbwBrAHMAIABnAGUAbgBlAHIAYQBsACAAagBvAHUAcgBuAGEAbABzACAAZgBp
+AG4AYQBuAGMAaQBhAGwAIABzAHQAYQB0AGUAbQBlAG4AdABzACAAaQBuAHYAZQBuAHQAbwByAHkA
+IABiAG8AbwBrAHMwRgYDVR0fBD8wPTA7oDmgN4Y1aHR0cDovL2NybC5uYW1pcmlhbHRzcC5jb20v
+RmlybWFDZXJ0YVF1YWxpZmljYXRhMS5jcmwwDgYDVR0PAQH/BAQDAgZAMA0GCSqGSIb3DQEBCwUA
+A4IBAQAwftTM0/Px9jvpuCeWv4phDx90CgxhG8Kanhifm9tMB8V8OaHmNr/5S03jNJceLT0R/fwM
+JPz4tTOd+EK/8283CXYrUrxp5YpaZv/DMXYFnK9Q8v2WCnpxjidCVIM3gSLDd1tCkTIujIpaBOgp
+/1yDZDzlUb/7BToA55a1yH7kzO1vGMUMpdcO4dwT23EuUR6jR75SUSNLFOOkTObkquWWlOSZZPpz
+muA3zWJNfQkssvUt8KCwcvwgI0a9ZI6vAyEkwiHok10RRmlXp3a1M03ZoHYbQoVRUvjpPmGtZsiK
+VgrHMsD7WAJMkDHQBDholJmIzXubYYvAcfgw1uOdKb2x
+</ds:X509Certificate>
+</ds:X509Data>
+</ds:KeyInfo>
+<ds:Object><xades:QualifyingProperties Target="#xmldsig-422072f0-499f-42c2-9440-633471fe9a1a" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#"><xades:SignedProperties Id="xmldsig-422072f0-499f-42c2-9440-633471fe9a1a-signedprops"><xades:SignedSignatureProperties><xades:SigningTime>2019-12-09T06:22:28.081+01:00</xades:SigningTime><xades:SigningCertificate><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>tszVIV1lNF4PZAFeUHormTYJX8kHyibzNX77O54YkwU=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>CN=Namirial CA Firma Qualificata,OU=Certification Authority,O=Namirial S.p.A./02046570426,C=IT</ds:X509IssuerName><ds:X509SerialNumber>852093617239520660</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>wC+V94r4CySaNIHKQZJK5g12Y4Z8XyL/hDeg6Mw0QTc=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>CN=Namirial CA Firma Qualificata,OU=Certification Authority,O=Namirial S.p.A./02046570426,C=IT</ds:X509IssuerName><ds:X509SerialNumber>4708725866506655769</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert></xades:SigningCertificate></xades:SignedSignatureProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object>
+</ds:Signature></ns2:FatturaElettronica>

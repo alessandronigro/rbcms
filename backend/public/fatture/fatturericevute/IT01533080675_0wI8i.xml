@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><p:FatturaElettronica xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01533080675</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>999999</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <ContattiTrasmittente/>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03861390619</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>03861390619</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>MARIA ROSARIA MADONNA PRODUCTION SRL</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA MADONNA DEL CARMINE, 49</Indirizzo>
+        <CAP>81058</CAP>
+        <Comune>VAIRANO SCALO</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti/>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01533080675</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Alias Group S.r.l.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-11-26</Data>
+        <Numero>177</Numero>
+        <ImportoTotaleDocumento>110.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>1 POLPETTE DI TONNO, 1 EDAMAME, 2 WAKAME, 1 MANGO ROLL, 1 DELICIOUS ROLL, 1 PASSION ROLL, 1 MAGURO BURGER, 1 SASHIMI MEDIUM, 2 SPRITZ GIAPPO.</Descrizione>
+        <PrezzoUnitario>100.00000000</PrezzoUnitario>
+        <PrezzoTotale>100.00000000</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>100.00</ImponibileImporto>
+        <Imposta>10.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>0.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+<ds:Signature Id="AUTO_MZZMRC74L18E058G-16ea997a1b60" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#SignedProperties-AUTO_MZZMRC74L18E058G-16ea997a1b60-16ea997a1b60"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>74lGKvvJLwujVTX76RF3XTs4/ykXYgFj9Dmp1zLqJJA=</ds:DigestValue></ds:Reference><ds:Reference Id="Reference-AUTO_MZZMRC74L18E058G-16ea997a1b60-1" URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>CWUNbASySqIYYEzcYqHFVRP2S+E71Wj8FfMmus4fs9k=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="SignatureValue-AUTO_MZZMRC74L18E058G-16ea997a1b60">puwi7pcA2fiO8zbbcpCwYx36bngpjMEShmRnHbZvyVjCm5813KFf9vJTRhnsw6PZrjTxwi9SGqlD+22cprGAkAcCVyHl23cQWfDmiVRppuobUeLZeWSJjErc9XZ6CPlZIbDMVOK1deFe0MbqoIxmm7gxxtgUVbZxeaN+Z7p/389UiDhUSb9FBjEdPIxjQE/L5ME6jakhXYkYEDq79mnPui+R6eMpZgnwk6Y7ip9S6ScUYFhPCsvRyOQAFI+wVVmkblrqDdl00TlZ2eTdDNEMAtJ+WcaMzFC/r7Dltb9ha5xdlFLpZHTg7zk/NyC82tNKaHUUS8QqPfnqGOJ5LHzd3A==</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIIOzCCByOgAwIBAgIIa5/P1/kJ5uEwDQYJKoZIhvcNAQELBQAwfTELMAkGA1UEBhMCSVQxJDAiBgNVBAoMG05hbWlyaWFsIFMucC5BLi8wMjA0NjU3MDQyNjEgMB4GA1UECwwXQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkxJjAkBgNVBAMMHU5hbWlyaWFsIENBIEZpcm1hIFF1YWxpZmljYXRhMB4XDTE3MDEwOTA4NTAwMFoXDTIwMDEwOTIzMDAwMFowgd0xCzAJBgNVBAYTAklUMSwwKgYDVQQKDCNBTElBUyBDT05TVUxUSU5HIFMuci5sLi8wMTUzMzA4MDY3NTEnMCUGA1UEDAweMi4xMC42LjIgTGVnYWxlIHJhcHByZXNlbnRhbnRlMREwDwYDVQQEDAhNQVpaSVRUSTEOMAwGA1UEKgwFTUFSQ08xHDAaBgNVBAUTE0lUOk1aWk1SQzc0TDE4RTA1OEcxFzAVBgNVBAMMDk1BWlpJVFRJIE1BUkNPMR0wGwYDVQQuExRBVU1NMjAxNzAxMDU5MTk4MjMzMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAO7AeEr9SRRR5vVJcv73jkGZzaeTTehemcI8gMcjEYhcUL7kWEyBo/oBm6Mf9glJ6Ei2o4pDS6codkp/7vGGcCczlfqsghl8n8JAkrcn96zcMitiFN2qCE8MAlZFncJpkF4mQwBRSuU3yM4umjSBD5bPOYkU6hGtUTtLsdv32FE1jPBcUPvDouaxVELlOHGTz7Hajs9U+7EeZtfn+SsyB6Hneu2kxf9Mo01cAuL3TpfCCirjzn9p2rbaa8iDiYr/yaVEUIHHPXwXnSFO8cPmTa5cFHDljqkhu1LeiPevjX13WAkZVbflvua5U4ZPwkcWe0s0GHTZrJW0/8vLDUi50R8CAwEAAaOCBFwwggRYMEUGCCsGAQUFBwEBBDkwNzA1BggrBgEFBQcwAYYpaHR0cDovL29jc3AuZmlybWFjZXJ0YS5pdC9vY3NwL2NlcnRzdGF0dXMwHQYDVR0OBBYEFBW1YUiTsBwAcRjn/XQtGAYvCcv9MB8GA1UdIwQYMBaAFGP97eaMYkdIz+oJQXN2EeJkYnsQMDsGCCsGAQUFBwEDBC8wLTAKBggrBgEFBQcLATAIBgYEAI5GAQEwCwYGBACORgEDAgEUMAgGBgQAjkYBBDCCAzoGA1UdIASCAzEwggMtMIIDKQYLKwYBBAGCmmsBAQMwggMYMDAGCCsGAQUFBwIBFiRodHRwOi8vd3d3LmZpcm1hY2VydGEuaXQvbWFudWFsaS1NTy8wggFSBggrBgEFBQcCAjCCAUQeggFAAEkAbAAgAHAAcgBlAHMAZQBuAHQAZQAgAGMAZQByAHQAaQBmAGkAYwBhAHQAbwAgAOgAIAB2AGEAbABpAGQAbwAgAHMAbwBsAG8AIABwAGUAcgAgAGYAaQByAG0AZQAgAGEAcABwAG8AcwB0AGUAIABjAG8AbgAgAHAAcgBvAGMAZQBkAHUAcgBhACAAYQB1AHQAbwBtAGEAdABpAGMAYQAuAC8AVABoAGkAcwAgAGMAZQByAHQAaQBmAGkAYwBhAHQAZQAgAG0AYQB5ACAAbwBuAGwAeQAgAGIAZQAgAHUAcwBlAGQAIABmAG8AcgAgAHUAbgBhAHQAdABlAG4AZABlAGQALwBhAHUAdABvAG0AYQB0AGUAZAAgAGQAaQBnAGkAdABhAGwAIABzAGkAZwBuAGEAdAB1AHIAZQBzAC4wggGMBggrBgEFBQcCAjCCAX4eggF6AFUAdABpAGwAaQB6AHoAbwAgAGQAZQBsACAAYwBlAHIAdABpAGYAaQBjAGEAdABvACAAbABpAG0AaQB0AGEAdABvACAAYQBnAGwAaQAgAHMAYwBvAHAAaQAgAGQAaQAgAGYAYQB0AHQAdQByAGEAegBpAG8AbgBlACAAZQBsAGUAdAB0AHIAbwBuAGkAYwBhACAAZQAgAGMAbwBuAHMAZQByAHYAYQB6AGkAbwBuAGUAIABzAG8AcwB0AGkAdAB1AHQAaQB2AGEALwBUAGgAZQAgAGMAZQByAHQAaQBmAGkAYwBhAHQAZQAgAGMAYQBuACAAYgBlACAAdQBzAGUAZAAgAGoAdQBzAHQAIABmAG8AcgAgAGUAbABlAGMAdAByAG8AbgBpAGMAIABpAG4AdgBvAGkAYwBpAG4AZwAgAHAAdQByAHAAbwBzAGUAIABhAG4AZAAgAGUAbABlAGMAdAByAG8AbgBpAGMAIABzAHQAbwByAGEAZwBlMEQGA1UdHwQ9MDswOaA3oDWGM2h0dHA6Ly9jcmwuZmlybWFjZXJ0YS5pdC9GaXJtYUNlcnRhUXVhbGlmaWNhdGExLmNybDAOBgNVHQ8BAf8EBAMCBkAwDQYJKoZIhvcNAQELBQADggEBAEg56ak0BDeJPEM447ZEnEaHigkwDIZIwxmQXyKSmg0Sdq5q2EqdskGPbz8b5ZMNqptbuVjtsY20tiia7SAHxPBIVrlNcekTV4uRpFobLytOu/pS/ndBDlAwtxhUHFcSfAFIwr9KTCFKWHBZycTSTshuj506uZ4U5IpIPYnIO9mMF6+d253v9riiCxRIbD88cIECfSfePpxEJSBhX19ncBf38SFdg7iUmhA3tdYbw9YimE4vKFejAB964rL5tuZyb3d5hQqdzTQvSXVJQXeCn8JyfNHjej/oM03GYzSZYPeU6gOsDaAl5+M3GHFFIyKbaCf3QMHPY65s6nJF6g/okwA=</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="#AUTO_MZZMRC74L18E058G-16ea997a1b60"><xades:SignedProperties Id="SignedProperties-AUTO_MZZMRC74L18E058G-16ea997a1b60-16ea997a1b60"><xades:SignedSignatureProperties><xades:SigningTime>2019-11-26T22:21:57+01:00</xades:SigningTime><xades:SigningCertificate><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>sBEF3cLu+x7cNVsCvXeczwDUA+JS4uWnBlUoMEUjxdw=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>CN=Namirial CA Firma Qualificata,OU=Certification Authority,O=Namirial S.p.A./02046570426,C=IT</ds:X509IssuerName><ds:X509SerialNumber>7755145609858377441</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert></xades:SigningCertificate><xades:SignatureProductionPlace><xades:City>Alba Adriatica</xades:City><xades:StateOrProvince>TE</xades:StateOrProvince><xades:PostalCode>64011</xades:PostalCode><xades:CountryName>Italia</xades:CountryName></xades:SignatureProductionPlace></xades:SignedSignatureProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object></ds:Signature></p:FatturaElettronica>

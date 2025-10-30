@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="windows-1252"?>                                                                                                                                                                               
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>                                                                                                                                                                
+<p:FatturaElettronica versione="FPR12"                                                                                                                                                                                      
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"                                                                                                                                                                               
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"                                                                                                                                                     
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">                                                                                                                                                                      
+  <FatturaElettronicaHeader>
+   <DatiTrasmissione>
+    <IdTrasmittente>
+     <IdPaese>SM</IdPaese>
+                            <IdCodice>03473</IdCodice>
+    </IdTrasmittente>
+             <ProgressivoInvio>1</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+   </DatiTrasmissione>
+   <CedentePrestatore>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>04433900612</IdCodice>
+     </IdFiscaleIVA>
+     <CodiceFiscale>BNHMHD95P07Z330O</CodiceFiscale>
+     <Anagrafica>
+                                                             <Nome>MEHDI</Nome>
+                                                          <Cognome>BENHADIA</Cognome>
+     </Anagrafica>
+     <RegimeFiscale>RF01</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+                                                      <Indirizzo>VIA ARNO, 6</Indirizzo>
+     <CAP>81100</CAP>
+                                                          <Comune>CASERTA</Comune>
+     <Provincia>CE</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+    <Contatti>
+     <Email>BENHADIA95@PEC.IT</Email>                                           
+    </Contatti>
+   </CedentePrestatore>
+   <CessionarioCommittente>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>17044041006</IdCodice>
+     </IdFiscaleIVA>
+     <Anagrafica>
+                                                                     <Denominazione>RB CONSULTING SRL</Denominazione>
+     </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+                                                <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+     <CAP>00193</CAP>
+                                                             <Comune>ROMA</Comune>
+     <Provincia>RM</Provincia>
+     <Nazione>IT</Nazione>
+    </Sede>
+   </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+   <DatiGenerali>
+    <DatiGeneraliDocumento>
+     <TipoDocumento>TD01</TipoDocumento>
+     <Divisa>EUR</Divisa>
+     <Data>2024-10-21</Data>
+                    <Numero>1/1/1</Numero>
+     <ImportoTotaleDocumento>         913.00</ImportoTotaleDocumento>
+    </DatiGeneraliDocumento>
+    <DatiTrasporto>
+     <DataOraRitiro>2024-10-21T18:01:00</DataOraRitiro>
+     <DataInizioTrasporto>2024-10-21</DataInizioTrasporto>
+    </DatiTrasporto>
+   </DatiGenerali>
+   <DatiBeniServizi>
+    <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>00000001</CodiceValore>                           
+     </CodiceArticolo>
+     <Descrizione>Si emette fattura:
+per evento aziendale                                                                                                                                                                 
+</Descrizione>                                                                                                                                                                                                        
+     <Quantita>             1.000000</Quantita>
+     <PrezzoUnitario>           830.000000</PrezzoUnitario>
+     <PrezzoTotale>               830.00</PrezzoTotale>
+     <AliquotaIVA>10.00</AliquotaIVA> 
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>10.00</AliquotaIVA>
+     <ImponibileImporto>830.00         </ImponibileImporto>
+     <Imposta>83.00          </Imposta>
+     <EsigibilitaIVA>I</EsigibilitaIVA>
+    </DatiRiepilogo>
+   </DatiBeniServizi>
+   <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+     <ModalitaPagamento>MP05</ModalitaPagamento>
+     <DataScadenzaPagamento>2024-10-21</DataScadenzaPagamento>
+     <ImportoPagamento>913.00</ImportoPagamento>         
+    </DettaglioPagamento>
+   </DatiPagamento>
+  </FatturaElettronicaBody>
+ </p:FatturaElettronica>

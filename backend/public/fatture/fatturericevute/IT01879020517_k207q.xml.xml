@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01879020517</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>1</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01090280627</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>VRDDNC70H20A783Y</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>Domenico Verdino</Denominazione>
+          <Titolo>geometra</Titolo>
+        </Anagrafica>
+        <AlboProfessionale>Collegio dei geometri</AlboProfessionale>
+        <ProvinciaAlbo>BN</ProvinciaAlbo>
+        <NumeroIscrizioneAlbo>1311</NumeroIscrizioneAlbo>
+        <DataIscrizioneAlbo>1999-07-01</DataIscrizioneAlbo>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Provinciale Km 5</Indirizzo>
+        <CAP>82010</CAP>
+        <Comune>San Leucio del Sannio</Comune>
+        <Provincia>BN</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Telefono>3394808939</Telefono>
+        <Email>studiovedo@virgilio.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>R&amp;B Consulting s.r.l. </Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>via Crescenzo</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-04-18</Data>
+        <Numero>F1/2019</Numero>
+        <DatiCassaPrevidenziale>
+          <TipoCassa>TC03</TipoCassa>
+          <AlCassa>5.00</AlCassa>
+          <ImportoContributoCassa>3.00</ImportoContributoCassa>
+          <ImponibileCassa>60.00</ImponibileCassa>
+          <AliquotaIVA>22.00</AliquotaIVA>
+        </DatiCassaPrevidenziale>
+        <ImportoTotaleDocumento>76.86</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Consulenza</CodiceTipo>
+          <CodiceValore>01</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>Elaborazione dati vs conto</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>HH</UnitaMisura>
+        <PrezzoUnitario>60.00</PrezzoUnitario>
+        <PrezzoTotale>60.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>63.00</ImponibileImporto>
+        <Imposta>13.86</Imposta>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <Beneficiario>Domenico Verdino</Beneficiario>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2019-04-18</DataScadenzaPagamento>
+        <ImportoPagamento>76.86</ImportoPagamento>
+        <IstitutoFinanziario>BancoPosta</IstitutoFinanziario>
+        <IBAN>IT53S0760115000000084330661</IBAN>
+        <BIC>BPPIITRRXXX</BIC>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="windows-1252"?>                                                                                                                                                                               
+<?xml-stylesheet type="text/xsl" href="fatturaordinaria_v1.2.xsl"?>                                                                                                                                                         
+<p:FatturaElettronica versione="FPR12"                                                                                                                                                                                      
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"                                                                                                                                                                               
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"                                                                                                                                                     
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">                                                                                                                                                                      
+  <FatturaElettronicaHeader>
+   <DatiTrasmissione>
+    <IdTrasmittente>
+     <IdPaese>SM</IdPaese>
+                            <IdCodice>03473</IdCodice>
+    </IdTrasmittente>
+          <ProgressivoInvio>1/13</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>0000000</CodiceDestinatario>
+   </DatiTrasmissione>
+   <CedentePrestatore>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>03133180616</IdCodice>
+     </IdFiscaleIVA>
+     <CodiceFiscale>SGGNGL78B68B963B</CodiceFiscale>
+     <Anagrafica>
+                                                            <Nome>ANGELA</Nome>
+                                                          <Cognome>SGUEGLIA</Cognome>
+     </Anagrafica>
+     <RegimeFiscale>RF19</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+                                                    <Indirizzo>VIA AGNESI 17</Indirizzo>
+     <CAP>81100</CAP>
+                                                          <Comune>CASERTA</Comune>
+     <Provincia>CE</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+    <Contatti>
+     <Email>avv.angelasgueglia@pec.it</Email>                                   
+    </Contatti>
+   </CedentePrestatore>
+   <CessionarioCommittente>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>17044041006</IdCodice>
+     </IdFiscaleIVA>
+     <Anagrafica>
+                                                                  <Denominazione>RB CONSULTING S.R.L.</Denominazione>
+     </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+                                              <Indirizzo>VIA CRESCENZO N. 25</Indirizzo>
+     <CAP>00193</CAP>
+                                                             <Comune>ROMA</Comune>
+     <Provincia>RM</Provincia>
+     <Nazione>IT</Nazione>
+    </Sede>
+   </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+   <DatiGenerali>
+    <DatiGeneraliDocumento>
+     <TipoDocumento>TD06</TipoDocumento>
+     <Divisa>EUR</Divisa>
+     <Data>2025-06-21</Data>
+                     <Numero>1/13</Numero>
+     <DatiBollo>
+      <BolloVirtuale>SI</BolloVirtuale>
+      <ImportoBollo>           2.00</ImportoBollo>
+     </DatiBollo>
+     <DatiCassaPrevidenziale>
+      <TipoCassa>TC01</TipoCassa>
+      <AlCassa>  4.00</AlCassa>
+      <ImportoContributoCassa>          10.65</ImportoContributoCassa>
+      <ImponibileCassa>         266.35</ImponibileCassa>
+        <AliquotaIVA>0.00</AliquotaIVA>
+      <Natura>N2.2</Natura>
+     </DatiCassaPrevidenziale>
+     <ImportoTotaleDocumento>         320.00</ImportoTotaleDocumento>
+    </DatiGeneraliDocumento>
+   </DatiGenerali>
+   <DatiBeniServizi>
+    <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>08</CodiceValore>                                 
+     </CodiceArticolo>
+     <Descrizione>Si rilascia fattura
+ricorso San Giuseppe Iat                                                                                                                                                            
+</Descrizione>                                                                                                                                                                                                        
+     <Quantita>             1.000000</Quantita>
+     <PrezzoUnitario>           266.350000</PrezzoUnitario>
+     <PrezzoTotale>               266.35</PrezzoTotale>
+     <AliquotaIVA>0.00</AliquotaIVA>  
+     <Natura>N2.2</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>6</CodiceValore>                                  
+     </CodiceArticolo>
+     <Descrizione>Spese esenti ex art 15
+                                                                                                                                                                                 
+</Descrizione>                                                                                                                                                                                                        
+     <Quantita>             1.000000</Quantita>
+             <UnitaMisura>00</UnitaMisura>
+     <PrezzoUnitario>            43.000000</PrezzoUnitario>
+     <PrezzoTotale>                43.00</PrezzoTotale>
+     <AliquotaIVA>0.00</AliquotaIVA>  
+       <Natura>N1</Natura>
+    </DettaglioLinee>
+    <DatiRiepilogo>
+       <AliquotaIVA>0.00</AliquotaIVA>
+     <Natura>N2.2</Natura>
+     <ImponibileImporto>277.00         </ImponibileImporto>
+     <Imposta>0.00           </Imposta>
+                                                                <RiferimentoNormativo>Operazione in franchigia IVA - L.190/2014</RiferimentoNormativo>
+    </DatiRiepilogo>
+    <DatiRiepilogo>
+       <AliquotaIVA>0.00</AliquotaIVA>
+       <Natura>N1</Natura>
+     <ImponibileImporto>43.00          </ImponibileImporto>
+     <Imposta>0.00           </Imposta>
+                                                                            <RiferimentoNormativo>Operazione Esclusa 15) 633/72</RiferimentoNormativo>
+    </DatiRiepilogo>
+   </DatiBeniServizi>
+   <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+     <ModalitaPagamento>MP05</ModalitaPagamento>
+     <DataScadenzaPagamento>2025-06-21</DataScadenzaPagamento>
+     <ImportoPagamento>320.00</ImportoPagamento>         
+     <IstitutoFinanziario>CHE BANCA! S.P.A.</IstitutoFinanziario>                                                               
+     <IBAN>IT98A0305801604100572484143</IBAN>       
+     <ABI>03058</ABI>
+     <CAB>01604</CAB>
+    </DettaglioPagamento>
+   </DatiPagamento>
+  </FatturaElettronicaBody>
+ </p:FatturaElettronica>

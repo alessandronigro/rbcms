@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="windows-1252"?>                                                                                                                                                                               
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>                                                                                                                                                                
+<p:FatturaElettronica versione="FPR12"                                                                                                                                                                                      
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"                                                                                                                                                                               
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"                                                                                                                                                     
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">                                                                                                                                                                      
+  <FatturaElettronicaHeader>
+   <DatiTrasmissione>
+    <IdTrasmittente>
+     <IdPaese>SM</IdPaese>
+                            <IdCodice>03473</IdCodice>
+    </IdTrasmittente>
+         <ProgressivoInvio>1/795</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+   </DatiTrasmissione>
+   <CedentePrestatore>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>02311020610</IdCodice>
+     </IdFiscaleIVA>
+          <CodiceFiscale>02311020610</CodiceFiscale>
+     <Anagrafica>
+                                                    <Denominazione>WELLNESS POINT S.r.l. unipersonale</Denominazione>
+     </Anagrafica>
+     <RegimeFiscale>RF01</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+                                        <Indirizzo>VIALE DELLE INDUSTRIE SNC</Indirizzo>
+     <CAP>81020</CAP>
+                                            <Comune>SAN MARCO EVANGELISTA</Comune>
+     <Provincia>CE</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+    <IscrizioneREA>
+     <Ufficio>CE</Ufficio>
+                   <NumeroREA>151833</NumeroREA>
+            <CapitaleSociale>20000.00</CapitaleSociale>
+     <SocioUnico>SU</SocioUnico>
+     <StatoLiquidazione>LN</StatoLiquidazione>
+    </IscrizioneREA>
+    <Contatti>
+     <Email>info@wellness-point.it</Email>                                      
+    </Contatti>
+   </CedentePrestatore>
+   <CessionarioCommittente>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>05744121210</IdCodice>
+     </IdFiscaleIVA>
+     <Anagrafica>
+                                                                         <Denominazione>RB CONSULTING</Denominazione>
+     </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+                                                <Indirizzo>VIA CRESCENZIO,25</Indirizzo>
+     <CAP>00164</CAP>
+                                                             <Comune>ROMA</Comune>
+     <Provincia>RM</Provincia>
+     <Nazione>IT</Nazione>
+    </Sede>
+   </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+   <DatiGenerali>
+    <DatiGeneraliDocumento>
+     <TipoDocumento>TD01</TipoDocumento>
+     <Divisa>EUR</Divisa>
+     <Data>2021-12-07</Data>
+                    <Numero>1/795</Numero>
+     <ImportoTotaleDocumento>         649.04</ImportoTotaleDocumento>
+    </DatiGeneraliDocumento>
+    <DatiTrasporto>
+     <DataOraRitiro>2021-12-07T09:39:00</DataOraRitiro>
+     <DataInizioTrasporto>2021-12-07</DataInizioTrasporto>
+    </DatiTrasporto>
+   </DatiGenerali>
+   <DatiBeniServizi>
+    <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>VENDITA</CodiceValore>                            
+     </CodiceArticolo>
+     <Descrizione>MANUBRIO REGOLABILE
+                                                                                                                                                                                    
+</Descrizione>                                                                                                                                                                                                        
+     <Quantita>             2.000000</Quantita>
+             <UnitaMisura>NR</UnitaMisura>
+     <PrezzoUnitario>           140.000000</PrezzoUnitario>
+     <PrezzoTotale>               280.00</PrezzoTotale>
+     <AliquotaIVA>22.00</AliquotaIVA> 
+    </DettaglioLinee>
+    <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>VENDITA</CodiceValore>                            
+     </CodiceArticolo>
+     <Descrizione>COPPIA MANUBRI MGP-30
+                                                                                                                                                                                  
+</Descrizione>                                                                                                                                                                                                        
+     <Quantita>             1.000000</Quantita>
+             <UnitaMisura>NR</UnitaMisura>
+     <PrezzoUnitario>           252.000000</PrezzoUnitario>
+     <PrezzoTotale>               252.00</PrezzoTotale>
+     <AliquotaIVA>22.00</AliquotaIVA> 
+     <AltriDatiGestionali>
+      <TipoDato>NOTA</TipoDato>
+      <RiferimentoTesto>--------------------------</RiferimentoTesto>                                  
+     </AltriDatiGestionali>
+     <AltriDatiGestionali>
+      <TipoDato>NOTA</TipoDato>
+      <RiferimentoTesto>SALDO AL RITIRO CON CARTA</RiferimentoTesto>                                   
+     </AltriDatiGestionali>
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>22.00</AliquotaIVA>
+     <ImponibileImporto>532.00         </ImponibileImporto>
+     <Imposta>117.04         </Imposta>
+     <EsigibilitaIVA>I</EsigibilitaIVA>
+    </DatiRiepilogo>
+   </DatiBeniServizi>
+   <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+     <ModalitaPagamento>MP08</ModalitaPagamento>
+     <DataScadenzaPagamento>2021-12-07</DataScadenzaPagamento>
+     <ImportoPagamento>649.04</ImportoPagamento>         
+    </DettaglioPagamento>
+   </DatiPagamento>
+  </FatturaElettronicaBody>
+ </p:FatturaElettronica>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd"><FatturaElettronicaHeader><DatiTrasmissione><IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>10442360961</IdCodice></IdTrasmittente><ProgressivoInvio>6PRZF</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>0000000</CodiceDestinatario></DatiTrasmissione><CedentePrestatore><DatiAnagrafici><IdFiscaleIVA><IdPaese>IT</IdPaese><IdCodice>07347120961</IdCodice></IdFiscaleIVA><Anagrafica><Denominazione>IUBENDA SRL</Denominazione></Anagrafica><RegimeFiscale>RF01</RegimeFiscale></DatiAnagrafici><Sede><Indirizzo>Via San Raffaele, 1</Indirizzo><CAP>20121</CAP><Comune>Milano</Comune><Provincia>MI</Provincia><Nazione>IT</Nazione></Sede></CedentePrestatore><CessionarioCommittente><DatiAnagrafici><IdFiscaleIVA><IdPaese>IT</IdPaese><IdCodice>05744121210</IdCodice></IdFiscaleIVA><Anagrafica><Denominazione><![CDATA[R&B Consulting S.r.l]]></Denominazione></Anagrafica></DatiAnagrafici><Sede><Indirizzo>Via Crescenzio, 25</Indirizzo><CAP>00193</CAP><Comune>ROMA</Comune><Provincia>RM</Provincia><Nazione>IT</Nazione></Sede></CessionarioCommittente></FatturaElettronicaHeader><FatturaElettronicaBody><DatiGenerali><DatiGeneraliDocumento><TipoDocumento>TD01</TipoDocumento><Divisa>EUR</Divisa><Data>2022-12-04</Data><Numero>2022-255125</Numero><ImportoTotaleDocumento>22.00</ImportoTotaleDocumento></DatiGeneraliDocumento></DatiGenerali><DatiBeniServizi><DettaglioLinee><NumeroLinea>1</NumeroLinea><Descrizione><![CDATA[iubenda Privacy & Cookie Policy Generator Rinnovo sottoscrizione Multilicenza per 5 slot licenze per servizi@rbconsulenza.com (1 mese). Piano valido fino al 04 Gen 2023.]]></Descrizione><DataInizioPeriodo>2022-12-04</DataInizioPeriodo><DataFinePeriodo>2023-01-04</DataFinePeriodo><PrezzoUnitario>7.38</PrezzoUnitario><PrezzoTotale>7.38</PrezzoTotale><AliquotaIVA>22.00</AliquotaIVA></DettaglioLinee><DettaglioLinee><NumeroLinea>2</NumeroLinea><Descrizione>iubenda Cookie Solution Rinnovo sottoscrizione (fino a 50k pageview) per servizi@rbconsulenza.com (1 mese). Piano valido fino al 04 Gen 2023.</Descrizione><DataInizioPeriodo>2022-12-04</DataInizioPeriodo><DataFinePeriodo>2023-01-04</DataFinePeriodo><PrezzoUnitario>10.66</PrezzoUnitario><PrezzoTotale>10.66</PrezzoTotale><AliquotaIVA>22.00</AliquotaIVA></DettaglioLinee><DatiRiepilogo><AliquotaIVA>22.00</AliquotaIVA><Arrotondamento>-0.01</Arrotondamento><ImponibileImporto>18.03</ImponibileImporto><Imposta>3.97</Imposta><EsigibilitaIVA>I</EsigibilitaIVA></DatiRiepilogo></DatiBeniServizi></FatturaElettronicaBody><ds:Signature Id="xmldsig-4c85e4f8-622b-416c-a374-942b4c2ba90c" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2006/12/xml-c14n11"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+<ds:Reference URI="#xmldsig-4c85e4f8-622b-416c-a374-942b4c2ba90c-keyinfo">
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>zcwFO1wsz1o98aNtPuNog/IX+DoHzl+T7jYMqYWdQAQ=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Id="xmldsig-4c85e4f8-622b-416c-a374-942b4c2ba90c-ref0" URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"><dsig-xpath:XPath Filter="subtract" xmlns:dsig-xpath="http://www.w3.org/2002/06/xmldsig-filter2">/descendant::ds:Signature</dsig-xpath:XPath></ds:Transform>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>qmM7rJV19+pZttd9cyb2+pd+4kDS4OgdafSf2wgdJZY=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#xmldsig-4c85e4f8-622b-416c-a374-942b4c2ba90c-signedprops">
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>YISD+IYGCnXMzQWCdgmvp65EPAO/xbA3rbMBImC8Uas=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue Id="xmldsig-4c85e4f8-622b-416c-a374-942b4c2ba90c-sigvalue">
+P9bPOvzqpLQ102h+vZ0X7J0VyYLs2I+I4RPCWfYbzV/9lUqNdED8ilJ1g+EmjjpcZmxQIjZSQhYk
+YZyrQZ+XvsptDXPh/tUORXqo8yBGBZpQwSfXzVjKVR56eVN7/qIUOiWu4f5XqlYwD+r3VFmkofnc
+wyGx3r/JmdfiX8/eYAF5yVmjH68oxK8VTaw69ajg6ezsAXa21o4BJ1Y/t2930h4OmQjHNueThjDm
+VboYm3HXK1zl4U3O91pYShVPxRHt/w6eROqu4XFEM6vly+zvaPOdqlmhfv6p1n502qy6z13CSGk2
+wSPHb256tSDXMA8HANynKQvCCP3wBNkIjPtv2g==
+</ds:SignatureValue>
+<ds:KeyInfo Id="xmldsig-4c85e4f8-622b-416c-a374-942b4c2ba90c-keyinfo">
+<ds:X509Data>
+<ds:X509Certificate>
+MIIHWDCCBkCgAwIBAgIIC0ecBN9YsDowDQYJKoZIhvcNAQELBQAwfTELMAkGA1UEBhMCSVQxJDAi
+BgNVBAoMG05hbWlyaWFsIFMucC5BLi8wMjA0NjU3MDQyNjEgMB4GA1UECwwXQ2VydGlmaWNhdGlv
+biBBdXRob3JpdHkxJjAkBgNVBAMMHU5hbWlyaWFsIENBIEZpcm1hIFF1YWxpZmljYXRhMB4XDTIx
+MTAyNjEwMjkwMFoXDTI0MTAyNDIyMDAwMFowgY8xCzAJBgNVBAYTAklUMQ8wDQYDVQQEDAZQQUdB
+TkkxEzARBgNVBCoMCkFMRVNTQU5EUk8xHzAdBgNVBAUTFlRJTklULVBHTkxTTjczQjAxQjMwMFEx
+GjAYBgNVBAMMEVBBR0FOSSBBTEVTU0FORFJPMR0wGwYDVQQuExRBVVBBMjAyMTEwMjY1OTMwMjkz
+NTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJYbL1q5CKW0yLnfjkTUJaWpio+0edDA
+Eky/7zj4pIsD4+bc3JYj+HU/TZKWWjpxQhg43MEtTC5//xziy6k1fmsJHzlmDPkkGpWQjMhLQoCL
+4wubGhmcNFuHN/yQkHO1xLWJmXy11Nc9xLZS3/kBWQ8UCMwO83SbEYJ3U6hgHW1/VKaiODAtGo7M
+LjaJmYc5/iiVFN9NlNJrguOLUIh+i6ZP8fBuvbSsSsNoev/mukrvJaylXNQts0KbQHb6pGp0kjD4
+8UBE7lSaZG0tpl4eG1qGvPUW9bNfuoZDO7Oz5m4O7NVAPCgepnesC2oeeiJaDisgDD/TUGW8cnFJ
+cnKJaA0CAwEAAaOCA8cwggPDMIGcBggrBgEFBQcBAQSBjzCBjDBRBggrBgEFBQcwAoZFaHR0cHM6
+Ly9kb2NzLm5hbWlyaWFsdHNwLmNvbS9kb2N1bWVudHMvTmFtaXJpYWxDQUZpcm1hUXVhbGlmaWNh
+dGEuY3J0MDcGCCsGAQUFBzABhitodHRwOi8vb2NzcC5uYW1pcmlhbHRzcC5jb20vb2NzcC9jZXJ0
+c3RhdHVzMB0GA1UdDgQWBBSSPKMwNftHdND3nkEORZvda14b+TAfBgNVHSMEGDAWgBRj/e3mjGJH
+SM/qCUFzdhHiZGJ7EDCBzQYIKwYBBQUHAQMEgcAwgb0wCAYGBACORgEBMAsGBgQAjkYBAwIBFDAI
+BgYEAI5GAQQwEwYGBACORgEGMAkGBwQAjkYBBgEwgYQGBgQAjkYBBTB6MDsWNWh0dHBzOi8vZG9j
+cy5uYW1pcmlhbHRzcC5jb20vZG9jdW1lbnRzL1BEUy9QRFNfZW4ucGRmEwJlbjA7FjVodHRwczov
+L2RvY3MubmFtaXJpYWx0c3AuY29tL2RvY3VtZW50cy9QRFMvUERTX2l0LnBkZhMCaXQwggG4BgNV
+HSAEggGvMIIBqzAJBgcEAIvsQAECMAgGBgQAj3oBAjCCAZIGCysGAQQBgpprAQEDMIIBgTApBggr
+BgEFBQcCARYdaHR0cHM6Ly9kb2NzLm5hbWlyaWFsdHNwLmNvbS8wggFSBggrBgEFBQcCAjCCAUQe
+ggFAAEkAbAAgAHAAcgBlAHMAZQBuAHQAZQAgAGMAZQByAHQAaQBmAGkAYwBhAHQAbwAgAOgAIAB2
+AGEAbABpAGQAbwAgAHMAbwBsAG8AIABwAGUAcgAgAGYAaQByAG0AZQAgAGEAcABwAG8AcwB0AGUA
+IABjAG8AbgAgAHAAcgBvAGMAZQBkAHUAcgBhACAAYQB1AHQAbwBtAGEAdABpAGMAYQAuAC8AVABo
+AGkAcwAgAGMAZQByAHQAaQBmAGkAYwBhAHQAZQAgAG0AYQB5ACAAbwBuAGwAeQAgAGIAZQAgAHUA
+cwBlAGQAIABmAG8AcgAgAHUAbgBhAHQAdABlAG4AZABlAGQALwBhAHUAdABvAG0AYQB0AGUAZAAg
+AGQAaQBnAGkAdABhAGwAIABzAGkAZwBuAGEAdAB1AHIAZQBzAC4wRgYDVR0fBD8wPTA7oDmgN4Y1
+aHR0cDovL2NybC5uYW1pcmlhbHRzcC5jb20vRmlybWFDZXJ0YVF1YWxpZmljYXRhMS5jcmwwDgYD
+VR0PAQH/BAQDAgZAMA0GCSqGSIb3DQEBCwUAA4IBAQCnfbOfvSttGzaGA/ExL1n5Q/aWT9RN9Ucr
+sHLMYlKbPmHRYfGg8/svL2SXwPeBX3vQ3+7jGf5i7wvRjCFIhcbkRHfLALDOw36SCh/Jceo/xuNX
+qXf2gmsAxDLQC/uPlx21Nh8q1iqtaz4GXgkXggXQrs+dAW8pt0g4GsKrqkfPoq1vhgxLDvAF8y83
+C3H4Py57UGGElKysb+PAxeymjIM72USs9Fq07vpJuZpYcrBmq593K8cBKTMQULSVK3wAwfvVdiyO
+vyG6KT9rbnxs4+FGhMI+qKwLBNP4vyG119DqPvL42Zwr/j6e+gdG5y5EJaJw6uCpiGig9gPbkzEi
+Esdb
+</ds:X509Certificate>
+</ds:X509Data>
+</ds:KeyInfo>
+<ds:Object><xades:QualifyingProperties Target="#xmldsig-4c85e4f8-622b-416c-a374-942b4c2ba90c" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#"><xades:SignedProperties Id="xmldsig-4c85e4f8-622b-416c-a374-942b4c2ba90c-signedprops"><xades:SignedSignatureProperties><xades:SigningTime>2022-12-09T14:17:11.061+01:00</xades:SigningTime><xades:SigningCertificate><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>6dPL1NKSPr68lemq/QpxPhRQtr3061zgOizkgo7brpY=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>CN=Namirial CA Firma Qualificata,OU=Certification Authority,O=Namirial S.p.A./02046570426,C=IT</ds:X509IssuerName><ds:X509SerialNumber>812789802504597562</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>wC+V94r4CySaNIHKQZJK5g12Y4Z8XyL/hDeg6Mw0QTc=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>CN=Namirial CA Firma Qualificata,OU=Certification Authority,O=Namirial S.p.A./02046570426,C=IT</ds:X509IssuerName><ds:X509SerialNumber>4708725866506655769</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert></xades:SigningCertificate></xades:SignedSignatureProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object>
+</ds:Signature></p:FatturaElettronica>

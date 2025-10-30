@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12">
+	<FatturaElettronicaHeader>
+		<DatiTrasmissione>
+			<IdTrasmittente>
+				<IdPaese>IT</IdPaese>
+				<IdCodice>08245660017</IdCodice>
+			</IdTrasmittente>
+			<ProgressivoInvio>0000041</ProgressivoInvio>
+			<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+			<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+		</DatiTrasmissione>
+		<CedentePrestatore>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>01466941000</IdCodice>
+				</IdFiscaleIVA>
+				<CodiceFiscale>05929800588</CodiceFiscale>
+				<Anagrafica>
+					<Denominazione>MASTER CLUB SRL</Denominazione>
+				</Anagrafica>
+				<RegimeFiscale>RF01</RegimeFiscale>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>VIA DEL GAMBERO 14</Indirizzo>
+				<CAP>00187</CAP>
+				<Comune>ROMA</Comune>
+				<Provincia>RM</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+			<IscrizioneREA>
+				<Ufficio>RM</Ufficio>
+				<NumeroREA>508563</NumeroREA>
+				<StatoLiquidazione>LN</StatoLiquidazione>
+			</IscrizioneREA>
+			<Contatti>
+				<Email>franceschiniroma@live.it</Email>
+			</Contatti>
+		</CedentePrestatore>
+		<CessionarioCommittente>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>17044041006</IdCodice>
+				</IdFiscaleIVA>
+				<CodiceFiscale>17044041006</CodiceFiscale>
+				<Anagrafica>
+					<Denominazione>RB CONSULTING S.R.L.</Denominazione>
+				</Anagrafica>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+				<CAP>00193</CAP>
+				<Comune>ROMA</Comune>
+				<Provincia>RM</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+		</CessionarioCommittente>
+	</FatturaElettronicaHeader>
+	<FatturaElettronicaBody>
+		<DatiGenerali>
+			<DatiGeneraliDocumento>
+				<TipoDocumento>TD01</TipoDocumento>
+				<Divisa>EUR</Divisa>
+				<Data>2025-07-22</Data>
+				<Numero>11</Numero>
+				<ImportoTotaleDocumento>399.90</ImportoTotaleDocumento>
+				<Causale>scontrino n. 0004</Causale>
+			</DatiGeneraliDocumento>
+		</DatiGenerali>
+		<DatiBeniServizi>
+			<DettaglioLinee>
+				<NumeroLinea>1</NumeroLinea>
+				<Descrizione>Camicie</Descrizione>
+				<Quantita>6.00000000</Quantita>
+				<PrezzoUnitario>54.63110000</PrezzoUnitario>
+				<PrezzoTotale>327.79000000</PrezzoTotale>
+				<AliquotaIVA>22.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DatiRiepilogo>
+				<AliquotaIVA>22.00</AliquotaIVA>
+				<ImponibileImporto>327.79</ImponibileImporto>
+				<Imposta>72.11</Imposta>
+				<EsigibilitaIVA>I</EsigibilitaIVA>
+				<RiferimentoNormativo>22 - 22% - GENERICO</RiferimentoNormativo>
+			</DatiRiepilogo>
+		</DatiBeniServizi>
+		<DatiPagamento>
+			<CondizioniPagamento>TP02</CondizioniPagamento>
+			<DettaglioPagamento>
+				<ModalitaPagamento>MP08</ModalitaPagamento>
+				<DataScadenzaPagamento>2025-07-22</DataScadenzaPagamento>
+				<ImportoPagamento>399.90</ImportoPagamento>
+				<IBAN>IT32B0100503240000000008380</IBAN>
+			</DettaglioPagamento>
+		</DatiPagamento>
+	</FatturaElettronicaBody>
+</p:FatturaElettronica>

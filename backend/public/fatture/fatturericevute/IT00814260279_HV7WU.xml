@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="fatturaordinaria_v1.2.1.xsl" ?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12">
+	<FatturaElettronicaHeader>
+		<DatiTrasmissione>
+			<IdTrasmittente>
+				<IdPaese>IT</IdPaese>
+				<IdCodice>08245660017</IdCodice>
+			</IdTrasmittente>
+			<ProgressivoInvio>0000043</ProgressivoInvio>
+			<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+			<CodiceDestinatario>KRRH689</CodiceDestinatario>
+		</DatiTrasmissione>
+		<CedentePrestatore>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>00814260279</IdCodice>
+				</IdFiscaleIVA>
+				<CodiceFiscale>00814260279</CodiceFiscale>
+				<Anagrafica>
+					<Denominazione>OLIMPIA S.A.S. DI A. DEL MASCH IO &amp; C.</Denominazione>
+				</Anagrafica>
+				<RegimeFiscale>RF01</RegimeFiscale>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>DORDOSURO 3700</Indirizzo>
+				<CAP>30135</CAP>
+				<Comune>VENEZIA</Comune>
+				<Provincia>VE</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+			<Contatti>
+				<Email>info@bareteri.it</Email>
+			</Contatti>
+		</CedentePrestatore>
+		<CessionarioCommittente>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>05744121210</IdCodice>
+				</IdFiscaleIVA>
+				<CodiceFiscale>05744121210</CodiceFiscale>
+				<Anagrafica>
+					<Denominazione>R&amp;B CONSULTING S.r.l.</Denominazione>
+				</Anagrafica>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>Via Crescenzo, 25</Indirizzo>
+				<CAP>00193</CAP>
+				<Comune>Roma</Comune>
+				<Provincia>RM</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+		</CessionarioCommittente>
+	</FatturaElettronicaHeader>
+	<FatturaElettronicaBody>
+		<DatiGenerali>
+			<DatiGeneraliDocumento>
+				<TipoDocumento>TD01</TipoDocumento>
+				<Divisa>EUR</Divisa>
+				<Data>2021-09-12</Data>
+				<Numero>4/1.001</Numero>
+				<ImportoTotaleDocumento>464.82</ImportoTotaleDocumento>
+				<Causale>Soggiorno dal 10 settembre per 2 notti</Causale>
+			</DatiGeneraliDocumento>
+		</DatiGenerali>
+		<DatiBeniServizi>
+			<DettaglioLinee>
+				<NumeroLinea>1</NumeroLinea>
+				<CodiceArticolo>
+					<CodiceTipo>AswArtFor</CodiceTipo>
+					<CodiceValore>Soggiorno</CodiceValore>
+				</CodiceArticolo>
+				<Descrizione>Cam 102 2 pax per 2 notti con colazione</Descrizione>
+				<Quantita>1.00000000</Quantita>
+				<UnitaMisura>N.</UnitaMisura>
+				<PrezzoUnitario>422.56300000</PrezzoUnitario>
+				<PrezzoTotale>422.56000000</PrezzoTotale>
+				<AliquotaIVA>10.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DatiRiepilogo>
+				<AliquotaIVA>10.00</AliquotaIVA>
+				<ImponibileImporto>422.56</ImponibileImporto>
+				<Imposta>42.26</Imposta>
+				<EsigibilitaIVA>I</EsigibilitaIVA>
+			</DatiRiepilogo>
+		</DatiBeniServizi>
+		<DatiPagamento>
+			<CondizioniPagamento>TP02</CondizioniPagamento>
+			<DettaglioPagamento>
+				<ModalitaPagamento>MP08</ModalitaPagamento>
+				<DataScadenzaPagamento>2021-09-12</DataScadenzaPagamento>
+				<ImportoPagamento>464.82</ImportoPagamento>
+			</DettaglioPagamento>
+		</DatiPagamento>
+	</FatturaElettronicaBody>
+</p:FatturaElettronica>

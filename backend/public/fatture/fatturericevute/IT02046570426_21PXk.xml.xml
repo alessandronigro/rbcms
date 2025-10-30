@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>02046570426</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>0005794674</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+      <PECDestinatario>POSTMASTER@PEC.RBCONSULENZA.COM</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>04233030966</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>04233030966</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>FINGER'S S.R.L.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA GIOVANNI KEPLERO 2</Indirizzo>
+        <CAP>20124</CAP>
+        <Comune>MILANO</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Telefono>0225061444</Telefono>
+        <Email>amministrazione@fingersrestaurants.com</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02046570426</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Namirial S.p.A</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2022-08-12</Data>
+        <Numero>72/P</Numero>
+        <ImportoTotaleDocumento>397.00</ImportoTotaleDocumento>
+        <Causale>CHECK# : 706 | FISCALE# : - | PROPERTY# : 39103 - FINGER PORTO CERVO | RVC# : 10 - RISTORANTE | WS# : 1 - WS39103C1 | IBAN# :</Causale>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>COPERTO</Descrizione>
+        <Quantita>6.00</Quantita>
+        <PrezzoUnitario>9.09090909</PrezzoUnitario>
+        <PrezzoTotale>54.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>ACQUA NATURALE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>3.63636364</PrezzoUnitario>
+        <PrezzoTotale>3.64</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>ACQUA FRIZZANTE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>3.63636364</PrezzoUnitario>
+        <PrezzoTotale>3.64</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>SUSHI E SASHIMI</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>30.90909091</PrezzoUnitario>
+        <PrezzoTotale>30.91</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>SUSHI E SASHIMI</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>30.90909091</PrezzoUnitario>
+        <PrezzoTotale>30.91</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>SPICY TUNA PLUS</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>18.18181818</PrezzoUnitario>
+        <PrezzoTotale>18.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>PHILADELPHIA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>14.54545455</PrezzoUnitario>
+        <PrezzoTotale>14.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>GIÒ QUAGLIA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>9.09090909</PrezzoUnitario>
+        <PrezzoTotale>9.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>GIÒ QUAGLIA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>9.09090909</PrezzoUnitario>
+        <PrezzoTotale>9.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>GIÒ QUAGLIA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>9.09090909</PrezzoUnitario>
+        <PrezzoTotale>9.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione>GIN HENDRICK'S</Descrizione>
+        <Quantita>5.00</Quantita>
+        <PrezzoUnitario>16.36363636</PrezzoUnitario>
+        <PrezzoTotale>81.82</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <Descrizione>MOSCOW MULE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>18.18181818</PrezzoUnitario>
+        <PrezzoTotale>18.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>13</NumeroLinea>
+        <Descrizione>ENERGY DRINK</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>5.45454545</PrezzoUnitario>
+        <PrezzoTotale>10.91</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>14</NumeroLinea>
+        <Descrizione>WHISKEY SOUR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>18.18181818</PrezzoUnitario>
+        <PrezzoTotale>18.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>15</NumeroLinea>
+        <Descrizione>GIN HENDRICK'S</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>16.36363636</PrezzoUnitario>
+        <PrezzoTotale>16.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>16</NumeroLinea>
+        <Descrizione>WHISKEY SOUR</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>18.18181818</PrezzoUnitario>
+        <PrezzoTotale>18.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>17</NumeroLinea>
+        <Descrizione>GIN TANQUERAY</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>13.63636364</PrezzoUnitario>
+        <PrezzoTotale>13.64</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>18</NumeroLinea>
+        <Descrizione>SREF#</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>NOTE</TipoDato>
+          <RiferimentoTesto>NC#706|ID#740CE1BE7B9241F5A2207C5243495FEB00013614</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>360.91</ImponibileImporto>
+        <Imposta>36.09</Imposta>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>397.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

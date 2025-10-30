@@ -1,0 +1,1211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>02098391200</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>3wca4</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05403151003</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05403151003</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>TRENITALIA S.p.A. - SOCIETA' CON SOCIO UNICO</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Piazza della Croce Rossa, 1</Indirizzo>
+        <CAP>00161</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RM</Ufficio>
+        <NumeroREA>360679</NumeroREA>
+        <CapitaleSociale>1417782000.00</CapitaleSociale>
+        <SocioUnico>SU</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R&amp;B Consulting   </Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZiO</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02098391200</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Unimatica S.p.a</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-11-30</Data>
+        <Numero>4600090652</Numero>
+        <ImportoTotaleDocumento>961.20</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+      <DatiContratto>
+        <IdDocumento>4600090652</IdDocumento>
+      </DatiContratto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO REGIONALE</Descrizione>
+        <PrezzoUnitario>1.82</PrezzoUnitario>
+        <PrezzoTotale>1.82</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-05</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1255403584</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>AVERSA - CASERTA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>1.82</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>43.09</PrezzoUnitario>
+        <PrezzoTotale>43.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-29</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>LFJU2N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1271497550</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>43.09</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>39.64</PrezzoUnitario>
+        <PrezzoTotale>39.64</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-29</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>LFGRVN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1271488919</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>39.64</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>39.36</PrezzoUnitario>
+        <PrezzoTotale>39.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-19</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>D5RV7N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1264748541</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>39.36</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>50.55</PrezzoUnitario>
+        <PrezzoTotale>50.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-28</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KFY93N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270887742</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>50.55</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>43.09</PrezzoUnitario>
+        <PrezzoTotale>43.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-29</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>LFKX5N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1271503227</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI CENTRALE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>43.09</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>39.36</PrezzoUnitario>
+        <PrezzoTotale>39.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KF2KPN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270234892</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>39.36</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>31.18</PrezzoUnitario>
+        <PrezzoTotale>31.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KF2KPN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270252527</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - CASERTA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>31.18</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO REGIONALE</Descrizione>
+        <PrezzoUnitario>3.09</PrezzoUnitario>
+        <PrezzoTotale>3.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270252526</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>CASERTA - NAPOLI CENTRALE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>3.09</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>39.36</PrezzoUnitario>
+        <PrezzoTotale>39.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KF2KPN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270234891</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>39.36</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione>RIMBORSI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-25</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>JDK2AN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1268449631</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Doc. Fatt.</TipoDato>
+          <RiferimentoTesto>4600090652</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <Descrizione>ANNULLAMENTO TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>-43.09</PrezzoUnitario>
+        <PrezzoTotale>-43.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-29</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>LFKX5N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1271503227</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI CENTRALE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>-43.09</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>13</NumeroLinea>
+        <Descrizione>ANNULLAMENTO TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>-43.09</PrezzoUnitario>
+        <PrezzoTotale>-43.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-29</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>LFKX5N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1271503228</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI CENTRALE - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>-43.09</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>14</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>50.55</PrezzoUnitario>
+        <PrezzoTotale>50.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KFY93N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270231039</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>50.55</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>15</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>43.09</PrezzoUnitario>
+        <PrezzoTotale>43.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-29</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>LFPGJN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1271515890</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI CENTRALE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>43.09</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>16</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>31.00</PrezzoUnitario>
+        <PrezzoTotale>31.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-29</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>LFPWQN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1271517671</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI CENTRALE - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>31.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>17</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>31.18</PrezzoUnitario>
+        <PrezzoTotale>31.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-20</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>ERWJCN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1265331443</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - CASERTA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>31.18</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>18</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO REGIONALE</Descrizione>
+        <PrezzoUnitario>3.09</PrezzoUnitario>
+        <PrezzoTotale>3.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-20</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1265331442</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>CASERTA - NAPOLI CENTRALE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>3.09</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>19</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>50.55</PrezzoUnitario>
+        <PrezzoTotale>50.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KFY93N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270231038</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>50.55</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>20</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>39.36</PrezzoUnitario>
+        <PrezzoTotale>39.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-05</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>WBP795</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1255403582</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI CENTRALE - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>39.36</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>21</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>50.55</PrezzoUnitario>
+        <PrezzoTotale>50.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-28</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KFY93N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270887741</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>50.55</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>22</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>39.36</PrezzoUnitario>
+        <PrezzoTotale>39.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KF2KPN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270252525</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI CENTRALE - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>39.36</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>23</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>50.55</PrezzoUnitario>
+        <PrezzoTotale>50.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KFY93N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270231040</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>50.55</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>24</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>39.36</PrezzoUnitario>
+        <PrezzoTotale>39.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-20</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>ERWJCN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1265331441</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI CENTRALE - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>39.36</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>25</NumeroLinea>
+        <Descrizione>RIMBORSI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>-39.36</PrezzoUnitario>
+        <PrezzoTotale>-39.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KF2KPN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270234891</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>-39.36</RiferimentoNumero>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Doc. Fatt.</TipoDato>
+          <RiferimentoTesto>4600090652</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>26</NumeroLinea>
+        <Descrizione>RIMBORSI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>-50.55</PrezzoUnitario>
+        <PrezzoTotale>-50.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-28</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KFY93N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270231040</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>-50.55</RiferimentoNumero>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Doc. Fatt.</TipoDato>
+          <RiferimentoTesto>4600090652</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>27</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO REGIONALE</Descrizione>
+        <PrezzoUnitario>3.09</PrezzoUnitario>
+        <PrezzoTotale>3.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-05</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1255403583</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>CASERTA - NAPOLI CENTRALE</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>3.09</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>28</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>39.36</PrezzoUnitario>
+        <PrezzoTotale>39.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-19</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>D5RV7N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1264748542</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>39.36</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>29</NumeroLinea>
+        <Descrizione>RIMBORSI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>-50.55</PrezzoUnitario>
+        <PrezzoTotale>-50.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-28</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KFY93N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270231043</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>-50.55</RiferimentoNumero>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Doc. Fatt.</TipoDato>
+          <RiferimentoTesto>4600090652</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>30</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>50.55</PrezzoUnitario>
+        <PrezzoTotale>50.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KFY93N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270231043</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>50.55</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>31</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>31.18</PrezzoUnitario>
+        <PrezzoTotale>31.18</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-20</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>EMMXF5</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1265532610</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - CASERTA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>31.18</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>32</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>43.09</PrezzoUnitario>
+        <PrezzoTotale>43.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-29</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>LFKX5N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1271503228</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI CENTRALE - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>43.09</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>33</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-25</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>JDK2AN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1268449631</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>34</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>39.64</PrezzoUnitario>
+        <PrezzoTotale>39.64</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-29</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>LFGRVN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1271488918</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>39.64</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>35</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZ. SERV. UNIVERSALE</Descrizione>
+        <PrezzoUnitario>19.73</PrezzoUnitario>
+        <PrezzoTotale>19.73</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-05</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>WBP795</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1255403585</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - AVERSA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>19.73</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>36</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>60.36</PrezzoUnitario>
+        <PrezzoTotale>60.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-20</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>EMWNLN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1265552613</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>MILANO CENTRALE - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>60.36</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>37</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-25</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>JDJ2W5</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1268445627</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>NAPOLI AFRAGOLA - ROMA TERMINI</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>38</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-25</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>JDK2AN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1268654929</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>0.00</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>39</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>50.55</PrezzoUnitario>
+        <PrezzoTotale>50.55</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-21</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>GDNGJ5</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1266157384</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>50.55</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>40</NumeroLinea>
+        <Descrizione>ANNULLAMENTO TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>-39.36</PrezzoUnitario>
+        <PrezzoTotale>-39.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-27</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>KF2KPN</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1270234892</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>-39.36</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>41</NumeroLinea>
+        <Descrizione>BIGLIETTI TRAFFICO NAZIONALE</Descrizione>
+        <PrezzoUnitario>43.09</PrezzoUnitario>
+        <PrezzoTotale>43.09</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>Data oper.</TipoDato>
+          <RiferimentoData>2019-11-29</RiferimentoData>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>PNR</TipoDato>
+          <RiferimentoTesto>LFJU2N</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ID Titolo</TipoDato>
+          <RiferimentoTesto>1271497548</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Part./Arr.</TipoDato>
+          <RiferimentoTesto>ROMA TERMINI - NAPOLI AFRAGOLA</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>Imp. Bigl.</TipoDato>
+          <RiferimentoNumero>43.09</RiferimentoNumero>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>873.82</ImponibileImporto>
+        <Imposta>87.38</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <RiferimentoNormativo>IVA vendite 10%</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <DataScadenzaPagamento>2019-12-31</DataScadenzaPagamento>
+        <ImportoPagamento>961.20</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

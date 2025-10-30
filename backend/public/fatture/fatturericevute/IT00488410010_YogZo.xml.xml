@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>00488410010</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>YogZo</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00488410010</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>00488410010</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>TIM  S.p.A.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Gaetano Negri</Indirizzo>
+        <NumeroCivico>1</NumeroCivico>
+        <CAP>20123</CAP>
+        <Comune>MILANO</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>MI</Ufficio>
+        <NumeroREA>1580695</NumeroREA>
+        <CapitaleSociale>11677002855.10</CapitaleSociale>
+        <SocioUnico>SM</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>V. CRESCENZIO 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2023-05-11</Data>
+        <Numero>7X02331654</Numero>
+        <ImportoTotaleDocumento>42.00</ImportoTotaleDocumento>
+        <Causale>Fattura Maggio 23: Periodo 1/04/23 - 30/04/23</Causale>
+      </DatiGeneraliDocumento>
+      <DatiContratto>
+        <IdDocumento>888012176474</IdDocumento>
+        <CodiceCommessaConvenzione>UTTT4</CodiceCommessaConvenzione>
+      </DatiContratto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Contributo TIM BASE 01/04/23 - 30/04/23</Descrizione>
+        <PrezzoUnitario>6.00</PrezzoUnitario>
+        <PrezzoTotale>6.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RIC.TELEF.</TipoDato>
+          <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Contributo Tim Deluxe Plus 01/03/23 - 23/03/23</Descrizione>
+        <PrezzoUnitario>26.69</PrezzoUnitario>
+        <PrezzoTotale>26.69</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>RIC.TELEF.</TipoDato>
+          <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>Addebito rendiconto precedente </Descrizione>
+        <PrezzoUnitario>2.12</PrezzoUnitario>
+        <PrezzoTotale>2.12</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+        <ImponibileImporto>2.12</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <RiferimentoNormativo>art. 15 D.P.R. 633/1972</RiferimentoNormativo>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>32.69</ImponibileImporto>
+        <Imposta>7.19</Imposta>
+        <RiferimentoNormativo>22%</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP19</ModalitaPagamento>
+        <DataScadenzaPagamento>2023-06-12</DataScadenzaPagamento>
+        <ImportoPagamento>42.00</ImportoPagamento>
+        <CodicePagamento>313330880217647421</CodicePagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

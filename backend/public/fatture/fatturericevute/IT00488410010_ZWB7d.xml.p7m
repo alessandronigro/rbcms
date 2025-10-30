@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xmlns:pfx1="http://www.tibco.com/ns/no_namespace_schema_location/RMCA_FAT_WRITER/Schemas/fattura_SAP_RMCA.xsd" xmlns:pfx41="http://www.tibco.com/ns/no_namespace_schema_location/RMCA_FAT_WRITER/Schemas/metadati.xsd" xmlns:ns5="http://telecomitalia.it/sdplib/Schemas/XSD/Error" xmlns:ns3="http://telecomitalia.it/s2d/soa/esb_etl/logger" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx31="http://www.tibco.com/ns/no_namespace_schema_location/RMCA_FAT_WRITER/Schemas/aliquoteIVA.xsd" xmlns:pfx5="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:pfx7="http://telecomitalia.it/sdplib/Schemas/XSD/Response" xmlns:pfx6="http://www.fatturapa.gov.it/sdi/fatturapa/v1.0" versione="FPR12">
+    <FatturaElettronicaHeader>
+        <DatiTrasmissione>
+            <IdTrasmittente>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>00488410010</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>ZWB7d</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>0000000</CodiceDestinatario>
+        </DatiTrasmissione>
+        <CedentePrestatore>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>00488410010</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>00488410010</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>TIM  S.p.A.</Denominazione>
+                </Anagrafica>
+                <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>Via Gaetano Negri</Indirizzo>
+                <NumeroCivico>1</NumeroCivico>
+                <CAP>20123</CAP>
+                <Comune>MILANO</Comune>
+                <Provincia>MI</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+            <IscrizioneREA>
+                <Ufficio>MI</Ufficio>
+                <NumeroREA>1580695</NumeroREA>
+                <CapitaleSociale>11677002855.10</CapitaleSociale>
+                <SocioUnico>SM</SocioUnico>
+                <StatoLiquidazione>LN</StatoLiquidazione>
+            </IscrizioneREA>
+        </CedentePrestatore>
+        <CessionarioCommittente>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>05744121210</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>05744121210</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+                </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>V. V. CRESCENZIO 25</Indirizzo>
+                <CAP>00193</CAP>
+                <Comune>ROMA</Comune>
+                <Provincia>RM</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+        </CessionarioCommittente>
+    </FatturaElettronicaHeader>
+    <FatturaElettronicaBody>
+        <DatiGenerali>
+            <DatiGeneraliDocumento>
+                <TipoDocumento>TD04</TipoDocumento>
+                <Divisa>EUR</Divisa>
+                <Data>2023-06-14</Data>
+                <Numero>302380146407</Numero>
+                <ImportoTotaleDocumento>39.89</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+            <DatiContratto>
+                <IdDocumento>-</IdDocumento>
+                <CodiceCommessaConvenzione>ODA</CodiceCommessaConvenzione>
+            </DatiContratto>
+            <DatiFattureCollegate>
+                <IdDocumento>7X02331654</IdDocumento>
+            </DatiFattureCollegate>
+        </DatiGenerali>
+        <DatiBeniServizi>
+            <DettaglioLinee>
+                <NumeroLinea>1</NumeroLinea>
+                <Descrizione>TRAFFICO PREPAGATO CONTRATTI BUNDLED</Descrizione>
+                <PrezzoUnitario>3.90</PrezzoUnitario>
+                <PrezzoTotale>3.90</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <AltriDatiGestionali>
+                    <TipoDato>ODA</TipoDato>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>RIC.TELEF.</TipoDato>
+                    <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>2</NumeroLinea>
+                <Descrizione>TRAFFICO PREPAGATO CONTRATTI BUNDLED</Descrizione>
+                <PrezzoUnitario>10.67</PrezzoUnitario>
+                <PrezzoTotale>10.67</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <AltriDatiGestionali>
+                    <TipoDato>ODA</TipoDato>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>RIC.TELEF.</TipoDato>
+                    <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>3</NumeroLinea>
+                <Descrizione>TRAFFICO PREPAGATO CONTRATTI BUNDLED -ROAMING</Descrizione>
+                <PrezzoUnitario>0.60</PrezzoUnitario>
+                <PrezzoTotale>0.60</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <AltriDatiGestionali>
+                    <TipoDato>ODA</TipoDato>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>RIC.TELEF.</TipoDato>
+                    <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>4</NumeroLinea>
+                <Descrizione>TRAFFICO PREPAGATO CONTRATTI BUNDLED -ROAMING</Descrizione>
+                <PrezzoUnitario>2.55</PrezzoUnitario>
+                <PrezzoTotale>2.55</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <AltriDatiGestionali>
+                    <TipoDato>ODA</TipoDato>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>RIC.TELEF.</TipoDato>
+                    <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>5</NumeroLinea>
+                <Descrizione>TRAFFICO GPRS PREPAGATO CONTRATTI BUNDLED</Descrizione>
+                <PrezzoUnitario>1.20</PrezzoUnitario>
+                <PrezzoTotale>1.20</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <AltriDatiGestionali>
+                    <TipoDato>ODA</TipoDato>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>RIC.TELEF.</TipoDato>
+                    <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>6</NumeroLinea>
+                <Descrizione>TRAFFICO GPRS PREPAGATO CONTRATTI BUNDLED</Descrizione>
+                <PrezzoUnitario>9.72</PrezzoUnitario>
+                <PrezzoTotale>9.72</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <AltriDatiGestionali>
+                    <TipoDato>ODA</TipoDato>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>RIC.TELEF.</TipoDato>
+                    <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>7</NumeroLinea>
+                <Descrizione>TRAFFICO GPRS PREPAGATO CONTRATTI BUNDLED ROAMING</Descrizione>
+                <PrezzoUnitario>0.30</PrezzoUnitario>
+                <PrezzoTotale>0.30</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <AltriDatiGestionali>
+                    <TipoDato>ODA</TipoDato>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>RIC.TELEF.</TipoDato>
+                    <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>8</NumeroLinea>
+                <Descrizione>TRAFFICO GPRS PREPAGATO CONTRATTI BUNDLED ROAMING</Descrizione>
+                <PrezzoUnitario>3.76</PrezzoUnitario>
+                <PrezzoTotale>3.76</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <AltriDatiGestionali>
+                    <TipoDato>ODA</TipoDato>
+                </AltriDatiGestionali>
+                <AltriDatiGestionali>
+                    <TipoDato>RIC.TELEF.</TipoDato>
+                    <RiferimentoTesto>Op. ex art.74 DPR633/72-fatt.rich. cliente art.4 DM366/2000</RiferimentoTesto>
+                </AltriDatiGestionali>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <ImponibileImporto>32.70</ImponibileImporto>
+                <Imposta>7.19</Imposta>
+            </DatiRiepilogo>
+        </DatiBeniServizi>
+    
+    </FatturaElettronicaBody>
+</p:FatturaElettronica>

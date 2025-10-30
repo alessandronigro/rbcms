@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>06784021211</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>94859</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <PECDestinatario>postmaster@pec.rbconsulenza.com</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>06784021211</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+        	<Denominazione>C.I.N. SpA</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Largo Augusto</Indirizzo>
+        <NumeroCivico>8</NumeroCivico>
+        <CAP>20122</CAP>
+        <Comune>Milano</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>MI</Ufficio>
+        <NumeroREA>2081676</NumeroREA>
+        <CapitaleSociale>5000000.00</CapitaleSociale>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+        	<Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO, 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2020-12-14</Data>
+        <Numero>CI20085203</Numero>
+        <ImportoTotaleDocumento>230.74</ImportoTotaleDocumento>
+        <Causale>Trasporto Passeggeri/Merci</Causale>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>CAB</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Pz</UnitaMisura>
+        <DataInizioPeriodo>2020-12-14</DataInizioPeriodo>
+        <DataFinePeriodo>2020-12-14</DataFinePeriodo>
+        <PrezzoUnitario>35.80</PrezzoUnitario>
+        <PrezzoTotale>35.80</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>linea</TipoDato>
+          <RiferimentoTesto>Napoli - Palermo</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>nave</TipoDato>
+          <RiferimentoTesto>RUBATTINO</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>porto imb</TipoDato>
+          <RiferimentoTesto>Napoli</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>dat part</TipoDato>
+          <RiferimentoTesto>2020-12-27</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ora part</TipoDato>
+          <RiferimentoTesto>20:15</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>CPMPAX</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Pz</UnitaMisura>
+        <DataInizioPeriodo>2020-12-14</DataInizioPeriodo>
+        <DataFinePeriodo>2020-12-14</DataFinePeriodo>
+        <PrezzoUnitario>3.64</PrezzoUnitario>
+        <PrezzoTotale>3.64</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>linea</TipoDato>
+          <RiferimentoTesto>Napoli - Palermo</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>nave</TipoDato>
+          <RiferimentoTesto>RUBATTINO</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>porto imb</TipoDato>
+          <RiferimentoTesto>Napoli</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>dat part</TipoDato>
+          <RiferimentoTesto>2020-12-27</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ora part</TipoDato>
+          <RiferimentoTesto>20:15</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>DIRPAX</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Pz</UnitaMisura>
+        <DataInizioPeriodo>2020-12-14</DataInizioPeriodo>
+        <DataFinePeriodo>2020-12-14</DataFinePeriodo>
+        <PrezzoUnitario>8.76</PrezzoUnitario>
+        <PrezzoTotale>8.76</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>linea</TipoDato>
+          <RiferimentoTesto>Napoli - Palermo</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>nave</TipoDato>
+          <RiferimentoTesto>RUBATTINO</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>porto imb</TipoDato>
+          <RiferimentoTesto>Napoli</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>dat part</TipoDato>
+          <RiferimentoTesto>2020-12-27</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ora part</TipoDato>
+          <RiferimentoTesto>20:15</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>DIRVEI</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Pz</UnitaMisura>
+        <DataInizioPeriodo>2020-12-14</DataInizioPeriodo>
+        <DataFinePeriodo>2020-12-14</DataFinePeriodo>
+        <PrezzoUnitario>1.83</PrezzoUnitario>
+        <PrezzoTotale>1.83</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>linea</TipoDato>
+          <RiferimentoTesto>Napoli - Palermo</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>nave</TipoDato>
+          <RiferimentoTesto>RUBATTINO</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>porto imb</TipoDato>
+          <RiferimentoTesto>Napoli</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>dat part</TipoDato>
+          <RiferimentoTesto>2020-12-27</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ora part</TipoDato>
+          <RiferimentoTesto>20:15</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>PAX</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Pz</UnitaMisura>
+        <DataInizioPeriodo>2020-12-14</DataInizioPeriodo>
+        <DataFinePeriodo>2020-12-14</DataFinePeriodo>
+        <PrezzoUnitario>95.45</PrezzoUnitario>
+        <PrezzoTotale>95.45</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>linea</TipoDato>
+          <RiferimentoTesto>Napoli - Palermo</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>nave</TipoDato>
+          <RiferimentoTesto>RUBATTINO</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>porto imb</TipoDato>
+          <RiferimentoTesto>Napoli</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>dat part</TipoDato>
+          <RiferimentoTesto>2020-12-27</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ora part</TipoDato>
+          <RiferimentoTesto>20:15</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>TAXPAX</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Pz</UnitaMisura>
+        <DataInizioPeriodo>2020-12-14</DataInizioPeriodo>
+        <DataFinePeriodo>2020-12-14</DataFinePeriodo>
+        <PrezzoUnitario>23.42</PrezzoUnitario>
+        <PrezzoTotale>23.42</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>linea</TipoDato>
+          <RiferimentoTesto>Napoli - Palermo</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>nave</TipoDato>
+          <RiferimentoTesto>RUBATTINO</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>porto imb</TipoDato>
+          <RiferimentoTesto>Napoli</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>dat part</TipoDato>
+          <RiferimentoTesto>2020-12-27</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ora part</TipoDato>
+          <RiferimentoTesto>20:15</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>TAXVEI</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Pz</UnitaMisura>
+        <DataInizioPeriodo>2020-12-14</DataInizioPeriodo>
+        <DataFinePeriodo>2020-12-14</DataFinePeriodo>
+        <PrezzoUnitario>4.50</PrezzoUnitario>
+        <PrezzoTotale>4.50</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>linea</TipoDato>
+          <RiferimentoTesto>Napoli - Palermo</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>nave</TipoDato>
+          <RiferimentoTesto>RUBATTINO</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>porto imb</TipoDato>
+          <RiferimentoTesto>Napoli</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>dat part</TipoDato>
+          <RiferimentoTesto>2020-12-27</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ora part</TipoDato>
+          <RiferimentoTesto>20:15</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>VEI</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Pz</UnitaMisura>
+        <DataInizioPeriodo>2020-12-14</DataInizioPeriodo>
+        <DataFinePeriodo>2020-12-14</DataFinePeriodo>
+        <PrezzoUnitario>36.36</PrezzoUnitario>
+        <PrezzoTotale>36.36</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>linea</TipoDato>
+          <RiferimentoTesto>Napoli - Palermo</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>nave</TipoDato>
+          <RiferimentoTesto>RUBATTINO</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>porto imb</TipoDato>
+          <RiferimentoTesto>Napoli</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>dat part</TipoDato>
+          <RiferimentoTesto>2020-12-27</RiferimentoTesto>
+        </AltriDatiGestionali>
+        <AltriDatiGestionali>
+          <TipoDato>ora part</TipoDato>
+          <RiferimentoTesto>20:15</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>209.76</ImponibileImporto>
+        <Imposta>20.98</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>230.74</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+ </p:FatturaElettronica>

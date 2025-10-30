@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+      <p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+        <FatturaElettronicaHeader>
+          <DatiTrasmissione>
+            <IdTrasmittente>
+              <IdPaese>IT</IdPaese>
+              <IdCodice>06157670966</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>00001</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+            <PECDestinatario>servizi@rbconsulenza.com</PECDestinatario>
+          </DatiTrasmissione>
+          <CedentePrestatore>
+            <DatiAnagrafici>
+              <IdFiscaleIVA>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>06157670966</IdCodice>
+              </IdFiscaleIVA>
+              <Anagrafica>
+                <Denominazione>OVH SRL</Denominazione>
+              </Anagrafica>
+              <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+              <Indirizzo>Via Carlo Imbonati, 18</Indirizzo>
+              <CAP>20159</CAP>
+              <Comune>MILANO</Comune>
+              <Provincia>MI</Provincia>
+              <Nazione>IT</Nazione>
+            </Sede>
+          </CedentePrestatore>
+          <CessionarioCommittente>
+            <DatiAnagrafici>
+              <IdFiscaleIVA>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>17044041006</IdCodice>
+              </IdFiscaleIVA>
+              <Anagrafica>
+                <Denominazione>RB CONSULTING s.r.l.</Denominazione>
+              </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+              <Indirizzo>Via Crescenzio,25</Indirizzo>
+              <CAP>00193</CAP>
+              <Comune>ROMA</Comune>
+              <Provincia>RM</Provincia>
+              <Nazione>IT</Nazione>
+            </Sede>
+          </CessionarioCommittente>
+        </FatturaElettronicaHeader>
+        <FatturaElettronicaBody>
+          <DatiGenerali>
+            <DatiGeneraliDocumento>
+              <TipoDocumento>TD01</TipoDocumento>
+              <Divisa>EUR</Divisa>
+              <Data>2025-07-11</Data>
+              <Numero>IT2661997</Numero>
+              <ImportoTotaleDocumento>9.75</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+          </DatiGenerali>
+          <DatiBeniServizi>
+            <DettaglioLinee>
+              <NumeroLinea>1</NumeroLinea>
+              <Descrizione>Zimbra Starter installation</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>2</NumeroLinea>
+              <Descrizione>sexylara.chat   DNS Zone   Installation</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>3</NumeroLinea>
+              <Descrizione>sexylara.chat   .chat richiesta di registrazione   from 11/07/25 to 11/07/26</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>34.79</PrezzoUnitario>
+              <PrezzoTotale>34.79</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>4</NumeroLinea>
+              <Descrizione>DNS zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>5</NumeroLinea>
+              <Descrizione>Zimbra Starter monthly pricing</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.30</PrezzoUnitario>
+              <PrezzoTotale>0.30</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>6</NumeroLinea>
+              <Descrizione>A zimbra account</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>7</NumeroLinea>
+              <Descrizione>sexylara.chat   DNS Zone   Installation</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>8</NumeroLinea>
+              <Descrizione>Domain .chat</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>9</NumeroLinea>
+              <Descrizione>Free starter account with domain</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>-0.30</PrezzoUnitario>
+              <PrezzoTotale>-0.30</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>10</NumeroLinea>
+              <Descrizione>Promotion registre</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>-26.80</PrezzoUnitario>
+              <PrezzoTotale>-26.80</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+              <AliquotaIVA>22.00</AliquotaIVA>
+              <ImponibileImporto>7.99</ImponibileImporto>
+              <Imposta>1.76</Imposta>
+              <EsigibilitaIVA>I</EsigibilitaIVA>
+            </DatiRiepilogo>
+          </DatiBeniServizi>
+          <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+              <ModalitaPagamento>MP15</ModalitaPagamento>
+              <DataScadenzaPagamento>2025-07-11</DataScadenzaPagamento>
+              <ImportoPagamento>9.75</ImportoPagamento>
+            </DettaglioPagamento>
+          </DatiPagamento>
+        </FatturaElettronicaBody>
+      </p:FatturaElettronica>

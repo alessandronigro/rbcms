@@ -1,0 +1,142 @@
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>LVGTMS74B10L738M</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>02281469</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>11131361005</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>TAKI SRL</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA MARIANNA DIONIGI 56/60</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO,25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2022-12-21</Data>
+        <Numero>500 T1</Numero>
+        <ImportoTotaleDocumento>175.00</ImportoTotaleDocumento>
+        <Causale>CORRISPETTIVO PAGATO</Causale>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>EDAMAME</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>5.454550</PrezzoUnitario>
+        <PrezzoTotale>10.909100</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>WAKAMESU</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>7.272750</PrezzoUnitario>
+        <PrezzoTotale>14.545500</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>ARCOBALENO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>32.727300</PrezzoUnitario>
+        <PrezzoTotale>32.727300</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>MELA STREGATA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>6.363600</PrezzoUnitario>
+        <PrezzoTotale>6.363600</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>ACQUA NAT S BENEDETTO 0,65</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>4.090900</PrezzoUnitario>
+        <PrezzoTotale>4.090900</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>COCA COLA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>4.545500</PrezzoUnitario>
+        <PrezzoTotale>4.545500</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>SASHIMI MIX</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>36.363600</PrezzoUnitario>
+        <PrezzoTotale>36.363600</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>SUSHI  MORI MATSU</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>46.363600</PrezzoUnitario>
+        <PrezzoTotale>46.363600</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>CAFFE ITALIANO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>3.181800</PrezzoUnitario>
+        <PrezzoTotale>3.181800</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>159.09</ImponibileImporto>
+        <Imposta>15.91</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

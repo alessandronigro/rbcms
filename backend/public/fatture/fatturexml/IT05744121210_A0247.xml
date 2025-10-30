@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12" xmlns="http://www.fatturapa.gov.it/sdi/fatturapa/v1.2">
+  <FatturaElettronicaHeader xmlns="">
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05744121210</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>A02472019</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>JIBGI41</CodiceDestinatario>
+      <PECDestinatario>aesrl@postaleg.it</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>R&amp;BCONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Crescenzio</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>03821670407</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>03821670407</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>ADMIRAL ENTERTAINMENT SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Galla Placidia 2</Indirizzo>
+        <CAP>47922</CAP>
+        <Comune>Rimini</Comune>
+        <Provincia>RN</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody xmlns="">
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-03-05</Data>
+        <Numero>A/0247/2019</Numero>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Corso di prima formazione per Agente nei servizi di pagamento - Lina Schenal</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>70.00</PrezzoUnitario>
+        <PrezzoTotale>70.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>Corso di prima formazione per Agente nei servizi di pagamento - Daniele Conti</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>70.00</PrezzoUnitario>
+        <PrezzoTotale>70.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>Corso di prima formazione per Agente nei servizi di pagamento - Daniele Palladino</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>70.00</PrezzoUnitario>
+        <PrezzoTotale>70.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>Corso di prima formazione per Agente nei servizi di pagamento - Francesco Testa</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>70.00</PrezzoUnitario>
+        <PrezzoTotale>70.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>Corso di prima formazione per Agente nei servizi di pagamento - Davide Bergonzini</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>70.00</PrezzoUnitario>
+        <PrezzoTotale>70.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>Corso di prima formazione per Agente nei servizi di pagamento - Marcello Giovannini</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>70.00</PrezzoUnitario>
+        <PrezzoTotale>70.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>Corso di prima formazione per Agente nei servizi di pagamento - ELDA TUSHA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>70.00</PrezzoUnitario>
+        <PrezzoTotale>70.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>Corso di prima formazione per Agente nei servizi di pagamento - ROBERTA MALFEO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>70.00</PrezzoUnitario>
+        <PrezzoTotale>70.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>Corso di prima formazione per Agente nei servizi di pagamento - LUCA INCITTI</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>70.00</PrezzoUnitario>
+        <PrezzoTotale>70.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione>Corso di prima formazione per Agente nei servizi di pagamento - SILVIA SANGIORGIO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>70.00</PrezzoUnitario>
+        <PrezzoTotale>70.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>700.00</ImponibileImporto>
+        <Imposta>154.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP01</CondizioniPagamento>
+      <DettaglioPagamento>
+        <Beneficiario>R&amp;BCONSULTING S.R.L</Beneficiario>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <ImportoPagamento>854.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

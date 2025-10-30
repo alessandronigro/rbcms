@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="windows-1252"?>                                                                                                                                                                               
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>                                                                                                                                                                
+<p:FatturaElettronica versione="FPR12"                                                                                                                                                                                      
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"                                                                                                                                                                               
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"                                                                                                                                                     
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">                                                                                                                                                                      
+  <FatturaElettronicaHeader>
+   <DatiTrasmissione>
+    <IdTrasmittente>
+     <IdPaese>SM</IdPaese>
+                            <IdCodice>03473</IdCodice>
+    </IdTrasmittente>
+          <ProgressivoInvio>1/34</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+   </DatiTrasmissione>
+   <CedentePrestatore>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>01449380623</IdCodice>
+     </IdFiscaleIVA>
+     <CodiceFiscale>VGLGSI80C21B963D</CodiceFiscale>
+     <Anagrafica>
+                                                           <Nome>GIOSUE'</Nome>
+                                                         <Cognome>VIGLIOTTI</Cognome>
+     </Anagrafica>
+     <RegimeFiscale>RF17</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+                                              <Indirizzo>VIA WILLY BRANDT, 4</Indirizzo>
+     <CAP>81100</CAP>
+                                                          <Comune>CASERTA</Comune>
+     <Provincia>CE</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+    <Contatti>
+     <Email>INFO@STUDIOVIGLIOTTI.COM</Email>                                    
+    </Contatti>
+   </CedentePrestatore>
+   <CessionarioCommittente>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>05744121210</IdCodice>
+     </IdFiscaleIVA>
+          <CodiceFiscale>05744121210</CodiceFiscale>
+     <Anagrafica>
+                                                <Denominazione>R&amp;B CONSULTING SRL IN LIQUIDAZIONE</Denominazione>
+     </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+                                             <Indirizzo>VIA CRESCENZIO N. 25</Indirizzo>
+     <CAP>00186</CAP>
+                                                             <Comune>ROMA</Comune>
+     <Provincia>RM</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+   </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+   <DatiGenerali>
+    <DatiGeneraliDocumento>
+     <TipoDocumento>TD06</TipoDocumento>
+     <Divisa>EUR</Divisa>
+     <Data>2024-04-15</Data>
+                     <Numero>1/34</Numero>
+     <DatiRitenuta>
+      <TipoRitenuta>RT01</TipoRitenuta>
+      <ImportoRitenuta>36.00</ImportoRitenuta>          
+      <AliquotaRitenuta>20.00</AliquotaRitenuta> 
+       <CausalePagamento>A</CausalePagamento>
+     </DatiRitenuta>
+     <DatiCassaPrevidenziale>
+      <TipoCassa>TC02</TipoCassa>
+      <AlCassa>  4.00</AlCassa>
+      <ImportoContributoCassa>           7.20</ImportoContributoCassa>
+      <ImponibileCassa>         180.00</ImponibileCassa>
+       <AliquotaIVA>22.00</AliquotaIVA>
+     </DatiCassaPrevidenziale>
+     <ImportoTotaleDocumento>         228.38</ImportoTotaleDocumento>
+    </DatiGeneraliDocumento>
+   </DatiGenerali>
+   <DatiBeniServizi>
+    <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+     <CodiceArticolo>
+                              <CodiceTipo>PRESTAZIONE</CodiceTipo>
+                                       <CodiceValore>10</CodiceValore>
+     </CodiceArticolo>
+     <Descrizione>Si rilascia fattura per i seguenti adempimenti:
+per lo sgravio parziale della cartella esattoriale n.09720220167261259000                                                                               
+</Descrizione>                                                                                                                                                                                                        
+     <PrezzoUnitario>           180.000000</PrezzoUnitario>
+     <PrezzoTotale>               180.00</PrezzoTotale>
+     <AliquotaIVA>22.00</AliquotaIVA> 
+     <Ritenuta>SI</Ritenuta>
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>22.00</AliquotaIVA>
+     <ImponibileImporto>187.20         </ImponibileImporto>
+     <Imposta>41.18          </Imposta>
+     <EsigibilitaIVA>D</EsigibilitaIVA>
+    </DatiRiepilogo>
+   </DatiBeniServizi>
+   <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+     <ModalitaPagamento>MP05</ModalitaPagamento>
+     <DataScadenzaPagamento>2024-04-15</DataScadenzaPagamento>
+     <ImportoPagamento>192.38</ImportoPagamento>         
+     <IstitutoFinanziario>CREDITO EMILIANO SPA</IstitutoFinanziario>                                                            
+     <IBAN>IT09S0303214900010000001104</IBAN>       
+     <ABI>03032</ABI>
+     <CAB>14900</CAB>
+    </DettaglioPagamento>
+   </DatiPagamento>
+  </FatturaElettronicaBody>
+ </p:FatturaElettronica>

@@ -1,0 +1,109 @@
+<ns2:FatturaElettronica xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione><IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>08973230967</IdCodice></IdTrasmittente><ProgressivoInvio>5fw6M</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>KRRH6B9</CodiceDestinatario><PECDestinatario>fatturazione@pec.rbconsulenza.com</PECDestinatario></DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05027620268</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>shenzhenshi xulinfei dianzishangwu youxiangongsi</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA DANIELE MANIN 1/F</Indirizzo>
+            <CAP>31015</CAP>
+            <Comune>CONEGLIANO TV</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05744121210</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>R&amp;B Consulting Srl</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>via Crescenzio, 25</Indirizzo>
+            <CAP>00193</CAP>
+            <Comune>Roma</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+      <TerzoIntermediarioOSoggettoEmittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>00161809991</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Amazon Services Europe S.à r.l.</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+      </TerzoIntermediarioOSoggettoEmittente>
+      <SoggettoEmittente>TZ</SoggettoEmittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2023-01-23</Data>
+            <Numero>IT23-48975I-42</Numero>
+            <ImportoTotaleDocumento>35.99</ImportoTotaleDocumento>
+            <Arrotondamento>0.00</Arrotondamento>
+         </DatiGeneraliDocumento>
+         <DatiContratto>
+            <RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
+            <RiferimentoNumeroLinea>2</RiferimentoNumeroLinea>
+            <IdDocumento>405-9311429-2512345</IdDocumento>
+            <Data>2023-01-23</Data>
+         </DatiContratto>
+         <FatturaPrincipale>
+            <NumeroFatturaPrincipale>IT23-48975I-42</NumeroFatturaPrincipale>
+            <DataFatturaPrincipale>2023-01-23</DataFatturaPrincipale>
+         </FatturaPrincipale>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>DSTE - Batteria di ricambio BP-970G BP-975 + kit caricatore da viaggio Compatible per fotocamera digitale Canon XLH1, XHG1, XHA1, XL2, XM2, XH G1S, XH A1S, XL H1S, XL H1A, XF305, XF300, XF105, XF100</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2023-01-23</DataInizioPeriodo>
+            <DataFinePeriodo>2023-01-23</DataFinePeriodo>
+            <PrezzoUnitario>29.50</PrezzoUnitario>
+            <PrezzoTotale>29.50</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Costi di spedizione</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2023-01-23</DataInizioPeriodo>
+            <DataFinePeriodo>2023-01-23</DataFinePeriodo>
+            <PrezzoUnitario>0.00</PrezzoUnitario>
+            <PrezzoTotale>0.00</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <Arrotondamento>0.00</Arrotondamento>
+            <ImponibileImporto>29.50</ImponibileImporto>
+            <Imposta>6.49</Imposta>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP08</ModalitaPagamento>
+            <ImportoPagamento>35.99</ImportoPagamento>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</ns2:FatturaElettronica>

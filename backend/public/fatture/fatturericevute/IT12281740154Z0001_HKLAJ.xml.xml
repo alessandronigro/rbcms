@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>12281740154</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>1HKLAJ</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <ContattiTrasmittente>
+        <Email>fatturapa@documi.it</Email>
+      </ContattiTrasmittente>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>02470390846</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>RCCVCN74H07I533K</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>TRATTORIA IL FARO DI RECCA VINCENZO</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA AL PORTO 25</Indirizzo>
+        <CAP>92019</CAP>
+        <Comune>SCIACCA</Comune>
+        <Provincia>AG</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>via CRESCENZIO 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>12281740154</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>DocuMI s.r.l.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2023-08-03</Data>
+        <Numero>505</Numero>
+        <ImportoTotaleDocumento>270.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>10117</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>Acqua Naturale 075</Descrizione>
+        <Quantita>2.00</Quantita>
+        <UnitaMisura>pezzo</UnitaMisura>
+        <PrezzoUnitario>2.2727</PrezzoUnitario>
+        <PrezzoTotale>4.5454</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>10118</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>Coca cola 33 CL</Descrizione>
+        <Quantita>2.00</Quantita>
+        <UnitaMisura>pezzo</UnitaMisura>
+        <PrezzoUnitario>2.2727</PrezzoUnitario>
+        <PrezzoTotale>4.5454</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>10136</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>Scampi Marinati</Descrizione>
+        <Quantita>1.30</Quantita>
+        <UnitaMisura>pezzo</UnitaMisura>
+        <PrezzoUnitario>72.7273</PrezzoUnitario>
+        <PrezzoTotale>94.5455</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>10016</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>Gamberone rosso marinato</Descrizione>
+        <Quantita>3.00</Quantita>
+        <UnitaMisura>pezzo</UnitaMisura>
+        <PrezzoUnitario>14.5455</PrezzoUnitario>
+        <PrezzoTotale>43.6365</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>10183</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>TARTARE DI TONNO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>pezzo</UnitaMisura>
+        <PrezzoUnitario>12.7273</PrezzoUnitario>
+        <PrezzoTotale>12.7273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>10162</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>Busiate al Rosso di Mazara</Descrizione>
+        <Quantita>2.00</Quantita>
+        <UnitaMisura>pezzo</UnitaMisura>
+        <PrezzoUnitario>16.3636</PrezzoUnitario>
+        <PrezzoTotale>32.7272</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>10165</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>Cannolo Scomposto</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>pezzo</UnitaMisura>
+        <PrezzoUnitario>3.6364</PrezzoUnitario>
+        <PrezzoTotale>3.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>11110583</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>TRAINARA</Descrizione>
+        <Quantita>2.00</Quantita>
+        <UnitaMisura>pezzo</UnitaMisura>
+        <PrezzoUnitario>22.7273</PrezzoUnitario>
+        <PrezzoTotale>45.4546</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>Codice Interno</CodiceTipo>
+          <CodiceValore>888888</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>COPERTO</Descrizione>
+        <Quantita>3.00</Quantita>
+        <UnitaMisura>pezzo</UnitaMisura>
+        <PrezzoUnitario>2.2727</PrezzoUnitario>
+        <PrezzoTotale>6.8181</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+        <Descrizione>ABBUONO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>pezzo</UnitaMisura>
+        <PrezzoUnitario>-3.1818</PrezzoUnitario>
+        <PrezzoTotale>-3.1818</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>245.45</ImponibileImporto>
+        <Imposta>24.55</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05006900962</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>djfpxC100L</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>08398461213</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>08398461213</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>UMAMI S.R.L.S.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA G. OBERDAN</Indirizzo>
+        <NumeroCivico>5</NumeroCivico>
+        <CAP>80078</CAP>
+        <Comune>POZZUOLI</Comune>
+        <Provincia>NA</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Email>umamisrls@arubapec.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>ReB CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO  25</Indirizzo>
+        <NumeroCivico>0</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+    <TerzoIntermediarioOSoggettoEmittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05006900962</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05006900962</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>Zucchetti S.p.A.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+    </TerzoIntermediarioOSoggettoEmittente>
+    <SoggettoEmittente>TZ</SoggettoEmittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-09-07</Data>
+        <Numero>21/C</Numero>
+        <ImportoTotaleDocumento>224.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>ACQUA FRIZZANTE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>1.8182</PrezzoUnitario>
+        <PrezzoTotale>1.8182</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>ACQUA NATURALE</Descrizione>
+        <Quantita>5.00</Quantita>
+        <PrezzoUnitario>1.81818</PrezzoUnitario>
+        <PrezzoTotale>9.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>BIRRA SAPPORO CL33</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>3.6364</PrezzoUnitario>
+        <PrezzoTotale>3.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>CARPACCIO MIX</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>18.1818</PrezzoUnitario>
+        <PrezzoTotale>18.1818</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>COCA COLA ZERO</Descrizione>
+        <Quantita>3.00</Quantita>
+        <PrezzoUnitario>2.72727</PrezzoUnitario>
+        <PrezzoTotale>8.1818</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>COPERTO</Descrizione>
+        <Quantita>5.00</Quantita>
+        <PrezzoUnitario>1.81818</PrezzoUnitario>
+        <PrezzoTotale>9.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>DESSERT</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>4.5455</PrezzoUnitario>
+        <PrezzoTotale>4.5455</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>EDAMAME</Descrizione>
+        <Quantita>5.00</Quantita>
+        <PrezzoUnitario>3.63636</PrezzoUnitario>
+        <PrezzoTotale>18.1818</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>GOMA WAKAME</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>3.6364</PrezzoUnitario>
+        <PrezzoTotale>3.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <Descrizione>GOMA WAKAME</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>3.6364</PrezzoUnitario>
+        <PrezzoTotale>3.6364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <Descrizione>ORANGE ROLL</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>14.5455</PrezzoUnitario>
+        <PrezzoTotale>14.5455</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <Descrizione>ROLL DEL GIORNO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>6.3636</PrezzoUnitario>
+        <PrezzoTotale>6.3636</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>13</NumeroLinea>
+        <Descrizione>SAKE CHEESE</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>14.5455</PrezzoUnitario>
+        <PrezzoTotale>14.5455</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>14</NumeroLinea>
+        <Descrizione>SHIROMI AVOCADO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>10.9091</PrezzoUnitario>
+        <PrezzoTotale>10.9091</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>15</NumeroLinea>
+        <Descrizione>SUSHI E SASHIMI 40PZ</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>68.1818</PrezzoUnitario>
+        <PrezzoTotale>68.1818</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>16</NumeroLinea>
+        <Descrizione>YAKISOBA POLLO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>9.0909</PrezzoUnitario>
+        <PrezzoTotale>9.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>203.64</ImponibileImporto>
+        <Imposta>20.36</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

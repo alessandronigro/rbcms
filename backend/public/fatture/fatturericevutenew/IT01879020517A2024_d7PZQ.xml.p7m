@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="visualizza_fattura_v12.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+	<FatturaElettronicaHeader>
+		<DatiTrasmissione>
+			<IdTrasmittente>
+				<IdPaese>IT</IdPaese>
+				<IdCodice>01879020517</IdCodice>
+			</IdTrasmittente>
+			<ProgressivoInvio>00041</ProgressivoInvio>
+			<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+			<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+		</DatiTrasmissione>
+		<CedentePrestatore>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>03746601214</IdCodice>
+				</IdFiscaleIVA>
+				<CodiceFiscale>03746601214</CodiceFiscale>
+				<Anagrafica>
+					<Denominazione>CARACALE' SNC DI Ambrosino Salvatore</Denominazione>
+				</Anagrafica>
+				<RegimeFiscale>RF01</RegimeFiscale>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>Via Marina Corricella , 62</Indirizzo>
+				<CAP>80079</CAP>
+				<Comune>Isola di Procida</Comune>
+				<Provincia>NA</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+		</CedentePrestatore>
+		<CessionarioCommittente>
+			<DatiAnagrafici>
+				<IdFiscaleIVA>
+					<IdPaese>IT</IdPaese>
+					<IdCodice>17044041006</IdCodice>
+				</IdFiscaleIVA>
+				<CodiceFiscale>17044041006</CodiceFiscale>
+				<Anagrafica>
+					<Denominazione>RB CONSULTING srl</Denominazione>
+				</Anagrafica>
+			</DatiAnagrafici>
+			<Sede>
+				<Indirizzo>Via Crescenzio,25</Indirizzo>
+				<CAP>00193</CAP>
+				<Comune>ROMA</Comune>
+				<Provincia>RM</Provincia>
+				<Nazione>IT</Nazione>
+			</Sede>
+		</CessionarioCommittente>
+	</FatturaElettronicaHeader>
+	<FatturaElettronicaBody>
+		<DatiGenerali>
+			<DatiGeneraliDocumento>
+				<TipoDocumento>TD01</TipoDocumento>
+				<Divisa>EUR</Divisa>
+				<Data>2024-06-19</Data>
+				<Numero>29</Numero>
+				<ImportoTotaleDocumento>310.00</ImportoTotaleDocumento>
+				<Causale>VENDITA</Causale>
+			</DatiGeneraliDocumento>
+		</DatiGenerali>
+		<DatiBeniServizi>
+			<DettaglioLinee>
+				<NumeroLinea>1</NumeroLinea>
+				<Descrizione>*** Tavolo Tavolo 9 ***</Descrizione>
+				<PrezzoUnitario>0.00</PrezzoUnitario>
+				<PrezzoTotale>0.00</PrezzoTotale>
+				<AliquotaIVA>10.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DettaglioLinee>
+				<NumeroLinea>2</NumeroLinea>
+				<Descrizione>pasto completo</Descrizione>
+				<Quantita>5.00</Quantita>
+				<UnitaMisura>NR</UnitaMisura>
+				<PrezzoUnitario>54.55</PrezzoUnitario>
+				<PrezzoTotale>272.75</PrezzoTotale>
+				<AliquotaIVA>10.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DettaglioLinee>
+				<NumeroLinea>3</NumeroLinea>
+				<Descrizione>Acqua bibite birra</Descrizione>
+				<Quantita>5.00</Quantita>
+				<UnitaMisura>NR</UnitaMisura>
+				<PrezzoUnitario>1.82</PrezzoUnitario>
+				<PrezzoTotale>9.10</PrezzoTotale>
+				<AliquotaIVA>10.00</AliquotaIVA>
+			</DettaglioLinee>
+			<DatiRiepilogo>
+				<AliquotaIVA>10.00</AliquotaIVA>
+				<Arrotondamento>-0.03685</Arrotondamento>
+				<ImponibileImporto>281.82</ImponibileImporto>
+				<Imposta>28.18</Imposta>
+				<EsigibilitaIVA>I</EsigibilitaIVA>
+			</DatiRiepilogo>
+		</DatiBeniServizi>
+		<DatiPagamento>
+			<CondizioniPagamento>TP02</CondizioniPagamento>
+			<DettaglioPagamento>
+				<ModalitaPagamento>MP01</ModalitaPagamento>
+				<ImportoPagamento>310.00</ImportoPagamento>
+			</DettaglioPagamento>
+		</DatiPagamento>
+	</FatturaElettronicaBody>
+</p:FatturaElettronica>

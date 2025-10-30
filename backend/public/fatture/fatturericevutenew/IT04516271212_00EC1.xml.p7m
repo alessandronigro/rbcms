@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>05006900962</IdCodice></IdTrasmittente>
+      <ProgressivoInvio>zxvtg0609O</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH689</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>04516271212</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>04516271212</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>Ge.Pa. S.A.S.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA ALCIDE DE GASPERI</Indirizzo>
+        <NumeroCivico>33</NumeroCivico>
+        <CAP>80059</CAP>
+        <Comune>TORRE DEL GRECO</Comune>
+        <Provincia>NA</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Email>gepasas@pec.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO  25</Indirizzo>
+        <NumeroCivico>0</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  <TerzoIntermediarioOSoggettoEmittente><DatiAnagrafici><IdFiscaleIVA><IdPaese>IT</IdPaese><IdCodice>05006900962</IdCodice></IdFiscaleIVA><CodiceFiscale>05006900962</CodiceFiscale><Anagrafica><Denominazione>Zucchetti S.p.A.</Denominazione></Anagrafica></DatiAnagrafici></TerzoIntermediarioOSoggettoEmittente><SoggettoEmittente>TZ</SoggettoEmittente></FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-05-18</Data>
+        <Numero>348</Numero>
+        <ImportoTotaleDocumento>187.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>*COPERTO</Descrizione>
+        <Quantita>2.000</Quantita>
+        <PrezzoUnitario>3.636364</PrezzoUnitario>
+        <PrezzoTotale>7.272727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>ROSE VETERE S.SALVAT</Descrizione>
+        <Quantita>1.000</Quantita>
+        <PrezzoUnitario>27.272727</PrezzoUnitario>
+        <PrezzoTotale>27.272727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>ACQUA PANNA</Descrizione>
+        <Quantita>1.000</Quantita>
+        <PrezzoUnitario>2.727273</PrezzoUnitario>
+        <PrezzoTotale>2.727273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>BATTUTO DI GAMBERI C</Descrizione>
+        <Quantita>1.000</Quantita>
+        <PrezzoUnitario>16.363636</PrezzoUnitario>
+        <PrezzoTotale>16.363636</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>STRACOTTO DI TOTANO </Descrizione>
+        <Quantita>1.000</Quantita>
+        <PrezzoUnitario>18.181818</PrezzoUnitario>
+        <PrezzoTotale>18.181818</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>FINGER DI BACCALA</Descrizione>
+        <Quantita>1.000</Quantita>
+        <PrezzoUnitario>20.000000</PrezzoUnitario>
+        <PrezzoTotale>20.000000</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>PESCATO AL BBQ</Descrizione>
+        <Quantita>2.000</Quantita>
+        <PrezzoUnitario>29.090909</PrezzoUnitario>
+        <PrezzoTotale>58.181818</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>VARIAZIONE DI CANAPÈ</Descrizione>
+        <Quantita>1.000</Quantita>
+        <PrezzoUnitario>7.272727</PrezzoUnitario>
+        <PrezzoTotale>7.272727</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>DOLCE DELLA CASA</Descrizione>
+        <Quantita>1.000</Quantita>
+        <PrezzoUnitario>12.727273</PrezzoUnitario>
+        <PrezzoTotale>12.727273</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>170.00</ImponibileImporto>
+        <Imposta>17.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>187.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

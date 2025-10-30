@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+      <p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+        <FatturaElettronicaHeader>
+          <DatiTrasmissione>
+            <IdTrasmittente>
+              <IdPaese>IT</IdPaese>
+              <IdCodice>06157670966</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>00001</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>0000000</CodiceDestinatario>
+            <PECDestinatario>servizi@rbconsulenza.com</PECDestinatario>
+          </DatiTrasmissione>
+          <CedentePrestatore>
+            <DatiAnagrafici>
+              <IdFiscaleIVA>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>06157670966</IdCodice>
+              </IdFiscaleIVA>
+              <Anagrafica>
+                <Denominazione>OVH SRL</Denominazione>
+              </Anagrafica>
+              <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+              <Indirizzo>Via Carlo Imbonati, 18</Indirizzo>
+              <CAP>20159</CAP>
+              <Comune>MILANO</Comune>
+              <Provincia>MI</Provincia>
+              <Nazione>IT</Nazione>
+            </Sede>
+          </CedentePrestatore>
+          <CessionarioCommittente>
+            <DatiAnagrafici>
+              <IdFiscaleIVA>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>05744121210</IdCodice>
+              </IdFiscaleIVA>
+              <Anagrafica>
+                <Denominazione>R&amp;BCONSULTING s.r.l.</Denominazione>
+              </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+              <Indirizzo>Via Crescenzio,25</Indirizzo>
+              <CAP>00193</CAP>
+              <Comune>ROMA</Comune>
+              <Provincia>RM</Provincia>
+              <Nazione>IT</Nazione>
+            </Sede>
+          </CessionarioCommittente>
+        </FatturaElettronicaHeader>
+        <FatturaElettronicaBody>
+          <DatiGenerali>
+            <DatiGeneraliDocumento>
+              <TipoDocumento>TD01</TipoDocumento>
+              <Divisa>EUR</Divisa>
+              <Data>2021-01-01</Data>
+              <Numero>IT1387690</Numero>
+              <ImportoTotaleDocumento>1.21</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+          </DatiGenerali>
+          <DatiBeniServizi>
+            <DettaglioLinee>
+              <NumeroLinea>1</NumeroLinea>
+              <Descrizione>Account Email Pro - 1 mese</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.99</PrezzoUnitario>
+              <PrezzoTotale>0.99</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+              <AliquotaIVA>22.00</AliquotaIVA>
+              <ImponibileImporto>0.99</ImponibileImporto>
+              <Imposta>0.22</Imposta>
+              <EsigibilitaIVA>I</EsigibilitaIVA>
+            </DatiRiepilogo>
+          </DatiBeniServizi>
+          <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+              <ModalitaPagamento>MP08</ModalitaPagamento>
+              <DataScadenzaPagamento>2021-01-01</DataScadenzaPagamento>
+              <ImportoPagamento>1.21</ImportoPagamento>
+            </DettaglioPagamento>
+          </DatiPagamento>
+        </FatturaElettronicaBody>
+      </p:FatturaElettronica>

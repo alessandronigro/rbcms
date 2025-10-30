@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+      <p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+        <FatturaElettronicaHeader>
+          <DatiTrasmissione>
+            <IdTrasmittente>
+              <IdPaese>IT</IdPaese>
+              <IdCodice>06157670966</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>00001</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>0000000</CodiceDestinatario>
+            <PECDestinatario>servizi@rbconsulenza.com</PECDestinatario>
+          </DatiTrasmissione>
+          <CedentePrestatore>
+            <DatiAnagrafici>
+              <IdFiscaleIVA>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>06157670966</IdCodice>
+              </IdFiscaleIVA>
+              <Anagrafica>
+                <Denominazione>OVH SRL</Denominazione>
+              </Anagrafica>
+              <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+              <Indirizzo>Via Carlo Imbonati, 18</Indirizzo>
+              <CAP>20159</CAP>
+              <Comune>MILANO</Comune>
+              <Provincia>MI</Provincia>
+              <Nazione>IT</Nazione>
+            </Sede>
+          </CedentePrestatore>
+          <CessionarioCommittente>
+            <DatiAnagrafici>
+              <IdFiscaleIVA>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>05744121210</IdCodice>
+              </IdFiscaleIVA>
+              <Anagrafica>
+                <Denominazione>R&amp;BCONSULTING s.r.l.</Denominazione>
+              </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+              <Indirizzo>Via Crescenzio,25</Indirizzo>
+              <CAP>00193</CAP>
+              <Comune>ROMA</Comune>
+              <Provincia>RM</Provincia>
+              <Nazione>IT</Nazione>
+            </Sede>
+          </CessionarioCommittente>
+        </FatturaElettronicaHeader>
+        <FatturaElettronicaBody>
+          <DatiGenerali>
+            <DatiGeneraliDocumento>
+              <TipoDocumento>TD01</TipoDocumento>
+              <Divisa>EUR</Divisa>
+              <Data>2020-09-29</Data>
+              <Numero>IT1330644</Numero>
+              <ImportoTotaleDocumento>73.15</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+          </DatiGenerali>
+          <DatiBeniServizi>
+            <DettaglioLinee>
+              <NumeroLinea>1</NumeroLinea>
+              <Descrizione>Domain .com</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>2</NumeroLinea>
+              <Descrizione>DNS zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>3</NumeroLinea>
+              <Descrizione>Domain .com.br</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>4</NumeroLinea>
+              <Descrizione>estacaoitalia.com.br - .com.br registration request - 1 year</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>5</NumeroLinea>
+              <Descrizione>estacaodaitalia.com.br - DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>6</NumeroLinea>
+              <Descrizione>estacaodaitalia.com - DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>7</NumeroLinea>
+              <Descrizione>estacaoitalia.com.br - .com.br registration request - 1 year</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>21.99</PrezzoUnitario>
+              <PrezzoTotale>21.99</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>8</NumeroLinea>
+              <Descrizione>estacaodaitalia.com - .com registration request - 1 year</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>9.99</PrezzoUnitario>
+              <PrezzoTotale>9.99</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>9</NumeroLinea>
+              <Descrizione>estacaoitalia.com.br - DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>10</NumeroLinea>
+              <Descrizione>DNS zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>11</NumeroLinea>
+              <Descrizione>estacaoitalia.com - DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>12</NumeroLinea>
+              <Descrizione>estacaodaitalia.com.br - .com.br registration request - 1 year</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>21.99</PrezzoUnitario>
+              <PrezzoTotale>21.99</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>13</NumeroLinea>
+              <Descrizione>estacaoitalia.com - .com registration request - 1 year</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>9.99</PrezzoUnitario>
+              <PrezzoTotale>9.99</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>14</NumeroLinea>
+              <Descrizione>Domain .com</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>15</NumeroLinea>
+              <Descrizione>Domain .com.br</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>16</NumeroLinea>
+              <Descrizione>DNS zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>17</NumeroLinea>
+              <Descrizione>estacaoitalia.com - .com registration request - 1 year</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>18</NumeroLinea>
+              <Descrizione>estacaodaitalia.com - DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>19</NumeroLinea>
+              <Descrizione>estacaodaitalia.com.br - DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>20</NumeroLinea>
+              <Descrizione>estacaoitalia.com.br - DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>21</NumeroLinea>
+              <Descrizione>estacaoitalia.com - DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>22</NumeroLinea>
+              <Descrizione>DNS zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>23</NumeroLinea>
+              <Descrizione>estacaodaitalia.com - .com registration request - 1 year</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>24</NumeroLinea>
+              <Descrizione>estacaodaitalia.com.br - .com.br registration request - 1 year</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>25</NumeroLinea>
+              <Descrizione>OVH DEALS</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>-4.00</PrezzoUnitario>
+              <PrezzoTotale>-4.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+              <AliquotaIVA>22.00</AliquotaIVA>
+              <ImponibileImporto>59.96</ImponibileImporto>
+              <Imposta>13.19</Imposta>
+              <EsigibilitaIVA>I</EsigibilitaIVA>
+            </DatiRiepilogo>
+          </DatiBeniServizi>
+          <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+              <ModalitaPagamento>MP08</ModalitaPagamento>
+              <DataScadenzaPagamento>2020-09-29</DataScadenzaPagamento>
+              <ImportoPagamento>73.15</ImportoPagamento>
+            </DettaglioPagamento>
+          </DatiPagamento>
+        </FatturaElettronicaBody>
+      </p:FatturaElettronica>

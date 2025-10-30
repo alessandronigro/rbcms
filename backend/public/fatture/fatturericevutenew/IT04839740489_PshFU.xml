@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+<FatturaElettronicaHeader>
+  <DatiTrasmissione>
+    <IdTrasmittente>
+      <IdPaese>IT</IdPaese>
+      <IdCodice>04839740489</IdCodice>
+    </IdTrasmittente>
+    <ProgressivoInvio>001A66474B</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+  </DatiTrasmissione>
+  <CedentePrestatore>
+    <DatiAnagrafici>
+      <IdFiscaleIVA>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01067231009</IdCodice>
+      </IdFiscaleIVA>
+      <CodiceFiscale>02508710585</CodiceFiscale>
+      <Anagrafica>
+        <Denominazione>Luiss Libera Università Internazionale degli Studi Sociali Guido Carli</Denominazione>
+      </Anagrafica>
+      <RegimeFiscale>RF01</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+      <Indirizzo>Viale Pola, 12</Indirizzo>
+      <CAP>00198</CAP>
+      <Comune>Roma</Comune>
+      <Provincia>RM</Provincia>
+      <Nazione>IT</Nazione>
+    </Sede>
+    <Contatti>
+      <Telefono>0685225371</Telefono>
+      <Fax>068552257</Fax>
+      <Email>rgaetano@luiss.it</Email>
+    </Contatti>
+  </CedentePrestatore>
+  <CessionarioCommittente>
+    <DatiAnagrafici>
+      <IdFiscaleIVA>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>17044041006</IdCodice>
+      </IdFiscaleIVA>
+      <Anagrafica>
+        <Denominazione>RB CONSULTING</Denominazione>
+      </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+      <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+      <CAP>00193</CAP>
+      <Comune>ROMA</Comune>
+      <Provincia>RM</Provincia>
+      <Nazione>IT</Nazione>
+    </Sede>
+  </CessionarioCommittente>
+</FatturaElettronicaHeader><FatturaElettronicaBody>
+  <DatiGenerali>
+    <DatiGeneraliDocumento>
+      <TipoDocumento>TD01</TipoDocumento>
+      <Divisa>EUR</Divisa>
+      <Data>2025-08-01</Data>
+      <Numero>25VC003331</Numero>
+      <ImportoTotaleDocumento>1900.01</ImportoTotaleDocumento>
+      <Causale>FATTURA</Causale>
+    </DatiGeneraliDocumento>
+  </DatiGenerali>
+  <DatiBeniServizi>
+    <DettaglioLinee>
+      <NumeroLinea>0001</NumeroLinea>
+      <Descrizione>LUISS SUMMER SCHOOL 2025 GABRIELE RUSSO</Descrizione>
+      <PrezzoUnitario>1557.38</PrezzoUnitario>
+      <PrezzoTotale>1557.38</PrezzoTotale>
+      <AliquotaIVA>22.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>22.00</AliquotaIVA>
+      <Arrotondamento>-0.03</Arrotondamento>
+      <ImponibileImporto>1557.41</ImponibileImporto>
+      <Imposta>342.63</Imposta>
+      <EsigibilitaIVA>I</EsigibilitaIVA>
+    </DatiRiepilogo>
+  </DatiBeniServizi>
+  <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+      <ModalitaPagamento>MP05</ModalitaPagamento>
+      <DataScadenzaPagamento>2025-08-01</DataScadenzaPagamento>
+      <ImportoPagamento>1900.01</ImportoPagamento>
+      <IstitutoFinanziario>Intesa Sanpaolo - Filiale 06793    Piazza Bologna, 45  00162 RM</IstitutoFinanziario>
+      <IBAN>IT37U0306905060100000300001</IBAN>
+      <ABI>03069</ABI>
+      <CAB>05060</CAB>
+      <BIC>BCITITMM</BIC>
+    </DettaglioPagamento>
+  </DatiPagamento>
+</FatturaElettronicaBody>
+</p:FatturaElettronica>

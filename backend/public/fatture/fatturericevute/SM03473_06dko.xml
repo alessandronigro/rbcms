@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="windows-1252"?>                                                                                                                                                                               
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>                                                                                                                                                                
+<p:FatturaElettronica versione="FPR12"                                                                                                                                                                                      
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"                                                                                                                                                                               
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"                                                                                                                                                     
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">                                                                                                                                                                      
+  <FatturaElettronicaHeader>
+   <DatiTrasmissione>
+    <IdTrasmittente>
+     <IdPaese>SM</IdPaese>
+                            <IdCodice>03473</IdCodice>
+    </IdTrasmittente>
+           <ProgressivoInvio>1/5</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+   </DatiTrasmissione>
+   <CedentePrestatore>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>01449380623</IdCodice>
+     </IdFiscaleIVA>
+     <CodiceFiscale>VGLGSI80C21B963D</CodiceFiscale>
+     <Anagrafica>
+                                                           <Nome>GIOSUE'</Nome>
+                                                         <Cognome>VIGLIOTTI</Cognome>
+     </Anagrafica>
+     <RegimeFiscale>RF17</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+                                              <Indirizzo>VIA WILLY BRANDT, 4</Indirizzo>
+     <CAP>81100</CAP>
+                                                          <Comune>CASERTA</Comune>
+     <Provincia>CE</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+    <Contatti>
+     <Email>INFO@STUDIOVIGLIOTTI.COM</Email>                                    
+    </Contatti>
+   </CedentePrestatore>
+   <CessionarioCommittente>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>05744121210</IdCodice>
+     </IdFiscaleIVA>
+     <Anagrafica>
+                                                                <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+     </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+                                             <Indirizzo>VIA CRESCENZIO N. 25</Indirizzo>
+     <CAP>00186</CAP>
+                                                             <Comune>ROMA</Comune>
+     <Provincia>RM</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+   </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+   <DatiGenerali>
+    <DatiGeneraliDocumento>
+     <TipoDocumento>TD06</TipoDocumento>
+     <Divisa>EUR</Divisa>
+     <Data>2019-01-26</Data>
+                      <Numero>1/5</Numero>
+     <DatiRitenuta>
+      <TipoRitenuta>RT01</TipoRitenuta>
+      <ImportoRitenuta>         225.00</ImportoRitenuta>
+      <AliquotaRitenuta> 20.00</AliquotaRitenuta>
+       <CausalePagamento>A</CausalePagamento>
+     </DatiRitenuta>
+     <DatiCassaPrevidenziale>
+      <TipoCassa>TC02</TipoCassa>
+      <AlCassa>  4.00</AlCassa>
+      <ImportoContributoCassa>          45.00</ImportoContributoCassa>
+       <AliquotaIVA>22.00</AliquotaIVA>
+     </DatiCassaPrevidenziale>
+     <ImportoTotaleDocumento>        1427.40</ImportoTotaleDocumento>
+    </DatiGeneraliDocumento>
+   </DatiGenerali>
+   <DatiBeniServizi>
+    <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+     <CodiceArticolo>
+                              <CodiceTipo>PRESTAZIONE</CodiceTipo>
+                                       <CodiceValore>01</CodiceValore>
+     </CodiceArticolo>
+                                                        <Descrizione>Consulenza contabile e fiscale: 01/10/18-31/12/18</Descrizione>
+     <PrezzoUnitario>          1125.000000</PrezzoUnitario>
+     <PrezzoTotale>              1125.00</PrezzoTotale>
+     <AliquotaIVA>22.00</AliquotaIVA> 
+     <Ritenuta>SI</Ritenuta>
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>22.00</AliquotaIVA>
+     <ImponibileImporto>1170.00        </ImponibileImporto>
+     <Imposta>257.40         </Imposta>
+     <EsigibilitaIVA>D</EsigibilitaIVA>
+    </DatiRiepilogo>
+   </DatiBeniServizi>
+   <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+     <ModalitaPagamento>MP05</ModalitaPagamento>
+     <DataScadenzaPagamento>2019-01-26</DataScadenzaPagamento>
+     <ImportoPagamento>1202.40</ImportoPagamento>        
+    </DettaglioPagamento>
+   </DatiPagamento>
+  </FatturaElettronicaBody>
+ </p:FatturaElettronica>

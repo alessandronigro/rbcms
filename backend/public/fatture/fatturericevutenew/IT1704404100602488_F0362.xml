@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2&#xD;&#xA;http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" versione="FPR12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>04747270611</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>362</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <PECDestinatario>RBCONSULTINGSRL@PEC.IT</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>04747270611</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>CASANOVA S.R.L.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA PAOLO BORSELLINO</Indirizzo>
+        <NumeroCivico>SNC</NumeroCivico>
+        <CAP>81100</CAP>
+        <Comune>CASERTA</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Telefono>3515555210</Telefono>
+        <Email>HUYUNYOU@LIBERO.IT</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA DEI VECCHI PINI ,13</Indirizzo>
+        <CAP>81100</CAP>
+        <Comune>CASERTA</Comune>
+        <Provincia>CE</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-12-24</Data>
+        <Numero>362</Numero>
+        <ImportoTotaleDocumento>62.68</ImportoTotaleDocumento>
+        <Arrotondamento>-0.01</Arrotondamento>
+        <Causale>Vendita</Causale>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>2004538300005</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>SACCHETTO</Descrizione>
+        <Quantita>2.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.0820</PrezzoUnitario>
+        <PrezzoTotale>0.1640</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8003650019776</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>OMINO BIANCO CANDEGGINA 2LT BREZZA M.</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.3770</PrezzoUnitario>
+        <PrezzoTotale>2.3770</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8015100576715</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>VERNEL AMM.CONC.BLUOXYGEN</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.9508</PrezzoUnitario>
+        <PrezzoTotale>2.9508</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8006540927267</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>DASH LIQ. LAV. 58LAV. LAVANDA</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>10.2459</PrezzoUnitario>
+        <PrezzoTotale>10.2459</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8006540920916</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>DASH FUSTINO 23MIS 1,265/KG</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>7.1230</PrezzoUnitario>
+        <PrezzoTotale>7.1230</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8001480408456</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LINES SETA ULTRA X16</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.3714</PrezzoUnitario>
+        <PrezzoTotale>2.3714</PrezzoTotale>
+        <AliquotaIVA>5.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8717163997345</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>DOVE DEO SPRAY 250ML ORIGINAL</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.2951</PrezzoUnitario>
+        <PrezzoTotale>2.2951</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8002410011425</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>ROBERTS BAGNODOCCIA 450ML BEAUTY</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.9672</PrezzoUnitario>
+        <PrezzoTotale>1.9672</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8017331064078</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BIOREPAIR DENT.75 ADVANCED SCUDO  C88400</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>3.6885</PrezzoUnitario>
+        <PrezzoTotale>3.6885</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>50099627</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>DOVE DEOD. VAPO 75 ML TALCO</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.4590</PrezzoUnitario>
+        <PrezzoTotale>2.4590</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>11</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8055719203619</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CA-C20 CAVO TYPE-C 1 METRO 5A NERO HUTRADE</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>4.0164</PrezzoUnitario>
+        <PrezzoTotale>4.0164</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>12</NumeroLinea>
+        <Descrizione>/BUSTE C/ BIGLIETTI ROSSO 7.5*11.2CM</Descrizione>
+        <Quantita>2.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.3279</PrezzoUnitario>
+        <PrezzoTotale>0.6558</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>13</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8059775047521</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>WEPARTY BUSTA DA REGALO NATALIZIA 32X26X10CM</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.9836</PrezzoUnitario>
+        <PrezzoTotale>0.9836</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>14</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8059775047040</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>WEPARTY BUSTA DA REGALO NATALIZIA 32X26X10CM</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.9836</PrezzoUnitario>
+        <PrezzoTotale>0.9836</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>15</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>8001480408456</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>LINES SETA ULTRA X16</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.3714</PrezzoUnitario>
+        <PrezzoTotale>2.3714</PrezzoTotale>
+        <AliquotaIVA>5.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>16</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>6976034469561</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>COLLA PER TIP C/ PENNEL. APPLICATORE 5G /PZ DA 12**</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>0.9836</PrezzoUnitario>
+        <PrezzoTotale>0.9836</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>17</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>80018742</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>BOROTALCO BARATTOLO GR.200</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.0492</PrezzoUnitario>
+        <PrezzoTotale>2.0492</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>18</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>EAN</CodiceTipo>
+          <CodiceValore>3574660067682</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>CAREFREE S/SLIP 40+4PZ.</Descrizione>
+        <Quantita>1.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>2.0909</PrezzoUnitario>
+        <PrezzoTotale>2.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>19</NumeroLinea>
+        <Descrizione>BUSTE REGALO NATALE VINO/PZ DA 12**</Descrizione>
+        <Quantita>2.0000</Quantita>
+        <UnitaMisura>PZ</UnitaMisura>
+        <PrezzoUnitario>1.2295</PrezzoUnitario>
+        <PrezzoTotale>2.4590</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>N.DOC.COMM</TipoDato>
+          <RiferimentoTesto>Rif.Sco N.0125 del 22/12/2024 cassa 2</RiferimentoTesto>
+          <RiferimentoData>2024-12-22</RiferimentoData>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>5.00</AliquotaIVA>
+        <ImponibileImporto>4.74</ImponibileImporto>
+        <Imposta>0.24</Imposta>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>45.40</ImponibileImporto>
+        <Imposta>9.99</Imposta>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>2.09</ImponibileImporto>
+        <Imposta>0.21</Imposta>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>62.67</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

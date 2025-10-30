@@ -1,0 +1,888 @@
+﻿<html xmlns:a="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style type="text/css">
+					#fattura-container { width: 100%; position: relative; }
+
+					#fattura-elettronica { font-family: sans-serif; margin-left: auto; margin-right: auto; max-width: 1280px; min-width: 930px; padding: 0; }
+					#fattura-elettronica .versione { font-size: 11px; float:right; color: #777777; }
+					#fattura-elettronica h1 { padding: 20px 0 0 0; margin: 0; font-size: 30px; }
+					#fattura-elettronica h2 { padding: 20px 0 0 0; margin: 0; font-size: 20px; }
+					#fattura-elettronica h3 { padding: 20px 0 0 0; margin: 0; font-size: 25px; }
+					#fattura-elettronica h4 { padding: 20px 0 0 0; margin: 0; font-size: 20px; }
+					#fattura-elettronica h5 { padding: 15px 0 0 0; margin: 0;
+					font-size: 17px; font-style: italic; }
+					#fattura-elettronica ul { list-style-type: none; margin: 0 !important; padding: 15px 0 0 40px !important; }
+					#fattura-elettronica ul li {}
+					#fattura-elettronica ul li span { font-weight: bold; }
+					#fattura-elettronica div { padding: 0; margin: 0; }
+
+					#fattura-elettronica
+					div.page {
+					background-color: #fff !important;
+					position: relative;
+
+					margin: 20px 0
+					50px 0;
+					padding: 60px;
+
+					background: -moz-linear-gradient(0% 0 360deg, #FFFFFF, #F2F2F2 20%, #FFFFFF) repeat scroll 0 0 transparent;
+					border: 1px solid #CCCCCC;
+					-webkitbox-shadow: 0 0 10px rgba(0, 0, 0,
+					0.3);
+					-mozbox-shadow: 0
+					0 10px rgba(0, 0, 0, 0.3);
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+					background: url('logo_sdi_trasparente.jpg') 98% 50px no-repeat;
+					}
+					#fattura-elettronica div.footer { padding: 50px 0 0 0; margin: 0; font-size: 11px; text-align: center; color: #777777; }
+				</style>
+  </head>
+  <body>
+    <div id="fattura-container">
+      <div id="fattura-elettronica">
+        <h1>FATTURA ELETTRONICA</h1>
+        <div class="page">
+          <div class="versione">
+										Versione FPR12</div>
+          <div id="dati-trasmissione">
+            <h3>Dati relativi alla trasmissione</h3>
+            <ul>
+              <li>
+															Identificativo del trasmittente:
+															<span>IT01641790702</span></li>
+              <li>
+															Progressivo di invio:
+															<span>43962</span></li>
+              <li>
+															Formato Trasmissione:
+															<span>FPR12</span></li>
+              <li>
+															Codice Amministrazione destinataria:
+															<span>0000000</span></li>
+              <li>
+															Telefono del trasmittente:
+															<span>0874-60561</span></li>
+              <li>
+															Destinatario PEC:
+															<span>FATTURAZIONE@PEC.RBCONSULENZA.COM</span></li>
+            </ul>
+          </div>
+          <div id="cedente">
+            <h3>Dati del cedente / prestatore</h3>
+            <h4>Dati anagrafici</h4>
+            <ul>
+              <li>
+																Identificativo fiscale ai fini IVA:
+																<span>IT00081390643</span></li>
+              <li>
+																Codice fiscale:
+																<span>00081390643</span></li>
+              <li>
+																Denominazione:
+																<span>Antonio Capaldo S.p.A.</span></li>
+              <li>
+																Regime fiscale:
+																<span>RF01</span>
+																		(ordinario)
+																	</li>
+            </ul>
+            <h4>Dati della sede</h4>
+            <ul>
+              <li>
+																Indirizzo:
+																<span>VIA PROVINCIALE</span></li>
+              <li>
+																Numero civico:
+																<span>5-7-9</span></li>
+              <li>
+																CAP:
+																<span>83030</span></li>
+              <li>
+																Comune:
+																<span>Manocalzati</span></li>
+              <li>
+																Provincia:
+																<span>AV</span></li>
+              <li>
+																Nazione:
+																<span>IT</span></li>
+            </ul>
+          </div>
+          <div id="cessionario">
+            <h3>Dati del cessionario / committente</h3>
+            <h4>Dati anagrafici</h4>
+            <ul>
+              <li>
+																Identificativo fiscale ai fini IVA:
+																<span>IT05744121210</span></li>
+              <li>
+																Denominazione:
+																<span>RB CONSULTING SRL</span></li>
+            </ul>
+            <h4>Dati della sede</h4>
+            <ul>
+              <li>
+																Indirizzo:
+																<span>VIA CRESCENZIO,25</span></li>
+              <li>
+																CAP:
+																<span>00144</span></li>
+              <li>
+																Comune:
+																<span>ROMA</span></li>
+              <li>
+																Provincia:
+																<span>RM</span></li>
+              <li>
+																Nazione:
+																<span>IT</span></li>
+            </ul>
+          </div>
+          <div id="terzointermediario">
+            <h3>Dati del terzo intermediario soggetto emittente</h3>
+            <h4>Dati anagrafici</h4>
+            <ul>
+              <li>
+																Identificativo fiscale ai fini IVA:
+																<span>IT01641790702</span></li>
+              <li>
+																Codice Fiscale:
+																<span>01641790702</span></li>
+              <li>
+																Denominazione:
+																<span>TEAMSYSTEM SERVICE SRL</span></li>
+            </ul>
+          </div>
+          <div id="soggetto-emittente">
+            <h3>Soggetto emittente la fattura</h3>
+            <ul>
+              <li>
+													Soggetto emittente:
+													<span>TZ</span>
+															(terzo)
+														</li>
+            </ul>
+          </div>
+          <div class="footer">
+										Versione prodotta con foglio di stile SdI
+										<a href="http://www.fatturapa.gov.it">www.fatturapa.gov.it</a></div>
+        </div>
+        <div class="page">
+          <div class="versione">
+										Versione FPR12</div>
+          <div id="dati-generali">
+            <div id="dati-generali-documento">
+              <h3>Dati generali del documento</h3>
+              <ul>
+                <li>
+																Tipologia documento:
+																<span>TD01</span>
+																		(fattura)
+																	</li>
+                <li>
+																Valuta importi:
+																<span>EUR</span></li>
+                <li>
+																Data documento:
+																<span>2019-03-12</span> (12 
+				Marzo
+			 2019)</li>
+                <li>
+																Numero documento:
+																<span>V4/006148</span></li>
+                <li>
+																Importo totale documento:
+																<span>203.09</span></li>
+              </ul>
+            </div>
+            <div id="dati-ordine-acquisto">
+              <h3>Dati dell'ordine di acquisto</h3>
+              <ul>
+                <li>
+																	Identificativo ordine di acquisto:
+																	<span>043       000608</span></li>
+                <li>
+																	Data ordine di acquisto:
+																	<span>2019-03-12</span> (12 
+				Marzo
+			 2019)</li>
+              </ul>
+            </div>
+            <div id="dati-trasporto">
+              <h3>Dati relativi al trasporto</h3>
+              <h4>Altri dati</h4>
+              <ul>
+                <li>
+																		Causale trasporto:
+																		<span>Vendita Corrispettivo</span></li>
+                <li>
+																		Numero colli trasportati:
+																		<span>14</span></li>
+                <li>
+																		Indirizzo di resa:
+																		<span>VIA CRESCENZIO,25</span></li>
+                <li>
+																		CAP indirizzo di resa:
+																		<span>00144</span></li>
+                <li>
+																		Comune di resa:
+																		<span>ROMA</span></li>
+                <li>
+																		Provincia di resa:
+																		<span>RM</span></li>
+                <li>
+																		Nazione di resa:
+																		<span>IT</span></li>
+              </ul>
+            </div>
+          </div>
+          <div id="dati-dettaglio-linee">
+            <div id="righe">
+              <h3>Dati relativi alle linee di dettaglio della fornitura</h3>
+              <h5>
+															Nr. linea:
+															<span>1</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>14455</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8000771610912</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>TAPPETO ANTISCIVOLO MOD.PRATIK STOP</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.45082</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.45</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>2</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>39118</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8001940005133</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>WETTEX MULTIUSO</span></li>
+                <li>
+																	Quantità:
+																	<span>3.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.45082</span></li>
+                <li>
+																	Valore totale:
+																	<span>7.35</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>3</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>42000</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>801421142000</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CONTRIBUTO SHOPPER BIOCOMPOSTABILE</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.08197</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.08</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>4</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>5989</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8010693055302</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>MODULO PATTUM. C/SECC.LT.20 CM.34X2 COLORE BIANCO CON SECCHIO</span></li>
+                <li>
+																	Quantità:
+																	<span>3.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>18.43443</span></li>
+                <li>
+																	Valore totale:
+																	<span>55.30</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>5</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>635015</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8034136350151</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>TATAY PORTASCOPINO WC STANDARD GRIG</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.04098</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.04</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>6</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>650906</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8007931070180</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CUBO PORTASALVIETTE CROMO A SNODO</span></li>
+                <li>
+																	Quantità:
+																	<span>2.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>18.84426</span></li>
+                <li>
+																	Valore totale:
+																	<span>37.69</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>7</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>650907</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8007931070197</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CUBO PORTABITO CROMO 2 POSTI</span></li>
+                <li>
+																	Quantità:
+																	<span>2.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>6.13934</span></li>
+                <li>
+																	Valore totale:
+																	<span>12.28</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>8</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>650909</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8007931070210</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CUBO PORTASALVIETTE BIDET CROMO CM.</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>10.64754</span></li>
+                <li>
+																	Valore totale:
+																	<span>10.65</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>9</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>650910</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8007931070227</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CUBO PORTASALVIETTE CROMO CM.30</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>16.38525</span></li>
+                <li>
+																	Valore totale:
+																	<span>16.39</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>10</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>656545</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8034136565456</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>TATAY PATTUMIERA BAGNO STANDARD LT.</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>5.31967</span></li>
+                <li>
+																	Valore totale:
+																	<span>5.32</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>11</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>658006</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8033237847492</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>PORTASPAZZOLINO GRIGIO LINEA STAR</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.79508</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.80</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>12</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>664490</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8034136644908</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>TAPPETINO SALVAFRESCHEZZA FRIGORIF.</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.86066</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.86</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>13</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>665995</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8007931076489</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>WIPER TERGIVETRO BIANCO CON VENTOSA</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.90984</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.91</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>14</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Articolo</span></li>
+                    <li>
+																					Valore:
+																					<span>666696</span></li>
+                  </ul>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>Codice a barre</span></li>
+                    <li>
+																					Valore:
+																					<span>8033237849359</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>GANCIO PER TERMOARREDO ASSORTITO</span></li>
+                <li>
+																	Quantità:
+																	<span>3.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.45082</span></li>
+                <li>
+																	Valore totale:
+																	<span>7.35</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+              </ul>
+            </div>
+            <div id="riepilogo-aliquote-nature">
+              <h3>Dati di riepilogo per aliquota IVA e natura</h3>
+              <ul>
+                <li>
+																	Aliquota IVA (%):
+																	<span>22.00</span></li>
+                <li>
+																	Totale imponibile/importo:
+																	<span>166.47</span></li>
+                <li>
+																	Totale imposta:
+																	<span>36.62</span></li>
+                <li>
+																	Esigibilità IVA:
+																	<span>I</span>
+																			(esigibilità immediata)
+																		</li>
+                <li>
+																	Riferimento normativo:
+																	<span>Iva 22 %</span></li>
+              </ul>
+            </div>
+          </div>
+          <div id="dati-pagamento-condizioni">
+            <h3>Dati relativi al pagamento</h3>
+            <ul>
+              <li>
+															Condizioni di pagamento:
+															<span>TP02</span>
+																	(pagamento completo)
+																</li>
+              <h5>Dettaglio pagamento</h5>
+              <ul>
+                <li>
+																		Modalità:
+																		<span>MP01</span>
+																				(contanti)
+																			</li>
+                <li>
+																		Importo:
+																		<span>203.09</span></li>
+                <li>
+																		Codice pagamento:
+																		<span>198 - PAGATO</span></li>
+              </ul>
+            </ul>
+          </div>
+          <div class="footer">
+										Versione prodotta con foglio di stile SdI
+										<a href="http://www.fatturapa.gov.it">www.fatturapa.gov.it</a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

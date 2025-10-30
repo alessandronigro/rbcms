@@ -1,0 +1,109 @@
+<ns2:FatturaElettronica xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione><IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>08973230967</IdCodice></IdTrasmittente><ProgressivoInvio>3ea4P</ProgressivoInvio><FormatoTrasmissione>FPR12</FormatoTrasmissione><CodiceDestinatario>KRRH6B9</CodiceDestinatario><PECDestinatario>fatturazione@pec.rbconsulenza.com</PECDestinatario></DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>08973230967</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Amazon EU S.a r.l., Succursale Italiana</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>38 avenue John F. Kennedy</Indirizzo>
+            <CAP>01855</CAP>
+            <Comune>Luxemburgo</Comune>
+            <Nazione>LU</Nazione>
+         </Sede>
+         <StabileOrganizzazione>
+            <Indirizzo>Viale Monte Grappa 3/5</Indirizzo>
+            <CAP>20124</CAP>
+            <Comune>Milano</Comune>
+            <Nazione>IT</Nazione>
+         </StabileOrganizzazione>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05744121210</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>R&amp;B Consulting Srl</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>via Crescenzio, 25</Indirizzo>
+            <CAP>00193</CAP>
+            <Comune>Roma</Comune>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2021-12-20</Data>
+            <Numero>IT21-AEUI-11118560</Numero>
+            <ImportoTotaleDocumento>200.00</ImportoTotaleDocumento>
+            <Arrotondamento>0.00</Arrotondamento>
+         </DatiGeneraliDocumento>
+         <DatiOrdineAcquisto>
+            <IdDocumento>Maria 6</IdDocumento>
+         </DatiOrdineAcquisto>
+         <DatiContratto>
+            <RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>
+            <RiferimentoNumeroLinea>2</RiferimentoNumeroLinea>
+            <IdDocumento>402-8829707-1596347</IdDocumento>
+            <Data>2021-12-20</Data>
+         </DatiContratto>
+         <FatturaPrincipale>
+            <NumeroFatturaPrincipale>IT21-AEUI-11118560</NumeroFatturaPrincipale>
+            <DataFatturaPrincipale>2021-12-20</DataFatturaPrincipale>
+         </FatturaPrincipale>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Buono Regalo Amazon.it - Digitale - Carica una foto - Babbo Natale nel camino</Descrizione>
+            <Quantita>7.00</Quantita>
+            <DataInizioPeriodo>2021-12-20</DataInizioPeriodo>
+            <DataFinePeriodo>2021-12-20</DataFinePeriodo>
+            <PrezzoUnitario>25.00</PrezzoUnitario>
+            <PrezzoTotale>175.00</PrezzoTotale>
+            <AliquotaIVA>0.00</AliquotaIVA>
+            <Natura>N2.2</Natura>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Buono Regalo Amazon.it - Digitale - Personalizzato - Babbo Natale nel camino</Descrizione>
+            <Quantita>1.00</Quantita>
+            <DataInizioPeriodo>2021-12-20</DataInizioPeriodo>
+            <DataFinePeriodo>2021-12-20</DataFinePeriodo>
+            <PrezzoUnitario>25.00</PrezzoUnitario>
+            <PrezzoTotale>25.00</PrezzoTotale>
+            <AliquotaIVA>0.00</AliquotaIVA>
+            <Natura>N2.2</Natura>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>0.00</AliquotaIVA>
+            <Natura>N2.2</Natura>
+            <Arrotondamento>0.00</Arrotondamento>
+            <ImponibileImporto>200.00</ImponibileImporto>
+            <Imposta>0.00</Imposta>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP08</ModalitaPagamento>
+            <ImportoPagamento>200.00</ImportoPagamento>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</ns2:FatturaElettronica>

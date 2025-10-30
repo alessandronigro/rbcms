@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd"><FatturaElettronicaHeader>
+            <DatiTrasmissione>
+                <IdTrasmittente>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>05006900962</IdCodice>
+                </IdTrasmittente>
+                 <ProgressivoInvio>gscyjD0gkV</ProgressivoInvio>
+                <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+                <CodiceDestinatario>KRRH6B9</CodiceDestinatario></DatiTrasmissione>
+            <CedentePrestatore>
+                <DatiAnagrafici>
+                    <IdFiscaleIVA>
+                        <IdPaese>IT</IdPaese>
+                        <IdCodice>02629550811</IdCodice>
+                    </IdFiscaleIVA><Anagrafica>
+                        <Denominazione>Santamarina Luxury Suites Srl</Denominazione>
+                    </Anagrafica>
+                    <RegimeFiscale>RF01</RegimeFiscale>
+                </DatiAnagrafici>
+                <Sede>
+                <Indirizzo>VIA DEL CELSO 11</Indirizzo><CAP>90134</CAP><Comune>Palermo</Comune><Provincia>PA</Provincia><Nazione>IT</Nazione>
+                </Sede>
+            </CedentePrestatore><CessionarioCommittente><DatiAnagrafici><IdFiscaleIVA>
+                                    <IdPaese>IT</IdPaese>
+                                    <IdCodice>17044041006</IdCodice>
+                                </IdFiscaleIVA><CodiceFiscale>17044041006</CodiceFiscale><Anagrafica>
+                                <Denominazione>RB Consulting srl</Denominazione>
+                            </Anagrafica></DatiAnagrafici><Sede>
+                            <Indirizzo>Via Crescenzio 25</Indirizzo><CAP>00193</CAP><Comune>Roma</Comune><Provincia>RM</Provincia><Nazione>IT</Nazione>
+                                </Sede></CessionarioCommittente></FatturaElettronicaHeader><FatturaElettronicaBody>
+        <DatiGenerali>
+            <DatiGeneraliDocumento><TipoDocumento>TD01</TipoDocumento><Divisa>EUR</Divisa>
+                <Data>2025-07-11</Data>
+                <Numero>170/2025//P</Numero><ImportoTotaleDocumento>385.00</ImportoTotaleDocumento></DatiGeneraliDocumento></DatiGenerali><DatiBeniServizi><DettaglioLinee>
+                                    <NumeroLinea>1</NumeroLinea><Descrizione>Soggiorno (10/07/2025 - 11/07/2025)</Descrizione>
+                                    <Quantita>1.00</Quantita>
+                                    <PrezzoUnitario>162.72727273</PrezzoUnitario><PrezzoTotale>162.72727273</PrezzoTotale>
+                                    <AliquotaIVA>10.00</AliquotaIVA></DettaglioLinee><DettaglioLinee>
+                                    <NumeroLinea>2</NumeroLinea><Descrizione>PRIVATE SPA</Descrizione>
+                                    <Quantita>1.00</Quantita>
+                                    <PrezzoUnitario>181.81818182</PrezzoUnitario><PrezzoTotale>181.81818182</PrezzoTotale>
+                                    <AliquotaIVA>10.00</AliquotaIVA></DettaglioLinee><DettaglioLinee>
+                                    <NumeroLinea>3</NumeroLinea><Descrizione>Tassa di Soggiorno</Descrizione>
+                                    <Quantita>1.00</Quantita>
+                                    <PrezzoUnitario>6.00000000</PrezzoUnitario><PrezzoTotale>6.00000000</PrezzoTotale>
+                                    <AliquotaIVA>0.00</AliquotaIVA><Natura>N1</Natura></DettaglioLinee><DatiRiepilogo>
+                                     <AliquotaIVA>10.00</AliquotaIVA><ImponibileImporto>344.55</ImponibileImporto>
+                                     <Imposta>34.45</Imposta></DatiRiepilogo><DatiRiepilogo>
+                                     <AliquotaIVA>0.00</AliquotaIVA><Natura>N1</Natura><ImponibileImporto>6.00</ImponibileImporto>
+                                     <Imposta>0.00</Imposta><RiferimentoNormativo>Art.15 DPR 633/72</RiferimentoNormativo></DatiRiepilogo></DatiBeniServizi><DatiPagamento>
+                            <CondizioniPagamento>TP02</CondizioniPagamento><DettaglioPagamento>
+                                        <ModalitaPagamento>MP05</ModalitaPagamento>
+                                        <ImportoPagamento>379.00</ImportoPagamento><IBAN>IT04B0200825904000104566406</IBAN><CodicePagamento>4725669</CodicePagamento></DettaglioPagamento><DettaglioPagamento>
+                                        <ModalitaPagamento>MP08</ModalitaPagamento>
+                                        <ImportoPagamento>6.00</ImportoPagamento><CodicePagamento>4725736</CodicePagamento></DettaglioPagamento></DatiPagamento></FatturaElettronicaBody></p:FatturaElettronica>

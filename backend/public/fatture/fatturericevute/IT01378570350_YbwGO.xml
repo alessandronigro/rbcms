@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><p:FatturaElettronica xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01378570350</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>1196660026</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>09995550960</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>09995550960</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>IRIDEOS S.p.a.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Viale L.Bodio, 37 - Bodio 3 -</Indirizzo>
+        <CAP>20158</CAP>
+        <Comune>Milano</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>MI</Ufficio>
+        <NumeroREA>2126652</NumeroREA>
+        <CapitaleSociale>1215501.00</CapitaleSociale>
+        <SocioUnico>SU</SocioUnico>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>R&amp;BCONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2022-05-10</Data>
+        <Numero>0011154576</Numero>
+        <ImportoTotaleDocumento>6.10</ImportoTotaleDocumento>
+        <Causale>Codice Utenza: 868414-0589700</Causale>
+      </DatiGeneraliDocumento>
+      <DatiOrdineAcquisto>
+        <RiferimentoNumeroLinea>10</RiferimentoNumeroLinea>
+        <IdDocumento>C/94463</IdDocumento>
+      </DatiOrdineAcquisto>
+      <DatiContratto>
+        <RiferimentoNumeroLinea>10</RiferimentoNumeroLinea>
+        <IdDocumento>C/94463</IdDocumento>
+      </DatiContratto>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>10</NumeroLinea>
+        <CodiceArticolo>
+          <CodiceTipo>ARTICOLO</CodiceTipo>
+          <CodiceValore>S0145978</CodiceValore>
+        </CodiceArticolo>
+        <Descrizione>Canone Servizio 800</Descrizione>
+        <Quantita>1.000</Quantita>
+        <UnitaMisura>NR</UnitaMisura>
+        <DataInizioPeriodo>2022-04-01</DataInizioPeriodo>
+        <DataFinePeriodo>2022-04-30</DataFinePeriodo>
+        <PrezzoUnitario>5.00000000</PrezzoUnitario>
+        <PrezzoTotale>5.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <AltriDatiGestionali>
+          <TipoDato>TESTO</TipoDato>
+          <RiferimentoTesto>Canone numero 800699992</RiferimentoTesto>
+        </AltriDatiGestionali>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>5.00</ImponibileImporto>
+        <Imposta>1.10</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP19</ModalitaPagamento>
+        <DataScadenzaPagamento>2022-07-31</DataScadenzaPagamento>
+        <ImportoPagamento>6.10</ImportoPagamento>
+        <IBAN>IT49T0200809440000104854749</IBAN>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="Signer-T-1652430158513"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2006/12/xml-c14n11"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference Id="r-doc-Signer-T-1652430158513" URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"><XPath xmlns="http://www.w3.org/2002/06/xmldsig-filter2" Filter="subtract">/descendant::ds:Signature</XPath></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>9wCzU1AUD4rEMM07I9Pw/PKtqYVullcIZB1zuoGCPVA=</ds:DigestValue></ds:Reference><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#SignedProperties-Signer-T-1652430158513"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>2IeDZVVReWaPmmVwPIq35s1bm/+Nbv7LuMwoRFkzs34=</ds:DigestValue></ds:Reference><ds:Reference Id="r-keyinfo-Signer-T-1652430158513" URI="#KeyInfo-Signer-T-1652430158513"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>Opp8RHHDTimjLDAoyjRnUAPXuawSDtCBYoUS+I4lzaI=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="SignatureValue-Signer-T-1652430158513">SRLzoL+Rv6QmmPVzG09OR1M52GdE7ktKNh3JkH0vdbwaWF/2bmOz1ZzFq9a9B8x+cLh19ouh21uf
+RVbqmifHo9NCiZD8nkLeNw+lnW3gLwap6RJJoAx6/WvNqe5Kd0+EHsqVoN95LkkA+/w+m903pfTZ
+vZjOzeYHBuWS/R7Yidm7bwvmN1ury0BSZz+zuR0SCZsONxfQxp01qssKBlQUa0efcjE06oFlsvz+
+D3dRWd9atJQYYkZvB7oZndFI1V1xd1m9GGlgJOBaRqkoTJuf3Ga9Z97pzn7Zz0qJux2bz3ZrhBCu
+ps0/0LEZCEK38SluMEEXfUL7BRkDfvIVrxGumQ==</ds:SignatureValue><ds:KeyInfo Id="KeyInfo-Signer-T-1652430158513"><ds:X509Data><ds:X509Certificate>MIIJTTCCBzWgAwIBAgIIJYOirJaGUEwwDQYJKoZIhvcNAQELBQAwgbIxCzAJBgNVBAYTAklUMQ8w
+DQYDVQQHDAZBcmV6em8xGDAWBgNVBAoMD0FydWJhUEVDIFMucC5BLjEaMBgGA1UEYQwRVkFUSVQt
+MDE4NzkwMjA1MTcxKTAnBgNVBAsMIFF1YWxpZmllZCBUcnVzdCBTZXJ2aWNlIFByb3ZpZGVyMTEw
+LwYDVQQDDChBcnViYVBFQyBFVSBRdWFsaWZpZWQgQ2VydGlmaWNhdGVzIENBIEcxMB4XDTE5MDYx
+OTE3MDcwNFoXDTIyMDYxOTIxNDkwNFowgY8xCzAJBgNVBAYTAklUMREwDwYDVQQEDAhHaWFuYXp6
+YTERMA8GA1UEKgwITWF1cml6aW8xHzAdBgNVBAUTFlRJTklULUdOWk1SWjU5UjA2QzUzN1UxGjAY
+BgNVBAMMEU1hdXJpemlvIEdpYW5henphMR0wGwYDVQQuExRXU1JFRi0yODg0OTU3MzY1Mjk4MzCC
+ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJeq9GCra1RsQ3smO3xPt1fK87q1Zh+0viNp
+gnRZh6KDe7dg6doEFZ77SleTh4Oeb06y1gke5ydOEDUuT/+W6VpLXMZVWHVJXQbXEpAn2HiWo51d
+HWIHRf9eGP7FtWExC/aBkYimlaulKa6IVqndxv+56lYEVkdy7bZNrEV7QsnxeAsEueNXsxKRmDvU
+b3wfrEJni/Hyro5Dp21NbfHDk3Wq4XJP5683K9P1FmW/3I1xRMIm4bELP4i4g3t4hzNc2pigihJU
+2wnfUZehv3Yd/5eSf5JD84rHmYQCGZenV5zZnJN05LPO9Uwrtqg4NiQ9NYe4DuH5VF8rVlRkV3uS
+g+sCAwEAAaOCBIYwggSCMH8GCCsGAQUFBwEBBHMwcTA4BggrBgEFBQcwAoYsaHR0cDovL2NhY2Vy
+dC5wZWMuaXQvY2VydHMvYXJ1YmFwZWMtZWlkYXMtZzEwNQYIKwYBBQUHMAGGKWh0dHA6Ly9vY3Nw
+MDEucGVjLml0L3ZhL2FydWJhcGVjLWVpZGFzLWcxMB0GA1UdDgQWBBSrAPbLnlEEkxTdS5ZHmjZ5
+GBvJCDAfBgNVHSMEGDAWgBTGbzuFe9EmsXiaQqQlaQz2/3qgZzAbBgNVHRIEFDASgRBpbmZvQGFy
+dWJhcGVjLml0MIG/BggrBgEFBQcBAwSBsjCBrzAIBgYEAI5GAQEwCwYGBACORgEDAgEUMAgGBgQA
+jkYBBDCBiwYGBACORgEFMIGAMD4WOGh0dHBzOi8vd3d3LnBlYy5pdC9yZXBvc2l0b3J5L2FydWJh
+cGVjLXF1YWxpZi1wZHMtaXQucGRmEwJpdDA+FjhodHRwczovL3d3dy5wZWMuaXQvcmVwb3NpdG9y
+eS9hcnViYXBlYy1xdWFsaWYtcGRzLWVuLnBkZhMCZW4wggKPBgNVHSAEggKGMIICgjAJBgcEAIvs
+QAECMIICawYLKwYBBAGB6C0BBwIwggJaMEEGCCsGAQUFBwIBFjVodHRwczovL3d3dy5wZWMuaXQv
+cmVwb3NpdG9yeS9hcnViYXBlYy1xdWFsaWYtY3BzLnBkZjCBrwYIKwYBBQUHAgIwgaIMgZ9JbCBw
+cmVzZW50ZSBjZXJ0aWZpY2F0byDDqCB2YWxpZG8gc29sbyBwZXIgZmlybWUgYXBwb3N0ZSBjb24g
+cHJvY2VkdXJhIGF1dG9tYXRpY2EuIFRoZSBjZXJ0aWZpY2F0ZSBtYXkgb25seSBiZSB1c2VkIGZv
+ciB1bmF0dGVuZGVkL2F1dG9tYXRpYyBkaWdpdGFsIHNpZ25hdHVyZS4wgboGCCsGAQUFBwICMIGt
+DIGqUXVlc3RvIGNlcnRpZmljYXRvIMOoIHV0aWxpenphYmlsZSBzb2x0YW50byBwZXIgYXR0ZXN0
+YXJlIGwnaWRlbnRpdMOgIGRlaSBzb2dnZXR0aSBjaGUgc290dG9zY3Jpdm9ubyBtb2R1bGkgZSBk
+b2N1bWVudGkgdHJhbWl0ZSBpbCBzZXJ2aXppbyBkaSBJbnRlcm5ldCBCYW5raW5nIGRpIENyZWRl
+bS4wgaUGCCsGAQUFBwICMIGYDIGVVGhpcyBjZXJ0aWZpY2F0ZSBjYW4gb25seSBiZSB1c2VkIHRv
+IGNlcnRpZnkgdGhlIGlkZW50aXR5IG9mIHRoZSBwZXJzb25zIHdobyBzdWJzY3JpYmUgZm9ybXMg
+YW5kIGRvY3VtZW50cyB0aHJvdWdoIENyZWRlbSdzIEludGVybmV0IEJhbmtpbmcgc2VydmljZS4w
+BgYEK0wQBjA9BgNVHR8ENjA0MDKgMKAuhixodHRwOi8vY3JsMDEucGVjLml0L3ZhL2FydWJhcGVj
+LWVpZGFzLWcxL2NybDAOBgNVHQ8BAf8EBAMCBkAwDQYJKoZIhvcNAQELBQADggIBAHLAGL9IpOyw
+ukhJ+2033IIehE/EDjz8C0WoBvqn3+m9TNNjkTYCrVhjGLHIY7yCINtWEOsKUq+dzKcQTOzMkfhV
+lyMtSJrCIStTy1vkypavNo2JeSsV2M0niSOSPKGcW8eE1UuAzMlhjkMkyseelOpVCD5FZEh32CrV
+4iSYOPDOMkWRRUzlap8kYk87sdfiTKcxVOV/XOWjq/pTBrap736iwkmpKhS5t8X8+1IAFTd53qoq
+2t2OcERYPhaDSrlGeuzKjI+cthuf5w/noGnk4UXUysiO4BmNL7H00RZUtp5/NnTwDO6ngp+lM6P2
+KYB95xFLU2hHOCLQ4tJ2yYc3M7/GjoAekxWgjsqoUr6dv2tM4SaT+wmR3FV/xqcBoJzwCMEbj4uG
+uLI/cJ8RdysxbZluN0CT8BNUKjm6hC7/gO31TkzVn8uB93U7FlEeuvMhBXmivML7cNxg4bVIJJMj
+mNT2xlOlKwKX98oky8hlTc3jQMS4at78vv/O2y4s8KgsJewLC9h9SEphqtWX3dymScuoUM7DlOj/
+w7qPcef+YTF81HDBSOOMXtFyALuxc18vBp9sP5OENFTAX9msV0j5c5o/2jvOuAqnIRjgAR0wOx0g
+54I7KKiT3avED4Bb4FobJBeVucQHpO3gMhpCKAVG5mN2cWaCOPdSC2K9OmMOgktT</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="#Signer-T-1652430158513">
+		<xades:SignedProperties Id="SignedProperties-Signer-T-1652430158513">
+			<xades:SignedSignatureProperties>
+				<xades:SigningTime>2022-05-13T10:22:38+02:00</xades:SigningTime>
+				<xades:SigningCertificate>
+					<xades:Cert>
+						<xades:CertDigest>
+							<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+							<ds:DigestValue>zhUscByCuxy6Mun9TVWZX43zD2HKxTwPSSkWz8yAH5M=</ds:DigestValue>
+						</xades:CertDigest>
+						<xades:IssuerSerial><ds:X509IssuerName>CN=ArubaPEC EU Qualified Certificates CA G1,OU=Qualified Trust Service Provider,2.5.4.97=#0c1156415449542d3031383739303230353137,O=ArubaPEC S.p.A.,L=Arezzo,C=IT</ds:X509IssuerName><ds:X509SerialNumber>2703183063495888972</ds:X509SerialNumber></xades:IssuerSerial>
+					</xades:Cert>
+				</xades:SigningCertificate>
+			</xades:SignedSignatureProperties>
+		
+			<xades:SignedDataObjectProperties>
+				<xades:DataObjectFormat ObjectReference="#r-doc-Signer-T-1652430158513">
+					<xades:MimeType>text/xml</xades:MimeType>
+				</xades:DataObjectFormat>
+			
+				<xades:DataObjectFormat ObjectReference="#r-keyinfo-Signer-T-1652430158513">
+					<xades:MimeType>text/xml</xades:MimeType>
+				</xades:DataObjectFormat>
+			</xades:SignedDataObjectProperties>
+		</xades:SignedProperties>
+	</xades:QualifyingProperties></ds:Object></ds:Signature></p:FatturaElettronica>

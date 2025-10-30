@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="windows-1252"?>                                                                                                                                                                               
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>                                                                                                                                                                
+<p:FatturaElettronica versione="FPR12"                                                                                                                                                                                      
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"                                                                                                                                                                               
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"                                                                                                                                                     
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">                                                                                                                                                                      
+  <FatturaElettronicaHeader>
+   <DatiTrasmissione>
+    <IdTrasmittente>
+     <IdPaese>SM</IdPaese>
+                            <IdCodice>03473</IdCodice>
+    </IdTrasmittente>
+         <ProgressivoInvio>1/167</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+   </DatiTrasmissione>
+   <CedentePrestatore>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>01333681219</IdCodice>
+     </IdFiscaleIVA>
+          <CodiceFiscale>04445490636</CodiceFiscale>
+     <Anagrafica>
+                                                                            <Denominazione>GE.IM. SRL</Denominazione>
+     </Anagrafica>
+     <RegimeFiscale>RF01</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+                                                <Indirizzo>CORSO TRIESTE 291</Indirizzo>
+     <CAP>81100</CAP>
+                                                          <Comune>CASERTA</Comune>
+     <Provincia>CE</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+    <IscrizioneREA>
+     <Ufficio>CE</Ufficio>
+                   <NumeroREA>232745</NumeroREA>
+            <CapitaleSociale>10400.00</CapitaleSociale>
+     <SocioUnico>SM</SocioUnico>
+     <StatoLiquidazione>LN</StatoLiquidazione>
+    </IscrizioneREA>
+    <Contatti>
+     <Email>GEIMCASERTA@GMAIL.COM</Email>                                       
+    </Contatti>
+   </CedentePrestatore>
+   <CessionarioCommittente>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>17044041006</IdCodice>
+     </IdFiscaleIVA>
+     <Anagrafica>
+                                                                  <Denominazione>RB Consulting s.r.l.</Denominazione>
+     </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+                                                   <Indirizzo>Via Crescenzio</Indirizzo>
+     <CAP>00193</CAP>
+                                                             <Comune>Roma</Comune>
+     <Provincia>RM</Provincia>
+     <Nazione>IT</Nazione>
+    </Sede>
+   </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+   <DatiGenerali>
+    <DatiGeneraliDocumento>
+     <TipoDocumento>TD01</TipoDocumento>
+     <Divisa>EUR</Divisa>
+     <Data>2023-08-01</Data>
+                    <Numero>1/167</Numero>
+     <DatiBollo>
+      <BolloVirtuale>SI</BolloVirtuale>
+      <ImportoBollo>           2.00</ImportoBollo>
+     </DatiBollo>
+     <ImportoTotaleDocumento>         711.19</ImportoTotaleDocumento>
+    </DatiGeneraliDocumento>
+    <DatiTrasporto>
+     <DataOraRitiro>2023-07-01T12:44:00</DataOraRitiro>
+     <DataInizioTrasporto>2023-07-01</DataInizioTrasporto>
+    </DatiTrasporto>
+   </DatiGenerali>
+   <DatiBeniServizi>
+    <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>00000001</CodiceValore>                           
+     </CodiceArticolo>
+     <Descrizione>Canone di locazione DAL 17/08/2023 AL 16/09/2023
+                                                                                                                                                       
+</Descrizione>                                                                                                                                                                                                        
+     <Quantita>             1.000000</Quantita>
+             <UnitaMisura>pr</UnitaMisura>
+     <PrezzoUnitario>           500.000000</PrezzoUnitario>
+     <PrezzoTotale>               500.00</PrezzoTotale>
+     <AliquotaIVA>0.00</AliquotaIVA>  
+       <Natura>N4</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>00000002</CodiceValore>                           
+     </CodiceArticolo>
+     <Descrizione>Oneri condominiali, posto auto
+                                                                                                                                                                         
+</Descrizione>                                                                                                                                                                                                        
+     <Quantita>             1.000000</Quantita>
+             <UnitaMisura>pr</UnitaMisura>
+     <PrezzoUnitario>           100.000000</PrezzoUnitario>
+     <PrezzoTotale>               100.00</PrezzoTotale>
+     <AliquotaIVA>0.00</AliquotaIVA>  
+       <Natura>N4</Natura>
+    </DettaglioLinee>
+    <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+     <TipoCessionePrestazione>AC</TipoCessionePrestazione>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>00000003</CodiceValore>                           
+     </CodiceArticolo>
+     <Descrizione>Costi per servizi
+                                                                                                                                                                                      
+</Descrizione>                                                                                                                                                                                                        
+     <Quantita>             1.000000</Quantita>
+             <UnitaMisura>pr</UnitaMisura>
+     <PrezzoUnitario>            91.140000</PrezzoUnitario>
+     <PrezzoTotale>                91.14</PrezzoTotale>
+     <AliquotaIVA>22.00</AliquotaIVA> 
+    </DettaglioLinee>
+    <DatiRiepilogo>
+       <AliquotaIVA>0.00</AliquotaIVA>
+       <Natura>N4</Natura>
+     <ImponibileImporto>600.00         </ImponibileImporto>
+     <Imposta>0.00           </Imposta>
+                                                                             <RiferimentoNormativo>Operazione Esente 10) 633/72</RiferimentoNormativo>
+    </DatiRiepilogo>
+    <DatiRiepilogo>
+      <AliquotaIVA>22.00</AliquotaIVA>
+     <ImponibileImporto>91.14          </ImponibileImporto>
+     <Imposta>20.05          </Imposta>
+     <EsigibilitaIVA>I</EsigibilitaIVA>
+    </DatiRiepilogo>
+   </DatiBeniServizi>
+   <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+     <ModalitaPagamento>MP05</ModalitaPagamento>
+     <DataScadenzaPagamento>2023-08-01</DataScadenzaPagamento>
+     <ImportoPagamento>711.19</ImportoPagamento>         
+     <IstitutoFinanziario>UNICREDIT SPA</IstitutoFinanziario>                                                                   
+     <IBAN>IT06E0200814906000103733557</IBAN>       
+     <ABI>02008</ABI>
+     <CAB>14906</CAB>
+    </DettaglioPagamento>
+   </DatiPagamento>
+  </FatturaElettronicaBody>
+ </p:FatturaElettronica>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

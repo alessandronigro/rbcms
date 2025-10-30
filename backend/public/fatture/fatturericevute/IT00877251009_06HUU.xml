@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:FatturaElettronica xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+    <FatturaElettronicaHeader>
+        <DatiTrasmissione>
+            <IdTrasmittente>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>05006900962</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>245560</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>0000000</CodiceDestinatario>
+            <ContattiTrasmittente>
+                <Telefono>06517621</Telefono>
+                <Email>carpoint@arubapec.it</Email>
+            </ContattiTrasmittente>
+            <PECDestinatario>postmaster@pec.rbconsulenza.com</PECDestinatario>
+        </DatiTrasmissione>
+        <CedentePrestatore>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>00877251009</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>00392540589</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>CARPOINT S.p.A.</Denominazione>
+                </Anagrafica>
+                <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>Via Pontina, 343</Indirizzo>
+                <CAP>00128</CAP>
+                <Comune>Roma</Comune>
+                <Provincia>RM</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+            <IscrizioneREA>
+                <Ufficio>RM</Ufficio>
+                <NumeroREA>2574/62</NumeroREA>
+                <CapitaleSociale>10197336.00</CapitaleSociale>
+                <SocioUnico>SM</SocioUnico>
+                <StatoLiquidazione>LN</StatoLiquidazione>
+            </IscrizioneREA>
+        </CedentePrestatore>
+        <CessionarioCommittente>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>05744121210</IdCodice>
+                </IdFiscaleIVA>
+                <Anagrafica>
+                    <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+                </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>Via CRESCENZIO,25</Indirizzo>
+                <CAP>00193</CAP>
+                <Comune>ROMA</Comune>
+                <Provincia>RM</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+        </CessionarioCommittente>
+    </FatturaElettronicaHeader>
+    <FatturaElettronicaBody>
+        <DatiGenerali>
+            <DatiGeneraliDocumento>
+                <TipoDocumento>TD01</TipoDocumento>
+                <Divisa>EUR</Divisa>
+                <Data>2022-02-28</Data>
+                <Numero>1082 / 1410</Numero>
+                <DatiBollo>
+                    <BolloVirtuale>SI</BolloVirtuale>
+                    <ImportoBollo>2.00</ImportoBollo>
+                </DatiBollo>
+                <ImportoTotaleDocumento>946.18</ImportoTotaleDocumento>
+                <Causale>Rif. Contratto n.: 794 del: 2022-02-16 - Telaio: ZFA3340000P865340  Targa: GD803RD</Causale>
+                <Causale>IMPOSTA DI BOLLO ASSOLTA IN MODO VIRTUALE EX DM 17-06-2014</Causale>
+            </DatiGeneraliDocumento>
+        </DatiGenerali>
+        <DatiBeniServizi>
+            <DettaglioLinee>
+                <NumeroLinea>1</NumeroLinea>
+                <Descrizione>Diritti di agenzia VU </Descrizione>
+                <Quantita>1.0000000</Quantita>
+                <PrezzoUnitario>80.79000000</PrezzoUnitario>
+                <PrezzoTotale>80.79000000</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>2</NumeroLinea>
+                <Descrizione>Logistica e Approntamento </Descrizione>
+                <Quantita>1.0000000</Quantita>
+                <PrezzoUnitario>128.68000000</PrezzoUnitario>
+                <PrezzoTotale>128.68000000</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>3</NumeroLinea>
+                <Descrizione>Passaggio di Proprietà </Descrizione>
+                <Quantita>1.0000000</Quantita>
+                <PrezzoUnitario>236.58000000</PrezzoUnitario>
+                <PrezzoTotale>236.58000000</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>4</NumeroLinea>
+                <Descrizione>Passaggio di Proprietà q.e. </Descrizione>
+                <Quantita>1.0000000</Quantita>
+                <PrezzoUnitario>402.00000000</PrezzoUnitario>
+                <PrezzoTotale>402.00000000</PrezzoTotale>
+                <AliquotaIVA>0.00</AliquotaIVA>
+                <Natura>N1</Natura>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <Arrotondamento>0.00</Arrotondamento>
+                <ImponibileImporto>446.05</ImponibileImporto>
+                <Imposta>98.13</Imposta>
+                <EsigibilitaIVA>I</EsigibilitaIVA>
+            </DatiRiepilogo>
+            <DatiRiepilogo>
+                <AliquotaIVA>0.00</AliquotaIVA>
+                <Natura>N1</Natura>
+                <Arrotondamento>0.00</Arrotondamento>
+                <ImponibileImporto>402.00</ImponibileImporto>
+                <Imposta>0.00</Imposta>
+                <EsigibilitaIVA>I</EsigibilitaIVA>
+                <RiferimentoNormativo>ES ART 15</RiferimentoNormativo>
+            </DatiRiepilogo>
+        </DatiBeniServizi>
+        <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+                <ModalitaPagamento>MP01</ModalitaPagamento>
+                <DataScadenzaPagamento>2022-02-28</DataScadenzaPagamento>
+                <ImportoPagamento>946.18</ImportoPagamento>
+            </DettaglioPagamento>
+        </DatiPagamento>
+    </FatturaElettronicaBody>
+</ns3:FatturaElettronica>

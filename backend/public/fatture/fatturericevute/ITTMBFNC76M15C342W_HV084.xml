@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xsl/fatturaPA_v1.2.1.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione>
+         <IdTrasmittente>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>08245660017</IdCodice>
+         </IdTrasmittente>
+         <ProgressivoInvio>0000079</ProgressivoInvio>
+         <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+         <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      </DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>01044360863</IdCodice>
+            </IdFiscaleIVA>
+            <CodiceFiscale>TMBFNC76M15C342W</CodiceFiscale>
+            <Anagrafica>
+               <Nome>Francesco</Nome>
+               <Cognome>Tamburella</Cognome>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>Via Piemonte 1</Indirizzo>
+            <CAP>94100</CAP>
+            <Comune>ENNA</Comune>
+            <Provincia>EN</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+         <Contatti>
+            <Telefono>+39093520917</Telefono>
+            <Email>info@pixelonline.eu</Email>
+         </Contatti>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05744121210</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>R&amp;B CONSULTING S.R.L.</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA CRESCENZIO, 25</Indirizzo>
+            <CAP>00193</CAP>
+            <Comune>ROMA</Comune>
+            <Provincia>RM</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+      <TerzoIntermediarioOSoggettoEmittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>08245660017</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Sistemi S.P.A.</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+      </TerzoIntermediarioOSoggettoEmittente>
+      <SoggettoEmittente>TZ</SoggettoEmittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2019-06-03</Data>
+            <Numero>88/001</Numero>
+            <ImportoTotaleDocumento>150.00</ImportoTotaleDocumento>
+         </DatiGeneraliDocumento>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>LIBRETTI PER CONVEGNO GIORNO 08 GIUGNO 2019
+COPERTINA 300 GR DIMENSIONE A4  STAMPA A COLORI
+INTERNO PAGINE 2 F/R DIMENSIONE A4  150 GR STAMPA A COLORI</Descrizione>
+            <Quantita>100.00000000</Quantita>
+            <UnitaMisura>N</UnitaMisura>
+            <PrezzoUnitario>1.23000000</PrezzoUnitario>
+            <ScontoMaggiorazione>
+               <Tipo>SC</Tipo>
+               <Percentuale>0.04</Percentuale>
+            </ScontoMaggiorazione>
+            <PrezzoTotale>122.95000000</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <ImponibileImporto>122.95</ImponibileImporto>
+            <Imposta>27.05</Imposta>
+            <EsigibilitaIVA>I</EsigibilitaIVA>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP05</ModalitaPagamento>
+            <DataScadenzaPagamento>2019-06-03</DataScadenzaPagamento>
+            <ImportoPagamento>150.00</ImportoPagamento>
+            <IBAN>IT39G0200816803000300232425</IBAN>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</p:FatturaElettronica>

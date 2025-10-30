@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01901770402</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>0i2LF</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      <ContattiTrasmittente>
+        <Email>fatturapa@lasersoft.it</Email>
+      </ContattiTrasmittente>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01409770409</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>01409770409</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>ERMETI HOTELS S.A.S.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA METASTASIO, 3</Indirizzo>
+        <CAP>47900</CAP>
+        <Comune>RIMINI</Comune>
+        <Provincia>RN</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <IscrizioneREA>
+        <Ufficio>RN</Ufficio>
+        <NumeroREA>194125</NumeroREA>
+        <StatoLiquidazione>LN</StatoLiquidazione>
+      </IscrizioneREA>
+      <Contatti>
+        <Telefono>0541381677</Telefono>
+        <Fax>0541381380</Fax>
+        <Email>peru@ambienthotels.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>05744121210</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING SRL</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Crescenzio, 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2022-06-29</Data>
+        <Numero>129/H</Numero>
+        <ImportoTotaleDocumento>234.00</ImportoTotaleDocumento>
+        <Causale>VENDITA</Causale>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Soggiorno dal 27/06/22 al 29/06/22</Descrizione>
+        <Quantita>1.000</Quantita>
+        <PrezzoUnitario>209.09090000</PrezzoUnitario>
+        <PrezzoTotale>209.0909</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>  BED AND BREAKFAST: 2 giorni, E 230,00</Descrizione>
+        <Quantita>0.000</Quantita>
+        <PrezzoUnitario>0.00000000</PrezzoUnitario>
+        <PrezzoTotale>0.0000</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>Tassa di Soggiorno</Descrizione>
+        <Quantita>1.000</Quantita>
+        <PrezzoUnitario>4.00000000</PrezzoUnitario>
+        <PrezzoTotale>4.0000</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>Num. persone:  2</Descrizione>
+        <Quantita>0.000</Quantita>
+        <PrezzoUnitario>0.00000000</PrezzoUnitario>
+        <PrezzoTotale>0.0000</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>Totale giorni: 2</Descrizione>
+        <Quantita>0.000</Quantita>
+        <PrezzoUnitario>0.00000000</PrezzoUnitario>
+        <PrezzoTotale>0.0000</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>Carte di credito: E 234,00</Descrizione>
+        <Quantita>0.000</Quantita>
+        <PrezzoUnitario>0.00000000</PrezzoUnitario>
+        <PrezzoTotale>0.0000</PrezzoTotale>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>209.09</ImponibileImporto>
+        <Imposta>20.91</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+      <DatiRiepilogo>
+        <AliquotaIVA>0.00</AliquotaIVA>
+        <Natura>N1</Natura>
+        <ImponibileImporto>4.00</ImponibileImporto>
+        <Imposta>0.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <RiferimentoNormativo>escluse ex art.15</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>234.00</ImportoPagamento>
+        <IBAN>IT24D0306924232100000002339</IBAN>
+        <CodicePagamento>4</CodicePagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

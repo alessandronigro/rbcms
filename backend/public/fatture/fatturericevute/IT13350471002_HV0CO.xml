@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xsl/fatturaPA_v1.2.1.xsl"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione>
+         <IdTrasmittente>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>08245660017</IdCodice>
+         </IdTrasmittente>
+         <ProgressivoInvio>0000273</ProgressivoInvio>
+         <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+         <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      </DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>13350471002</IdCodice>
+            </IdFiscaleIVA>
+            <CodiceFiscale>13350471002</CodiceFiscale>
+            <Anagrafica>
+               <Denominazione>GIOROMA 2015 SRL</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>Via dei Gracchi, 86</Indirizzo>
+            <CAP>00192</CAP>
+            <Comune>ROMA</Comune>
+            <Provincia>RM</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+         <IscrizioneREA>
+            <Ufficio>RM</Ufficio>
+            <NumeroREA>1441498</NumeroREA>
+            <CapitaleSociale>10000.00</CapitaleSociale>
+            <SocioUnico>SU</SocioUnico>
+            <StatoLiquidazione>LN</StatoLiquidazione>
+         </IscrizioneREA>
+         <Contatti>
+            <Email>info@allarampadeigracchi.com</Email>
+         </Contatti>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05744121210</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>RB CONSULTING</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA CRESCENZO 25</Indirizzo>
+            <CAP>00164</CAP>
+            <Comune>ROMA</Comune>
+            <Provincia>RM</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+      <TerzoIntermediarioOSoggettoEmittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>08245660017</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Sistemi S.P.A.</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+      </TerzoIntermediarioOSoggettoEmittente>
+      <SoggettoEmittente>TZ</SoggettoEmittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2019-09-10</Data>
+            <Numero>250/001</Numero>
+            <ImportoTotaleDocumento>111.99</ImportoTotaleDocumento>
+         </DatiGeneraliDocumento>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <CodiceArticolo>
+               <CodiceTipo>AswArtFor</CodiceTipo>
+               <CodiceValore>1</CodiceValore>
+            </CodiceArticolo>
+            <Descrizione>PASTO COMPLETO</Descrizione>
+            <Quantita>1.00000000</Quantita>
+            <PrezzoUnitario>101.81000000</PrezzoUnitario>
+            <PrezzoTotale>101.81000000</PrezzoTotale>
+            <AliquotaIVA>10.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>10.00</AliquotaIVA>
+            <ImponibileImporto>101.81</ImponibileImporto>
+            <Imposta>10.18</Imposta>
+            <EsigibilitaIVA>I</EsigibilitaIVA>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP01</ModalitaPagamento>
+            <DataScadenzaPagamento>2019-09-10</DataScadenzaPagamento>
+            <ImportoPagamento>111.99</ImportoPagamento>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</p:FatturaElettronica>

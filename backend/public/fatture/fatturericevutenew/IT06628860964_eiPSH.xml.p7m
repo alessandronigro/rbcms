@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="FoglioStileAssoSoftware.xsl"?>
+<ns2:FatturaElettronica versione="FPR12" xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+<FatturaElettronicaHeader>
+
+ <DatiTrasmissione>
+<IdTrasmittente>
+<IdPaese>IT</IdPaese>
+<IdCodice>06628860964</IdCodice>
+</IdTrasmittente>
+<ProgressivoInvio>1905487456</ProgressivoInvio>
+<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+</DatiTrasmissione>
+
+ <CedentePrestatore>
+  <DatiAnagrafici>
+   <IdFiscaleIVA>
+    <IdPaese>IT</IdPaese>
+    <IdCodice>01338040619</IdCodice>
+   </IdFiscaleIVA>
+   <CodiceFiscale>01338040619</CodiceFiscale>
+   <Anagrafica>
+    <Denominazione>VANESSA SOUND S.R.L. UNIPERSONALE</Denominazione>
+   </Anagrafica>
+   <RegimeFiscale>RF01</RegimeFiscale>
+  </DatiAnagrafici>
+
+  <Sede>
+   <Indirizzo>VIA GENNARO TESCIONE  N. 74</Indirizzo>
+   <CAP>81100</CAP>
+   <Comune>CASERTA</Comune>
+   <Provincia>CE</Provincia>
+   <Nazione>IT</Nazione>
+  </Sede>
+
+  <IscrizioneREA>
+   <Ufficio>CE</Ufficio>
+   <NumeroREA>CE-106176</NumeroREA>
+   <CapitaleSociale>150000.00</CapitaleSociale>
+   <SocioUnico>SM</SocioUnico>
+   <StatoLiquidazione>LN</StatoLiquidazione>
+  </IscrizioneREA>
+
+  <Contatti>
+   <Telefono>0823305445</Telefono>
+   <Email>vanessasound@pec.it</Email>
+  </Contatti>
+
+ </CedentePrestatore>
+
+ <CessionarioCommittente>
+  <DatiAnagrafici>
+   <IdFiscaleIVA>
+    <IdPaese>IT</IdPaese>
+    <IdCodice>17044041006</IdCodice>
+   </IdFiscaleIVA>
+   <Anagrafica>
+    <Denominazione>RB CONSULTING SRL </Denominazione>
+   </Anagrafica>
+  </DatiAnagrafici>
+
+  <Sede>
+   <Indirizzo>VIA DEI VECCHI PINI 13</Indirizzo>
+   <CAP>81100</CAP>
+   <Comune>CASERTA</Comune>
+   <Provincia>CE</Provincia>
+   <Nazione>IT</Nazione>
+  </Sede>
+ </CessionarioCommittente><TerzoIntermediarioOSoggettoEmittente>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>06628860964</IdCodice>
+</IdFiscaleIVA>
+<CodiceFiscale>06628860964</CodiceFiscale>
+<Anagrafica>
+<Denominazione>PA DIGITALE S.P.A.</Denominazione>
+</Anagrafica>
+</DatiAnagrafici>
+</TerzoIntermediarioOSoggettoEmittente><SoggettoEmittente>TZ</SoggettoEmittente>
+
+</FatturaElettronicaHeader>
+
+<FatturaElettronicaBody>
+
+ <DatiGenerali>
+  <DatiGeneraliDocumento>
+   <TipoDocumento>TD01</TipoDocumento>
+   <Divisa>EUR</Divisa>
+   <Data>2025-05-30</Data>
+   <Numero>0104-002350</Numero>
+   <ImportoTotaleDocumento>201.95</ImportoTotaleDocumento>
+  </DatiGeneraliDocumento>
+
+
+
+
+
+
+
+  <DatiTrasporto>
+   <CausaleTrasporto>SCARICHI DA COMMISSIONI</CausaleTrasporto>
+  </DatiTrasporto>
+
+ </DatiGenerali>
+
+ <DatiBeniServizi>
+  <DettaglioLinee>
+   <NumeroLinea>0001</NumeroLinea>
+   <Descrizione>  NS. RIF.: CORC/000000 DEL 30/05/2025 - RIF. : 011373M001E225 </Descrizione>
+   <PrezzoUnitario>0.000000</PrezzoUnitario>
+   <PrezzoTotale>0.00</PrezzoTotale>
+   <AliquotaIVA>22.00</AliquotaIVA>
+  </DettaglioLinee>
+  <DettaglioLinee>
+   <NumeroLinea>0002</NumeroLinea>
+   <Descrizione>  NS. RIF.: COMM/011373 DEL 30/05/2025 - ID SPEZZA : C03176983</Descrizione>
+   <PrezzoUnitario>0.000000</PrezzoUnitario>
+   <PrezzoTotale>0.00</PrezzoTotale>
+   <AliquotaIVA>22.00</AliquotaIVA>
+  </DettaglioLinee>
+  <DettaglioLinee>
+   <NumeroLinea>0003</NumeroLinea>
+   <CodiceArticolo>
+    <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+    <CodiceValore>0674162       </CodiceValore>
+   </CodiceArticolo>
+   <Descrizione>SAMS SMX210NZAEEUE TABLET 11 8GB 128GB GALAXY TAB A9+ WIFI GRAY</Descrizione>
+   <Quantita>1.0000</Quantita>
+   <UnitaMisura>N  </UnitaMisura>
+   <PrezzoUnitario>146.720000</PrezzoUnitario>
+   <PrezzoTotale>146.72</PrezzoTotale>
+   <AliquotaIVA>22.00</AliquotaIVA>
+  </DettaglioLinee>
+  <DettaglioLinee>
+   <NumeroLinea>0004</NumeroLinea>
+   <CodiceArticolo>
+    <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+    <CodiceValore>0590815       </CodiceValore>
+   </CodiceArticolo>
+   <Descrizione>CELL ACHSMUSB2PD25WK CARICABATT.RETE DUAL USB/USB-C X SAMSUNG 25W NERO</Descrizione>
+   <Quantita>1.0000</Quantita>
+   <UnitaMisura>N  </UnitaMisura>
+   <PrezzoUnitario>18.810000</PrezzoUnitario>
+   <PrezzoTotale>18.81</PrezzoTotale>
+   <AliquotaIVA>22.00</AliquotaIVA>
+  </DettaglioLinee>
+  <DettaglioLinee>
+   <NumeroLinea>0005</NumeroLinea>
+   <Descrizione>--------------------</Descrizione>
+   <PrezzoUnitario>0.000000</PrezzoUnitario>
+   <PrezzoTotale>0.00</PrezzoTotale>
+   <AliquotaIVA>22.00</AliquotaIVA>
+  </DettaglioLinee>
+
+  <DatiRiepilogo>
+   <AliquotaIVA>22.00</AliquotaIVA>
+   <ImponibileImporto>18.81</ImponibileImporto>
+   <Imposta>4.14</Imposta>
+   <EsigibilitaIVA>I</EsigibilitaIVA>
+  </DatiRiepilogo>
+  <DatiRiepilogo>
+   <AliquotaIVA>22.00</AliquotaIVA>
+   <ImponibileImporto>146.72</ImponibileImporto>
+   <Imposta>32.28</Imposta>
+   <EsigibilitaIVA>I</EsigibilitaIVA>
+  </DatiRiepilogo>
+
+ </DatiBeniServizi>
+
+  <DatiPagamento>
+   <CondizioniPagamento>TP02</CondizioniPagamento>
+   <DettaglioPagamento>
+    <ModalitaPagamento>MP08</ModalitaPagamento>
+    <DataScadenzaPagamento>2025-05-30</DataScadenzaPagamento>
+    <ImportoPagamento>201.95</ImportoPagamento>
+   </DettaglioPagamento>
+  </DatiPagamento>
+
+
+
+
+</FatturaElettronicaBody>
+
+</ns2:FatturaElettronica>
+

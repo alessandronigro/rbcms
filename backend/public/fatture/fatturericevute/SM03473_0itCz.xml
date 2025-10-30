@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="windows-1252"?>                                                                                                                                                                               
+<?xml-stylesheet type="text/xsl" href="fatturapa_v1.2.xsl"?>                                                                                                                                                                
+<p:FatturaElettronica versione="FPR12"                                                                                                                                                                                      
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"                                                                                                                                                                               
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"                                                                                                                                                     
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">                                                                                                                                                                      
+  <FatturaElettronicaHeader>
+   <DatiTrasmissione>
+    <IdTrasmittente>
+     <IdPaese>SM</IdPaese>
+                            <IdCodice>03473</IdCodice>
+    </IdTrasmittente>
+             <ProgressivoInvio>2</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+   </DatiTrasmissione>
+   <CedentePrestatore>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>03306550611</IdCodice>
+     </IdFiscaleIVA>
+     <CodiceFiscale>LNTCRD74R21F839T</CodiceFiscale>
+     <Anagrafica>
+                                                           <Nome>CORRADO</Nome>
+                                                           <Cognome>LENTINI</Cognome>
+     </Anagrafica>
+     <RegimeFiscale>RF01</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+                                           <Indirizzo>VIA FRATELLI CORRERA 3</Indirizzo>
+     <CAP>81100</CAP>
+                                                          <Comune>CASERTA</Comune>
+     <Provincia>CE</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+    <Contatti>
+     <Email>CORRADOLENTINI@OCLOUD.COM</Email>                                   
+    </Contatti>
+   </CedentePrestatore>
+   <CessionarioCommittente>
+    <DatiAnagrafici>
+     <IdFiscaleIVA>
+      <IdPaese>IT</IdPaese>
+                       <IdCodice>05744121210</IdCodice>
+     </IdFiscaleIVA>
+     <Anagrafica>
+                                                                <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+     </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+                                               <Indirizzo>VIA CRESCENZIO, 25</Indirizzo>
+     <CAP>00193</CAP>
+                                                             <Comune>ROMA</Comune>
+     <Provincia>RM</Provincia>  
+     <Nazione>IT</Nazione>
+    </Sede>
+   </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+   <DatiGenerali>
+    <DatiGeneraliDocumento>
+     <TipoDocumento>TD06</TipoDocumento>
+     <Divisa>EUR</Divisa>
+     <Data>2019-05-28</Data>
+                        <Numero>2</Numero>
+     <DatiRitenuta>
+      <TipoRitenuta>RT01</TipoRitenuta>
+      <ImportoRitenuta>         200.00</ImportoRitenuta>
+      <AliquotaRitenuta> 20.00</AliquotaRitenuta>
+       <CausalePagamento>A</CausalePagamento>
+     </DatiRitenuta>
+     <DatiCassaPrevidenziale>
+      <TipoCassa>TC04</TipoCassa>
+      <AlCassa>  4.00</AlCassa>
+      <ImportoContributoCassa>          40.00</ImportoContributoCassa>
+       <AliquotaIVA>22.00</AliquotaIVA>
+     </DatiCassaPrevidenziale>
+     <ImportoTotaleDocumento>        1268.80</ImportoTotaleDocumento>
+    </DatiGeneraliDocumento>
+    <DatiTrasporto>
+    </DatiTrasporto>
+   </DatiGenerali>
+   <DatiBeniServizi>
+    <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+     <CodiceArticolo>
+      <CodiceTipo>PROPRIETARIO</CodiceTipo>                       
+      <CodiceValore>ACCONTO</CodiceValore>                            
+     </CodiceArticolo>
+                                       <Descrizione>Saldo per direzione lavori immobile sito in Via Petrarca - Caserta</Descrizione>
+     <Quantita>             1.000000</Quantita>
+             <UnitaMisura>eu</UnitaMisura>
+     <PrezzoUnitario>          1000.000000</PrezzoUnitario>
+     <PrezzoTotale>              1000.00</PrezzoTotale>
+     <AliquotaIVA>22.00</AliquotaIVA> 
+     <Ritenuta>SI</Ritenuta>
+     <AltriDatiGestionali>
+      <TipoDato>NOTA</TipoDato>
+      <RiferimentoTesto>Iban: IT30C3608105138207425607432</RiferimentoTesto>                           
+     </AltriDatiGestionali>
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>22.00</AliquotaIVA>
+     <ImponibileImporto>1040.00        </ImponibileImporto>
+     <Imposta>228.80         </Imposta>
+     <EsigibilitaIVA>I</EsigibilitaIVA>
+    </DatiRiepilogo>
+   </DatiBeniServizi>
+  </FatturaElettronicaBody>
+ </p:FatturaElettronica>

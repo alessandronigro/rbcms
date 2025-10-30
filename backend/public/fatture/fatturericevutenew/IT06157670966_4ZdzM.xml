@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+      <p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+        <FatturaElettronicaHeader>
+          <DatiTrasmissione>
+            <IdTrasmittente>
+              <IdPaese>IT</IdPaese>
+              <IdCodice>06157670966</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>00001</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+            <PECDestinatario>servizi@rbconsulenza.com</PECDestinatario>
+          </DatiTrasmissione>
+          <CedentePrestatore>
+            <DatiAnagrafici>
+              <IdFiscaleIVA>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>06157670966</IdCodice>
+              </IdFiscaleIVA>
+              <Anagrafica>
+                <Denominazione>OVH SRL</Denominazione>
+              </Anagrafica>
+              <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+              <Indirizzo>Via Carlo Imbonati, 18</Indirizzo>
+              <CAP>20159</CAP>
+              <Comune>MILANO</Comune>
+              <Provincia>MI</Provincia>
+              <Nazione>IT</Nazione>
+            </Sede>
+          </CedentePrestatore>
+          <CessionarioCommittente>
+            <DatiAnagrafici>
+              <IdFiscaleIVA>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>17044041006</IdCodice>
+              </IdFiscaleIVA>
+              <Anagrafica>
+                <Denominazione>RB CONSULTING s.r.l.</Denominazione>
+              </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+              <Indirizzo>Via Crescenzio,25</Indirizzo>
+              <CAP>00193</CAP>
+              <Comune>ROMA</Comune>
+              <Provincia>RM</Provincia>
+              <Nazione>IT</Nazione>
+            </Sede>
+          </CessionarioCommittente>
+        </FatturaElettronicaHeader>
+        <FatturaElettronicaBody>
+          <DatiGenerali>
+            <DatiGeneraliDocumento>
+              <TipoDocumento>TD01</TipoDocumento>
+              <Divisa>EUR</Divisa>
+              <Data>2023-06-08</Data>
+              <Numero>IT2099782</Numero>
+              <ImportoTotaleDocumento>14.62</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+          </DatiGenerali>
+          <DatiBeniServizi>
+            <DettaglioLinee>
+              <NumeroLinea>1</NumeroLinea>
+              <Descrizione>rbintermediari.com   .com richiesta di registrazione   from 08/06/23 to 08/06/24</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>8.99</PrezzoUnitario>
+              <PrezzoTotale>8.99</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>2</NumeroLinea>
+              <Descrizione>rbintermediari.it   DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>3</NumeroLinea>
+              <Descrizione>DNS zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>4</NumeroLinea>
+              <Descrizione>Domain .com</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>5</NumeroLinea>
+              <Descrizione>DNS zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>6</NumeroLinea>
+              <Descrizione>rbintermediari.it   .it richiesta di registrazione   from 08/06/23 to 08/06/24</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>2.99</PrezzoUnitario>
+              <PrezzoTotale>2.99</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>7</NumeroLinea>
+              <Descrizione>Domain .it</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>8</NumeroLinea>
+              <Descrizione>rbintermediari.com   DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+              <AliquotaIVA>22.00</AliquotaIVA>
+              <ImponibileImporto>11.98</ImponibileImporto>
+              <Imposta>2.64</Imposta>
+              <EsigibilitaIVA>I</EsigibilitaIVA>
+            </DatiRiepilogo>
+          </DatiBeniServizi>
+          <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+              <ModalitaPagamento>MP15</ModalitaPagamento>
+              <DataScadenzaPagamento>2023-06-08</DataScadenzaPagamento>
+              <ImportoPagamento>14.62</ImportoPagamento>
+            </DettaglioPagamento>
+          </DatiPagamento>
+        </FatturaElettronicaBody>
+      </p:FatturaElettronica>

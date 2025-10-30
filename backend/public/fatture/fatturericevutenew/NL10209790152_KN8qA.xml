@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="fe_wki_123.xsd"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                       xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2"
+                       versione="FPR12">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione>
+         <IdTrasmittente>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>10209790152</IdCodice>
+         </IdTrasmittente>
+         <ProgressivoInvio>E207100147</ProgressivoInvio>
+         <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+         <CodiceDestinatario>0000000</CodiceDestinatario>
+         <PECDestinatario>RBCONSULTINGSRL@PEC.IT</PECDestinatario>
+      </DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>CH</IdPaese>
+               <IdCodice>99999999999</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>PRIVATE TRAVEL SA</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF18</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA PIANCORELLA</Indirizzo>
+            <NumeroCivico>2</NumeroCivico>
+            <CAP>99999</CAP>
+            <Comune>CORTEGLIA</Comune>
+            <Nazione>CH</Nazione>
+         </Sede>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>17044041006</IdCodice>
+            </IdFiscaleIVA>
+            <CodiceFiscale>17044041006</CodiceFiscale>
+            <Anagrafica>
+               <Denominazione>RB CONSULTING SRL</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA CRESCENZIO</Indirizzo>
+            <NumeroCivico>25</NumeroCivico>
+            <CAP>00193</CAP>
+            <Comune>ROMA</Comune>
+            <Provincia>RM</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+      <SoggettoEmittente>CC</SoggettoEmittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD17</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2025-08-31</Data>
+            <Numero>0200039-110925RBC</Numero>
+            <ImportoTotaleDocumento>11200.00</ImportoTotaleDocumento>
+         </DatiGeneraliDocumento>
+         <DatiFattureCollegate>
+            <IdDocumento>INV_SF0227</IdDocumento>
+            <Data>2025-07-04</Data>
+         </DatiFattureCollegate>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Integrazione fattura/autofattura N3.6</Descrizione>
+            <Quantita>1.000</Quantita>
+            <PrezzoUnitario>11200.00000</PrezzoUnitario>
+            <PrezzoTotale>11200.00</PrezzoTotale>
+            <AliquotaIVA>0.00</AliquotaIVA>
+            <Natura>N3.6</Natura>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <Descrizione>Prestazioni di SERVIZI effettuate con riferimento al documento di acquisto originale, i cui estremi sono indicati nell'elemento DatiFattureCollegate</Descrizione>
+            <PrezzoUnitario>0.00000</PrezzoUnitario>
+            <PrezzoTotale>0.00</PrezzoTotale>
+            <AliquotaIVA>0.00</AliquotaIVA>
+            <Natura>N3.6</Natura>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>0.00</AliquotaIVA>
+            <Natura>N3.6</Natura>
+            <ImponibileImporto>11200.00</ImponibileImporto>
+            <Imposta>0.00</Imposta>
+            <EsigibilitaIVA>I</EsigibilitaIVA>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+   </FatturaElettronicaBody>
+</p:FatturaElettronica>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12">
+<FatturaElettronicaHeader>
+  <DatiTrasmissione>
+    <IdTrasmittente>
+      <IdPaese>IT</IdPaese>
+      <IdCodice>04839740489</IdCodice>
+    </IdTrasmittente>
+    <ProgressivoInvio>001616AA3B</ProgressivoInvio>
+    <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+    <CodiceDestinatario>0000000</CodiceDestinatario>
+    <PECDestinatario>INFO@RBCONSULENZA.COM</PECDestinatario>
+  </DatiTrasmissione>
+  <CedentePrestatore>
+    <DatiAnagrafici>
+      <IdFiscaleIVA>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>15907661001</IdCodice>
+      </IdFiscaleIVA>
+      <Anagrafica>
+        <Denominazione>ITA - Italia Trasporto Aereo S.p.A. </Denominazione>
+      </Anagrafica>
+      <RegimeFiscale>RF01</RegimeFiscale>
+    </DatiAnagrafici>
+    <Sede>
+      <Indirizzo>Via Venti Settembre 97</Indirizzo>
+      <CAP>00187</CAP>
+      <Comune>Roma</Comune>
+      <Provincia>RM</Provincia>
+      <Nazione>IT</Nazione>
+    </Sede>
+    <IscrizioneREA>
+      <Ufficio>RM</Ufficio>
+      <NumeroREA>1622937</NumeroREA>
+      <CapitaleSociale>699190697.55</CapitaleSociale>
+      <StatoLiquidazione>LN</StatoLiquidazione>
+    </IscrizioneREA>
+  </CedentePrestatore>
+  <CessionarioCommittente>
+    <DatiAnagrafici>
+      <IdFiscaleIVA>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>17044041006</IdCodice>
+      </IdFiscaleIVA>
+      <Anagrafica>
+        <Denominazione>RB Consulting Srl </Denominazione>
+      </Anagrafica>
+    </DatiAnagrafici>
+    <Sede>
+      <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+      <CAP>00193</CAP>
+      <Comune>ROMA</Comune>
+      <Nazione>IT</Nazione>
+    </Sede>
+  </CessionarioCommittente>
+</FatturaElettronicaHeader><FatturaElettronicaBody>
+  <DatiGenerali>
+    <DatiGeneraliDocumento>
+      <TipoDocumento>TD01</TipoDocumento>
+      <Divisa>EUR</Divisa>
+      <Data>2024-05-16</Data>
+      <Numero>2246101824</Numero>
+      <ImportoTotaleDocumento>345.12 </ImportoTotaleDocumento>
+      <Causale>Ben.volo GIUSEPPE RUSSO</Causale>
+    </DatiGeneraliDocumento>
+  </DatiGenerali>
+  <DatiBeniServizi>
+    <DettaglioLinee>
+      <NumeroLinea>1</NumeroLinea>
+      <Descrizione> N  TICKET 0552105970162 Tratta NAP\LIN-LIN\NAP TARIFFA Data Vendita 16/05/2024</Descrizione>
+      <PrezzoUnitario>189.09</PrezzoUnitario>
+      <PrezzoTotale>189.09</PrezzoTotale>
+      <AliquotaIVA>10.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>2</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE</Descrizione>
+      <PrezzoUnitario>9.09</PrezzoUnitario>
+      <PrezzoTotale>9.09</PrezzoTotale>
+      <AliquotaIVA>10.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>3</NumeroLinea>
+      <Descrizione> CRISIS/FUEL SURCHARGE</Descrizione>
+      <PrezzoUnitario>23.64</PrezzoUnitario>
+      <PrezzoTotale>23.64</PrezzoTotale>
+      <AliquotaIVA>10.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>4</NumeroLinea>
+      <Descrizione> TASSE E SUPPL.</Descrizione>
+      <PrezzoUnitario>48.28</PrezzoUnitario>
+      <PrezzoTotale>48.28</PrezzoTotale>
+      <AliquotaIVA>10.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>5</NumeroLinea>
+      <Descrizione> N  TICKET 0554203137244 Tratta NAP-LIN TARIFFA</Descrizione>
+      <PrezzoUnitario>21.82</PrezzoUnitario>
+      <PrezzoTotale>21.82</PrezzoTotale>
+      <AliquotaIVA>10.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DettaglioLinee>
+      <NumeroLinea>6</NumeroLinea>
+      <Descrizione> N  TICKET 0554203137245 Tratta LIN-NAP TARIFFA</Descrizione>
+      <PrezzoUnitario>21.82</PrezzoUnitario>
+      <PrezzoTotale>21.82</PrezzoTotale>
+      <AliquotaIVA>10.00</AliquotaIVA>
+    </DettaglioLinee>
+    <DatiRiepilogo>
+      <AliquotaIVA>10.00</AliquotaIVA>
+      <ImponibileImporto>313.75</ImponibileImporto>
+      <Imposta>31.38</Imposta>
+      <RiferimentoNormativo>FT ATT.     IVA 10%</RiferimentoNormativo>
+    </DatiRiepilogo>
+  </DatiBeniServizi>
+  <DatiPagamento>
+    <CondizioniPagamento>TP02</CondizioniPagamento>
+    <DettaglioPagamento>
+      <ModalitaPagamento>MP08</ModalitaPagamento>
+      <DataRiferimentoTerminiPagamento>2024-05-16</DataRiferimentoTerminiPagamento>
+      <DataScadenzaPagamento>2024-05-16</DataScadenzaPagamento>
+      <ImportoPagamento>345.12</ImportoPagamento>
+    </DettaglioPagamento>
+  </DatiPagamento>
+</FatturaElettronicaBody>
+</p:FatturaElettronica>

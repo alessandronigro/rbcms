@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ns0:FatturaElettronica versione="FPR12" xmlns:ns0="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione>
+         <IdTrasmittente>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>02714390362</IdCodice>
+         </IdTrasmittente>
+         <ProgressivoInvio>25695</ProgressivoInvio>
+         <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+         <CodiceDestinatario>0000000</CodiceDestinatario>
+      </DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>04619241005</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Sky Italia S.r.l.</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA MONTE PENICE</Indirizzo>
+            <NumeroCivico>7</NumeroCivico>
+            <CAP>20138</CAP>
+            <Comune>MILANO</Comune>
+            <Provincia>MI</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+         <IscrizioneREA>
+            <Ufficio>MI</Ufficio>
+            <NumeroREA>1726765</NumeroREA>
+            <CapitaleSociale>261507000.00</CapitaleSociale>
+            <SocioUnico>SU</SocioUnico>
+            <StatoLiquidazione>LN</StatoLiquidazione>
+         </IscrizioneREA>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05744121210</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>RB CONSULTING</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA CRESCENZIO,</Indirizzo>
+            <NumeroCivico>25</NumeroCivico>
+            <CAP>00193</CAP>
+            <Comune>ROMA</Comune>
+            <Provincia>RM</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2019-02-01</Data>
+            <Numero>601026723</Numero>
+            <ImportoTotaleDocumento>103.80</ImportoTotaleDocumento>
+         </DatiGeneraliDocumento>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Sky TV + Famiglia + Cinema + Sport + Calcio</Descrizione>
+            <DataInizioPeriodo>2019-02-01</DataInizioPeriodo>
+            <DataFinePeriodo>2019-02-28</DataFinePeriodo>
+            <PrezzoUnitario>60.33</PrezzoUnitario>
+            <PrezzoTotale>60.33</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+            <Descrizione>Sconto per passaggio a listino in vigore| da luglio 2012 (include sconto per Sky HD)</Descrizione>
+            <DataInizioPeriodo>2019-02-01</DataInizioPeriodo>
+            <DataFinePeriodo>2019-02-28</DataFinePeriodo>
+            <PrezzoUnitario>-0.90</PrezzoUnitario>
+            <PrezzoTotale>-0.90</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>3</NumeroLinea>
+            <Descrizione>Opzione Tecnologia HD</Descrizione>
+            <DataInizioPeriodo>2019-02-01</DataInizioPeriodo>
+            <DataFinePeriodo>2019-02-28</DataFinePeriodo>
+            <PrezzoUnitario>5.25</PrezzoUnitario>
+            <PrezzoTotale>5.25</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>4</NumeroLinea>
+            <Descrizione>Multiscreen TV+Famiglia+Cinema+Sport+Calcio</Descrizione>
+            <DataInizioPeriodo>2019-02-01</DataInizioPeriodo>
+            <DataFinePeriodo>2019-02-28</DataFinePeriodo>
+            <PrezzoUnitario>23.11</PrezzoUnitario>
+            <PrezzoTotale>23.11</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>5</NumeroLinea>
+            <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+            <Descrizione>Sconto Abbonamento Sky Multiscreen</Descrizione>
+            <DataInizioPeriodo>2019-02-01</DataInizioPeriodo>
+            <DataFinePeriodo>2019-02-28</DataFinePeriodo>
+            <PrezzoUnitario>-2.70</PrezzoUnitario>
+            <PrezzoTotale>-2.70</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>6</NumeroLinea>
+            <Descrizione>Sky Go Plus</Descrizione>
+            <DataInizioPeriodo>2019-02-01</DataInizioPeriodo>
+            <DataFinePeriodo>2019-02-28</DataFinePeriodo>
+            <PrezzoUnitario>4.43</PrezzoUnitario>
+            <PrezzoTotale>4.43</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>7</NumeroLinea>
+            <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+            <Descrizione>Sconto Sky Go Plus</Descrizione>
+            <DataInizioPeriodo>2019-02-01</DataInizioPeriodo>
+            <DataFinePeriodo>2019-02-28</DataFinePeriodo>
+            <PrezzoUnitario>-4.43</PrezzoUnitario>
+            <PrezzoTotale>-4.43</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <Arrotondamento>0.00</Arrotondamento>
+            <ImponibileImporto>85.09</ImponibileImporto>
+            <Imposta>18.71</Imposta>
+            <EsigibilitaIVA>I</EsigibilitaIVA>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP19</ModalitaPagamento>
+            <DataScadenzaPagamento>2019-02-28</DataScadenzaPagamento>
+            <ImportoPagamento>103.80</ImportoPagamento>
+            <IstitutoFinanziario>UNICREDIT S.P.A. - FIL. OPERATIVA MILANO</IstitutoFinanziario>
+            <IBAN>IT69S0200809432000030049966</IBAN>
+            <ABI>02008</ABI>
+            <CAB>09432</CAB>
+            <BIC>UNCRITMMOMI</BIC>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</ns0:FatturaElettronica>

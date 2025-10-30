@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+      <p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+        <FatturaElettronicaHeader>
+          <DatiTrasmissione>
+            <IdTrasmittente>
+              <IdPaese>IT</IdPaese>
+              <IdCodice>06157670966</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>00001</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+            <PECDestinatario>servizi@rbconsulenza.com</PECDestinatario>
+          </DatiTrasmissione>
+          <CedentePrestatore>
+            <DatiAnagrafici>
+              <IdFiscaleIVA>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>06157670966</IdCodice>
+              </IdFiscaleIVA>
+              <Anagrafica>
+                <Denominazione>OVH SRL</Denominazione>
+              </Anagrafica>
+              <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+              <Indirizzo>Via Carlo Imbonati, 18</Indirizzo>
+              <CAP>20159</CAP>
+              <Comune>MILANO</Comune>
+              <Provincia>MI</Provincia>
+              <Nazione>IT</Nazione>
+            </Sede>
+          </CedentePrestatore>
+          <CessionarioCommittente>
+            <DatiAnagrafici>
+              <IdFiscaleIVA>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>17044041006</IdCodice>
+              </IdFiscaleIVA>
+              <Anagrafica>
+                <Denominazione>RB CONSULTING s.r.l.</Denominazione>
+              </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+              <Indirizzo>Via Crescenzio,25</Indirizzo>
+              <CAP>00193</CAP>
+              <Comune>ROMA</Comune>
+              <Provincia>RM</Provincia>
+              <Nazione>IT</Nazione>
+            </Sede>
+          </CessionarioCommittente>
+        </FatturaElettronicaHeader>
+        <FatturaElettronicaBody>
+          <DatiGenerali>
+            <DatiGeneraliDocumento>
+              <TipoDocumento>TD01</TipoDocumento>
+              <Divisa>EUR</Divisa>
+              <Data>2023-09-27</Data>
+              <Numero>IT2171206</Numero>
+              <ImportoTotaleDocumento>29.27</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+          </DatiGenerali>
+          <DatiBeniServizi>
+            <DettaglioLinee>
+              <NumeroLinea>1</NumeroLinea>
+              <Descrizione>   DNS Zone</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>2</NumeroLinea>
+              <Descrizione>estacaodaitalia.com.br   .com.br renewal request   12 months</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>23.99</PrezzoUnitario>
+              <PrezzoTotale>23.99</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>3</NumeroLinea>
+              <Descrizione>Acknowledgement of agora estimate</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+              <NumeroLinea>4</NumeroLinea>
+              <Descrizione>Renew of your offer</Descrizione>
+              <Quantita>1.00</Quantita>
+              <PrezzoUnitario>0.00</PrezzoUnitario>
+              <PrezzoTotale>0.00</PrezzoTotale>
+              <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+              <AliquotaIVA>22.00</AliquotaIVA>
+              <ImponibileImporto>23.99</ImponibileImporto>
+              <Imposta>5.28</Imposta>
+              <EsigibilitaIVA>I</EsigibilitaIVA>
+            </DatiRiepilogo>
+          </DatiBeniServizi>
+          <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+              <ModalitaPagamento>MP08</ModalitaPagamento>
+              <DataScadenzaPagamento>2023-09-27</DataScadenzaPagamento>
+              <ImportoPagamento>29.27</ImportoPagamento>
+            </DettaglioPagamento>
+          </DatiPagamento>
+        </FatturaElettronicaBody>
+      </p:FatturaElettronica>

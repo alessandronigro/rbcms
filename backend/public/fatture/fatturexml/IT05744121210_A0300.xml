@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" versione="FPR12" xmlns="http://www.fatturapa.gov.it/sdi/fatturapa/v1.2">
+  <FatturaElettronicaHeader xmlns="">
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>05744121210</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>A03002019</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>T04ZHR3</CodiceDestinatario>
+      <PECDestinatario>aeainsurancebroker@legalmail.it</PECDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05744121210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>R&amp;BCONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Crescenzio</Indirizzo>
+        <NumeroCivico>25</NumeroCivico>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>04911460964</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>04911460964</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>A&amp;A Insurance Broker Srl</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Dante Alighieri 65</Indirizzo>
+        <CAP>20831</CAP>
+        <Comune>Seregno</Comune>
+        <Provincia>MB</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody xmlns="">
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2019-03-20</Data>
+        <Numero>A/0300/2019</Numero>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>Corso FAD 30 ore per l'aggiornamento professionale IVASS - CARMELINA ZITIELLO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>60.00</PrezzoUnitario>
+        <PrezzoTotale>60.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>Corso FAD 30 ore per l'aggiornamento professionale IVASS - TERESA LO IACONO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>60.00</PrezzoUnitario>
+        <PrezzoTotale>60.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>Corso FAD 30 ore per l'aggiornamento professionale IVASS - STEFANIA SPICA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>60.00</PrezzoUnitario>
+        <PrezzoTotale>60.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>Corso FAD 30 ore per l'aggiornamento professionale IVASS - FRANCESCA FRANCO</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>60.00</PrezzoUnitario>
+        <PrezzoTotale>60.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>Corso FAD 30 ore per l'aggiornamento professionale IVASS - MANUELA VALTORTA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>60.00</PrezzoUnitario>
+        <PrezzoTotale>60.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>Corso FAD 30 ore per l'aggiornamento professionale IVASS - ANGELO ANESA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>60.00</PrezzoUnitario>
+        <PrezzoTotale>60.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>Corso FAD 30 ore per l'aggiornamento professionale IVASS - ZUZANA SKAMLOVA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>60.00</PrezzoUnitario>
+        <PrezzoTotale>60.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>9</NumeroLinea>
+        <Descrizione>Corso FAD 30 ore per l'aggiornamento ai fini OAM - ANGELO ANESA</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>60.00</PrezzoUnitario>
+        <PrezzoTotale>60.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>480.00</ImponibileImporto>
+        <Imposta>105.60</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP01</CondizioniPagamento>
+      <DettaglioPagamento>
+        <Beneficiario>R&amp;BCONSULTING S.R.L</Beneficiario>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>585.60</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

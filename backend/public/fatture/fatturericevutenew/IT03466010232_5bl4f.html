@@ -1,0 +1,2161 @@
+﻿<html xmlns:a="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style type="text/css">
+					#fattura-container { width: 100%; position: relative; }
+
+					#fattura-elettronica { font-family: sans-serif; margin-left: auto; margin-right: auto; max-width: 1280px; min-width: 930px; padding: 0; }
+					#fattura-elettronica .versione { font-size: 11px; float:right; color: #777777; }
+					#fattura-elettronica h1 { padding: 20px 0 0 0; margin: 0; font-size: 30px; }
+					#fattura-elettronica h2 { padding: 20px 0 0 0; margin: 0; font-size: 20px; }
+					#fattura-elettronica h3 { padding: 20px 0 0 0; margin: 0; font-size: 25px; }
+					#fattura-elettronica h4 { padding: 20px 0 0 0; margin: 0; font-size: 20px; }
+					#fattura-elettronica h5 { padding: 15px 0 0 0; margin: 0;
+					font-size: 17px; font-style: italic; }
+					#fattura-elettronica ul { list-style-type: none; margin: 0 !important; padding: 15px 0 0 40px !important; }
+					#fattura-elettronica ul li {}
+					#fattura-elettronica ul li span { font-weight: bold; }
+					#fattura-elettronica div { padding: 0; margin: 0; }
+
+					#fattura-elettronica
+					div.page {
+					background-color: #fff !important;
+					position: relative;
+
+					margin: 20px 0
+					50px 0;
+					padding: 60px;
+
+					background: -moz-linear-gradient(0% 0 360deg, #FFFFFF, #F2F2F2 20%, #FFFFFF) repeat scroll 0 0 transparent;
+					border: 1px solid #CCCCCC;
+					-webkitbox-shadow: 0 0 10px rgba(0, 0, 0,
+					0.3);
+					-mozbox-shadow: 0
+					0 10px rgba(0, 0, 0, 0.3);
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+					background: url('logo_sdi_trasparente.jpg') 98% 50px no-repeat;
+					}
+					#fattura-elettronica div.footer { padding: 50px 0 0 0; margin: 0; font-size: 11px; text-align: center; color: #777777; }
+				</style>
+  </head>
+  <body>
+    <div id="fattura-container">
+      <div id="fattura-elettronica">
+        <h1>FATTURA ELETTRONICA</h1>
+        <div class="page">
+          <div class="versione">
+										Versione FPR12</div>
+          <div id="dati-trasmissione">
+            <h3>Dati relativi alla trasmissione</h3>
+            <ul>
+              <li>
+															Identificativo del trasmittente:
+															<span>IT03466010232</span></li>
+              <li>
+															Progressivo di invio:
+															<span>0082880773</span></li>
+              <li>
+															Formato Trasmissione:
+															<span>FPR12</span></li>
+              <li>
+															Codice Amministrazione destinataria:
+															<span>KRRH6B9</span></li>
+            </ul>
+          </div>
+          <div id="cedente">
+            <h3>Dati del cedente / prestatore</h3>
+            <h4>Dati anagrafici</h4>
+            <ul>
+              <li>
+																Identificativo fiscale ai fini IVA:
+																<span>IT02959800612</span></li>
+              <li>
+																Denominazione:
+																<span>Medi Store S.r.l.</span></li>
+              <li>
+																Regime fiscale:
+																<span>RF01</span>
+																		(ordinario)
+																	</li>
+            </ul>
+            <h4>Dati della sede</h4>
+            <ul>
+              <li>
+																Indirizzo:
+																<span>Via Cilea, 12</span></li>
+              <li>
+																CAP:
+																<span>81100</span></li>
+              <li>
+																Comune:
+																<span>Caserta</span></li>
+              <li>
+																Provincia:
+																<span>CE</span></li>
+              <li>
+																Nazione:
+																<span>IT</span></li>
+            </ul>
+            <h4>Dati di iscrizione nel registro delle imprese</h4>
+            <ul>
+              <li>
+																Provincia Ufficio Registro Imprese:
+																<span>CE</span></li>
+              <li>
+																Numero di iscrizione:
+																<span>208481</span></li>
+              <li>
+																Capitale sociale:
+																<span>260000.00</span></li>
+              <li>
+																Numero soci:
+																<span>SM</span>
+																		(più soci)
+																	</li>
+              <li>
+																Stato di liquidazione:
+																<span>LN</span>
+																		(non in liquidazione)
+																	</li>
+            </ul>
+          </div>
+          <div id="cessionario">
+            <h3>Dati del cessionario / committente</h3>
+            <h4>Dati anagrafici</h4>
+            <ul>
+              <li>
+																Identificativo fiscale ai fini IVA:
+																<span>IT17044041006</span></li>
+              <li>
+																Denominazione:
+																<span>RBCONSULTING SRL</span></li>
+            </ul>
+            <h4>Dati della sede</h4>
+            <ul>
+              <li>
+																Indirizzo:
+																<span>VIA DEI VECCHI PINI ,13</span></li>
+              <li>
+																CAP:
+																<span>81100</span></li>
+              <li>
+																Comune:
+																<span>CASERTA</span></li>
+              <li>
+																Provincia:
+																<span>CE</span></li>
+              <li>
+																Nazione:
+																<span>IT</span></li>
+            </ul>
+          </div>
+          <div id="terzointermediario">
+            <h3>Dati del terzo intermediario soggetto emittente</h3>
+            <h4>Dati anagrafici</h4>
+            <ul>
+              <li>
+																Identificativo fiscale ai fini IVA:
+																<span>IT03466010232</span></li>
+              <li>
+																Denominazione:
+																<span>enerJ srl</span></li>
+            </ul>
+          </div>
+          <div id="soggetto-emittente">
+            <h3>Soggetto emittente la fattura</h3>
+            <ul>
+              <li>
+													Soggetto emittente:
+													<span>TZ</span>
+															(terzo)
+														</li>
+            </ul>
+          </div>
+          <div class="footer">
+										Versione prodotta con foglio di stile SdI
+										<a href="http://www.fatturapa.gov.it">www.fatturapa.gov.it</a></div>
+        </div>
+        <div class="page">
+          <div class="versione">
+										Versione FPR12</div>
+          <div id="dati-generali">
+            <div id="dati-generali-documento">
+              <h3>Dati generali del documento</h3>
+              <ul>
+                <li>
+																Tipologia documento:
+																<span>TD01</span>
+																		(fattura)
+																	</li>
+                <li>
+																Valuta importi:
+																<span>EUR</span></li>
+                <li>
+																Data documento:
+																<span>2024-12-04</span> (04 
+				Dicembre
+			 2024)</li>
+                <li>
+																Numero documento:
+																<span>197/52</span></li>
+                <li>
+																Importo totale documento:
+																<span>88.42</span></li>
+              </ul>
+            </div>
+          </div>
+          <div id="dati-dettaglio-linee">
+            <div id="righe">
+              <h3>Dati relativi alle linee di dettaglio della fornitura</h3>
+              <h5>
+															Nr. linea:
+															<span>1</span></h5>
+              <ul>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>Rif. scontr. 182 del 03/12/2024</span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.00</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.00</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>2</span></h5>
+              <ul>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>Mis. fisc. matricola 99IEC016162</span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.00</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.00</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>3</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>963908</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DECO BORSA RIP.RAFIA 44X20X40</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.69672132</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.69672132</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>4</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>659458</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>EXQUISA FORM.SPALM.LIGHT 175GR</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.52884616</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.52884616</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>5</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>659458</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>EXQUISA FORM.SPALM.LIGHT 175GR</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.52884616</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.52884616</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>6</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>123123</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>NEGRONI PETTO DI TACCHINO 150G</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.35454546</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.35454546</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>7</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>123123</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>NEGRONI PETTO DI TACCHINO 150G</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.35454546</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.35454546</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>8</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>156105</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>GASTRONAUTA BRESAOLA 90G</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.53636364</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.53636364</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>9</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>154522</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>GASTRONAUTA UOVA BIO X4</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.53636364</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.53636364</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>10</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>121669</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>CURTIRISO RISO INTEGRALE 1KG</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.39423077</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.39423077</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>11</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>L71810</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>AVICOLA DEL PRETE SPEZZATINO DI TACCHINO GR.500 AL KG</span></li>
+                <li>
+																	Quantità:
+																	<span>0.431</span></li>
+                <li>
+																	Unità di misura:
+																	<span>KG</span></li>
+                <li>
+																	Valore unitario:
+																	<span>7.2558532</span></li>
+                <li>
+																	Valore totale:
+																	<span>3.12727273</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>12</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>L71810</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>AVICOLA DEL PRETE SPEZZATINO DI TACCHINO GR.500 AL KG</span></li>
+                <li>
+																	Quantità:
+																	<span>0.398</span></li>
+                <li>
+																	Unità di misura:
+																	<span>KG</span></li>
+                <li>
+																	Valore unitario:
+																	<span>7.2635907</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.8909091</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>13</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>L71254</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>AVICOLA DEL PRETE BISTECCA DI POLLO PICCANTI GR450 AL KG</span></li>
+                <li>
+																	Quantità:
+																	<span>0.358</span></li>
+                <li>
+																	Unità di misura:
+																	<span>KG</span></li>
+                <li>
+																	Valore unitario:
+																	<span>8.17673946</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.92727273</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>14</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>757503</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>RIO M.TONNO SUPERNAT. 56GX3+1</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.9909091</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.9909091</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>15</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>757503</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>RIO M.TONNO SUPERNAT. 56GX3+1</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>4.9909091</span></li>
+                <li>
+																	Valore totale:
+																	<span>4.9909091</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>16</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>L56780</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>GOLOSITA' GUANCIALE STAG. CASARECCIO AL KG.</span></li>
+                <li>
+																	Quantità:
+																	<span>0.224</span></li>
+                <li>
+																	Unità di misura:
+																	<span>KG</span></li>
+                <li>
+																	Valore unitario:
+																	<span>12.62175325</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.82727273</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>17</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>095190</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>DE CECCO OLIO EXTRAVERGINE 1LT</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>10.48076924</span></li>
+                <li>
+																	Valore totale:
+																	<span>10.48076924</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>18</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>864439</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>COCA COLA ZERO L.SLEEK CL33X6</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>3.92622951</span></li>
+                <li>
+																	Valore totale:
+																	<span>3.92622951</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>19</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>915974</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>LATTUGA ICEBERG IN CONFEZIONE</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.43269231</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.43269231</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>20</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>845560</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>STAR BRODO PRONTO CARNE MIS.1L</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.9909091</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.9909091</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>21</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>845602</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>KNORR C.BRODO VEGETALE 112G</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.62727273</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.62727273</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>22</span></h5>
+              <ul>
+                <li>
+																	Tipo cessione/prestazione:
+																	<span>SC</span>
+																			(sconto)
+																		</li>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>845602</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>KNORR C.BRODO VEGETALE 112G</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>-0.36363637</span></li>
+                <li>
+																	Valore totale:
+																	<span>-0.36363637</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>23</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>177592</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>PARMIGIANO REGGIANO 1/8 36MESI</span></li>
+                <li>
+																	Quantità:
+																	<span>0.27</span></li>
+                <li>
+																	Unità di misura:
+																	<span>KG</span></li>
+                <li>
+																	Valore unitario:
+																	<span>22.61396014</span></li>
+                <li>
+																	Valore totale:
+																	<span>6.10576924</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>24</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>845602</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>KNORR C.BRODO VEGETALE 112G</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.62727273</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.62727273</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>25</span></h5>
+              <ul>
+                <li>
+																	Tipo cessione/prestazione:
+																	<span>SC</span>
+																			(sconto)
+																		</li>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>845602</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>KNORR C.BRODO VEGETALE 112G</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>-0.36363637</span></li>
+                <li>
+																	Valore totale:
+																	<span>-0.36363637</span></li>
+                <li>
+																	IVA (%):
+																	<span>10.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>26</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>917351</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>FINOCCHI                      PD 16 FR IT</span></li>
+                <li>
+																	Quantità:
+																	<span>0.934</span></li>
+                <li>
+																	Unità di misura:
+																	<span>KG</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.20309669</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.05769231</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>27</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>132000</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>VIROSAC ROT.BIO200ST.35X60</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.01639345</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.01639345</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>28</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>918417</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>ZUCCHINE SCURE                 CAT.I IT CAL.14/21</span></li>
+                <li>
+																	Quantità:
+																	<span>1.523</span></li>
+                <li>
+																	Unità di misura:
+																	<span>KG</span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.9129754</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.91346154</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>29</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>132000</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>VIROSAC ROT.BIO200ST.35X60</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.01639345</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.01639345</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>30</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>920363</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>PATATE KG.2</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.875</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.875</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>31</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>907808</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>ARANCE NAVEL FOGLIA           I 4 CS 2 STR IT</span></li>
+                <li>
+																	Quantità:
+																	<span>1.264</span></li>
+                <li>
+																	Unità di misura:
+																	<span>KG</span></li>
+                <li>
+																	Valore unitario:
+																	<span>1.23995862</span></li>
+                <li>
+																	Valore totale:
+																	<span>1.5673077</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>32</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>132000</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>VIROSAC ROT.BIO200ST.35X60</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.01639345</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.01639345</span></li>
+                <li>
+																	IVA (%):
+																	<span>22.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>33</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>920712</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>BASILICO A FOGLIE GR.30</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.94285715</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.94285715</span></li>
+                <li>
+																	IVA (%):
+																	<span>5.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>34</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>920751</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>PREZZEMOLO GR.100</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>0.95192308</span></li>
+                <li>
+																	Valore totale:
+																	<span>0.95192308</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>35</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>917198</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>POMODORO DATTERINO GR.500</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>3.35576924</span></li>
+                <li>
+																	Valore totale:
+																	<span>3.35576924</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h5>
+															Nr. linea:
+															<span>36</span></h5>
+              <ul>
+                <li>
+                  <h5>Codifica articolo</h5>
+                  <ul>
+                    <li>
+																					Tipo:
+																					<span>CODICE FORNITORE</span></li>
+                    <li>
+																					Valore:
+																					<span>920935</span></li>
+                  </ul>
+                </li>
+                <li>
+																	Descrizione bene/servizio:
+																	<span>FUNGHI CHAMPIGNON AFF.GR 300</span></li>
+                <li>
+																	Quantità:
+																	<span>1.00</span></li>
+                <li>
+																	Unità di misura:
+																	<span>PZ</span></li>
+                <li>
+																	Valore unitario:
+																	<span>2.20192308</span></li>
+                <li>
+																	Valore totale:
+																	<span>2.20192308</span></li>
+                <li>
+																	IVA (%):
+																	<span>4.00</span></li>
+                <li>
+                  <h5>Altri dati gestionali</h5>
+                  <ul>
+                    <li>
+																					Tipo dato:
+																					<span>N.DOC.COMM</span></li>
+                    <li>
+																					Valore testo:
+																					<span>99IEC016162</span></li>
+                    <li>
+																					Valore numerico:
+																					<span>182.00</span></li>
+                    <li>
+																					Valore data:
+																					<span>2024-12-03</span> (03 
+				Dicembre
+			 2024)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div id="riepilogo-aliquote-nature">
+              <h3>Dati di riepilogo per aliquota IVA e natura</h3>
+              <ul>
+                <li>
+																	Aliquota IVA (%):
+																	<span>4.00</span></li>
+                <li>
+																	Arrotondamento:
+																	<span>0.00423083</span></li>
+                <li>
+																	Totale imponibile/importo:
+																	<span>39.39</span></li>
+                <li>
+																	Totale imposta:
+																	<span>1.58</span></li>
+                <li>
+																	Esigibilità IVA:
+																	<span>I</span>
+																			(esigibilità immediata)
+																		</li>
+              </ul>
+              <ul>
+                <li>
+																	Aliquota IVA (%):
+																	<span>5.00</span></li>
+                <li>
+																	Arrotondamento:
+																	<span>0.00285715</span></li>
+                <li>
+																	Totale imponibile/importo:
+																	<span>0.94</span></li>
+                <li>
+																	Totale imposta:
+																	<span>0.05</span></li>
+                <li>
+																	Esigibilità IVA:
+																	<span>I</span>
+																			(esigibilità immediata)
+																		</li>
+              </ul>
+              <ul>
+                <li>
+																	Aliquota IVA (%):
+																	<span>10.00</span></li>
+                <li>
+																	Arrotondamento:
+																	<span>0.00454551</span></li>
+                <li>
+																	Totale imponibile/importo:
+																	<span>37.05</span></li>
+                <li>
+																	Totale imposta:
+																	<span>3.71</span></li>
+                <li>
+																	Esigibilità IVA:
+																	<span>I</span>
+																			(esigibilità immediata)
+																		</li>
+              </ul>
+              <ul>
+                <li>
+																	Aliquota IVA (%):
+																	<span>22.00</span></li>
+                <li>
+																	Arrotondamento:
+																	<span>0.00213118</span></li>
+                <li>
+																	Totale imponibile/importo:
+																	<span>4.67</span></li>
+                <li>
+																	Totale imposta:
+																	<span>1.03</span></li>
+                <li>
+																	Esigibilità IVA:
+																	<span>I</span>
+																			(esigibilità immediata)
+																		</li>
+              </ul>
+            </div>
+          </div>
+          <div id="dati-pagamento-condizioni">
+            <h3>Dati relativi al pagamento</h3>
+            <ul>
+              <li>
+															Condizioni di pagamento:
+															<span>TP02</span>
+																	(pagamento completo)
+																</li>
+              <h5>Dettaglio pagamento</h5>
+              <ul>
+                <li>
+																		Modalità:
+																		<span>MP01</span>
+																				(contanti)
+																			</li>
+                <li>
+																		Importo:
+																		<span>88.42</span></li>
+              </ul>
+            </ul>
+          </div>
+          <div class="footer">
+										Versione prodotta con foglio di stile SdI
+										<a href="http://www.fatturapa.gov.it">www.fatturapa.gov.it</a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

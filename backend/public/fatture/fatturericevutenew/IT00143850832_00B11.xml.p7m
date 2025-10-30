@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="FPR12">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente><IdPaese>IT</IdPaese><IdCodice>05006900962</IdCodice></IdTrasmittente>
+      <ProgressivoInvio>g1c3p1hz4V</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+      
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>00143850832</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>SIAT Srl</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Osservatorio, 1</Indirizzo>
+        <CAP>98168</CAP>
+        <Comune>Messina</Comune>
+        <Provincia>ME</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Rb Consulting S.R.L.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Crescenzio, 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2025-07-13</Data>
+        <Numero>36</Numero>
+        <ImportoTotaleDocumento>460.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Soggiorno dal 11/07/2025 al 14/07/2025</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>(Superior)</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>Bed and Breakfast</Descrizione>
+        <Quantita>3.00</Quantita>
+        <UnitaMisura>Nr.</UnitaMisura>
+        <PrezzoUnitario>127.27272727</PrezzoUnitario>
+        <PrezzoTotale>381.82</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione> Espresso</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Nr.</UnitaMisura>
+        <PrezzoUnitario>1.81818182</PrezzoUnitario>
+        <PrezzoTotale>1.82</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione> Acqua Minerale 1 lt</Descrizione>
+        <Quantita>2.00</Quantita>
+        <UnitaMisura>Nr.</UnitaMisura>
+        <PrezzoUnitario>2.72727273</PrezzoUnitario>
+        <PrezzoTotale>5.45</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione> Acqua Minerale 0,50</Descrizione>
+        <Quantita>1.00</Quantita>
+        <UnitaMisura>Nr.</UnitaMisura>
+        <PrezzoUnitario>1.81818182</PrezzoUnitario>
+        <PrezzoTotale>1.82</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione> Gin tonic</Descrizione>
+        <Quantita>3.00</Quantita>
+        <UnitaMisura>Nr.</UnitaMisura>
+        <PrezzoUnitario>9.09090909</PrezzoUnitario>
+        <PrezzoTotale>27.27</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>      460,00 PAGATE CON Carta di credito</Descrizione>
+        <Quantita>0.00</Quantita>
+        <PrezzoUnitario>0.00</PrezzoUnitario>
+        <PrezzoTotale>0.00</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>418.18</ImponibileImporto>
+        <Imposta>41.82</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+        <RiferimentoNormativo>10%</RiferimentoNormativo>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <ImportoPagamento>460.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+    <Allegati>
+      <NomeAttachment>ERICDOC_BAFR9.xml.zip</NomeAttachment>
+      <AlgoritmoCompressione>zip</AlgoritmoCompressione>
+      <FormatoAttachment>zip</FormatoAttachment>
+      
+    <Attachment>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</Attachment></Allegati>
+    <Allegati>
+      <NomeAttachment>corpo_ERICDOC_BAFR9.pdf</NomeAttachment>
+      <FormatoAttachment>pdf</FormatoAttachment>
+      
+    <Attachment>JVBERi0xLjcKJeLjz9MKNSAwIG9iago8PC9GaWx0ZXIvRmxhdGVEZWNvZGUvTGVuZ3RoIDEwODI+PnN0cmVhbQp4nK2XwXKjOBCG736KPnqqPIokhBBH25PNuDZOMjaV01wUo3Ex44CDcWpnT/Oo+yjbZLHXyQRBp3KiKOBDf3frV/fDYJIMzv4QICQk3wYqhMhopvAmHQxn+WORrRzcFelPSG1lPyTfB+fJ4Mvg4ffPtGb66TPOhAxVDPU1VqK+KiEMlOv6ET6DZDUYXu3v71zpA4aSmQYYRDIMERQYIxVeFY+MaoAm+g8Y6DaYFILpU+AQ2l9VLI7JYj7ZynUhiXIkl+FHHn0UQRs4MChL9ZIVGFxDRJY1vi/2edUFJQr7BUpzxvlLrDxJvRSMN0j5hDi5iliLF+tcujz11xIXTBKET/a7LHe7HeT2vjWxyNUmavZKP+3L2TiBZblprZU4YqdUT0Y5Z4inCpsW91ub//TqatBUbVNb2t2qgM9F5VoF1jHTglSEtxiyvMsstIpIRThLOBcqMCE3gezwjf/Znb5B1ZbYv2BVpF3eQVXXQ1tjHn20Nfv8LdpKt848hdaAiequyzTLbZkVvnqQ8uggvZwuTct6vy9d6uDSre3Gu+25Oe66Piu+zSxc73aufLRVgQsfgRjBHP+HOkYQG6ENzM9HMEs8Pw2NOe5HsqTrrSttlT36TvAwUscE91F1WazsJqv+gZuirApI3Wbj4MLlVTaCy2yLGaq1ceS8ru3E8ENljiXQx/AXbpVtM9d+NtVMGZNK4Kq4x3RgjHyZD0VIyvziDqZFvttvqixfw5It2CVrwws8neXJH9p3pNAxCxVZYbeTHsBElbNERFwprgTn7V1YzFmkeulDDYxHZH2dbtpgiep6aFM1MuqlTQnDsJ6p2o4Vj/XUrvAAJyr8c7H4rCexp+6Vid9iPj5iFJLcpvbQKTJXLv+7dlAZjmBxPR+PAE+7OIDF3OsxGvsqpQKSy0xw7PEpkKpJ4fATrqvMtlVW5K2HnTKnX3xhVSs7iA17hr8pcQprXQnatnz2elJU1teBYSmTymNZrNdZUebo8XYDQpzx6KweT6C+U4c7zw+DWJNaya/D5R4PLPzn1w8+rJGkEpq4FGyewqR09sc3u2ufbDBXVHjwykjzPKFUolCvjUkv0k6FKumFIlAbUjd2vtvWO721GXuKJZEpumNJJMoekXxPJOLC8GjwfXDj1cPewhzHzhKbTxCw8ZcnEe9bbRNSItFX8IeQEpG6I6RKkHzrRUj5KGwPQR1SIr5HlRKJfar0PZGIk7Qh/yLLoSrybOUNJBHawzqJRNHHOamr7DJOEdCcWPMR53Azvhgn5zC9voKpLSsLaQar0qVZ9ZulPmtmJA7wlGbmlo1ZwnBKq2y28TVmUh9G56Gv1RQ4snF9+jaOF62dN55SXJ2+jL26vfMM2ULXbz7/wLdoRZvIRWsmD7rIQE91HOQTmXU3L0xXiMhQLJsu8YF6v+12EE9ktm+1Rvebef8CQxtrsgplbmRzdHJlYW0KZW5kb2JqCjQgMCBvYmoKPDwvQ29udGVudHMgNSAwIFIvTWVkaWFCb3hbMCAwIDU5NSA4NDJdL1BhcmVudCAyIDAgUi9SZXNvdXJjZXM8PC9Gb250PDwvRjEgNiAwIFIvRjIgNyAwIFI+Pj4+L1RyaW1Cb3hbMCAwIDU5NSA4NDJdL1R5cGUvUGFnZT4+CmVuZG9iagoxIDAgb2JqCjw8L1BhZ2VzIDIgMCBSL1R5cGUvQ2F0YWxvZz4+CmVuZG9iagozIDAgb2JqCjw8L0NyZWF0aW9uRGF0ZShEOjIwMjUwNzEzMTc1NDM5KzAwJzAwJykvTW9kRGF0ZShEOjIwMjUwNzEzMTc1NDM5KzAwJzAwJykvUHJvZHVjZXIoaVRleHSuIHBkZkhUTUwgNC4wLjEgXChBR1BMIHZlcnNpb25cKSCpMjAwMC0yMDIxIGlUZXh0IEdyb3VwIE5WKT4+CmVuZG9iago2IDAgb2JqCjw8L0Jhc2VGb250L0hlbHZldGljYS9FbmNvZGluZy9XaW5BbnNpRW5jb2RpbmcvU3VidHlwZS9UeXBlMS9UeXBlL0ZvbnQ+PgplbmRvYmoKNyAwIG9iago8PC9CYXNlRm9udC9IZWx2ZXRpY2EtQm9sZC9FbmNvZGluZy9XaW5BbnNpRW5jb2RpbmcvU3VidHlwZS9UeXBlMS9UeXBlL0ZvbnQ+PgplbmRvYmoKMiAwIG9iago8PC9Db3VudCAxL0tpZHNbNCAwIFJdL1R5cGUvUGFnZXM+PgplbmRvYmoKeHJlZgowIDgKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAxMzA3IDAwMDAwIG4gCjAwMDAwMDE2OTggMDAwMDAgbiAKMDAwMDAwMTM1MiAwMDAwMCBuIAowMDAwMDAxMTY1IDAwMDAwIG4gCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMTUxNyAwMDAwMCBuIAowMDAwMDAxNjA1IDAwMDAwIG4gCnRyYWlsZXIKPDwvSUQgWzxkMWU0MzQyNWIyODI1N2ZiMzhmMTRjNWFhNGQwZmRjND48ZDFlNDM0MjViMjgyNTdmYjM4ZjE0YzVhYTRkMGZkYzQ+XS9JbmZvIDMgMCBSL1Jvb3QgMSAwIFIvU2l6ZSA4Pj4KJWlUZXh0LXBkZkhUTUwtNC4wLjEKc3RhcnR4cmVmCjE3NDkKJSVFT0YK</Attachment></Allegati>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

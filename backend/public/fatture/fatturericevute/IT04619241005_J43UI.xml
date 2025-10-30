@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ns0:FatturaElettronica versione="FPR12" xmlns:ns0="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+   <FatturaElettronicaHeader>
+      <DatiTrasmissione>
+         <IdTrasmittente>
+            <IdPaese>IT</IdPaese>
+            <IdCodice>02714390362</IdCodice>
+         </IdTrasmittente>
+         <ProgressivoInvio>28642</ProgressivoInvio>
+         <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+         <CodiceDestinatario>0000000</CodiceDestinatario>
+      </DatiTrasmissione>
+      <CedentePrestatore>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>04619241005</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>Sky Italia S.r.l.</Denominazione>
+            </Anagrafica>
+            <RegimeFiscale>RF01</RegimeFiscale>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA MONTE PENICE</Indirizzo>
+            <NumeroCivico>7</NumeroCivico>
+            <CAP>20138</CAP>
+            <Comune>MILANO</Comune>
+            <Provincia>MI</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+         <IscrizioneREA>
+            <Ufficio>MI</Ufficio>
+            <NumeroREA>1726765</NumeroREA>
+            <CapitaleSociale>261507000.00</CapitaleSociale>
+            <SocioUnico>SU</SocioUnico>
+            <StatoLiquidazione>LN</StatoLiquidazione>
+         </IscrizioneREA>
+      </CedentePrestatore>
+      <CessionarioCommittente>
+         <DatiAnagrafici>
+            <IdFiscaleIVA>
+               <IdPaese>IT</IdPaese>
+               <IdCodice>05744121210</IdCodice>
+            </IdFiscaleIVA>
+            <Anagrafica>
+               <Denominazione>RB CONSULTING</Denominazione>
+            </Anagrafica>
+         </DatiAnagrafici>
+         <Sede>
+            <Indirizzo>VIA CRESCENZIO,</Indirizzo>
+            <NumeroCivico>25</NumeroCivico>
+            <CAP>00193</CAP>
+            <Comune>ROMA</Comune>
+            <Provincia>RM</Provincia>
+            <Nazione>IT</Nazione>
+         </Sede>
+      </CessionarioCommittente>
+   </FatturaElettronicaHeader>
+   <FatturaElettronicaBody>
+      <DatiGenerali>
+         <DatiGeneraliDocumento>
+            <TipoDocumento>TD01</TipoDocumento>
+            <Divisa>EUR</Divisa>
+            <Data>2019-04-01</Data>
+            <Numero>602840988</Numero>
+            <ImportoTotaleDocumento>354.45</ImportoTotaleDocumento>
+         </DatiGeneraliDocumento>
+         <DatiContratto>
+            <IdDocumento>13654514</IdDocumento>
+         </DatiContratto>
+      </DatiGenerali>
+      <DatiBeniServizi>
+         <DettaglioLinee>
+            <NumeroLinea>1</NumeroLinea>
+            <Descrizione>Contributo attivazione Sky Q Platinum</Descrizione>
+            <DataInizioPeriodo>2019-03-19</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-19</DataFinePeriodo>
+            <PrezzoUnitario>163.11</PrezzoUnitario>
+            <PrezzoTotale>163.11</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>2</NumeroLinea>
+            <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+            <Descrizione>Sconto Contributo attivazione Sky Q Platinum</Descrizione>
+            <DataInizioPeriodo>2019-03-19</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-19</DataFinePeriodo>
+            <PrezzoUnitario>-64.75</PrezzoUnitario>
+            <PrezzoTotale>-64.75</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>3</NumeroLinea>
+            <Descrizione>Contributo attivazione Sky Q Mini</Descrizione>
+            <DataInizioPeriodo>2019-03-19</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-19</DataFinePeriodo>
+            <PrezzoUnitario>56.56</PrezzoUnitario>
+            <PrezzoTotale>56.56</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>4</NumeroLinea>
+            <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+            <Descrizione>Sconto Contributo attivazione Sky Q Mini</Descrizione>
+            <DataInizioPeriodo>2019-03-19</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-19</DataFinePeriodo>
+            <PrezzoUnitario>-56.56</PrezzoUnitario>
+            <PrezzoTotale>-56.56</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>5</NumeroLinea>
+            <Descrizione>Contributo attivazione Sky Q Mini agg.</Descrizione>
+            <DataInizioPeriodo>2019-03-19</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-19</DataFinePeriodo>
+            <PrezzoUnitario>23.77</PrezzoUnitario>
+            <PrezzoTotale>23.77</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>6</NumeroLinea>
+            <Descrizione>Contributo attivazione Sky Q Mini agg.</Descrizione>
+            <DataInizioPeriodo>2019-03-19</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-19</DataFinePeriodo>
+            <PrezzoUnitario>23.77</PrezzoUnitario>
+            <PrezzoTotale>23.77</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>7</NumeroLinea>
+            <Descrizione>Contributo attivazione Sky Q Mini agg.</Descrizione>
+            <DataInizioPeriodo>2019-03-19</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-19</DataFinePeriodo>
+            <PrezzoUnitario>23.77</PrezzoUnitario>
+            <PrezzoTotale>23.77</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>8</NumeroLinea>
+            <Descrizione>Intervento su impianto esistente</Descrizione>
+            <DataInizioPeriodo>2019-03-19</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-19</DataFinePeriodo>
+            <PrezzoUnitario>98.35</PrezzoUnitario>
+            <PrezzoTotale>98.35</PrezzoTotale>
+            <AliquotaIVA>0.00</AliquotaIVA>
+            <Natura>N6</Natura>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>9</NumeroLinea>
+            <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+            <Descrizione>Sconto intervento su impianto esistente</Descrizione>
+            <DataInizioPeriodo>2019-03-19</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-19</DataFinePeriodo>
+            <PrezzoUnitario>-41.00</PrezzoUnitario>
+            <PrezzoTotale>-41.00</PrezzoTotale>
+            <AliquotaIVA>0.00</AliquotaIVA>
+            <Natura>N6</Natura>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>10</NumeroLinea>
+            <Descrizione>Sky Q Plus</Descrizione>
+            <DataInizioPeriodo>2019-03-19</DataInizioPeriodo>
+            <DataFinePeriodo>2019-03-31</DataFinePeriodo>
+            <PrezzoUnitario>4.26</PrezzoUnitario>
+            <PrezzoTotale>4.26</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>11</NumeroLinea>
+            <Descrizione>Sky TV + Famiglia + Cinema + Sport + Calcio</Descrizione>
+            <DataInizioPeriodo>2019-04-01</DataInizioPeriodo>
+            <DataFinePeriodo>2019-04-30</DataFinePeriodo>
+            <PrezzoUnitario>60.33</PrezzoUnitario>
+            <PrezzoTotale>60.33</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>12</NumeroLinea>
+            <TipoCessionePrestazione>SC</TipoCessionePrestazione>
+            <Descrizione>Sconto per passaggio a listino in vigore| da luglio 2012 (include sconto per Sky HD)</Descrizione>
+            <DataInizioPeriodo>2019-04-01</DataInizioPeriodo>
+            <DataFinePeriodo>2019-04-30</DataFinePeriodo>
+            <PrezzoUnitario>-0.90</PrezzoUnitario>
+            <PrezzoTotale>-0.90</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DettaglioLinee>
+            <NumeroLinea>13</NumeroLinea>
+            <Descrizione>Sky Q Plus</Descrizione>
+            <DataInizioPeriodo>2019-04-01</DataInizioPeriodo>
+            <DataFinePeriodo>2019-04-30</DataFinePeriodo>
+            <PrezzoUnitario>10.17</PrezzoUnitario>
+            <PrezzoTotale>10.17</PrezzoTotale>
+            <AliquotaIVA>22.00</AliquotaIVA>
+         </DettaglioLinee>
+         <DatiRiepilogo>
+            <AliquotaIVA>22.00</AliquotaIVA>
+            <Arrotondamento>0.00</Arrotondamento>
+            <ImponibileImporto>243.53</ImponibileImporto>
+            <Imposta>53.57</Imposta>
+            <EsigibilitaIVA>I</EsigibilitaIVA>
+         </DatiRiepilogo>
+         <DatiRiepilogo>
+            <AliquotaIVA>0.00</AliquotaIVA>
+            <Natura>N6</Natura>
+            <Arrotondamento>0.00</Arrotondamento>
+            <ImponibileImporto>57.35</ImponibileImporto>
+            <Imposta>0.00</Imposta>
+            <EsigibilitaIVA>I</EsigibilitaIVA>
+            <RiferimentoNormativo>Inversione Contabile-art.17,c.6,|a-ter) DPR 633/72</RiferimentoNormativo>
+         </DatiRiepilogo>
+      </DatiBeniServizi>
+      <DatiPagamento>
+         <CondizioniPagamento>TP02</CondizioniPagamento>
+         <DettaglioPagamento>
+            <ModalitaPagamento>MP19</ModalitaPagamento>
+            <DataScadenzaPagamento>2019-04-29</DataScadenzaPagamento>
+            <ImportoPagamento>342.13</ImportoPagamento>
+            <IstitutoFinanziario>UNICREDIT S.P.A. - FIL. OPERATIVA MILANO</IstitutoFinanziario>
+         </DettaglioPagamento>
+      </DatiPagamento>
+   </FatturaElettronicaBody>
+</ns0:FatturaElettronica>

@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?><ns3:FatturaElettronica xmlns:ns3="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" versione="FPR12">
+    <FatturaElettronicaHeader>
+        <DatiTrasmissione>
+            <IdTrasmittente>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>01641790702</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>02335</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+            <ContattiTrasmittente>
+                <Telefono>0874-60561</Telefono>
+            </ContattiTrasmittente>
+        </DatiTrasmissione>
+        <CedentePrestatore>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>03455270615</IdCodice>
+                </IdFiscaleIVA>
+                <Anagrafica>
+                    <Denominazione>SG DETERSIVI SRL</Denominazione>
+                </Anagrafica>
+                <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>VIA RUTA N.87</Indirizzo>
+                <CAP>81100</CAP>
+                <Comune>CASERTA</Comune>
+                <Provincia>CE</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+        </CedentePrestatore>
+        <CessionarioCommittente>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>05744121210</IdCodice>
+                </IdFiscaleIVA>
+                <Anagrafica>
+                    <Denominazione>R&amp;B CONSULTING SRL</Denominazione>
+                </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>VIA CRESCENZIO N.25</Indirizzo>
+                <CAP>00194</CAP>
+                <Comune>ROMA</Comune>
+                <Provincia>RM</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+        </CessionarioCommittente>
+        <TerzoIntermediarioOSoggettoEmittente>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>01641790702</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>01641790702</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>TEAMSYSTEM SERVICE SRL</Denominazione>
+                </Anagrafica>
+            </DatiAnagrafici>
+        </TerzoIntermediarioOSoggettoEmittente>
+        <SoggettoEmittente>TZ</SoggettoEmittente>
+    </FatturaElettronicaHeader>
+    <FatturaElettronicaBody>
+        <DatiGenerali>
+            <DatiGeneraliDocumento>
+                <TipoDocumento>TD01</TipoDocumento>
+                <Divisa>EUR</Divisa>
+                <Data>2022-06-17</Data>
+                <Numero>259</Numero>
+                <ImportoTotaleDocumento>114.05</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+            <DatiTrasporto>
+                <CausaleTrasporto>vendita</CausaleTrasporto>
+            </DatiTrasporto>
+        </DatiGenerali>
+        <DatiBeniServizi>
+            <DettaglioLinee>
+                <NumeroLinea>1</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>03574661552989</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>CAREFREE SALVASLIP COTTON  PZ.20</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>0.90910</PrezzoUnitario>
+                <PrezzoTotale>0.91</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>2</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>03574661552989</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>CAREFREE SALVASLIP COTTON  PZ.20</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>0.90910</PrezzoUnitario>
+                <PrezzoTotale>0.91</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>3</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>3600542117067</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>FRUCTIS SHAMPOO 2IN1 ALOE VERA 250ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.59840</PrezzoUnitario>
+                <PrezzoTotale>1.60</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>4</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>3800501069011</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>BICCHIERI MONOUSO CC.200 PZ.70</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.06560</PrezzoUnitario>
+                <PrezzoTotale>1.07</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>5</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>50099627</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>DOVE DEO VAPO TALCO 75ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PA </UnitaMisura>
+                <PrezzoUnitario>2.04920</PrezzoUnitario>
+                <PrezzoTotale>2.05</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>6</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>5054563118226</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>PARADONTAX DENTIFRICIO GENGIVE ALITO+ 75ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>3.23770</PrezzoUnitario>
+                <PrezzoTotale>3.24</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>7</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>701197284234</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>BICCHIERI MONOUSO CC.80 T100</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>0.81970</PrezzoUnitario>
+                <PrezzoTotale>0.82</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>8</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8000630720073</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>SVELTO PIATTI ACETO 1LT.</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>0.94260</PrezzoUnitario>
+                <PrezzoTotale>0.94</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>9</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8001090473349</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>FAIRY TABS PLATINUM PLUS LIMONE PZ.44</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>7.37700</PrezzoUnitario>
+                <PrezzoTotale>7.38</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>10</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8001480020979</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>ACE CANDEGGINA DENSO PIU'' 2.5LT.</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.04920</PrezzoUnitario>
+                <PrezzoTotale>2.05</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>11</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8001480403833</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>LINES E'' ASSORBENTI ALI NOTTE PZ.18</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>5.36360</PrezzoUnitario>
+                <PrezzoTotale>5.36</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>12</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8002150113076</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>SMAC ACCIAIO CREMA 500/520ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.17210</PrezzoUnitario>
+                <PrezzoTotale>2.17</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>13</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8002150113076</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>SMAC ACCIAIO CREMA 500/520ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.17210</PrezzoUnitario>
+                <PrezzoTotale>2.17</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>14</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8002340074484</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>LAVASBIANCA 10 BUSTE</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.96720</PrezzoUnitario>
+                <PrezzoTotale>1.97</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>15</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8002910024918</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>FINISH CURALAVASTOVIGLIE REGOLARE 250ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.41800</PrezzoUnitario>
+                <PrezzoTotale>2.42</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>16</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8002910058302</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>VANISH GEL WHITE 725ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.41800</PrezzoUnitario>
+                <PrezzoTotale>2.42</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>17</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8003510004232</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>MALIZIA BAGNO MONOI E FIOR DI LOTO 1LT.</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.22950</PrezzoUnitario>
+                <PrezzoTotale>1.23</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>18</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8003510018154</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>BREEZE BAGNO THE BIANCO 400ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.92620</PrezzoUnitario>
+                <PrezzoTotale>1.93</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>19</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8003510025367</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>BREEZE DEO SPRAY THE BIANCO 150ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.63930</PrezzoUnitario>
+                <PrezzoTotale>1.64</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>20</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8003510025367</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>BREEZE DEO SPRAY THE BIANCO 150ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.63930</PrezzoUnitario>
+                <PrezzoTotale>1.64</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>21</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8003510025367</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>BREEZE DEO SPRAY THE BIANCO 150ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.63930</PrezzoUnitario>
+                <PrezzoTotale>1.64</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>22</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8003650015648</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>DEOX LAVATRICE 21 LAVAGGI CLASSICO 1050ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.41800</PrezzoUnitario>
+                <PrezzoTotale>2.42</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>23</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8003650015648</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>DEOX LAVATRICE 21 LAVAGGI CLASSICO 1050ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.41800</PrezzoUnitario>
+                <PrezzoTotale>2.42</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>24</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8003650015686</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>DEOX LAVATRICE 21 LAVAGGI COLORE &amp; SCURI 1050ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.41800</PrezzoUnitario>
+                <PrezzoTotale>2.42</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>25</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8003650015686</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>DEOX LAVATRICE 21 LAVAGGI COLORE &amp; SCURI 1050ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.41800</PrezzoUnitario>
+                <PrezzoTotale>2.42</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>26</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8003650018694</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>DEOX AMMORBIDENTE ROSA 2LT.</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.84430</PrezzoUnitario>
+                <PrezzoTotale>1.84</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>27</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8004260003407</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>REGINA IGIENICA ROTOLONI PZ.4</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.17210</PrezzoUnitario>
+                <PrezzoTotale>2.17</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>28</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8004260003407</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>REGINA IGIENICA ROTOLONI PZ.4</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.17210</PrezzoUnitario>
+                <PrezzoTotale>2.17</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>29</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8004260003407</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>REGINA IGIENICA ROTOLONI PZ.4</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.17210</PrezzoUnitario>
+                <PrezzoTotale>2.17</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>30</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8004260420891</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>REGINA CARTA CASA CUORI PZ.3</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.72130</PrezzoUnitario>
+                <PrezzoTotale>1.72</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>31</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8006320072354</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>ACCHIAPPACOLORE X16</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.04920</PrezzoUnitario>
+                <PrezzoTotale>2.05</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>32</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8006320072354</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>ACCHIAPPACOLORE X16</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.04920</PrezzoUnitario>
+                <PrezzoTotale>2.05</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>33</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8007091005879</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>WOW SALVIETTINE PZ.72</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>0.94260</PrezzoUnitario>
+                <PrezzoTotale>0.94</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>34</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8007750012446</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>SPUMA SCIAMPAGNA BAGNO SETA VANIGLIA 650ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.35250</PrezzoUnitario>
+                <PrezzoTotale>1.35</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>35</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8008970048925</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>VIDAL SAPONE ECO-RICARICA ANTIBATTERICO 1.5LT.</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.00820</PrezzoUnitario>
+                <PrezzoTotale>2.01</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>36</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8008970048925</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>VIDAL SAPONE ECO-RICARICA ANTIBATTERICO 1.5LT.</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.00820</PrezzoUnitario>
+                <PrezzoTotale>2.01</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>37</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8015194508203</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>CHANTECLAIR SGRASSATORE RICARICA LAVANDA 600/625ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.45900</PrezzoUnitario>
+                <PrezzoTotale>2.46</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>38</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8015194508203</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>CHANTECLAIR SGRASSATORE RICARICA LAVANDA 600/625ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.45900</PrezzoUnitario>
+                <PrezzoTotale>2.46</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>39</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8017331054215</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>BIOREPAIR DENTIFRICIO PRO WHITE 75ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.41800</PrezzoUnitario>
+                <PrezzoTotale>2.42</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>40</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8017331064078</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>BIOREPAIR DENTIFRICIO SCUDO ATTIVO ANTI-CARIE 75ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>3.07380</PrezzoUnitario>
+                <PrezzoTotale>3.07</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>41</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8033011700029</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>CORONA TOVAGLIOLI MEZZO METRO</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>2.04920</PrezzoUnitario>
+                <PrezzoTotale>2.05</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>42</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8054383711017</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>GAMBARDELLA NETTEZZA CM.52X70 ROSA PZ.20</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>0.94260</PrezzoUnitario>
+                <PrezzoTotale>0.94</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>43</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8054383711017</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>GAMBARDELLA NETTEZZA CM.52X70 ROSA PZ.20</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>0.94260</PrezzoUnitario>
+                <PrezzoTotale>0.94</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>44</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8054383711017</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>GAMBARDELLA NETTEZZA CM.52X70 ROSA PZ.20</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>0.94260</PrezzoUnitario>
+                <PrezzoTotale>0.94</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>45</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8054383711017</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>GAMBARDELLA NETTEZZA CM.52X70 ROSA PZ.20</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>0.94260</PrezzoUnitario>
+                <PrezzoTotale>0.94</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>46</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8710447474709</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>CIF SPRAY ULTRA RAPIDO VETRI 500ml</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.02460</PrezzoUnitario>
+                <PrezzoTotale>1.02</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>47</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>EAN</CodiceTipo>
+                    <CodiceValore>8718951337350</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>AIAX PAVIMENTI EXPEL 1.3LT.</Descrizione>
+                <Quantita>1.0000</Quantita>
+                <UnitaMisura>PZ </UnitaMisura>
+                <PrezzoUnitario>1.22950</PrezzoUnitario>
+                <PrezzoTotale>1.23</PrezzoTotale>
+                <AliquotaIVA>22.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+                <AliquotaIVA>10.00</AliquotaIVA>
+                <ImponibileImporto>7.18</ImponibileImporto>
+                <Imposta>0.72</Imposta>
+                <EsigibilitaIVA>I</EsigibilitaIVA>
+            </DatiRiepilogo>
+            <DatiRiepilogo>
+                <AliquotaIVA>22.00</AliquotaIVA>
+                <ImponibileImporto>87.01</ImponibileImporto>
+                <Imposta>19.14</Imposta>
+                <EsigibilitaIVA>I</EsigibilitaIVA>
+            </DatiRiepilogo>
+        </DatiBeniServizi>
+        <DatiPagamento>
+            <CondizioniPagamento>TP02</CondizioniPagamento>
+            <DettaglioPagamento>
+                <ModalitaPagamento>MP01</ModalitaPagamento>
+                <DataRiferimentoTerminiPagamento>2022-06-17</DataRiferimentoTerminiPagamento>
+                <GiorniTerminiPagamento>0</GiorniTerminiPagamento>
+                <DataScadenzaPagamento>2022-06-17</DataScadenzaPagamento>
+                <ImportoPagamento>114.05</ImportoPagamento>
+                <IBAN>IT87E0898714900000000332335</IBAN>
+            </DettaglioPagamento>
+        </DatiPagamento>
+    </FatturaElettronicaBody>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="id-f1c5cf28dfa6d3d011647830e53fdc10"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"><dsig-xpath:XPath xmlns:dsig-xpath="http://www.w3.org/2002/06/xmldsig-filter2" Filter="subtract">/descendant::ds:Signature</dsig-xpath:XPath></ds:Transform><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>d1bdnrDgMueXwLSkdlRaX5Op2fh0vmhnUrLejvdlrOg=</ds:DigestValue></ds:Reference><ds:Reference URI="#keyinfo-id-f1c5cf28dfa6d3d011647830e53fdc10"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>AAeiHPPeJy2rmXdIMkq9onf5iq0OmFDqOHEmnk3Drls=</ds:DigestValue></ds:Reference><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#xades-id-f1c5cf28dfa6d3d011647830e53fdc10"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>f4RZFG1WRGeiyCYt8vJ9MDzhPmjJYl+fEPSx3rrAfeU=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="value-id-f1c5cf28dfa6d3d011647830e53fdc10">fug1J7fbx8yk9ComVqb+9M21sHo/H6dESRkGlpqRvZpXmJtnbKyxX5gBOqWfKmvX2oF5GNCzrkU8YFsbScVgSkkAgZBqAByWpcoI2k300qL2xg5jHJGz5/s0Pon2n4+Ts279cYSqYIFNxJA52uJT69wenww+08094OFNBCqD4Zf+eEvYWy0evUQ3Xu+D2gouEnBBNIPmMFtbSqb0z0emd3f4w857WOR3jW9IEXjj5uBGldmPC4RYmWRfYa9Gmh/k+J9X1cJKsK0PAL7ms2lQgerHRoB65yCvPA1oSZRlvMtK0AQxTszWZoapKRdklbIm8oc2tD4Yx3E1gFoGtFyiUQ==</ds:SignatureValue><ds:KeyInfo Id="keyinfo-id-f1c5cf28dfa6d3d011647830e53fdc10"><ds:X509Data><ds:X509Certificate>MIIHWDCCBkCgAwIBAgIIeJWPDAHeyHkwDQYJKoZIhvcNAQELBQAwfTELMAkGA1UEBhMCSVQxJDAiBgNVBAoMG05hbWlyaWFsIFMucC5BLi8wMjA0NjU3MDQyNjEgMB4GA1UECwwXQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkxJjAkBgNVBAMMHU5hbWlyaWFsIENBIEZpcm1hIFF1YWxpZmljYXRhMB4XDTIyMDUzMDEwMDMwMFoXDTI1MDUyODIyMDAwMFowgY8xCzAJBgNVBAYTAklUMRIwEAYDVQQEDAlESSBSSUVOWk8xEDAOBgNVBCoMB01JQ0hFTEUxHzAdBgNVBAUTFlRJTklULURSTk1ITDY2RTMwWjQwMVcxGjAYBgNVBAMMEURJIFJJRU5aTyBNSUNIRUxFMR0wGwYDVQQuExRBVURNMjAyMjA1MzA2MjU5NDczNjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOrUttKSq9LgM4Yg2ANjUPUr03RCcRnHCO1JQrj2stcDxnFTE1T6zeRTB/iSPnD7PH3DMyoL4mPiR2z6DuxdqNZMzZt/3bVwZbO77vQqLMwfORuC/oFVG2G7nto8ieIkfRlrJ81ZacnNNwLsJEwk32zoeiv7pRTM7P3dU7/t1rNjYu16zTwL+xTydxTu31l7/TU054MR+kFkUqT+SX8CE7LFt3sq5xSY7N3eY7RzmOKao0MCjAyOXdEnJsgNbQACF5Xyy4801GdACUgVZQzoCX9nHepxS9mfxQagRqNObvwUJbX8qwgNiFZFlH+3qFYY5ErRRmcbYd++07K+tYDhdBkCAwEAAaOCA8cwggPDMIGcBggrBgEFBQcBAQSBjzCBjDBRBggrBgEFBQcwAoZFaHR0cHM6Ly9kb2NzLm5hbWlyaWFsdHNwLmNvbS9kb2N1bWVudHMvTmFtaXJpYWxDQUZpcm1hUXVhbGlmaWNhdGEuY3J0MDcGCCsGAQUFBzABhitodHRwOi8vb2NzcC5uYW1pcmlhbHRzcC5jb20vb2NzcC9jZXJ0c3RhdHVzMB0GA1UdDgQWBBTSyQo5YHEChE243/eBX/obzaj8hDAfBgNVHSMEGDAWgBRj/e3mjGJHSM/qCUFzdhHiZGJ7EDCBzQYIKwYBBQUHAQMEgcAwgb0wCAYGBACORgEBMAsGBgQAjkYBAwIBFDAIBgYEAI5GAQQwEwYGBACORgEGMAkGBwQAjkYBBgEwgYQGBgQAjkYBBTB6MDsWNWh0dHBzOi8vZG9jcy5uYW1pcmlhbHRzcC5jb20vZG9jdW1lbnRzL1BEUy9QRFNfZW4ucGRmEwJlbjA7FjVodHRwczovL2RvY3MubmFtaXJpYWx0c3AuY29tL2RvY3VtZW50cy9QRFMvUERTX2l0LnBkZhMCaXQwggG4BgNVHSAEggGvMIIBqzAJBgcEAIvsQAECMAgGBgQAj3oBAjCCAZIGCysGAQQBgpprAQEDMIIBgTApBggrBgEFBQcCARYdaHR0cHM6Ly9kb2NzLm5hbWlyaWFsdHNwLmNvbS8wggFSBggrBgEFBQcCAjCCAUQeggFAAEkAbAAgAHAAcgBlAHMAZQBuAHQAZQAgAGMAZQByAHQAaQBmAGkAYwBhAHQAbwAgAOgAIAB2AGEAbABpAGQAbwAgAHMAbwBsAG8AIABwAGUAcgAgAGYAaQByAG0AZQAgAGEAcABwAG8AcwB0AGUAIABjAG8AbgAgAHAAcgBvAGMAZQBkAHUAcgBhACAAYQB1AHQAbwBtAGEAdABpAGMAYQAuAC8AVABoAGkAcwAgAGMAZQByAHQAaQBmAGkAYwBhAHQAZQAgAG0AYQB5ACAAbwBuAGwAeQAgAGIAZQAgAHUAcwBlAGQAIABmAG8AcgAgAHUAbgBhAHQAdABlAG4AZABlAGQALwBhAHUAdABvAG0AYQB0AGUAZAAgAGQAaQBnAGkAdABhAGwAIABzAGkAZwBuAGEAdAB1AHIAZQBzAC4wRgYDVR0fBD8wPTA7oDmgN4Y1aHR0cDovL2NybC5uYW1pcmlhbHRzcC5jb20vRmlybWFDZXJ0YVF1YWxpZmljYXRhMS5jcmwwDgYDVR0PAQH/BAQDAgZAMA0GCSqGSIb3DQEBCwUAA4IBAQBdNiOK5P+PXT6W/yz8SnOaX54cpvooL7A/hJ4sNdINTkGja3DnEtkUsLJFJiJQP1vobz5BOwAbtj0Aln4d/m7qjM+LG6fCquAj7/bMJDhFFZfygY7QOuRXI8eN6eMsncfGBx7SaTgq/CdltENDs4bwcABYT0H3dds9I8BWy7ubQKUIuffMf0eaI0WQlBf3i3MA+ROKWvEGpkzywQNuR1IEqahKT6DYZj5JlldmnANURDuqMc7HhQmwZQClofERQ+h4rogBzAaJBmQzNzhmk4ywDQ/W+6eLzaM7K55Pu3kP+pjv++HuxAVevoIp+bXwTAFv5bC+VV0D/LbH9q7MMuIy</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="#id-f1c5cf28dfa6d3d011647830e53fdc10"><xades:SignedProperties Id="xades-id-f1c5cf28dfa6d3d011647830e53fdc10"><xades:SignedSignatureProperties><xades:SigningTime>2022-06-20T13:47:59Z</xades:SigningTime><xades:SigningCertificateV2><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>DZb1YaWUUh9f1Tq9jggdz5mx9CO4QjDWxSaTvXiaJ34=</ds:DigestValue></xades:CertDigest><xades:IssuerSerialV2>MIGOMIGBpH8wfTELMAkGA1UEBhMCSVQxJDAiBgNVBAoMG05hbWlyaWFsIFMucC5BLi8wMjA0NjU3MDQyNjEgMB4GA1UECwwXQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkxJjAkBgNVBAMMHU5hbWlyaWFsIENBIEZpcm1hIFF1YWxpZmljYXRhAgh4lY8MAd7IeQ==</xades:IssuerSerialV2></xades:Cert></xades:SigningCertificateV2></xades:SignedSignatureProperties><xades:SignedDataObjectProperties><xades:DataObjectFormat ObjectReference="#null"><xades:MimeType>application/octet-stream</xades:MimeType></xades:DataObjectFormat></xades:SignedDataObjectProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object></ds:Signature></ns3:FatturaElettronica>

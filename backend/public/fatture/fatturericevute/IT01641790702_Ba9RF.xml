@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?><ns3:FatturaElettronica versione="FPR12" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+    <FatturaElettronicaHeader>
+        <DatiTrasmissione>
+            <IdTrasmittente>
+                <IdPaese>IT</IdPaese>
+                <IdCodice>01641790702</IdCodice>
+            </IdTrasmittente>
+            <ProgressivoInvio>01012EEFS8</ProgressivoInvio>
+            <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+            <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+            <ContattiTrasmittente>
+                <Telefono>0874-60561</Telefono>
+            </ContattiTrasmittente>
+        </DatiTrasmissione>
+        <CedentePrestatore>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>01123780668</IdCodice>
+                </IdFiscaleIVA>
+                <CodiceFiscale>RNLVTR60M13G493T</CodiceFiscale>
+                <Anagrafica>
+                    <Denominazione>Ristorante Il Faggeto</Denominazione>
+                </Anagrafica>
+                <RegimeFiscale>RF01</RegimeFiscale>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>S.P. 55  Km. 10470</Indirizzo>
+                <CAP>67033</CAP>
+                <Comune>Pescocostanzo</Comune>
+                <Provincia>AQ</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+            <IscrizioneREA>
+                <Ufficio>AQ</Ufficio>
+                <NumeroREA>67743</NumeroREA>
+                <CapitaleSociale>0.00</CapitaleSociale>
+                <StatoLiquidazione>LN</StatoLiquidazione>
+            </IscrizioneREA>
+        </CedentePrestatore>
+        <CessionarioCommittente>
+            <DatiAnagrafici>
+                <IdFiscaleIVA>
+                    <IdPaese>IT</IdPaese>
+                    <IdCodice>05744121210</IdCodice>
+                </IdFiscaleIVA>
+                <Anagrafica>
+                    <Denominazione>RB CONSULTING</Denominazione>
+                </Anagrafica>
+            </DatiAnagrafici>
+            <Sede>
+                <Indirizzo>via Crescenzio 25</Indirizzo>
+                <CAP>00164</CAP>
+                <Comune>Roma</Comune>
+                <Provincia>RM</Provincia>
+                <Nazione>IT</Nazione>
+            </Sede>
+        </CessionarioCommittente>
+    </FatturaElettronicaHeader>
+    <FatturaElettronicaBody>
+        <DatiGenerali>
+            <DatiGeneraliDocumento>
+                <TipoDocumento>TD01</TipoDocumento>
+                <Divisa>EUR</Divisa>
+                <Data>2021-08-07</Data>
+                <Numero>18</Numero>
+                <ImportoTotaleDocumento>275.00</ImportoTotaleDocumento>
+            </DatiGeneraliDocumento>
+        </DatiGenerali>
+        <DatiBeniServizi>
+            <DettaglioLinee>
+                <NumeroLinea>1</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>888888</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>COPERTO</Descrizione>
+                <Quantita>7.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>1.8182</PrezzoUnitario>
+                <PrezzoTotale>12.7274</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>2</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10014</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Antipasto misto</Descrizione>
+                <Quantita>3.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>13.6364</PrezzoUnitario>
+                <PrezzoTotale>40.9092</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>3</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10013</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Crostini ai funghi</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>6.3636</PrezzoUnitario>
+                <PrezzoTotale>6.3636</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>4</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10016</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Crostini al lardo di Colonnata</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>6.3636</PrezzoUnitario>
+                <PrezzoTotale>6.3636</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>5</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10023</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Crostini al tartufo nero</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>10.9091</PrezzoUnitario>
+                <PrezzoTotale>10.9091</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>6</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10034</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Gnocchi di rapa rossa al tartufo</Descrizione>
+                <Quantita>2.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>11.8182</PrezzoUnitario>
+                <PrezzoTotale>23.6364</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>7</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10038</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Puntarelle alla paesana</Descrizione>
+                <Quantita>2.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>11.8182</PrezzoUnitario>
+                <PrezzoTotale>23.6364</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>8</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10061</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Scamorza e salsiccia</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>9.0909</PrezzoUnitario>
+                <PrezzoTotale>9.0909</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>9</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10073</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Pecora</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>10.9091</PrezzoUnitario>
+                <PrezzoTotale>10.9091</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>10</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10070</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Arrosticini</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>7.2727</PrezzoUnitario>
+                <PrezzoTotale>7.2727</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>11</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10137</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Acqua minerale frizzante</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>1.8182</PrezzoUnitario>
+                <PrezzoTotale>1.8182</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>12</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10139</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Acqua minerale liscia</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>1.8182</PrezzoUnitario>
+                <PrezzoTotale>1.8182</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>13</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Vini rosati</Descrizione>
+                <Quantita>2.000</Quantita>
+                <PrezzoUnitario>32.7273</PrezzoUnitario>
+                <PrezzoTotale>65.4546</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>14</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10137</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Acqua minerale frizzante</Descrizione>
+                <Quantita>2.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>1.8182</PrezzoUnitario>
+                <PrezzoTotale>3.6364</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>15</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10141</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Coca-Cola</Descrizione>
+                <Quantita>4.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>1.8182</PrezzoUnitario>
+                <PrezzoTotale>7.2728</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>16</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10166</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Caffè</Descrizione>
+                <Quantita>3.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>0.9091</PrezzoUnitario>
+                <PrezzoTotale>2.7273</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>17</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10126</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Anguria</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>3.6364</PrezzoUnitario>
+                <PrezzoTotale>3.6364</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>18</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10391</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Crostata</Descrizione>
+                <Quantita>2.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>4.5455</PrezzoUnitario>
+                <PrezzoTotale>9.0910</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>19</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10166</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Caffè</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>0.9091</PrezzoUnitario>
+                <PrezzoTotale>0.9091</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>20</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10166</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Caffè</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>0.9091</PrezzoUnitario>
+                <PrezzoTotale>0.9091</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DettaglioLinee>
+                <NumeroLinea>21</NumeroLinea>
+                <CodiceArticolo>
+                    <CodiceTipo>Codice Interno</CodiceTipo>
+                    <CodiceValore>10166</CodiceValore>
+                </CodiceArticolo>
+                <Descrizione>Caffè</Descrizione>
+                <Quantita>1.000</Quantita>
+                <UnitaMisura>pezzo</UnitaMisura>
+                <PrezzoUnitario>0.9091</PrezzoUnitario>
+                <PrezzoTotale>0.9091</PrezzoTotale>
+                <AliquotaIVA>10.00</AliquotaIVA>
+            </DettaglioLinee>
+            <DatiRiepilogo>
+                <AliquotaIVA>10.00</AliquotaIVA>
+                <ImponibileImporto>250.00</ImponibileImporto>
+                <Imposta>25.00</Imposta>
+                <EsigibilitaIVA>I</EsigibilitaIVA>
+            </DatiRiepilogo>
+        </DatiBeniServizi>
+    </FatturaElettronicaBody>
+</ns3:FatturaElettronica>

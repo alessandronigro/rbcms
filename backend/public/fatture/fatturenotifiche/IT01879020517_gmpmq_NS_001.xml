@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><ns3:RicevutaScarto xmlns:ns3="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fattura/messaggi/v1.0" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" versione="1.0">
+    <IdentificativoSdI>277970112</IdentificativoSdI>
+    <NomeFile>IT01879020517_gmpmq.xml.p7m</NomeFile>
+    <Hash>0b959ddb67a1d5526126996b2ab1d45bdd5b1e0344f10018b8046a5378680a76</Hash>
+    <DataOraRicezione>2019-02-05T17:25:34.000+01:00</DataOraRicezione>
+    <ListaErrori>
+        <Errore>
+            <Codice>00422</Codice>
+            <Descrizione>2.2.2.5 ImponibileImporto non calcolato secondo le regole definite nelle specifiche tecniche : Per la fattura: B/0013/2019 del 2019-02-01</Descrizione>
+            <Suggerimento>Non disponibile</Suggerimento>
+        </Errore>
+    </ListaErrori>
+    <MessageId>1456532270</MessageId>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="Signature1"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference Id="reference-document" URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"><XPath xmlns="http://www.w3.org/2002/06/xmldsig-filter2" Filter="subtract">/descendant::ds:Signature</XPath></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>Qfgf1CVksm8JfayR+3XyULDhGx7eCFSBm502gZPHwGY=</ds:DigestValue></ds:Reference><ds:Reference Id="reference-signedpropeties" Type="http://uri.etsi.org/01903#SignedProperties" URI="#SignedProperties_1"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>eNdU0H47KJxpr0Lt5NMYZJUCeCbmZeMgkncBIwHZ38c=</ds:DigestValue></ds:Reference><ds:Reference Id="reference-keyinfo" URI="#KeyInfoId"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>fHLLPXW7eUGntEt43+TRP2K1ZuifwNghF58HAAiK2zM=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="SignatureValue1">YWiKkp26QSTqFNtW+uFe8xOrAfqsnwYb+a9AYhsrrEKhAKfLn3ReRsjOZgxlbga0M0xcA3gFm728
+IR7PWi3OczVjOSO1i5p+oEF513uWABI9dGST/dRUu1w//YYGv7d845EjZphJWsv4C3aeGb55Onw1
+whup4tKAszFMeUorYon9S9Ez3FllSvrPxrIg9Rv/CJREAsGJb4Hl3jdsjPL8tszpo1uCpNX1gs3w
+TO8J5PqemgiCKjldlY4/McrgR+VECQNxmtVp4V8ZD+LOncjUq4fXS4Q0F2JVovw2CWryu8rUfIVW
+PmpwiJoqM9DwPK8wFFEbvSj6KL3M1vQsZQE9IA==</ds:SignatureValue><ds:KeyInfo Id="KeyInfoId"><ds:X509Data><ds:X509Certificate>MIIEZTCCA02gAwIBAgIITPn9utyy2GMwDQYJKoZIhvcNAQELBQAwbTELMAkGA1UEBhMCSVQxHjAc
+BgNVBAoTFUFnZW56aWEgZGVsbGUgRW50cmF0ZTEbMBkGA1UECxMSU2Vydml6aSBUZWxlbWF0aWNp
+MSEwHwYDVQQDExhDQSBBZ2VuemlhIGRlbGxlIEVudHJhdGUwHhcNMTcwNTI0MTIzNDE3WhcNMjAw
+NTI0MTIzNDE3WjB0MQswCQYDVQQGEwJJVDEeMBwGA1UECgwVQWdlbnppYSBkZWxsZSBFbnRyYXRl
+MRswGQYDVQQLDBJTZXJ2aXppIFRlbGVtYXRpY2kxKDAmBgNVBAMMH1Npc3RlbWEgSW50ZXJzY2Ft
+YmlvIEZhdHR1cmEgUEEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCLJQZHLMe7PybW
+stb/sLv0kk8dewRdDZ4VDAWtxuE7AOCXzSeuTOj3RLW3V53jYYLnjvUFO4v/q8/Y70sG+D9/3xt7
+7E4Q+my42qfGnjDFa5CNNvmm/Bh707k/8RVQtaDmFNCu0qq+z8lk9Nqy+rwEX7fPJ5M0a3jK4alH
+1P25thEGFHsJi51swuddW2jc5TLLpDce6dMAFu7ysRQcosXEKOpY9zGimZ51m+emX1cGa2sUpuGF
+VYrRywd97trU+8qPmvJlYUlSV3h05TZW6imrvjonO3k2bHIjnk/ttkdNoO5kp0PeUN0XVAEHi+fZ
+6q8LfJQJZPJV6jYFqx6OjyehAgMBAAGjggEAMIH9MB8GA1UdIwQYMBaAFOpEPx8Z4zc+q6qUgqWf
+6/wWun+1MIGqBgNVHR8EgaIwgZ8wgZyggZmggZaGgZNsZGFwOi8vY2Fkcy5lbnRyYXRlLmZpbmFu
+emUuaXQvQ049Q0ElMjBBZ2VuemlhJTIwZGVsbGUlMjBFbnRyYXRlLE9VPVNlcnZpemklMjBUZWxl
+bWF0aWNpLE89QWdlbnppYSUyMGRlbGxlJTIwRW50cmF0ZSxDPWl0P2NlcnRpZmljYXRlUmV2b2Nh
+dGlvbkxpc3QwHQYDVR0OBBYEFPvx4ds7h8HRgUpb4YbAY/nVZ/OqMA4GA1UdDwEB/wQEAwIGQDAN
+BgkqhkiG9w0BAQsFAAOCAQEAMp2EYR25WLlVBbf2mUKxVJwN0/zkEc8Ejz0po5RTMuskjbbU1JR1
+t72PDTNVAkuouj3X6Fx8TiO6CaEG9ShGdJHosMwekj5S7Iqd0xS66KlKuQkmPyHBPguS2/WLdLiT
+IFn5J8hnKUrXzOr48s48K5iY4QcFcA6wa2PcmLmBFj/uRHqzdrwPmY0orEZkJo9Zh+W1/BCMVGL+
+Ai5j5vaTmcRU4d6z7TekrfSthjxaYY1v8PVeS6YOpYb2MwPXr9MPm/4cpP2tZqhtWFRkUhqBVQ69
+Nf+6rShNRNk9kwWgyQvuJI4y50d5tcMvca6tin4WzrHoe6I2+DtVpQxx5wtvZg==</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="#Signature1"><xades:SignedProperties Id="SignedProperties_1"><xades:SignedSignatureProperties><xades:SigningTime>2019-02-05T16:27:18Z</xades:SigningTime></xades:SignedSignatureProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object></ds:Signature></ns3:RicevutaScarto>

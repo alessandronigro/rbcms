@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 fatturaordinaria_v1.2.xsd" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01879020517</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>7</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>05767550634</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>BTTNLL65H21H072Q</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>BATTINELLI ANIELLO</Denominazione>
+          <Titolo>GORGONIA</Titolo>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA MARINA CORRICELLA </Indirizzo>
+        <NumeroCivico>50</NumeroCivico>
+        <CAP>80079</CAP>
+        <Comune>Procida</Comune>
+        <Provincia>NA</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+      <Contatti>
+        <Telefono>0818101060</Telefono>
+        <Email>aniellobattinelli@alice.it</Email>
+      </Contatti>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>17044041006</IdCodice>
+        </IdFiscaleIVA>
+        <CodiceFiscale>17044041006</CodiceFiscale>
+        <Anagrafica>
+          <Denominazione>RB CONSULTING S.R.L.</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>VIA CRESCENZIO, 25</Indirizzo>
+        <CAP>00193</CAP>
+        <Comune>ROMA</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2024-05-16</Data>
+        <Numero>FPR 7/24</Numero>
+        <ImportoTotaleDocumento>141.01</ImportoTotaleDocumento>
+        <Arrotondamento>-0.01</Arrotondamento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>acqua minerale</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>1.81818182</PrezzoUnitario>
+        <PrezzoTotale>1.81818182</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>2</NumeroLinea>
+        <Descrizione>ACQUA NATURALE</Descrizione>
+        <Quantita>2.00</Quantita>
+        <PrezzoUnitario>1.81818182</PrezzoUnitario>
+        <PrezzoTotale>3.63636364</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>3</NumeroLinea>
+        <Descrizione>caffe'</Descrizione>
+        <Quantita>3.00</Quantita>
+        <PrezzoUnitario>1.81818182</PrezzoUnitario>
+        <PrezzoTotale>5.45454546</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>4</NumeroLinea>
+        <Descrizione>coperto</Descrizione>
+        <Quantita>3.00</Quantita>
+        <PrezzoUnitario>2.73</PrezzoUnitario>
+        <PrezzoTotale>8.19</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>5</NumeroLinea>
+        <Descrizione>INSALATA DI LIMONE</Descrizione>
+        <Quantita>3.00</Quantita>
+        <PrezzoUnitario>5.45454545</PrezzoUnitario>
+        <PrezzoTotale>16.36363635</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>6</NumeroLinea>
+        <Descrizione>INSALATA DI POLPO</Descrizione>
+        <Quantita>3.00</Quantita>
+        <PrezzoUnitario>11.81818182</PrezzoUnitario>
+        <PrezzoTotale>35.45454546</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>7</NumeroLinea>
+        <Descrizione>INSALATA MISTA</Descrizione>
+        <Quantita>3.00</Quantita>
+        <PrezzoUnitario>4.54545455</PrezzoUnitario>
+        <PrezzoTotale>13.63636365</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DettaglioLinee>
+        <NumeroLinea>8</NumeroLinea>
+        <Descrizione>TARTARA DI TONNO</Descrizione>
+        <Quantita>3.00</Quantita>
+        <PrezzoUnitario>14.54545455</PrezzoUnitario>
+        <PrezzoTotale>43.63636365</PrezzoTotale>
+        <AliquotaIVA>10.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>10.00</AliquotaIVA>
+        <ImponibileImporto>128.19</ImponibileImporto>
+        <Imposta>12.82</Imposta>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP08</ModalitaPagamento>
+        <DataScadenzaPagamento>2024-05-16</DataScadenzaPagamento>
+        <ImportoPagamento>141.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>

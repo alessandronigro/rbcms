@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="FoglioStileAssoSoftware.xsl"?>
+<ns2:FatturaElettronica versione="FPR12" xmlns:ns2="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
+<FatturaElettronicaHeader>
+
+ <DatiTrasmissione>
+<IdTrasmittente>
+<IdPaese>IT</IdPaese>
+<IdCodice>06628860964</IdCodice>
+</IdTrasmittente>
+<ProgressivoInvio>1950829693</ProgressivoInvio>
+<FormatoTrasmissione>FPR12</FormatoTrasmissione>
+<CodiceDestinatario>KRRH6B9</CodiceDestinatario>
+</DatiTrasmissione>
+
+ <CedentePrestatore>
+  <DatiAnagrafici>
+   <IdFiscaleIVA>
+    <IdPaese>IT</IdPaese>
+    <IdCodice>01338040619</IdCodice>
+   </IdFiscaleIVA>
+   <CodiceFiscale>01338040619</CodiceFiscale>
+   <Anagrafica>
+    <Denominazione>VANESSA SOUND S.R.L. UNIPERSONALE</Denominazione>
+   </Anagrafica>
+   <RegimeFiscale>RF01</RegimeFiscale>
+  </DatiAnagrafici>
+
+  <Sede>
+   <Indirizzo>VIA GENNARO TESCIONE  N. 74</Indirizzo>
+   <CAP>81100</CAP>
+   <Comune>CASERTA</Comune>
+   <Provincia>CE</Provincia>
+   <Nazione>IT</Nazione>
+  </Sede>
+
+  <IscrizioneREA>
+   <Ufficio>CE</Ufficio>
+   <NumeroREA>CE-106176</NumeroREA>
+   <CapitaleSociale>150000.00</CapitaleSociale>
+   <SocioUnico>SM</SocioUnico>
+   <StatoLiquidazione>LN</StatoLiquidazione>
+  </IscrizioneREA>
+
+  <Contatti>
+   <Telefono>0823305445</Telefono>
+   <Email>vanessasound@pec.it</Email>
+  </Contatti>
+
+ </CedentePrestatore>
+
+ <CessionarioCommittente>
+  <DatiAnagrafici>
+   <IdFiscaleIVA>
+    <IdPaese>IT</IdPaese>
+    <IdCodice>05744121210</IdCodice>
+   </IdFiscaleIVA>
+   <Anagrafica>
+    <Denominazione>R.B. CONSULTING SRL </Denominazione>
+   </Anagrafica>
+  </DatiAnagrafici>
+
+  <Sede>
+   <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
+   <CAP>00164</CAP>
+   <Comune>ROMA</Comune>
+   <Provincia>RM</Provincia>
+   <Nazione>IT</Nazione>
+  </Sede>
+ </CessionarioCommittente><TerzoIntermediarioOSoggettoEmittente>
+<DatiAnagrafici>
+<IdFiscaleIVA>
+<IdPaese>IT</IdPaese>
+<IdCodice>06628860964</IdCodice>
+</IdFiscaleIVA>
+<CodiceFiscale>06628860964</CodiceFiscale>
+<Anagrafica>
+<Denominazione>PA DIGITALE S.P.A.</Denominazione>
+</Anagrafica>
+</DatiAnagrafici>
+</TerzoIntermediarioOSoggettoEmittente><SoggettoEmittente>TZ</SoggettoEmittente>
+
+</FatturaElettronicaHeader>
+
+<FatturaElettronicaBody>
+
+ <DatiGenerali>
+  <DatiGeneraliDocumento>
+   <TipoDocumento>TD01</TipoDocumento>
+   <Divisa>EUR</Divisa>
+   <Data>2023-04-06</Data>
+   <Numero>0104-001552</Numero>
+   <ImportoTotaleDocumento>299.89</ImportoTotaleDocumento>
+  </DatiGeneraliDocumento>
+
+
+
+
+
+
+
+  <DatiTrasporto>
+   <CausaleTrasporto>SCARICHI DA COMMISSIONI</CausaleTrasporto>
+  </DatiTrasporto>
+
+ </DatiGenerali>
+
+ <DatiBeniServizi>
+  <DettaglioLinee>
+   <NumeroLinea>0001</NumeroLinea>
+   <Descrizione>  NS. RIF.: CORC/000000 DEL 06/04/2023 - RIF. : 008152M001E223 </Descrizione>
+   <PrezzoUnitario>0.000000</PrezzoUnitario>
+   <PrezzoTotale>0.00</PrezzoTotale>
+   <AliquotaIVA>22.00</AliquotaIVA>
+  </DettaglioLinee>
+  <DettaglioLinee>
+   <NumeroLinea>0002</NumeroLinea>
+   <Descrizione>  NS. RIF.: COMM/008152 DEL 06/04/2023 - ID SPEZZA : C02787248</Descrizione>
+   <PrezzoUnitario>0.000000</PrezzoUnitario>
+   <PrezzoTotale>0.00</PrezzoTotale>
+   <AliquotaIVA>22.00</AliquotaIVA>
+  </DettaglioLinee>
+  <DettaglioLinee>
+   <NumeroLinea>0003</NumeroLinea>
+   <CodiceArticolo>
+    <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+    <CodiceValore>0633640       </CodiceValore>
+   </CodiceArticolo>
+   <Descrizione>APPL MQD83TYA AURICOLARE BT C/CUST.MAGSAFE AIRPODS PRO 2ND GEN</Descrizione>
+   <Quantita>1.0000</Quantita>
+   <UnitaMisura>N  </UnitaMisura>
+   <PrezzoUnitario>213.030000</PrezzoUnitario>
+   <PrezzoTotale>213.03</PrezzoTotale>
+   <AliquotaIVA>22.00</AliquotaIVA>
+  </DettaglioLinee>
+  <DettaglioLinee>
+   <NumeroLinea>0004</NumeroLinea>
+   <CodiceArticolo>
+    <CodiceTipo>Codice Art. fornitore</CodiceTipo>
+    <CodiceValore>0595160       </CodiceValore>
+   </CodiceArticolo>
+   <Descrizione>APPL MQGH2ZMA CAVO USB-C TO LIGHTNING CABLE 2M</Descrizione>
+   <Quantita>1.0000</Quantita>
+   <UnitaMisura>N  </UnitaMisura>
+   <PrezzoUnitario>32.780000</PrezzoUnitario>
+   <PrezzoTotale>32.78</PrezzoTotale>
+   <AliquotaIVA>22.00</AliquotaIVA>
+  </DettaglioLinee>
+  <DettaglioLinee>
+   <NumeroLinea>0005</NumeroLinea>
+   <Descrizione>--------------------</Descrizione>
+   <PrezzoUnitario>0.000000</PrezzoUnitario>
+   <PrezzoTotale>0.00</PrezzoTotale>
+   <AliquotaIVA>22.00</AliquotaIVA>
+  </DettaglioLinee>
+
+  <DatiRiepilogo>
+   <AliquotaIVA>22.00</AliquotaIVA>
+   <ImponibileImporto>245.81</ImponibileImporto>
+   <Imposta>54.08</Imposta>
+   <EsigibilitaIVA>I</EsigibilitaIVA>
+  </DatiRiepilogo>
+
+ </DatiBeniServizi>
+
+  <DatiPagamento>
+   <CondizioniPagamento>TP02</CondizioniPagamento>
+   <DettaglioPagamento>
+    <ModalitaPagamento>MP08</ModalitaPagamento>
+    <DataScadenzaPagamento>2023-04-06</DataScadenzaPagamento>
+    <ImportoPagamento>299.89</ImportoPagamento>
+   </DettaglioPagamento>
+  </DatiPagamento>
+
+
+
+
+</FatturaElettronicaBody>
+
+</ns2:FatturaElettronica>
+
