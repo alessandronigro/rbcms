@@ -1,64 +1,32 @@
-# Chatbot UI
+# 🧩 RBCMS – Modernizzazione della piattaforma RB CMS
 
-A lightweight and modern chat interface for LLM interactions with Markdown support!
+**RBCMS** è la nuova versione moderna e modulare del sistema legacy *RB Web Automation*, riscritta interamente in **Node.js + React (Vite)**.  
+Il progetto combina backend Express, frontend React con TailwindCSS, e integrazioni con **Supabase**, **MySQL**, **Stripe** e **Replicate** per funzionalità AI, crediti e contenuti multimediali.
 
-👉 Looking for a version with web search integration?   
-Check out the [`websearch_template`](https://github.com/ChristophHandschuh/Micro  Elearning RB/tree/websearch_template) branch, which includes contributions from [CameliaK](https://github.com/CameliaK)
+---
 
-## Overview
+## 🚀 Caratteristiche principali
 
-A minimalist chat interface built with React and TypeScript, designed to be easily integrated with any LLM backend. Features a clean and modern design.
+- ⚙️ **Backend Node.js + Express** con architettura modulare e API REST
+- 🧠 **Supabase** per autenticazione, database e gestione crediti utente
+- 💾 **MySQL** come database relazionale per dati legacy e multi-tenant
+- 💸 **Stripe** per gestione abbonamenti e crediti
+- 🎧 **Replicate AI** per generazione di audio, immagini e contenuti dinamici
+- 🖼️ **React + Vite + Tailwind** per un’interfaccia moderna e veloce
+- 📄 **Puppeteer / TCPDF** per generazione di PDF dinamici e attestati
+- 🔐 Gestione multi-database con connessioni dinamiche `getConnection(host, db)`
+- 🌐 Supporto a ambienti multipli (dev, staging, production)
 
-![Demo](demo/image.png)
+---
 
-## Getting Started
+📄 Licenza
 
-1. Clone the repository
-```bash
-git clone https://github.com/ChristophHandschuh/Micro  Elearning RB.git
-cd Micro  Elearning RB
-```
+Progetto proprietario © Alessandro Nigro
+Tutti i diritti riservati. Non ridistribuire senza consenso.
 
-2. Install dependencies
-```bash
-npm i
-```
 
-3. Start the development server
-```bash
-npm run dev
-```
+👤 Autore
 
-## Test Mode
-
-The project includes a test backend for development and testing purposes. To use the test mode:
-
-1. Navigate to the testbackend directory
-2. Create a Python virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
-3. Install the required package:
-```bash
-pip install websockets
-```
-4. Run the test backend:
-```bash
-python test.py
-```
-
-## Credits
-
-This project was built by:
-- [Leon Binder](https://github.com/LeonBinder)
-- [Christoph Handschuh](https://github.com/ChristophHandschuh)
-
-Additional contribution by:
-- [CameliaK](https://github.com/CameliaK) – Implemented web search and integrated it into the LLM prompt
-
-Some code components were inspired by and adapted from [Vercel's AI Chatbot](https://github.com/vercel/ai-chatbot).
-
-## License
-
-This project is licensed under the Apache License 2.0. Please note that some components were adapted from Vercel's open source AI Chatbot project.
+Alessandro Nigro
+🌐 formazioneintermediari.com￼
+📧 alessandro.nigro78@gmail.com
