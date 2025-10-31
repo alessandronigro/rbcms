@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+} from "recharts";
 
 interface Stats {
   iscritti: number;
@@ -19,8 +27,8 @@ export default function AdminDashboard() {
   const loadStats = () => {
     setLoading(true);
     fetch(`/api/admin/stats?periodo=${periodo}`, { credentials: "include" })
-      .then(r => r.json())
-      .then(j => setStats(j))
+      .then((r) => r.json())
+      .then((j) => setStats(j))
       .finally(() => setLoading(false));
   };
 
@@ -28,11 +36,15 @@ export default function AdminDashboard() {
 
   const exportCSV = () => {
     if (!stats) return;
-    const rows = stats.chart.map(r => `${r.month};${r.iscritti}`).join("\n");
-    const blob = new Blob([`Mese;Iscritti\n${rows}`], { type: "text/csv;charset=utf-8" });
+    const rows = stats.chart.map((r) => `${r.month};${r.iscritti}`).join("\n");
+    const blob = new Blob([`Mese;Iscritti\n${rows}`], {
+      type: "text/csv;charset=utf-8",
+    });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = url; a.download = "andamento_iscrizioni.csv"; a.click();
+    a.href = url;
+    a.download = "andamento_iscrizioni.csv";
+    a.click();
     URL.revokeObjectURL(url);
   };
 
@@ -67,7 +79,10 @@ export default function AdminDashboard() {
       <div className="bg-white shadow rounded p-4">
         <div className="flex justify-between items-center mb-3">
           <h2 className="font-semibold">Andamento iscrizioni</h2>
-          <button onClick={exportCSV} className="px-2 py-1 text-xs bg-blue-600 text-white rounded">
+          <button
+            onClick={exportCSV}
+            className="px-2 py-1 text-xs bg-blue-600 text-white rounded"
+          >
             Export CSV
           </button>
         </div>
@@ -84,17 +99,30 @@ export default function AdminDashboard() {
             <YAxis />
             <Tooltip />
             <CartesianGrid strokeDasharray="3 3" />
-            <Area type="monotone" dataKey="iscritti" stroke="#2563eb" fill="url(#colorIscr)" />
+            <Area
+              type="monotone"
+              dataKey="iscritti"
+              stroke="#2563eb"
+              fill="url(#colorIscr)"
+            />
           </AreaChart>
         </ResponsiveContainer>
       </div>
 
       {/* 🔹 Bottoni accesso rapido */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <Link className="btn-primary" to="/report/statistiche">Report Corsi</Link>
-        <Link className="btn-primary" to="/report/questionari">Questionari</Link>
-        <Link className="btn-primary" to="/utenti">Ricerca Utenti</Link>
-        <Link className="btn-primary" to="/fatture/ricevutenew">Fatture Ricevute</Link>
+        <Link className="btn-primary" to="/report/statistiche">
+          Report Corsi
+        </Link>
+        <Link className="btn-primary" to="/report/questionari">
+          Questionari
+        </Link>
+        <Link className="btn-primary" to="/utenti">
+          Ricerca Utenti
+        </Link>
+        <Link className="btn-primary" to="/fatture/ricevutenew">
+          Fatture Ricevute
+        </Link>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 
 /** ============================
@@ -64,10 +64,10 @@ interface Convenzione {
 }
 
 interface CorsoRow {
-  codice: string;                 // code (learning_course.code)
-  nome: string;                   // name (learning_course.name)
-  prezzo: string;                 // stringa (vuota = 0/non impostato)
-  years: Record<number, number>;  // {2025: 3, 2024: 0, ...}
+  codice: string; // code (learning_course.code)
+  nome: string; // name (learning_course.name)
+  prezzo: string; // stringa (vuota = 0/non impostato)
+  years: Record<number, number>; // {2025: 3, 2024: 0, ...}
 }
 
 interface APIResponse {
@@ -82,7 +82,8 @@ const normalizeDateInput = (d?: string) => {
   // accetta "dd/MM/yyyy", "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss"
   if (d.includes("/")) {
     const [dd, mm, yyyy] = d.split("/");
-    if (yyyy && mm && dd) return `${yyyy}-${mm.padStart(2, "0")}-${dd.padStart(2, "0")}`;
+    if (yyyy && mm && dd)
+      return `${yyyy}-${mm.padStart(2, "0")}-${dd.padStart(2, "0")}`;
   }
   return d.split(" ")[0]; // estrae solo la parte yyyy-MM-dd
 };
@@ -91,7 +92,13 @@ const normalizeDateInput = (d?: string) => {
 const courseColor = (code: string) => {
   const upper = code.toUpperCase();
   if (upper.includes("OAM")) return "text-purple-700"; // OAM
-  if (upper.match(/35(?![A-Z])/i) || upper.includes("6035") || upper.includes("1535") || upper.includes("3035") || upper.includes("4535"))
+  if (
+    upper.match(/35(?![A-Z])/i) ||
+    upper.includes("6035") ||
+    upper.includes("1535") ||
+    upper.includes("3035") ||
+    upper.includes("4535")
+  )
     return "text-blue-700"; // IVASS (35/60/30/45)
   return "text-gray-900";
 };
@@ -123,7 +130,9 @@ export default function ConvenzioneDetail() {
       .then((data: APIResponse) => {
         setForm({
           ...data.convenzione,
-          inizioconvenzione: normalizeDateInput(data.convenzione.inizioconvenzione),
+          inizioconvenzione: normalizeDateInput(
+            data.convenzione.inizioconvenzione,
+          ),
           fineconvenzione: normalizeDateInput(data.convenzione.fineconvenzione),
         });
         setCorsi(data.corsi || []);
@@ -135,7 +144,9 @@ export default function ConvenzioneDetail() {
 
   /** Gestione change dei campi di sinistra */
   const handleFormChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, type, value } = e.target;
     const isCheckbox = type === "checkbox";
@@ -195,7 +206,9 @@ export default function ConvenzioneDetail() {
 
     // aggiorna solo la riga modificata
     setCorsi((prev) =>
-      prev.map((c) => (c.codice === row.codice ? { ...c, prezzo: prezzoClean } : c))
+      prev.map((c) =>
+        c.codice === row.codice ? { ...c, prezzo: prezzoClean } : c,
+      ),
     );
     setEditCode(null);
   };
@@ -258,7 +271,9 @@ export default function ConvenzioneDetail() {
               {/* Date */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs text-gray-500">Inizio convenzione</label>
+                  <label className="text-xs text-gray-500">
+                    Inizio convenzione
+                  </label>
                   <input
                     type="date"
                     name="inizioconvenzione"
@@ -269,7 +284,9 @@ export default function ConvenzioneDetail() {
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-gray-500">Fine convenzione</label>
+                  <label className="text-xs text-gray-500">
+                    Fine convenzione
+                  </label>
                   <input
                     type="date"
                     name="fineconvenzione"
@@ -283,22 +300,27 @@ export default function ConvenzioneDetail() {
 
               {/* Flag principali */}
               <div className="grid grid-cols-2 gap-2 pt-2">
-                {([
-                  ["visibilita", "Visibile"],
-                  ["sospendireport", "Sospendi report"],
-                  ["sospendiacquisti", "Sospendi acquisti"],
-                  ["fattura", "Fattura automatica"],
-                  ["test60", "Test 60h in autonomia"],
-                  ["piattgratuita", "Piattaforma gratuita"],
-                  ["piattpagamento", "Piattaforma a pagamento"],
-                  ["provv", "Provvigioni"],
-                  ["referral", "Referral"],
-                  ["pacchetti", "Pacchetti"],
-                  ["fattfinemese", "Fattura fine mese + iscr. immediata"],
-                  ["fattsingoloutente", "Fattura singolo utente"],
-                  ["iscrizione", "Iscrizione"],
-                ] as [keyof Convenzione, string][]).map(([key, label]) => (
-                  <label key={key} className="inline-flex items-center gap-2 text-sm">
+                {(
+                  [
+                    ["visibilita", "Visibile"],
+                    ["sospendireport", "Sospendi report"],
+                    ["sospendiacquisti", "Sospendi acquisti"],
+                    ["fattura", "Fattura automatica"],
+                    ["test60", "Test 60h in autonomia"],
+                    ["piattgratuita", "Piattaforma gratuita"],
+                    ["piattpagamento", "Piattaforma a pagamento"],
+                    ["provv", "Provvigioni"],
+                    ["referral", "Referral"],
+                    ["pacchetti", "Pacchetti"],
+                    ["fattfinemese", "Fattura fine mese + iscr. immediata"],
+                    ["fattsingoloutente", "Fattura singolo utente"],
+                    ["iscrizione", "Iscrizione"],
+                  ] as [keyof Convenzione, string][]
+                ).map(([key, label]) => (
+                  <label
+                    key={key}
+                    className="inline-flex items-center gap-2 text-sm"
+                  >
                     <input
                       type="checkbox"
                       name={key}
@@ -432,7 +454,8 @@ export default function ConvenzioneDetail() {
           <div className="flex items-center justify-between px-4 py-3 border-b bg-gray-50">
             <h2 className="font-semibold">Prezzi & storico iscritti</h2>
             <span className="text-xs text-gray-500">
-              (anni: {years.length ? `${years[years.length - 1]} → ${years[0]}` : "—"})
+              (anni:{" "}
+              {years.length ? `${years[years.length - 1]} → ${years[0]}` : "—"})
             </span>
           </div>
 
@@ -454,7 +477,9 @@ export default function ConvenzioneDetail() {
                 {corsi.map((c) => (
                   <tr key={c.codice} className="border-t align-top">
                     <td className="px-3 py-2">
-                      <div className={`${courseColor(c.codice)} font-medium`}>{c.codice}</div>
+                      <div className={`${courseColor(c.codice)} font-medium`}>
+                        {c.codice}
+                      </div>
                       <div className="text-gray-700">{c.nome}</div>
                     </td>
 
@@ -500,7 +525,10 @@ export default function ConvenzioneDetail() {
                     </td>
 
                     {years.map((y) => (
-                      <td key={`${c.codice}-${y}`} className="px-2 py-2 text-center">
+                      <td
+                        key={`${c.codice}-${y}`}
+                        className="px-2 py-2 text-center"
+                      >
                         {c.years[y] > 0 ? (
                           <b className="text-orange-600">{c.years[y]}</b>
                         ) : (
@@ -513,7 +541,10 @@ export default function ConvenzioneDetail() {
 
                 {corsi.length === 0 && (
                   <tr>
-                    <td colSpan={2 + years.length} className="px-3 py-6 text-center text-gray-500">
+                    <td
+                      colSpan={2 + years.length}
+                      className="px-3 py-6 text-center text-gray-500"
+                    >
                       Nessun corso per questa convenzione.
                     </td>
                   </tr>

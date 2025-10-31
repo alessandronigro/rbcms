@@ -14,7 +14,8 @@ export default defineConfig({
     port: 8502,
     // ✅ QUI la correzione
     allowedHosts: [
-      "rbcms.formazioneintermediari.com", // dominio del proxy Apache
+      "stagingrb.formazioneintermediari.com",
+      "rbcms.formazioneintermediari.com",  // dominio del proxy Apache
       "localhost",
       "127.0.0.1"
     ],

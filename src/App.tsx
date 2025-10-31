@@ -1,3 +1,4 @@
+
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import ReportLayout from "./layouts/ReportLayout";
@@ -26,11 +27,12 @@ import FattureRicevuteNew from "./pages/Fatture/FattureRicevuteNew";
 import QuestionariGradimento from "./pages/Report/QuestionarioGradimento";
 import LoginConvenzione from "./pages/Login";
 import ReportConvenzione from "./pages/Report/ReportConvenzioni";
-
+import Template from "./pages/MailFormatEditor";
+import ReportCorsi from "./pages/ReportCorsi";
+import FineCorso from "./pages/FineCorso";
 export default function App() {
   return (
     <Routes>
-
       {/* ✅ LOGIN — libero */}
       <Route path="/login" element={<LoginConvenzione />} />
 
@@ -47,7 +49,13 @@ export default function App() {
       />
 
       {/* ✅ AREA ADMIN */}
-      <Route element={<ProtectedAdmin><Layout /></ProtectedAdmin>}>
+      <Route
+        element={
+          <ProtectedAdmin>
+            <Layout />
+          </ProtectedAdmin>
+        }
+      >
         <Route index element={<Home />} />
 
         <Route path="/convenzioni" element={<Convenzioni />} />
@@ -59,7 +67,9 @@ export default function App() {
         <Route path="/iscrizioni/sito" element={<IscrizioniSito />} />
         <Route path="/iscrizioni/aca" element={<IscrizioniAca />} />
         <Route path="/iscrizioni/nova" element={<IscrizioniNova />} />
-
+        <Route path="/template" element={<Template />} />
+        <Route path="/report/fatturato" element={<ReportCorsi />} />
+        <Route path="/finecorso" element={<FineCorso />} />
         <Route path="/utenti" element={<RicercaUtenti />} />
 
         <Route path="/calendario/60h/finecorso" element={<FineCorso60h />} />

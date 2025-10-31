@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext, createContext } from "react";
 interface ThemeContextType {
   isDarkMode: boolean;
   toggleTheme: () => void;
@@ -13,8 +12,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // rimuove la classe "dark" dal tag html
-    document.documentElement.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem("theme", "light");
   }, []);
 
   const toggleTheme = () => {
@@ -32,7 +31,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
 }

@@ -165,13 +165,98 @@ function parseEsitoInvii(esito) {
     };
 }
 
+async function reinviamail(iduser, idcourse, email, firstname, lastname, userid, code, corso, db, host) {
+
+    if (!iduser || !email || !db) {
+        return res.status(400).json({ error: "Parametri mancanti" });
+    }
+
+    const conn = await getConnection(host, db);
+    try {
+        // 🔹 Recupera dati anagrafici
+        const [fields] = await conn.query(
+            `SELECT id_common, user_entry FROM core_field_userentry WHERE id_user = ? ORDER BY id_common ASC`,
+            [iduser]
+        );
+
+        const getField = (id) =>
+            fields.find((r) => r.id_common === id)?.user_entry?.toString() || "";
+
+        const nominativo = `${firstname} ${lastname}`;
+        const cf = getField(23);
+        const emailfatt = `${getField(24)};${getField(15)}`;
+        const pecutente = getField(31);
+        const convenzione = getField(25);
+        const passwordreal = getField(26);
+
+        // 🔹 Recupera info convenzione (db wpacquisti)
+        const connW = await getConnection("IFAD", "wpacquisti");
+
+        let nomesito = "";
+        let piattaforma = "";
+        let bcc = "";
+
+        if (convenzione) {
+            const [convRows] = await connW.query(
+                `SELECT name, piattaforma, indirizzoweb, newindirizzoweb, oldindirizzoweb, mailbcc 
+                 FROM newconvenzioni WHERE name LIKE ? LIMIT 1`,
+                [`%${convenzione}%`]
+            );
+
+            if (convRows.length) {
+                const conv = convRows[0];
+                if (db === "formazionein") nomesito = conv.oldindirizzoweb;
+                else if (db === "forma4") nomesito = conv.newindirizzoweb;
+                else nomesito = conv.indirizzoweb;
+
+                piattaforma = conv.piattaforma;
+                bcc = `${conv.mailbcc};${emailfatt}`;
+            }
+        } else {
+            const [defaultConv] = await connW.query(
+                `SELECT name, piattaforma, indirizzoweb, mailbcc 
+                 FROM newconvenzioni WHERE name='Formazione Intermediari' LIMIT 1`
+            );
+            const def = defaultConv[0];
+            if (db === "formazionein") nomesito = def.oldindirizzoweb;
+            else nomesito = def.indirizzoweb;
+            piattaforma = def.piattaforma;
+            bcc = `${def.mailbcc};${emailfatt}`;
+        }
+
+        // 🔹 Invia mail con SaveAndSend
+        const result = await SaveAndSend({
+            idcourse,
+            email,
+            pec: pecutente,
+            nominativo,
+            username: userid,
+            password: passwordreal,
+            convenzione,
+            corso,
+            bcc,
+            tipo: "benvenuto",
+            cf,
+            nomesito,
+        });
+
+        logwrite(`📧 Reinviata mail a ${email} (${nominativo})`);
+
+        res.json({ success: true, message: "Mail di benvenuto reinviata correttamente", result });
+    } catch (err) {
+        logwrite("❌ Errore reinviamail: " + err.message);
+        res.status(500).json({ success: false, error: err.message });
+    } finally {
+        conn.release?.();
+    }
+}
+
 async function SaveAndSend({
     idcourse,
     file = "",
     nominativo,
     email,
     pec,
-    societa,
     code,
     nomesito,
     _username,
@@ -1067,7 +1152,7 @@ async function getLastTest(idcourse, idst, firstname, lastname, db, savefile = f
         const voto = await getVoto(conn, lastid, idcourse);
         console.log("il voto è", voto);
         // 4️⃣ Costruzione HTML
-        let html = `${header}
+        let html = `
       <center><h3><u><b>Test di verifica finale - questionario somministrato</b><br>
       <b>${await getNomeCorsoById(idcourse, conn)}</b></u></h3><br></center>
       - Nome utente: <b>${firstname} ${lastname}</b><br>
@@ -1100,7 +1185,15 @@ async function getLastTest(idcourse, idst, firstname, lastname, db, savefile = f
             i++;
         }
 
-        html += footer;
+        const htmlFull = `
+            <html>
+            <head><style>@page { margin: 60px 40px; }</style></head>
+            <body>
+                <div style="position: fixed; top: -40px; left: 0; right: 0;">${header}</div>
+                ${html}
+                <div style="position: fixed; bottom: -40px; left: 0; right: 0;">${footer}</div>
+            </body>
+            </html>`;
 
         // 🔹 Generazione file PDF
         const reportsDir = path.join(process.cwd(), "public/ultimotest");
@@ -1113,7 +1206,7 @@ async function getLastTest(idcourse, idst, firstname, lastname, db, savefile = f
             args: ["--no-sandbox", "--disable-setuid-sandbox"],
         });
         const page = await browser.newPage();
-        await page.setContent(html, { waitUntil: "networkidle0" });
+        await page.setContent(htmlFull, { waitUntil: "networkidle0" });
         await page.pdf({ path: pdfFile, format: "A4", printBackground: true });
         await browser.close();
         console.log("✅ Test generato:", pdfFile);
@@ -1149,6 +1242,11 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
 
     const nomeutente = `${nome} ${cognome}`.replace(/\s+/g, " ").trim();
     const safeNome = nomeutente.replace(/[^\w\s-]/g, "");
+
+    // 🔹 Footer/Header HTML (DB impostazioni)
+    const header = await getMailFormat("headernew");
+    const footer = await getMailFormat("footernew");
+
 
     try {
         const conn = await getConnection("IFAD", db);
@@ -1208,13 +1306,22 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
                 break;
         }
 
-        // 🔹 Tempo VideoCorso remoto
-        let tempivideocorso = "";
+        let tempivideocorso = "N/D";
         try {
             const url = `${addressDocebo}/gettime.php?database=${db}&idCourse=${courseId}&iduser=${iduser}`;
+            console.log("🌐 Richiesta ore_video:", url);
             const r = await axios.get(url);
-            tempivideocorso = r.data;
-        } catch {
+
+            if (r && r.data) {
+                tempivideocorso = r.data;
+            } else {
+                console.warn("⚠️ Nessun dato ricevuto da gettime.php", r);
+                logwrite("Nessun dato ricevuto da gettime.php");
+                tempivideocorso = "N/D";
+            }
+        } catch (err) {
+            logwrite("Errore chiamata gettime.php: " + err.message);
+            console.error("❌ Errore chiamata gettime.php:", err.message);
             tempivideocorso = "N/D";
         }
 
@@ -1340,7 +1447,7 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
             `;
         }
 
-        html += `</table>${footer}`;
+        html += `</table>`;
 
 
         // 🔹 Connessioni
@@ -1362,18 +1469,14 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
         });
         html += `</table>`;
 
-        // 🔹 Footer/Header HTML (DB impostazioni)
-        const headerHtml = await getMailFormat("headernew");
-        const footerHtml = await getMailFormat("footernew");
-
 
         const htmlFull = `
             <html>
             <head><style>@page { margin: 60px 40px; }</style></head>
             <body>
-                <div style="position: fixed; top: -40px; left: 0; right: 0;">${headerHtml}</div>
+                <div style="position: fixed; top: -40px; left: 0; right: 0;">${header}</div>
                 ${html}
-                <div style="position: fixed; bottom: -40px; left: 0; right: 0;">${footerHtml}</div>
+                <div style="position: fixed; bottom: -40px; left: 0; right: 0;">${footer}</div>
             </body>
             </html>`;
         console.log("🧾 Generazione report per:", nomeutente);
@@ -1610,8 +1713,29 @@ function getCorrect(idanswer, stranswer, dtresult = []) {
     }
 }
 
+async function retryQuery(pool, sql, params = [], retries = 3, delay = 2000) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            const [rows] = await pool.query(sql, params);
+            return rows;
+        } catch (err) {
+            const transient = ["ETIMEDOUT", "ECONNRESET", "PROTOCOL_CONNECTION_LOST"];
+            if (transient.includes(err.code) && i < retries - 1) {
+                console.warn(
+                    `⚠️ Tentativo ${i + 1} fallito (${err.code}) → ritento in ${delay}ms`
+                );
+                await new Promise((r) => setTimeout(r, delay));
+                continue;
+            }
+            throw err;
+        }
+    }
+}
 
 module.exports = {
+    retryQuery,
+    getConnection,
+    resolvePlatformFromHost,
     // Format & Utility
     EscapeStr,
     getCorrect,
@@ -1649,6 +1773,7 @@ module.exports = {
     SendExtra,
     SendAttestato,
     // Email
+    reinviamail,
     checkEmail,
     getBCC,
     SaveAndSend,

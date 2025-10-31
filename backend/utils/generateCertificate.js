@@ -6,7 +6,7 @@ const AdmZip = require("adm-zip");
 const { logwrite } = require("./helper");
 
 const TEMPLATES_BASE = "/var/www/rbcms/backend/templates/attestati/attestato";
-const CERT_DIR = path.join(process.cwd(), "backend/certificati");
+const CERT_DIR = path.join(process.cwd(), "/public/certificati/");
 if (!fs.existsSync(CERT_DIR)) fs.mkdirSync(CERT_DIR, { recursive: true });
 
 /**

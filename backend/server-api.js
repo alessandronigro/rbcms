@@ -40,11 +40,19 @@ app.use("/api/fatture", require("./routes/fatture"));
 app.use("/api/report", require("./routes/report"));
 
 app.use("/api/admin", require("./routes/admin"));
-
-
+app.use("/api/mailformat", require("./routes/mailformat"));
+app.use("/api/finecorso", require("./routes/finecorso"));
 app.use("/api/auth", require("./routes/auth"));
 // static
 app.use("/public", express.static(path.join(process.cwd(), "public")));
+app.use((req, res, next) => {
+    res.setTimeout(10000, () => { // 20s timeout
+        console.error("⏰ Timeout interno su", req.originalUrl);
+        res.status(504).json({ success: false, error: "Timeout server" });
+    });
+    next();
+});
+
 app.listen(port, () => {
     console.log(`📦 API server in ascolto su http://localhost:${port}`);
 });

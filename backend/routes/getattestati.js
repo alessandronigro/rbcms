@@ -11,25 +11,25 @@ const {
 } = require("../utils/attestati");
 const { logwrite, gettime, getLastTest } = require("../utils/helper");
 
-const BACKEND_URL = process.env.BACKEND_URL || "https://microelearning.formazioneintermediari.com";
+const BACKEND_URL = process.env.BACKEND_URL || "https://rbcms.formazioneintermediari.com";
 
 const axios = require("axios");
 const { SaveAndSend, getBCC } = require("../utils/helper");
 
-const CERT_PATH = path.join(process.cwd(), "certificati");
+const CERT_PATH = path.join(process.cwd(), "backend/public/certificati");
 
 /**
  * 🔹 Replica della funzione VB.NET sendcertificate
  * Genera e invia attestato + test + report
  */
 router.post("/sendcertificate", async (req, res) => {
-    const { iduser, idcorso, webdb } = req.body;
+    const { iduser, idcorso, webdb, host } = req.body;
     if (!iduser || !idcorso || !webdb) {
         return res.status(400).json({ error: "Parametri mancanti" });
     }
 
     try {
-        const conn = await getConnection("IFAD", webdb);
+        const conn = await getConnection(host, webdb);
 
         // 1️⃣ Recupero dati base utente/corso
         const [rows] = await conn.query(`
@@ -49,7 +49,7 @@ router.post("/sendcertificate", async (req, res) => {
         if (webdb === "efadnovastudia" && convenzione !== "") convenzione = "NOVASTUDIA";
 
         const nominativo = `${u.firstname} ${u.lastname}`;
-        const baseUrl = process.env.BACKEND_URL || "https://microelearning.formazioneintermediari.com";
+        const baseUrl = process.env.BACKEND_URL || "https://rbcms.formazioneintermediari.com";
 
         // 2️⃣ Verifica evaso
         const [evasoRows] = await conn.query(
@@ -133,8 +133,9 @@ if (!fs.existsSync(CERT_PATH)) {
  * Funzione core per generare attestato
  */
 async function generaAttestato({ iduser, idcorso, webdb }) {
-    console.log(iduser, idcorso, webdb);
-    const conn = await getConnection("IFAD", webdb);
+    console.log(iduser, idcorso, webdb, host);
+
+    const conn = await getConnection(host, webdb);
 
     const [rows] = await conn.query(`
     SELECT 
@@ -306,7 +307,7 @@ async function generaAttestato({ iduser, idcorso, webdb }) {
         logwrite("⚠️ Errore salvataggio learning_attestati: " + err.message);
     }
 
-    return `${BACKEND_URL}/backend/certificati/${filename}`;
+    return `${BACKEND_URL}/backend/public/certificati/${filename}`;
 }
 
 /**

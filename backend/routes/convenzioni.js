@@ -12,27 +12,114 @@ function normalizeWebField(dbName) {
 /***************************************
 * ✅ LISTA CONVENZIONI
 ***************************************/
+/***************************************
+* ✅ LISTA CONVENZIONI con FILTRI
+***************************************/
+/***************************************
+* ✅ LISTA CONVENZIONI con FILTRI (default = attive)
+***************************************/
 router.get("/", async (req, res) => {
     try {
+        const { visibile, filtro } = req.query;
+        const conn = await getConnection("EFAD", "wpacquisti");
 
-        const conn = await getConnection("SITE", "wpacquisti");
-        const [rows] = await conn.query(
-            "SELECT Codice, Name, indirizzoweb, visibilita FROM newconvenzioni ORDER BY Name"
-        );
+        let sql = `
+            SELECT Codice, Name, indirizzoweb, visibilita, tipo, ref1, excel
+            FROM newconvenzioni
+        `;
 
+        const where = [];
+
+        // 🔹 Se non c'è filtro visibile, di default mostra SOLO attive
+        if (visibile === undefined || visibile === "" || visibile === "null") {
+            where.push(`visibilita = 1`);
+        } else if (visibile === "0" || visibile === "1") {
+            where.push(`visibilita = ${conn.escape(visibile)}`);
+        }
+
+        // 🔹 Filtro tipo convenzione (SNA / RB Academy / ecc.)
+        if (filtro) {
+            switch (filtro) {
+                case "2": // SNA
+                    where.push(`Name LIKE '%SNA%'`);
+                    break;
+                case "3": // RB Academy
+                    where.push(`Name LIKE '%RB Academy%'`);
+                    break;
+                default:
+                    // se filtro numerico o stringa specifica
+                    if (filtro !== "0") where.push(`Name = ${conn.escape(filtro)}`);
+                    break;
+            }
+        }
+
+        // 🔹 Componi query finale
+        if (where.length > 0) sql += " WHERE " + where.join(" AND ");
+        sql += " ORDER BY Name";
+
+        const [rows] = await conn.query(sql);
         res.json(rows);
     } catch (err) {
         console.error("GET convenzioni ERR:", err.message);
         res.status(500).json({ error: "Errore lettura convenzioni" });
     }
 });
+/***************************************
+* ✅ CREA NUOVA CONVENZIONE
+***************************************/
+router.post("/", async (req, res) => {
+    try {
+        const { codice, nome } = req.body;
+        if (!codice || !nome) {
+            return res.status(400).json({ error: "Codice e nome obbligatori" });
+        }
 
+        const conn = await getConnection("EFAD", "wpacquisti");
+
+        // Controllo duplicati
+        const [exists] = await conn.query(
+            "SELECT Codice FROM newconvenzioni WHERE Codice = ? LIMIT 1",
+            [codice]
+        );
+        if (exists.length) {
+            return res.status(409).json({ error: "Codice già esistente" });
+        }
+
+        await conn.query(
+            "INSERT INTO newconvenzioni (Codice, Name, visibilita, indirizzoweb, ref1) VALUES (?, ?, 1, '', '')",
+            [codice, nome]
+        );
+
+        res.json({ success: true, message: "Convenzione creata con successo" });
+    } catch (err) {
+        console.error("POST convenzione ERR:", err.message);
+        res.status(500).json({ error: "Errore creazione convenzione" });
+    }
+});
+
+/***************************************
+* ✅ ELIMINA CONVENZIONE
+***************************************/
+router.delete("/:codice", async (req, res) => {
+    try {
+        const conn = await getConnection("EFAD", "wpacquisti");
+
+        // Elimina eventuali riferimenti collegati (opzionale)
+        await conn.query("DELETE FROM tblprezzi WHERE Codice = ?", [req.params.codice]);
+        await conn.query("DELETE FROM newconvenzioni WHERE Codice = ?", [req.params.codice]);
+
+        res.json({ success: true });
+    } catch (err) {
+        console.error("DELETE convenzione ERR:", err.message);
+        res.status(500).json({ error: "Errore eliminazione convenzione" });
+    }
+});
 /***************************************
 * ✅ DETTAGLIO CONVENZIONE
 ***************************************/
 router.get("/:codice", async (req, res) => {
     try {
-        const conn = await getConnection("SITE", "wpacquisti");
+        const conn = await getConnection("EFAD", "wpacquisti");
         const [rows] = await conn.query(
             "SELECT * FROM newconvenzioni WHERE Codice = ? LIMIT 1",
             [req.params.codice]
@@ -52,7 +139,7 @@ router.get("/:codice", async (req, res) => {
 router.put("/:codice", async (req, res) => {
     try {
         const data = req.body;
-        const conn = await getConnection("SITE", "wpacquisti");
+        const conn = await getConnection("EFAD", "wpacquisti");
         const updates = Object.keys(data).map(k => `${k} = ?`).join(", ");
         const values = [...Object.values(data), req.params.codice];
 
@@ -74,7 +161,7 @@ router.put("/:codice", async (req, res) => {
 router.post("/:codice/prezzi", async (req, res) => {
     try {
         const { codiceCorso, prezzo } = req.body;
-        const conn = await getConnection("SITE", "wpacquisti");
+        const conn = await getConnection("EFAD", "wpacquisti");
 
         await conn.query(
             `INSERT INTO tblprezzi (Codice, corso, prezzo)
@@ -98,7 +185,7 @@ router.get("/:codice/full", async (req, res) => {
 
     try {
         // Connessioni
-        const connWP = await getConnection("SITE", "wpacquisti");       // 2011→2018
+        const connWP = await getConnection("EFAD", "wpacquisti");       // 2011→2018
         const connIFAD = await getConnection("IFAD", "forma4");             // 2025→oggi
         const connEFAD = await getConnection("EFAD", "newformazionein");    // 2018→2024
         const connSITE = await getConnection("SITE", "formazionein");       // 2011→2018

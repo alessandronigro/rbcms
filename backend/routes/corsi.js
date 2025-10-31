@@ -6,11 +6,14 @@ const puppeteer = require("puppeteer");
 const axios = require("axios");
 const { getConnection } = require("../dbManager");
 const {
-
-
+    SaveAndSend,
     getLastTest,
     gettime,
+
+    reinviamail,
 } = require("../utils/helper");
+const { fileURLToPath } = require("url");
+const { PercentCircle } = require("lucide-react");
 const log = (...args) => console.log("📘 [CORSI]", ...args);
 
 /**
@@ -67,7 +70,7 @@ router.post("/sblocca", async (req, res) => {
     const conn = await getConnection(host, db);
     try {
         await conn.query(
-            `UPDATE learning_courseuser SET status = 1 WHERE idUser=? AND status>1`,
+            `UPDATE learning_common_track SET status = 'completed' WHERE idUser=? AND status != 'completed' where iduser=?`,
             [iduser]
         );
         res.json({ success: true });
@@ -82,8 +85,9 @@ router.post("/sblocca", async (req, res) => {
  * Reinvia email iscrizione
  */
 router.post("/reinvia-mail", async (req, res) => {
-    const { email, nome, cognome } = req.body;
+    const { db, host, iduser, idcourse, nome, cognome, email, userid } = req.body;
     log(`📧 Reinvia mail → ${email}, ${nome} ${cognome}`);
+    const result = await reinviamail({ db, host, iduser, idcourse, nome, cognome, email, userid, host });
     res.json({ success: true, message: "Mail reinviata (placeholder)" });
 });
 

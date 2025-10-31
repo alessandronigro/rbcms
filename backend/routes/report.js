@@ -4,6 +4,12 @@ const router = express.Router();
 const { getConnection } = require("../dbManager");
 const { requireConv } = require("../middleware/authConv");
 
+const path = require("path");
+const fs = require("fs");
+const dayjs = require("dayjs");
+const XLSX = require("xlsx");
+const puppeteer = require("puppeteer");
+const { logwrite } = require("../utils/helper");
 
 // --- helper: mapping convenzioni -> host/db già noto in progetto (se lo hai in un modulo, importalo)
 const { resolvePlatformFromHost } = require("../utils/helper"); // opzionale, se già esiste
@@ -391,6 +397,220 @@ router.get("/convenzione", requireConv, async (req, res) => {
     } catch (err) {
         console.error("GET /report/convenzione ERR:", err);
         res.status(500).json({ error: err.message });
+    }
+});
+
+
+/**
+ * 📊 API: /api/report/data
+ * Report Fatturato Corsi — compatibile con il nuovo frontend React
+ */
+router.get("/data", async (req, res) => {
+    try {
+        const { datequest, datequest2, idcourse, idcat } = req.query;
+        if (!datequest || !datequest2) {
+            return res.status(400).json({ success: false, error: "Parametri mancanti" });
+        }
+
+
+        const from = dayjs(datequest).format("YYYY-MM-DD 00:00:00");
+        const to = dayjs(datequest2).format("YYYY-MM-DD 23:59:59");
+
+        const { hostKey, dbName } = pickDbByDates(from, to);
+        const conn = await getConnection(hostKey, dbName);
+        let filter = "";
+
+        // Filtro corso (singolo o lista)
+        if (idcourse && idcourse !== "[-]") {
+            filter += ` AND a.idCourse IN (${idcourse}) `;
+        }
+
+        // Filtro categoria (come in ASPX)
+        if (idcat && idcat !== "Seleziona Categoria") {
+            filter += ` AND c.idCategory IN (${idcat}) `;
+        }
+
+        // Query coerente con VB.NET originale
+        const sql = `
+            SELECT 
+                s.firstname,
+                s.lastname,
+                c.name,
+                c.code,
+                a.date_inscr,
+                ROUND(c.price * 1.22, 2) AS fatturato
+            FROM learning_courseuser a
+            JOIN core_field_userentry b ON a.iduser = b.id_user
+            JOIN learning_course c ON a.idCourse = c.idCourse
+            JOIN core_user s ON s.idst = a.iduser
+            WHERE b.id_common = 25
+              AND (b.user_entry IN ('Formazione intermediari', 'RB INTERMEDIARI'))
+              AND c.price > 0
+              AND ((c.name NOT LIKE '%simul%' AND c.name NOT LIKE '%test%') OR c.price != '')
+              ${filter}
+              AND (a.date_inscr BETWEEN ? AND ?)
+            ORDER BY a.date_inscr DESC
+        `;
+
+        const [rows] = await conn.query(sql, [from, to]);
+
+
+        return res.json({ success: true, rows });
+    } catch (err) {
+        console.error("❌ Errore /api/report/data:", err);
+        return res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+/**
+ * 📤 API: /api/report/export (Excel o PDF)
+ */
+router.post("/export", async (req, res) => {
+    try {
+        const { format, rows: providedRows, db, from, to, idcourse, idcat } = req.body || {};
+        let rows = providedRows;
+
+        // 🔄 Se i dati non sono stati passati dal frontend, richiamali internamente
+        if (!rows || !rows.length) {
+            const backendUrl = `${process.env.BACKEND_URL || "http://localhost:3000"}/api/report/data?db=${db}&datequest=${from}&datequest2=${to}&idcourse=${idcourse || "[-]"}&idcat=${idcat || "Seleziona Categoria"}`;
+            const resp = await fetch(backendUrl);
+            const json = await resp.json();
+            if (json.success) rows = json.rows;
+        }
+
+        if (!rows || !rows.length) {
+            return res.status(404).json({ success: false, error: "Nessun dato da esportare." });
+        }
+
+        // === 🟢 EXPORT EXCEL ===
+        if (format === "excel") {
+            const ws = XLSX.utils.json_to_sheet(rows);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Report");
+            const buf = XLSX.write(wb, { type: "buffer", bookType: "xlsx" });
+
+            res.setHeader("Content-Disposition", "attachment; filename=report_fatturato.xlsx");
+            res.setHeader(
+                "Content-Type",
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            );
+            return res.send(buf);
+        }
+
+        // === 🟣 EXPORT PDF ===
+        const html = `
+            <html>
+            <head>
+                <meta charset="utf-8" />
+                <style>
+                    body { font-family: Arial, sans-serif; margin: 20px; }
+                    h2 { text-align: center; }
+                    table { border-collapse: collapse; width: 100%; margin-top: 20px; font-size: 12px; }
+                    th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; }
+                    th { background: #f2f2f2; }
+                    td:last-child, th:last-child { text-align: right; }
+                    tfoot td { font-weight: bold; background: #fafafa; }
+                </style>
+            </head>
+            <body>
+                <h2>Report Corsi / Fatturato</h2>
+                <p><b>Periodo:</b> ${dayjs(from).format("DD/MM/YYYY")} - ${dayjs(to).format("DD/MM/YYYY")}</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data iscrizione</th>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Codice corso</th>
+                            <th>Nome corso</th>
+                            <th>Fatturato (€)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows
+                .map(
+                    (r) => `
+                                <tr>
+                                    <td>${dayjs(r.date_inscr).format("DD/MM/YYYY")}</td>
+                                    <td>${r.firstname || ""}</td>
+                                    <td>${r.lastname || ""}</td>
+                                    <td>${r.code || ""}</td>
+                                    <td>${r.name || ""}</td>
+                                    <td>${parseFloat(r.fatturato || 0).toLocaleString("it-IT", {
+                        minimumFractionDigits: 2,
+                    })}</td>
+                                </tr>`
+                )
+                .join("")}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">Totale</td>
+                            <td>€ ${rows
+                .reduce((sum, r) => sum + (parseFloat(r.fatturato) || 0), 0)
+                .toLocaleString("it-IT", { minimumFractionDigits: 2 })}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </body>
+            </html>
+        `;
+
+        const browser = await puppeteer.launch({
+            headless: "new",
+            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        });
+
+        const page = await browser.newPage();
+        await page.setContent(html, { waitUntil: "load" });
+        const pdfBuffer = await page.pdf({
+            format: "A4",
+            printBackground: true,
+            landscape: true,
+        });
+        await browser.close();
+
+        res.setHeader("Content-Type", "application/pdf");
+        res.setHeader("Content-Disposition", 'attachment; filename="report.pdf"');
+        return res.end(pdfBuffer);
+
+    } catch (err) {
+        logwrite("❌ Errore export report: " + err.message);
+        console.error("Errore export:", err);
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+/**
+ * 📋 API: /api/report/filters
+ */
+router.get("/filters", async (req, res) => {
+    try {
+
+        const { from, to } = req.query;
+        const { hostKey, dbName } = pickDbByDates(from, to);
+        const conn = await getConnection(hostKey, dbName);
+
+        const [courses] = await conn.query(
+            `
+    SELECT idcourse,price,concat(code,' - ', name) as name 
+    FROM learning_course 
+    WHERE price != 0
+      AND idcourse IN (
+          SELECT DISTINCT a.idCourse
+          FROM learning_courseuser a
+          JOIN core_field_userentry b ON a.iduser = b.id_user
+          WHERE b.id_common=25 and b.user_entry IN ('Formazione intermediari','RB INTERMEDIARI')
+      )
+    ORDER BY idcategory ASC
+    `
+        );
+
+
+        res.json({ success: true, courses });
+    } catch (err) {
+        logwrite("❌ Errore filters report: " + err.message);
+        res.status(500).json({ success: false, error: err.message });
     }
 });
 

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 interface MenuItem {
   label: string;
@@ -24,7 +24,10 @@ export default function MultiDropdown({
 
   return (
     <div className="relative">
-      <button onClick={onToggle} className="flex items-center gap-1 hover:text-blue-600">
+      <button
+        onClick={onToggle}
+        className="flex items-center gap-1 hover:text-blue-600"
+      >
         {label}
         <ChevronDown size={14} />
       </button>
@@ -74,7 +77,10 @@ export default function MultiDropdown({
                     </AnimatePresence>
                   </>
                 ) : (
-                  <a href={item.href} className="block px-3 py-2 hover:bg-blue-50 hover:text-blue-600">
+                  <a
+                    href={item.href}
+                    className="block px-3 py-2 hover:bg-blue-50 hover:text-blue-600"
+                  >
                     {item.label}
                   </a>
                 )}

@@ -1,4 +1,3 @@
-
 import { Outlet } from "react-router-dom";
 import TopNav from "./TopNav";
 
@@ -10,7 +9,8 @@ export default function Layout() {
         <Outlet />
       </main>
       <footer className="bg-gray-100 border-t text-center py-3 text-xs text-gray-500">
-        © {new Date().getFullYear()} RB Consulting S.r.l. — Tutti i diritti riservati.
+        © {new Date().getFullYear()} RB Consulting S.r.l. — Tutti i diritti
+        riservati.
       </footer>
     </div>
   );

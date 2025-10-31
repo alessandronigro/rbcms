@@ -1,5 +1,3 @@
-import React from "react";
-
 interface EsitoItem {
   email?: string;
   error?: string;
@@ -28,8 +26,8 @@ export default function ModalEsitoIscrizione({
         <h2 className="text-lg font-semibold mb-3">📩 Esito Iscrizione</h2>
 
         <div className="text-sm text-gray-800 leading-relaxed">
-          ✅ Iscrizioni riuscite: <b className="text-green-600">{success}</b> <br />
-          ❌ Fallite: <b className="text-red-600">{failed}</b>
+          ✅ Iscrizioni riuscite: <b className="text-green-600">{success}</b>{" "}
+          <br />❌ Fallite: <b className="text-red-600">{failed}</b>
         </div>
 
         {failed > 0 && (

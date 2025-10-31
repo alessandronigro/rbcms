@@ -34,7 +34,6 @@ async function getConnection(hostKey = "IFAD", dbName = process.env.MYSQL_DATABA
     if (!dbName) throw new Error(`❌ Database non definito`);
 
     const key = `${hostKey}_${dbName}`;
-
     if (!connections[key]) {
         connections[key] = mysql.createPool({
             host,
@@ -45,8 +44,26 @@ async function getConnection(hostKey = "IFAD", dbName = process.env.MYSQL_DATABA
             connectionLimit: 10,
             queueLimit: 0,
             charset: "utf8mb4",
+            connectTimeout: 10000,   // ⏱ 10s per connettersi
+            enableKeepAlive: true,
+            keepAliveInitialDelay: 0,
+            // timeouts di rete brevi
+            socketTimeout: 15000,    // ⏱ 15s max per risposte lente
+            timeout: 15000,
         });
-        console.log(`🔗 Pool creato per ${dbName} (${hostKey}) → ${host}`);
+
+        // 🧩 intercetta errori critici e ricrea automaticamente il pool
+        connections[key].on("error", (err) => {
+            console.error(`❌ MySQL pool error [${key}]:`, err.code);
+            if (
+                ["PROTOCOL_CONNECTION_LOST", "ECONNRESET", "ETIMEDOUT", "EPIPE"].includes(
+                    err.code
+                )
+            ) {
+                console.warn(`⚠️ Ricreo il pool MySQL per ${key}...`);
+                delete connections[key];
+            }
+        });
     }
 
     return connections[key];

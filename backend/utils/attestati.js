@@ -3,7 +3,7 @@ const path = require("path");
 const { getConnection } = require("../dbManager");
 const { generateCertificate } = require("./generateCertificate");
 const { logwrite } = require("./helper");
-const CERT_PATH = path.join(process.cwd(), "certificati");
+const CERT_PATH = path.join(process.cwd(), "/backend/public/certificati");
 /**
  * 🔎 Ritorna l’ultimo corso “60 ore” completato
  */
@@ -118,7 +118,7 @@ async function attestatoServiziDiPagamento({
             cf: cfUp,
         });
 
-        const url = `${hostUrl}/certificati/${path.basename(pdfPath)}`;
+        const url = `${hostUrl}/backend/public/certificati/${path.basename(pdfPath)}`;
         logwrite(`✅ Attestato Servizi di Pagamento creato: ${url}`);
         return url;
     } catch (err) {
@@ -194,7 +194,7 @@ async function attestatoIvassTest({
             cf: cfUp,
         });
 
-        const url = `${hostUrl}/certificati/${path.basename(pdfPath)}`;
+        const url = `${hostUrl}/backend/public/certificati/${path.basename(pdfPath)}`;
         logwrite(`✅ Attestato IVASS Test creato: ${url}`);
         return url;
     } catch (err) {
@@ -266,7 +266,7 @@ async function attestatoIvass({
             cf: cfUp,
         });
 
-        const url = `${hostUrl}/certificati/${path.basename(pdfPath)}`;
+        const url = `${hostUrl}/backend/public/certificati/${path.basename(pdfPath)}`;
         logwrite(`✅ Attestato IVASS creato: ${url}`);
         return url;
     } catch (err) {
@@ -332,7 +332,7 @@ async function attestatoGenerico({
             data,
             convenzione,
         });
-        const url = `${hostUrl}/certificati/${path.basename(pdfPath)}`;
+        const url = `${hostUrl}/backend/public/certificati/${path.basename(pdfPath)}`;
         logwrite(`✅ Attestato generico creato: ${url}`);
         return url;
     } catch (err) {
