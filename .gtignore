@@ -1,0 +1,93 @@
+# ===========================================
+# 🧠 PROGETTO RBCMS / Forma / MicroElearning
+# Esclusione file dinamici, build, certificati,
+# template personali e allegati generati runtime
+# ===========================================
+
+# ----------------------------
+#  🎯 Cartelle generate dal backend
+# ----------------------------
+backend/public/
+backend/public/*
+backend/public/certificati/
+backend/public/reports/
+backend/public/ultimotest/
+backend/public/scorm/
+backend/public/media/
+backend/public/tmp/
+backend/public/uploads/
+
+# Se vuoi MANTENERE alcuni file statici dentro /public,
+# usa whitelist !filename.ext
+
+# ----------------------------
+#  📝 Template per attestati
+# ----------------------------
+backend/templates/
+backend/templates/*
+templates/
+template/
+
+# ----------------------------
+#  🚫 File runtime dinamici
+# ----------------------------
+*.pdf
+*.docx
+*.zip
+*.xlsx
+*.csv
+*.tmp
+
+# ----------------------------
+#  🧪 Log temporanei
+# ----------------------------
+*.log
+logs/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pm2.log
+pm2/
+ecosystem.config.js
+
+# ----------------------------
+#  ⚙️ Node / Server
+# ----------------------------
+node_modules/
+dist/
+build/
+.cache/
+.cache-loader/
+.tmp/
+
+# ----------------------------
+#  🎨 React + Vite
+# ----------------------------
+frontend/dist/
+frontend/node_modules/
+frontend/.vite/
+frontend/.cache/
+
+# Vite local storage
+*.local
+
+# ----------------------------
+#  🔐 Credenziali / Env
+# ----------------------------
+.env
+.env.*
+!.env.example  # Mantieni solo l'esempio
+
+# ----------------------------
+#  📦 Sistema operativo
+# ----------------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------------
+#  🧹 Vari
+# ----------------------------
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,119 @@
+.
+├── backend
+│   ├── controllers
+│   ├── dbManager.js
+│   ├── middleware
+│   │   ├── authAdmin.js
+│   │   └── authConv.js
+│   ├── models
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   │   ├── certificati
+│   │   ├── fatture
+│   │   ├── logs
+│   │   ├── reports
+│   │   ├── temp
+│   │   └── ultimotest
+│   ├── routes
+│   │   ├── admin.js
+│   │   ├── auth.js
+│   │   ├── calendario60.js
+│   │   ├── calendarioAmm.js
+│   │   ├── convenzioni.js
+│   │   ├── corsi.js
+│   │   ├── fatture.js
+│   │   ├── finecorso.js
+│   │   ├── getattestati.js
+│   │   ├── Iscrizioni.js
+│   │   ├── mailformat.js
+│   │   ├── report.js
+│   │   └── utenti.js
+│   ├── {routes,models,controllers,middleware}
+│   ├── server-api.js
+│   ├── templates
+│   │   ├── attestati
+│   │   ├── mondialbony
+│   │   ├── multicampus
+│   │   ├── Novastudia
+│   │   └── rbacademy
+│   ├── uploads
+│   └── utils
+│       ├── attestati.js
+│       ├── generateCertificate.js
+│       ├── helper.js
+│       ├── mailerBrevo.js
+│       └── sanitizeJson.js
+├── components.json
+├── converti.sh
+├── eslint.config.js
+├── importreact.sh
+├── index.html
+├── LICENSE
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── project.txt
+├── public
+│   ├── default-avatar.png
+│   ├── images
+│   │   ├── firma.png
+│   │   ├── logo.png
+│   │   ├── slide1.png
+│   │   ├── slide2.jpg
+│   │   ├── slide3.jpg
+│   │   └── slides1.jpg
+│   ├── preview-audio.mp3
+│   └── reports
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.tsx
+│   ├── assets
+│   │   ├── fonts
+│   │   └── slides
+│   ├── components
+│   │   ├── custom
+│   │   ├── DropDown.tsx
+│   │   ├── MultiDropDown.tsx
+│   │   ├── ProtectedAdmin.tsx
+│   │   ├── ProtectedConv.tsx
+│   │   ├── ui
+│   │   └── UtenteDettaglio.tsx
+│   ├── context
+│   │   ├── ConvContext.tsx
+│   │   └── ThemeContext.tsx
+│   ├── index.css
+│   ├── layouts
+│   │   ├── Layout.tsx
+│   │   ├── ReportLayout.tsx
+│   │   └── TopNav.tsx
+│   ├── lib
+│   │   ├── supabase.ts
+│   │   └── utils.ts
+│   ├── main.tsx
+│   ├── pages
+│   │   ├── 60h
+│   │   ├── Amm
+│   │   ├── ConvenzioneDetail.tsx
+│   │   ├── Convenzioni.tsx
+│   │   ├── Fatture
+│   │   ├── FineCorso.tsx
+│   │   ├── Home.tsx
+│   │   ├── Iscrizioni
+│   │   ├── Login.tsx
+│   │   ├── MailFormatEditor.tsx
+│   │   ├── NotFound.tsx
+│   │   ├── Report
+│   │   ├── ReportCorsi.tsx
+│   │   └── RicercaUtenti.tsx
+│   └── vite-env.d.ts
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.app.tsbuildinfo
+├── tsconfig.json
+├── tsconfig.node.json
+├── tsconfig.node.tsbuildinfo
+└── vite.config.ts
+
+40 directories, 76 files

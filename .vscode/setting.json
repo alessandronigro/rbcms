@@ -1,0 +1,33 @@
+{
+  "git.ignoreLimitWarning": true,
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/public": true,
+    "**/backend/public": true,
+    "**/backend/templates": true,
+    "**/templates": true,
+    "**/template": true,
+    "**/certificati": true,
+    "**/reports": true,
+    "**/scorm": true,
+    "**/media": true,
+    "**/*.pdf": true,
+    "**/*.docx": true,
+    "**/*.zip": true,
+    "**/*.tmp": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/public": true,
+    "**/backend/public": true,
+    "**/backend/templates": true,
+    "**/templates": true,
+    "**/template": true,
+    "**/certificati": true,
+    "**/reports": true,
+    "**/scorm": true,
+    "**/media": true
+  }
+}
