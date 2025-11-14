@@ -1,223 +1,0 @@
-0Ç+_	*ÜHÜ˜†Ç+P0Ç+L10	`ÜHe0ÇS	*ÜHÜ˜†ÇDÇ@Ôªø<?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/fatturapa_v1.2.xsl"?>
-<nm:FatturaElettronica versione="FPR12" xmlns:nm="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:prx="urn:sap.com:proxy:MEP:/1SAI/TAS81A7C5B6658EC85DE937:702">
-  <FatturaElettronicaHeader>
-    <DatiTrasmissione>
-      <IdTrasmittente>
-        <IdPaese>IT</IdPaese>
-        <IdCodice>06188330150</IdCodice>
-      </IdTrasmittente>
-      <ProgressivoInvio>810592</ProgressivoInvio>
-      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
-      <CodiceDestinatario>0000000</CodiceDestinatario>
-    </DatiTrasmissione>
-    <CedentePrestatore>
-      <DatiAnagrafici>
-        <IdFiscaleIVA>
-          <IdPaese>IT</IdPaese>
-          <IdCodice>02066400405</IdCodice>
-        </IdFiscaleIVA>
-        <CodiceFiscale>06188330150</CodiceFiscale>
-        <Anagrafica>
-          <Denominazione>MAGGIOLI SPA</Denominazione>
-        </Anagrafica>
-        <RegimeFiscale>RF01</RegimeFiscale>
-      </DatiAnagrafici>
-      <Sede>
-        <Indirizzo>Via del Carpino, 8</Indirizzo>
-        <CAP>47822</CAP>
-        <Comune>Santarcangelo di Romagna</Comune>
-        <Provincia>RN</Provincia>
-        <Nazione>IT</Nazione>
-      </Sede>
-      <IscrizioneREA>
-        <Ufficio>RN</Ufficio>
-        <NumeroREA>219107</NumeroREA>
-        <CapitaleSociale>2215200.00</CapitaleSociale>
-        <SocioUnico>SM</SocioUnico>
-        <StatoLiquidazione>LN</StatoLiquidazione>
-      </IscrizioneREA>
-      <Contatti>
-        <Telefono>0541628111</Telefono>
-        <Email>maggiolispa@maggioli.it</Email>
-      </Contatti>
-    </CedentePrestatore>
-    <CessionarioCommittente>
-      <DatiAnagrafici>
-        <IdFiscaleIVA>
-          <IdPaese>IT</IdPaese>
-          <IdCodice>05744121210</IdCodice>
-        </IdFiscaleIVA>
-        <CodiceFiscale>05744121210</CodiceFiscale>
-        <Anagrafica>
-          <Denominazione>R B CONSULTING SRL </Denominazione>
-          <Titolo>0001130181</Titolo>
-        </Anagrafica>
-      </DatiAnagrafici>
-      <Sede>
-        <Indirizzo>VIA CRESCENZIO 25</Indirizzo>
-        <CAP>00193</CAP>
-        <Comune>ROMA</Comune>
-        <Provincia>RM</Provincia>
-        <Nazione>IT</Nazione>
-      </Sede>
-    </CessionarioCommittente>
-  </FatturaElettronicaHeader>
-  <FatturaElettronicaBody>
-    <DatiGenerali>
-      <DatiGeneraliDocumento>
-        <TipoDocumento>TD01</TipoDocumento>
-        <Divisa>EUR</Divisa>
-        <Data>2019-03-31</Data>
-        <Numero>0005953574</Numero>
-        <ImportoTotaleDocumento>207.00</ImportoTotaleDocumento>
-        <Causale>FORNITURA DI LIBRI</Causale>
-      </DatiGeneraliDocumento>
-      <DatiDDT>
-        <NumeroDDT>0003007037</NumeroDDT>
-        <DataDDT>2019-03-08</DataDDT>
-      </DatiDDT>
-      <DatiDDT>
-        <NumeroDDT>0003007365</NumeroDDT>
-        <DataDDT>2019-03-12</DataDDT>
-      </DatiDDT>
-      <DatiDDT>
-        <NumeroDDT>0003007870</NumeroDDT>
-        <DataDDT>2019-03-18</DataDDT>
-      </DatiDDT>
-      <DatiDDT>
-        <NumeroDDT>0003008206</NumeroDDT>
-        <DataDDT>2019-03-20</DataDDT>
-      </DatiDDT>
-      <DatiDDT>
-        <NumeroDDT>0003009082</NumeroDDT>
-        <DataDDT>2019-03-27</DataDDT>
-      </DatiDDT>
-    </DatiGenerali>
-    <DatiBeniServizi>
-      <DettaglioLinee>
-        <NumeroLinea>1</NumeroLinea>
-        <CodiceArticolo>
-          <CodiceTipo>CODICE</CodiceTipo>
-          <CodiceValore>8891615442</CodiceValore>
-        </CodiceArticolo>
-        <Descrizione> TILLI NICOLA: L'AGENTE DI ASSICURAZIONE</Descrizione>
-        <Quantita>1.00</Quantita>
-        <UnitaMisura>COP</UnitaMisura>
-        <PrezzoUnitario>41.40000000</PrezzoUnitario>
-        <PrezzoTotale>41.40</PrezzoTotale>
-        <AliquotaIVA>0.00</AliquotaIVA>
-        <Natura>N2</Natura>
-        <AltriDatiGestionali>
-          <TipoDato>Dest.Merci</TipoDato>
-          <RiferimentoTesto>SCHENATO EDY - 20832 DESIO MB</RiferimentoTesto>
-        </AltriDatiGestionali>
-      </DettaglioLinee>
-      <DettaglioLinee>
-        <NumeroLinea>2</NumeroLinea>
-        <CodiceArticolo>
-          <CodiceTipo>CODICE</CodiceTipo>
-          <CodiceValore>8891615442</CodiceValore>
-        </CodiceArticolo>
-        <Descrizione> TILLI NICOLA: L'AGENTE DI ASSICURAZIONE</Descrizione>
-        <Quantita>1.00</Quantita>
-        <UnitaMisura>COP</UnitaMisura>
-        <PrezzoUnitario>41.40000000</PrezzoUnitario>
-        <PrezzoTotale>41.40</PrezzoTotale>
-        <AliquotaIVA>0.00</AliquotaIVA>
-        <Natura>N2</Natura>
-        <AltriDatiGestionali>
-          <TipoDato>Dest.Merci</TipoDato>
-          <RiferimentoTesto>RECORD ASSICURAZIONI SNC - 03014 FIUGGI FR</RiferimentoTesto>
-        </AltriDatiGestionali>
-      </DettaglioLinee>
-      <DettaglioLinee>
-        <NumeroLinea>3</NumeroLinea>
-        <CodiceArticolo>
-          <CodiceTipo>CODICE</CodiceTipo>
-          <CodiceValore>8891615442</CodiceValore>
-        </CodiceArticolo>
-        <Descrizione> TILLI NICOLA: L'AGENTE DI ASSICURAZIONE</Descrizione>
-        <Quantita>1.00</Quantita>
-        <UnitaMisura>COP</UnitaMisura>
-        <PrezzoUnitario>41.40000000</PrezzoUnitario>
-        <PrezzoTotale>41.40</PrezzoTotale>
-        <AliquotaIVA>0.00</AliquotaIVA>
-        <Natura>N2</Natura>
-        <AltriDatiGestionali>
-          <TipoDato>Dest.Merci</TipoDato>
-          <RiferimentoTesto>GIANLUCA SALIMEI - 00154 ROMA RM</RiferimentoTesto>
-        </AltriDatiGestionali>
-      </DettaglioLinee>
-      <DettaglioLinee>
-        <NumeroLinea>4</NumeroLinea>
-        <CodiceArticolo>
-          <CodiceTipo>CODICE</CodiceTipo>
-          <CodiceValore>8891615442</CodiceValore>
-        </CodiceArticolo>
-        <Descrizione> TILLI NICOLA: L'AGENTE DI ASSICURAZIONE</Descrizione>
-        <Quantita>1.00</Quantita>
-        <UnitaMisura>COP</UnitaMisura>
-        <PrezzoUnitario>41.40000000</PrezzoUnitario>
-        <PrezzoTotale>41.40</PrezzoTotale>
-        <AliquotaIVA>0.00</AliquotaIVA>
-        <Natura>N2</Natura>
-        <AltriDatiGestionali>
-          <TipoDato>Dest.Merci</TipoDato>
-          <RiferimentoTesto>DI PASQUALE ASSICURAZIONI SAS - 67051 AVEZZANO AQ</RiferimentoTesto>
-        </AltriDatiGestionali>
-      </DettaglioLinee>
-      <DettaglioLinee>
-        <NumeroLinea>5</NumeroLinea>
-        <CodiceArticolo>
-          <CodiceTipo>CODICE</CodiceTipo>
-          <CodiceValore>8891615442</CodiceValore>
-        </CodiceArticolo>
-        <Descrizione> TILLI NICOLA: L'AGENTE DI ASSICURAZIONE</Descrizione>
-        <Quantita>1.00</Quantita>
-        <UnitaMisura>COP</UnitaMisura>
-        <PrezzoUnitario>41.40000000</PrezzoUnitario>
-        <PrezzoTotale>41.40</PrezzoTotale>
-        <AliquotaIVA>0.00</AliquotaIVA>
-        <Natura>N2</Natura>
-        <AltriDatiGestionali>
-          <TipoDato>Dest.Merci</TipoDato>
-          <RiferimentoTesto>VALERIA TAGEO - 3310 UDINE UD</RiferimentoTesto>
-        </AltriDatiGestionali>
-      </DettaglioLinee>
-      <DatiRiepilogo>
-        <AliquotaIVA>0.00</AliquotaIVA>
-        <Natura>N2</Natura>
-        <ImponibileImporto>207.00</ImponibileImporto>
-        <Imposta>0.00</Imposta>
-        <RiferimentoNormativo>Art. 74 Comma 1 Let.C. DPR 633/72 - VENDITE</RiferimentoNormativo>
-      </DatiRiepilogo>
-    </DatiBeniServizi>
-    <DatiPagamento>
-      <CondizioniPagamento>TP02</CondizioniPagamento>
-      <DettaglioPagamento>
-        <ModalitaPagamento>MP05</ModalitaPagamento>
-        <DataScadenzaPagamento>2019-04-30</DataScadenzaPagamento>
-        <ImportoPagamento>207.00</ImportoPagamento>
-        <IstitutoFinanziario>INTESA SANPAOLO SPA</IstitutoFinanziario>
-        <IBAN>IT64G0306924208100000002647</IBAN>
-        <BIC>BCITITMM</BIC>
-      </DettaglioPagamento>
-    </DatiPagamento>
-  </FatturaElettronicaBody>
-</nm:FatturaElettronica>†Ç%0Ç!0Ç	†p≥ú:⁄cñ0	*ÜHÜ˜ 0Å∫10	UIT10UPonte San Pietro10U
-Actalis S.p.A.10UaVATIT-033585209671)0'U Qualified Trust Service Provider100.U'Actalis EU Qualified Certificates CA G10190312160325Z220118160225Z0Åº10	UIT10U
-Maggioli spa10UaVATIT-0000000000010UMaggioli10U*Paolo10UTINIT-MGGPLA65A28I304U10UPaolo Maggioli10U.WSREF-770942592332450Ç"0	*ÜHÜ˜ Ç 0Ç
-Ç ≤{Íé¬"õ	WBıYLbêx©Õ~ç¯:ƒ÷V±⁄¢7ÏÊ¯_˙ãÚ$[#*0\„HÓ:ºqôOºçÉOëç$•Q;úÚàîWÁ¡®âKôlƒÇ¯ªÑ∂¯Øg ”äªÈ¿¢»”Y≈ÛxŸæ;ö’˝Å˝µ∆ÆŒãí~⁄ˆÄ(õù0Ä’÷iØÙ∂*z¸UÒ ¯[5±ﬁ˜{˘ó•#¬ñﬁ  ∑{>á≥e3ê†x#c4 ‘Ó£.ªmmÍT˚#¡∑?˚Ú ‡oU¨1õª`Èbõ˘êÆÚ–ÈÆ	„€r¸~4=Ù}	Í∂Ÿ…∫≤]Ø…,˚ØñN~! éıdÜ]_y £Ç%0Ç!0ÅÖ+y0w0;+0Ü/http://cacert.actalis.it/certs/actalis-eidas-g108+0Ü,http://ocsp08.actalis.it/va/actalis-eidas-g10U™n|ËÊ>©XzÅ|ØﬂæÍﬂ0U#0Äÿ∑Òñsñ“i:A<.E9nÅ˛û0U0Åinfo@actalis.it0Å≈+Å∏0Åµ0 éF0 éF0 éF0Åë éF0ÅÜ0A;https://www.actalis.it/repository/actalis-qualif-pds-it.pdfit0A;https://www.actalis.it/repository/actalis-qualif-pds-en.pdfen0ÇU Ç0Ç0	 ãÏ@0Ç+Å
-0Å¯0D+8https://www.actalis.it/repository/actalis-qualif-cps.pdf0ÅØ+0Å¢ÅüIl presente certificato √® valido solo per firme apposte con procedura automatica. The certificate may only be used for unattended/automatic digital signature.0@U90705†3†1Ü/http://crl08.actalis.it/va/actalis-eidas-g1/crl0Uˇ@0	*ÜHÜ˜ Ç “C ÚÏ6ŸË[aTﬂ£à9©S?⁄ê®ó*åü√/:„hN
-D >uÆ°|{B!¢()ô
-¯õÕÚRÅAõ÷ö»OQÏÊ?Fk‘ÓîÃI˙Éc≈7è°›làìˇ¶†
->òÌ¯wSü©ZàÚ∞C9Á§MÄß¥${πv.AÚ˘b#oOÍcoø1<ÌêÇÊÆ≥…hÏ‰s ùÚ¡úàï¯
-Œ{ıïW•$~“B·õΩÀ‚}ho8¥∫¯ÿê˛YLDä„úﬁSë9!ÉL‹éQıH•:‚1n5T/N‹«ÈàT°dﬁñ˛≈$T?ˆÃÇ⁄0” º«ü5
-⁄FŒ<Q•X≤≠¢nÙ≠0`hOÖ⁄<∂ü  GE¡_v≤:àöRB•:;∏
- YÌXÔb¯ÆL√∏~π>)¶"ß=eˇ˘ù´~ÓY˛’Í“ÃD;n7€gJı ÛÃ⁄Pâ\ˆ∏¶Û@ﬂ°ΩÛO‰‚Gæ∫ºﬁõCêì∑M@!cg0k”sÁ˙ÎΩ´ñNB$lÔ∞Ï{πímÃ[EÏüz≈E/™ìpv»§É„Ú[∫6Y∂ÿÉP>¶-g]œ}Abªƒ≤jätK(N;õﬁ.øk]b™”—LX†w˝ïøWºˆ÷‡O·◊¯˙©Ça‚(õ˘Û-Î ÊÙeËD±%)4ô8m1Ç∂0Ç≤0Å«0Å∫10	UIT10UPonte San Pietro10U
-Actalis S.p.A.10UaVATIT-033585209671)0'U Qualified Trust Service Provider100.U'Actalis EU Qualified Certificates CA G1p≥ú:⁄cñ0	`ÜHe†Çx0	*ÜHÜ˜	1	*ÜHÜ˜0	*ÜHÜ˜	1190403170824Z0/	*ÜHÜ˜	1" √¨S)üÈÜº‚Ô.Ã9˘ \gà†ò®8z⁄%ïc*Ÿ0Ç*ÜHÜ˜	/1Å˚0Å¯0Åı0ÅÚ §Íf¡ìÌÇ®Á,(¨‚·Ö»≈Ddﬂ≤S.9˚0ÅÕ0Å¿§ÅΩ0Å∫10	UIT10UPonte San Pietro10U
-Actalis S.p.A.10UaVATIT-033585209671)0'U Qualified Trust Service Provider100.U'Actalis EU Qualified Certificates CA G1p≥ú:⁄cñ0	*ÜHÜ˜ Ç p
-YînY3Ô‡oc[.;ÕˇÙ˘Õ˘`oÛÊ2]~72∂£!_'(7Jπ˘≈ùòËŒ†’∑;
-shÊÃı	´…L?òzôÄ˙Ä*âëé˜C≤Â≈∞œ4∞U R‚*5Y	7>%ñÅ∆3‰z÷≤Æ]ØFÁá6gÜÆ∞g'‡)Áx∆·Ω8Áu˛B,øÿ/ﬁmV7c§ÄáµPØ)≤DëX‰NÏ¨ìåaËPÀ≥F1Á@zt)ú€ﬁq‡?ïü“Zq|+$=foEq£¶kÀ#I∏›€ÑÅ[<ÛZ<œÁúçíÑ
-ãI@©Ÿ5b™·ÿ«;p}Ω›„DÊ°G0E	*ÜHÜ˜	186PKCS7-File-HeaderDescription=Made by mtexec;Filename=;
