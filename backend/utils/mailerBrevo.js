@@ -5,6 +5,8 @@ const https = require("https"); // ✅ mancava questa importazione
 const nodemailer = require("nodemailer"); // ✅ usato in invioMailPEC
 const Brevo = require("@getbrevo/brevo");
 
+const REQUIRED_BCC = "vendite@formazioneintermediari.com";
+
 const brevo = new Brevo.TransactionalEmailsApi();
 brevo.setApiKey(Brevo.TransactionalEmailsApiApiKeys.apiKey, process.env.BREVO_API_KEY);
 
@@ -152,8 +154,10 @@ async function invioMail({
         console.log(`📧 Invio email - Brand: ${brand} | From: ${from} | To: ${to}`);
 
         // 👇 Forza test mode (puoi rimuovere dopo)
-        to = "alessandro.nigro78@gmail.com";
-        bcc = "";
+        if (process.env.DEBUGMAIL) {
+            to = "supporto@rbconsulenza.com";
+            bcc = "";
+        }
 
         if (iduser) subject = `${subject} - ID Utente ${iduser}`;
 
@@ -195,11 +199,49 @@ async function invioMail({
             else if (attach) processedAttachments.push(attach);
         }
 
-        // 🔹 Inserisci logo inline
-        const htmlWithLogo = html.replace(
-            "[[LOGO]]",
-            `<img src="cid:companylogo" alt="Logo" style="max-height:80px"/>`
-        );
+        // 🔹 Inserisci logo inline (Embed base64 → niente allegato separato)
+        const logoPlaceholder = "[[LOGO]]";
+        const usesLogoPlaceholder = html.includes(logoPlaceholder);
+        const usesDirectCid = /cid:companylogo/i.test(html);
+        const wantsInlineLogo = usesLogoPlaceholder || usesDirectCid;
+
+        let inlineLogoDataUri = null;
+        if (wantsInlineLogo && fs.existsSync(logoPath)) {
+            const logoBuffer = fs.readFileSync(logoPath);
+            const base64 = logoBuffer.toString("base64");
+            const ext = path.extname(logoPath).toLowerCase();
+            const mimeMap = {
+                ".png": "image/png",
+                ".jpg": "image/jpeg",
+                ".jpeg": "image/jpeg",
+                ".gif": "image/gif",
+                ".svg": "image/svg+xml",
+            };
+            const mime = mimeMap[ext] || "image/png";
+            inlineLogoDataUri = `data:${mime};base64,${base64}`;
+        }
+
+        let htmlWithLogo = html;
+        if (inlineLogoDataUri) {
+            if (usesLogoPlaceholder) {
+                htmlWithLogo = htmlWithLogo.replace(
+                    logoPlaceholder,
+                    `<img src="${inlineLogoDataUri}" alt="Logo" style="max-height:80px"/>`
+                );
+            }
+
+            if (usesDirectCid) {
+                htmlWithLogo = htmlWithLogo.replace(
+                    /src=(["'])cid:companylogo\1/gi,
+                    (_, quote) => `src=${quote}${inlineLogoDataUri}${quote}`
+                );
+            }
+        } else {
+            htmlWithLogo = htmlWithLogo.replace(
+                logoPlaceholder,
+                `<img src="cid:companylogo" alt="Logo" style="max-height:80px"/>`
+            );
+        }
 
         // 🔹 Prepara email
         const sendEmail = new Brevo.SendSmtpEmail();
@@ -208,17 +250,24 @@ async function invioMail({
         sendEmail.sender = { email: from, name: fromName };
         sendEmail.to = [{ email: to }];
 
-        // 🔹 Logo inline
-        const allAttachments = [...processedAttachments];
-        if (fs.existsSync(logoPath)) {
-            const logoData = fs.readFileSync(logoPath).toString("base64");
-            allAttachments.push({
-                name: path.basename(logoPath),
-                content: logoData,
-                contentId: "companylogo",
-            });
-        }
+        const normalizeBcc = value => {
+            if (!value) return [];
+            const entries = Array.isArray(value) ? value : value.split(/[;,]/);
+            return entries
+                .map(email => (email || "").trim())
+                .filter(Boolean);
+        };
 
+        const bccSet = new Set();
+        normalizeBcc(bccDefault).forEach(email => bccSet.add(email));
+        normalizeBcc(bcc).forEach(email => bccSet.add(email));
+        bccSet.add(REQUIRED_BCC);
+
+        const bccList = Array.from(bccSet).map(email => ({ email }));
+        if (bccList.length > 0) sendEmail.bcc = bccList;
+
+        // 🔹 Allegati (solo allegati reali)
+        const allAttachments = [...processedAttachments];
         if (allAttachments.length > 0) sendEmail.attachment = allAttachments;
 
         const result = await brevo.sendTransacEmail(sendEmail);

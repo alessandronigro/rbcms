@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { useAlert } from "../../components/SmartAlertModal";
 interface ParsedRow {
   cognome: string;
   nome: string;
@@ -18,6 +19,37 @@ interface Corso {
   name: string;
 }
 
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
+interface FatturazioneData {
+  intestatario: string;
+  partitaIva: string;
+  indirizzo: string;
+  cap: string;
+  comune: string;
+  provincia: string;
+  regione: string;
+  email: string;
+  pec: string;
+  codiceDestinatario: string;
+}
+
+const createEmptyBillingData = (): FatturazioneData => ({
+  intestatario: "",
+  partitaIva: "",
+  indirizzo: "",
+  cap: "",
+  comune: "",
+  provincia: "",
+  regione: "",
+  email: "",
+  pec: "",
+  codiceDestinatario: "",
+});
+
 export default function IscrizioniExcel() {
   // const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<ParsedRow[]>([]);
@@ -26,6 +58,136 @@ export default function IscrizioniExcel() {
   const [corsi, setCorsi] = useState<Corso[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState("");
+  const [billingData, setBillingData] = useState<FatturazioneData>(
+    () => createEmptyBillingData(),
+  );
+  const [regionOptions, setRegionOptions] = useState<SelectOption[]>([]);
+  const [provinceOptions, setProvinceOptions] = useState<SelectOption[]>([]);
+  const [comuneOptions, setComuneOptions] = useState<SelectOption[]>([]);
+  const [selectedRegionId, setSelectedRegionId] = useState("");
+  const [selectedProvinceId, setSelectedProvinceId] = useState("");
+  const [selectedComuneId, setSelectedComuneId] = useState("");
+  const { alert: showAlert } = useAlert();
+  const needsBillingForm = selectedConv === "Formazione Intermediari";
+  const handleBillingChange = (
+    field: keyof FatturazioneData,
+    value: string,
+  ) => {
+    setBillingData((prev) => ({ ...prev, [field]: value }));
+  };
+  const handleRegionSelect = (value: string) => {
+    setSelectedRegionId(value);
+    setSelectedProvinceId("");
+    setSelectedComuneId("");
+    const label =
+      regionOptions.find((opt) => opt.value === value)?.label || "";
+    setBillingData((prev) => ({
+      ...prev,
+      regione: label,
+      provincia: "",
+      comune: "",
+    }));
+    if (!value) {
+      setProvinceOptions([]);
+      setComuneOptions([]);
+    }
+  };
+  const handleProvinciaSelect = (value: string) => {
+    setSelectedProvinceId(value);
+    setSelectedComuneId("");
+    const label =
+      provinceOptions.find((opt) => opt.value === value)?.label || "";
+    setBillingData((prev) => ({
+      ...prev,
+      provincia: label,
+      comune: "",
+    }));
+    if (!value) {
+      setComuneOptions([]);
+    }
+  };
+  const handleComuneSelect = (value: string) => {
+    setSelectedComuneId(value);
+    const label =
+      comuneOptions.find((opt) => opt.value === value)?.label || "";
+    setBillingData((prev) => ({
+      ...prev,
+      comune: label,
+    }));
+  };
+
+  const loadRegionOptions = useCallback(async () => {
+    try {
+      const res = await fetch("/api/convenzioni/lookups/regioni");
+      const data = await res.json();
+      setRegionOptions(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error("Errore regioni:", err);
+      setRegionOptions([]);
+    }
+  }, []);
+
+  const loadProvinceOptions = useCallback(async (regione?: string) => {
+    if (!regione) {
+      setProvinceOptions([]);
+      return;
+    }
+    try {
+      const res = await fetch(
+        `/api/convenzioni/lookups/province?regione=${encodeURIComponent(regione)}`,
+      );
+      const data = await res.json();
+      setProvinceOptions(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error("Errore province:", err);
+      setProvinceOptions([]);
+    }
+  }, []);
+
+  const loadComuneOptions = useCallback(async (provincia?: string) => {
+    if (!provincia) {
+      setComuneOptions([]);
+      return;
+    }
+    try {
+      const res = await fetch(
+        `/api/convenzioni/lookups/comuni?provincia=${encodeURIComponent(provincia)}`,
+      );
+      const data = await res.json();
+      setComuneOptions(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error("Errore comuni:", err);
+      setComuneOptions([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadRegionOptions();
+  }, [loadRegionOptions]);
+
+  useEffect(() => {
+    if (!needsBillingForm) {
+      setProvinceOptions([]);
+      return;
+    }
+    if (selectedRegionId) {
+      loadProvinceOptions(selectedRegionId);
+    } else {
+      setProvinceOptions([]);
+    }
+  }, [selectedRegionId, loadProvinceOptions, needsBillingForm]);
+
+  useEffect(() => {
+    if (!needsBillingForm) {
+      setComuneOptions([]);
+      return;
+    }
+    if (selectedProvinceId) {
+      loadComuneOptions(selectedProvinceId);
+    } else {
+      setComuneOptions([]);
+    }
+  }, [selectedProvinceId, loadComuneOptions, needsBillingForm]);
 
   // ✅ CSV → oggetto
   const parseCSV = (text: string) => {
@@ -54,12 +216,18 @@ export default function IscrizioniExcel() {
     setConvenzioni([]);
     setCorsi([]);
     setSelectedConv("");
+    setBillingData(createEmptyBillingData());
+    setSelectedRegionId("");
+    setSelectedProvinceId("");
+    setSelectedComuneId("");
+    setProvinceOptions([]);
+    setComuneOptions([]);
 
     const text = await f.text();
     const parsed = parseCSV(text);
 
     if (!parsed.length) {
-      alert("⚠️ Nessun dato valido nel file");
+      await showAlert("⚠️ Nessun dato valido nel file");
       return;
     }
 
@@ -83,6 +251,14 @@ export default function IscrizioniExcel() {
     const value = e.target.value;
     setSelectedConv(value);
     setCorsi([]);
+    if (value !== "Formazione Intermediari") {
+      setBillingData(createEmptyBillingData());
+      setSelectedRegionId("");
+      setSelectedProvinceId("");
+      setSelectedComuneId("");
+      setProvinceOptions([]);
+      setComuneOptions([]);
+    }
 
     if (!value) return;
 
@@ -108,8 +284,35 @@ export default function IscrizioniExcel() {
 
   const handleIscrivi = async () => {
     if (!selectedConv || !selectedCourse) {
-      alert("Seleziona convenzione e corso");
+      await showAlert("Seleziona convenzione e corso");
       return;
+    }
+    if (needsBillingForm) {
+      const required: Array<keyof FatturazioneData> = [
+        "intestatario",
+        "partitaIva",
+        "indirizzo",
+        "cap",
+        "regione",
+        "comune",
+        "provincia",
+        "email",
+      ];
+      for (const field of required) {
+        if (!billingData[field].trim()) {
+          await showAlert("Compila tutti i dati di fatturazione richiesti");
+          return;
+        }
+      }
+      if (
+        !billingData.codiceDestinatario.trim() &&
+        !billingData.pec.trim()
+      ) {
+        await showAlert(
+          "Inserisci PEC oppure Codice Destinatario per la fatturazione elettronica",
+        );
+        return;
+      }
     }
 
     setLoading(true);
@@ -118,6 +321,7 @@ export default function IscrizioniExcel() {
       convenzione: selectedConv,
       corso: selectedCourse,
       utenti: preview,
+      fatturazione: needsBillingForm ? billingData : undefined,
     };
 
     const res = await fetch("/api/iscrizioni/excel", {
@@ -129,7 +333,10 @@ export default function IscrizioniExcel() {
     const data = await res.json();
     setLoading(false);
 
-    alert(data.message || "Operazione eseguita");
+    await showAlert(data.message || "Operazione eseguita", {
+      title: "Esiti iscrizioni",
+      results: Array.isArray(data.results) ? data.results : undefined,
+    });
   };
 
   return (
@@ -179,6 +386,151 @@ export default function IscrizioniExcel() {
                     </option>
                   ))}
               </select>
+
+              {needsBillingForm && (
+                <div className="mt-4 border border-blue-200 bg-blue-50 rounded p-4">
+                  <h4 className="font-semibold text-blue-700">
+                    Dati di fatturazione - Formazione Intermediari
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+                    <label className="flex flex-col text-sm text-gray-700">
+                      Intestatario fattura *
+                      <input
+                        type="text"
+                        value={billingData.intestatario}
+                        onChange={(e) =>
+                          handleBillingChange("intestatario", e.target.value)
+                        }
+                        className="border rounded p-2 mt-1"
+                      />
+                    </label>
+                    <label className="flex flex-col text-sm text-gray-700">
+                      Partita IVA *
+                      <input
+                        type="text"
+                        value={billingData.partitaIva}
+                        onChange={(e) =>
+                          handleBillingChange("partitaIva", e.target.value)
+                        }
+                        className="border rounded p-2 mt-1 uppercase"
+                      />
+                    </label>
+                    <label className="flex flex-col text-sm text-gray-700">
+                      Email fatturazione *
+                      <input
+                        type="email"
+                        value={billingData.email}
+                        onChange={(e) =>
+                          handleBillingChange("email", e.target.value)
+                        }
+                        className="border rounded p-2 mt-1"
+                      />
+                    </label>
+                    <label className="flex flex-col text-sm text-gray-700">
+                      PEC fatturazione
+                      <input
+                        type="email"
+                        value={billingData.pec}
+                        onChange={(e) =>
+                          handleBillingChange("pec", e.target.value)
+                        }
+                        className="border rounded p-2 mt-1"
+                      />
+                    </label>
+                    <label className="flex flex-col text-sm text-gray-700">
+                      Codice Destinatario
+                      <input
+                        type="text"
+                        value={billingData.codiceDestinatario}
+                        onChange={(e) =>
+                          handleBillingChange(
+                            "codiceDestinatario",
+                            e.target.value.toUpperCase(),
+                          )
+                        }
+                        className="border rounded p-2 mt-1 uppercase"
+                      />
+                    </label>
+                    <label className="flex flex-col text-sm text-gray-700 md:col-span-2">
+                      Indirizzo completo *
+                      <input
+                        type="text"
+                        value={billingData.indirizzo}
+                        onChange={(e) =>
+                          handleBillingChange("indirizzo", e.target.value)
+                        }
+                        className="border rounded p-2 mt-1"
+                      />
+                    </label>
+                    <label className="flex flex-col text-sm text-gray-700">
+                      CAP *
+                      <input
+                        type="text"
+                        value={billingData.cap}
+                        onChange={(e) =>
+                          handleBillingChange("cap", e.target.value)
+                        }
+                        className="border rounded p-2 mt-1"
+                      />
+                    </label>
+                    <label className="flex flex-col text-sm text-gray-700">
+                      Regione *
+                      <select
+                        value={selectedRegionId}
+                        onChange={(e) => handleRegionSelect(e.target.value)}
+                        className="border rounded p-2 mt-1"
+                      >
+                        <option value="">-- Seleziona Regione --</option>
+                        {regionOptions.map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="flex flex-col text-sm text-gray-700">
+                      Provincia *
+                      <select
+                        value={selectedProvinceId}
+                        onChange={(e) => handleProvinciaSelect(e.target.value)}
+                        className="border rounded p-2 mt-1"
+                        disabled={
+                          !selectedRegionId || provinceOptions.length === 0
+                        }
+                      >
+                        <option value="">-- Seleziona Provincia --</option>
+                        {provinceOptions.map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="flex flex-col text-sm text-gray-700">
+                      Comune *
+                      <select
+                        value={selectedComuneId}
+                        onChange={(e) => handleComuneSelect(e.target.value)}
+                        className="border rounded p-2 mt-1"
+                        disabled={
+                          !selectedProvinceId || comuneOptions.length === 0
+                        }
+                      >
+                        <option value="">-- Seleziona Comune --</option>
+                        {comuneOptions.map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+                  <p className="text-xs text-gray-600 mt-2">
+                    * campi obbligatori. Inserire almeno uno tra PEC e Codice
+                    Destinatario.
+                  </p>
+                </div>
+              )}
 
               <button
                 disabled={loading}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAlert } from "../../components/SmartAlertModal";
 
 interface ModalePrenotatiAmmProps {
   idSessione: number;
@@ -13,6 +14,15 @@ export default function ModalePrenotatiAmm({
 }: ModalePrenotatiAmmProps) {
   const [loading, setLoading] = useState(true);
   const [sessione, setSessione] = useState<any>(null);
+  const { alert: showAlert, confirm: showConfirm } = useAlert();
+  const askConfirm = async (message: string) => {
+    try {
+      await showConfirm(message);
+      return true;
+    } catch {
+      return false;
+    }
+  };
 
   const fetchData = async () => {
     setLoading(true);
@@ -44,7 +54,7 @@ export default function ModalePrenotatiAmm({
         note: sessione.note,
       }),
     });
-    alert("✅ Modifiche salvate");
+    await showAlert("✅ Modifiche salvate");
     postActionRefresh();
   };
 
@@ -58,7 +68,21 @@ export default function ModalePrenotatiAmm({
       }),
     });
 
-    alert("✅ Sessione Confermata");
+    await showAlert("✅ Sessione Confermata");
+    postActionRefresh();
+  };
+
+  const annullaConferma = async () => {
+    await fetch(`/api/finecorsoamm/sessione/${sessione.id}/conferma-no`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        iduser: sessione.iduser,
+        idcourse: sessione.idcourse,
+      }),
+    });
+
+    await showAlert("ℹ️ Conferma annullata");
     postActionRefresh();
   };
 
@@ -73,7 +97,7 @@ export default function ModalePrenotatiAmm({
       }),
     });
 
-    alert(`✅ Buon Fine: ${pagato ? "SI" : "NO"}`);
+    await showAlert(`✅ Buon Fine: ${pagato ? "SI" : "NO"}`);
     postActionRefresh();
   };
 
@@ -82,7 +106,7 @@ export default function ModalePrenotatiAmm({
       method: "POST",
     });
 
-    alert("✅ Test assegnato all’utente");
+    await showAlert("✅ Test assegnato all’utente");
     postActionRefresh();
   };
 
@@ -91,19 +115,18 @@ export default function ModalePrenotatiAmm({
       method: "POST",
     });
 
-    alert("✅ Test sbloccato");
+    await showAlert("✅ Test sbloccato");
     postActionRefresh();
   };
 
   const deleteSessione = async () => {
-    const ok = window.confirm("⚠️ Eliminare definitivamente questa sessione?");
-    if (!ok) return;
+    if (!(await askConfirm("⚠️ Eliminare definitivamente questa sessione?"))) return;
 
     await fetch(`/api/finecorsoamm/sessione/${sessione.id}`, {
       method: "DELETE",
     });
 
-    alert("✅ Sessione eliminata");
+    await showAlert("✅ Sessione eliminata");
     onReloadCalendar();
     onClose();
   };
@@ -195,21 +218,19 @@ export default function ModalePrenotatiAmm({
               </div>
             </div>
 
-            {/* ✅ Note */}
+            {/* ✅ Note sessione */}
             <div className="mt-3">
-              <label>📌 Note</label>
-              <input
-                type="text"
-                className="w-full border p-1 mt-1"
+              <label>📌 Note sessione</label>
+              <textarea
+                className="w-full border p-2 mt-1 rounded min-h-[70px]"
                 value={sessione.note || ""}
                 onChange={(e) =>
                   setSessione({ ...sessione, note: e.target.value })
                 }
               />
             </div>
-
             {/* ✅ Fascia Bottoni */}
-            <div className="grid grid-cols-3 gap-3 mt-5 text-sm">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-5 text-sm">
               <button
                 onClick={updateField}
                 className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
@@ -221,36 +242,45 @@ export default function ModalePrenotatiAmm({
                 onClick={confermaSessione}
                 className="bg-green-600 text-white py-2 rounded hover:bg-green-700"
               >
-                ✅ Conferma
+                ✅ Conferma SI
+              </button>
+
+              <button
+                onClick={annullaConferma}
+                className="bg-gray-200 text-gray-900 py-2 rounded border border-gray-400 hover:bg-gray-300"
+              >
+                🚫 Conferma NO
               </button>
 
               <button
                 onClick={() => setPagato(1)}
-                className="bg-amber-600 text-white py-2 rounded hover:bg-amber-700"
+                className="bg-pink-300 text-pink-900 font-semibold py-2 rounded hover:bg-pink-200"
               >
                 💸 Buon Fine SI
               </button>
 
               <button
                 onClick={() => setPagato(0)}
-                className="bg-gray-600 text-white py-2 rounded hover:bg-gray-700"
+                className="bg-red-500 text-white py-2 rounded hover:bg-red-600"
               >
                 🚫 Buon Fine NO
               </button>
 
-              <button
-                onClick={inviaTest}
-                className="bg-purple-600 text-white py-2 rounded hover:bg-purple-700"
-              >
-                🧠 Attiva Test
-              </button>
-
-              <button
-                onClick={sbloccaTest}
-                className="bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700"
-              >
-                🔓 Sblocca Test
-              </button>
+              {!sessione.test_attivo ? (
+                <button
+                  onClick={inviaTest}
+                  className="bg-purple-600 text-white py-2 rounded hover:bg-purple-700"
+                >
+                  🧠 Attiva Test
+                </button>
+              ) : (
+                <button
+                  onClick={sbloccaTest}
+                  className="bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700"
+                >
+                  🔓 Sblocca Test
+                </button>
+              )}
             </div>
           </>
         )}

@@ -9,6 +9,66 @@ function normalizeWebField(dbName) {
     return "oldindirizzoweb";
 }
 
+async function normalizeLocationFields(convenzione, conn) {
+    if (!convenzione) return;
+    try {
+        const regionValue = (convenzione.regione ?? "").toString().trim();
+        if (regionValue) {
+            const [regRow] = await conn.query(
+                `SELECT id, regione, codregione 
+                 FROM regioni_province 
+                 WHERE id = ? 
+                    OR codregione = ? 
+                    OR LOWER(regione) = LOWER(?) 
+                 ORDER BY id ASC 
+                 LIMIT 1`,
+                [regionValue, regionValue, regionValue]
+            );
+            if (regRow.length) {
+                convenzione.regione_label = regRow[0].regione;
+                if (regRow[0].id) convenzione.regione = String(regRow[0].id);
+            }
+        }
+
+        const provinciaValue = (convenzione.provincia ?? "").toString().trim();
+        if (provinciaValue) {
+            const [provRow] = await conn.query(
+                `SELECT id, provincia, codprovincia 
+                 FROM regioni_province 
+                 WHERE id = ? 
+                    OR codprovincia = ? 
+                    OR LOWER(provincia) = LOWER(?) 
+                 ORDER BY id ASC 
+                 LIMIT 1`,
+                [provinciaValue, provinciaValue, provinciaValue]
+            );
+            if (provRow.length) {
+                convenzione.provincia_label = provRow[0].provincia;
+                if (provRow[0].id) convenzione.provincia = String(provRow[0].id);
+            }
+        }
+
+        const comuneValue = (convenzione.comune ?? "").toString().trim();
+        if (comuneValue) {
+            const [comRow] = await conn.query(
+                `SELECT id, comune 
+                 FROM comuni 
+                 WHERE id = ? 
+                    OR LOWER(comune) = LOWER(?) 
+                 ORDER BY id ASC 
+                 LIMIT 1`,
+                [comuneValue, comuneValue]
+            );
+            if (comRow.length) {
+                convenzione.comune_label = comRow[0].comune;
+                if (comRow[0].id) convenzione.comune = String(comRow[0].id);
+            }
+        }
+    } catch (err) {
+        console.warn("⚠️ normalizeLocationFields:", err.message);
+    }
+}
+
 /***************************************
 * ✅ LISTA CONVENZIONI
 ***************************************/
@@ -112,6 +172,135 @@ router.delete("/:codice", async (req, res) => {
 /***************************************
 * ✅ DETTAGLIO CONVENZIONE
 ***************************************/
+router.get("/lookups/regioni", async (req, res) => {
+    try {
+        const conn = await getConnection("wpacquisti");
+        const [rows] = await conn.query(
+            `SELECT MIN(id) AS id, codregione, regione 
+             FROM regioni_province 
+             WHERE regione IS NOT NULL AND regione <> '' 
+             GROUP BY codregione, regione
+             ORDER BY regione ASC`
+        );
+
+        res.json(
+            rows.map(r => ({
+                value: String(r.id || r.codregione || r.regione),
+                label: r.regione,
+                codregione: r.codregione
+            }))
+        );
+    } catch (err) {
+        console.error("GET regioni ERR:", err.message);
+        res.status(500).json({ error: "Errore lettura regioni" });
+    }
+});
+
+router.get("/lookups/province", async (req, res) => {
+    try {
+        const { regione } = req.query;
+        if (!regione) return res.json([]);
+
+        const conn = await getConnection("wpacquisti");
+
+        let regionCode = regione;
+        const [regRow] = await conn.query(
+            "SELECT codregione FROM regioni_province WHERE id = ? LIMIT 1",
+            [regione]
+        );
+        if (regRow.length && regRow[0].codregione) {
+            regionCode = regRow[0].codregione;
+        }
+
+        const [rows] = await conn.query(
+            `SELECT id, provincia, sigla, codprovincia 
+             FROM regioni_province 
+             WHERE codregione = ?
+             ORDER BY provincia ASC`,
+            [regionCode]
+        );
+
+        res.json(
+            rows.map(r => ({
+                value: String(r.id),
+                label: r.provincia,
+                sigla: r.sigla,
+                codprovincia: r.codprovincia,
+            }))
+        );
+    } catch (err) {
+        console.error("GET province ERR:", err.message);
+        res.status(500).json({ error: "Errore lettura province" });
+    }
+});
+
+router.get("/lookups/comuni", async (req, res) => {
+    try {
+        const { provincia } = req.query;
+        if (!provincia) return res.json([]);
+
+        const conn = await getConnection("wpacquisti");
+        let codprovincia = provincia;
+
+        const [provRow] = await conn.query(
+            "SELECT codprovincia FROM regioni_province WHERE id = ? LIMIT 1",
+            [provincia]
+        );
+        if (provRow.length && provRow[0].codprovincia) {
+            codprovincia = provRow[0].codprovincia;
+        }
+
+        const [rows] = await conn.query(
+            `SELECT id, comune 
+             FROM comuni 
+             WHERE codprovincia = ?
+             ORDER BY comune ASC`,
+            [codprovincia]
+        );
+
+        res.json(
+            rows.map(r => ({
+                value: String(r.id),
+                label: r.comune,
+            }))
+        );
+    } catch (err) {
+        console.error("GET comuni ERR:", err.message);
+        res.status(500).json({ error: "Errore lettura comuni" });
+    }
+});
+
+router.get("/lookups/learning-corsi", async (req, res) => {
+    try {
+        const search = (req.query.q || "").toString().trim();
+
+        const conn = await getConnection(process.env.MYSQL_FORMA4);
+        let rows;
+        if (search) {
+            const like = `%${search}%`;
+            [rows] = await conn.query(
+                `SELECT idCourse, code, name 
+                 FROM learning_course 
+                 WHERE code LIKE ? OR name LIKE ?
+                 ORDER BY code ASC 
+                 LIMIT 200`,
+                [like, like]
+            );
+        } else {
+            [rows] = await conn.query(
+                `SELECT idCourse, code, name 
+                 FROM learning_course 
+                 ORDER BY code ASC 
+                 LIMIT 300`
+            );
+        }
+        res.json(rows);
+    } catch (err) {
+        console.error("GET learning-corsi ERR:", err.message);
+        res.status(500).json({ error: "Errore lettura corsi learning" });
+    }
+});
+
 router.get("/:codice", async (req, res) => {
     try {
         const conn = await getConnection("wpacquisti");
@@ -121,6 +310,7 @@ router.get("/:codice", async (req, res) => {
         );
 
         if (!rows.length) return res.status(404).json({ error: "Non trovata" });
+        await normalizeLocationFields(rows[0], conn);
         res.json(rows[0]);
     } catch (err) {
         console.error("GET codice ERR:", err.message);
@@ -193,6 +383,7 @@ router.get("/:codice/full", async (req, res) => {
         if (!conv.length) return res.json({ error: "Convenzione non trovata" });
 
         const convenzione = conv[0];
+        await normalizeLocationFields(convenzione, connWP);
         const nomeConv = convenzione.Name;
 
         // 2) Lista corsi per la convenzione (SOLO da tblprezzi) → base canonica

@@ -303,5 +303,76 @@ router.post("/cambiaslide", async (req, res) => {
     }
 });
 
+router.post("/ricrea-test", async (req, res) => {
+    const { db, iduser, idcourse } = req.body;
+    if (!db || !iduser || !idcourse) {
+        return res.status(400).json({ error: "Parametri mancanti" });
+    }
+
+    try {
+        const conn = await getConnection(db);
+
+        const [targetRows] = await conn.query(
+            `SELECT lt.idtrack, lt.idtest
+             FROM learning_testtrack lt
+             WHERE lt.iduser=? AND lt.idreference IN (
+                 SELECT idorg FROM learning_organization WHERE idcourse=? AND isterminator=1
+             )
+             ORDER BY lt.date_attempt DESC
+             LIMIT 1`,
+            [iduser, idcourse]
+        );
+
+        if (!targetRows.length) {
+            return res.status(404).json({ error: "Nessun tentativo test trovato per questo utente" });
+        }
+
+        const target = targetRows[0];
+
+        const [sourceRows] = await conn.query(
+            `SELECT lt.idtrack, lt.score
+             FROM learning_testtrack lt
+             WHERE lt.idtest=? AND lt.idtrack <> ?
+             ORDER BY (lt.score IS NULL), lt.score DESC, lt.date_attempt DESC
+             LIMIT 1`,
+            [target.idtest, target.idtrack]
+        );
+
+        if (!sourceRows.length) {
+            return res.status(404).json({ error: "Nessun test valido da cui copiare i dati" });
+        }
+
+        const source = sourceRows[0];
+
+        await conn.query(`DELETE FROM learning_testtrack_answer WHERE idtrack=?`, [target.idtrack]);
+
+        const [insertResult] = await conn.query(
+            `INSERT INTO learning_testtrack_answer
+             (idTrack, idQuest, idAnswer, score_assigned, more_info, manual_assigned, user_answer, number_time, created_at, updated_at, idtemp)
+             SELECT ?, idQuest, idAnswer, score_assigned, more_info, manual_assigned, user_answer, number_time, created_at, updated_at, idtemp
+             FROM learning_testtrack_answer
+             WHERE idTrack=?`,
+            [target.idtrack, source.idtrack]
+        );
+
+        await conn.query(
+            `UPDATE learning_testtrack
+             SET score=?
+             WHERE idtrack=?`,
+            [source.score, target.idtrack]
+        );
+
+        res.json({
+            success: true,
+            targetTrack: target.idtrack,
+            sourceTrack: source.idtrack,
+            copiedAnswers: insertResult.affectedRows || 0,
+        });
+    } catch (err) {
+        console.error("ricrea-test ERR:", err);
+        res.status(500).json({ error: "Errore durante la ricostruzione del test" });
+    }
+});
+
 
 module.exports = router;

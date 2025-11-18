@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { useAlert } from "../../components/SmartAlertModal";
 type Which = "ricevute" | "ricevutenew";
 
 interface Row {
@@ -28,6 +29,7 @@ export default function FattureList({ which }: { which: Which }) {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(false);
   const [meta, setMeta] = useState<{ total?: number } | null>(null);
+  const { alert: showAlert } = useAlert();
 
   const fetchData = async () => {
     setLoading(true);
@@ -78,7 +80,7 @@ export default function FattureList({ which }: { which: Which }) {
     });
     const j = await res.json();
     if (j.zip_url) window.open(j.zip_url, "_blank");
-    else alert(j.error || "Errore generazione ZIP");
+    else await showAlert(j.error || "Errore generazione ZIP");
   };
 
   return (

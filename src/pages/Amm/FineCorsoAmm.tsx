@@ -73,16 +73,7 @@ function ModalDatiSessione({ isOpen, onClose, onSave, row }: ModalProps) {
           • {row.code} — {row.convenzione}
         </p>
 
-        {/* 📌 Calendario Preview */}
-        <div className="bg-gray-50 p-3 rounded-lg border mb-4">
-          <FullCalendar
-            plugins={[dayGridPlugin]}
-            initialView="dayGridMonth"
-            height="auto"
-            locale={itLocale}
-            events={calendarEvents}
-          />
-        </div>
+
 
         {/* Form */}
         <div className="grid grid-cols-2 gap-4">
@@ -125,7 +116,16 @@ function ModalDatiSessione({ isOpen, onClose, onSave, row }: ModalProps) {
           onChange={(e) => setForm({ ...form, note: e.target.value })}
           className="w-full border rounded p-2 mt-2"
         />
-
+        {/* 📌 Calendario Preview */}
+        <div className="bg-gray-50 p-2 rounded-lg border mb-6">
+          <FullCalendar
+            plugins={[dayGridPlugin]}
+            initialView="dayGridMonth"
+            height="300px"
+            locale={itLocale}
+            events={calendarEvents}
+          />
+        </div>
         <div className="flex justify-end gap-3 mt-5">
           <button
             onClick={onClose}
@@ -154,7 +154,7 @@ export default function FineCorsoAmm() {
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState<FineCorsoRow | null>(null);
-  // Removed unused sortField state
+  const [, setSortField] = useState<string>("lastname");
   const [sortAsc, setSortAsc] = useState<boolean>(true);
 
   const loadData = async () => {
@@ -181,6 +181,7 @@ export default function FineCorsoAmm() {
       return valA > valB ? (sortAsc ? 1 : -1) : sortAsc ? -1 : 1;
     });
     setData(newOrder);
+    setSortField(field);
     setSortAsc(!sortAsc);
   };
 
@@ -206,10 +207,14 @@ export default function FineCorsoAmm() {
   };
 
   const colorRow = (row: FineCorsoRow) => {
-    if (row.flagevent === 1) return "bg-green-200";
-    if (row.flagevent === 2) return "bg-red-200";
-    if (row.evaso === 1) return "bg-pink-200";
-    return "bg-white";
+    const map: Record<number, string> = {
+      0: "bg-green-200",
+      1: "bg-green-600 text-white",
+      2: "bg-gray-400",
+      3: "bg-red-400 text-white",
+      4: "bg-pink-300",
+    };
+    return map[row.flagevent ?? -1] || "bg-white";
   };
 
   return (
@@ -225,6 +230,10 @@ export default function FineCorsoAmm() {
           Confermata
         </div>
         <div>
+          <span className="inline-block w-3 h-3 bg-gray-400 mr-2 rounded"></span>
+          Non confermata
+        </div>
+        <div>
           <span className="inline-block w-3 h-3 bg-red-400 mr-2 rounded"></span>
           Buon fine NO
         </div>
@@ -232,14 +241,10 @@ export default function FineCorsoAmm() {
           <span className="inline-block w-3 h-3 bg-pink-300 mr-2 rounded"></span>
           Buon fine SI
         </div>
-        <div>
-          <span className="inline-block w-3 h-3 bg-orange-500 mr-2 rounded"></span>
-          🔔 Sessioni già create
-        </div>
       </div>
 
       <h1 className="text-xl font-bold mb-4">
-        🧾Amministratore di condominio — Gestione Sessioni
+        🧾 Fine Corso 60 ore — Gestione Sessioni
       </h1>
 
       {loading ? (
@@ -304,21 +309,22 @@ export default function FineCorsoAmm() {
                       copy.find((r) => r.id === row.id)!.note = e.target.value;
                       setData(copy);
                     }}
-                    onBlur={async () => {
+                    onBlur={async (event) => {
+                      const latestNote = event.currentTarget.value;
                       await fetch(`/api/finecorsoamm/note`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                           id_user: row.id_user,
                           id_course: row.id_course,
-                          note: row.note,
+                          note: latestNote,
                         }),
                       });
                     }}
                   />
                 </td>
 
-                <td className="p-2 text-center space-x-3">
+                <td className="p-2 text-center space-x-1">
                   <Calendar
                     size={25}
                     className="text-orange-500 hover:text-orange-700 cursor-pointer"

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useAlert } from "../../components/SmartAlertModal";
 
 type FreeRow = {
   type: "free";
@@ -54,6 +55,7 @@ export default function ReportQuestionariA() {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
+  const { alert: showAlert } = useAlert();
 
   // opzionale: dropdown convenzioni già esistente in /api/iscrizioni/convenzioni
   const [convenzioni, setConvenzioni] = useState<
@@ -243,7 +245,7 @@ export default function ReportQuestionariA() {
         ),
       );
     } catch (e) {
-      alert((e as Error).message);
+      await showAlert((e as Error).message);
     }
   };
 

@@ -143,14 +143,48 @@ www.novastudia.academy</a></span></span></span></u></em></span></span><br />
 `;
 
 global.piedinodidattica = `
-
-<img src=cid:companylogo>
-<p style=""margin-left:0cm; margin-right:0cm""><span style=""font-size:14pt""><span style=""font-family:Calibri,sans-serif""><strong><em><span style=""font-size:12.0pt""><span style=""font-family:&quot;Times New Roman&quot;,serif""><span style=""color:#00314c"">RB Intermediari<br> Progetto di RB Consulting S.r.l.</span></span></span></em></strong></span></span><br />
-<span style=""font-size:14pt""><span style=""font-family:Calibri,sans-serif""><em><span style=""font-size:12.0pt""><span style=""font-family:&quot;Times New Roman&quot;,serif""><span style=""color:#00314c"">Via Crescenzio, 25</span></span></span></em></span></span><br />
-<span style=""font-size:14pt""><span style=""font-family:Calibri,sans-serif""><em><span style=""font-size:12.0pt""><span style=""font-family:&quot;Times New Roman&quot;,serif""><span style=""color:#00314c"">00193 Roma (RM)</span></span></span></em></span></span><br />
-<span style=""font-size:14pt""><span style=""font-family:Calibri,sans-serif""><em><span style=""font-size:12.0pt""><span style=""font-family:&quot;Times New Roman&quot;,serif""><span style=""color:#00314c"">800.69.99.92</span></span></span></em></span></span><br />
-<span style=""font-size:14pt""><span style=""font-family:Calibri,sans-serif""><em><u><span style=""font-size:12.0pt""><span style=""font-family:&quot;Times New Roman&quot;,serif""><span style=""color:#0563c1""><a href=""mailto:didattica@formazioneintermediari.com"" style=""color:#0563c1; text-decoration:underline"">didattica@formazioneintermediari.com</a></span></span></span></u></em></span></span><br />
-<span style=""font-size:14pt""><span style=""font-family:Calibri,sans-serif""><em><u><span style=""font-size:12.0pt""><span style=""font-family:&quot;Times New Roman&quot;,serif""><span style=""color:#0563c1""><a href=""https://www.formazioneintermediari.com"" style=""color:#0563c1; text-decoration:underline"">www.formazioneintermediari.com.com</a></span></span></span></u></em></span></span><br />"
+<img src="cid:companylogo">
+<p style="margin-left:0cm; margin-right:0cm">
+  <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
+    <strong><em><span style="font-size:12.0pt">
+      <span style="font-family:'Times New Roman',serif"><span style="color:#00314c">
+        RB Intermediari<br> Progetto di RB Consulting S.r.l.
+      </span></span>
+    </span></em></strong>
+  </span></span><br />
+  <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
+    <em><span style="font-size:12.0pt"><span style="font-family:'Times New Roman',serif">
+      <span style="color:#00314c">Via Crescenzio, 25</span>
+    </span></span></em>
+  </span></span><br />
+  <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
+    <em><span style="font-size:12.0pt"><span style="font-family:'Times New Roman',serif">
+      <span style="color:#00314c">00193 Roma (RM)</span>
+    </span></span></em>
+  </span></span><br />
+  <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
+    <em><span style="font-size:12.0pt"><span style="font-family:'Times New Roman',serif">
+      <span style="color:#00314c">800.69.99.92</span>
+    </span></span></em>
+  </span></span><br />
+  <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
+    <em><u><span style="font-size:12.0pt"><span style="font-family:'Times New Roman',serif">
+      <span style="color:#0563c1">
+        <a href="mailto:didattica@formazioneintermediari.com" style="color:#0563c1; text-decoration:underline">
+          didattica@formazioneintermediari.com
+        </a>
+      </span>
+    </span></span></u></em>
+  </span></span><br />
+  <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
+    <em><u><span style="font-size:12.0pt"><span style="font-family:'Times New Roman',serif">
+      <span style="color:#0563c1">
+        <a href="https://www.formazioneintermediari.com" style="color:#0563c1; text-decoration:underline">
+          www.formazioneintermediari.com
+        </a>
+      </span>
+    </span></span></u></em>
+  </span></span><br />
 `;
 
 
@@ -490,18 +524,6 @@ async function SendBenvenuto({
     const mode = getTemplateMode();
     const blockCred = `• <b>Username:</b> ${username}<br/>• <b>Password:</b> ${password}`;
 
-    // --- Case: Formazione Avvocati
-    if (/^Formazione Avvocati$/i.test(convenzione)) {
-        body = `<div style='text-align:justify'><span style='font-family:Times New Roman;font-size:14pt;color:#00314C'>
-Gentile Utente <b>${nominativo}</b>,<br>
-Da questo momento può accedere alla piattaforma e ai suoi contenuti...
-<br><center>${nomesito}</center><br>
-<p style='line-height:0.8em;'><b>Username: ${username}<br>Password: ${password}</b></p>
-... (testo invariato dal VB.NET) ...
-</span></div>`;
-        body = mode === "raw" ? fixTyposRaw(body) : cleanHTML(fixTyposRaw(body));
-        return await invioMail({ from: "info@formazioneavvocati.eu", to: email, subject, html: body, bcc, attachments: file ? [file] : [] });
-    }
 
     // --- Case: ASSIAC - Concetta
     if (/^ASSIAC - Concetta$/i.test(convenzione)) {
@@ -561,24 +583,6 @@ ${piedinonovastudia}</span></div>`;
         return await invioMail({ from: "info@novastudia.academy", to: email, subject, html: body, bcc });
     }
 
-    // --- Case speciali (Fad SpConsulting, Alco Group - SP, Ius Consulting, Bcc..., Broker Trust...)
-    if (/^(Fad SpConsulting|Alco Group - SP|Ius Consulting|Bcc Creta|Bcc Centropadana|Broker Trust ISVAP|Broker Trust OAM)$/i.test(convenzione)) {
-        body = `<div style='text-align:justify'><span style='font-family:Times New Roman;font-size:14pt;color:#00314C'>
-Gentile Utente <b>${nominativo}</b>,<br>
-benvenuto al corso e-learning <b>"${nomecorso}"</b>.<br>
-${blockCred}<br>
-<p>Accesso:<br>- da pc o mobile: <a href='${nomesito}'>${nomesito}</a></p>
-Il corso ha validità di 1 anno dalla data di attivazione...
-<p>Assistenza: claudia.deri@spconsulting.name; supporto@formazioneintermediari.com — Tel. 800.69.99.92</p>
-${piedino}</span></div>`;
-        body = mode === "raw" ? fixTyposRaw(body) : cleanHTML(fixTyposRaw(body));
-        if (pec) {
-            const es1 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: body });
-            const es2 = await invioMail({ from: "info@formazioneintermediari.com", to: email, subject, html: body, bcc });
-            return `${es1} ${es2}`;
-        }
-        return await invioMail({ from: "info@formazioneintermediari.com", to: email, subject, html: body, bcc });
-    }
 
     // --- Case Ventidue Broker (flag ventidue nel VB): testo dedicato
     if (/Ventidue Broker/i.test(convenzione)) {
@@ -613,11 +617,43 @@ PEC: ventiduebrokersrl@legalmail.it • Contatti: info@ventiduebroker.it</span><
 Gentile Utente <b>${nominativo}</b>,<br>
 benvenuto al corso e-learning <b>"${nomecorso}"</b>.<br>
 ${blockCred}
-<p>Accesso:<br>• da pc: <a href='${nomesito}'>${nomesito}</a>;<br>
-• da dispositivo mobile: <a href='${nomesito}'>${nomesito}</a>.</p>
-<p style='text-align:justify;line-height:130%'><center><b><u><span style='font-family:Times New Roman;font-size:14pt;color:#00314C'>SERVIZIO ASSISTENZA CLIENTI</span></u></b></center></p>
-<p>• Mail: info@formazioneintermediari.com / supporto@formazioneintermediari.com<br>
-• Telefono: 800.69.99.92</p>${piedino}
+
+<p>
+  Di seguito le diverse modalità per accedere alla piattaforma didattica:<br>
+  • da pc: <a href="${nomesito}" target="_blank">${nomesito}</a>;<br>
+  • da dispositivo mobile: <a href="${nomesito}" target="_blank">${nomesito}</a>
+  (la piattaforma è compatibile con smartphone e tablet).<br><br>
+</p>
+
+<p style="text-align:justify;line-height:130%">
+  <center>
+    <b><u>
+      <span style="font-family:Times New Roman;font-size:14pt;color:#00314C">
+        SERVIZIO ASSISTENZA CLIENTI
+      </span>
+    </u></b>
+  </center>
+</p>
+
+<p>
+  Per qualsiasi dubbio o richiesta di informazioni che riguardino la didattica, il sito e la piattaforma di formazione, ci contatti:<br>
+  • via <b>Mail</b>, 24h su 24h, 7 giorni su 7: 
+    <a href="mailto:info@formazioneintermediari.com">info@formazioneintermediari.com</a>
+    oppure 
+    <a href="mailto:supporto@formazioneintermediari.com">supporto@formazioneintermediari.com</a>;<br>
+  • via <b>Telefono</b>, dal Lunedì al Venerdì dalle 09.30 alle 13.00 e dalle 14.00 alle 18.00, al numero: 
+    <b>800.69.99.92</b>.<br>
+  Eventuali problemi al sistema saranno risolti al massimo nelle 24 ore successive.
+</p>
+
+<p>
+  Restiamo a Sua disposizione per qualsiasi chiarimento, auspicando che il corso possa essere di Suo gradimento oltre che utile all'esercizio della Sua attività professionale.
+</p>
+
+<p>Cordiali saluti,</p>
+
+${piedino}
+
 </span></div>`;
     body = mode === "raw" ? fixTyposRaw(body) : cleanHTML(fixTyposRaw(body));
     if (pec) {
@@ -913,56 +949,25 @@ async function getBCC(iduser) {
     }
 }
 
-function resolvePlatformFromHost(host = "", piattaforma = "") {
-    host = host.toLowerCase();
-    piattaforma = (piattaforma || "").toLowerCase();
-
-    // --- Mapping basato su IP ---
-    if (host.includes("167.86.110.96")) {
-        return { connKey: "SITE", db: "formazionecondorb" };
-    }
-    if (host.includes("4.232.138.184")) {
-        return { connKey: "IFAD", db: process.env.MYSQL_FORMA4 };
-    }
-    if (host.includes("4.232.141.0")) {
-        return { connKey: "SIMPLY", db: "simplybiz" };
-    }
-    if (host.includes("40.68.206.138")) {
-        return { connKey: "EFAD", db: "newformazionein" };
-    }
-    if (host.includes("45.85.146.77")) {
-        return { connKey: "NOVA", db: "efadnovastdia" };
-    }
-
-    // --- Fallback in base al nome piattaforma ---
-    if (piattaforma.includes("formazionecondorb")) return { connKey: "SITE", db: "formazionecondorb" };
-    if (piattaforma.includes(process.env.MYSQL_FORMA4)) return { connKey: "IFAD", db: process.env.MYSQL_FORMA4 };
-    if (piattaforma.includes("simply")) return { connKey: "SIMPLY", db: "simplybiz" };
-    if (piattaforma.includes("newformazionein")) return { connKey: "EFAD", db: "newformazionein" };
-    if (piattaforma.includes("wpacquisti")) return { connKey: "EFAD", db: "wpacquisti" };
-    if (piattaforma.includes("efadnovastdia")) return { connKey: "NOVA", db: "efadnovastdia" };
-    if (piattaforma.includes("rbacademy")) return { connKey: "SITE", db: "rbacademy" };
-
-    console.warn("⚠️ Mapping non trovato:", host, piattaforma);
-    return { connKey: "SITE", db: "formazionecondorb" }; // safe default
-}
 /* =======================================================
    🔹 EXPORT
    ======================================================= */
 /**
  * ✅ Replica VB: IscriviaSimulazione
  */
-async function IscriviaSimulazione(idst, idcorso, dataiscrizione, cn) {
+async function IscriviaSimulazione(idst, idcorso, dataiscrizione, cn, dbName) {
     try {
+        const connection = cn || (dbName ? await getConnection(dbName) : null);
+        if (!connection) throw new Error("Connessione non valida per IscriviaSimulazione");
         const date = ConvertToMysqlDateTime(new Date(dataiscrizione));
-        await cn.query(
+        await connection.query(
             `INSERT INTO learning_courseuser
             (idUser, idCourse, level, date_inscr, waiting, imported_from_connection, absent, cancelled_by, new_forum_post)
             VALUES (?, ?, 3, ?, 0, 1039, 0, 0, 0)`,
             [idst, idcorso, date]
         );
 
-        const [g] = await cn.query(
+        const [g] = await connection.query(
             `SELECT idst FROM core_group 
              WHERE groupid LIKE ? LIMIT 1`,
             [`%/lms/course/${idcorso}/subscribed/3%`]
@@ -970,7 +975,7 @@ async function IscriviaSimulazione(idst, idcorso, dataiscrizione, cn) {
 
         if (g.length) {
             const idstgroup = g[0].idst;
-            await cn.query(
+            await connection.query(
                 `INSERT INTO core_group_members (idst, idstMember)
                  VALUES (?, ?)`,
                 [idstgroup, idst]
@@ -984,17 +989,19 @@ async function IscriviaSimulazione(idst, idcorso, dataiscrizione, cn) {
 /**
  * ✅ Replica VB: IscriviCorsi
  */
-async function IscriviCorsi(idst, idcorso, cn) {
+async function IscriviCorsi(idst, idcorso, cn, dbName) {
     try {
+        const connection = cn || (dbName ? await getConnection(dbName) : null);
+        if (!connection) throw new Error("Connessione non valida per IscriviCorsi");
         const date = ConvertToMysqlDateTime(new Date());
-        await cn.query(
+        await connection.query(
             `INSERT INTO learning_courseuser
             (idUser, idCourse, level, date_inscr, waiting, imported_from_connection, absent, cancelled_by, new_forum_post)
             VALUES (?, ?, 3, ?, 0, 1039, 0, 0, 0)`,
             [idst, idcorso, date]
         );
 
-        const [g] = await cn.query(
+        const [g] = await connection.query(
             `SELECT idst FROM core_group 
              WHERE groupid LIKE ? LIMIT 1`,
             [`%/lms/course/${idcorso}/subscribed/3%`]
@@ -1002,7 +1009,7 @@ async function IscriviCorsi(idst, idcorso, cn) {
 
         if (g.length) {
             const idstgroup = g[0].idst;
-            await cn.query(
+            await connection.query(
                 `INSERT INTO core_group_members (idst, idstMember)
                  VALUES (?, ?)`,
                 [idstgroup, idst]
@@ -1856,6 +1863,11 @@ module.exports = {
     getPercentuale,
     decodeTime,
     getNomeCorsoById,
+    // Piedini
+    piedino,
+    piedinorbacademy,
+    piedinonovastudia,
+    piedinodidattica,
     // File / Log
     logwrite,
     downloadRemoteFile,
@@ -1876,4 +1888,6 @@ module.exports = {
     checkEmail,
     getBCC,
     SaveAndSend,
+    invioMail,
+    invioMailPEC,
 };

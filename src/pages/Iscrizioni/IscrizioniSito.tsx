@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import ModalEditOrdine from "./ModalEditOrdine";
 import ModalEditCorsista from "./ModalEditCorsista";
-import ModalEsitoIscrizione from "./ModalEsitoIscrizioni";
+import { useAlert } from "../../components/SmartAlertModal";
 interface Corsista {
   id: number;
   corsista_first_name: string;
@@ -31,12 +31,17 @@ interface Iscrizione {
   costo_imponibile?: number;
   billing_discount?: number;
   interrompi?: number | null;
+  segnalazioni_count?: number | null;
+  segnalazioni_dates?: string | null;
+  segnala?: number | null;
 }
 
 export default function IscrizioniSito() {
   const [rows, setRows] = useState<Iscrizione[]>([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [didMount, setDidMount] = useState(false);
   const [openRowId, setOpenRowId] = useState<string | null>(null);
   const [subgrid, setSubgrid] = useState<Record<string, Corsista[]>>({});
   const [loading, setLoading] = useState(true);
@@ -48,8 +53,15 @@ export default function IscrizioniSito() {
     corsista: Corsista;
     orderId: string;
   }>(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalData, setModalData] = useState<any>(null);
+  const { alert: showAlert, confirm: showConfirm } = useAlert();
+  const askConfirm = async (message: string) => {
+    try {
+      await showConfirm(message);
+      return true;
+    } catch {
+      return false;
+    }
+  };
   const limit = 50;
 
   const formatDateTime = (isoString: string) => {
@@ -59,10 +71,15 @@ export default function IscrizioniSito() {
     return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
   };
 
-  const fetchOrdini = async (p = 1) => {
+  const fetchOrdini = async (p = 1, term = searchTerm) => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/iscrizioni/sito?page=${p}&limit=${limit}`);
+      const params = new URLSearchParams({
+        page: String(p),
+        limit: String(limit),
+      });
+      if (term.trim()) params.append("search", term.trim());
+      const res = await fetch(`/api/iscrizioni/sito?${params.toString()}`);
       const json = await res.json();
       const data = json.rows || [];
       const normalized = data.map((r: any) => ({
@@ -82,9 +99,18 @@ export default function IscrizioniSito() {
   };
 
   useEffect(() => {
-    fetchOrdini(page);
+    fetchOrdini(1, searchTerm).finally(() => setDidMount(true));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!didMount) return;
+    const handler = setTimeout(() => {
+      fetchOrdini(1, searchTerm);
+    }, 400);
+    return () => clearTimeout(handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm, didMount]);
 
   const fetchCorsisti = async (orderId: string) => {
     setLoadingSub((p) => ({ ...p, [orderId]: true }));
@@ -110,40 +136,47 @@ export default function IscrizioniSito() {
     });
   };
 
+  const formatSegnalazioniInfo = (row: Iscrizione) => {
+    const count = Number(row.segnalazioni_count ?? row.segnala ?? 0);
+    if (!count) return row.interrompi === 1 ? "Solleciti disattivati" : "";
+    const datesRaw = (row.segnalazioni_dates || "").split("||").filter(Boolean);
+    const datesLabel = datesRaw.length ? datesRaw.join(", ") : "";
+    const label = `${count} sollecito${count === 1 ? "" : "i"}`;
+    const full = datesLabel ? `${label}: ${datesLabel}` : label;
+    return row.interrompi === 1 ? `${full} (invii disattivati)` : full;
+  };
+
   // ====== AZIONI ======
   const EditIscrizionesito = (r: Iscrizione) => setEditOrdine({ order: r });
 
   const reinvia = async (orderId: string) => {
-    if (!confirm(`Reinvia email ordine #${orderId} a billing_email?`)) return;
+    if (!(await askConfirm(`Reinvia email ordine #${orderId} a billing_email?`))) return;
     const res = await fetch(
       `/api/iscrizioni/ordini/${encodeURIComponent(orderId)}/reinvia`,
       { method: "POST" },
     );
     const j = await res.json();
-    if (j.success) alert("Email reinviata");
-    else alert(j.error || "Errore invio email");
+    await showAlert(j.success ? "Email reinviata" : j.error || "Errore invio email");
   };
 
   const segnala = async (orderId: string) => {
-    if (!confirm(`Inviare sollecito pagamento per ordine #${orderId}?`)) return;
+    if (!(await askConfirm(`Inviare sollecito pagamento per ordine #${orderId}?`))) return;
     const res = await fetch(
       `/api/iscrizioni/ordini/${encodeURIComponent(orderId)}/segnala`,
       { method: "POST" },
     );
     const j = await res.json();
-    if (j.success) alert("Sollecito inviato");
-    else alert(j.error || "Errore invio sollecito");
+    await showAlert(j.success ? "Sollecito inviato" : j.error || "Errore invio sollecito");
   };
 
   const interrompi = async (orderId: string) => {
-    const ok = confirm("Interrompere le segnalazioni automatiche?");
-    if (!ok) return;
+    if (!(await askConfirm("Interrompere le segnalazioni automatiche?"))) return;
     await fetch(`/api/iscrizioni/ordini/${encodeURIComponent(orderId)}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ interrompi: 1 }),
     });
-    fetchOrdini(page);
+    fetchOrdini(page, searchTerm);
   };
 
   // Iscrivi (ordine intero o singolo) — chiama
@@ -162,11 +195,11 @@ export default function IscrizioniSito() {
       body: JSON.stringify(body),
     });
     const json = await res.json();
-    setModalData(json);
-    setModalOpen(true);
 
+    const message = json.message || "Iscrizione completata";
+    const results = Array.isArray(json.results) ? json.results : undefined;
     if (!json.success) {
-      alert(json.error || "Errore iscrizione");
+      await showAlert(json.error || message, { title: "Esiti iscrizioni", results });
       return;
     }
     // Merge esitoEmail sui corsisti già caricati
@@ -174,7 +207,7 @@ export default function IscrizioniSito() {
       string,
       { to: any; bcc: any; pec: any } | undefined
     > = {};
-    json.result.forEach((r: any) => {
+    (json.results || []).forEach((r: any) => {
       mapEsiti[String(r.email).toLowerCase()] = r.esitoEmail;
     });
     setSubgrid((prev) => {
@@ -187,8 +220,8 @@ export default function IscrizioniSito() {
       });
       return out;
     });
-    alert("Iscrizione completata");
-    fetchOrdini(page);
+    await showAlert(message, { title: "Esiti iscrizioni", results });
+    fetchOrdini(page, searchTerm);
   };
 
   const iscrivisitosingolo = async (
@@ -196,24 +229,24 @@ export default function IscrizioniSito() {
     nuovo: boolean,
     corsistaId: number,
   ) => {
-    // usa Options per limitare al corsista
     const body = {
       idordine: orderId,
       table: "woocommerce",
       webdb: "newformazione",
-
       chkexist: !nuovo,
       sendmail: true,
-      Options: `a.order_id=${orderId} AND b.id=${corsistaId}`,
+      corsistaId,
     };
-    const res = await fetch("/api/iscrizioni/iscriviwebnew", {
+    const res = await fetch("/api/iscrizioni/weborders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
     const j = await res.json();
+    const singleMessage = j.message || "Iscrizione singolo completata";
+    const singleResults = Array.isArray(j.results) ? j.results : undefined;
     if (!j.success) {
-      alert(j.error || "Errore iscrizione singolo");
+      await showAlert(j.error || singleMessage, { title: "Esiti iscrizione", results: singleResults });
       return;
     }
     // aggiorna badge email
@@ -228,16 +261,33 @@ export default function IscrizioniSito() {
         return out;
       });
     }
-    alert("Iscrizione singolo completata");
-    fetchOrdini(page);
+    await showAlert(singleMessage, { title: "Esiti iscrizione", results: singleResults });
+    fetchOrdini(page, searchTerm);
   };
 
   // Modifica corsista
 
   // Totale pagina
+  const visibleRows = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return rows;
+    return rows.filter((row) => {
+      const fields = [
+        row.order_id,
+        row.nome_convenzione,
+        row.intestazione_fattura,
+        row.metodo_di_pagamento,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return fields.includes(term);
+    });
+  }, [rows, searchTerm]);
+
   const totale = useMemo(
-    () => rows.reduce((s, r) => s + (r.fatturato || 0), 0),
-    [rows],
+    () => visibleRows.reduce((s, r) => s + (r.fatturato || 0), 0),
+    [visibleRows],
   );
 
   const badge = (val?: "ok" | "ko" | "-") => {
@@ -259,33 +309,53 @@ export default function IscrizioniSito() {
   return (
     <div className="p-4 sm:p-6 space-y-4">
       <h1 className="text-lg sm:text-xl font-semibold">
-        📦 Iscrizioni da sito
+        📦 Iscrizioni RBINTERMEDIARI
       </h1>
+
+      <div className="flex flex-wrap gap-3 items-center">
+        <label className="text-sm text-gray-600 flex items-center gap-2">
+          Cerca ordine:
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setOpenRowId(null);
+            }}
+            placeholder="ID ordine, convenzione, intestazione, email..."
+            className="border rounded px-2 py-1 text-sm"
+          />
+        </label>
+        <span className="text-xs text-gray-500">
+          Totale risultati: {total}
+        </span>
+      </div>
 
       {loading ? (
         <p className="text-center text-gray-500">Caricamento...</p>
       ) : (
         <div className="overflow-x-auto border rounded-md shadow-sm">
           <table className="min-w-[1100px] border-collapse text-sm table-fixed w-full">
-            <thead className="bg-gray-100 text-gray-600 sticky top-0 z-10">
+            <thead className="bg-blue-600 text-white sticky top-0 z-10">
               <tr>
-                <th className="w-6"></th>
-                <th className="w-[380px] p-2 text-left">Azioni</th>
-                <th className="p-2">N. Ordine</th>
-                <th className="p-2">Data</th>
-                <th className="p-2">Convenzione</th>
-                <th className="p-2">Intestazione Fattura</th>
-                <th className="p-2">Modalità</th>
-                <th className="p-2">Esito</th>
-                <th className="p-2 text-right">Tot €</th>
-              </tr>
+              <th className="w-6"></th>
+              <th className="w-[380px] p-2 text-left">Azioni</th>
+              <th className="p-2">N. Ordine</th>
+              <th className="p-2">Data</th>
+              <th className="p-2">Convenzione</th>
+              <th className="p-2">Intestazione Fattura</th>
+              <th className="p-2">Modalità</th>
+              <th className="p-2">Esito</th>
+              <th className="p-2 text-right">Tot €</th>
+            </tr>
             </thead>
             <tbody>
-              {rows.map((row, index) => {
+              {visibleRows.map((row, index) => {
                 const rowKey = String(row.id || row.order_id || index);
                 const isOpen = openRowId === rowKey;
                 const orderKey = String(row.order_id);
                 const corsisti = subgrid[orderKey] || [];
+                const segInfo = formatSegnalazioniInfo(row);
 
                 return (
                   <React.Fragment key={rowKey}>
@@ -333,31 +403,40 @@ export default function IscrizioniSito() {
                           >
                             Reinvia
                           </button>
+                          <button
+                            title={
+                              row.interrompi === 1
+                                ? "Invio solleciti disattivato"
+                                : "Invia sollecito"
+                            }
+                            onClick={() => segnala(orderKey)}
+                            disabled={row.interrompi === 1}
+                            className={`px-2 py-1 text-xs rounded text-white ${
+                              row.interrompi === 1
+                                ? "bg-gray-400 cursor-not-allowed"
+                                : "bg-yellow-500 hover:bg-yellow-600"
+                            }`}
+                          >
+                            ⚠️
+                          </button>
                           {row.interrompi !== 1 && (
-                            <>
-                              <button
-                                title="Segnala"
-                                onClick={() => segnala(orderKey)}
-                                className="px-2 py-1 text-xs bg-yellow-500 hover:bg-yellow-600 text-white rounded"
-                              >
-                                ⚠️
-                              </button>
-                              <button
-                                title="Interrompi"
-                                onClick={() => interrompi(orderKey)}
-                                className="px-2 py-1 text-xs bg-red-700 hover:bg-red-800 text-white rounded"
-                              >
-                                🔒
-                              </button>
-                            </>
+                            <button
+                              title="Interrompi invii automatici"
+                              onClick={() => interrompi(orderKey)}
+                              className="px-2 py-1 text-xs bg-red-700 hover:bg-red-800 text-white rounded"
+                            >
+                              🔒
+                            </button>
                           )}
-                          <span className="px-2 py-1 text-xs bg-gray-200 rounded">
-                            {row.order_id}
-                          </span>
                         </div>
                       </td>
 
-                      <td className="p-2">{row.order_id}</td>
+                      <td className="p-2">
+                        <div className="font-semibold">{row.order_id}</div>
+                        {segInfo && (
+                          <div className="text-[11px] text-gray-500">{segInfo}</div>
+                        )}
+                      </td>
                       <td className="p-2">{formatDateTime(row.date_ins)}</td>
                       <td className="p-2">{row.nome_convenzione || "-"}</td>
                       <td className="p-2">{row.intestazione_fattura || "-"}</td>
@@ -549,15 +628,6 @@ export default function IscrizioniSito() {
             setEditCorsista(null);
             if (openRowId) fetchCorsisti(String(editCorsista.orderId));
           }}
-        />
-      )}
-      {modalOpen && modalData && (
-        <ModalEsitoIscrizione
-          open={modalOpen}
-          success={modalData.success}
-          failed={modalData.failed}
-          failures={modalData.failures || []}
-          onClose={() => setModalOpen(false)}
         />
       )}
     </div>

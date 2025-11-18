@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Loader2, Plus, Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Editor } from "@tinymce/tinymce-react";
+import { useAlert } from "../components/SmartAlertModal";
 
 /**
  * Fallback useToast hook used when "@/components/ui/use-toast" is not available.
@@ -9,17 +10,13 @@ import { Editor } from "@tinymce/tinymce-react";
 function useToast() {
     const toast = ({ title, description, variant }: { title: string; description?: string; variant?: string }) => {
         if (typeof window === "undefined") return;
-        if (variant === "destructive") {
-            alert(`${title}${description ? ": " + description : ""}`);
-            return;
-        }
 
         const el = document.createElement("div");
         el.textContent = `${title}${description ? " - " + description : ""}`;
         el.style.position = "fixed";
         el.style.top = "1rem";
         el.style.right = "1rem";
-        el.style.background = "rgba(0,0,0,0.75)";
+        el.style.background = variant === "destructive" ? "rgba(220,38,38,0.95)" : "rgba(0,0,0,0.75)";
         el.style.color = "#fff";
         el.style.padding = "8px 12px";
         el.style.borderRadius = "6px";
@@ -39,6 +36,7 @@ export default function MailFormatEditor() {
     const [newKey, setNewKey] = useState("");
     const [newCat, setNewCat] = useState("");
     const { toast } = useToast();
+    const { alert: showAlert } = useAlert();
 
     // 📥 Carica elenco formati
     useEffect(() => {
@@ -77,7 +75,10 @@ export default function MailFormatEditor() {
     }, [selected]);
 
     const createTemplate = async () => {
-        if (!newKey) return alert("Inserisci un nome per il template");
+        if (!newKey) {
+            await showAlert("Inserisci un nome per il template");
+            return;
+        }
         try {
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mailformat/new`, {
                 method: "POST",
@@ -103,7 +104,10 @@ export default function MailFormatEditor() {
     };
 
     const handleSave = async () => {
-        if (!selected) return alert("Seleziona un formato da modificare");
+        if (!selected) {
+            await showAlert("Seleziona un formato da modificare");
+            return;
+        }
         setLoading(true);
         try {
             const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mailformat/${selected}`, {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAlert } from "../components/SmartAlertModal";
 
 export default function Convenzioni() {
   const [data, setData] = useState<any[]>([]);
@@ -7,6 +8,15 @@ export default function Convenzioni() {
   const [visibile, setVisibile] = useState<number | null>(1); // ✅ parte con attive
   const [filtro, setFiltro] = useState<number | null>(0); // ✅ filtro neutro
   const navigate = useNavigate();
+  const { confirm: showConfirm } = useAlert();
+  const askConfirm = async (message: string) => {
+    try {
+      await showConfirm(message);
+      return true;
+    } catch {
+      return false;
+    }
+  };
 
   const fetchData = async () => {
     setLoading(true);
@@ -30,7 +40,7 @@ export default function Convenzioni() {
   }, [visibile, filtro]);
 
   const elimina = async (codice: string) => {
-    if (!window.confirm("Vuoi cancellare la convenzione?")) return;
+    if (!(await askConfirm("Vuoi cancellare la convenzione?"))) return;
     await fetch(`/api/convenzioni/${codice}`, { method: "DELETE" });
     fetchData();
   };

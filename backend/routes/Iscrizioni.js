@@ -22,6 +22,7 @@ const {
     ConvertToMysqlDateTime,
     adddetails,
     SaveAndSend,
+    invioMail,
     // pipeline
     IscriviaSimulazione,
 } = require("../utils/helper");
@@ -80,6 +81,37 @@ async function loadConvenzioneByCodeOrName(convenzione) {
 
     return rows.length ? rows[0] : DEFAULT;
 }
+
+async function attachSegnalazioniInfo(rows) {
+    if (!Array.isArray(rows) || rows.length === 0) return rows;
+    const ids = rows
+        .map(r => r.order_id)
+        .filter(id => id !== undefined && id !== null)
+        .map(String);
+    if (!ids.length) return rows;
+
+    try {
+        const segDb = await getConnection("newformazione");
+        const placeholders = ids.map(() => "?").join(",");
+        const [info] = await segDb.query(
+            `SELECT idordine, COUNT(*) AS total, 
+                GROUP_CONCAT(DATE_FORMAT(date_ins, '%d/%m/%Y %H:%i') ORDER BY date_ins SEPARATOR '||') AS dates
+             FROM segnalazioni
+             WHERE idordine IN (${placeholders})
+             GROUP BY idordine`,
+            ids
+        );
+        const map = new Map(info.map(r => [String(r.idordine), r]));
+        rows.forEach((row) => {
+            const data = map.get(String(row.order_id));
+            row.segnalazioni_count = data?.total || 0;
+            row.segnalazioni_dates = data?.dates || "";
+        });
+    } catch (err) {
+        console.warn("segInfo WARN:", err.message);
+    }
+    return rows;
+}
 // ========================= Support: getCourseByCode =========================
 async function getCourseByCode(cn, codecorso, fallbackTitle = "") {
     let code = (codecorso || "").trim();
@@ -97,22 +129,96 @@ async function getCourseByCode(cn, codecorso, fallbackTitle = "") {
 // ========================= Mini-pipeline locale (usa i tuoi helper) =========================
 const SIM_MAP = { 4: 72, 8: 12, 15: 24, 16: 25, 71: 24, 73: 72, 79: 83, 85: 83 };
 
+const CAMPI_SUPPLEMENTARI = {
+    Intestatario_fattura: 11,
+    telefono: 20,
+    data_nascita: 22,
+    fax: 19,
+    cf: 23,
+    email: 24,
+    societa: 21,
+    sede: 12,
+    pi: 13,
+    cell: 14,
+    email_fattura: 15,
+    residenza: 16,
+    convenzione: 25,
+    clearPassword: 26,
+    socio: 27,
+    nassociato: 28,
+    sez: 29,
+    intermediadaily: 30,
+    pec: 31,
+    aula: 32,
+    pecfattura: 34,
+    codicedestinatario: 35,
+    indirizzo: 36,
+    cap: 37,
+    regione: 38,
+    provincia: 39,
+    comune: 40,
+};
+
+function normalizeBillingData(raw = null) {
+    if (!raw || typeof raw !== "object") return null;
+    const normalized = {};
+    const map = [
+        ["Intestatario_fattura", raw.intestatario],
+        ["pi", raw.partitaIva],
+        ["email_fattura", raw.email],
+        ["pecfattura", raw.pec],
+        ["codicedestinatario", raw.codiceDestinatario],
+        ["indirizzo", raw.indirizzo],
+        ["sede", raw.indirizzo],
+        ["cap", raw.cap],
+        ["comune", raw.comune],
+        ["provincia", raw.provincia],
+        ["regione", raw.regione],
+    ];
+    for (const [key, value] of map) {
+        const v = typeof value === "string" ? value.trim() : "";
+        if (v) normalized[key] = v;
+    }
+    return Object.keys(normalized).length ? normalized : null;
+}
+
 async function processEnrollRows({
-    rows,                   // array utenti normalizzati
-    piattaforma,// destinazione piattaforma (IFAD/SITE/NOVA...) + host/ip
-    convenzioneName,        // solo testo
-    nomesito,               // per email             // es. "cod3035"
-    ifSendMail = true,      // invio email
-    webOrderUpdate = null,  // fn opzionale per aggiornare ordine web
+    rows,                      // array utenti normalizzati
+    db,                        // nome database target
+    piattaforma,               // alias (alcune chiamate legacy)
+    convenzioneName,           // nome convenzione preferito
+    convenzioneFallback,       // eventuale fallback
+    nomesito,                  // per email             // es. "cod3035"
+    ifSendMail = true,         // invio email
+    webOrderUpdate = null,     // fn opzionale per aggiornare ordine web
+    fatturazione = null,       // dati fatturazione manuali
 }) {
     const results = [];
 
-    const cn = await getConnection(db);
+    const targetDb = (db || piattaforma || "").trim();
+    const convName = convenzioneName || convenzioneFallback || rows?.[0]?.convenzione || "";
+    if (!targetDb) throw new Error("Database destinazione non specificato per processEnrollRows");
+    console.log(`[processEnrollRows] START rows=${rows?.length || 0} db=${targetDb} convenzione=${convName || ""}`);
+
+    const cn = await getConnection(targetDb);
+    const billingOverrides = normalizeBillingData(fatturazione);
 
     // ricava id corso
 
     for (const src of rows) {
-        const res = { email: src.email, stato: "OK", emailOk: false, pecOk: false, bccOk: false };
+        const res = {
+            nome: src.nome || "",
+            cognome: src.cognome || "",
+            email: src.email,
+            pec: src.pec,
+            bccEmail: src.bccEmail || "",
+            stato: "OK",
+            esitoIscrizione: "In corso",
+            note: "",
+            mailEsito: "KO",
+            bccEsito: src.bccEmail ? "KO" : "N/A",
+            pecEsito: src.pec ? "KO" : "N/A",
+        };
         try {
 
             const { idcourse, codeFinal, title } = await getCourseByCode(cn, src.codecorso, src.corso);
@@ -124,20 +230,53 @@ async function processEnrollRows({
             let pec = String(src.pec || "").toLowerCase().trim();
             let cf = String(src.cf || "").toUpperCase().trim();
             let tel = String(src.telefono || "").trim();
+            let passwordReal = "";
+            const convInfo = src.convenzioneInfo || {};
+            const fax = String(src.fax || "").trim();
+            const cell = String(src.cell || src.cellulare || src.telefonoCell || convInfo.cell || "").trim();
+            const sedeVal = String(src.sede || src.sedeFattura || convInfo.sededistaccata || convInfo.sede || "").trim();
+            const ragSoc = String(src.ragionesocialefatt || src.societa || convInfo.ragsoc || convInfo.societa || "").trim();
+            const intestatarioFatt = String(
+                src.intestatarioFattura || src.intestatario_fattura || ragSoc || convInfo.intestatario_fattura || `${nome} ${cognome}`
+            ).trim();
+            const partitaIva = String(src.piva || src.partitaiva || src.partitaIva || convInfo.piva || convInfo.pi || "").toUpperCase().trim();
+            const emailFatt = String(src.emailFattura || src.emailfatt || convInfo.email_fattura || convInfo.email || "").toLowerCase().trim();
+            const telefonoFatt = String(src.telefonoFattura || src.telefonof || convInfo.telefono || convInfo.tel || "").trim();
+            const residenza = String(src.residenza || convInfo.residenza || "").trim();
+            const socio = String(src.socio || convInfo.socio || "").trim();
+            const nassociato = String(src.nassociato || convInfo.nassociato || "").trim();
+            const sez = String(src.sez || convInfo.sez || "").trim();
+            const intermediadaily = String(src.intermediadaily || convInfo.intermediadaily || "").trim();
+            const aula = String(src.aula || convInfo.newindirizzoweb || convInfo.indirizzoweb || "").trim();
+            const pecFatt = String(src.pecfattura || src.pecfatt || src.pec || convInfo.pecfattura || convInfo.pec || "").toLowerCase().trim();
+            const codDest = String(src.codiceDestinatario || src.codicedestinatario || convInfo.codicedestinatario || "").toUpperCase().trim();
+            const indirizzo = String(src.indirizzo || sedeVal || convInfo.indirizzo || "").trim();
+            const cap = String(src.cap || convInfo.cap || "").trim();
+            const regione = String(src.regione || convInfo.regione || "").trim();
+            const provincia = String(src.provincia || convInfo.provincia || "").trim();
+            const comune = String(src.comune || convInfo.comune || "").trim();
 
             // esistenza
             let ifexist = false;
             let idst = 0;
             let username = ((cognome.replace(/[’' ]/g, "").slice(0, 3) + (nome || "").replace(/[’' ]/g, "").slice(0, 3)) || (cognome + nome)).toLowerCase();
-            const dtExist = await GetIfUserExist(nome, cognome, cf, email, cn, convenzioneName);
+            const dtExist = await GetIfUserExist(nome, cognome, cf, email, cn, convName);
             if (dtExist && dtExist.length) {
                 ifexist = true;
                 idst = dtExist[0].idst;
                 username = dtExist[0].userid.replace("/", "");
+                await cn.query(
+                    `UPDATE core_user SET firstname=?, lastname=?, email=? WHERE idst=?`,
+                    [nome, cognome, email, idst]
+                );
+                const [pwdRow] = await cn.query(
+                    `SELECT user_entry FROM core_field_userentry WHERE id_common=26 AND id_user=? LIMIT 1`,
+                    [idst]
+                );
+                passwordReal = pwdRow?.[0]?.user_entry || "";
             }
 
-            // new user
-            let passwordReal = "";
+            // new user 
             if (!ifexist) {
                 passwordReal = (await CreateRandomPassword(6)).toLowerCase();
                 const passHash = await getMd5Hash(passwordReal);
@@ -155,12 +294,63 @@ async function processEnrollRows({
                 await adddetails(26, idst, passwordReal, cn);
             }
 
+            // evita doppia iscrizione stesso corso
+            if (idst) {
+                const [already] = await cn.query(
+                    `SELECT 1 FROM learning_courseuser WHERE idUser=? AND idCourse=? LIMIT 1`,
+                    [idst, idcourse]
+                );
+                if (already.length) {
+                    res.stato = "DUPLICATO";
+                    res.esitoIscrizione = "KO";
+                    res.error = "Utente già iscritto allo stesso corso";
+                    res.note = "Utente già iscritto allo stesso corso";
+                    results.push(res);
+                    console.warn(`[processEnrollRows] DUPLICATO email=${email} idcourse=${idcourse}`);
+                    continue;
+                }
+            }
+
             // details
-            await adddetails(23, idst, cf, cn);         // cf
-            await adddetails(24, idst, email, cn);      // email
-            await adddetails(31, idst, pec, cn);        // pec
-            await adddetails(20, idst, tel, cn);        // telefono
-            await adddetails(25, idst, convenzioneName, cn); // convenzione
+            const detailData = {
+                Intestatario_fattura: intestatarioFatt,
+                telefono: tel,
+                data_nascita: src.data_nascita || src.dataNascita || "",
+                fax,
+                cf,
+                email,
+                societa: ragSoc,
+                sede: sedeVal,
+                pi: partitaIva,
+                cell: cell || telefonoFatt,
+                email_fattura: emailFatt,
+                residenza,
+                convenzione: convName,
+                clearPassword: passwordReal,
+                socio,
+                nassociato,
+                sez,
+                intermediadaily,
+                pec,
+                aula,
+                pecfattura: pecFatt,
+                codicedestinatario: codDest,
+                indirizzo,
+                cap,
+                regione,
+                provincia,
+                comune,
+            };
+            if (billingOverrides) {
+                for (const [key, value] of Object.entries(billingOverrides)) {
+                    detailData[key] = value;
+                }
+            }
+
+            for (const [key, value] of Object.entries(detailData)) {
+                const fieldId = CAMPI_SUPPLEMENTARI[key];
+                if (fieldId) await adddetails(fieldId, idst, value, cn);
+            }
 
             // iscrizione corso + validità
             const now = new Date();
@@ -174,20 +364,50 @@ async function processEnrollRows({
                 [idst, idcourse, begin, end, passwordReal]
             );
 
-            // group
+            // group membership (replica logica VB)
             const [gCourse] = await cn.query(
                 `SELECT idst FROM core_group WHERE groupid LIKE ? LIMIT 1`,
                 [`%/lms/course/${idcourse}/subscribed/3%`]
             );
-            const idstgroup = gCourse?.[0]?.idst;
-            const gruppi = [idstgroup].filter(Boolean);
-            for (const g of gruppi) {
-                try { await cn.query(`INSERT INTO core_group_members (idst, idstMember) VALUES (?, ?)`, [g, idst]); } catch { }
+            const courseGroupId = gCourse?.[0]?.idst || null;
+
+            let convenzioneGroupId = null;
+            try {
+                const [gConv] = await cn.query(
+                    `SELECT idst FROM core_group WHERE groupid LIKE ? LIMIT 1`,
+                    [`%/${convName}`]
+                );
+                convenzioneGroupId = gConv?.[0]?.idst || null;
+            } catch {
+                convenzioneGroupId = null;
+            }
+
+            const baseGroups = [2, 1, 5, 6];
+            let groupsToInsert = [];
+            if (ifexist) {
+                if (courseGroupId) groupsToInsert.push(courseGroupId);
+                if (convenzioneGroupId) groupsToInsert.push(convenzioneGroupId);
+            } else {
+                groupsToInsert.push(...baseGroups);
+                if (courseGroupId) groupsToInsert.push(courseGroupId);
+                if (convenzioneGroupId) groupsToInsert.push(convenzioneGroupId);
+            }
+
+            const uniqueGroups = [...new Set(groupsToInsert.filter(Boolean))];
+            for (const groupId of uniqueGroups) {
+                try {
+                    await cn.query(
+                        `INSERT INTO core_group_members (idst, idstMember) VALUES (?, ?)`,
+                        [groupId, idst]
+                    );
+                } catch {
+                    // ignora errori duplicati
+                }
             }
 
             // simulazioni
-            if (SIM_MAP[idcourse]) await IscriviaSimulazione(idst, SIM_MAP[idcourse], now);
-            if (/^codIVASS30OAM15$/i.test(codeFinal)) await IscriviaSimulazione(idst, 23, now);
+            if (SIM_MAP[idcourse]) await IscriviaSimulazione(idst, SIM_MAP[idcourse], now, cn, targetDb);
+            if (/^codIVASS30OAM15$/i.test(codeFinal)) await IscriviaSimulazione(idst, 23, now, cn, targetDb);
 
             // email
             if (ifSendMail) {
@@ -197,6 +417,7 @@ async function processEnrollRows({
                     nominativo: `${nome} ${cognome}`,
                     email,
                     pec,
+                    bcc: src.bccEmail || "",
                     societa: "",
                     code: codeFinal,
                     nomesito,
@@ -211,9 +432,9 @@ async function processEnrollRows({
                     datattivazione: now.toLocaleDateString("it-IT"),
                     codfis: cf,
                 });
-                res.emailOk = esito?.emailOk || false;
-                res.pecOk = esito?.pecOk || false;
-                res.bccOk = esito?.bccOk || false;
+                res.mailEsito = esito?.emailOk ? "OK" : "KO";
+                res.bccEsito = esito?.bccOk ? "OK" : "KO";
+                res.pecEsito = src.pec ? (esito?.pecOk ? "OK" : "KO") : "N/A";
             }
 
             // web update opzionale
@@ -221,16 +442,30 @@ async function processEnrollRows({
                 try { await webOrderUpdate(src.order_id); } catch (e) { await logwrite("webOrderUpdate: " + e.message); }
             }
 
+            res.esitoIscrizione = "OK";
+            res.note = "";
             results.push(res);
+            console.log(
+                `[processEnrollRows] OK email=${email} idst=${idst} idcourse=${idcourse} convenzione=${convName || ""}`
+            );
         } catch (err) {
             await logwrite("Enroll ERR: " + err);
+            console.log(
+                `[processEnrollRows] KO email=${src?.email || ""} convenzione=${convName || ""} reason=${err.message}`
+            );
             res.stato = "ERRORE";
             res.error = err.message;
+            res.esitoIscrizione = "KO";
+            res.note = err.message;
             results.push(res);
             continue;
         }
     }
 
+
+    const okCount = results.filter(r => r.stato === "OK").length;
+    const koCount = results.filter(r => r.stato !== "OK").length;
+    console.log(`[processEnrollRows] END ok=${okCount} ko=${koCount} convenzione=${convName || ""}`);
 
     return results;
 }
@@ -239,8 +474,8 @@ async function processEnrollRows({
 // ✅ NUOVA ROUTE - Import da Excel JSON (frontend manda già parsed)
 router.post("/excel", async (req, res) => {
     try {
-        const { convenzione, corso, utenti } = req.body;
-
+        const { convenzione, corso, utenti, fatturazione } = req.body;
+        console.log("DEBUG utenti ricevuti:", utenti);
         if (!Array.isArray(utenti) || utenti.length === 0) {
             return res.status(400).json({ error: "Lista utenti mancante o vuota" });
         }
@@ -253,32 +488,60 @@ router.post("/excel", async (req, res) => {
             return res.status(400).json({ error: "Corso mancante" });
         }
 
-        // 🧠 Estraggo info da convenzione selezionata
-        const [convName, db] = convenzione.split("|");
-        const [courseCode, courseName] = String(corso).split("|");
-
-        // normalizza ogni utente
-        const utentiNormalized = utenti.map((u) => {
-            const [cognome, nome, email, cf, telefono = ""] = u;
-            return {
-                nome: (nome || "").trim(),
-                cognome: (cognome || "").trim(),
-                email: (email || "").toLowerCase().trim(),
-                cf: (cf || "").toUpperCase().trim(),
-                telefono: (telefono || "").trim(),
-                codecorso: courseCode,
-                nomecorso: courseName,
-                convenzione: convenzione
-            };
-        });
-        if (!db) {
-            return res.status(400).json({ error: "Convenzione non valida: manca  db" });
+        const conv = await loadConvenzioneByCodeOrName(convenzione);
+        if (!conv) {
+            return res.status(404).json({ error: "Convenzione non trovata" });
         }
 
-        console.log("📌 Excel →", convName, db, utenti.length);
+        const convName = conv.name || conv.Name || conv.Codice || convenzione;
+        const nomesito = conv.newindirizzoweb || conv.indirizzoweb || "";
+        const targetDb = (conv.piattaforma || conv.Piattaforma || "").toLowerCase();
+        if (!targetDb) {
+            return res.status(400).json({ error: "Impossibile determinare la piattaforma della convenzione selezionata" });
+        }
+
+        const [courseCodeRaw, ...courseNameParts] = String(corso || "").split("|");
+        const courseCode = (courseCodeRaw || "").trim();
+        const courseName = courseNameParts.join("|").trim();
+
+        // normalizza ogni utente
+        const utentiNormalized = utenti.map((u, idx) => {
+            // 🔍 Log per sicurezza
+            if (typeof u !== "object") {
+                console.warn("❌ FORMATO NON OGGETTO all'indice:", idx, "→", u);
+                throw new Error("Formato utente non valido (atteso oggetto)");
+            }
+
+            // 🔐 Estraggo campi con fallback sicuro
+            const cognome = (u.cognome || "").trim();
+            const nome = (u.nome || "").trim();
+            const email = (u.email || "").trim().toLowerCase();
+            const cf = (u.cf || "").trim().toUpperCase();
+            const telefono = (u.telefono || "").trim();
+
+            // 🔎 Validazione minima
+            if (!cognome || !nome || !email || !cf) {
+                console.warn("⚠️ Dati mancanti all'indice:", idx, u);
+                throw new Error("Formato utente non valido: campi mancanti");
+            }
+
+            return {
+                nome,
+                cognome,
+                email,
+                cf,
+                telefono,
+                codecorso: courseCode,
+                nomecorso: courseName || courseCode,
+                convenzione: convName,
+                bccEmail: conv.mailbcc || ""
+            };
+        });
+
+        console.log("📌 Excel →", convName, targetDb, utenti.length);
 
         // ✅ Connessione piattaforma target
-        const cn = await getConnection(db);
+        const cn = await getConnection(targetDb);
 
         // ✅ Wrapper per update stato ordine web (solo se order_id esiste)
         const webOrderUpdate = async (order_id) => {
@@ -296,29 +559,31 @@ router.post("/excel", async (req, res) => {
         };
 
 
+        const mustCollectBilling = (convName || "").toLowerCase() === "formazione intermediari";
+        const billingData = mustCollectBilling && fatturazione && typeof fatturazione === "object" ? fatturazione : null;
+
         // ✅ Uso la mega-funzione esistente 💪
         const results = await processEnrollRows({
             rows: utentiNormalized,
-            piattaforma: db,
-            host,
+            db: targetDb,
+            convenzioneName: convName,
             convenzioneFallback: convName,
+            nomesito,
             ifSendMail: true,
-            checkExist: true,
             webOrderUpdate,
-            getCourseByCode,
-            cn,
+            fatturazione: billingData,
         });
-
-        if (cn?.release) cn.release();
 
         const ok = results.filter(r => !r.error).length;
         const fail = results.filter(r => r.error).length;
 
         return res.json({
-            success: true,
+            success: fail === 0,
             ok,
             fail,
-            errorDetails: results.filter(r => r.error)
+            results,
+            errorDetails: results.filter(r => r.error),
+            message: `Import completato: ${ok} OK, ${fail} KO`
         });
 
     } catch (err) {
@@ -338,11 +603,12 @@ router.post("/excel", async (req, res) => {
 router.post("/weborders", async (req, res) => {
     try {
         const { idordine, chkexist = true, sendmail = true } = req.body;
+        const webDbName = (req.query.db || req.body.webdb || "newformazione").toString().trim().toLowerCase();
 
         if (!idordine)
             return res.status(400).json({ error: "idordine richiesto" });
 
-        const dbWeb = await getConnection("newformazione");
+        const dbWeb = await getConnection(webDbName);
 
         // Ordine
         const [[ordine]] = await dbWeb.query(
@@ -359,12 +625,28 @@ router.post("/weborders", async (req, res) => {
             return res.status(400).json({ error: "Convenzione non valida o non trovata" });
 
 
-        const piattaforma = conv.piattaforma;
+        const fallbackPlatforms = {
+            newformazione: process.env.MYSQL_FORMA4?.toLowerCase() || "forma4",
+            rbacademy: "formazionecondorb",
+            novastudia: "efadnovastdia",
+        };
+
         const nomesito = conv.newindirizzoweb || conv.indirizzoweb || "";
+        const convName = conv.name || conv.Name || conv.Codice || conv.codice || codiceConv || "Senza nome";
+
+        let piattaforma = (conv.piattaforma || conv.Piattaforma || "").toLowerCase();
+        if (!piattaforma) {
+            piattaforma = fallbackPlatforms[webDbName] || "";
+        }
+
+        if (!piattaforma) {
+            return res.status(400).json({ error: "Impossibile determinare la piattaforma target per l'ordine selezionato" });
+        }
 
         // ✅ Ricava utenti/corsi collegati
         const [rows] = await dbWeb.query(
             `SELECT 
+                id,
                 corsista_first_name AS nome,
                 corsista_last_name AS cognome,
                 corsista_email AS email,
@@ -381,7 +663,6 @@ router.post("/weborders", async (req, res) => {
              ORDER BY corsista_last_name ASC`,
             [idordine]
         );
-
         if (!rows.length)
             return res.json({
                 success: true,
@@ -389,8 +670,22 @@ router.post("/weborders", async (req, res) => {
                 warning: "Nessun corsista associato"
             });
 
+        const singleCorsistaIds = []
+            .concat(req.body.corsistaIds || [])
+            .concat(req.body.corsistaId ? [req.body.corsistaId] : [])
+            .map(String)
+            .filter(Boolean);
+
+        let corsistiRows = rows;
+        if (singleCorsistaIds.length) {
+            corsistiRows = rows.filter(r => singleCorsistaIds.includes(String(r.id)));
+            if (!corsistiRows.length) {
+                return res.status(404).json({ error: "Corsista selezionato non trovato nell'ordine richiesto" });
+            }
+        }
+
         // ✅ struttura riga compatibile EXCEL
-        const utenti = rows.map(r => ({
+        const utenti = corsistiRows.map(r => ({
             nome: r.nome,
             cognome: r.cognome,
             email: r.email?.toLowerCase(),
@@ -398,21 +693,21 @@ router.post("/weborders", async (req, res) => {
             cf: r.cf?.toUpperCase(),
             telefono: r.telefono || "",
             codecorso: r.codecorso?.trim() || "",
-            convenzione: conv.name,
+            convenzione: convName,
             sede: `${r.sede_esame || ""}${r.wdm_user_custom_data || ""}`,
             order_id: idordine,
-            corso: r.corso
+            corso: r.corso,
+            bccEmail: conv.mailbcc || ""
         }));
 
         // ✅ PROCESSA ISCRIZIONI
         const results = await processEnrollRows({
             rows: utenti,
-            piattaforma,
-            host,
-            convenzioneName: conv.name,
+            db: piattaforma,
+            convenzioneName: convName,
+            convenzioneFallback: convName,
             nomesito,
             ifSendMail: sendmail,
-            checkExist: chkexist,
             webOrderUpdate: async () => {
                 await dbWeb.query(
                     `UPDATE wp_woocommerce_rb_ordini
@@ -430,11 +725,12 @@ router.post("/weborders", async (req, res) => {
             success: fail.length === 0,
             summary: {
                 order_id: idordine,
-                convenzione: conv.name,
+                convenzione: convName,
                 ok: success.length,
                 ko: fail.length
             },
-            results
+            results,
+            message: `Ordine ${idordine}: ${success.length} OK, ${fail.length} KO`
         });
 
     } catch (err) {
@@ -450,21 +746,33 @@ router.get("/sito", async (req, res) => {
         const page = parseInt(req.query.page || "1", 10);
         const limit = parseInt(req.query.limit || "50", 10);
         const offset = (page - 1) * limit;
+        const search = (req.query.search || "").toString().trim();
 
         const db = await getConnection("newformazione");
 
-        const [rows] = await db.query(
-            `SELECT 
-      *
-       FROM wp_woocommerce_rb_ordini
-       ORDER BY date_ins DESC
-       LIMIT ? OFFSET ?`,
-            [limit, offset]
-        );
+        const filters = [];
+        const params = [];
+        if (search) {
+            const like = `%${search}%`;
+            filters.push(`(order_id LIKE ? OR COALESCE(nome_convenzione,'') LIKE ? OR COALESCE(intestazione_fattura,'') LIKE ? OR COALESCE(billing_email,'') LIKE ?)`);
+            params.push(like, like, like, like);
+        }
+        const whereClause = filters.length ? `WHERE ${filters.join(" AND ")}` : "";
 
-        const [[{ total }]] = await db.query(
-            `SELECT COUNT(*) as total FROM wp_woocommerce_rb_ordini`
-        );
+        const dataSql = `
+            SELECT *
+            FROM wp_woocommerce_rb_ordini
+            ${whereClause}
+            ORDER BY date_ins DESC
+            LIMIT ? OFFSET ?`;
+        const [rows] = await db.query(dataSql, [...params, limit, offset]);
+        await attachSegnalazioniInfo(rows);
+
+        const countSql = `
+            SELECT COUNT(*) as total
+            FROM wp_woocommerce_rb_ordini
+            ${whereClause}`;
+        const [[{ total }]] = await db.query(countSql, params);
 
         res.json({ rows, total });
     } catch (err) {
@@ -475,19 +783,44 @@ router.get("/sito", async (req, res) => {
 
 /**
  * 📦 Ottiene iscrizioni ACADEMY (EFAD)
- * GET /api/iscrizioni/aca?db=newformazionein
+ * GET /api/iscrizioni/aca?db=rbacademy
  */
 router.get("/aca", async (req, res) => {
     try {
-        const db = await getConnection(req.query.db || "rbacademy");
-        const [rows] = await db.query(`
-      SELECT *
-      FROM wp_woocommerce_rb_ordini
-      ORDER BY order_id DESC
-    `);
-        res.json(rows);
+        const page = parseInt(req.query.page || "1", 10);
+        const limit = parseInt(req.query.limit || "50", 10);
+        const offset = (page - 1) * limit;
+        const search = (req.query.search || "").toString().trim();
+
+        const db = await getConnection("rbacademy");
+
+        const filters = [];
+        const params = [];
+        if (search) {
+            const like = `%${search}%`;
+            filters.push(`(order_id LIKE ? OR COALESCE(nome_convenzione,'') LIKE ? OR COALESCE(intestazione_fattura,'') LIKE ? OR COALESCE(billing_email,'') LIKE ?)`);
+            params.push(like, like, like, like);
+        }
+        const whereClause = filters.length ? `WHERE ${filters.join(" AND ")}` : "";
+
+        const dataSql = `
+            SELECT *
+            FROM wp_woocommerce_rb_ordini
+            ${whereClause}
+            ORDER BY date_ins DESC
+            LIMIT ? OFFSET ?`;
+        const [rows] = await db.query(dataSql, [...params, limit, offset]);
+        await attachSegnalazioniInfo(rows);
+
+        const countSql = `
+            SELECT COUNT(*) as total
+            FROM wp_woocommerce_rb_ordini
+            ${whereClause}`;
+        const [[{ total }]] = await db.query(countSql, params);
+
+        res.json({ rows, total });
     } catch (err) {
-        console.error("❌ Errore /iscrizioni/aca:", err);
+        console.error("Errore /iscrizioni/sito:", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -498,15 +831,40 @@ router.get("/aca", async (req, res) => {
  */
 router.get("/nova", async (req, res) => {
     try {
-        const db = await getConnection(req.query.db || "novastudia");
-        const [rows] = await db.query(`
-      SELECT *
-      FROM wp_woocommerce_rb_ordini
-      ORDER BY order_id DESC
-    `);
-        res.json(rows);
+        const page = parseInt(req.query.page || "1", 10);
+        const limit = parseInt(req.query.limit || "50", 10);
+        const offset = (page - 1) * limit;
+        const search = (req.query.search || "").toString().trim();
+
+        const db = await getConnection("novastudia");
+
+        const filters = [];
+        const params = [];
+        if (search) {
+            const like = `%${search}%`;
+            filters.push(`(order_id LIKE ? OR COALESCE(nome_convenzione,'') LIKE ? OR COALESCE(intestazione_fattura,'') LIKE ? OR COALESCE(billing_email,'') LIKE ?)`);
+            params.push(like, like, like, like);
+        }
+        const whereClause = filters.length ? `WHERE ${filters.join(" AND ")}` : "";
+
+        const dataSql = `
+            SELECT *
+            FROM wp_woocommerce_rb_ordini
+            ${whereClause}
+            ORDER BY date_ins DESC
+            LIMIT ? OFFSET ?`;
+        const [rows] = await db.query(dataSql, [...params, limit, offset]);
+        await attachSegnalazioniInfo(rows);
+
+        const countSql = `
+            SELECT COUNT(*) as total
+            FROM wp_woocommerce_rb_ordini
+            ${whereClause}`;
+        const [[{ total }]] = await db.query(countSql, params);
+
+        res.json({ rows, total });
     } catch (err) {
-        console.error("❌ Errore /iscrizioni/nova:", err);
+        console.error("Errore /iscrizioni/sito:", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -555,13 +913,16 @@ const htmlEscape = (s = "") =>
 const EMAIL_FROM = "info@formazioneintermediari.com";
 
 // Build HTML riepilogo (logica portata dal PHP)
-async function buildOrderEmailHTML(db, order_id) {
+async function buildOrderEmailHTML(db, order_id, dbName = "newformazione") {
+    const LOCATION_SCHEMA = "newformazione";
+    const locationPrefix = `${LOCATION_SCHEMA}.`;
+
     // 1) Count corsi by codice_corso
     const [countRows] = await db.query(
         `SELECT COUNT(*) AS numcount, codice_corso, corso_title
-     FROM newformazione.wp_woocommerce_rb_corsisti
-     WHERE order_id = ?
-     GROUP BY codice_corso, corso_title`,
+         FROM wp_woocommerce_rb_corsisti
+         WHERE order_id = ?
+         GROUP BY codice_corso, corso_title`,
         [order_id]
     );
 
@@ -569,10 +930,10 @@ async function buildOrderEmailHTML(db, order_id) {
     const [ordRows] = await db.query(
         `SELECT a.*,
             DATE_FORMAT(a.date_ins, '%d/%m/%Y') AS formatted_date,
-            (SELECT comune   FROM newformazione.rb_comuni_2016   WHERE id_comune   = a.billing_comune)   AS comune,
-            (SELECT provincia FROM newformazione.rb_province_2016 WHERE id_provincia = a.billing_provincia) AS provincia
-     FROM newformazione.wp_woocommerce_rb_ordini a
-     WHERE a.order_id = ?`,
+            (SELECT comune FROM ${locationPrefix}rb_comuni_2016 WHERE id_comune = a.billing_comune) AS comune,
+            (SELECT provincia FROM ${locationPrefix}rb_province_2016 WHERE id_provincia = a.billing_provincia) AS provincia
+         FROM wp_woocommerce_rb_ordini a
+         WHERE a.order_id = ?`,
         [order_id]
     );
 
@@ -651,9 +1012,9 @@ async function buildOrderEmailHTML(db, order_id) {
 
     // Dati utenti (corsisti)
     const [corsisti] = await db.query(
-        `SELECT * FROM newformazione.wp_woocommerce_rb_corsisti
-     WHERE order_id = ?
-     ORDER BY corsista_last_name ASC`,
+        `SELECT * FROM wp_woocommerce_rb_corsisti
+         WHERE order_id = ?
+         ORDER BY corsista_last_name ASC`,
         [order_id]
     );
 
@@ -709,9 +1070,10 @@ router.post("/ordini/:order_id/reinvia", async (req, res) => {
     const { order_id } = req.params;
     const emailMode = String(req.query.email ?? "0"); // "0" default → invia interno
     try {
-        const db = await getConnection("newformazione");
+        const webDbName = (req.query.db || "newformazione").toString().trim().toLowerCase();
+        const db = await getConnection(webDbName);
 
-        const { html, ordine } = await buildOrderEmailHTML(db, order_id);
+        const { html, ordine } = await buildOrderEmailHTML(db, order_id, webDbName);
 
         // Destinatari come in PHP:
         // email=1 → to = billing_email, bcc = FROM
@@ -747,10 +1109,12 @@ router.post("/ordini/:order_id/reinvia", async (req, res) => {
 router.post("/ordini/:order_id/segnala", async (req, res) => {
     const { order_id } = req.params;
     try {
-        const db = await getConnection("newformazione");
+        const webDbName = (req.query.db || "newformazione").toString().trim().toLowerCase();
+        const db = await getConnection(webDbName);
+        const segDb = await getConnection("newformazione");
 
         // Corpo sollecito (header) + riepilogo come in PHP
-        const { html, ordine } = await buildOrderEmailHTML(db, order_id);
+        const { html, ordine } = await buildOrderEmailHTML(db, order_id, webDbName);
 
         const sollecitoHeader = (() => {
             const totale = formatEuro(ordine.fatturato);
@@ -796,13 +1160,13 @@ Via Crescenzio, 25<br />
 
         // aggiorna contatori come PHP
         await db.query(
-            `UPDATE newformazione.wp_woocommerce_rb_ordini
+            `UPDATE wp_woocommerce_rb_ordini
        SET segnala = COALESCE(segnala,0) + 1
        WHERE order_id = ?`,
             [order_id]
         );
-        await db.query(
-            `INSERT INTO newformazione.segnalazioni (idordine) VALUES (?)`,
+        await segDb.query(
+            `INSERT INTO segnalazioni (idordine, date_ins) VALUES (?, NOW())`,
             [order_id]
         );
 
@@ -845,7 +1209,7 @@ router.get("/corsi", async (req, res) => {
         const dbConv = await getConnection("wpacquisti");
 
         const [conv] = await dbConv.query(
-            "SELECT codice, piattaforma, host FROM newconvenzioni WHERE name=?",
+            "SELECT piattaforma FROM newconvenzioni WHERE name=?",
             [convenzione]
         );
 
@@ -853,7 +1217,11 @@ router.get("/corsi", async (req, res) => {
             return res.json([]);
         }
 
-        const { codice, piattaforma, host } = conv[0];
+        const { piattaforma } = conv[0];
+        const targetDb = (piattaforma || "").toLowerCase();
+        if (!targetDb) {
+            throw new Error("Impossibile determinare la piattaforma associata alla convenzione selezionata");
+        }
 
         // 🔹 Corsi acquistabili dalla convenzione selezionata
         const [prezzi] = await dbConv.query(
@@ -866,9 +1234,8 @@ router.get("/corsi", async (req, res) => {
         const courseCodes = prezzi.map(p => `'${p.corso.trim()}'`).join(",");
         if (!courseCodes) return res.json([]);
 
-        // 🔹 Risolvi piattaforma da host
-
-        const cnCourses = await getConnection(resolved.db);
+        // 🔹 Connessione piattaforma target
+        const cnCourses = await getConnection(targetDb);
 
         // 🔹 Query finale su piattaforma (learning_course)
         const [rows] = await cnCourses.query(

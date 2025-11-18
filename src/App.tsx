@@ -30,6 +30,8 @@ import ReportConvenzione from "./pages/Report/ReportConvenzioni";
 import Template from "./pages/MailFormatEditor";
 import ReportCorsi from "./pages/ReportCorsi";
 import FineCorso from "./pages/FineCorso";
+import PublicSlotSettings from "./pages/Calendario/PublicSlotSettings";
+import PublicSlots from "./pages/PublicSlots";
 export default function App() {
   return (
     <Routes>
@@ -75,8 +77,12 @@ export default function App() {
         <Route path="/calendario/60h/finecorso" element={<FineCorso60h />} />
         <Route path="/calendario/60h/sessioni" element={<Calendario60h />} />
 
-        <Route path="/calendario/Amm/finecorsoamm" element={<FineCorsoAmm />} />
-        <Route path="/calendario/Amm/sessioniamm" element={<CalendarioAmm />} />
+        <Route path="/calendario/amm/finecorso" element={<FineCorsoAmm />} />
+        <Route path="/calendario/amm/sessioni" element={<CalendarioAmm />} />
+        <Route
+          path="/calendario/slot-config"
+          element={<PublicSlotSettings />}
+        />
 
         <Route path="/fatture/ricevute" element={<FattureRicevute />} />
         <Route path="/fatture/ricevutenew" element={<FattureRicevuteNew />} />
@@ -85,6 +91,7 @@ export default function App() {
 
         <Route path="*" element={<NotFound />} />
       </Route>
+      <Route path="/slots" element={<PublicSlots />} />
 
       {/* DEFAULT → HOME */}
       <Route path="*" element={<Navigate to="/" replace />} />

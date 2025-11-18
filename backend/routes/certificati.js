@@ -7,10 +7,11 @@ const PizZip = require("pizzip");
 const Docxtemplater = require("docxtemplater");
 
 const { getConnection } = require("../dbManager");
-const { logwrite } = require("../utils/helper");
+const { logwrite, getBCC, SaveAndSend, gettime, getLastTest, PATHS } = require("../utils/helper");
 const BACKEND_URL = process.env.BACKEND_URL;
 
 const TEMPLATES_BASE = "/var/www/rbcms/backend/templates/attestato";
+const TEMPLATES = "/var/www/rbcms/backend/templates";
 const CERT_DIR = path.join(process.cwd(), "/public/certificati/");
 if (!fs.existsSync(CERT_DIR)) fs.mkdirSync(CERT_DIR, { recursive: true });
 const CERT_PATH = path.join(process.cwd(), "backend/public/certificati");
@@ -198,6 +199,7 @@ async function generateCertificateUnified({ templatePath, data, iduser, corso, c
     const tmpDocx = fillDocxTemplate(templatePath, data);
     const tmpPdf = convertDocxToPdf(tmpDocx, CERT_PATH);
     // 3️⃣ Nome finale
+
     const safeCorso = (corso || code || "Corso").replace(/[\\/:*?"<>|]/g, "_");
     const safeNominativo = (nominativo || "").replace(/[\\/:*?"<>|]/g, "_");
     const pdfFinal = path.join(
@@ -287,7 +289,7 @@ function resolveTemplatePath({ code, convenzione }) {
     const key = Object.keys(variants).find(k => conv.includes(k));
 
     if (key) {
-        const folder = path.join(TEMPLATES_BASE, variants[key]);
+        const folder = path.join(TEMPLATES, variants[key]);
         const specific = path.join(folder, `${code}.docx`);
 
         if (fs.existsSync(specific)) {
@@ -426,6 +428,7 @@ router.post("/generate", async (req, res) => {
         ctx.webdb = webdb;
         ctx.conn = conn;
         ctx.annoriferimento = "2025";
+        const nominativo = `${rows[0].firstname} ${rows[0].lastname}`;
 
         // se è un test → risalgo
         ctx = resolveMainCourseFromTest(ctx);
@@ -453,10 +456,9 @@ router.post("/generate", async (req, res) => {
             iduser,
             nomecorso: ctx.nomecorso,
             code: ctx.code,
-
-            nomeCompleto: `${ctx.firstname} ${ctx.lastname}`
+            nominativo
         });
-
+        console.log(ctx)
         return res.json({
             success: true,
             file: `${BACKEND_URL}/backend/public/certificati/${path.basename(finalPdf)}`,
@@ -475,14 +477,18 @@ router.post("/generate", async (req, res) => {
 router.post("/sendcertificate", async (req, res) => {
     const { iduser, idcorso, webdb } = req.body;
 
+    console.log("🔵 [SENDCERT] → INIZIO ROUTE", { iduser, idcorso, webdb });
+
     if (!iduser || !idcorso || !webdb) {
         return res.status(400).json({ error: "Parametri mancanti" });
     }
 
     try {
         const conn = await getConnection(webdb);
+        console.log("🔵 [SENDCERT] 1. Connessione DB OK:", webdb);
 
         // 1️⃣ DATI BASE
+        console.log("🔵 [SENDCERT] 2. Query dati base...");
         const [rows] = await conn.query(`
             SELECT a.firstname, a.lastname, a.userid, a.email,
                    c.name AS nomecorso, c.code,
@@ -498,6 +504,8 @@ router.post("/sendcertificate", async (req, res) => {
 
         if (!rows.length) throw new Error("Utente o corso non trovato");
 
+        console.log("🟢 [SENDCERT] 2b. Dati utente/corso OK");
+
         const u = rows[0];
         const nominativo = `${u.firstname} ${u.lastname}`;
         const convenzione = u.convenzione || "";
@@ -505,87 +513,67 @@ router.post("/sendcertificate", async (req, res) => {
         const BASE_URL = process.env.BACKEND_URL;
 
         // 2️⃣ GESTIONE "già evaso"
+        console.log("🔵 [SENDCERT] 3. Verifica evaso...");
         const [ev] = await conn.query(
             "SELECT evaso2 FROM learning_certificate_assign WHERE id_user=? AND id_course=?",
             [iduser, idcorso]
         );
 
-        if (ev.length && ev[0].evaso2 == 1) {
-            await logwrite(`⚠️ Attestato già evaso → user=${iduser} corso=${idcorso}`);
-            // Non fermiamo il flusso, re-inviamo comunque se richiesto
-        }
+        console.log("🟢 [SENDCERT] 3b. Evaso status:", ev[0]);
 
         // 3️⃣ GENERA ATTESTATO (NUOVO SISTEMA)
+        console.log("🔵 [SENDCERT] 4. Generazione attestato → fetch POST /api/attestati/generate");
+
         const attRes = await fetch(`${BASE_URL}/api/attestati/generate`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ iduser, idcorso, webdb })
-        }).then(r => r.json());
+        }).then(r => {
+            console.log("🟢 [SENDCERT] 4a. fetch response status:", r.status);
+            return r.json();
+        }).catch(err => {
+            console.error("❌ [SENDCERT] 4b. ERRORE FETCH:", err.message);
+            throw new Error("Errore fetch attestati/generate: " + err.message);
+        });
+
+        console.log("🟢 [SENDCERT] 4c. Risposta generate:", attRes);
 
         if (!attRes.success) throw new Error(attRes.error || "Errore generazione attestato");
 
         const attestatoUrl = attRes.file;
-
-        // in locale → genero percorso file
         const attestatoPath = path.join(
-            process.cwd(),
-            "backend/public/certificati",
+            PATHS.CERTIFICATI,
             path.basename(attestatoUrl)
-        );
+        ); let attachments = [attestatoPath];
 
-        let attachments = [attestatoPath];
+        console.log("🟢 [SENDCERT] 4d. Attestato generato:", attestatoPath);
 
-        // --------------------------------------------------------
-        // 4️⃣ REPORT (GETTIME)
-        // --------------------------------------------------------
+        // 4️⃣ REPORT
         try {
-            const report = await gettime(
-                iduser,
-                idcorso,
-                u.firstname,
-                u.lastname,
-                webdb,
-                true,
-                "",
-                null
-            );
+            console.log("🔵 [SENDCERT] 5. Generazione REPORT gettime...");
+            const report = await gettime(iduser, idcorso, u.firstname, u.lastname, webdb, true, "", null);
 
-            if (report && fs.existsSync(report)) {
-                attachments.push(report);
-            } else {
-                console.warn("⚠️ Report non trovato:", report);
-            }
+            console.log("🟢 [SENDCERT] 5a. Risultato gettime:", report);
+
+            if (report && fs.existsSync(report)) attachments.push(report);
         } catch (err) {
-            await logwrite(`gettime ERR: ${err.message}`);
+            console.log("⚠️ [SENDCERT] gettime ERR:", err.message);
         }
 
-        // --------------------------------------------------------
-        // 5️⃣ TEST FINALE (GETLASTTEST)
-        // --------------------------------------------------------
+        // 5️⃣ TEST
         try {
-            const testFile = await getLastTest(
-                iduser,
-                idcorso,
-                u.firstname,
-                u.lastname,
-                webdb,
-                true,
-                "",
-                null
-            );
+            console.log("🔵 [SENDCERT] 6. Generazione TEST getLastTest...");
+            const testFile = await getLastTest(iduser, idcorso, u.firstname, u.lastname, webdb, true, "", null);
 
-            if (testFile && fs.existsSync(testFile)) {
-                attachments.push(testFile);
-            } else {
-                console.warn("⚠️ Test finale non trovato:", testFile);
-            }
+            console.log("🟢 [SENDCERT] 6a. Risultato getLastTest:", testFile);
+
+            if (testFile && fs.existsSync(testFile)) attachments.push(testFile);
         } catch (err) {
-            await logwrite(`getlasttest ERR: ${err.message}`);
+            console.log("⚠️ [SENDCERT] getLastTest ERR:", err.message);
         }
 
-        // --------------------------------------------------------
         // 6️⃣ UPDATE DB
-        // --------------------------------------------------------
+        console.log("🔵 [SENDCERT] 7. Aggiornamento DB...");
         await conn.query(`
             UPDATE learning_certificate_assign
             SET pathattestato=?, evaso2=1, data_invio=NOW()
@@ -598,9 +586,11 @@ router.post("/sendcertificate", async (req, res) => {
             WHERE iduser=? AND idcourse=?
         `, [iduser, idcorso]);
 
-        // --------------------------------------------------------
+        console.log("🟢 [SENDCERT] 7b. DB aggiornato");
+
         // 7️⃣ INVIO EMAIL
-        // --------------------------------------------------------
+        console.log("🔵 [SENDCERT] 8. Invio email...");
+
         const bcc = await getBCC(iduser);
 
         const sendRes = await SaveAndSend({
@@ -616,7 +606,7 @@ router.post("/sendcertificate", async (req, res) => {
             format: "attestato"
         });
 
-        await logwrite(`📨 Email inviata a ${u.email}: ${sendRes.esito || "OK"}`);
+        console.log("🟢 [SENDCERT] 8b. Risposta SaveAndSend:", sendRes);
 
         return res.json({
             success: true,
@@ -625,7 +615,7 @@ router.post("/sendcertificate", async (req, res) => {
         });
 
     } catch (err) {
-        await logwrite("❌ sendcertificate ERR: " + err.message);
+        console.error("❌ [SENDCERT] ERRORE GENERALE:", err.message);
         return res.status(500).json({ error: err.message });
     }
 });

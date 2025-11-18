@@ -314,8 +314,6 @@ router.get("/convenzione/corsi", requireConv, async (req, res) => {
             [conv.code]
         );
 
-        console.log("📄 Corsi da tblprezzi:", tbl);
-
         if (!tbl.length) {
             console.log("⚠️ Nessun corso in convenzione");
             return res.json({ rows: [] });

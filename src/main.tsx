@@ -5,14 +5,16 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import { ConvProvider } from "./context/ConvContext";
-
+import { AlertProvider } from "./components/SmartAlertModal";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       {" "}
       {/* ✅ Router principale */}
       <ConvProvider>
-        <App />
+        <AlertProvider>
+          <App />
+        </AlertProvider>
       </ConvProvider>
     </BrowserRouter>
   </React.StrictMode>,

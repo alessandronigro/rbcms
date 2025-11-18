@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2, RefreshCcw, CheckCircle, XCircle, StickyNote } from "lucide-react";
 import dayjs from "dayjs";
+import { useAlert } from "../components/SmartAlertModal";
 
 const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
@@ -13,6 +14,7 @@ export default function FineCorso() {
     const [rows, setRows] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [selected, setSelected] = useState<string[]>([]);
+    const { alert: showAlert } = useAlert();
 
     // 🔹 Carica corsisti
     const loadData = async () => {
@@ -45,25 +47,28 @@ export default function FineCorso() {
             });
             const data = await res.json();
             if (data.success) {
-                alert(data.message || "Aggiornato correttamente ✅");
+                await showAlert(data.message || "Aggiornato correttamente ✅");
                 await loadData();
             } else {
-                alert("Errore: " + data.error);
+                await showAlert("Errore: " + data.error);
             }
         } catch (err) {
-            alert("Errore di rete durante l’aggiornamento");
+            await showAlert("Errore di rete durante l’aggiornamento");
             console.error(err);
         }
     };
 
     // 🔹 Multi aggiorna
     const handleMultiAggiorna = async () => {
-        if (selected.length === 0) return alert("Seleziona almeno un corsista");
+        if (selected.length === 0) {
+            await showAlert("Seleziona almeno un corsista");
+            return;
+        }
         for (const id of selected) {
             const row = rows.find((r) => `${r.id_user}-${r.id_course}` === id);
             if (row) await handleAggiorna(row.id_user, row.id_course, 1);
         }
-        alert("Operazione completata ✅");
+        await showAlert("Operazione completata ✅");
         setSelected([]);
     };
 

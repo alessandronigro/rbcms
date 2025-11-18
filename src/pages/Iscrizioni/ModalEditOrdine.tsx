@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAlert } from "../../components/SmartAlertModal";
 interface Props {
   ordine: any;
   onClose: () => void;
@@ -20,6 +21,7 @@ export default function ModalEditOrdine({ ordine, onClose, onSaved }: Props) {
     order_status: ordine.order_status || "",
     note: ordine.note || "",
   });
+  const { alert: showAlert } = useAlert();
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -39,7 +41,7 @@ export default function ModalEditOrdine({ ordine, onClose, onSaved }: Props) {
     );
     const j = await res.json();
     if (j.success) onSaved();
-    else alert(j.error || "Errore salvataggio ordine");
+    else await showAlert(j.error || "Errore salvataggio ordine");
   };
 
   return (

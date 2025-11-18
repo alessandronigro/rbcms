@@ -7,6 +7,7 @@ const { getMailFormat } = require("../utils/helper");
 const { invioMail } = require("../utils/mailerBrevo");
 const { toMySQLDateTime } = require("../utils/helper.js");
 const { piedinodidattica, getBCC } = require("../utils/helper.js");
+const { createZoomMeeting } = require("../utils/zoom");
 // ============================================================
 //   FINE CORSO 60H - ROUTES
 // ============================================================
@@ -74,37 +75,46 @@ router.get("/calendario", async (req, res) => {
         SELECT s.id, s.dataesame, s.dataprova, s.flagconferma,
                p.iduser, p.idcourse,
                a.nome AS nome_utente, a.cognome AS cognome_utente,
-               l.flagevent
+               l.flagevent, l.note AS note_cert,
+               lc.code AS course_code, lc.name AS course_name
         FROM sessioni s
         LEFT JOIN prenotazioni p ON s.id = p.idsessione
         LEFT JOIN anagrafiche a ON p.iduser = a.id
         LEFT JOIN forma4.learning_certificate_assign l
                ON l.id_user = p.iduser AND l.id_course = p.idcourse
+        LEFT JOIN forma4.learning_course lc
+               ON lc.idcourse = p.idcourse
         ORDER BY s.dataesame DESC`);
 
-        const events = rows.map(r => {
-            let bg = "#90EE90"; // default proposta
+        const colorMap = {
+            0: "#bbf7d0", // da confermare
+            1: "#059669", // confermata
+            2: "#6b7280", // sessione non confermata (solo tabella)
+            3: "#f87171", // buon fine NO
+            4: "#f9a8d4"  // buon fine SI
+        };
 
-            switch (r.flagevent) {
-                case 1: bg = "#008000"; break; // Verde scuro → confermata
-                case 2: bg = "#303030"; break; // Grigio scuro → non confermata
-                case 3: bg = "#FF0000"; break; // Rosso → bocciato
-                case 4: bg = "#FF69B4"; break; // Rosa → Buon fine SI
-            }
+        const events = rows
+            .filter(r => r.flagevent !== 2) // le sessioni non confermate restano solo nella tabella per riprenotarle
+            .map(r => {
+                const bg = colorMap[r.flagevent] || colorMap[0];
 
-            return {
-                id: r.id,
-                title: `${r.cognome_utente} ${r.nome_utente || ""}`,
-                start: r.dataesame,
-                backgroundColor: bg,
-                extendedProps: {
-                    flagevent: r.flagevent,
-                    iduser: r.iduser,
-                    idcourse: r.idcourse,
-                    dataprova: r.dataprova
-                }
-            };
-        });
+                return {
+                    id: r.id,
+                    title: `${r.cognome_utente} ${r.nome_utente || ""}`,
+                    start: r.dataesame,
+                    backgroundColor: bg,
+                    extendedProps: {
+                        flagevent: r.flagevent,
+                        iduser: r.iduser,
+                        idcourse: r.idcourse,
+                        dataprova: r.dataprova,
+                        note: r.note_cert || "",
+                        courseCode: r.course_code || "",
+                        courseName: r.course_name || ""
+                    }
+                };
+            });
 
         res.json(events);
 
@@ -138,18 +148,73 @@ router.get("/sessione/:idsessione/dettaglio", async (req, res) => {
         a.telefono AS telefono_utente,
         st.nome AS nome_studio,
         st.cognome AS cognome_studio,
-        st.tipologia AS tipologia_studio
+        st.tipologia AS tipologia_studio,
+        l.note AS note_cert
       FROM sessioni s
       LEFT JOIN prenotazioni p ON p.idsessione = s.id
       LEFT JOIN anagrafiche a ON a.id = p.iduser
       LEFT JOIN studi st ON st.id = s.idstudio
+      LEFT JOIN forma4.learning_certificate_assign l
+        ON l.id_user = p.iduser AND l.id_course = p.idcourse
       WHERE s.id = ?
     `,
             [idsessione]
         );
 
         if (!rows.length) return res.status(404).json({ error: "Sessione non trovata" });
-        res.json(rows[0]);
+        const row = rows[0];
+
+        // ✅ Recupera telefono utente dai campi aggiuntivi se mancante
+        let telefonoUtente = (row.telefono_utente || "").trim();
+        if ((!telefonoUtente || telefonoUtente.length < 5) && row.iduser) {
+            try {
+                const userDbName = row.db || process.env.MYSQL_FORMA4;
+                if (userDbName) {
+                    const connUser = await getConnection(userDbName);
+                    const [telefonoRows] = await connUser.query(
+                        `SELECT user_entry
+                         FROM core_field_userentry
+                         WHERE id_user = ?
+                           AND id_common IN (20, 14)
+                         ORDER BY FIELD(id_common, 20, 14)
+                         LIMIT 1`,
+                        [row.iduser]
+                    );
+                    telefonoUtente = (telefonoRows?.[0]?.user_entry || telefonoUtente || "").trim();
+                }
+            } catch (err) {
+                console.warn("⚠️ Impossibile recuperare telefono utente:", err.message);
+            }
+        }
+
+        const noteSessione = typeof row.note === "string" ? row.note : "";
+        const enrichedRow = {
+            ...row,
+            note: noteSessione || row.note_cert || "",
+            telefono_utente: telefonoUtente,
+        };
+
+        let testAttivo = false;
+        if (row.iduser && row.idcourse) {
+            let testCourseId = Number(row.idcourse);
+            if (testCourseId === 73) testCourseId = 74;
+            else if (testCourseId === 85) testCourseId = 86;
+
+            if (testCourseId) {
+                try {
+                    const connForma = await getConnection(process.env.MYSQL_FORMA4);
+                    const [exists] = await connForma.query(
+                        `SELECT 1 FROM learning_courseuser WHERE idUser=? AND idCourse=? LIMIT 1`,
+                        [row.iduser, testCourseId]
+                    );
+                    testAttivo = exists.length > 0;
+                } catch (err) {
+                    console.warn("⚠️ Check test_attivo fallita:", err.message);
+                }
+            }
+        }
+
+        res.json({ ...enrichedRow, test_attivo: testAttivo });
     } catch (err) {
         console.error("❌ Errore dettaglio sessione:", err);
         res.status(500).json({ error: "Errore caricamento dettaglio sessione" });
@@ -321,10 +386,39 @@ router.post("/sessione/:idsessione/conferma", async (req, res) => {
 });
 
 /**
+ * 5️⃣.bis POST /api/finecorso60h/sessione/:idsessione/conferma-no
+ *       → Annulla la conferma e riporta flagevent=0
+ */
+router.post("/sessione/:idsessione/conferma-no", async (req, res) => {
+    const { idsessione } = req.params;
+    const { iduser, idcourse } = req.body;
+
+    if (!iduser || !idcourse) {
+        return res.status(400).json({ error: "Parametri mancanti" });
+    }
+
+    try {
+        const conn60 = await getConnection("rb60h");
+        const connForma = await getConnection(process.env.MYSQL_FORMA4);
+
+        await conn60.query(`UPDATE sessioni SET flagconferma = 0 WHERE id = ?`, [idsessione]);
+        await connForma.query(
+            `UPDATE learning_certificate_assign SET flagevent = 0 WHERE id_user = ? AND id_course = ?`,
+            [iduser, idcourse]
+        );
+
+        res.json({ success: true, message: "Conferma annullata" });
+    } catch (err) {
+        console.error("❌ Errore annulla conferma sessione:", err);
+        res.status(500).json({ error: "Errore annullamento conferma" });
+    }
+});
+
+/**
  * 6️⃣  POST /api/finecorso60h/sessione/:idsessione/pagato
  *     body: { pagato: 0|1, iduser, idcourse }
- *     → pagato=1 => flagevent=3
- *       pagato=0 => flagevent=4
+ *     → pagato=1 => flagevent=4 (Buon fine SI)
+ *       pagato=0 => flagevent=3 (Buon fine NO)
  */
 router.post("/sessione/:idsessione/pagato", async (req, res) => {
     const { idsessione } = req.params;
@@ -340,7 +434,7 @@ router.post("/sessione/:idsessione/pagato", async (req, res) => {
 
         await conn60.query(`UPDATE sessioni SET pagato = ? WHERE id = ?`, [pagato ? 1 : 0, idsessione]);
 
-        const flagevent = pagato ? 3 : 4;
+        const flagevent = pagato ? 4 : 3;
         await connForma.query(
             `UPDATE learning_certificate_assign SET flagevent = ? WHERE id_user = ? AND id_course = ?`,
             [flagevent, iduser, idcourse]
@@ -350,6 +444,127 @@ router.post("/sessione/:idsessione/pagato", async (req, res) => {
     } catch (err) {
         console.error("❌ Errore pagato:", err);
         res.status(500).json({ error: "Errore aggiornamento pagato" });
+    }
+});
+
+/**
+ * ♾️  POST /api/finecorso60h/sessione/:idsessione/zoom
+ *     → Crea meeting Zoom, invia email con il codice all'utente e ritorna il link host
+ */
+router.post("/sessione/:idsessione/zoom", async (req, res) => {
+    const { idsessione } = req.params;
+    const { duration } = req.body || {};
+
+    try {
+        const conn60 = await getConnection("rb60h");
+        const [rows] = await conn60.query(
+            `SELECT 
+                s.id,
+                s.dataesame,
+                s.dataprova,
+                s.note,
+                p.iduser,
+                p.idcourse,
+                a.nome AS nome_utente,
+                a.cognome AS cognome_utente,
+                a.email AS email_utente
+             FROM sessioni s
+             LEFT JOIN prenotazioni p ON p.idsessione = s.id
+             LEFT JOIN anagrafiche a ON a.id = p.iduser
+             WHERE s.id = ?
+             LIMIT 1`,
+            [idsessione]
+        );
+
+        if (!rows.length) {
+            return res.status(404).json({ error: "Sessione non trovata" });
+        }
+
+        const sessione = rows[0];
+
+        if (!sessione.iduser) {
+            return res.status(400).json({ error: "Nessun utente prenotato alla sessione" });
+        }
+
+        const startDate = sessione.dataesame
+            ? new Date(sessione.dataesame)
+            : sessione.dataprova
+                ? new Date(sessione.dataprova)
+                : new Date();
+        const topic = `Sessione finale ${sessione.cognome_utente || ""} ${sessione.nome_utente || ""}`.trim() || "Sessione RB";
+        const meeting = await createZoomMeeting({
+            topic,
+            startTime: startDate,
+            duration: Number(duration) || 60,
+            agenda: sessione.note || "",
+        });
+
+        // Recupera nome corso per usarlo nell'oggetto email
+        let courseName = "";
+        if (sessione.idcourse) {
+            try {
+                const connForma = await getConnection(process.env.MYSQL_FORMA4);
+                const [courseRows] = await connForma.query(
+                    `SELECT name FROM learning_course WHERE idcourse = ? LIMIT 1`,
+                    [sessione.idcourse]
+                );
+                courseName = courseRows?.[0]?.name || "";
+            } catch (courseErr) {
+                console.warn("⚠️ Impossibile recuperare nome corso:", courseErr.message);
+            }
+        }
+
+        let emailStatus = "non inviata";
+        if (sessione.email_utente) {
+            const when = startDate.toLocaleString("it-IT", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+            });
+
+            const html = `
+                <p>Ciao ${sessione.nome_utente || ""} ${sessione.cognome_utente || ""},</p>
+                <p>ti confermiamo la sessione finale su Zoom.</p>
+                <p><strong>Data e ora:</strong> ${when}</p>
+                <p><strong>Link di accesso:</strong> <a href="${meeting.join_url}">${meeting.join_url}</a></p>
+                <p><strong>Meeting ID:</strong> ${meeting.id || "-"}<br/>
+                <strong>Passcode:</strong> ${meeting.password || "N/A"}</p>
+                <p>Collegati 5 minuti prima per verificare audio e video.</p>
+                ${piedinodidattica}
+            `;
+
+            try {
+                const subjectParts = ["Sessione Zoom"];
+                if (courseName) subjectParts.push(courseName);
+                subjectParts.push(when);
+
+                await invioMail({
+                    to: sessione.email_utente,
+                    from: process.env.ZOOM_MAIL_FROM || "didattica@formazioneintermediari.com",
+                    subject: subjectParts.filter(Boolean).join(" - "),
+                    html,
+                });
+                emailStatus = "inviata";
+            } catch (mailErr) {
+                console.error("⚠️ Errore invio email Zoom:", mailErr.message);
+                emailStatus = "errore invio";
+            }
+        }
+
+        res.json({
+            success: true,
+            meetingId: meeting.id,
+            joinUrl: meeting.join_url,
+            startUrl: meeting.start_url,
+            password: meeting.password,
+            emailStatus,
+            authorizeUrl: process.env.ZOOM_LINK || null,
+        });
+    } catch (err) {
+        console.error("❌ Errore creazione meeting Zoom:", err.response?.data || err.message);
+        res.status(500).json({ error: "Errore creazione meeting Zoom" });
     }
 });
 

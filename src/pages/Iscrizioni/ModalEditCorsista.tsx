@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAlert } from "../../components/SmartAlertModal";
 interface Corsista {
   id: number;
   corsista_first_name: string;
@@ -22,6 +23,7 @@ export default function ModalEditCorsista({
   onSaved,
 }: Props) {
   const [form, setForm] = useState<Corsista>({ ...corsista });
+  const { alert: showAlert } = useAlert();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -39,7 +41,7 @@ export default function ModalEditCorsista({
     );
     const j = await res.json();
     if (j.success) onSaved();
-    else alert(j.error || "Errore salvataggio corsista");
+    else await showAlert(j.error || "Errore salvataggio corsista");
   };
 
   return (

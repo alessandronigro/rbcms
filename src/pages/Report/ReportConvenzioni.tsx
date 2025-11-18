@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useConv } from "@/context/ConvContext";
 import TableLoader from "@/components/TableLoader";
+import { useAlert } from "../../components/SmartAlertModal";
 
 type Row = {
   id: number;
@@ -50,10 +51,12 @@ function StatusBadge({ stato, percent }: { stato?: string; percent: number }) {
 }
 
 export default function ReportConvenzione() {
-  const today = new Date().toISOString().slice(0, 10);
+  const now = new Date();
+  const today = now.toISOString().slice(0, 10);
+  const currentYearStart = `${now.getFullYear()}-01-01`;
 
-  const [periodType, setPeriodType] = useState("all");
-  const [from, setFrom] = useState("2000-01-01");
+  const [periodType, setPeriodType] = useState("custom");
+  const [from, setFrom] = useState(currentYearStart);
   const [to, setTo] = useState(today);
 
 
@@ -71,7 +74,8 @@ export default function ReportConvenzione() {
   const loadingRef = useRef(false);
   const { conv: me } = useConv();
   const nav = useNavigate();
-
+  const isCondor = me?.piattaforma === "formazionecondorb";
+  const { alert: showAlert } = useAlert();
 
   useEffect(() => {
     if (periodType === "all") {
@@ -346,7 +350,7 @@ export default function ReportConvenzione() {
 
       const j = await res.json();
       if (j.success && j.file) window.open(j.file, "_blank");
-      else alert(j.error || "Errore generazione attestato");
+      else await showAlert(j.error || "Errore generazione attestato");
     } finally {
       setTimeout(() => setLoadingId(null), 300);
     }
@@ -527,38 +531,41 @@ export default function ReportConvenzione() {
                   <td className="p-2">{fmtDate(r.date_complete)}</td>
 
                   <td className="p-2 flex gap-2 justify-center">
-                    <button
-                      onClick={() => handleGetTime(r)}
-                      disabled={loadingId === r.id}
-                      title="Report corso"
-                      className={`px-2 py-1 rounded text-xs text-white ${loadingId === r.id ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
-                        }`}
-                    >
-                      🕒
-                    </button>
-                    {r.percent >= 100 && (
+                    {!isCondor && (
                       <>
                         <button
-                          onClick={() => handleGetLastTest(r)}
+                          onClick={() => handleGetTime(r)}
                           disabled={loadingId === r.id}
-                          title="Test finale"
-                          className={`px-2 py-1 rounded text-xs text-white ${loadingId === r.id ? "bg-gray-400" : "bg-orange-500 hover:bg-orange-600"
+                          title="Report corso"
+                          className={`px-2 py-1 rounded text-xs text-white ${loadingId === r.id ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
                             }`}
                         >
-                          🧾
+                          🕒
                         </button>
+                        {r.percent >= 100 && (
+                          <>
+                            <button
+                              onClick={() => handleGetLastTest(r)}
+                              disabled={loadingId === r.id}
+                              title="Test finale"
+                              className={`px-2 py-1 rounded text-xs text-white ${loadingId === r.id ? "bg-gray-400" : "bg-orange-500 hover:bg-orange-600"
+                                }`}
+                            >
+                              🧾
+                            </button>
 
-                        <button
-                          onClick={() => handleGeneraAttestato(r)}
-                          disabled={loadingId === r.id}
-                          title="Genera attestato"
-                          className={`px-2 py-1 rounded text-xs text-white ${loadingId === r.id ? "bg-gray-400" : "bg-green-600 hover:bg-green-700"
-                            }`}
-                        >
-                          🪪
-                        </button>
-                      </>
-                    )}
+                            <button
+                              onClick={() => handleGeneraAttestato(r)}
+                              disabled={loadingId === r.id}
+                              title="Genera attestato"
+                              className={`px-2 py-1 rounded text-xs text-white ${loadingId === r.id ? "bg-gray-400" : "bg-green-600 hover:bg-green-700"
+                                }`}
+                            >
+                              🪪
+                            </button>
+                          </>
+                        )}
+                      </>)}
                   </td>
                 </tr>
               ))}

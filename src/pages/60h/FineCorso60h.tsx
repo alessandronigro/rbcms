@@ -207,10 +207,14 @@ export default function FineCorso60h() {
   };
 
   const colorRow = (row: FineCorsoRow) => {
-    if (row.flagevent === 1) return "bg-green-200";
-    if (row.flagevent === 2) return "bg-red-200";
-    if (row.evaso === 1) return "bg-pink-200";
-    return "bg-white";
+    const map: Record<number, string> = {
+      0: "bg-green-200",
+      1: "bg-green-600 text-white",
+      2: "bg-gray-400",
+      3: "bg-red-400 text-white",
+      4: "bg-pink-300",
+    };
+    return map[row.flagevent ?? -1] || "bg-white";
   };
 
   return (
@@ -226,16 +230,16 @@ export default function FineCorso60h() {
           Confermata
         </div>
         <div>
+          <span className="inline-block w-3 h-3 bg-gray-400 mr-2 rounded"></span>
+          Non confermata
+        </div>
+        <div>
           <span className="inline-block w-3 h-3 bg-red-400 mr-2 rounded"></span>
           Buon fine NO
         </div>
         <div>
           <span className="inline-block w-3 h-3 bg-pink-300 mr-2 rounded"></span>
           Buon fine SI
-        </div>
-        <div>
-          <span className="inline-block w-3 h-3 bg-orange-500 mr-2 rounded"></span>
-          🔔 Sessioni già create
         </div>
       </div>
 
@@ -305,14 +309,15 @@ export default function FineCorso60h() {
                       copy.find((r) => r.id === row.id)!.note = e.target.value;
                       setData(copy);
                     }}
-                    onBlur={async () => {
+                    onBlur={async (event) => {
+                      const latestNote = event.currentTarget.value;
                       await fetch(`/api/finecorso60h/note`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                           id_user: row.id_user,
                           id_course: row.id_course,
-                          note: row.note,
+                          note: latestNote,
                         }),
                       });
                     }}

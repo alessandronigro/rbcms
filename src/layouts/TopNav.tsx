@@ -70,33 +70,20 @@ export default function TopNav() {
                   { label: "Fine Corso", href: "/calendario/60h/finecorso" },
                 ],
               },
-              {
-                label: "Ser. Pag.",
-                subitems: [
-                  { label: "Sessioni", href: "/calendario/serpag/sessioni" },
 
-                  { label: "Fine corso", href: "/calendario/serpag/finecorso" },
-                ],
-              },
               {
                 label: "Amm",
                 subitems: [
-                  { label: "Sessioni", href: "/calendario/Amm/sessioniamm" },
+                  { label: "Sessioni", href: "/calendario/amm/sessioni" },
 
                   { label: "Fine corso", href: "/calendario/amm/finecorso" },
                 ],
               },
               {
-                label: "SNA",
-                subitems: [
-                  { label: "Sessioni", href: "/calendario/sna/sessioni" },
-
-                  {
-                    label: "Gestione sessioni",
-                    href: "/calendario/sna/gestione",
-                  },
-                ],
+                label: "Slot pubblici",
+                href: "/calendario/slot-config",
               },
+
             ]}
           />
 
@@ -105,9 +92,6 @@ export default function TopNav() {
             open={open === "fatture"}
             onToggle={() => toggle("fatture")}
             items={[
-              { label: "Fatturazione sito", href: "/fatture/sito" },
-              { label: "Fatturazione extra", href: "/fatture/extra" },
-              { label: "Clienti extra", href: "/fatture/clienti" },
               { label: "Fatture ricevute", href: "/fatture/ricevute" },
               { label: "Fatture ricevute RB", href: "/fatture/ricevutenew" },
             ]}

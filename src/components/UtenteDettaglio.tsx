@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
-
+import { useAlert } from "./SmartAlertModal";
 interface Course {
   idCourse?: number;
   code: string;
@@ -22,6 +22,7 @@ interface Course {
 }
 
 interface Fields {
+  id_common?: number | string;
   translation?: string;
   user_entry?: string;
 }
@@ -59,6 +60,7 @@ export function CambiaSlideModal({ db, idcourse, iduser, onClose }: any) {
   const [selectedSlide, setSelectedSlide] = useState("");
   const [loadingOrgs, setLoadingOrgs] = useState(true);
   const [loadingSlides, setLoadingSlides] = useState(false);
+  const { alert: showAlert } = useAlert();
 
   // 🔹 Carica i SCORM associati al corso
   useEffect(() => {
@@ -95,10 +97,13 @@ export function CambiaSlideModal({ db, idcourse, iduser, onClose }: any) {
 
   async function handleChange() {
     if (!selectedOrg) {
-      alert("Seleziona prima un oggetto SCORM");
+      await showAlert("Seleziona prima un oggetto SCORM");
       return;
     }
-    if (!selectedSlide) return alert("Seleziona una slide");
+    if (!selectedSlide) {
+      await showAlert("Seleziona una slide");
+      return;
+    }
     try {
       const res = await fetch(`/api/corsi/cambiaslide`, {
         method: "POST",
@@ -106,10 +111,10 @@ export function CambiaSlideModal({ db, idcourse, iduser, onClose }: any) {
         body: JSON.stringify({ db, iduser, selectedOrg, lessonlocation: selectedSlide }),
       });
       const data = await res.json();
-      alert(data.message || data.error);
+      await showAlert(data.message || data.error);
       onClose();
     } catch (err: any) {
-      alert("Errore: " + err.message);
+      await showAlert("Errore: " + err.message);
     }
   }
 
@@ -185,11 +190,11 @@ export function CambiaSlideModal({ db, idcourse, iduser, onClose }: any) {
 }
 
 export default function UtenteDettaglio({ detail }: Props) {
-  const [] = useState<{ [key: number]: string | null }>({});
-  const [] = useState<{ [key: number]: string | null }>({});
+  const { alert: showAlert, confirm: showConfirm } = useAlert();
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [activeCourse, setActiveCourse] = useState<Course | null>(null);
+  const [restoringCourseId, setRestoringCourseId] = useState<number | null>(null);
   // 🧩 Protezione: se non ho ancora i dati, non renderizzo nulla
   if (!detail?.user) {
     return (
@@ -200,6 +205,15 @@ export default function UtenteDettaglio({ detail }: Props) {
   }
 
   const { user, courses = [], fields = [] } = detail;
+  const mappedFields = fields
+    .map((f, index) => {
+      const label =
+        (f.translation && f.translation.trim()) ||
+        (f.id_common ? `Campo ${f.id_common}` : `Campo #${index + 1}`);
+      const value = f.user_entry?.trim() || "";
+      return { label, value, id: `${f.id_common ?? label ?? index}` };
+    })
+    .filter((f) => f.value);
 
   // 🔹 Helper campi anagrafici
   const getField = (label: string) =>
@@ -213,10 +227,20 @@ export default function UtenteDettaglio({ detail }: Props) {
 
   // 🔹 Generazione attestato
   const handleGeneraAttestato = async (idcorso: string) => {
-    if (!user?.idst) return alert("Utente non valido");
-    const scelta = window.confirm(
-      "Vuoi inviare l’attestato al corsista (attestato + test + report) oppure solo visualizzarlo?"
-    );
+    if (!user?.idst) {
+      await showAlert("Utente non valido");
+      return;
+    }
+
+    let scelta = false;
+    try {
+      await showConfirm(
+        "Vuoi inviare l’attestato al corsista (attestato + test + report) oppure solo visualizzarlo?"
+      );
+      scelta = true;
+    } catch {
+      scelta = false;
+    }
 
     setLoading(true);
     try {
@@ -236,7 +260,7 @@ export default function UtenteDettaglio({ detail }: Props) {
         const data = await res.json();
         if (!data.success)
           throw new Error(data.error || "Errore invio attestato");
-        alert("✅ Attestato inviato correttamente al corsista!");
+        await showAlert("✅ Attestato inviato correttamente al corsista!");
       } else {
         // 👁️ SOLO VISUALIZZA
         const res = await fetch(`/api/attestati/generate`, {
@@ -250,9 +274,45 @@ export default function UtenteDettaglio({ detail }: Props) {
         window.open(data.file, "_blank");
       }
     } catch (err: any) {
-      alert("❌ Errore: " + err.message);
+      await showAlert("❌ Errore: " + err.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleRicreaTest = async (course: Course) => {
+    if (!detail.db || !course.idCourse) {
+      await showAlert("Impossibile determinare piattaforma o corso");
+      return;
+    }
+    try {
+      await showConfirm(
+        "Ricreare il test copierà risposte da un tentativo valido e sovrascriverà i dati attuali. Vuoi continuare?"
+      );
+    } catch {
+      return;
+    }
+
+    setRestoringCourseId(course.idCourse);
+    try {
+      const res = await fetch("/api/corsi/ricrea-test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          db: detail.db,
+          iduser: user.idst,
+          idcourse: course.idCourse,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Operazione non riuscita");
+      }
+      await showAlert("✅ Test ricreato correttamente");
+    } catch (err: any) {
+      await showAlert(`❌ Errore ricreazione test: ${err.message}`);
+    } finally {
+      setRestoringCourseId(null);
     }
   };
 
@@ -346,14 +406,40 @@ export default function UtenteDettaglio({ detail }: Props) {
           <p>
             <b>Codice Fiscale:</b> {getField("Codice Fiscale") || user.cf || "—"}
           </p>
-          <p>
-            <b>Convenzione:</b> {getField("Convenzione") || user.convenzione || "—"}
-          </p>
-        </div>
+        <p>
+          <b>Convenzione:</b> {getField("Convenzione") || user.convenzione || "—"}
+        </p>
       </div>
 
-      {/* ✅ CORSI */}
-      {courses.map((c) => (
+      {mappedFields.length > 0 && (
+        <div className="mt-6">
+          <h3 className="text-sm font-semibold text-gray-700 mb-2">
+            Campi aggiuntivi (core_field_userentry)
+          </h3>
+          <div className="border rounded-lg overflow-hidden">
+            <table className="min-w-full text-sm">
+              <tbody className="divide-y divide-slate-200">
+                {mappedFields.map((field) => (
+                  <tr key={field.id} className="bg-white">
+                    <td className="px-3 py-2 font-medium text-slate-600 w-1/3">
+                      {field.label}
+                    </td>
+                    <td className="px-3 py-2 text-slate-900 break-words">
+                      {field.value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+    </div>
+
+    {/* ✅ CORSI */}
+      {courses.map((c) => {
+        const isCourseCompleted = Number(c.status) === 2;
+        return (
         <div
           key={c.idCourse}
           className="bg-white border rounded-lg p-4 shadow-sm mb-4"
@@ -456,29 +542,47 @@ export default function UtenteDettaglio({ detail }: Props) {
               📊 Report
             </a>
 
-            {/* 📄 Ultimo Test */}
-            <a
-              href={`${import.meta.env.VITE_BACKEND_URL}/api/corsi/getlasttest?iduser=${user.idst}&idcourse=${c.idCourse}&firstname=${user.firstname}&lastname=${user.lastname}&db=${detail.db}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-cyan-600 text-white px-3 py-1 rounded-md hover:bg-cyan-700 text-sm"
-            >
-              📄 Ultimo Test
-            </a>
+            {c.idCourse && (
+              <button
+                onClick={() => handleRicreaTest(c)}
+                disabled={restoringCourseId === c.idCourse}
+                className={`px-3 py-1 rounded-md text-sm text-white ${restoringCourseId === c.idCourse
+                  ? "bg-purple-300 cursor-not-allowed"
+                  : "bg-purple-600 hover:bg-purple-700"
+                  }`}
+              >
+                {restoringCourseId === c.idCourse ? "Ricreazione…" : "🧪 Ricrea test"}
+              </button>
+            )}
 
-            {/* 📜 Genera Attestato */}
-            <button
-              onClick={() => handleGeneraAttestato(c.idCourse!.toString())}
-              disabled={loading}
-              className={`inline-flex items-center gap-1 px-3 py-1 rounded text-sm text-white ${loading ? "bg-gray-400" : "bg-green-600 hover:bg-green-700"
-                }`}
-            >
-              <Download size={14} />
-              {loading ? "Attendi..." : "Genera Attestato"}
-            </button>
+            {isCourseCompleted && (
+              <>
+                {/* 📄 Ultimo Test */}
+                <a
+                  href={`${import.meta.env.VITE_BACKEND_URL}/api/corsi/getlasttest?iduser=${user.idst}&idcourse=${c.idCourse}&firstname=${user.firstname}&lastname=${user.lastname}&db=${detail.db}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-cyan-600 text-white px-3 py-1 rounded-md hover:bg-cyan-700 text-sm"
+                >
+                  📄 Ultimo Test
+                </a>
+
+                {/* 📜 Genera Attestato */}
+                <button
+                  onClick={() => handleGeneraAttestato(c.idCourse!.toString())}
+                  disabled={loading}
+                  className={`inline-flex items-center gap-1 px-3 py-1 rounded text-sm text-white ${loading ? "bg-gray-400" : "bg-green-600 hover:bg-green-700"
+                    }`}
+                >
+                  <Download size={14} />
+                  {loading ? "Attendi..." : "Genera Attestato"}
+                </button>
+              </>
+            )}
           </div>
         </div>
-      ))}
+      );
+      })}
     </div>
   );
 }

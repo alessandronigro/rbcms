@@ -143,7 +143,7 @@ router.get("/detail", async (req, res) => {
 
     // 2️⃣ Campi anagrafici
     const [extra] = await conn.query(
-        `SELECT translation, user_entry
+        `SELECT a.id_common, b.translation, a.user_entry
          FROM core_field_userentry a
          LEFT JOIN core_field b ON b.id_common = a.id_common
          WHERE a.id_user = ?

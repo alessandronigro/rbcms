@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2, FileSpreadsheet, FileText } from "lucide-react";
 import dayjs from "dayjs";
+import { useAlert } from "../components/SmartAlertModal";
 
 const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
@@ -15,6 +16,7 @@ export default function ReportCorsi() {
     const [loading, setLoading] = useState(false);
     const [reportData, setReportData] = useState<any[]>([]);
     const [total, setTotal] = useState(0);
+    const { alert: showAlert } = useAlert();
 
     // 🧠 Funzione per determinare DB automatico in base all’anno
     const pickDbByDates = (fromISO: string, toISO: string) => {
@@ -59,7 +61,7 @@ export default function ReportCorsi() {
     // 🔎 Cerca report
     const getReport = async () => {
         if (!from || !to) {
-            alert("Inserisci un intervallo date valido");
+            await showAlert("Inserisci un intervallo date valido");
             return;
         }
         setLoading(true);
