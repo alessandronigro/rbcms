@@ -2,3 +2,9 @@ node_modules/
 venv/
 dist/
 __pycache__/
+.env
+.env.*
+backend/.env
+backend/.env.*
+backend/public/
+backend/templates/
