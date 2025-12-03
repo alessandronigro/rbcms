@@ -7,6 +7,7 @@ const { getMailFormat } = require("../utils/helper");
 const { invioMail } = require("../utils/mailerBrevo");
 const { toMySQLDateTime } = require("../utils/helper.js");
 const { piedinorbacademy, getBCC } = require("../utils/helper.js");
+const { createZoomMeeting } = require("../utils/zoom");
 // ============================================================
 //   FINE CORSO Amm - ROUTES
 // ============================================================
@@ -202,11 +203,15 @@ router.post("/sessione", async (req, res) => {
 
         // se esiste già una proposta per l'utente evito duplicati
         const [exists] = await connAmm.query(
-            "SELECT idsessione FROM prenotazioni WHERE iduser=? LIMIT 1",
-            [iduser]
+            "SELECT idsessione FROM prenotazioni WHERE iduser=? AND idcourse=? LIMIT 1",
+            [iduser, idcourse]
         );
         if (exists.length) {
-            return res.json({ success: true, message: "Proposta già esistente", idsessione: exists[0].idsessione });
+            return res.json({
+                success: true,
+                message: "Proposta già esistente per questo corso",
+                idsessione: exists[0].idsessione,
+            });
         }
 
         const dProva = (dataprova || "").replace("T", " ") + ":00";
@@ -248,10 +253,7 @@ router.post("/sessione", async (req, res) => {
         );
 
         // flagevent = 0 (proposta inviata)
-        await connForma.query(
-            `UPDATE learning_certificate_assign SET flagevent = 0 WHERE id_user = ? AND id_course = ?`,
-            [iduser, idcourse]
-        );
+        await setFlageventZero(process.env.MYSQL_formazionecondorb, iduser, idcourse);
 
         if (ckmail) {
             try {
@@ -411,6 +413,134 @@ router.post("/sessione/:idsessione/pagato", async (req, res) => {
 });
 
 /**
+ * ♾️  POST /api/finecorsoAmm/sessione/:idsessione/zoom
+ *     → Crea meeting Zoom, invia email con il codice all'utente e ritorna il link host
+ */
+router.post("/sessione/:idsessione/zoom", async (req, res) => {
+    const { idsessione } = req.params;
+    const { duration } = req.body || {};
+
+    try {
+        const connAmm = await getConnection("rbamministratore");
+        const [rows] = await connAmm.query(
+            `SELECT 
+                s.id,
+                s.dataesame,
+                s.dataprova,
+                s.note,
+                p.iduser,
+                p.idcourse,
+                a.nome AS nome_utente,
+                a.cognome AS cognome_utente,
+                a.email AS email_utente
+             FROM sessioni s
+             LEFT JOIN prenotazioni p ON p.idsessione = s.id
+             LEFT JOIN anagrafiche a ON a.id = p.iduser
+             WHERE s.id = ?
+             LIMIT 1`,
+            [idsessione]
+        );
+
+        if (!rows.length) {
+            return res.status(404).json({ error: "Sessione non trovata" });
+        }
+
+        const sessione = rows[0];
+
+        if (!sessione.iduser) {
+            return res.status(400).json({ error: "Nessun utente prenotato alla sessione" });
+        }
+
+        const startDate = sessione.dataesame
+            ? new Date(sessione.dataesame)
+            : sessione.dataprova
+                ? new Date(sessione.dataprova)
+                : new Date();
+        const topic = `Sessione finale ${sessione.cognome_utente || ""} ${sessione.nome_utente || ""}`.trim() || "Sessione RB";
+
+        const meeting = await createZoomMeeting({
+            topic,
+            startTime: startDate,
+            duration: Number(duration) || 60,
+            agenda: sessione.note || "",
+        });
+
+        let courseName = "";
+        if (sessione.idcourse) {
+            try {
+                const connForma = await getConnection(process.env.MYSQL_formazionecondorb);
+                const [courseRows] = await connForma.query(
+                    `SELECT name FROM learning_course WHERE idcourse = ? LIMIT 1`,
+                    [sessione.idcourse]
+                );
+                courseName = courseRows?.[0]?.name || "";
+            } catch (courseErr) {
+                console.warn("⚠️ Impossibile recuperare nome corso Amm:", courseErr.message);
+            }
+        }
+
+        let emailStatus = "non inviata";
+        if (sessione.email_utente) {
+            const when = startDate.toLocaleString("it-IT", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+            });
+
+            const html = `
+                <span style="font-family: Calibri,sans-serif;">
+                    <span style="font-size: 14pt;">
+                        <span style="font-family: 'Times New Roman',serif;">
+                            <span style="color: #00314c;">
+                                <p>Ciao ${sessione.nome_utente || ""} ${sessione.cognome_utente || ""},<br>
+                                ti confermiamo la sessione finale su Zoom.</p>
+                                <p><strong>Data e ora:</strong> ${when}</p>
+                                <p><strong>Link di accesso:</strong> <a href="${meeting.join_url}">${meeting.join_url}</a></p>
+                                <p><strong>Meeting ID:</strong> ${meeting.id || "-"}</p>
+                              <p> <strong>Passcode:</strong> ${meeting.password || "N/A"}</p>
+                                ${piedinorbacademy}
+                            </span>
+                        </span>
+                    </span>
+                </span>
+            `;
+
+            try {
+                const subjectParts = ["Sessione Zoom"];
+                if (courseName) subjectParts.push(courseName);
+                subjectParts.push(when);
+
+                await invioMail({
+                    to: sessione.email_utente,
+                    from: process.env.ZOOM_MAIL_FROM_AMM || "info@rb-academy.it",
+                    subject: subjectParts.filter(Boolean).join(" - "),
+                    html,
+                });
+                emailStatus = "inviata";
+            } catch (mailErr) {
+                console.error("⚠️ Errore invio email Zoom Amm:", mailErr.message);
+                emailStatus = "errore invio";
+            }
+        }
+
+        res.json({
+            success: true,
+            meetingId: meeting.id,
+            joinUrl: meeting.join_url,
+            startUrl: meeting.start_url,
+            password: meeting.password,
+            emailStatus,
+            authorizeUrl: process.env.ZOOM_LINK || null,
+        });
+    } catch (err) {
+        console.error("❌ Errore creazione meeting Zoom Amm:", err.response?.data || err.message);
+        res.status(500).json({ error: "Errore creazione meeting Zoom" });
+    }
+});
+
+/**
  * ✅ Attiva Test (equiv. InviaTestAmm)
  * → Iscrive l'utente al test corretto su process.env.MYSQL_formazionecondorb
  */
@@ -435,11 +565,36 @@ router.post("/sessione/:idsessione/invia-test", async (req, res) => {
         }
 
         const iduser = r[0].iduser;
-        let idcourse = r[0].idcourse;
+        const rawCourseId = r[0].idcourse ?? r[0].idCourse ?? r[0].idcorso ?? null;
+        if (!rawCourseId) {
+            console.error("❌ Attiva test: nessun corso associato a questa prenotazione");
+            return res.status(400).json({ error: "Nessun corso assegnato alla prenotazione" });
+        }
+        let idcourse = Number(rawCourseId);
+        if (!Number.isFinite(idcourse)) {
+            idcourse = rawCourseId;
+        }
 
         // ✅ Mappatura corso test come in VB
-        if (idcourse === 73) idcourse = 74;
-        else if (idcourse === 85) idcourse = 86;
+        const [courseRow] = await connForma.query(
+            `SELECT code FROM learning_course WHERE idcourse = ? LIMIT 1`,
+            [idcourse]
+        );
+        const courseCode = courseRow?.[0]?.code;
+        if (!courseCode) {
+            console.error("❌ Attiva test: corso non trovato nel catalogo Amm");
+            return res.status(404).json({ error: "Corso Amm non trovato" });
+        }
+
+        const mappedTest = await findTestCourseForAmm(connForma, courseCode);
+        if (mappedTest) {
+            idcourse = mappedTest.idcourse;
+            console.log(`[attiva-test] corso Amm '${courseCode}' → test '${mappedTest.code}'`);
+        } else if (/^codamm/i.test(courseCode.toLowerCase())) {
+            const missingMsg = `Test mancante per corso Amm '${courseCode}'`;
+            console.error(`❌ Attiva test: ${missingMsg}`);
+            return res.status(404).json({ error: missingMsg });
+        }
 
         const now = new Date();
         const date_inscr = toMySQLDateTime(now);
@@ -476,7 +631,7 @@ router.post("/sessione/:idsessione/sblocca-test", async (req, res) => {
 
         // Recupera utente già prenotato alla sessione
         const [r] = await connAmm.query(
-            `SELECT p.iduser
+            `SELECT p.iduser, p.idcourse
              FROM prenotazioni p
              WHERE p.idsessione = ?
              LIMIT 1`,
@@ -490,12 +645,52 @@ router.post("/sessione/:idsessione/sblocca-test", async (req, res) => {
         const iduser = r[0].iduser;
 
         // ✅ VB: update process.env.MYSQL_formazionecondorb.learning_Testtrack set checktest=0 where iduser=.. and idtest in (969,1372)
+        const courseRow = r[0]?.idcourse;
+        if (!courseRow) {
+            return res.status(404).json({ error: "Corso della prenotazione non trovato" });
+        }
+
+        const [courseDetails] = await connForma.query(
+            `SELECT code FROM learning_course WHERE idcourse = ? LIMIT 1`,
+            [courseRow]
+        );
+        const courseCode = courseDetails?.[0]?.code;
+        if (!courseCode) {
+            return res.status(404).json({ error: "Corso Amm non trovato per il test" });
+        }
+
+        const mappedTest = await findTestCourseForAmm(connForma, courseCode);
+        if (!mappedTest) {
+            return res.status(404).json({ error: "Test Amm corrispondente non trovato" });
+        }
+
+        const [columns] = await connForma.query(
+            "SHOW COLUMNS FROM learning_testtrack LIKE 'check%'"
+        );
+        const field = columns?.[0]?.Field;
+        if (!field) {
+            console.warn("⚠️ Colonna checktest non trovata su learning_testtrack, salto update");
+            return res.json({ success: true, message: "Test sbloccato (checktest mancante)" });
+        }
+
+        const [orgRows] = await connForma.query(
+            `SELECT idresource FROM learning_organization
+             WHERE idcourse = ? AND isterminator = 1`,
+            [mappedTest.idcourse]
+        );
+        const idtests = [...new Set(orgRows.map(r => r.idresource).filter(Boolean))];
+        if (!idtests.length) {
+            console.warn("⚠️ Nessun idtest trovato per il test Amm", mappedTest.code);
+            return res.status(404).json({ error: "Nessun test associato al corso Amm" });
+        }
+
+        const placeholders = idtests.map(() => "?").join(",");
         await connForma.query(
-            `UPDATE learning_Testtrack
-             SET checktest = 0
+            `UPDATE learning_testtrack
+             SET ${field} = 0
              WHERE iduser = ?
-               AND idtest IN (969, 1372)`,
-            [iduser]
+               AND idtest IN (${placeholders})`,
+            [iduser, ...idtests]
         );
 
         res.json({ success: true, message: "Test sbloccato correttamente" });
@@ -626,6 +821,14 @@ const path = require("path");
 // ============================================================
 // 📧 Email proposta sessione (due date)
 // ============================================================
+function formatTimeHHmm(value) {
+    if (!value) return "";
+    return new Date(value).toLocaleTimeString("it-IT", {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+}
+
 async function InviaComunicazionePropostaAmm(iduser, idsessione) {
     try {
         const connAmm = await getConnection("rbamministratore");
@@ -650,11 +853,11 @@ async function InviaComunicazionePropostaAmm(iduser, idsessione) {
         body = body.replace("[NOME]", r.nome)
             .replace("[COGNOME]", r.cognome)
             .replace("[DATAESAME]", new Date(r.dataesame).toLocaleDateString("it-IT"))
-            .replace("[ORA]", new Date(r.dataesame).toLocaleTimeString("it-IT"));
+            .replace("[ORA]", formatTimeHHmm(r.dataesame));
 
         if (r.dataprova) {
             body = body.replace("[DATAPROVA]", new Date(r.dataprova).toLocaleDateString("it-IT"))
-                .replace("[ORAPROVA]", new Date(r.dataprova).toLocaleTimeString("it-IT"));
+                .replace("[ORAPROVA]", formatTimeHHmm(r.dataprova));
         }
 
         body += "<br>" + piedinorbacademy;
@@ -699,9 +902,9 @@ async function InviaComunicaConfermaAmm(iduser, idsessione) {
             .replace("[NOME]", r.nome)
             .replace("[COGNOME]", r.cognome)
             .replace("[DATAESAME]", new Date(r.dataesame).toLocaleDateString("it-IT"))
-            .replace("[ORA]", new Date(r.dataesame).toLocaleTimeString("it-IT"))
+            .replace("[ORA]", formatTimeHHmm(r.dataesame))
             .replace("[DATAPROVA]", new Date(r.dataprova).toLocaleDateString("it-IT"))
-            .replace("[ORAPROVA]", new Date(r.dataprova).toLocaleTimeString("it-IT"));
+            .replace("[ORAPROVA]", formatTimeHHmm(r.dataprova));
 
         body += "<br>" + piedinorbacademy;
 
@@ -900,12 +1103,7 @@ async function insertSessione2Amm({
         );
 
         // 4️⃣ flagevent=0 su process.env.MYSQL_formazionecondorb
-        await connForma.query(
-            `UPDATE learning_certificate_assign 
-             SET flagevent = 0
-             WHERE id_user = ? AND id_course = ?`,
-            [iduser, idcourse]
-        );
+        await setFlageventZero(process.env.MYSQL_formazionecondorb, iduser, idcourse);
 
         return {
             success: true,
@@ -998,6 +1196,50 @@ async function iscriviACorsoByIdUser(idst, idcorso, status = 0, host = "", db = 
     }
 
     return { success: true };
+}
+
+async function setFlageventZero(dbName, iduser, idcourse) {
+    if (!dbName || !iduser || !idcourse) return;
+    const conn = await getConnection(dbName);
+    await conn.query(
+        `UPDATE learning_certificate_assign 
+         SET flagevent = 0
+         WHERE id_user = ? AND id_course = ?`,
+        [iduser, idcourse]
+    );
+}
+
+async function findTestCourseForAmm(conn, courseCode) {
+    if (!conn || !courseCode) return null;
+    const normalized = courseCode.toLowerCase();
+    const mappings = [
+        {
+            prefix: "codammagg",
+            testPrefixes: ["codTestAmmAggTest", "codTestAmmAgg"],
+        },
+        {
+            prefix: "codamm",
+            testPrefixes: ["codTestAmmTest", "codTestAmm"],
+        },
+    ];
+
+    for (const { prefix, testPrefixes } of mappings) {
+        if (!normalized.startsWith(prefix)) continue;
+        const suffix = courseCode.substring(prefix.length);
+        for (const testPrefix of testPrefixes) {
+            const testCode = `${testPrefix}${suffix}`;
+            const [rows] = await conn.query(
+                "SELECT idcourse FROM learning_course WHERE code = ? LIMIT 1",
+                [testCode]
+            );
+            if (rows.length) {
+                return { idcourse: rows[0].idcourse, code: testCode };
+            }
+        }
+        break;
+    }
+
+    return null;
 }
 
 

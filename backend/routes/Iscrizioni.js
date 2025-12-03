@@ -27,6 +27,86 @@ const {
     IscriviaSimulazione,
 } = require("../utils/helper");
 
+const PACKAGE_COURSE_CREDITS = {
+    77: 4,
+    78: 8,
+};
+
+const PACKAGE_CATEGORY_ID = 5;
+
+const splitPackageTokens = (input) =>
+    input.split(/[=,;|]+/).map((item) => item.trim()).filter(Boolean);
+
+function parsePackageSelectionString(raw) {
+    if (!raw) return [];
+    const source = String(raw);
+    const match = source.match(/sceltacorsi=([^&]+)/i);
+    const payload = match ? match[1] : source;
+    const cleaned = payload.replace(/sceltacorsi/i, "").trim();
+    if (!cleaned) return [];
+    return splitPackageTokens(cleaned).map((token) =>
+        token.replace(/^&/, "").trim(),
+    ).filter(Boolean);
+}
+
+function detectPackageFromCourseCode(courseCode) {
+    if (!courseCode) return null;
+    const codeStr = String(courseCode).trim();
+    const numeric = parseInt(codeStr, 10);
+    if (Number.isNaN(numeric)) return null;
+    const credits = PACKAGE_COURSE_CREDITS[numeric];
+    if (!credits) return null;
+    return { packageId: numeric, credits };
+}
+
+function tryBuildPackageSelection(rows, targetCredits) {
+    let sum = 0;
+    const selected = [];
+    for (const row of rows) {
+        const rowCredits = Number(row.credits || row.credit || 0);
+        if (!rowCredits || rowCredits > targetCredits) {
+            continue;
+        }
+        const next = sum + rowCredits;
+        if (next > targetCredits) {
+            sum = 0;
+            selected.length = 0;
+            continue;
+        }
+        selected.push(row.code);
+        sum = next;
+        if (sum === targetCredits) {
+            return { success: true, codes: [...selected] };
+        }
+    }
+    return { success: false, codes: [] };
+}
+
+async function selectRandomPackageCourseCodes(dbName, targetCredits, attempts = 3) {
+    if (!dbName || !targetCredits) return [];
+    try {
+        const conn = await getConnection(dbName);
+        for (let i = 0; i < attempts; i++) {
+            const [rows] = await conn.query(
+                `SELECT code, credits
+                 FROM learning_course
+                 WHERE idcategory=? AND credits <= ?
+                 ORDER BY RAND()
+                 LIMIT 200`,
+                [PACKAGE_CATEGORY_ID, targetCredits],
+            );
+            if (!rows.length) continue;
+            const { success, codes } = tryBuildPackageSelection(rows, targetCredits);
+            if (success && codes.length) {
+                return codes;
+            }
+        }
+    } catch (err) {
+        console.warn("selectRandomPackageCourseCodes WARN:", err.message);
+    }
+    return [];
+}
+
 
 // ========================= Support: get convenzione (newconvenzioni) =========================
 async function loadConvenzioneByCodeOrName(convenzione) {
@@ -113,17 +193,26 @@ async function attachSegnalazioniInfo(rows) {
     return rows;
 }
 // ========================= Support: getCourseByCode =========================
+function resolveCourseIdFromRow(row) {
+    if (!row) return null;
+    return row.idCourse ?? row.idcourse ?? row.idcorso ?? null;
+}
+
 async function getCourseByCode(cn, codecorso, fallbackTitle = "") {
     let code = (codecorso || "").trim();
     if (/-/.test(code)) code = code.split("-")[0].trim(); // "cod3035 - titolo"
     if (code.toLowerCase() === "codivass30oam15") {
         const [rows] = await cn.query("SELECT code,idCourse,name FROM learning_course WHERE code='cod3035' LIMIT 1");
         if (!rows.length) throw new Error("Corso 'cod3035' non trovato per pacchetto codIVASS30OAM15");
-        return { idcourse: rows[0].idCourse, codeFinal: "codIVASS30OAM15", title: rows[0].name };
+        const resolvedId = resolveCourseIdFromRow(rows[0]);
+        if (!resolvedId) throw new Error("Corso 'cod3035' trovato ma manca l'id");
+        return { idcourse: resolvedId, codeFinal: "codIVASS30OAM15", title: rows[0].name };
     }
     const [rows] = await cn.query("SELECT code,idCourse,name FROM learning_course WHERE code=? LIMIT 1", [code]);
     if (!rows.length) throw new Error(`Corso '${code}' non trovato`);
-    return { idcourse: rows[0].idCourse, codeFinal: rows[0].code, title: rows[0].name || fallbackTitle };
+    const resolvedId = resolveCourseIdFromRow(rows[0]);
+    if (!resolvedId) throw new Error(`Corso '${code}' trovato ma manca l'id`);
+    return { idcourse: resolvedId, codeFinal: rows[0].code, title: rows[0].name || fallbackTitle };
 }
 
 // ========================= Mini-pipeline locale (usa i tuoi helper) =========================
@@ -159,6 +248,27 @@ const CAMPI_SUPPLEMENTARI = {
     comune: 40,
 };
 
+const FALLBACK_PLATFORMS = {
+    newformazione: process.env.MYSQL_FORMA4?.toLowerCase() || "forma4",
+    rbacademy: "formazionecondorb",
+    novastudia: "efadnovastdia",
+};
+
+const BILLING_FIELD_MAP = {
+    intestazione_fattura: ["Intestatario_fattura"],
+    billing_email: ["email_fattura"],
+    billing_pec: ["pec", "pecfattura"],
+    billing_cf: ["cf"],
+    billing_iva: ["pi"],
+    billing_codicedestinatario: ["codicedestinatario"],
+    billing_indirizzo_1: ["indirizzo", "sede"],
+    billing_cap: ["cap"],
+    billing_comune: ["comune"],
+    billing_provincia: ["provincia"],
+    billing_regione: ["regione"],
+    billing_tel: ["telefono"],
+};
+
 function normalizeBillingData(raw = null) {
     if (!raw || typeof raw !== "object") return null;
     const normalized = {};
@@ -180,6 +290,77 @@ function normalizeBillingData(raw = null) {
         if (v) normalized[key] = v;
     }
     return Object.keys(normalized).length ? normalized : null;
+}
+
+
+/**
+ * Restituisce la lista di idCourse da iscrivere per un pacchetto IVASS.
+ * - Se sceltacorsi è valorizzato => modalità MANUALE
+ * - Se sceltacorsi è vuoto      => AUTOMATICA (credits che sommano pacchettoOre)
+ */
+async function getCoursesForIvassPackage({ cn, idst, pacchettoOre, sceltacorsi }) {
+    const selectedIds = [];
+
+    // 1) MODALITÀ MANUALE — stringa tipo "cod1=cod2=cod3"
+    if (sceltacorsi && sceltacorsi.trim() !== "") {
+        const codes = sceltacorsi
+            .split("=")
+            .map(c => c.replace("&sceltacorsi", "").trim())
+            .filter(Boolean);
+
+        for (const code of codes) {
+            const [rows] = await cn.query(
+                `SELECT idCourse FROM learning_course WHERE code=? AND idcategory=5 LIMIT 1`,
+                [code]
+            );
+            if (!rows.length) continue;
+            const resolvedId = resolveCourseIdFromRow(rows[0]);
+            if (resolvedId) selectedIds.push(resolvedId);
+        }
+
+        return selectedIds;
+    }
+
+    // 2) MODALITÀ AUTOMATICA — cerca corsi "new" sommando credits = pacchettoOre
+    const [rows] = await cn.query(
+        `
+        SELECT idCourse, credits, code
+        FROM learning_course
+        WHERE idcategory = 5
+          AND code LIKE '%new%'
+          AND credits <= ?
+          AND idCourse NOT IN (
+              SELECT idCourse FROM learning_courseuser WHERE idUser = ?
+          )
+        ORDER BY RAND()
+        `,
+        [pacchettoOre, idst]
+    );
+
+    let credits = 0;
+    const chosen = [];
+
+    for (const row of rows) {
+        const c = Number(row.credits) || 0;
+        const courseId = resolveCourseIdFromRow(row);
+        if (!courseId) continue;
+
+        if ((credits + c) === pacchettoOre) {
+            chosen.push(courseId);
+            credits += c;
+            break;
+        }
+
+        if (credits > pacchettoOre) {
+            credits = 0;
+            chosen.length = 0;
+        }
+
+        credits += c;
+        chosen.push(courseId);
+    }
+
+    return chosen;
 }
 
 async function processEnrollRows({
@@ -255,6 +436,20 @@ async function processEnrollRows({
             const regione = String(src.regione || convInfo.regione || "").trim();
             const provincia = String(src.provincia || convInfo.provincia || "").trim();
             const comune = String(src.comune || convInfo.comune || "").trim();
+            const orderMeta = src.orderMeta || {};
+            const billingName = [orderMeta.billing_nome, orderMeta.billing_cognome].filter(Boolean).join(" ").trim();
+            const orderAddress = [orderMeta.billing_indirizzo_1, orderMeta.billing_indirizzo_2].filter(Boolean).join(" ").trim();
+            const orderEmail = orderMeta.billing_email || "";
+            const orderPec = orderMeta.billing_pec || "";
+            const orderCap = orderMeta.billing_cap || "";
+            const orderProvincia = orderMeta.billing_provincia || "";
+            const orderComune = orderMeta.billing_comune || "";
+            const orderRegione = orderMeta.billing_regione || "";
+            const orderTelefono = orderMeta.billing_tel || "";
+            const orderCodiceDest = orderMeta.billing_codicedestinatario || "";
+            const orderCf = orderMeta.billing_cf || "";
+            const orderIva = orderMeta.billing_iva || "";
+            const numeroFattura = orderMeta.numero_fattura || "";
 
             // esistenza
             let ifexist = false;
@@ -313,17 +508,17 @@ async function processEnrollRows({
 
             // details
             const detailData = {
-                Intestatario_fattura: intestatarioFatt,
-                telefono: tel,
+                Intestatario_fattura: billingName || intestatarioFatt,
+                telefono: tel || orderTelefono,
                 data_nascita: src.data_nascita || src.dataNascita || "",
                 fax,
-                cf,
+                cf: orderCf || cf,
                 email,
                 societa: ragSoc,
                 sede: sedeVal,
-                pi: partitaIva,
-                cell: cell || telefonoFatt,
-                email_fattura: emailFatt,
+                pi: orderIva || partitaIva,
+                cell: cell || telefonoFatt || orderTelefono,
+                email_fattura: orderEmail || emailFatt,
                 residenza,
                 convenzione: convName,
                 clearPassword: passwordReal,
@@ -331,15 +526,16 @@ async function processEnrollRows({
                 nassociato,
                 sez,
                 intermediadaily,
-                pec,
+                pec: orderPec || pec,
                 aula,
-                pecfattura: pecFatt,
-                codicedestinatario: codDest,
-                indirizzo,
-                cap,
-                regione,
-                provincia,
-                comune,
+                pecfattura: orderPec || pecFatt,
+                codicedestinatario: orderCodiceDest || codDest,
+                indirizzo: orderAddress || indirizzo,
+                cap: orderCap || cap,
+                regione: orderRegione || regione,
+                provincia: orderProvincia || provincia,
+                comune: orderComune || comune,
+                numero_fattura: numeroFattura,
             };
             if (billingOverrides) {
                 for (const [key, value] of Object.entries(billingOverrides)) {
@@ -352,57 +548,98 @@ async function processEnrollRows({
                 if (fieldId) await adddetails(fieldId, idst, value, cn);
             }
 
-            // iscrizione corso + validità
+            // -------------------------------------------
+            // 5) GESTIONE PACCHETTI IVASS
+            // -------------------------------------------
+            const isIvass4h = idcourse === 77;
+            const isIvass8h = idcourse === 78;
+            const pacchettoOre = isIvass8h ? 8 : isIvass4h ? 4 : 0;
+
+            let realCourseIds = [idcourse]; // default: corso singolo
+
+            if (pacchettoOre > 0) {
+                realCourseIds = await getCoursesForIvassPackage({
+                    cn,
+                    idst,
+                    pacchettoOre,
+                    sceltacorsi: src.sceltacorsi || "",
+                });
+
+                if (!realCourseIds.length) {
+                    throw new Error(`Nessun corso trovato per Pacchetto ${pacchettoOre} ore`);
+                }
+
+                console.log(`Pacchetto ${pacchettoOre}h → corsi reali:`, realCourseIds);
+            }
+
+            // -------------------------------------------
+            // 6) ISCRIZIONE AI CORSI REALI
+            // -------------------------------------------
             const now = new Date();
             const expire = new Date(now.getTime() + 365 * 24 * 3600 * 1000);
+
             const begin = ConvertToMysqlDateTime(now);
             const end = ConvertToMysqlDateTime(expire);
-            await cn.query(
-                `INSERT INTO learning_courseuser
-         (idUser, idCourse, level, date_inscr, waiting, imported_from_connection, absent, cancelled_by, new_forum_post, date_begin_validity, date_expire_validity, codsblocco)
-         VALUES (?, ?, 3, NOW(), 0, 1039, 0, 0, 0, ?, ?, ?)`,
-                [idst, idcourse, begin, end, passwordReal]
-            );
 
-            // group membership (replica logica VB)
-            const [gCourse] = await cn.query(
-                `SELECT idst FROM core_group WHERE groupid LIKE ? LIMIT 1`,
-                [`%/lms/course/${idcourse}/subscribed/3%`]
-            );
-            const courseGroupId = gCourse?.[0]?.idst || null;
+            for (const realCourseId of realCourseIds) {
+                // I corsi del pacchetto NON devono mai inviare email
+                src.suppressEmail = true;
 
-            let convenzioneGroupId = null;
-            try {
-                const [gConv] = await cn.query(
-                    `SELECT idst FROM core_group WHERE groupid LIKE ? LIMIT 1`,
-                    [`%/${convName}`]
+                // evita doppi
+                const [already] = await cn.query(
+                    `SELECT 1 FROM learning_courseuser WHERE idUser=? AND idCourse=? LIMIT 1`,
+                    [idst, realCourseId]
                 );
-                convenzioneGroupId = gConv?.[0]?.idst || null;
-            } catch {
-                convenzioneGroupId = null;
-            }
+                if (already.length) continue;
 
-            const baseGroups = [2, 1, 5, 6];
-            let groupsToInsert = [];
-            if (ifexist) {
-                if (courseGroupId) groupsToInsert.push(courseGroupId);
-                if (convenzioneGroupId) groupsToInsert.push(convenzioneGroupId);
-            } else {
-                groupsToInsert.push(...baseGroups);
-                if (courseGroupId) groupsToInsert.push(courseGroupId);
-                if (convenzioneGroupId) groupsToInsert.push(convenzioneGroupId);
-            }
+                await cn.query(
+                    `INSERT INTO learning_courseuser
+                     (idUser, idCourse, level, date_inscr, waiting, imported_from_connection,
+                      absent, cancelled_by, new_forum_post,
+                      date_begin_validity, date_expire_validity, codsblocco)
+                     VALUES (?, ?, 3, NOW(), 0, 1039, 0, 0, 0, ?, ?, ?)`,
+                    [idst, realCourseId, begin, end, passwordReal]
+                );
 
-            const uniqueGroups = [...new Set(groupsToInsert.filter(Boolean))];
-            for (const groupId of uniqueGroups) {
+                // group membership
+                const [gCourse] = await cn.query(
+                    `SELECT idst FROM core_group WHERE groupid LIKE ? LIMIT 1`,
+                    [`%/lms/course/${realCourseId}/subscribed/3%`]
+                );
+                const courseGroupId = gCourse?.[0]?.idst || null;
+
+                let convenzioneGroupId = null;
                 try {
-                    await cn.query(
-                        `INSERT INTO core_group_members (idst, idstMember) VALUES (?, ?)`,
-                        [groupId, idst]
+                    const [gx] = await cn.query(
+                        `SELECT idst FROM core_group WHERE groupid LIKE ? LIMIT 1`,
+                        [`%/${convName}`]
                     );
-                } catch {
-                    // ignora errori duplicati
+                    convenzioneGroupId = gx?.[0]?.idst || null;
+                } catch { }
+
+                const baseGroups = [2, 1, 5, 6];
+                const groupsToInsert = ifexist
+                    ? [courseGroupId, convenzioneGroupId]
+                    : [...baseGroups, courseGroupId, convenzioneGroupId];
+
+                for (const gid of [...new Set(groupsToInsert.filter(Boolean))]) {
+                    try {
+                        await cn.query(
+                            `INSERT INTO core_group_members (idst, idstMember) VALUES (?, ?)`,
+                            [gid, idst]
+                        );
+                    } catch { }
                 }
+            }
+
+            // -------------------------------------------
+            // 7) EMAIL (UNA SOLA) — SOLO corso placeholder
+            // -------------------------------------------
+            let shouldSendMail = ifSendMail && src.suppressEmail !== true;
+
+            if (pacchettoOre > 0) {
+                // Forziamo: email SOLO sul placeholder 77 / 78
+                shouldSendMail = ifSendMail;
             }
 
             // simulazioni
@@ -410,7 +647,8 @@ async function processEnrollRows({
             if (/^codIVASS30OAM15$/i.test(codeFinal)) await IscriviaSimulazione(idst, 23, now, cn, targetDb);
 
             // email
-            if (ifSendMail) {
+            if (shouldSendMail) {
+                console.log(`[BCCemail] ${nome} ${cognome} (${email}) -> ${src.bccEmail || "N/A"}`);
                 const esito = await SaveAndSend({
                     idcourse: idcourse,
                     file: "",
@@ -427,7 +665,6 @@ async function processEnrollRows({
                     nomecorso: title || codeFinal,
                     sede: "",
                     format: "benvenuto",
-                    bcc: "",
                     ifsend: true,
                     datattivazione: now.toLocaleDateString("it-IT"),
                     codfis: cf,
@@ -435,6 +672,10 @@ async function processEnrollRows({
                 res.mailEsito = esito?.emailOk ? "OK" : "KO";
                 res.bccEsito = esito?.bccOk ? "OK" : "KO";
                 res.pecEsito = src.pec ? (esito?.pecOk ? "OK" : "KO") : "N/A";
+            } else if (ifSendMail && src.suppressEmail) {
+                res.mailEsito = "SKIPPED";
+                res.bccEsito = src.bccEmail ? "SKIPPED" : "N/A";
+                res.pecEsito = src.pec ? "SKIPPED" : "N/A";
             }
 
             // web update opzionale
@@ -472,6 +713,265 @@ async function processEnrollRows({
 
 // ========================= POST /api/iscrizioni/excel =========================
 // ✅ NUOVA ROUTE - Import da Excel JSON (frontend manda già parsed)
+
+
+function normalizeBccList(...values) {
+    const seen = new Set();
+    const addValue = (value) => {
+        if (!value) return;
+        (value || "")
+            .toString()
+            .split(/[;,]/)
+            .map(v => v.trim())
+            .filter(Boolean)
+            .forEach(v => seen.add(v.toLowerCase()));
+    };
+    values.forEach(addValue);
+    return Array.from(seen).join(";");
+}
+
+// ========================= POST /api/iscrizioni/weborders =========================
+// Body atteso:
+// {
+//   order_ids: [123, 456],       // oppure single: 123
+//   convenzione: "...",          // nome o codice (per ricavare host/piattaforma)
+//   host: "4.232.138.184",       // se vuoi bypassare lookup convenzione
+//   corsoPerUtente: false        // se true: n utenti, n corsi (leggiamo da DB), se false: singolo corso uniformato dal frontend
+// }
+router.post("/weborders", async (req, res) => {
+    try {
+        const { idordine, chkexist = true, sendmail = true } = req.body;
+        const webDbName = (req.query.db || req.body.webdb || "newformazione").toString().trim().toLowerCase();
+
+        if (!idordine)
+            return res.status(400).json({ error: "idordine richiesto" });
+
+        const dbWeb = await getConnection(webDbName);
+
+        // Ordine
+        const [[ordine]] = await dbWeb.query(
+            "SELECT * FROM wp_woocommerce_rb_ordini WHERE order_id=?",
+            [idordine]
+        );
+        if (!ordine)
+            return res.status(404).json({ error: "Ordine non trovato" });
+
+        const codiceConv = ordine.codice_convenzione || "";
+        const conv = await loadConvenzioneByCodeOrName(codiceConv);
+
+        if (!conv)
+            return res.status(400).json({ error: "Convenzione non valida o non trovata" });
+
+
+        const nomesito = conv.newindirizzoweb || conv.indirizzoweb || "";
+        const convName = conv.name || conv.Name || conv.Codice || conv.codice || codiceConv || "Senza nome";
+
+        let piattaforma = (conv.piattaforma || conv.Piattaforma || "").toLowerCase();
+        if (!piattaforma) {
+            piattaforma = FALLBACK_PLATFORMS[webDbName] || "";
+        }
+
+        if (!piattaforma) {
+            return res.status(400).json({ error: "Impossibile determinare la piattaforma target per l'ordine selezionato" });
+        }
+
+        // ✅ Ricava utenti/corsi collegati
+        const [rows] = await dbWeb.query(
+            `SELECT 
+                corsista_id,
+                corsista_first_name AS nome,
+                corsista_last_name AS cognome,
+                corsista_email AS email,
+                corsista_pec AS pec,
+                corsista_cf AS cf,
+                corsista_tel AS telefono,
+                codice_corso AS codecorso,
+                corso_title AS corso,
+                order_id,
+                sede_esame,
+                wdm_user_custom_data
+             FROM wp_woocommerce_rb_corsisti
+             WHERE order_id=?
+             ORDER BY corsista_last_name ASC`,
+            [idordine]
+        );
+        rows.forEach((row, index) => {
+            if (row.id === undefined) {
+                row.id = index + 1;
+            }
+            if (row.corsista_id === undefined) {
+                row.corsista_id = row.id;
+            }
+        });
+        if (!rows.length)
+            return res.json({
+                success: true,
+                result: [],
+                warning: "Nessun corsista associato"
+            });
+
+        const singleCorsistaIds = []
+            .concat(req.body.corsistaIds || [])
+            .concat(req.body.corsistaId ? [req.body.corsistaId] : [])
+            .map(String)
+            .filter(Boolean);
+
+        const billingEmail = (
+            ordine.billing_email ||
+            ordine.billing_email_address ||
+            ordine.email ||
+            ""
+        ).toString().trim();
+
+        let corsistiRows = rows;
+        if (singleCorsistaIds.length) {
+            corsistiRows = rows.filter((r) => {
+                const key = String(r.corsista_id ?? r.id ?? "");
+                return singleCorsistaIds.includes(key);
+            });
+            if (!corsistiRows.length) {
+                return res.status(404).json({ error: "Corsista selezionato non trovato nell'ordine richiesto" });
+            }
+        }
+
+        // ✅ struttura riga compatibile EXCEL
+        const hasConvenzione = Boolean(codiceConv);
+        const convMailbcc = hasConvenzione ? (conv?.mailbcc || "") : "";
+        const orderMeta = {
+            billing_nome: ordine.billing_nome || "",
+            billing_cognome: ordine.billing_cognome || "",
+            billing_email: ordine.billing_email || "",
+            billing_pec: ordine.billing_pec || "",
+            billing_cf: ordine.billing_cf || "",
+            billing_iva: ordine.billing_iva || "",
+            billing_tel: ordine.billing_tel || "",
+            billing_codicedestinatario: ordine.billing_codicedestinatario || "",
+            billing_indirizzo_1: ordine.billing_indirizzo_1 || "",
+            billing_indirizzo_2: ordine.billing_indirizzo_2 || "",
+            billing_cap: ordine.billing_cap || "",
+            billing_comune: ordine.billing_comune || "",
+            billing_provincia: ordine.billing_provincia || "",
+            billing_regione: ordine.billing_regione || "",
+            metodo_di_pagamento: ordine.metodo_di_pagamento || "",
+            codice_convenzione: ordine.codice_convenzione || "",
+            nome_convenzione: ordine.nome_convenzione || "",
+            data_iscrizione: ordine.data_iscrizione || "",
+            data_inizio_corso: ordine.data_inizio_corso || "",
+            data_ricevuta_iscrizione: ordine.data_ricevuta_iscrizione || "",
+            data_saldo_fattura: ordine.data_saldo_fattura || "",
+            data_invio_fattura: ordine.data_invio_fattura || "",
+            numero_fattura: ordine.numero_fattura || "",
+            oneri: ordine.oneri || "",
+            iva_a_debito: ordine.iva_a_debito || "",
+            costo_imponibile: ordine.costo_imponibile || "",
+            fatturato: ordine.fatturato || "",
+        };
+        const manualOrderSelections = parsePackageSelectionString(req.body.sceltacorsi);
+        const expandedUsers = [];
+
+        for (const row of corsistiRows) {
+            const baseEntry = {
+                nome: row.nome,
+                cognome: row.cognome,
+                email: row.email?.toLowerCase(),
+                pec: row.pec?.toLowerCase(),
+                cf: row.cf?.toUpperCase(),
+                telefono: row.telefono || "",
+                codecorso: row.codecorso?.trim() || "",
+                nomecorso: row.corso?.trim() || "",
+                convenzione: convName,
+                sede: `${row.sede_esame || ""}${row.wdm_user_custom_data || ""}`,
+                order_id: idordine,
+                corso: row.corso,
+                bccEmail: normalizeBccList(billingEmail, convMailbcc),
+                orderMeta,
+            };
+
+            const packageMeta = detectPackageFromCourseCode(row.codecorso);
+            if (!packageMeta) {
+                expandedUsers.push(baseEntry);
+                continue;
+            }
+
+            const manualCandidates = [
+                ...manualOrderSelections,
+                ...parsePackageSelectionString(row.sceltacorsi),
+                ...parsePackageSelectionString(row.scelta_corsi),
+                ...parsePackageSelectionString(row.wdm_user_custom_data),
+            ].map((code) => code.trim()).filter(Boolean);
+
+            const uniqueManual = [...new Set(manualCandidates)];
+            let selection = uniqueManual;
+            if (!selection.length) {
+                selection = await selectRandomPackageCourseCodes(piattaforma, packageMeta.credits);
+            }
+
+            if (!selection.length) {
+                console.warn(
+                    `[weborders] pacchetto ${packageMeta.packageId} (${packageMeta.credits}h) ordine ${idordine} senza corsi`,
+                );
+                expandedUsers.push(baseEntry);
+                continue;
+            }
+
+            selection.forEach((chosenCode, index) => {
+                expandedUsers.push({
+                    ...baseEntry,
+                    codecorso: chosenCode,
+                    nomecorso: `${baseEntry.nomecorso} (${chosenCode})`,
+                    suppressEmail: index > 0,
+                    packageInfo: {
+                        id: packageMeta.packageId,
+                        credits: packageMeta.credits,
+                        index: index + 1,
+                        total: selection.length,
+                    },
+                });
+            });
+        }
+
+        const utenti = expandedUsers;
+
+        // ✅ PROCESSA ISCRIZIONI
+        const results = await processEnrollRows({
+            rows: utenti,
+            db: piattaforma,
+            convenzioneName: convName,
+            convenzioneFallback: convName,
+            nomesito,
+            ifSendMail: sendmail,
+            webOrderUpdate: async () => {
+                await dbWeb.query(
+                    `UPDATE wp_woocommerce_rb_ordini
+                     SET order_status='completed'
+                     WHERE order_id=?`,
+                    [idordine]
+                );
+            }
+        });
+
+        const fail = results.filter(r => r.error);
+        const success = results.filter(r => r.stato === "OK");
+
+        return res.json({
+            success: fail.length === 0,
+            summary: {
+                order_id: idordine,
+                convenzione: convName,
+                ok: success.length,
+                ko: fail.length
+            },
+            results,
+            message: `Ordine ${idordine}: ${success.length} OK, ${fail.length} KO`
+        });
+
+    } catch (err) {
+        await logwrite("weborders ERR: " + err.message);
+        return res.status(500).json({ error: err.message });
+    }
+});
+
+
 router.post("/excel", async (req, res) => {
     try {
         const { convenzione, corso, utenti, fatturazione } = req.body;
@@ -591,156 +1091,6 @@ router.post("/excel", async (req, res) => {
         return res.status(500).json({ error: err.message });
     }
 });
-
-// ========================= POST /api/iscrizioni/weborders =========================
-// Body atteso:
-// {
-//   order_ids: [123, 456],       // oppure single: 123
-//   convenzione: "...",          // nome o codice (per ricavare host/piattaforma)
-//   host: "4.232.138.184",       // se vuoi bypassare lookup convenzione
-//   corsoPerUtente: false        // se true: n utenti, n corsi (leggiamo da DB), se false: singolo corso uniformato dal frontend
-// }
-router.post("/weborders", async (req, res) => {
-    try {
-        const { idordine, chkexist = true, sendmail = true } = req.body;
-        const webDbName = (req.query.db || req.body.webdb || "newformazione").toString().trim().toLowerCase();
-
-        if (!idordine)
-            return res.status(400).json({ error: "idordine richiesto" });
-
-        const dbWeb = await getConnection(webDbName);
-
-        // Ordine
-        const [[ordine]] = await dbWeb.query(
-            "SELECT * FROM wp_woocommerce_rb_ordini WHERE order_id=?",
-            [idordine]
-        );
-        if (!ordine)
-            return res.status(404).json({ error: "Ordine non trovato" });
-
-        const codiceConv = ordine.codice_convenzione || "";
-        const conv = await loadConvenzioneByCodeOrName(codiceConv);
-
-        if (!conv)
-            return res.status(400).json({ error: "Convenzione non valida o non trovata" });
-
-
-        const fallbackPlatforms = {
-            newformazione: process.env.MYSQL_FORMA4?.toLowerCase() || "forma4",
-            rbacademy: "formazionecondorb",
-            novastudia: "efadnovastdia",
-        };
-
-        const nomesito = conv.newindirizzoweb || conv.indirizzoweb || "";
-        const convName = conv.name || conv.Name || conv.Codice || conv.codice || codiceConv || "Senza nome";
-
-        let piattaforma = (conv.piattaforma || conv.Piattaforma || "").toLowerCase();
-        if (!piattaforma) {
-            piattaforma = fallbackPlatforms[webDbName] || "";
-        }
-
-        if (!piattaforma) {
-            return res.status(400).json({ error: "Impossibile determinare la piattaforma target per l'ordine selezionato" });
-        }
-
-        // ✅ Ricava utenti/corsi collegati
-        const [rows] = await dbWeb.query(
-            `SELECT 
-                id,
-                corsista_first_name AS nome,
-                corsista_last_name AS cognome,
-                corsista_email AS email,
-                corsista_pec AS pec,
-                corsista_cf AS cf,
-                corsista_tel AS telefono,
-                codice_corso AS codecorso,
-                corso_title AS corso,
-                order_id,
-                sede_esame,
-                wdm_user_custom_data
-             FROM wp_woocommerce_rb_corsisti
-             WHERE order_id=?
-             ORDER BY corsista_last_name ASC`,
-            [idordine]
-        );
-        if (!rows.length)
-            return res.json({
-                success: true,
-                result: [],
-                warning: "Nessun corsista associato"
-            });
-
-        const singleCorsistaIds = []
-            .concat(req.body.corsistaIds || [])
-            .concat(req.body.corsistaId ? [req.body.corsistaId] : [])
-            .map(String)
-            .filter(Boolean);
-
-        let corsistiRows = rows;
-        if (singleCorsistaIds.length) {
-            corsistiRows = rows.filter(r => singleCorsistaIds.includes(String(r.id)));
-            if (!corsistiRows.length) {
-                return res.status(404).json({ error: "Corsista selezionato non trovato nell'ordine richiesto" });
-            }
-        }
-
-        // ✅ struttura riga compatibile EXCEL
-        const utenti = corsistiRows.map(r => ({
-            nome: r.nome,
-            cognome: r.cognome,
-            email: r.email?.toLowerCase(),
-            pec: r.pec?.toLowerCase(),
-            cf: r.cf?.toUpperCase(),
-            telefono: r.telefono || "",
-            codecorso: r.codecorso?.trim() || "",
-            convenzione: convName,
-            sede: `${r.sede_esame || ""}${r.wdm_user_custom_data || ""}`,
-            order_id: idordine,
-            corso: r.corso,
-            bccEmail: conv.mailbcc || ""
-        }));
-
-        // ✅ PROCESSA ISCRIZIONI
-        const results = await processEnrollRows({
-            rows: utenti,
-            db: piattaforma,
-            convenzioneName: convName,
-            convenzioneFallback: convName,
-            nomesito,
-            ifSendMail: sendmail,
-            webOrderUpdate: async () => {
-                await dbWeb.query(
-                    `UPDATE wp_woocommerce_rb_ordini
-                     SET order_status='completed'
-                     WHERE order_id=?`,
-                    [idordine]
-                );
-            }
-        });
-
-        const fail = results.filter(r => r.error);
-        const success = results.filter(r => r.stato === "OK");
-
-        return res.json({
-            success: fail.length === 0,
-            summary: {
-                order_id: idordine,
-                convenzione: convName,
-                ok: success.length,
-                ko: fail.length
-            },
-            results,
-            message: `Ordine ${idordine}: ${success.length} OK, ${fail.length} KO`
-        });
-
-    } catch (err) {
-        await logwrite("weborders ERR: " + err.message);
-        return res.status(500).json({ error: err.message });
-    }
-});
-
-
-
 router.get("/sito", async (req, res) => {
     try {
         const page = parseInt(req.query.page || "1", 10);
@@ -872,6 +1222,189 @@ router.get("/nova", async (req, res) => {
 
 
 // 📦 Ottiene corsisti legati a un ordine specifico
+// PATCH /api/iscrizioni/ordini/:order_id
+router.patch("/ordini/:order_id", async (req, res) => {
+    try {
+        const { order_id } = req.params;
+        const dbName = (req.query.db || "newformazione").toString();
+        const db = await getConnection(dbName);
+        const allowedFields = [
+            "intestazione_fattura",
+            "billing_email",
+            "billing_pec",
+            "billing_cf",
+            "billing_codicedestinatario",
+            "billing_iva",
+            "billing_indirizzo_1",
+            "billing_cap",
+            "billing_comune",
+            "billing_provincia",
+            "metodo_di_pagamento",
+            "order_status",
+            "interrompi",
+        ];
+        const updates = [];
+        const values = [];
+        for (const field of allowedFields) {
+            if (Object.prototype.hasOwnProperty.call(req.body, field)) {
+                updates.push(`${field}=?`);
+                values.push(req.body[field]);
+            }
+        }
+        if (!updates.length) {
+            return res.status(400).json({ error: "Nessun campo modificabile fornito" });
+        }
+        await db.query(
+            `UPDATE wp_woocommerce_rb_ordini SET ${updates.join(", ")} WHERE order_id=?`,
+            [...values, order_id]
+        );
+        return res.json({ success: true });
+    } catch (err) {
+        console.error("❌ Errore /ordini/:order_id PATCH:", err);
+        return res.status(500).json({ error: err.message });
+    }
+});
+
+// DELETE /api/iscrizioni/ordini/:order_id
+router.delete("/ordini/:order_id", async (req, res) => {
+    try {
+        const { order_id } = req.params;
+        const dbName = (req.query.db || "newformazione").toString();
+        const db = await getConnection(dbName);
+
+        await db.query(
+            "DELETE FROM wp_woocommerce_rb_corsisti WHERE order_id = ?",
+            [order_id],
+        );
+        const [{ affectedRows }] = await db.query(
+            "DELETE FROM wp_woocommerce_rb_ordini WHERE order_id = ?",
+            [order_id],
+        );
+
+        if (!affectedRows) {
+            return res.status(404).json({ error: "Ordine non trovato" });
+        }
+
+        return res.json({ success: true });
+    } catch (err) {
+        console.error("❌ Errore /ordini/:order_id DELETE:", err);
+        return res.status(500).json({ error: err.message });
+    }
+});
+
+router.post("/ordini/:order_id/sync-billing-fields", async (req, res) => {
+    try {
+        const { order_id } = req.params;
+        const webDbName = (req.query.db || "newformazione").toString().trim().toLowerCase();
+        const dbWeb = await getConnection(webDbName);
+
+        const [[ordine]] = await dbWeb.query(
+            "SELECT * FROM wp_woocommerce_rb_ordini WHERE order_id=?",
+            [order_id]
+        );
+        if (!ordine) return res.status(404).json({ error: "Ordine non trovato" });
+
+        const convenzioneLookup = ordine.codice_convenzione || ordine.nome_convenzione || "";
+        const conv = await loadConvenzioneByCodeOrName(convenzioneLookup);
+        let piattaforma = (conv?.piattaforma || conv?.Piattaforma || "").toString().trim().toLowerCase();
+        if (!piattaforma) {
+            piattaforma = FALLBACK_PLATFORMS[webDbName] || "";
+        }
+        if (!piattaforma) {
+            return res.status(400).json({ error: "Impossibile determinare la piattaforma di destinazione" });
+        }
+
+        const targetConn = await getConnection(piattaforma);
+        const [corsisti] = await dbWeb.query(
+            `SELECT corsista_first_name AS nome,
+                    corsista_last_name AS cognome,
+                    corsista_email AS email,
+                    corsista_cf AS cf
+             FROM wp_woocommerce_rb_corsisti
+             WHERE order_id = ?
+             ORDER BY corsista_last_name ASC`,
+            [order_id]
+        );
+
+        if (!corsisti.length) {
+            return res.json({
+                success: true,
+                summary: { updated: 0, missing: [], errors: [] },
+                message: "Nessun corsista associato all'ordine",
+            });
+        }
+
+        const detailValues = {};
+        for (const [orderField, detailKeys] of Object.entries(BILLING_FIELD_MAP)) {
+            const raw = ordine[orderField];
+            const cleaned = raw !== undefined && raw !== null ? String(raw).trim() : "";
+            if (!cleaned) continue;
+            detailKeys.forEach((key) => {
+                if (!CAMPI_SUPPLEMENTARI[key]) return;
+                detailValues[key] = cleaned;
+            });
+        }
+
+        if (!Object.keys(detailValues).length) {
+            return res.status(400).json({ error: "Nessun dato di fatturazione valido per la sincronizzazione" });
+        }
+
+        const convenzioneName =
+            ordine.nome_convenzione ||
+            ordine.codice_convenzione ||
+            conv?.name ||
+            "";
+
+        const summary = { updated: 0, missing: [], errors: [] };
+
+        for (const row of corsisti) {
+            try {
+                const found = await GetIfUserExist(
+                    row.nome,
+                    row.cognome,
+                    row.cf,
+                    row.email,
+                    targetConn,
+                    convenzioneName
+                );
+                if (!found || !found.length) {
+                    summary.missing.push({
+                        nome: row.nome,
+                        cognome: row.cognome,
+                        email: row.email,
+                        cf: row.cf,
+                    });
+                    continue;
+                }
+
+                const idst = found[0].idst;
+                for (const [detailKey, value] of Object.entries(detailValues)) {
+                    const fieldId = CAMPI_SUPPLEMENTARI[detailKey];
+                    if (!fieldId) continue;
+                    await adddetails(fieldId, idst, value, targetConn);
+                }
+                summary.updated++;
+            } catch (err) {
+                summary.errors.push({
+                    nome: row.nome,
+                    cognome: row.cognome,
+                    email: row.email,
+                    message: err?.message || "Errore sconosciuto",
+                });
+            }
+        }
+
+        return res.json({
+            success: true,
+            summary,
+            message: `Aggiornati ${summary.updated} utenti`,
+        });
+    } catch (err) {
+        console.error("❌ Errore sincronizzazione campi fatturazione:", err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // GET /api/iscrizioni/ordini/:order_id/corsisti?db=wpacquisti&host=IFAD
 router.get("/ordini/:order_id/corsisti", async (req, res) => {
     try {
@@ -893,6 +1426,43 @@ router.get("/ordini/:order_id/corsisti", async (req, res) => {
     } catch (err) {
         console.error("❌ Errore /ordini/:order_id/corsisti:", err);
         res.status(500).json({ error: err.message });
+    }
+});
+
+
+router.patch("/corsisti/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const dbName = (req.query.db || "newformazione").toString();
+        const db = await getConnection(dbName);
+        const allowedFields = [
+            "corsista_first_name",
+            "corsista_last_name",
+            "corsista_email",
+            "corsista_pec",
+            "corsista_cf",
+            "codice_corso",
+            "corso_title",
+        ];
+        const updates = [];
+        const values = [];
+        for (const field of allowedFields) {
+            if (Object.prototype.hasOwnProperty.call(req.body, field)) {
+                updates.push(`${field}=?`);
+                values.push(req.body[field]);
+            }
+        }
+        if (!updates.length) {
+            return res.status(400).json({ error: "Nessun campo modificabile fornito" });
+        }
+        await db.query(
+            `UPDATE wp_woocommerce_rb_corsisti SET ${updates.join(", ")} WHERE corsista_id=?`,
+            [...values, id]
+        );
+        return res.json({ success: true });
+    } catch (err) {
+        console.error("❌ Errore /corsisti/:id PATCH:", err);
+        return res.status(500).json({ error: err.message });
     }
 });
 
