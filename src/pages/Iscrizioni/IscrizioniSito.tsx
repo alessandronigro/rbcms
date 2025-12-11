@@ -169,6 +169,22 @@ export default function IscrizioniSito() {
     await showAlert(j.success ? "Sollecito inviato" : j.error || "Errore invio sollecito");
   };
 
+  const elimina = async (orderId: string) => {
+    if (!(await askConfirm(`Eliminare ordine #${orderId} e corsisti associati?`))) return;
+    const res = await fetch(
+      `/api/iscrizioni/ordini/${encodeURIComponent(orderId)}`,
+      { method: "DELETE" },
+    );
+    const j = await res.json();
+    if (res.ok && j.success) {
+      await showAlert("Ordine eliminato");
+      setOpenRowId(null);
+      fetchOrdini(page, searchTerm);
+      return;
+    }
+    await showAlert(j.error || "Errore eliminazione ordine");
+  };
+
   const interrompi = async (orderId: string) => {
     if (!(await askConfirm("Interrompere le segnalazioni automatiche?"))) return;
     await fetch(`/api/iscrizioni/ordini/${encodeURIComponent(orderId)}`, {
@@ -402,6 +418,13 @@ export default function IscrizioniSito() {
                             className="px-2 py-1 text-xs bg-purple-500 hover:bg-purple-600 text-white rounded"
                           >
                             Reinvia
+                          </button>
+                          <button
+                            title="Elimina ordine e corsisti"
+                            onClick={() => elimina(orderKey)}
+                            className="px-2 py-1 text-xs bg-red-800 hover:bg-red-900 text-white rounded"
+                          >
+                            🗑️
                           </button>
                           <button
                             title={

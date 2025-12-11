@@ -512,7 +512,7 @@ async function processEnrollRows({
                 telefono: tel || orderTelefono,
                 data_nascita: src.data_nascita || src.dataNascita || "",
                 fax,
-                cf: orderCf || cf,
+                cf: cf || orderCf,
                 email,
                 societa: ragSoc,
                 sede: sedeVal,
@@ -582,8 +582,8 @@ async function processEnrollRows({
             const end = ConvertToMysqlDateTime(expire);
 
             for (const realCourseId of realCourseIds) {
-                // I corsi del pacchetto NON devono mai inviare email
-                src.suppressEmail = true;
+                const suppressForPackageExtra = Boolean(src.packageInfo?.index > 1);
+                src.suppressEmail = suppressForPackageExtra;
 
                 // evita doppi
                 const [already] = await cn.query(
@@ -594,11 +594,11 @@ async function processEnrollRows({
 
                 await cn.query(
                     `INSERT INTO learning_courseuser
-                     (idUser, idCourse, level, date_inscr, waiting, imported_from_connection,
+                     (idUser, idCourse, order_id, level, date_inscr, waiting, imported_from_connection,
                       absent, cancelled_by, new_forum_post,
                       date_begin_validity, date_expire_validity, codsblocco)
-                     VALUES (?, ?, 3, NOW(), 0, 1039, 0, 0, 0, ?, ?, ?)`,
-                    [idst, realCourseId, begin, end, passwordReal]
+                     VALUES (?, ?, ?, 3, NOW(), 0, 1039, 0, 0, 0, ?, ?, ?)`,
+                    [idst, realCourseId, src.order_id || null, begin, end, passwordReal]
                 );
 
                 // group membership
@@ -649,6 +649,7 @@ async function processEnrollRows({
             // email
             if (shouldSendMail) {
                 console.log(`[BCCemail] ${nome} ${cognome} (${email}) -> ${src.bccEmail || "N/A"}`);
+                logwrite(`[weborders] SaveAndSend invocato per ${email} ${title || codeFinal}`);
                 const esito = await SaveAndSend({
                     idcourse: idcourse,
                     file: "",
@@ -669,10 +670,12 @@ async function processEnrollRows({
                     datattivazione: now.toLocaleDateString("it-IT"),
                     codfis: cf,
                 });
+                logwrite(`[weborders] Invio mail ${email} esito=${esito.emailOk ? "OK" : "KO"} ${esito.esito || ""}`);
                 res.mailEsito = esito?.emailOk ? "OK" : "KO";
                 res.bccEsito = esito?.bccOk ? "OK" : "KO";
                 res.pecEsito = src.pec ? (esito?.pecOk ? "OK" : "KO") : "N/A";
             } else if (ifSendMail && src.suppressEmail) {
+                logwrite(`[weborders] Mail skippata per ${email} (suppressEmail attivo)`);
                 res.mailEsito = "SKIPPED";
                 res.bccEsito = src.bccEmail ? "SKIPPED" : "N/A";
                 res.pecEsito = src.pec ? "SKIPPED" : "N/A";
@@ -741,6 +744,7 @@ function normalizeBccList(...values) {
 router.post("/weborders", async (req, res) => {
     try {
         const { idordine, chkexist = true, sendmail = true } = req.body;
+        console.log(`[API:weborders] idordine=${idordine} chkexist=${chkexist} sendmail=${sendmail}`);
         const webDbName = (req.query.db || req.body.webdb || "newformazione").toString().trim().toLowerCase();
 
         if (!idordine)
@@ -1093,10 +1097,34 @@ router.post("/excel", async (req, res) => {
 });
 router.get("/sito", async (req, res) => {
     try {
-        const page = parseInt(req.query.page || "1", 10);
-        const limit = parseInt(req.query.limit || "50", 10);
+        const page = Math.max(1, parseInt(req.query.page || "1", 10));
+        const requestedLimit = parseInt(req.query.limit || "1000", 10);
+        const limit = Math.max(1, Math.min(requestedLimit, 5000));
         const offset = (page - 1) * limit;
         const search = (req.query.search || "").toString().trim();
+        const convenzioneFilter = (req.query.convenzione || "").toString().trim();
+        const esitoFilter = (req.query.esito || "").toString().trim().toLowerCase();
+        const requestedMonth = parseInt(req.query.month, 10);
+        const requestedYear = parseInt(req.query.year, 10);
+        const current = new Date();
+        const resolvedYear = Number.isInteger(requestedYear)
+            ? requestedYear
+            : current.getFullYear();
+        const resolvedMonth =
+            Number.isInteger(requestedMonth) && requestedMonth >= 1 && requestedMonth <= 12
+                ? requestedMonth
+                : current.getMonth() + 1;
+        const startDate = new Date(resolvedYear, resolvedMonth - 1, 1);
+        const endDate = new Date(startDate);
+        endDate.setMonth(endDate.getMonth() + 1);
+        const formatMysqlDate = (date) => {
+            const pad = (n) => (n < 10 ? `0${n}` : `${n}`);
+            return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(
+                date.getHours(),
+            )}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+        };
+        const monthStart = formatMysqlDate(startDate);
+        const nextMonthStart = formatMysqlDate(endDate);
 
         const db = await getConnection("newformazione");
 
@@ -1104,9 +1132,22 @@ router.get("/sito", async (req, res) => {
         const params = [];
         if (search) {
             const like = `%${search}%`;
-            filters.push(`(order_id LIKE ? OR COALESCE(nome_convenzione,'') LIKE ? OR COALESCE(intestazione_fattura,'') LIKE ? OR COALESCE(billing_email,'') LIKE ?)`);
+            filters.push(
+                `(order_id LIKE ? OR COALESCE(nome_convenzione,'') LIKE ? OR COALESCE(intestazione_fattura,'') LIKE ? OR COALESCE(billing_email,'') LIKE ?)`,
+            );
             params.push(like, like, like, like);
         }
+        if (convenzioneFilter) {
+            filters.push("nome_convenzione = ?");
+            params.push(convenzioneFilter);
+        }
+        if (esitoFilter) {
+            filters.push("LOWER(order_status) = ?");
+            params.push(esitoFilter);
+        }
+        filters.push("date_ins >= ? AND date_ins < ?");
+        params.push(monthStart, nextMonthStart);
+
         const whereClause = filters.length ? `WHERE ${filters.join(" AND ")}` : "";
 
         const dataSql = `
@@ -1124,7 +1165,14 @@ router.get("/sito", async (req, res) => {
             ${whereClause}`;
         const [[{ total }]] = await db.query(countSql, params);
 
-        res.json({ rows, total });
+        res.json({
+            rows,
+            total,
+            period: { month: resolvedMonth, year: resolvedYear },
+            page,
+            limit,
+            hasMore: offset + rows.length < total,
+        });
     } catch (err) {
         console.error("Errore /iscrizioni/sito:", err);
         res.status(500).json({ error: err.message });
@@ -1428,6 +1476,45 @@ router.get("/ordini/:order_id/corsisti", async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+
+function normalizeEmail(email) {
+    return String(email || "").trim().toLowerCase();
+}
+
+function normalizeName(name) {
+    return String(name || "").trim().toLowerCase();
+}
+
+function normalizeCf(cf) {
+    return String(cf || "").trim().toUpperCase();
+}
+
+function isValidCf(cf) {
+    return /^[A-Z0-9]{16}$/.test(cf || "");
+}
+
+async function lookupCorsistaCf(conn, entry) {
+    const emailKey = normalizeEmail(entry.email);
+    const firstName = normalizeName(entry.nome);
+    const lastName = normalizeName(entry.cognome);
+    if (!emailKey || !firstName || !lastName) return "";
+
+    const [rows] = await conn.query(
+        `
+        SELECT corsista_cf
+        FROM wp_woocommerce_rb_corsisti
+        WHERE LOWER(TRIM(corsista_email)) = ?
+          AND LOWER(TRIM(corsista_first_name)) = ?
+          AND LOWER(TRIM(corsista_last_name)) = ?
+        ORDER BY corsista_id DESC
+        LIMIT 1
+        `,
+        [emailKey, firstName, lastName]
+    );
+    if (!rows.length) return "";
+    return normalizeCf(rows[0].corsista_cf);
+}
 
 
 router.patch("/corsisti/:id", async (req, res) => {
