@@ -17,6 +17,15 @@ Il progetto combina backend Express, frontend React con TailwindCSS, e integrazi
 - 🔐 Gestione multi-database con connessioni dinamiche `getConnection(host, db)`
 - 🌐 Supporto a ambienti multipli (dev, staging, production)
 
+## Configurazione PEC
+
+Il backend legge le credenziali PEC da `.env.*`; per inviare documenti tramite `invioMailPEC` bisogna impostare:
+
+- `PEC_SMTP_USER` e `PEC_SMTP_PASSWORD`: username e password validi per `smtps.pec.aruba.it`
+- `SENDPASSWORD` rimane un fallback per compatibilità, ma il login vero deve venir da `PEC_SMTP_*`
+
+Se non sono settate, il server restituisce `Credenziali PEC mancanti`. Aggiorna i file `.env.development`/`.env.production` con le tue credenziali reali e tienile segrete.
+
 ---
 
 📄 Licenza

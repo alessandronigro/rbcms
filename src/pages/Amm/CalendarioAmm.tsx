@@ -15,7 +15,15 @@ export default function CalendarioAmm() {
   useEffect(() => {
     fetch("/api/finecorsoamm/calendario")
       .then((res) => res.json())
-      .then((data) => setEvents(data))
+      .then((data) => {
+        setEvents(data);
+        const counts: Record<number, number> = {};
+        data.forEach((event: any) => {
+          const flag = Number(event.extendedProps?.flagevent ?? event.flagevent ?? 0);
+          counts[flag] = (counts[flag] || 0) + 1;
+        });
+        console.log("Calendario Amm flagevent summary", counts);
+      })
       .catch((err) => console.error("Errore calendario:", err));
   }, [refreshKey]);
 
@@ -60,7 +68,7 @@ export default function CalendarioAmm() {
           }}
 
           eventContent={(arg) => {
-            const flag = arg.event.extendedProps.flagevent;
+            const flag = arg.event.extendedProps.flagevent ?? 0;
 
             const bgColors: Record<number, string> = {
               0: "#bbf7d0", // green-200

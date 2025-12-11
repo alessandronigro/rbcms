@@ -19,7 +19,6 @@ export default function ModalEditOrdine({ ordine, onClose, onSaved }: Props) {
     billing_provincia: ordine.billing_provincia || "",
     metodo_di_pagamento: ordine.metodo_di_pagamento || "",
     order_status: ordine.order_status || "",
-    note: ordine.note || "",
   });
   const { alert: showAlert } = useAlert();
 
@@ -153,15 +152,6 @@ export default function ModalEditOrdine({ ordine, onClose, onSaved }: Props) {
               className="w-full border rounded p-1"
               name="order_status"
               value={form.order_status}
-              onChange={onChange}
-            />
-          </label>
-          <label className="col-span-2">
-            Note
-            <input
-              className="w-full border rounded p-1"
-              name="note"
-              value={form.note}
               onChange={onChange}
             />
           </label>

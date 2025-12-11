@@ -14,6 +14,7 @@ export default function ModalePrenotatiAmm({
 }: ModalePrenotatiAmmProps) {
   const [loading, setLoading] = useState(true);
   const [sessione, setSessione] = useState<any>(null);
+  const [creatingZoom, setCreatingZoom] = useState(false);
   const { alert: showAlert, confirm: showConfirm } = useAlert();
   const askConfirm = async (message: string) => {
     try {
@@ -59,7 +60,7 @@ export default function ModalePrenotatiAmm({
   };
 
   const confermaSessione = async () => {
-    await fetch(`/api/finecorsoamm/sessione/${sessione.id}/conferma`, {
+    const res = await fetch(`/api/finecorsoamm/sessione/${sessione.id}/conferma`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -67,6 +68,16 @@ export default function ModalePrenotatiAmm({
         idcourse: sessione.idcourse,
       }),
     });
+    const body = await res.json().catch(() => null);
+
+    if (!res.ok) {
+      await showAlert(
+        `‼️ Errore conferma sessione: ${
+          body?.error || "impossibile completare l'operazione"
+        }`
+      );
+      return;
+    }
 
     await showAlert("✅ Sessione Confermata");
     postActionRefresh();
@@ -119,6 +130,37 @@ export default function ModalePrenotatiAmm({
     postActionRefresh();
   };
 
+  const creaZoomMeeting = async () => {
+    if (!sessione?.id) return;
+    try {
+      setCreatingZoom(true);
+      const res = await fetch(
+        `/api/finecorsoamm/sessione/${sessione.id}/zoom`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Errore creazione evento Zoom");
+      }
+
+      await showAlert(
+        `🎥 Meeting Zoom creato. Link inviato all'utente.\nCodice: ${data.meetingId}`,
+      );
+
+      const zoomLink = data.startUrl || data.authorizeUrl;
+      if (zoomLink) {
+        window.open(zoomLink, "_blank", "noopener,noreferrer");
+      }
+    } catch (err: any) {
+      await showAlert(err.message || "Errore creazione evento Zoom");
+    } finally {
+      setCreatingZoom(false);
+    }
+  };
+
   const deleteSessione = async () => {
     if (!(await askConfirm("⚠️ Eliminare definitivamente questa sessione?"))) return;
 
@@ -133,7 +175,15 @@ export default function ModalePrenotatiAmm({
 
   if (!sessione) return null;
 
-  const fmt = (v: string) => (v ? new Date(v).toISOString().slice(0, 16) : "");
+  const fmt = (v: string) => {
+    if (!v) return "";
+    const date = new Date(v);
+    if (Number.isNaN(date.getTime())) return "";
+    const pad = (value: number) => String(value).padStart(2, "0");
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(
+      date.getDate()
+    )}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+  };
 
   return (
     <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
@@ -188,6 +238,17 @@ export default function ModalePrenotatiAmm({
               </p>
               <p>
                 <b>Indirizzo:</b> {sessione.indirizzo_utente}
+              </p>
+              {sessione.course_code || sessione.course_name ? (
+                <p>
+                  <b>Corso:</b>{" "}
+                  {sessione.course_code ? `${sessione.course_code}` : "—"}{" "}
+                  {sessione.course_name ? `— ${sessione.course_name}` : null}
+                </p>
+              ) : null}
+              <p>
+                <b>Test:</b>{" "}
+                {sessione.test_attivo ? "Attivo" : "Non ancora attivo"}
               </p>
             </div>
 
@@ -281,6 +342,14 @@ export default function ModalePrenotatiAmm({
                   🔓 Sblocca Test
                 </button>
               )}
+
+              <button
+                onClick={creaZoomMeeting}
+                disabled={creatingZoom}
+                className="col-span-2 md:col-span-3 bg-rose-600 text-white py-2 rounded hover:bg-rose-700 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {creatingZoom ? "⏳ Creazione Zoom..." : "🎥 Crea evento Zoom"}
+              </button>
             </div>
           </>
         )}

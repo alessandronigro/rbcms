@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const router = express.Router();
 const { getConnection } = require("../dbManager");
-const { convertSecToDate } = require("../utils/helper");
+const { convertSecToDate, getMd5Hash } = require("../utils/helper");
 
 /// 🔹 Mappa piattaforme → database
 const dbMap = {
@@ -85,13 +85,13 @@ router.get("/multi", async (req, res) => {
     let groupKey = null;
     if (["formazionein", "newformazionein", "forma4"].includes(db))
         groupKey = "rbformazione";
-    else if (main === "simplybiz") groupKey = "simplybiz";
-    else if (main === "efadnovastudia") groupKey = "novastudia";
+    else if (db === "simplybiz") groupKey = "simplybiz";
+    else if (db === "efadnovastudia") groupKey = "novastudia";
     else if (["formazionecondo", "formazionecondorb"].includes(db))
         groupKey = "assiac";
 
     if (!groupKey || !dbMap[groupKey]) {
-        return res.status(400).json({ error: `Main '${db}' non valido` });
+        return res.status(400).json({ error: `Database '${db}' non valido` });
     }
 
     const { sql, params } = buildQuery({ nome, cognome, nominativo });
@@ -128,6 +128,7 @@ router.get("/detail", async (req, res) => {
 
 
     const conn = await getConnection(db);
+    const connwp = await getConnection("wpacquisti");
 
     // 1️⃣ Utente base
     const [userRows] = await conn.query(
@@ -226,6 +227,9 @@ router.get("/detail", async (req, res) => {
         case "fadassiac":
             addressDocebo = "http://fad.assiac.it";
             break;
+        case "simplybiz":
+            addressDocebo = "http://simplybiz.formazioneintermediari.com";
+            break;
         case "formazionecondorb":
             addressDocebo = "http://efad.rb-academy.it";
             break;
@@ -274,11 +278,11 @@ router.get("/detail", async (req, res) => {
     else if (db === "newformazionein") indirizzoField = "indirizzoweb";
     else indirizzoField = "newindirizzoweb";
 
-    const [rows] = await conn.query(
+    const [rows] = await connwp.query(
         `SELECT ${indirizzoField} AS address FROM wpacquisti.newconvenzioni WHERE name = ? LIMIT 1`,
         [convenzione]
     );
-    const address = rows?.[0]?.address || "https://ifad.formazioneintermediari.com";
+    const address = addressDocebo || "https://ifad.formazioneintermediari.com";
     res.json({
         user,
         fields: extra,
@@ -288,6 +292,34 @@ router.get("/detail", async (req, res) => {
 
         db
     });
+});
+
+router.post("/sincr-pass", async (req, res) => {
+    const { db, iduser } = req.body;
+    if (!db || !iduser) return res.status(400).json({ error: "Parametri mancanti" });
+
+    const conn = await getConnection(db);
+    try {
+        const [rows] = await conn.query(
+            `SELECT user_entry
+             FROM core_field_userentry
+             WHERE id_user = ? AND id_common = 26
+             LIMIT 1`,
+            [iduser]
+        );
+
+        const rawPassword = rows?.[0]?.user_entry?.toString().trim();
+        if (!rawPassword) {
+            return res.status(404).json({ error: "Campo password non disponibile" });
+        }
+
+        const passHash = getMd5Hash(rawPassword);
+        await conn.query(`UPDATE core_user SET pass = ? WHERE idst = ?`, [passHash, iduser]);
+        res.json({ success: true });
+    } catch (err) {
+        console.error("❌ sincr-pass:", err);
+        res.status(500).json({ error: "Errore durante la sincronizzazione della password" });
+    }
 });
 
 module.exports = router;

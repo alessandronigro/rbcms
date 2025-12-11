@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
+import dayjs from "dayjs";
 import { Calendar, Eye, Loader2 } from "lucide-react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import itLocale from "@fullcalendar/core/locales/it";
+import Calendario60h from "../60h/Calendario";
 
 interface FineCorsoRow {
   id: string;
   id_user: number;
-  id_course: number;
+  idcourse: number;
+  id_course?: number;
   firstname: string;
   lastname: string;
   convenzione: string;
@@ -53,8 +56,8 @@ function ModalDatiSessione({ isOpen, onClose, onSave, row }: ModalProps) {
   const disabled = !form.dataprova || !form.dataesame;
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-xl w-[95%] max-w-5xl p-6 relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 bg-black/30">
+      <div className="bg-white rounded-lg shadow-xl w-[95%] max-w-5xl p-6 relative max-h-[calc(100vh-3rem)] overflow-auto">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-600 hover:text-red-600"
@@ -117,14 +120,20 @@ function ModalDatiSessione({ isOpen, onClose, onSave, row }: ModalProps) {
           className="w-full border rounded p-2 mt-2"
         />
         {/* 📌 Calendario Preview */}
-        <div className="bg-gray-50 p-2 rounded-lg border mb-6">
-          <FullCalendar
-            plugins={[dayGridPlugin]}
-            initialView="dayGridMonth"
-            height="300px"
-            locale={itLocale}
-            events={calendarEvents}
-          />
+        <div className="space-y-4">
+          <div className="bg-gray-50 p-2 rounded-lg border">
+            <FullCalendar
+              plugins={[dayGridPlugin]}
+              initialView="dayGridMonth"
+              height="300px"
+              locale={itLocale}
+              events={calendarEvents}
+            />
+          </div>
+          <div className="bg-gray-50 p-2 rounded-lg border">
+            <h4 className="mb-2 text-sm font-semibold text-gray-600">Calendario 60h</h4>
+            <Calendario60h />
+          </div>
         </div>
         <div className="flex justify-end gap-3 mt-5">
           <button
@@ -193,7 +202,7 @@ export default function FineCorsoAmm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         iduser: selectedRow.id_user,
-        idcourse: selectedRow.id_course,
+        idcourse: selectedRow.idcourse || selectedRow.id_course,
         dataprova: form.dataprova,
         dataesame: form.dataesame,
         note: form.note,
@@ -244,7 +253,7 @@ export default function FineCorsoAmm() {
       </div>
 
       <h1 className="text-xl font-bold mb-4">
-        🧾 Fine Corso 60 ore — Gestione Sessioni
+        🧾 Calendario Amministratore — Gestione Sessioni
       </h1>
 
       {loading ? (
@@ -293,11 +302,15 @@ export default function FineCorsoAmm() {
                 <td className="p-2">{row.firstname}</td>
                 <td className="p-2 text-red-600">{row.code}</td>
                 <td className="p-2">
-                  {new Date(row.on_date).toLocaleDateString("it-IT")}
+                  {dayjs(row.on_date).isValid()
+                    ? dayjs(row.on_date).format("DD/MM/YYYY")
+                    : "-"}
                 </td>
                 <td className="p-2">{row.convenzione}</td>
                 <td className="p-2">
-                  {new Date(row.date_inscr).toLocaleDateString("it-IT")}
+                  {dayjs(row.date_inscr).isValid()
+                    ? dayjs(row.date_inscr).format("DD/MM/YYYY")
+                    : "-"}
                 </td>
                 <td className="p-2">
                   <input
@@ -316,7 +329,7 @@ export default function FineCorsoAmm() {
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                           id_user: row.id_user,
-                          id_course: row.id_course,
+                          id_course: row.idcourse || row.id_course,
                           note: latestNote,
                         }),
                       });

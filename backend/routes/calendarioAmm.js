@@ -3,11 +3,24 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 const { getConnection } = require("../dbManager");
-const { getMailFormat } = require("../utils/helper");
+const {
+    getMailFormat,
+    toMySQLDateTime,
+    piedinorbacademy,
+    getBCC,
+    formatDateTimeToMinutes,
+} = require("../utils/helper");
 const { invioMail } = require("../utils/mailerBrevo");
-const { toMySQLDateTime } = require("../utils/helper.js");
-const { piedinorbacademy, getBCC } = require("../utils/helper.js");
 const { createZoomMeeting } = require("../utils/zoom");
+const RESOLVE_DB_AMM_FALLBACK = (process.env.MYSQL_formazionecondorb || "formazionecondorb").toLowerCase();
+function resolveDbKeyAmm(value) {
+    if (!value) return RESOLVE_DB_AMM_FALLBACK;
+    const normalized = String(value || "").trim();
+    if (!normalized) return RESOLVE_DB_AMM_FALLBACK;
+    const lower = normalized.toLowerCase();
+    if (lower.includes("process.env.")) return RESOLVE_DB_AMM_FALLBACK;
+    return lower;
+}
 // ============================================================
 //   FINE CORSO Amm - ROUTES
 // ============================================================
@@ -21,7 +34,7 @@ router.get("/", async (req, res) => {
         const conn = await getConnection(process.env.MYSQL_formazionecondorb);
 
         const sql = `
-      select distinct(concat(a.id_user,a.id_course)) as id,firstname,lastname,a.flagevent,a.note,c.user_entry as convenzione,d.code, a.on_date,a.evaso,a.data_invio,a.id_user,a.id_course as idcourse,(select distinct(iduser) from rbamministratore.prenotazioni where iduser=a.id_user) as aggiunto  from (((learning_certificate_assign a  join core_user b on b.idst=a.id_user) left join core_field_userentry c on c.id_user=b.idst)  left join learning_course d on d.idcourse=a.id_course)   where (a.pagato !=1 OR a.pagato IS NULL)  and    id_common=25   And user_entry='RB Academy' AND  a.id_course in (18,9,29,31,33) order by on_date desc
+      select distinct(concat(a.id_user,a.id_course)) as id,firstname,lastname,a.flagevent,a.note,c.user_entry as convenzione,d.code, a.on_date,a.evaso,a.data_invio,a.id_user,a.id_course as idcourse,(select distinct(iduser) from rbamministratore.prenotazioni where iduser=a.id_user) as aggiunto  from (((learning_certificate_assign a  join core_user b on b.idst=a.id_user) left join core_field_userentry c on c.id_user=b.idst)  left join learning_course d on d.idcourse=a.id_course)   where (a.pagato !=1 OR a.pagato IS NULL)  and    id_common=25   And user_entry='RB Academy' AND  (d.code LIKE 'codAmmAgg%' OR d.code LIKE 'codAmm%') order by on_date desc
     `;
 
         const [rows] = await conn.query(sql);
@@ -113,13 +126,17 @@ router.get("/sessione/:idsessione/dettaglio", async (req, res) => {
         st.nome AS nome_studio,
         st.cognome AS cognome_studio,
         st.tipologia AS tipologia_studio,
-        l.note AS note_cert
+        l.note AS note_cert,
+        lc.code AS course_code,
+        lc.name AS course_name
       FROM sessioni s
       LEFT JOIN prenotazioni p ON p.idsessione = s.id
       LEFT JOIN anagrafiche a ON a.id = p.iduser
       LEFT JOIN studi st ON st.id = s.idstudio
       LEFT JOIN formazionecondorb.learning_certificate_assign l
         ON l.id_user = p.iduser AND l.id_course = p.idcourse
+      LEFT JOIN formazionecondorb.learning_course lc
+        ON lc.idcourse = p.idcourse
       WHERE s.id = ?
     `,
             [idsessione]
@@ -152,6 +169,24 @@ router.get("/sessione/:idsessione/dettaglio", async (req, res) => {
         }
 
         const noteSessione = typeof row.note === "string" ? row.note : "";
+        if (!row.cf_utente && row.iduser) {
+            try {
+                const userDbName = resolveDbKeyAmm(row.db);
+                if (userDbName) {
+                    const cfConn = await getConnection(userDbName);
+                    const [cfRows] = await cfConn.query(
+                        `SELECT user_entry FROM core_field_userentry WHERE id_user = ? AND id_common = 23 LIMIT 1`,
+                        [row.iduser]
+                    );
+                    if (cfRows.length) {
+                        row.cf_utente = cfRows[0].user_entry;
+                    }
+                }
+            } catch (cfErr) {
+                console.warn("⚠️ CF utente AMM non disponibile:", cfErr.message);
+            }
+        }
+
         const enrichedRow = {
             ...row,
             note: noteSessione || row.note_cert || "",
@@ -159,22 +194,36 @@ router.get("/sessione/:idsessione/dettaglio", async (req, res) => {
         };
 
         let testAttivo = false;
-        if (row.iduser && row.idcourse) {
-            let testCourseId = Number(row.idcourse);
-            if (testCourseId === 73) testCourseId = 74;
-            else if (testCourseId === 85) testCourseId = 86;
-
-            if (testCourseId) {
-                try {
-                    const connForma = await getConnection(process.env.MYSQL_formazionecondorb);
+        if (row.iduser) {
+            try {
+                const connForma = await getConnection(process.env.MYSQL_formazionecondorb);
+                let testCourseId = null;
+                if (row.course_code) {
+                    const mappedTest = await findTestCourseForAmm(connForma, row.course_code);
+                    if (mappedTest?.idcourse) testCourseId = Number(mappedTest.idcourse);
+                    console.log(
+                        "info",
+                        "AMM test mapping",
+                        { iduser: row.iduser, course_code: row.course_code, mappedTest }
+                    );
+                }
+                if (!testCourseId && row.idcourse) {
+                    testCourseId = Number(row.idcourse);
+                }
+                console.log(
+                    "info",
+                    "AMM testCourseId final",
+                    { iduser: row.iduser, course_code: row.course_code, idcourse: row.idcourse, testCourseId }
+                );
+                if (testCourseId) {
                     const [exists] = await connForma.query(
                         `SELECT 1 FROM learning_courseuser WHERE idUser=? AND idCourse=? LIMIT 1`,
                         [row.iduser, testCourseId]
                     );
                     testAttivo = exists.length > 0;
-                } catch (err) {
-                    console.warn("⚠️ Check test_attivo AMM fallita:", err.message);
                 }
+            } catch (err) {
+                console.warn("⚠️ Check test_attivo AMM fallita:", err.message);
             }
         }
 
@@ -214,8 +263,11 @@ router.post("/sessione", async (req, res) => {
             });
         }
 
-        const dProva = (dataprova || "").replace("T", " ") + ":00";
-        const dEsame = (dataesame || "").replace("T", " ") + ":00";
+        const formattedDataProva = formatDateTimeToMinutes(dataprova);
+        const formattedDataEsame = formatDateTimeToMinutes(dataesame);
+        if (!formattedDataProva || !formattedDataEsame) {
+            return res.status(400).json({ error: "Formato data non valido" });
+        }
         const dNow = new Date().toISOString().slice(0, 19).replace("T", " ");
         const idstudio = 1;
         const maxposti = 1;
@@ -227,7 +279,7 @@ router.post("/sessione", async (req, res) => {
       (maxposti, Postidisponibili, dataesame, dataprova, nomesessione, domicilio, note, visible, attivo, idstudio, indirizzosessione, datainvio)
       VALUES (?, ?, ?, ?, ?, ?, ?, 1, 1, ?, '', ?)
       `,
-            [maxposti, maxposti, dEsame, dProva, `TEST2 - ${convenzione || ""}`, "", note || "", idstudio, dNow]
+            [maxposti, maxposti, formattedDataEsame, formattedDataProva, `TEST2 - ${convenzione || ""}`, "", note || "", idstudio, dNow]
         );
         const idsessione1 = res1.insertId;
 
@@ -243,7 +295,7 @@ router.post("/sessione", async (req, res) => {
       (maxposti, Postidisponibili, dataesame, dataprova, nomesessione, domicilio, note, visible, attivo, idstudio, indirizzosessione, idparent, datainvio)
       VALUES (?, ?, ?, ?, ?, ?, ?, 1, 1, ?, '', ?, ?)
       `,
-            [maxposti, maxposti, dProva, dEsame, `TEST - ${convenzione || ""}`, "", note || "", idstudio, idsessione1, dNow]
+            [maxposti, maxposti, formattedDataProva, formattedDataEsame, `TEST - ${convenzione || ""}`, "", note || "", idstudio, idsessione1, dNow]
         );
         const idsessione2 = res2.insertId;
 
@@ -746,14 +798,20 @@ router.put("/sessione/:idsessione", async (req, res) => {
     try {
         const connAmm = await getConnection("rbamministratore");
 
+        const formattedDataProva = formatDateTimeToMinutes(dataprova);
+        const formattedDataEsame = formatDateTimeToMinutes(dataesame);
+        if (!formattedDataProva || !formattedDataEsame) {
+            return res.status(400).json({ error: "Formato data non valido" });
+        }
+
         // ✅ Update sessione
         await connAmm.query(
             `UPDATE sessioni
              SET dataprova = ?, dataesame = ?, note = ?
              WHERE id = ?`,
             [
-                dataprova.replace("T", " ") + ":00",
-                dataesame.replace("T", " ") + ":00",
+                formattedDataProva,
+                formattedDataEsame,
                 note || "",
                 idsessione
             ]
@@ -897,14 +955,17 @@ async function InviaComunicaConfermaAmm(iduser, idsessione) {
 
         const r = rows[0];
 
-        let body = await getMailFormat("mailformatAmmconferma2");
-        body = body
-            .replace("[NOME]", r.nome)
-            .replace("[COGNOME]", r.cognome)
-            .replace("[DATAESAME]", new Date(r.dataesame).toLocaleDateString("it-IT"))
-            .replace("[ORA]", formatTimeHHmm(r.dataesame))
-            .replace("[DATAPROVA]", new Date(r.dataprova).toLocaleDateString("it-IT"))
-            .replace("[ORAPROVA]", formatTimeHHmm(r.dataprova));
+        const dataEsame = r.dataesame ? new Date(r.dataesame) : null;
+        const dataProva = r.dataprova ? new Date(r.dataprova) : null;
+
+        const template = await getMailFormat("mailformatAmmconferma2");
+        let body = (template || "")
+            .replace("[NOME]", r.nome || "")
+            .replace("[COGNOME]", r.cognome || "")
+            .replace("[DATAESAME]", dataEsame ? dataEsame.toLocaleDateString("it-IT") : "")
+            .replace("[ORA]", formatTimeHHmm(dataEsame))
+            .replace("[DATAPROVA]", dataProva ? dataProva.toLocaleDateString("it-IT") : "")
+            .replace("[ORAPROVA]", formatTimeHHmm(dataProva));
 
         body += "<br>" + piedinorbacademy;
 
@@ -912,23 +973,35 @@ async function InviaComunicaConfermaAmm(iduser, idsessione) {
         const dir = path.join(process.cwd(), "public/temp");
         if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
-        const filePath = path.join(dir, `sessione_${iduser}.ics`);
+        const events = [];
+        const toICSDate = (value) =>
+            value ? value.toISOString().replace(/[-:]/g, "").split(".")[0] : "";
 
-        // ✅ Genera ICS
-        const ics =
-            `BEGIN:VCALENDAR
-VERSION:2.0
+        if (dataProva) {
+            events.push(`
 BEGIN:VEVENT
-DTSTART:${new Date(r.dataprova).toISOString().replace(/[-:]/g, "").split(".")[0]}
+DTSTART:${toICSDate(dataProva)}
 SUMMARY:Prova test
-END:VEVENT
+END:VEVENT`);
+        }
+        if (dataEsame) {
+            events.push(`
 BEGIN:VEVENT
-DTSTART:${new Date(r.dataesame).toISOString().replace(/[-:]/g, "").split(".")[0]}
+DTSTART:${toICSDate(dataEsame)}
 SUMMARY:Test Finale
-END:VEVENT
-END:VCALENDAR`;
+END:VEVENT`);
+        }
 
-        fs.writeFileSync(filePath, ics);
+        let filePath = null;
+        if (events.length) {
+            filePath = path.join(dir, `sessione_${iduser}.ics`);
+            const ics =
+                `BEGIN:VCALENDAR
+VERSION:2.0
+${events.join("\n")}
+END:VCALENDAR`;
+            fs.writeFileSync(filePath, ics);
+        }
 
         // ✅ Invia Email con allegato
         const bcc = await getBCC(iduser);
@@ -939,13 +1012,13 @@ END:VCALENDAR`;
             subject: "Test finale Amministratore di condominio: conferma",
             html: body,
             bcc,
-            attachments: [filePath]
+            attachments: filePath ? [filePath] : []
         });
 
         console.log("✅ Email conferma inviata con successo");
 
         // ✅ Cancella ICS dopo invio
-        if (fs.existsSync(filePath)) {
+        if (filePath && fs.existsSync(filePath)) {
             fs.unlinkSync(filePath);
             console.log("🗑️ Allegato ICS cancellato:", filePath);
         }
@@ -967,10 +1040,16 @@ async function insertPrenotazioneAmm(idsessione, iduser, idcourse) {
     const now = new Date();
     const connAmm = await getConnection("rbamministratore");
     const connForma = await getConnection(process.env.MYSQL_formazionecondorb);
+
+    if (!iduser || !idcourse) {
+        throw new Error("Impossibile creare prenotazione: servono iduser e idcourse");
+    }
+
+    const dbName = process.env.MYSQL_formazionecondorb || "formazionecondorb";
     await connAmm.query(
-        `INSERT INTO prenotazioni (iduser, idsessione, data_prenotazione, idcourse, db)
-         VALUES (?,?,?,?, 'process.env.MYSQL_formazionecondorb')`,
-        [iduser, idsessione, now, idcourse]
+        `INSERT INTO prenotazioni (idsessione, iduser, idcourse, db, data_prenotazione)
+         VALUES (?,?,?,?,?)`,
+        [idsessione, iduser, idcourse, dbName, now]
     );
 
     // Disponibilità
@@ -986,14 +1065,28 @@ async function insertPrenotazioneAmm(idsessione, iduser, idcourse) {
         [iduser]
     );
 
+    let codiceFiscale = "";
+    try {
+        const [cfRows] = await connForma.query(
+            `SELECT user_entry FROM core_field_userentry WHERE id_user = ? AND id_common = 23 LIMIT 1`,
+            [iduser]
+        );
+        if (cfRows.length) {
+            codiceFiscale = (cfRows[0].user_entry || "").trim();
+        }
+    } catch (err) {
+        console.warn("⚠️ CF non disponibile per AMM:", err.message);
+    }
+
     if (u.length) {
         await connAmm.query(
-            `INSERT INTO anagrafiche (id,nome,cognome,email)
-             VALUES (?,?,?,?)
+            `INSERT INTO anagrafiche (id,nome,cognome,email,codicefiscale)
+             VALUES (?,?,?,?,?)
              ON DUPLICATE KEY UPDATE nome=VALUES(nome),
                                       cognome=VALUES(cognome),
-                                      email=VALUES(email)`,
-            [iduser, u[0].firstname, u[0].lastname, u[0].email]
+                                      email=VALUES(email),
+                                      codicefiscale=VALUES(codicefiscale)`,
+            [iduser, u[0].firstname, u[0].lastname, u[0].email, codiceFiscale]
         );
     }
 }
@@ -1014,6 +1107,11 @@ async function insertSessione2Amm({
 
     const maxposti = 1;
     const dNow = new Date().toISOString().slice(0, 19).replace("T", " ");
+    const formattedDataEsame = formatDateTimeToMinutes(dataesame);
+    const formattedDataProva = formatDateTimeToMinutes(dataprova);
+    if (!formattedDataEsame || !formattedDataProva) {
+        throw new Error("Formato data non valido");
+    }
 
     try {
 
@@ -1039,7 +1137,7 @@ async function insertSessione2Amm({
                     `UPDATE sessioni
                      SET dataesame=?, dataprova=?, maxposti=?, note=?
                      WHERE id = ?`,
-                    [dataesame, dataprova, maxposti, note, idSessione]
+                    [formattedDataEsame, formattedDataProva, maxposti, note, idSessione]
                 );
             } else {
                 // Update su TEST speculare
@@ -1048,7 +1146,7 @@ async function insertSessione2Amm({
                      SET dataprova=?, dataesame=?, maxposti=?, note=?,
                          Postidisponibili=ABS(?-(SELECT COUNT(*) FROM prenotazioni WHERE idsessione=?))
                      WHERE id = ?`,
-                    [dataesame, dataprova, maxposti, note, maxposti, idSessione, idSessione]
+                    [formattedDataProva, formattedDataEsame, maxposti, note, maxposti, idSessione, idSessione]
                 );
             }
 
@@ -1070,7 +1168,7 @@ async function insertSessione2Amm({
              VALUES (?, ?, ?, ?, ?, ?, ?, 1, 1, 1, '', ?)`,
             [
                 maxposti, maxposti,
-                dataesame, dataprova,
+                formattedDataEsame, formattedDataProva,
                 `TEST2 - ${nomesessione || ""}`, domicilio, note, dNow
             ]
         );
@@ -1086,7 +1184,7 @@ async function insertSessione2Amm({
              VALUES (?, ?, ?, ?, ?, ?, ?, 1, 1, 1, '', ?, ?)`,
             [
                 maxposti, maxposti,
-                dataprova, dataesame,
+                formattedDataProva, formattedDataEsame,
                 `TEST - ${nomesessione || ""}`, domicilio, note,
                 idsessione1, dNow
             ]
@@ -1215,11 +1313,11 @@ async function findTestCourseForAmm(conn, courseCode) {
     const mappings = [
         {
             prefix: "codammagg",
-            testPrefixes: ["codTestAmmAggTest", "codTestAmmAgg"],
+            testPrefixes: ["codTestAmmAgg", "codAmmAgg"],
         },
         {
             prefix: "codamm",
-            testPrefixes: ["codTestAmmTest", "codTestAmm"],
+            testPrefixes: ["codTestAmm", "codAmm"],
         },
     ];
 

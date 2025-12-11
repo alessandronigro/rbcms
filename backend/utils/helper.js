@@ -12,6 +12,7 @@ const dayjs = require("dayjs");
 const { getConnection } = require("../dbManager");
 const { invioMail, invioMailPEC } = require("../utils/mailerBrevo");
 const { ConversationsAgentOnlinePingPostRequest } = require("@getbrevo/brevo");
+const { writeLog, logError } = require("./logger");
 
 
 const BASE_DIR = path.resolve(__dirname, "..");
@@ -43,7 +44,7 @@ global.piedino = `
 <span style="color:#00314c">Segreteria Didattica</span></span></span></span></span>
 <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
 <strong><em>&nbsp; &nbsp; &nbsp;&nbsp;</em></strong></span></span></p><br>
-<img src="cid:companylogo">
+[[LOGO]]
 <p style="margin-left:0cm; margin-right:0cm">
 <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
 <strong><em><span style="font-size:12.0pt">
@@ -83,7 +84,7 @@ global.piedinorbacademy = `
 <span style="color:#00314c">Segreteria Didattica</span></span></span></span></span>
 <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
 <strong><em>&nbsp; &nbsp; &nbsp;&nbsp;</em></strong></span></span></p><br>
-<img src="cid:companylogo">
+[[LOGO]]
 <p style="margin-left:0cm; margin-right:0cm">
 <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
 <strong><em><span style="font-size:12.0pt">
@@ -118,7 +119,7 @@ global.piedinonovastudia = `
 <span style="color:#00314c">Segreteria Didattica</span></span></span></span></span>
 <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
 <strong><em>&nbsp; &nbsp; &nbsp;&nbsp;</em></strong></span></span></p><br>
-<img src="cid:companylogo">
+[[LOGO]]
 <p style="margin-left:0cm; margin-right:0cm">
 <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
 <strong><em><span style="font-size:12.0pt">
@@ -143,7 +144,7 @@ www.novastudia.academy</a></span></span></span></u></em></span></span><br />
 `;
 
 global.piedinodidattica = `
-<img src="cid:companylogo">
+[[LOGO]]
 <p style="margin-left:0cm; margin-right:0cm">
   <span style="font-size:14pt"><span style="font-family:Calibri,sans-serif">
     <strong><em><span style="font-size:12.0pt">
@@ -219,26 +220,44 @@ function parseEsitoInvii(esito) {
     };
 }
 
-async function reinviamail(iduser, idcourse, email, firstname, lastname, userid, code, corso, db) {
+async function reinviamail({
+    iduser,
+    idcourse,
+    email,
+    nome,
+    cognome,
+    userid,
+    code,
+    corso,
+    db,
+}) {
 
     if (!iduser || !email || !db) {
-        return res.status(400).json({ error: "Parametri mancanti" });
+        throw new Error("Parametri mancanti");
     }
 
     const conn = await getConnection(db);
     try {
         // 🔹 Recupera dati anagrafici
         const [fields] = await conn.query(
-            `SELECT id_common, user_entry FROM core_field_userentry WHERE id_user = ? ORDER BY id_common ASC`,
+            `SELECT a.id_common, b.translation, a.user_entry
+             FROM core_field_userentry a
+             LEFT JOIN core_field b ON b.id_common = a.id_common
+             WHERE a.id_user = ?
+             ORDER BY b.sequence ASC`,
             [iduser]
         );
 
         const getField = (id) =>
             fields.find((r) => r.id_common === id)?.user_entry?.toString() || "";
 
-        const nominativo = `${firstname} ${lastname}`;
+        const nominativo = `${nome || ""} ${cognome || ""}`.trim();
         const cf = getField(23);
-        const emailfatt = `${getField(24)};${getField(15)}`;
+        const invoiceMain = getField(24);
+        const invoiceAlternative = getField(15);
+        const invoiceField = fields.find((f) =>
+            typeof f.translation === "string" && /email.*fatturazione/i.test(f.translation)
+        )?.user_entry?.toString();
         const pecutente = getField(31);
         const convenzione = getField(25);
         const passwordreal = getField(26);
@@ -248,7 +267,10 @@ async function reinviamail(iduser, idcourse, email, firstname, lastname, userid,
 
         let nomesito = "";
         let piattaforma = "";
-        let bcc = "";
+        let bccList = [];
+
+        // Aggiungi email fattura (campo 15) alla lista BCC se presente
+        if (invoiceAlternative) bccList.push(invoiceAlternative);
 
         if (convenzione) {
             const [convRows] = await connW.query(
@@ -264,7 +286,7 @@ async function reinviamail(iduser, idcourse, email, firstname, lastname, userid,
                 else nomesito = conv.indirizzoweb;
 
                 piattaforma = conv.piattaforma;
-                bcc = `${conv.mailbcc};${emailfatt}`;
+                if (conv.mailbcc) bccList.push(conv.mailbcc);
             }
         } else {
             const [defaultConv] = await connW.query(
@@ -275,8 +297,21 @@ async function reinviamail(iduser, idcourse, email, firstname, lastname, userid,
             if (db === "formazionein") nomesito = def.oldindirizzoweb;
             else nomesito = def.indirizzoweb;
             piattaforma = def.piattaforma;
-            bcc = `${def.mailbcc};${emailfatt}`;
+            if (def.mailbcc) bccList.push(def.mailbcc);
         }
+
+        // 🔹 Recupera nome corso se mancante
+        let nomeCorso = corso || "";
+        if (!nomeCorso && idcourse) {
+            const courseInfo = await getNomeCorsoById(idcourse, db);
+            if (courseInfo) {
+                // getNomeCorsoById restituisce "code | name"
+                nomeCorso = courseInfo.split('|')[1]?.trim() || courseInfo;
+            }
+        }
+
+        // 🔹 Pulisci userid (rimuovi slash iniziale)
+        const cleanUserid = (userid || "").replace(/^\//, '');
 
         // 🔹 Invia mail con SaveAndSend
         const result = await SaveAndSend({
@@ -284,22 +319,22 @@ async function reinviamail(iduser, idcourse, email, firstname, lastname, userid,
             email,
             pec: pecutente,
             nominativo,
-            username: userid,
-            password: passwordreal,
+            _username: cleanUserid,
+            _password: passwordreal,
             convenzione,
-            corso,
-            bcc,
+            corso: code,
+            nomecorso: nomeCorso,
+            bcc: bccList.join(';'),
             tipo: "benvenuto",
             cf,
             nomesito,
         });
 
         logwrite(`📧 Reinviata mail a ${email} (${nominativo})`);
-
-        res.json({ success: true, message: "Mail di benvenuto reinviata correttamente", result });
+        return result;
     } catch (err) {
         logwrite("❌ Errore reinviamail: " + err.message);
-        res.status(500).json({ success: false, error: err.message });
+        throw err;
     } finally {
         conn.release?.();
     }
@@ -327,6 +362,10 @@ async function SaveAndSend({
 }) {
     let esito = "";
     let flags = { emailOk: false, bccOk: false, pecOk: false };
+
+    console.log(
+        `[SaveAndSend] corso=${nomecorso || code} nominativo=${nominativo} email=${email} pec=${pec || "N/A"} bcc=${bcc || "N/A"}`
+    );
 
     if (format === "extra") {
         esito = await SendExtra({
@@ -522,7 +561,7 @@ async function SendBenvenuto({
     let subject = `Benvenut${finale} ${nominativo.replace("\\", "")}`;
     let body = "";
     const mode = getTemplateMode();
-    const blockCred = `• <b>Username:</b> ${username}<br/>• <b>Password:</b> ${password}`;
+    const blockCred = `• Username: <b>${username}</b><br/>• Password: <b>${password}</b>`;
 
 
     // --- Case: ASSIAC - Concetta
@@ -616,6 +655,7 @@ PEC: ventiduebrokersrl@legalmail.it • Contatti: info@ventiduebroker.it</span><
     body = `<div style='text-align:justify'><span style='font-family:Times New Roman;font-size:14pt;color:#00314C'>
 Gentile Utente <b>${nominativo}</b>,<br>
 benvenuto al corso e-learning <b>"${nomecorso}"</b>.<br>
+Da questo momento può accedere alla piattaforma e ai suoi contenuti come utente regolarmente iscritto con le seguenti credenziali:<br>
 ${blockCred}
 
 <p>
@@ -688,6 +728,18 @@ function toMySQLDateTime(d) {
         ":" +
         pad(d.getSeconds())
     );
+}
+function formatDateTimeToMinutes(value) {
+    if (!value) return "";
+    let normalized = value.toString().trim();
+    if (!normalized) return "";
+    normalized = normalized.replace("T", " ");
+    normalized = normalized.replace(/Z$/i, "");
+    normalized = normalized.replace(/\.\d+/, "");
+    const match = normalized.match(/^(\d{4})-(\d{1,2})-(\d{1,2})\s+(\d{1,2}):(\d{1,2})/);
+    if (!match) return "";
+    const [, year, month, day, hour, minute] = match;
+    return `${year}-${pad2(month)}-${pad2(day)} ${pad2(hour)}:${pad2(minute)}`;
 }
 async function getMailFormat(format = "mailformat") {
     try {
@@ -777,17 +829,7 @@ function GetPedino(domain) {
    ======================================================= */
 
 function logwrite(message) {
-    try {
-        const dir = PATHS.LOG
-        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-        const file = path.join(dir, `${dayjs().format("YYYY-MM-DD")}.log`);
-        const line = `[${dayjs().format("HH:mm:ss")}] ${message}\n`;
-        fs.appendFile(file, line, (err) => {
-            if (err) console.error("Errore scrittura log:", err);
-        });
-    } catch (err) {
-        console.error("Errore logwrite:", err.message);
-    }
+    writeLog("general", message);
 }
 
 async function downloadRemoteFile(url, destFolder = "certificati") {
@@ -1851,6 +1893,7 @@ module.exports = {
     ConvertToMysqlDateTime,
     CreateRandomPassword,
     getMd5Hash,
+    formatDateTimeToMinutes,
     getMailFormat,
 
     IscriviCorsi,
@@ -1890,4 +1933,6 @@ module.exports = {
     SaveAndSend,
     invioMail,
     invioMailPEC,
+    writeLog,
+    logError,
 };

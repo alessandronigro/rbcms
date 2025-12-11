@@ -191,6 +191,51 @@ function splitRangeByDb(fromISO, toISO) {
     return segs;
 }
 
+async function fetchFiscalCodes(conn, userIds = []) {
+    const cfMap = new Map();
+    if (!Array.isArray(userIds) || !userIds.length) return cfMap;
+
+    const chunkSize = 500;
+    for (let i = 0; i < userIds.length; i += chunkSize) {
+        const chunk = userIds.slice(i, i + chunkSize);
+        const placeholders = chunk.map(() => "?").join(",");
+        const sql = `
+            SELECT id_user, user_entry
+            FROM core_field_userentry
+            WHERE id_common = 23
+              AND id_user IN (${placeholders})
+        `;
+        const [rows] = await conn.query(sql, chunk);
+        rows.forEach(row => cfMap.set(row.id_user, row.user_entry));
+    }
+
+    return cfMap;
+}
+
+async function fetchOrderRevenueMap(orderIds = []) {
+    const map = new Map();
+    if (!orderIds.length) return map;
+    const conn = await getConnection("newformazione");
+    const chunkSize = 250;
+    for (let i = 0; i < orderIds.length; i += chunkSize) {
+        const chunk = orderIds.slice(i, i + chunkSize);
+        const placeholders = chunk.map(() => "?").join(",");
+        const [orderRows] = await conn.query(
+            `
+            SELECT order_id, fatturato
+            FROM wp_woocommerce_rb_ordini
+            WHERE order_id IN (${placeholders})
+              AND (nome_convenzione IS NULL OR nome_convenzione = '' OR nome_convenzione = '-')
+            `,
+            chunk,
+        );
+        orderRows.forEach((order) => {
+            map.set(String(order.order_id), order.fatturato);
+        });
+    }
+    return map;
+}
+
 function sqlFreeAnswers({ idcourse, convenzione }) {
     // Risposte libere (more_info != '')
     // more_info sta in learning_polltrack_answer (alias pta), attiva sta lì
@@ -403,6 +448,7 @@ router.get("/convenzione", requireConv, async (req, res) => {
             from = "2000-01-01";
             console.log("📆 from NON specificato → imposto 2000-01-01");
         }
+
         // 1️⃣ Espando i codici reali
         const expandedCodes = await expandCodes(idcourse);
 
@@ -424,11 +470,13 @@ router.get("/convenzione", requireConv, async (req, res) => {
             DBS = ["formazionecondorb"];
         }
         let finalRows = [];
+        const overallStart = Date.now();
 
         for (const db of DBS) {
             console.log("🗄️ Interrogo DB:", db);
 
             const conn = await getConnection(db);
+            const queryStart = Date.now();
 
             const sql = `
                 SELECT 
@@ -438,7 +486,6 @@ router.get("/convenzione", requireConv, async (req, res) => {
                     u.lastname     AS last_name,
                     u.firstname    AS first_name,
                     u.email,
-                    cf_cf.user_entry AS cf,
                     cu.date_inscr,
                     cu.date_complete,
                     u.lastenter
@@ -447,11 +494,6 @@ router.get("/convenzione", requireConv, async (req, res) => {
                     ON u.idst = cu.idUser
                 JOIN learning_course c
                     ON c.idCourse = cu.idCourse
-
-                -- JOIN CF
-                LEFT JOIN core_field_userentry cf_cf
-                    ON cf_cf.id_user = u.idst
-                    AND cf_cf.id_common = 23
 
                 -- JOIN CONVENZIONE
                 LEFT JOIN core_field_userentry cf_conv
@@ -464,12 +506,33 @@ router.get("/convenzione", requireConv, async (req, res) => {
                 ORDER BY cu.date_inscr DESC
             `;
 
+            console.log("🧾 Report convenzione query:", {
+                db,
+                sql: sql.trim(),
+                params: [
+                    from,
+                    to,
+                    conv.nome_convenzione,
+                    expandedCodes
+                ],
+            });
             const [rows] = await conn.query(sql, [
                 from,
                 to,
                 conv.nome_convenzione,
                 expandedCodes
             ]);
+            const durationMs = Date.now() - queryStart;
+            console.log(`⏱️ Query ${db} completata in ${(durationMs / 1000).toFixed(2)}s`);
+
+            const uniqueUserIds = [...new Set(rows.map(r => r.id))];
+            const cfStart = Date.now();
+            const cfMap = await fetchFiscalCodes(conn, uniqueUserIds);
+            console.log(`⏱️ CF lookup ${db} (${uniqueUserIds.length} utenti) in ${((Date.now() - cfStart) / 1000).toFixed(2)}s`);
+
+            rows.forEach(r => {
+                r.cf = cfMap.get(r.id) || null;
+            });
 
             console.log(`📦 ${db} → trovati ${rows.length} utenti`);
             finalRows = finalRows.concat(
@@ -499,6 +562,8 @@ router.get("/convenzione", requireConv, async (req, res) => {
             return { ...r, percent, stato };
         });
 
+        const totalDurationSec = ((Date.now() - overallStart) / 1000).toFixed(2);
+        console.log(`⏱️ Ricerca totale completata in ${totalDurationSec}s`);
         return res.json({
             rows: mapped,
             total: mapped.length
@@ -591,7 +656,32 @@ async function expandCodes(idcourse, connAmm) {
         arr = arr.filter(c => /agg/i.test(c));
     }
 
+    if (!arr.length) {
+        const resolved = await resolveCodeById(idcourse);
+        if (resolved.length) return resolved;
+    }
+
     return arr;
+}
+
+async function resolveCodeById(idcourse) {
+    if (!idcourse) return [];
+    const numericId = parseInt(String(idcourse), 10);
+    if (Number.isNaN(numericId)) return [];
+
+    const DBS = ["formazionein", "newformazionein", "forma4"];
+    for (const db of DBS) {
+        const conn = await getConnection(db);
+        const [rows] = await conn.query(
+            "SELECT code FROM learning_course WHERE idcourse = ? LIMIT 1",
+            [numericId]
+        );
+        if (rows.length && rows[0].code) {
+            return [rows[0].code];
+        }
+    }
+
+    return [];
 }
 /**
  * 📊 API: /api/report/data
@@ -625,11 +715,13 @@ router.get("/data", async (req, res) => {
         // Query coerente con VB.NET originale
         const sql = `
             SELECT 
+                a.iduser,
                 s.firstname,
                 s.lastname,
                 c.name,
                 c.code,
                 a.date_inscr,
+                a.order_id,
                 ROUND(c.price * 1.22, 2) AS fatturato
             FROM learning_courseuser a
             JOIN core_field_userentry b ON a.iduser = b.id_user
@@ -640,16 +732,191 @@ router.get("/data", async (req, res) => {
               AND c.price > 0
               AND ((c.name NOT LIKE '%simul%' AND c.name NOT LIKE '%test%') OR c.price != '')
               ${filter}
-              AND (a.date_inscr BETWEEN ? AND ?)
+            AND (a.date_inscr BETWEEN ? AND ?)
             ORDER BY a.date_inscr DESC
         `;
 
         const [rows] = await conn.query(sql, [from, to]);
+        const uniqueOrderIds = [...new Set(rows.map(r => (r.order_id || "").toString().trim()).filter(Boolean))];
+        const orderRevenueMap = await fetchOrderRevenueMap(uniqueOrderIds);
+        const enrichedRows = rows.map((row) => {
+            const normalizedOrderId = (row.order_id || "").toString().trim();
+            return {
+                ...row,
+                order_id: normalizedOrderId,
+                order_fatturato: normalizedOrderId ? orderRevenueMap.get(normalizedOrderId) ?? null : null,
+            };
+        });
+        const corsistiCount = new Set(rows.map(r => r.iduser).filter(Boolean)).size;
+        const totalRevenue = [...orderRevenueMap.values()].reduce(
+            (sum, value) => sum + (parseFloat(value) || 0),
+            0,
+        );
 
-
-        return res.json({ success: true, rows });
+        return res.json({ success: true, rows: enrichedRows, totalRevenue, corsistiCount });
     } catch (err) {
         console.error("❌ Errore /api/report/data:", err);
+        return res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+/**
+ * 📊 API: /api/report/fatturato-ordini
+ * Report ordini senza convenzione (nome_convenzione vuoto o "-")
+ */
+router.get("/fatturato-ordini", async (req, res) => {
+    try {
+        const monthParam = (req.query.month || "").toString().trim();
+        if (!monthParam) {
+            return res.status(400).json({ success: false, error: "Parametro month richiesto" });
+        }
+
+        const monthStart = dayjs(`${monthParam}-01`);
+        if (!monthStart.isValid()) {
+            return res.status(400).json({ success: false, error: "Mese non valido" });
+        }
+
+        const from = monthStart.startOf("month").format("YYYY-MM-DD 00:00:00");
+        const to = monthStart.endOf("month").format("YYYY-MM-DD 23:59:59");
+        const segments = splitRangeByDb(from, to);
+        const targetSegments = segments.length
+            ? segments
+            : [{ range: [from, to], hostKey: "IFAD", dbName: process.env.MYSQL_FORMA4 }];
+
+        const orderIds = new Set();
+        const orderAggregates = new Map();
+        const corsistiSet = new Set();
+
+        for (const target of targetSegments) {
+            const conn = await getConnection(target.dbName);
+            const [rows] = await conn.query(
+                `
+                SELECT
+                    cu.order_id,
+                    cu.date_inscr,
+                    cu.iduser,
+                    cu.idcourse,
+                    c.code,
+                    c.name,
+                    u.firstname,
+                    u.lastname,
+                    u.email
+                FROM learning_courseuser cu
+                LEFT JOIN learning_course c ON c.idCourse = cu.idCourse
+                LEFT JOIN core_user u ON u.idst = cu.iduser
+                WHERE cu.order_id IS NOT NULL
+                  AND cu.order_id <> ''
+                  AND cu.date_inscr BETWEEN ? AND ?
+                ORDER BY cu.date_inscr DESC
+                `,
+                [target.range[0], target.range[1]],
+            );
+
+            rows.forEach((row) => {
+                const orderId = String(row.order_id || "").trim();
+                if (!orderId) return;
+                corsistiSet.add(row.iduser);
+                orderIds.add(orderId);
+
+                if (!orderAggregates.has(orderId)) {
+                    orderAggregates.set(orderId, {
+                        orderId,
+                        enrollmentAt: row.date_inscr,
+                        billingNome: row.firstname || "",
+                        billingCognome: row.lastname || "",
+                        billingEmail: row.email || "",
+                        courseCodes: new Set(),
+                        courseNames: new Set(),
+                        sourceDbs: new Set(),
+                        itemCount: 0,
+                    });
+                }
+
+                const aggregate = orderAggregates.get(orderId);
+                aggregate.itemCount += 1;
+                aggregate.sourceDbs.add(target.dbName);
+                if (row.code) aggregate.courseCodes.add(row.code.trim());
+                if (row.name) aggregate.courseNames.add(row.name.trim());
+                if (new Date(row.date_inscr) < new Date(aggregate.enrollmentAt)) {
+                    aggregate.enrollmentAt = row.date_inscr;
+                }
+            });
+        }
+
+        if (!orderAggregates.size) {
+            return res.json({ success: true, rows: [], month: monthParam, from, to, total: 0, totalRevenue: 0, corsistiCount: corsistiSet.size });
+        }
+
+        const orderMap = new Map();
+        if (orderIds.size) {
+            const orderConn = await getConnection("newformazione");
+            const idsArray = Array.from(orderIds);
+            const chunkSize = 250;
+            for (let i = 0; i < idsArray.length; i += chunkSize) {
+                const chunk = idsArray.slice(i, i + chunkSize);
+                const placeholders = chunk.map(() => "?").join(",");
+                const [orderRows] = await orderConn.query(
+                    `
+                    SELECT
+                        order_id,
+                        billing_nome,
+                        billing_cognome,
+                        billing_email,
+                        nome_convenzione,
+                        fatturato,
+                        order_status,
+                        metodo_di_pagamento,
+                        date_ins
+                    FROM wp_woocommerce_rb_ordini
+                    WHERE order_id IN (${placeholders})
+                      AND (nome_convenzione IS NULL OR nome_convenzione = '' OR nome_convenzione = '-')
+                    `,
+                    chunk,
+                );
+                orderRows.forEach((order) => {
+                    orderMap.set(String(order.order_id), order);
+                });
+            }
+        }
+
+        const output = [];
+        for (const aggregate of orderAggregates.values()) {
+            const orderInfo = orderMap.get(aggregate.orderId);
+            if (!orderInfo) continue;
+
+            output.push({
+                orderId: aggregate.orderId,
+                orderPlacedAt: orderInfo.date_ins || aggregate.enrollmentAt,
+                enrollmentAt: aggregate.enrollmentAt,
+                billingNome: orderInfo.billing_nome || aggregate.billingNome,
+                billingCognome: orderInfo.billing_cognome || aggregate.billingCognome,
+                billingEmail: orderInfo.billing_email || aggregate.billingEmail,
+                paymentMethod: orderInfo.metodo_di_pagamento || "",
+                orderStatus: orderInfo.order_status || "",
+                fatturato: parseFloat(orderInfo.fatturato) || 0,
+                nomeConvenzione: orderInfo.nome_convenzione || "",
+                courseCodes: Array.from(aggregate.courseCodes).filter(Boolean),
+                courseNames: Array.from(aggregate.courseNames).filter(Boolean),
+                itemCount: aggregate.itemCount,
+                sourceDbs: Array.from(aggregate.sourceDbs).filter(Boolean),
+            });
+        }
+
+        output.sort((a, b) => new Date(b.enrollmentAt).getTime() - new Date(a.enrollmentAt).getTime());
+        const totalRevenue = output.reduce((sum, row) => sum + (parseFloat(row.fatturato) || 0), 0);
+
+        return res.json({
+            success: true,
+            rows: output,
+            total: output.length,
+            totalRevenue,
+            month: monthParam,
+            from,
+            to,
+            corsistiCount: corsistiSet.size,
+        });
+    } catch (err) {
+        console.error("❌ Errore /api/report/fatturato-ordini:", err);
         return res.status(500).json({ success: false, error: err.message });
     }
 });

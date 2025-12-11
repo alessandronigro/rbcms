@@ -1,7 +1,7 @@
 /***********************************************
  * 1) CARICO LE VARIABILI AMBIENTE
  ***********************************************/
-require("./loadEnv");
+const { envFileName } = require("./loadEnv");
 
 const express = require("express");
 const cors = require("cors");
@@ -15,8 +15,9 @@ const app = express();
  * 2) LA PORTA ORA VIENE DA process.env.PORT
  ***********************************************/
 const PORT = process.env.PORT || 4200;
-console.log("🌍 Server avviato con env file:", require("./loadEnv").envFileName);
+console.log("🌍 Server avviato con env file:", envFileName);
 console.log("🚪 Porta configurata:", PORT);
+console.log("✉️  DEBUGMAIL attivo:", process.env.DEBUGMAIL || "(non impostato)");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -39,8 +40,11 @@ app.use("/api/fatture", require("./routes/fatture"));
 app.use("/api/report", require("./routes/report"));
 app.use("/api/admin", require("./routes/admin"));
 app.use("/api/mailformat", require("./routes/mailformat"));
+app.use("/api/reminder", require("./routes/reminder"));
 app.use("/api/finecorso", require("./routes/finecorso"));
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api/monitor", require("./routes/monitor"));
+app.use("/api/simulazione", require("./routes/simulazione"));
 
 app.use("/public", express.static(path.join(process.cwd(), "public")));
 

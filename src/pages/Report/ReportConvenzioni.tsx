@@ -67,7 +67,6 @@ export default function ReportConvenzione() {
   const [loadingId, setLoadingId] = useState<number | null>(null);
   const [slowMessage, setSlowMessage] = useState(false);
   const [q, setQ] = useState("");
-
   const [filterStato, setFilterStato] = useState("tutti");
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: "asc" | "desc" } | null>(null);
 
@@ -162,7 +161,27 @@ export default function ReportConvenzione() {
         credentials: "include",
       });
       const j = await res.json();
-      setRows(j.rows || []);
+      const fetchedRows = j.rows || [];
+      const selectedCourseLabel =
+        courses.find((c) => c.id === courseId)?.label ?? "";
+      const shouldLogPrimaFormazione =
+        /60/i.test(selectedCourseLabel) && /prima/i.test(selectedCourseLabel);
+
+      if (shouldLogPrimaFormazione) {
+          const codes = Array.from(
+            new Set(
+              fetchedRows
+                .map((r: Row) => r.idcourse)
+                .filter(Boolean) as Array<Row["idcourse"]>
+            )
+          );
+        console.info(
+          "ReportConvenzioni: codici corso per 60 ore Prima Formazione IVASS",
+          codes
+        );
+      }
+
+      setRows(fetchedRows);
     } catch {
       setRows([]);
     } finally {

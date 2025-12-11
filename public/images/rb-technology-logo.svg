@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 460 100"
+  role="img"
+  aria-labelledby="rbLogoTitle"
+>
+  <title id="rbLogoTitle">RB Technology logo</title>
+  <text
+    x="0"
+    y="72"
+    font-family="Montserrat, Helvetica, Arial, sans-serif"
+    font-weight="800"
+    font-size="68"
+    fill="#0d4b99"
+  >
+    RB
+  </text>
+  <text
+    x="162"
+    y="74"
+    font-family="Montserrat, Helvetica, Arial, sans-serif"
+    font-weight="600"
+    font-size="48"
+    fill="#1f262f"
+  >
+    technology
+  </text>
+  <circle cx="446" cy="72" r="6" fill="#0d4b99" />
+</svg>

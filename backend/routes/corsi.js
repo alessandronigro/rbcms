@@ -43,6 +43,23 @@ router.post("/sospendi", async (req, res) => {
 });
 
 /**
+ * Cancella utente def.
+ */
+router.delete("/utenti/:db/:iduser", async (req, res) => {
+    const { db, iduser } = req.params;
+    const conn = await getConnection(db);
+    try {
+        await conn.query(`DELETE FROM core_user WHERE idst=?`, [iduser]);
+        await conn.query(`DELETE FROM core_field_userentry WHERE id_user=?`, [iduser]);
+        res.json({ success: true });
+    } catch (err) {
+        res.status(500).json({ error: "Errore cancellazione utente" });
+    } finally {
+
+    }
+});
+
+/**
  * Cancella iscrizione corso
  */
 router.delete("/:db/:iduser/:idcourse", async (req, res) => {
@@ -89,24 +106,12 @@ router.post("/sblocca", async (req, res) => {
 router.post("/reinvia-mail", async (req, res) => {
     const { db, iduser, idcourse, nome, cognome, email, userid } = req.body;
     log(`📧 Reinvia mail → ${email}, ${nome} ${cognome}`);
-    const result = await reinviamail({ db, iduser, idcourse, nome, cognome, email, userid });
-    res.json({ success: true, message: "Mail reinviata (placeholder)" });
-});
-
-/**
- * Cancella utente def.
- */
-router.delete("/utenti/:db/:iduser", async (req, res) => {
-    const { db, iduser } = req.params;
-    const conn = await getConnection(db);
     try {
-        await conn.query(`DELETE FROM core_user WHERE idst=?`, [iduser]);
-        await conn.query(`DELETE FROM core_field_userentry WHERE id_user=?`, [iduser]);
-        res.json({ success: true });
+        const result = await reinviamail({ db, iduser, idcourse, nome, cognome, email, userid });
+        res.json({ success: true, message: "Mail reinviata correttamente", result });
     } catch (err) {
-        res.status(500).json({ error: "Errore cancellazione utente" });
-    } finally {
-
+        console.error("❌ reinvia-mail:", err);
+        res.status(500).json({ success: false, error: err.message });
     }
 });
 
@@ -169,6 +174,114 @@ router.get("/getlasttest", async (req, res) => {
 
         await getLastTest(iduser, idcourse, firstname, lastname, db, false, 1, res);
     } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+router.post("/normalize-time", async (req, res) => {
+    try {
+        const { idUser, idCourse, db, extraHours = 1 } = req.body;
+        if (!idUser || !idCourse)
+            return res.status(400).json({ error: "idUser e idCourse richiesti" });
+
+        const cn = await getConnection(db);
+
+        const [[course]] = await cn.query(
+            `SELECT timeleft FROM learning_course WHERE idCourse=?`,
+            [idCourse]
+        );
+
+        if (!course)
+            return res.status(404).json({ error: "Corso non trovato" });
+
+        const requiredHours = Number(course.timeleft || 0);
+        const extraHoursNum = Number(extraHours) || 0;
+
+        const [sessions] = await cn.query(
+            `
+            SELECT idEnter, enterTime, lastTime
+            FROM learning_tracksession
+            WHERE idUser=? AND idCourse=?
+            ORDER BY enterTime ASC
+            `,
+            [idUser, idCourse]
+        );
+
+        if (!sessions.length)
+            return res.status(400).json({ error: "Nessuna sessione trovata" });
+
+        const sessionInfos = sessions
+            .map((s) => {
+                const enterRaw = new Date(s.enterTime ?? s.entertime).getTime();
+                if (!Number.isFinite(enterRaw)) return null;
+                const enter = enterRaw;
+                const lastRaw = new Date(s.lastTime ?? s.lasttime).getTime();
+                const last = Number.isFinite(lastRaw) ? lastRaw : enter;
+                const durationMs = Math.max(0, last - enter);
+                return { s, enter, durationMs };
+            })
+            .filter(Boolean);
+
+        const currentHours =
+            sessionInfos.reduce((acc, info) => acc + info.durationMs, 0) / 3600000;
+
+        let targetHours;
+        if (extraHoursNum > 0) {
+            targetHours = currentHours + extraHoursNum;
+        } else {
+            targetHours = Math.max(requiredHours, currentHours + extraHoursNum);
+        }
+
+        const diffHours = targetHours - currentHours;
+        if (Math.abs(diffHours) < 1e-8) {
+            return res.json({
+                updated: false,
+                beforeHours: currentHours,
+                afterHours: currentHours,
+                message: "Tempo già coerente"
+            });
+        }
+
+        const sessionCount = sessionInfos.length;
+        if (!sessionCount) {
+            return res.status(400).json({ error: "Nessuna sessione valida trovata" });
+        }
+
+        const diffMs = diffHours * 3600000;
+        const baseMs = diffMs / sessionCount;
+        const jitterSequence = [12000, -5000, 3000, -4500, 2500, -5000];
+
+        const adjustments = sessionInfos.map((info, index) => ({
+            ...info,
+            adjustedDuration: info.durationMs + baseMs + jitterSequence[index % jitterSequence.length],
+        }));
+
+        for (const info of adjustments) {
+            if (!Number.isFinite(info.adjustedDuration)) continue;
+            const clampedDuration = Math.max(0, info.adjustedDuration);
+            const newLast = new Date(info.enter + clampedDuration);
+            await cn.query(
+                `
+                UPDATE learning_tracksession
+                SET lastTime=?
+                WHERE idEnter=?
+                `,
+                [newLast, info.s.idEnter]
+            );
+        }
+
+        const afterHours =
+            adjustments.reduce((acc, info) => acc + Math.max(0, info.adjustedDuration), 0) / 3600000;
+
+        return res.json({
+            updated: true,
+            beforeHours: currentHours,
+            afterHours,
+            message: `Tempo normalizzato e distribuito su ${sessionCount} sessioni`,
+        });
+
+    } catch (err) {
+        console.error(err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -374,5 +487,34 @@ router.post("/ricrea-test", async (req, res) => {
     }
 });
 
+
+/**
+ * Elimina autocertificazione (certificato assegnato)
+ */
+router.get("/deleteautocert", async (req, res) => {
+    const { db, iduser, idcourse } = req.query;
+    if (!db || !iduser || !idcourse) {
+        return res.status(400).json({ error: "Parametri mancanti" });
+    }
+
+    const conn = await getConnection(db);
+    try {
+        const [result] = await conn.query(
+            `DELETE FROM learning_certificate_assign WHERE id_user=? AND id_course=?`,
+            [iduser, idcourse]
+        );
+
+        if (result.affectedRows > 0) {
+            res.send("✅ Autocertificazione eliminata con successo. Puoi chiudere questa finestra.");
+        } else {
+            res.send("⚠️ Nessuna autocertificazione trovata per questo utente/corso.");
+        }
+    } catch (err) {
+        console.error("❌ Errore deleteautocert:", err);
+        res.status(500).send("Errore durante l'eliminazione: " + err.message);
+    } finally {
+
+    }
+});
 
 module.exports = router;

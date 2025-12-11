@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useAlert } from "../../components/SmartAlertModal";
 interface Corsista {
-  id: number;
+  corsista_id?: number;
+  id?: number;
   corsista_first_name: string;
   corsista_last_name: string;
   corsista_email: string;
@@ -31,8 +32,14 @@ export default function ModalEditCorsista({
   };
 
   const save = async () => {
+    const targetId = form.corsista_id ?? form.id;
+    if (!targetId) {
+      await showAlert("ID corsista mancante");
+      return;
+    }
+
     const res = await fetch(
-      `/api/iscrizioni/corsisti/${encodeURIComponent(form.id)}`,
+      `/api/iscrizioni/corsisti/${encodeURIComponent(targetId)}`,
       {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },

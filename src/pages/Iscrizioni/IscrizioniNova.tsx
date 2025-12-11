@@ -5,6 +5,7 @@ import { useAlert } from "../../components/SmartAlertModal";
 
 interface Corsista {
   id: number;
+  corsista_id?: number;
   corsista_first_name: string;
   corsista_last_name: string;
   corsista_email: string;

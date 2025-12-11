@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import {
   AreaChart,
@@ -43,11 +43,27 @@ interface Stats {
   activeLast10?: number;
 }
 
+interface ConnectionPoolStat {
+  key: string;
+  host?: string;
+  database?: string;
+  total: number;
+  free: number;
+  active: number;
+  queue: number;
+  processListTotal: number;
+  processListActive: number;
+  processListSleeping: number;
+  longestRunningSeconds: number;
+}
+
 export default function Home() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
   const [mese, setMese] = useState("");
   const [db, setDb] = useState("forma4"); // ✅ default database
+  const [connectionStats, setConnectionStats] = useState<ConnectionPoolStat[]>([]);
+  const [connLoading, setConnLoading] = useState(true);
 
   const mesiLabel = [
     "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
@@ -71,9 +87,54 @@ export default function Home() {
     }
   };
 
+  const loadConnectionStats = async () => {
+    setConnLoading(true);
+    try {
+      const res = await fetch("/api/monitor/mysql/connections", { credentials: "include" });
+      const data = await res.json();
+      if (data.success && Array.isArray(data.data)) {
+        setConnectionStats(data.data);
+      } else {
+        console.warn("⚠️ Errore fetch connessioni MySQL:", data.error || "<nessun dato>");
+      }
+    } catch (err) {
+      console.error("❌ Errore loadConnectionStats:", err);
+    } finally {
+      setConnLoading(false);
+    }
+  };
+
   useEffect(() => {
     loadStats();
   }, [mese, db]);
+
+  useEffect(() => {
+    loadConnectionStats();
+    const interval = setInterval(loadConnectionStats, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const connectionSummary = useMemo(() => {
+    if (!connectionStats.length) return null;
+    const totalActive = connectionStats.reduce((sum, pool) => sum + pool.active, 0);
+    const totalFree = connectionStats.reduce((sum, pool) => sum + pool.free, 0);
+    const totalQueue = connectionStats.reduce((sum, pool) => sum + pool.queue, 0);
+    const totalProcessList = connectionStats.reduce(
+      (sum, pool) => sum + (pool.processListTotal || 0),
+      0,
+    );
+    const totalActiveProcessList = connectionStats.reduce(
+      (sum, pool) => sum + (pool.processListActive || 0),
+      0,
+    );
+    return {
+      totalActive,
+      totalFree,
+      totalQueue,
+      totalProcessList,
+      totalActiveProcessList,
+    };
+  }, [connectionStats]);
 
   {/* SPINNER */ }
   {
@@ -177,6 +238,54 @@ export default function Home() {
           Conteggio basato su <code>core_user.lastenter</code> e attività recenti in <code>learning_tracksession</code>.
         </p>
       </div>
+      {connectionSummary && (
+        <div className="bg-white shadow rounded p-4 space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-wide text-slate-500">Connessioni MySQL</p>
+              <p className="text-xl font-semibold text-slate-800">
+                {connectionSummary.totalActive} attive · {connectionSummary.totalFree} libere
+              </p>
+              <p className="text-sm text-slate-500 mt-1">
+                Processlist: {connectionSummary.totalActiveProcessList}/{connectionSummary.totalProcessList}
+              </p>
+            </div>
+            {connLoading ? (
+              <span className="text-sm text-slate-500">Aggiornamento…</span>
+            ) : (
+              <span className="text-sm text-slate-500">
+                {connectionSummary.totalQueue} in coda
+              </span>
+            )}
+          </div>
+          <div className="border-t border-slate-200 pt-2 space-y-2">
+            {connLoading ? (
+              <div className="text-sm text-slate-500">Caricamento dati connessioni...</div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {connectionStats.map((pool) => (
+                  <div
+                    key={pool.key}
+                    className="border border-slate-200 rounded p-3 bg-slate-50"
+                  >
+                    <div className="text-sm text-slate-600 truncate">
+                      {pool.host} · {pool.database}
+                    </div>
+                    <div className="flex flex-wrap text-xs text-slate-600 mt-1 gap-2">
+                      <span>Totali: {pool.total}</span>
+                      <span>Attive: {pool.active}</span>
+                      <span>Queue: {pool.queue}</span>
+                      <span>Processi: {pool.processListActive}/{pool.processListTotal}</span>
+                      <span>Sleep: {pool.processListSleeping}</span>
+                      <span>Max sec: {pool.longestRunningSeconds}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* 🎯 Corsi OAM / IVASS con deadline 31/12 */}
       {deadlineCourses.length > 0 && (

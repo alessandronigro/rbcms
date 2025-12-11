@@ -3,6 +3,7 @@ import { Calendar, Eye, Loader2 } from "lucide-react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import itLocale from "@fullcalendar/core/locales/it";
+import CalendarioAmm from "../Amm/CalendarioAmm";
 
 interface FineCorsoRow {
   id: string;
@@ -53,8 +54,8 @@ function ModalDatiSessione({ isOpen, onClose, onSave, row }: ModalProps) {
   const disabled = !form.dataprova || !form.dataesame;
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-xl w-[95%] max-w-5xl p-6 relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 bg-black/30">
+      <div className="bg-white rounded-lg shadow-xl w-[95%] max-w-5xl p-6 relative max-h-[calc(100vh-3rem)] overflow-auto">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-600 hover:text-red-600"
@@ -117,14 +118,20 @@ function ModalDatiSessione({ isOpen, onClose, onSave, row }: ModalProps) {
           className="w-full border rounded p-2 mt-2"
         />
         {/* 📌 Calendario Preview */}
-        <div className="bg-gray-50 p-2 rounded-lg border mb-6">
-          <FullCalendar
-            plugins={[dayGridPlugin]}
-            initialView="dayGridMonth"
-            height="300px"
-            locale={itLocale}
-            events={calendarEvents}
-          />
+        <div className="space-y-4">
+          <div className="bg-gray-50 p-2 rounded-lg border">
+            <FullCalendar
+              plugins={[dayGridPlugin]}
+              initialView="dayGridMonth"
+              height="300px"
+              locale={itLocale}
+              events={calendarEvents}
+            />
+          </div>
+          <div className="bg-gray-50 p-2 rounded-lg border">
+            <h4 className="mb-2 text-sm font-semibold text-gray-600">Calendario Amm</h4>
+            <CalendarioAmm />
+          </div>
         </div>
         <div className="flex justify-end gap-3 mt-5">
           <button

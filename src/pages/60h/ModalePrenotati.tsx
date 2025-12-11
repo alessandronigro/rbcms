@@ -50,7 +50,7 @@ export default function ModalePrenotati({
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        dataprova: sessione.dataprova,
+        dataprova: sessione.dataprova || sessione.dataesame,
         dataesame: sessione.dataesame,
         note: sessione.note,
       }),
@@ -162,7 +162,18 @@ export default function ModalePrenotati({
 
   if (!sessione) return null;
 
-  const fmt = (v: string) => (v ? new Date(v).toISOString().slice(0, 16) : "");
+  const primarySessionDate = sessione.dataesame || sessione.dataprova;
+  const eventLabel = sessione.nomesessione || (sessione.idparent ? "Sessione alternativa" : "Sessione finale");
+
+  const fmt = (v: string) => {
+    if (!v) return "";
+    const date = new Date(v);
+    if (Number.isNaN(date.getTime())) return "";
+    const pad = (value: number) => String(value).padStart(2, "0");
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(
+      date.getDate()
+    )}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+  };
 
   return (
     <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
@@ -170,13 +181,15 @@ export default function ModalePrenotati({
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold">
             📌 Gestione Sessione{" "}
-            {new Date(sessione.dataesame).toLocaleString("it-IT", {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
+            {primarySessionDate
+              ? new Date(primarySessionDate).toLocaleString("it-IT", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })
+              : "Data non disponibile"}
           </h2>
 
           <div className="flex items-center gap-2">
@@ -220,31 +233,22 @@ export default function ModalePrenotati({
               </p>
             </div>
 
-            {/* ✅ Date Sessione */}
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <label>📅 Prima Proposta</label>
-                <input
-                  type="datetime-local"
-                  className="w-full border p-1 mt-1"
-                  value={fmt(sessione.dataprova)}
-                  onChange={(e) =>
-                    setSessione({ ...sessione, dataprova: e.target.value })
-                  }
-                />
-              </div>
-
-              <div>
-                <label>📅 Seconda Proposta</label>
-                <input
-                  type="datetime-local"
-                  className="w-full border p-1 mt-1"
-                  value={fmt(sessione.dataesame)}
-                  onChange={(e) =>
-                    setSessione({ ...sessione, dataesame: e.target.value })
-                  }
-                />
-              </div>
+            {/* ✅ Data evento */}
+            <div className="text-sm mb-4">
+              <label className="font-semibold block">
+                📅 {eventLabel}
+              </label>
+              <p className="text-xs text-gray-500 mb-1">
+                Modifica solo la data dell'evento selezionato
+              </p>
+              <input
+                type="datetime-local"
+                className="w-full border p-1 mt-1"
+                value={fmt(sessione.dataesame)}
+                onChange={(e) =>
+                  setSessione({ ...sessione, dataesame: e.target.value })
+                }
+              />
             </div>
 
             {/* ✅ Note sessione */}

@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Loader2, RefreshCcw, CheckCircle, XCircle, StickyNote } from "lucide-react";
 import dayjs from "dayjs";
 import { useAlert } from "../components/SmartAlertModal";
-
-const BACKEND = import.meta.env.VITE_BACKEND_URL;
+import { backendUrl as BACKEND } from "@/config/backend";
+import Calendario60h from "./60h/Calendario";
+import CalendarioAmm from "./Amm/CalendarioAmm";
 
 export default function FineCorso() {
     // 🔹 Ora basta solo il database
@@ -14,6 +15,7 @@ export default function FineCorso() {
     const [rows, setRows] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [selected, setSelected] = useState<string[]>([]);
+    const [showCalendarsModal, setShowCalendarsModal] = useState(false);
     const { alert: showAlert } = useAlert();
 
     // 🔹 Carica corsisti
@@ -125,6 +127,15 @@ export default function FineCorso() {
                     Cerca
                 </Button>
             </div>
+            <div className="flex justify-end mb-4">
+                <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => setShowCalendarsModal(true)}
+                >
+                    📅 Visualizza calendari per prenotare
+                </Button>
+            </div>
 
             {/* 🔹 Tabella risultati */}
             <div className="overflow-x-auto border rounded-md">
@@ -226,6 +237,49 @@ export default function FineCorso() {
                     >
                         ✅ Segna come inviati ({selected.length})
                     </Button>
+                </div>
+            )}
+            {showCalendarsModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6">
+                    <div
+                        className="fixed inset-0 bg-black/40"
+                        onClick={() => setShowCalendarsModal(false)}
+                    />
+                    <div className="relative z-10 w-full max-w-[1200px] rounded-2xl border border-slate-200 bg-white shadow-2xl max-h-[calc(100vh-2rem)] overflow-auto">
+                        <div className="flex items-center justify-between border-b px-6 py-4">
+                            <div>
+                                <p className="text-sm text-slate-500">Prenotazioni</p>
+                                <h3 className="text-lg font-semibold text-slate-900">
+                                    Scegli la sessione disponibile
+                                </h3>
+                            </div>
+                            <button
+                                type="button"
+                                className="text-slate-500 hover:text-slate-900"
+                                onClick={() => setShowCalendarsModal(false)}
+                            >
+                                ✕
+                            </button>
+                        </div>
+                        <div className="grid grid-cols-1 gap-6 px-4 py-6 xl:grid-cols-2">
+                            <div className="rounded-xl border border-slate-100 bg-slate-50 p-3">
+                                <h4 className="mb-2 text-sm font-semibold text-slate-600">
+                                    Calendario 60h
+                                </h4>
+                                <div className="rounded-lg bg-white p-2 shadow-inner">
+                                    <Calendario60h />
+                                </div>
+                            </div>
+                            <div className="rounded-xl border border-slate-100 bg-slate-50 p-3">
+                                <h4 className="mb-2 text-sm font-semibold text-slate-600">
+                                    Calendario Amm
+                                </h4>
+                                <div className="rounded-lg bg-white p-2 shadow-inner">
+                                    <CalendarioAmm />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

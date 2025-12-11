@@ -3,11 +3,25 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 const { getConnection } = require("../dbManager");
-const { getMailFormat } = require("../utils/helper");
+const {
+    getMailFormat,
+    toMySQLDateTime,
+    piedinodidattica,
+    getBCC,
+    formatDateTimeToMinutes,
+} = require("../utils/helper");
 const { invioMail } = require("../utils/mailerBrevo");
-const { toMySQLDateTime } = require("../utils/helper.js");
-const { piedinodidattica, getBCC } = require("../utils/helper.js");
 const { createZoomMeeting } = require("../utils/zoom");
+
+const RESOLVE_DB_60H_FALLBACK = (process.env.MYSQL_FORMA4 || "forma4").toLowerCase();
+function resolveDbKey60h(value) {
+    if (!value) return RESOLVE_DB_60H_FALLBACK;
+    const normalized = String(value || "").trim();
+    if (!normalized) return RESOLVE_DB_60H_FALLBACK;
+    const lower = normalized.toLowerCase();
+    if (lower.includes("process.env.")) return RESOLVE_DB_60H_FALLBACK;
+    return lower;
+}
 // ============================================================
 //   FINE CORSO 60H - ROUTES
 // ============================================================
@@ -168,26 +182,43 @@ router.get("/sessione/:idsessione/dettaglio", async (req, res) => {
         let telefonoUtente = (row.telefono_utente || "").trim();
         if ((!telefonoUtente || telefonoUtente.length < 5) && row.iduser) {
             try {
-                const userDbName = row.db || process.env.MYSQL_FORMA4;
-                if (userDbName) {
-                    const connUser = await getConnection(userDbName);
-                    const [telefonoRows] = await connUser.query(
-                        `SELECT user_entry
+
+                const connUser = await getConnection(process.env.MYSQL_FORMA4);
+                const [telefonoRows] = await connUser.query(
+                    `SELECT user_entry
                          FROM core_field_userentry
                          WHERE id_user = ?
                            AND id_common IN (20, 14)
                          ORDER BY FIELD(id_common, 20, 14)
                          LIMIT 1`,
-                        [row.iduser]
-                    );
-                    telefonoUtente = (telefonoRows?.[0]?.user_entry || telefonoUtente || "").trim();
-                }
+                    [row.iduser]
+                );
+                telefonoUtente = (telefonoRows?.[0]?.user_entry || telefonoUtente || "").trim();
+
             } catch (err) {
                 console.warn("⚠️ Impossibile recuperare telefono utente:", err.message);
             }
         }
 
         const noteSessione = typeof row.note === "string" ? row.note : "";
+        if (!row.cf_utente && row.iduser) {
+            try {
+                const userDbName = resolveDbKey60h(row.db);
+                if (userDbName) {
+                    const cfConn = await getConnection(userDbName);
+                    const [cfRows] = await cfConn.query(
+                        `SELECT user_entry FROM core_field_userentry WHERE id_user = ? AND id_common = 23 LIMIT 1`,
+                        [row.iduser]
+                    );
+                    if (cfRows.length) {
+                        row.cf_utente = cfRows[0].user_entry;
+                    }
+                }
+            } catch (cfErr) {
+                console.warn("⚠️ CF utente 60h non disponibile:", cfErr.message);
+            }
+        }
+
         const enrichedRow = {
             ...row,
             note: noteSessione || row.note_cert || "",
@@ -246,8 +277,11 @@ router.post("/sessione", async (req, res) => {
             return res.json({ success: true, message: "Proposta già esistente", idsessione: exists[0].idsessione });
         }
 
-        const dProva = (dataprova || "").replace("T", " ") + ":00";
-        const dEsame = (dataesame || "").replace("T", " ") + ":00";
+        const formattedDataProva = formatDateTimeToMinutes(dataprova);
+        const formattedDataEsame = formatDateTimeToMinutes(dataesame);
+        if (!formattedDataProva || !formattedDataEsame) {
+            return res.status(400).json({ error: "Formato data non valido" });
+        }
         const dNow = new Date().toISOString().slice(0, 19).replace("T", " ");
         const idstudio = 1;
         const maxposti = 1;
@@ -259,7 +293,7 @@ router.post("/sessione", async (req, res) => {
       (maxposti, Postidisponibili, dataesame, dataprova, nomesessione, domicilio, note, visible, attivo, idstudio, indirizzosessione, datainvio)
       VALUES (?, ?, ?, ?, ?, ?, ?, 1, 1, ?, '', ?)
       `,
-            [maxposti, maxposti, dEsame, dProva, `TEST2 - ${convenzione || ""}`, "", note || "", idstudio, dNow]
+            [maxposti, maxposti, formattedDataEsame, formattedDataProva, `TEST2 - ${convenzione || ""}`, "", note || "", idstudio, dNow]
         );
         const idsessione1 = res1.insertId;
 
@@ -275,7 +309,7 @@ router.post("/sessione", async (req, res) => {
       (maxposti, Postidisponibili, dataesame, dataprova, nomesessione, domicilio, note, visible, attivo, idstudio, indirizzosessione, idparent, datainvio)
       VALUES (?, ?, ?, ?, ?, ?, ?, 1, 1, ?, '', ?, ?)
       `,
-            [maxposti, maxposti, dProva, dEsame, `TEST - ${convenzione || ""}`, "", note || "", idstudio, idsessione1, dNow]
+            [maxposti, maxposti, formattedDataProva, formattedDataEsame, `TEST - ${convenzione || ""}`, "", note || "", idstudio, idsessione1, dNow]
         );
         const idsessione2 = res2.insertId;
 
@@ -401,10 +435,18 @@ router.post("/sessione/:idsessione/conferma-no", async (req, res) => {
         const conn60 = await getConnection("rb60h");
         const connForma = await getConnection(process.env.MYSQL_FORMA4);
 
+        const [sessionRows] = await conn60.query(
+            `SELECT flagconferma FROM sessioni WHERE id = ? LIMIT 1`,
+            [idsessione]
+        );
+        const previousFlag = sessionRows?.[0]?.flagconferma;
+        const targetFlag = previousFlag === 1 ? 2 : 0;
+
         await conn60.query(`UPDATE sessioni SET flagconferma = 0 WHERE id = ?`, [idsessione]);
+
         await connForma.query(
-            `UPDATE learning_certificate_assign SET flagevent = 0 WHERE id_user = ? AND id_course = ?`,
-            [iduser, idcourse]
+            `UPDATE learning_certificate_assign SET flagevent = ? WHERE id_user = ? AND id_course = ?`,
+            [targetFlag, iduser, idcourse]
         );
 
         res.json({ success: true, message: "Conferma annullata" });
@@ -709,14 +751,20 @@ router.put("/sessione/:idsessione", async (req, res) => {
     try {
         const conn60 = await getConnection("rb60h");
 
+        const formattedDataProva = formatDateTimeToMinutes(dataprova);
+        const formattedDataEsame = formatDateTimeToMinutes(dataesame);
+        if (!formattedDataProva || !formattedDataEsame) {
+            return res.status(400).json({ error: "Formato data non valido" });
+        }
+
         // ✅ Update sessione
         await conn60.query(
             `UPDATE sessioni
              SET dataprova = ?, dataesame = ?, note = ?
              WHERE id = ?`,
             [
-                dataprova.replace("T", " ") + ":00",
-                dataesame.replace("T", " ") + ":00",
+                formattedDataProva,
+                formattedDataEsame,
                 note || "",
                 idsessione
             ]
@@ -922,10 +970,15 @@ async function insertPrenotazione60h(idsessione, iduser, idcourse) {
     const now = new Date();
     const conn60 = await getConnection("rb60h");
     const connForma = await getConnection(process.env.MYSQL_FORMA4);
+    if (!iduser || !idcourse) {
+        throw new Error("Impossibile creare prenotazione: mancano iduser o idcourse");
+    }
+
+    const dbName = process.env.MYSQL_FORMA4 || "forma4";
     await conn60.query(
-        `INSERT INTO prenotazioni (iduser, idsessione, data_prenotazione, idcourse, db)
-         VALUES (?,?,?,?, 'process.env.MYSQL_FORMA4')`,
-        [iduser, idsessione, now, idcourse]
+        `INSERT INTO prenotazioni (idsessione, iduser, idcourse, db, data_prenotazione)
+         VALUES (?,?,?,?,?)`,
+        [idsessione, iduser, idcourse, dbName, now]
     );
 
     // Disponibilità
@@ -941,14 +994,28 @@ async function insertPrenotazione60h(idsessione, iduser, idcourse) {
         [iduser]
     );
 
+    let codiceFiscale = "";
+    try {
+        const [cfRows] = await connForma.query(
+            `SELECT user_entry FROM core_field_userentry WHERE id_user = ? AND id_common = 23 LIMIT 1`,
+            [iduser]
+        );
+        if (cfRows.length) {
+            codiceFiscale = (cfRows[0].user_entry || "").trim();
+        }
+    } catch (err) {
+        console.warn("⚠️ CF non disponibile per 60h:", err.message);
+    }
+
     if (u.length) {
         await conn60.query(
-            `INSERT INTO anagrafiche (id,nome,cognome,email)
-             VALUES (?,?,?,?)
+            `INSERT INTO anagrafiche (id,nome,cognome,email,codicefiscale)
+             VALUES (?,?,?,?,?)
              ON DUPLICATE KEY UPDATE nome=VALUES(nome),
                                       cognome=VALUES(cognome),
-                                      email=VALUES(email)`,
-            [iduser, u[0].firstname, u[0].lastname, u[0].email]
+                                      email=VALUES(email),
+                                      codicefiscale=VALUES(codicefiscale)`,
+            [iduser, u[0].firstname, u[0].lastname, u[0].email, codiceFiscale]
         );
     }
 }
@@ -969,6 +1036,11 @@ async function insertSessione260h({
 
     const maxposti = 1;
     const dNow = new Date().toISOString().slice(0, 19).replace("T", " ");
+    const formattedDataEsame = formatDateTimeToMinutes(dataesame);
+    const formattedDataProva = formatDateTimeToMinutes(dataprova);
+    if (!formattedDataEsame || !formattedDataProva) {
+        throw new Error("Formato data non valido");
+    }
 
     try {
 
@@ -994,7 +1066,7 @@ async function insertSessione260h({
                     `UPDATE sessioni
                      SET dataesame=?, dataprova=?, maxposti=?, note=?
                      WHERE id = ?`,
-                    [dataesame, dataprova, maxposti, note, idSessione]
+                    [formattedDataEsame, formattedDataProva, maxposti, note, idSessione]
                 );
             } else {
                 // Update su TEST speculare
@@ -1003,7 +1075,7 @@ async function insertSessione260h({
                      SET dataprova=?, dataesame=?, maxposti=?, note=?,
                          Postidisponibili=ABS(?-(SELECT COUNT(*) FROM prenotazioni WHERE idsessione=?))
                      WHERE id = ?`,
-                    [dataesame, dataprova, maxposti, note, maxposti, idSessione, idSessione]
+                    [formattedDataProva, formattedDataEsame, maxposti, note, maxposti, idSessione, idSessione]
                 );
             }
 
@@ -1025,7 +1097,7 @@ async function insertSessione260h({
              VALUES (?, ?, ?, ?, ?, ?, ?, 1, 1, 1, '', ?)`,
             [
                 maxposti, maxposti,
-                dataesame, dataprova,
+                formattedDataEsame, formattedDataProva,
                 `TEST2 - ${nomesessione || ""}`, domicilio, note, dNow
             ]
         );
@@ -1041,7 +1113,7 @@ async function insertSessione260h({
              VALUES (?, ?, ?, ?, ?, ?, ?, 1, 1, 1, '', ?, ?)`,
             [
                 maxposti, maxposti,
-                dataprova, dataesame,
+                formattedDataProva, formattedDataEsame,
                 `TEST - ${nomesessione || ""}`, domicilio, note,
                 idsessione1, dNow
             ]

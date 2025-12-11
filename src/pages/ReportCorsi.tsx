@@ -3,8 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Loader2, FileSpreadsheet, FileText } from "lucide-react";
 import dayjs from "dayjs";
 import { useAlert } from "../components/SmartAlertModal";
+import { backendUrl as BACKEND } from "@/config/backend";
 
-const BACKEND = import.meta.env.VITE_BACKEND_URL;
+const formatEuro = (value: number) =>
+    new Intl.NumberFormat("it-IT", {
+        style: "currency",
+        currency: "EUR",
+        minimumFractionDigits: 2,
+    }).format(value);
 
 export default function ReportCorsi() {
     const [db, setDb] = useState("forma4");
@@ -16,6 +22,7 @@ export default function ReportCorsi() {
     const [loading, setLoading] = useState(false);
     const [reportData, setReportData] = useState<any[]>([]);
     const [total, setTotal] = useState(0);
+    const [corsistiCount, setCorsistiCount] = useState(0);
     const { alert: showAlert } = useAlert();
 
     // 🧠 Funzione per determinare DB automatico in base all’anno
@@ -67,6 +74,7 @@ export default function ReportCorsi() {
         setLoading(true);
         setReportData([]);
         setTotal(0);
+        setCorsistiCount(0);
 
         try {
             const selectedDb = pickDbByDates(from, to);
@@ -78,11 +86,20 @@ export default function ReportCorsi() {
 
             if (data.success) {
                 setReportData(data.rows);
-                const sum = data.rows.reduce(
+                const fallbackSum = data.rows.reduce(
                     (acc: number, r: any) => acc + (parseFloat(r.fatturato) || 0),
                     0
                 );
-                setTotal(sum);
+                const totalRevenue = Number(data.totalRevenue ?? 0);
+                setTotal(totalRevenue || fallbackSum);
+                const corsistiTotal =
+                    Number(data.corsistiCount ?? 0) ||
+                    new Set(
+                        (data.rows || [])
+                            .map((row: any) => row.iduser)
+                            .filter(Boolean),
+                    ).size;
+                setCorsistiCount(corsistiTotal);
             }
         } catch (err) {
             console.error("Errore caricamento report:", err);
@@ -179,6 +196,22 @@ export default function ReportCorsi() {
                 </select>
             </div>
 
+            {/* Summary */}
+            {reportData.length > 0 && (
+                <div className="mb-4 flex flex-wrap gap-4 text-sm">
+                    <div className="flex flex-col rounded border border-gray-200 bg-white px-4 py-3 shadow-sm">
+                        <span className="text-xs uppercase text-gray-500">Totale fatturato</span>
+                        <span className="text-lg font-semibold">{formatEuro(total)}</span>
+                    </div>
+                    <div className="flex flex-col rounded border border-gray-200 bg-white px-4 py-3 shadow-sm">
+                        <span className="text-xs uppercase text-gray-500">Corsisti iscritti</span>
+                        <span className="text-lg font-semibold">
+                            {corsistiCount.toLocaleString("it-IT")}
+                        </span>
+                    </div>
+                </div>
+            )}
+
             {/* Tabella risultati */}
             {loading ? (
                 <p>Caricamento...</p>
@@ -225,9 +258,7 @@ export default function ReportCorsi() {
                                     <td colSpan={5} className="text-right p-2">
                                         Totale:
                                     </td>
-                                    <td className="p-2 text-right">
-                                        € {total.toLocaleString("it-IT")}
-                                    </td>
+                                <td className="p-2 text-right">{formatEuro(total)}</td>
                                 </tr>
                             </tfoot>
                         )}

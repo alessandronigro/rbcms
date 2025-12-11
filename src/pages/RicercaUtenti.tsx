@@ -126,6 +126,7 @@ export default function RicercaUtenti() {
           <option value="efadnovastudia">Nova Studia</option>
           <option value="fadassiac">Assiac</option>
           <option value="formazionecondorb">RB Academy</option>
+          <option value="simplybiz">SimplyBiz</option>
         </select>
 
         <input
@@ -171,7 +172,7 @@ export default function RicercaUtenti() {
       <div className="space-y-6">
         {Object.entries(results)
           .sort(([dbA], [dbB]) => {
-            const order = ["forma4", "newformazionein", "formazionein"];
+            const order = ["forma4", "newformazionein", "formazionein", "formazionecondorb", "simplybiz"];
             const idxA = order.indexOf(dbA);
             const idxB = order.indexOf(dbB);
             if (idxA !== -1 && idxB !== -1) return idxA - idxB;
@@ -190,15 +191,15 @@ export default function RicercaUtenti() {
                 </div>
 
                 <table className="min-w-full text-sm text-left">
-                  <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
-                    <tr>
-                      <th className="px-3 py-2 w-12">#</th>
-                      <th className="px-3 py-2">Nome</th>
-                      <th className="px-3 py-2">Cognome</th>
-                      <th className="px-3 py-2">Codice Fiscale</th>
-                      <th className="px-3 py-2">ID Utente</th>
-                    </tr>
-                  </thead>
+                    <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
+                      <tr>
+                        <th className="px-3 py-2 w-12">#</th>
+                        <th className="px-3 py-2">Nome</th>
+                        <th className="px-3 py-2">Cognome</th>
+                        <th className="px-3 py-2">Codice Fiscale</th>
+                        <th className="px-3 py-2">ID Utente</th>
+                      </tr>
+                    </thead>
                   <tbody>
                     {Array.isArray(rows) && rows.length > 0 ? (
                       rows.map((r) => {
@@ -222,11 +223,11 @@ export default function RicercaUtenti() {
                               <td className="px-3 py-2">{r.firstname}</td>
                               <td className="px-3 py-2">{r.lastname}</td>
                               <td className="px-3 py-2">{r.user_entry}</td>
-                              <td className="px-3 py-2">{r.idst}</td>
+                             <td className="px-3 py-2">{r.idst}</td>
                             </tr>
                             {isExpanded && (
                               <tr>
-                                <td colSpan={5}>
+                                <td colSpan={6}>
                                   <UtenteDettaglio
                                     detail={detail}
                                     onAction={(action, corso) => {

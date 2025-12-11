@@ -17,7 +17,24 @@ export default function Calendario60h() {
   useEffect(() => {
     fetch("/api/finecorso60h/calendario")
       .then((res) => res.json())
-      .then((data) => setEvents(data))
+      .then((data) => {
+        setEvents(data);
+        const now = new Date();
+        const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+        const monthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+        const monthlySessions = data
+          .filter((event: any) => {
+            if (!event.start) return false;
+            const eventDate = new Date(event.start);
+            return eventDate >= monthStart && eventDate < monthEnd;
+          })
+          .map((event: any) => ({
+            name: event.title,
+            flag: event.extendedProps?.flagevent ?? 0,
+            start: event.start,
+          }));
+        console.log("Calendario 60h: sessioni mese", monthlySessions);
+      })
       .catch((err) => console.error("Errore calendario:", err));
   }, [refreshKey]);
 

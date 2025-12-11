@@ -75,11 +75,11 @@ async function normalizeLocationFields(convenzione, conn) {
 
 router.get("/", async (req, res) => {
     try {
-        const { visibile, filtro } = req.query;
+        const { visibile, filtro, q } = req.query;
         const conn = await getConnection("wpacquisti");
 
         let sql = `
-            SELECT Codice, Name, indirizzoweb, visibilita, tipo, ref1, excel
+            SELECT Codice, Name, indirizzoweb, newindirizzoweb, visibilita, tipo, ref1, excel
             FROM newconvenzioni
         `;
 
@@ -106,6 +106,13 @@ router.get("/", async (req, res) => {
                     if (filtro !== "0") where.push(`Name = ${conn.escape(filtro)}`);
                     break;
             }
+        }
+
+        if (q) {
+            const search = `%${q}%`;
+            where.push(
+                `(Name LIKE ${conn.escape(search)} OR Codice LIKE ${conn.escape(search)})`
+            );
         }
 
         // 🔹 Componi query finale
@@ -145,10 +152,35 @@ router.post("/", async (req, res) => {
             [codice, nome]
         );
 
-        res.json({ success: true, message: "Convenzione creata con successo" });
+        res.json({
+            success: true,
+            message: "Convenzione creata con successo",
+            codice,
+        });
     } catch (err) {
         console.error("POST convenzione ERR:", err.message);
         res.status(500).json({ error: "Errore creazione convenzione" });
+    }
+});
+
+router.get("/code/random", async (req, res) => {
+    try {
+        const conn = await getConnection("wpacquisti");
+        const attempts = 50;
+        for (let i = 0; i < attempts; i++) {
+            const code = String(Math.floor(Math.random() * 9000) + 1000);
+            const [exists] = await conn.query(
+                "SELECT 1 FROM newconvenzioni WHERE Codice = ? LIMIT 1",
+                [code]
+            );
+            if (!exists.length) {
+                return res.json({ code });
+            }
+        }
+        res.status(500).json({ error: "Impossibile generare un codice univoco" });
+    } catch (err) {
+        console.error("GET code/random ERR:", err.message);
+        res.status(500).json({ error: "Errore generazione codice" });
     }
 });
 
@@ -324,14 +356,47 @@ router.get("/:codice", async (req, res) => {
 router.put("/:codice", async (req, res) => {
     try {
         const data = req.body;
+        console.log("🔁 PUT /api/convenzioni/:codice payload:", data);
         const conn = await getConnection("wpacquisti");
-        const updates = Object.keys(data).map(k => `${k} = ?`).join(", ");
-        const values = [...Object.values(data), req.params.codice];
+        const [columns] = await conn.query("SHOW COLUMNS FROM newconvenzioni");
+        const columnMap = {};
+        for (const column of columns) {
+            if (column && column.Field) {
+                columnMap[column.Field.toLowerCase()] = column.Field;
+            }
+        }
 
-        await conn.query(
-            `UPDATE newconvenzioni SET ${updates} WHERE Codice = ?`,
-            values
-        );
+        const normalizeValue = (value) => {
+            if (value && typeof value === "object" && value.type === "Buffer" && Array.isArray(value.data)) {
+                return Buffer.from(value.data);
+            }
+            return value;
+        };
+
+        const sanitizedEntries = Object.entries(data || {})
+            .map(([key, value]) => [key, normalizeValue(value)])
+            .filter(([key]) => {
+                const field = columnMap[key.toLowerCase()];
+                return field && key.toLowerCase() !== "codice";
+            });
+
+        console.log("🔍 sanitized fields:", sanitizedEntries.map(([key]) => key));
+
+        if (!sanitizedEntries.length) {
+            return res.status(400).json({ error: "Nessun campo aggiornabile valido" });
+        }
+
+        const updates = sanitizedEntries
+            .map(([key]) => `${conn.escapeId(columnMap[key.toLowerCase()])} = ?`)
+            .join(", ");
+        const values = sanitizedEntries.map(([, value]) => value);
+
+        console.log("🛠️ query parts:", updates);
+        console.log("🧾 values:", values);
+        const sql = `UPDATE newconvenzioni SET ${updates} WHERE Codice = ?`;
+        console.log("🧮 formatted SQL:", conn.format(sql, [...values, req.params.codice]));
+
+        await conn.query(sql, [...values, req.params.codice]);
 
         res.json({ success: true });
     } catch (err) {

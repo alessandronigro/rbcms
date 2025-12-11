@@ -29,9 +29,12 @@ import LoginConvenzione from "./pages/Login";
 import ReportConvenzione from "./pages/Report/ReportConvenzioni";
 import Template from "./pages/MailFormatEditor";
 import ReportCorsi from "./pages/ReportCorsi";
+import ReportFatturatoOrdini from "./pages/ReportFatturatoOrdini";
 import FineCorso from "./pages/FineCorso";
 import PublicSlotSettings from "./pages/Calendario/PublicSlotSettings";
 import PublicSlots from "./pages/PublicSlots";
+import Reminder from "./pages/Reminder";
+import Simulazione from "./pages/Simulazione";
 export default function App() {
   return (
     <Routes>
@@ -70,9 +73,12 @@ export default function App() {
         <Route path="/iscrizioni/aca" element={<IscrizioniAca />} />
         <Route path="/iscrizioni/nova" element={<IscrizioniNova />} />
         <Route path="/template" element={<Template />} />
+        <Route path="/reminder" element={<Reminder />} />
         <Route path="/report/fatturato" element={<ReportCorsi />} />
+        <Route path="/report/fatturato-ordini" element={<ReportFatturatoOrdini />} />
         <Route path="/finecorso" element={<FineCorso />} />
         <Route path="/utenti" element={<RicercaUtenti />} />
+        <Route path="/simulazione" element={<Simulazione />} />
 
         <Route path="/calendario/60h/finecorso" element={<FineCorso60h />} />
         <Route path="/calendario/60h/sessioni" element={<Calendario60h />} />

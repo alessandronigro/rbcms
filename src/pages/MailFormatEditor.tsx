@@ -3,6 +3,7 @@ import { Loader2, Plus, Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Editor } from "@tinymce/tinymce-react";
 import { useAlert } from "../components/SmartAlertModal";
+import { backendUrl } from "@/config/backend";
 
 /**
  * Fallback useToast hook used when "@/components/ui/use-toast" is not available.
@@ -32,6 +33,7 @@ export default function MailFormatEditor() {
     const [formats, setFormats] = useState<Record<string, string[]>>({});
     const [selected, setSelected] = useState("");
     const [html, setHtml] = useState("");
+    const [subject, setSubject] = useState("");
     const [loading, setLoading] = useState(false);
     const [newKey, setNewKey] = useState("");
     const [newCat, setNewCat] = useState("");
@@ -40,7 +42,7 @@ export default function MailFormatEditor() {
 
     // 📥 Carica elenco formati
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mailformat/list`)
+        fetch(`${backendUrl}/api/mailformat/list`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) setFormats(data.data);
@@ -52,7 +54,7 @@ export default function MailFormatEditor() {
 
     const loadFormats = async () => {
         try {
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mailformat/list`);
+            const res = await fetch(`${backendUrl}/api/mailformat/list`);
             const data = await res.json();
             if (data.success) setFormats(data.data);
         } catch {
@@ -66,12 +68,41 @@ export default function MailFormatEditor() {
 
     // 📖 Carica contenuto quando cambia il formato selezionato
     useEffect(() => {
-        if (!selected) return;
+        if (!selected) {
+            setHtml("");
+            setSubject("");
+            return;
+        }
+
         setLoading(true);
-        fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mailformat/${selected}`)
-            .then((res) => res.text())
-            .then(setHtml)
-            .finally(() => setLoading(false));
+        (async () => {
+            try {
+                const res = await fetch(`${backendUrl}/api/mailformat/${selected}`);
+                if (res.ok) {
+                    const text = await res.text();
+                    setHtml(text);
+                } else {
+                    setHtml("");
+                }
+            } catch (err) {
+                console.error("❌ Errore caricamento HTML:", err);
+                setHtml("");
+            }
+
+            try {
+                const subjRes = await fetch(`${backendUrl}/api/mailformat/${selected}/subject`);
+                if (subjRes.ok) {
+                    const data = await subjRes.json();
+                    if (data.success) setSubject(data.subject || "");
+                    else setSubject("");
+                } else {
+                    setSubject("");
+                }
+            } catch (err) {
+                console.error("❌ Errore caricamento oggetto:", err);
+                setSubject("");
+            }
+        })().finally(() => setLoading(false));
     }, [selected]);
 
     const createTemplate = async () => {
@@ -80,7 +111,7 @@ export default function MailFormatEditor() {
             return;
         }
         try {
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mailformat/new`, {
+            const res = await fetch(`${backendUrl}/api/mailformat/new`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ key: newKey, category: newCat }),
@@ -110,14 +141,25 @@ export default function MailFormatEditor() {
         }
         setLoading(true);
         try {
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/mailformat/${selected}`, {
+            const res = await fetch(`${backendUrl}/api/mailformat/${selected}`, {
                 method: "POST",
                 headers: { "Content-Type": "text/html" },
                 body: html,
             });
             const data = await res.json();
-            if (data.success) toast({ title: "Salvato", description: "Formato aggiornato con successo" });
-        } catch {
+            if (!data.success) throw new Error(data.error || "Errore salvataggio formato");
+
+            const subjectRes = await fetch(`${backendUrl}/api/mailformat/${selected}/subject`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ subject }),
+            });
+            const subjectData = await subjectRes.json();
+            if (!subjectData.success) throw new Error(subjectData.error || "Errore salvataggio oggetto");
+
+            toast({ title: "Salvato", description: "Formato aggiornato con successo" });
+        } catch (err) {
+            console.error("❌ Errore salvataggio formato:", err);
             toast({ title: "Errore", description: "Errore durante il salvataggio", variant: "destructive" });
         } finally {
             setLoading(false);
@@ -171,6 +213,14 @@ export default function MailFormatEditor() {
 
             {selected && (
                 <>
+                    <label className="block mb-2 font-semibold">Oggetto email:</label>
+                    <input
+                        type="text"
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
+                        className="border border-gray-300 rounded w-full p-2 mb-4"
+                        placeholder="Oggetto del messaggio"
+                    />
                     <Editor
                         apiKey="vs06mlnbyyaej9ieyroykxlegntnwpcv6d4aw0vylqty0atm"
                         init={{

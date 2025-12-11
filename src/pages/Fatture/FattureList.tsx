@@ -79,8 +79,30 @@ export default function FattureList({ which }: { which: Which }) {
       body: JSON.stringify(body),
     });
     const j = await res.json();
-    if (j.zip_url) window.open(j.zip_url, "_blank");
-    else await showAlert(j.error || "Errore generazione ZIP");
+    if (j.zip_url) {
+      // Scarica il file via fetch per evitare il redirect
+      try {
+        const zipResponse = await fetch(j.zip_url);
+        if (!zipResponse.ok) {
+          await showAlert("Errore durante il download del file ZIP");
+          return;
+        }
+        const blob = await zipResponse.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = j.zip_url.split('/').pop() || 'fatture.zip';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      } catch (error) {
+        console.error("Errore download ZIP:", error);
+        await showAlert("Errore durante il download del file ZIP");
+      }
+    } else {
+      await showAlert(j.error || "Errore generazione ZIP");
+    }
   };
 
   return (

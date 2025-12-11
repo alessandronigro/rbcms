@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
 import { useAlert } from "./SmartAlertModal";
+import { backendUrl } from "@/config/backend";
 interface Course {
   idCourse?: number;
   code: string;
@@ -195,6 +196,52 @@ export default function UtenteDettaglio({ detail }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [activeCourse, setActiveCourse] = useState<Course | null>(null);
   const [restoringCourseId, setRestoringCourseId] = useState<number | null>(null);
+  const [deletingCourseId, setDeletingCourseId] = useState<number | null>(null);
+  const [deletingUser, setDeletingUser] = useState(false);
+  const [syncingPassword, setSyncingPassword] = useState(false);
+  const [normalizingCourseId, setNormalizingCourseId] = useState<number | null>(null);
+  const initialCourses = detail?.courses || [];
+  const [courseList, setCourseList] = useState<Course[]>(initialCourses);
+
+  useEffect(() => {
+    setCourseList(detail?.courses || []);
+  }, [detail?.courses]);
+
+  const handleCancellaCorso = async (course: Course) => {
+    const db = detail?.db;
+    const userId = detail?.user?.idst;
+    if (!db || !userId || !course.idCourse) {
+      await showAlert("Impossibile determinare il corso da cancellare");
+      return;
+    }
+    try {
+      await showConfirm(
+        "Confermi di cancellare definitivamente l'iscrizione a questo corso?"
+      );
+    } catch {
+      return;
+    }
+
+    setDeletingCourseId(course.idCourse);
+    try {
+      const res = await fetch(`/api/corsi/${db}/${userId}/${course.idCourse}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Errore cancellazione corso");
+      }
+
+      setCourseList((prev) =>
+        prev.filter((item) => String(item.idCourse) !== String(course.idCourse))
+      );
+      await showAlert("✅ Corso cancellato correttamente");
+    } catch (err: any) {
+      await showAlert("❌ Errore cancellazione: " + err.message);
+    } finally {
+      setDeletingCourseId(null);
+    }
+  };
   // 🧩 Protezione: se non ho ancora i dati, non renderizzo nulla
   if (!detail?.user) {
     return (
@@ -204,7 +251,7 @@ export default function UtenteDettaglio({ detail }: Props) {
     );
   }
 
-  const { user, courses = [], fields = [] } = detail;
+  const { user, fields = [] } = detail;
   const mappedFields = fields
     .map((f, index) => {
       const label =
@@ -220,12 +267,95 @@ export default function UtenteDettaglio({ detail }: Props) {
     fields.find((f) => f.translation?.toLowerCase() === label.toLowerCase())
       ?.user_entry || "";
 
-  const password =
+  const dbValue = (detail?.db || "").toLowerCase();
+  const isSimplybizDb = dbValue === "simplybiz";
+
+  const buildSimplybizPassword = (lastname?: string) => {
+    if (!lastname) return "";
+    const cleaned = lastname.trim().replace(/\s+/g, "");
+    if (!cleaned) return "";
+    const normalized =
+      cleaned.charAt(0).toUpperCase() + cleaned.slice(1).toLowerCase();
+    return `${normalized}12345@`;
+  };
+
+  const defaultPassword =
     getField("Password") || detail.pass || user.password || "";
+  const password = isSimplybizDb
+    ? buildSimplybizPassword(user.lastname)
+    : defaultPassword;
 
   const cleanUser = user.userid?.replace("/", "") || "";
 
   // 🔹 Generazione attestato
+  const handleReinviaMail = async (course: Course) => {
+    if (!detail.db || !user?.idst || !course.idCourse) {
+      await showAlert("Impossibile determinare utente o corso per reinvio");
+      return;
+    }
+    if (!user.email && !getField("Indirizzo Email")) {
+      await showAlert("Email mancante, impossibile reinviare");
+      return;
+    }
+
+    const payload = {
+      db: detail.db,
+      iduser: user.idst,
+      idcourse: course.idCourse,
+      nome: user.firstname,
+      cognome: user.lastname,
+      email: (user.email || getField("Indirizzo Email") || "").trim(),
+      userid: user.userid,
+      code: course.code,
+      corso: course.name,
+    };
+
+    try {
+      const res = await fetch("/api/corsi/reinvia-mail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || data.message || "Errore reinvio mail");
+      }
+      await showAlert(data.message || "Mail reinviata correttamente");
+    } catch (err: any) {
+      await showAlert(`❌ Errore reinvio mail: ${err.message}`);
+    }
+  };
+
+  const handleCancellaUtente = async () => {
+    if (!detail.db || !user?.idst) {
+      await showAlert("Informazioni utente incomplete");
+      return;
+    }
+
+    try {
+      await showConfirm("Confermi di eliminare definitivamente questo utente?");
+    } catch {
+      return;
+    }
+
+    setDeletingUser(true);
+    try {
+      const res = await fetch(
+        `/api/corsi/utenti/${detail.db}/${user.idst}`,
+        { method: "DELETE" }
+      );
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Errore cancellazione utente");
+      }
+      await showAlert("Utente cancellato correttamente");
+    } catch (err: any) {
+      await showAlert(`❌ ${err.message}`);
+    } finally {
+      setDeletingUser(false);
+    }
+  };
+
   const handleGeneraAttestato = async (idcorso: string) => {
     if (!user?.idst) {
       await showAlert("Utente non valido");
@@ -280,6 +410,43 @@ export default function UtenteDettaglio({ detail }: Props) {
     }
   };
 
+  const handleSospendiCorso = async (course: Course) => {
+    if (!detail.db || !user?.idst || !course.idCourse) return;
+
+    const isSuspended = Number(course.status) === 3;
+    // Se sospeso (3) -> Attiva (1). Se non sospeso -> Sospendi (3).
+    // Nota: status=2 è completato, usiamo 1 per "In itinere/Attivo".
+    const newStatus = isSuspended ? 1 : 3;
+
+    try {
+      const res = await fetch(`${backendUrl}/api/corsi/sospendi`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          db: detail.db,
+          iduser: user.idst,
+          idcourse: course.idCourse,
+          status: newStatus,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setCourseList((prev) =>
+          prev.map((c) =>
+            c.idCourse === course.idCourse ? { ...c, status: newStatus } : c
+          )
+        );
+        await showAlert(
+          `Corso ${isSuspended ? "attivato" : "sospeso"} correttamente`
+        );
+      } else {
+        throw new Error(data.error || "Errore aggiornamento stato");
+      }
+    } catch (e: any) {
+      await showAlert("Errore: " + e.message);
+    }
+  };
+
   const handleRicreaTest = async (course: Course) => {
     if (!detail.db || !course.idCourse) {
       await showAlert("Impossibile determinare piattaforma o corso");
@@ -313,6 +480,62 @@ export default function UtenteDettaglio({ detail }: Props) {
       await showAlert(`❌ Errore ricreazione test: ${err.message}`);
     } finally {
       setRestoringCourseId(null);
+    }
+  };
+
+  const handleSincronizzaPassword = async () => {
+    if (!detail.db || !user?.idst) {
+      await showAlert("Informazioni utente incomplete");
+      return;
+    }
+    setSyncingPassword(true);
+    try {
+      const res = await fetch("/api/utenti/sincr-pass", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ db: detail.db, iduser: user.idst }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Operazione non riuscita");
+      }
+      await showAlert("✅ Password sincronizzata dal campo 26");
+    } catch (err: any) {
+      await showAlert(
+        `❌ Errore sincronizzazione password: ${err.message || "richiesta fallita"}`
+      );
+    } finally {
+      setSyncingPassword(false);
+    }
+  };
+
+  const handleNormalizzaTempo = async (course: Course) => {
+    if (!detail.db || !course.idCourse || !user?.idst) {
+      await showAlert("Impossibile determinare piattaforma o corso");
+      return;
+    }
+    const extraInput = window.prompt("Ore extra da aggiungere (default 1)", "1");
+    if (extraInput === null) return;
+    const extraHours = Number(extraInput) || 1;
+    setNormalizingCourseId(course.idCourse);
+    try {
+      const res = await fetch("/api/corsi/normalize-time", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          db: detail.db,
+          idUser: user.idst,
+          idCourse: course.idCourse,
+          extraHours,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || data.message || "Errore normalizzazione");
+      await showAlert(data.message || "Tempo normalizzato correttamente");
+    } catch (err: any) {
+      await showAlert(`❌ Errore normalizzazione: ${err.message || "richiesta fallita"}`);
+    } finally {
+      setNormalizingCourseId(null);
     }
   };
 
@@ -382,14 +605,14 @@ export default function UtenteDettaglio({ detail }: Props) {
         </form>
 
         {/* 🗑 Cancella utente */}
-        <a
-          href={`${import.meta.env.VITE_BACKEND_URL}/api/corsi/utenti/${detail.db}/${user.idst}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-red-600 text-white text-sm px-3 py-1 rounded-md shadow-sm hover:bg-red-700"
+        <button
+          onClick={handleCancellaUtente}
+          disabled={deletingUser}
+          className={`inline-block text-white text-sm px-3 py-1 rounded-md shadow-sm ${deletingUser ? "bg-red-300 cursor-not-allowed" : "bg-red-600 hover:bg-red-700"
+            }`}
         >
-          🗑 Cancella utente
-        </a>
+          {deletingUser ? "Cancellazione…" : "🗑 Cancella utente"}
+        </button>
 
         {/* ✅ DATI ANAGRAFICI */}
         <div className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm text-gray-800 mt-4">
@@ -406,182 +629,211 @@ export default function UtenteDettaglio({ detail }: Props) {
           <p>
             <b>Codice Fiscale:</b> {getField("Codice Fiscale") || user.cf || "—"}
           </p>
-        <p>
-          <b>Convenzione:</b> {getField("Convenzione") || user.convenzione || "—"}
-        </p>
+          <p>
+            <b>Convenzione:</b> {getField("Convenzione") || user.convenzione || "—"}
+          </p>
+        </div>
+
+        {mappedFields.length > 0 && (
+          <div className="mt-6">
+            <h3 className="text-sm font-semibold text-gray-700 mb-2">
+              Campi aggiuntivi (core_field_userentry)
+            </h3>
+            <div className="border rounded-lg overflow-hidden">
+              <table className="min-w-full text-sm">
+                <tbody className="divide-y divide-slate-200">
+                  {mappedFields.map((field) => (
+                    <tr key={field.id} className="bg-white">
+                      <td className="px-3 py-2 font-medium text-slate-600 w-1/3">
+                        {field.label}
+                      </td>
+                      <td className="px-3 py-2 text-slate-900 break-words">
+                        {field.value}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </div>
 
-      {mappedFields.length > 0 && (
-        <div className="mt-6">
-          <h3 className="text-sm font-semibold text-gray-700 mb-2">
-            Campi aggiuntivi (core_field_userentry)
-          </h3>
-          <div className="border rounded-lg overflow-hidden">
-            <table className="min-w-full text-sm">
-              <tbody className="divide-y divide-slate-200">
-                {mappedFields.map((field) => (
-                  <tr key={field.id} className="bg-white">
-                    <td className="px-3 py-2 font-medium text-slate-600 w-1/3">
-                      {field.label}
-                    </td>
-                    <td className="px-3 py-2 text-slate-900 break-words">
-                      {field.value}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
-    </div>
-
-    {/* ✅ CORSI */}
-      {courses.map((c) => {
+      {/* ✅ CORSI */}
+      {courseList.map((c) => {
         const isCourseCompleted = Number(c.status) === 2;
         return (
-        <div
-          key={c.idCourse}
-          className="bg-white border rounded-lg p-4 shadow-sm mb-4"
-        >
-          <p className="text-sm mb-2">
-            <b className="text-red-600">{c.code}</b> — {c.name}
-          </p>
-
-          <div className="text-sm space-y-1 text-gray-700">
-            <p><b>Data Iscrizione:</b> {c.date_inscr || "N/D"}</p>
-            <p><b>Data Completamento:</b> {c.date_complete || "N/D"}</p>
-            <p><b>Ultimo Accesso Corso:</b> {c.last_access_course || "—"}</p>
-            <p><b>Ultimo Accesso Piattaforma:</b> {c.last_access_platform || "—"}</p>
-            <p className="flex items-center gap-2">
-              <b>Stato:</b> {getStatusBadge(c.status)}
+          <div
+            key={c.idCourse}
+            className="bg-white border rounded-lg p-4 shadow-sm mb-4"
+          >
+            <p className="text-sm mb-2">
+              <b className="text-red-600">{c.code}</b> — {c.name}
             </p>
-            <p>
-              <b>Scadenza:</b>{" "}
-              {c.date_expire_validity || "N/A"}
-            </p>
-            <p>
-              <b>Ore Video:</b> {c.ore_video || "00m 00s"} — <b>Tempo Piattaforma:</b>{" "}
-              {c.ore_totali || "00h 00m 00s"}
-            </p>
-          </div>
 
-          {/* 🔘 Azioni corso */}
+            <div className="text-sm space-y-1 text-gray-700">
+              <p><b>Data Iscrizione:</b> {c.date_inscr || "N/D"}</p>
+              <p><b>Data Completamento:</b> {c.date_complete || "N/D"}</p>
+              <p><b>Ultimo Accesso Corso:</b> {c.last_access_course || "—"}</p>
+              <p><b>Ultimo Accesso Piattaforma:</b> {c.last_access_platform || "—"}</p>
+              <p className="flex items-center gap-2">
+                <b>Stato:</b> {getStatusBadge(c.status)}
+              </p>
+              <p>
+                <b>Scadenza:</b>{" "}
+                {c.date_expire_validity || "N/A"}
+              </p>
+              <p>
+                <b>Ore Video:</b> {c.ore_video || "00m 00s"} — <b>Tempo Piattaforma:</b>{" "}
+                {c.ore_totali || "00h 00m 00s"}
+              </p>
+            </div>
+
+            {/* 🔘 Azioni corso */}
 
 
-          <div className="flex flex-wrap gap-2 mb-3 mt-2">
+            <div className="flex flex-wrap gap-2 mb-3 mt-2">
 
-            {/* 🚫 Sospendi corso */}
-            <a
-              href={`${import.meta.env.VITE_BACKEND_URL}/api/courses/${detail.db}/${user.idst}/${c.idCourse}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-yellow-700 text-sm"
-            >
-              🚫 Cancella corso
-            </a>
-
-            {/* 🔓 Sblocca corso */}
-            <a
-              href={`${import.meta.env.VITE_BACKEND_URL}/api/corsi/sbloccacorso?iduser=${user.idst}&idcourse=${c.idCourse}&nome=${user.firstname}&cognome=${user.lastname}&db=${detail.db}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-600 text-white px-3 py-1 rounded-md hover:bg-emerald-700 text-sm"
-            >
-              🔓 Sblocca corso
-            </a>
-
-            {/* 🗑 Elimina autocertificazione */}
-            <a
-              href={`${import.meta.env.VITE_BACKEND_URL}/api/corsi/deleteautocert?iduser=${user.idst}&idcourse=${c.idCourse}&db=${detail.db}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700 text-sm"
-            >
-              🗑 Elimina autocert.
-            </a>
-
-            {/* 🚫 Sospendi corso */}
-            <a
-              href={`${import.meta.env.VITE_BACKEND_URL}/api/corsi/sospendi?iduser=${user.idst}&idcourse=${c.idCourse}&db=${detail.db}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-yellow-600 text-white px-3 py-1 rounded-md hover:bg-yellow-700 text-sm"
-            >
-              🚫 Sospendi corso
-            </a>
-
-            {showModal && activeCourse && (
-              <CambiaSlideModal
-                db={detail.db}
-                idcourse={activeCourse.idCourse}
-                iduser={user.idst}
-                onClose={() => {
-                  setShowModal(false);
-                  setActiveCourse(null);
-                }}
-              />
-            )}
-
-            <button
-              onClick={() => {
-                setActiveCourse(c);
-                setShowModal(true);
-              }}
-              className="bg-indigo-600 text-white px-3 py-1 rounded-md text-sm hover:bg-indigo-700"
-            >
-              🔄 Cambia Slide
-            </button>
-            {/* 📊 Report */}
-            <a
-              href={`${import.meta.env.VITE_BACKEND_URL}/api/corsi/gettime?iduser=${user.idst}&idcourse=${c.idCourse}&nome=${user.firstname}&cognome=${user.lastname}&db=${detail.db}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-700 text-white px-3 py-1 rounded-md hover:bg-blue-800 text-sm"
-            >
-              📊 Report
-            </a>
-
-            {c.idCourse && (
               <button
-                onClick={() => handleRicreaTest(c)}
-                disabled={restoringCourseId === c.idCourse}
-                className={`px-3 py-1 rounded-md text-sm text-white ${restoringCourseId === c.idCourse
-                  ? "bg-purple-300 cursor-not-allowed"
-                  : "bg-purple-600 hover:bg-purple-700"
+                onClick={() => handleCancellaCorso(c)}
+                disabled={!c.idCourse || deletingCourseId === c.idCourse}
+                className={`px-3 py-1 rounded-md text-sm text-white ${deletingCourseId === c.idCourse
+                  ? "bg-red-300 cursor-not-allowed"
+                  : "bg-red-600 hover:bg-red-700"
                   }`}
               >
-                {restoringCourseId === c.idCourse ? "Ricreazione…" : "🧪 Ricrea test"}
+                {deletingCourseId === c.idCourse ? "Cancellazione…" : "🚫 Cancella corso"}
               </button>
-            )}
 
-            {isCourseCompleted && (
-              <>
-                {/* 📄 Ultimo Test */}
-                <a
-                  href={`${import.meta.env.VITE_BACKEND_URL}/api/corsi/getlasttest?iduser=${user.idst}&idcourse=${c.idCourse}&firstname=${user.firstname}&lastname=${user.lastname}&db=${detail.db}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-cyan-600 text-white px-3 py-1 rounded-md hover:bg-cyan-700 text-sm"
-                >
-                  📄 Ultimo Test
-                </a>
+              {/* 🔓 Sblocca corso */}
+              <a
+                href={`${backendUrl}/api/corsi/sbloccacorso?iduser=${user.idst}&idcourse=${c.idCourse}&nome=${user.firstname}&cognome=${user.lastname}&db=${detail.db}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-emerald-600 text-white px-3 py-1 rounded-md hover:bg-emerald-700 text-sm"
+              >
+                🔓 Sblocca corso
+              </a>
 
-                {/* 📜 Genera Attestato */}
+              {/* 🗑 Elimina autocertificazione */}
+              <a
+                href={`${backendUrl}/api/corsi/deleteautocert?iduser=${user.idst}&idcourse=${c.idCourse}&db=${detail.db}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700 text-sm"
+              >
+                🗑 Elimina autocert.
+              </a>
+
+              {/* 🚫 Sospendi / Attiva corso */}
+              <button
+                onClick={() => handleSospendiCorso(c)}
+                className={`${Number(c.status) === 3 ? "bg-green-600 hover:bg-green-700" : "bg-yellow-600 hover:bg-yellow-700"
+                  } text-white px-3 py-1 rounded-md text-sm`}
+              >
+                {Number(c.status) === 3 ? "✅ Attiva utente" : "🚫 Sospendi corso"}
+              </button>
+
+              <button
+                onClick={() => handleReinviaMail(c)}
+                className="bg-purple-600 text-white px-3 py-1 rounded-md hover:bg-purple-700 text-sm"
+              >
+                📧 Reinvia benvenuto
+              </button>
+
+              {showModal && activeCourse && (
+                <CambiaSlideModal
+                  db={detail.db}
+                  idcourse={activeCourse.idCourse}
+                  iduser={user.idst}
+                  onClose={() => {
+                    setShowModal(false);
+                    setActiveCourse(null);
+                  }}
+                />
+              )}
+
+              <button
+                onClick={() => {
+                  setActiveCourse(c);
+                  setShowModal(true);
+                }}
+                className="bg-indigo-600 text-white px-3 py-1 rounded-md text-sm hover:bg-indigo-700"
+              >
+                🔄 Cambia Slide
+              </button>
+              {/* 📊 Report */}
+              <a
+                href={`${backendUrl}/api/corsi/gettime?iduser=${user.idst}&idcourse=${c.idCourse}&nome=${user.firstname}&cognome=${user.lastname}&db=${detail.db}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-700 text-white px-3 py-1 rounded-md hover:bg-blue-800 text-sm"
+              >
+                📊 Report
+              </a>
+
+              {c.idCourse && (
                 <button
-                  onClick={() => handleGeneraAttestato(c.idCourse!.toString())}
-                  disabled={loading}
-                  className={`inline-flex items-center gap-1 px-3 py-1 rounded text-sm text-white ${loading ? "bg-gray-400" : "bg-green-600 hover:bg-green-700"
+                  onClick={() => handleRicreaTest(c)}
+                  disabled={restoringCourseId === c.idCourse}
+                  className={`px-3 py-1 rounded-md text-sm text-white ${restoringCourseId === c.idCourse
+                    ? "bg-purple-300 cursor-not-allowed"
+                    : "bg-purple-600 hover:bg-purple-700"
                     }`}
                 >
-                  <Download size={14} />
-                  {loading ? "Attendi..." : "Genera Attestato"}
+                  {restoringCourseId === c.idCourse ? "Ricreazione…" : "🧪 Ricrea test"}
                 </button>
-              </>
-            )}
+              )}
+
+              <button
+                onClick={handleSincronizzaPassword}
+                disabled={syncingPassword}
+                className={`px-3 py-1 rounded-md text-sm text-white ${syncingPassword
+                  ? "bg-emerald-300 cursor-not-allowed"
+                  : "bg-emerald-600 hover:bg-emerald-700"
+                  }`}
+              >
+                {syncingPassword ? "Sincronizzazione…" : "🔐 Sincr. pass"}
+              </button>
+
+              <button
+                onClick={() => handleNormalizzaTempo(c)}
+                disabled={normalizingCourseId === c.idCourse}
+                className={`px-3 py-1 rounded-md text-sm text-white ${normalizingCourseId === c.idCourse
+                  ? "bg-blue-300 cursor-not-allowed"
+                  : "bg-blue-600 hover:bg-blue-700"
+                  }`}
+              >
+                {normalizingCourseId === c.idCourse ? "Normalizzazione…" : "⏱ Normalizza tempo"}
+              </button>
+
+              {isCourseCompleted && (
+                <>
+                  {/* 📄 Ultimo Test */}
+                  <a
+                    href={`${backendUrl}/api/corsi/getlasttest?iduser=${user.idst}&idcourse=${c.idCourse}&firstname=${user.firstname}&lastname=${user.lastname}&db=${detail.db}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-cyan-600 text-white px-3 py-1 rounded-md hover:bg-cyan-700 text-sm"
+                  >
+                    📄 Ultimo Test
+                  </a>
+
+                  {/* 📜 Genera Attestato */}
+                  <button
+                    onClick={() => handleGeneraAttestato(c.idCourse!.toString())}
+                    disabled={loading}
+                    className={`inline-flex items-center gap-1 px-3 py-1 rounded text-sm text-white ${loading ? "bg-gray-400" : "bg-green-600 hover:bg-green-700"
+                      }`}
+                  >
+                    <Download size={14} />
+                    {loading ? "Attendi..." : "Genera Attestato"}
+                  </button>
+                </>
+              )}
+            </div>
           </div>
-        </div>
-      );
+        );
       })}
     </div>
   );

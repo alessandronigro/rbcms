@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useParams, useNavigate, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useAlert } from "../components/SmartAlertModal";
 
 /** ============================
@@ -11,6 +11,8 @@ interface Convenzione {
   tipo?: string;
   piattaforma?: string;
   indirizzoweb?: string;
+  newindirizzoweb?: string;
+  oldindirizzoweb?: string;
   mailbcc?: string;
 
   ragsoc?: string;
@@ -126,11 +128,67 @@ const courseColor = (code: string) => {
 const normalizeText = (value?: string | number | null) =>
   String(value ?? "").trim().toLowerCase();
 
+type PlatformAddressField = "oldindirizzoweb" | "indirizzoweb" | "newindirizzoweb";
+
+const PLATFORM_ADDRESS_TIERS: Readonly<
+  {
+    field: PlatformAddressField;
+    title: string;
+    description: string;
+  }[]
+> = [
+  {
+    field: "oldindirizzoweb",
+    title: "Piattaforma 2011-2018",
+    description: "Campo utilizzato dalle piattaforme legacy (db formazionein / SITE)",
+  },
+  {
+    field: "indirizzoweb",
+    title: "Piattaforma 2018-2024",
+    description: "Campo principale per il periodo EFAD / newformazionein",
+  },
+  {
+    field: "newindirizzoweb",
+    title: "Piattaforma 2025",
+    description: "Campo riservato alla piattaforma IFAD (db forma4)",
+  },
+] as const;
+
+const PLATFORM_ADDRESS_FIELD_BY_PLATFORM: Record<
+  string,
+  PlatformAddressField
+> = {
+  formazionein: "oldindirizzoweb",
+  newformazionein: "indirizzoweb",
+  efadnovastdia: "indirizzoweb",
+  forma4: "newindirizzoweb",
+};
+
+const getPlatformAddressField = (
+  piattaforma?: string,
+): PlatformAddressField => {
+  const key = (piattaforma || "").trim().toLowerCase();
+  return (
+    PLATFORM_ADDRESS_FIELD_BY_PLATFORM[key] ?? "indirizzoweb"
+  );
+};
+
+const COMMERCIAL_FIELDS_BEFORE_ADDRESSES: [keyof Convenzione, string][] = [
+  ["Codice", "Codice"],
+  ["Name", "Nome convenzione"],
+  ["tipo", "Tipologia"],
+  ["piattaforma", "Piattaforma"],
+];
+
+const COMMERCIAL_FIELDS_AFTER_ADDRESSES: [keyof Convenzione, string][] = [
+  ["mailbcc", "Mail BCC"],
+  ["excel", "Nome Excel"],
+];
+
 export default function ConvenzioneDetail() {
   const { codice } = useParams();
   const [search] = useSearchParams();
   const readonly = search.get("readonly") === "1";
-  const navigate = useNavigate();
   const { alert: showAlert } = useAlert();
 
   // Stato form sinistra
@@ -156,7 +214,14 @@ export default function ConvenzioneDetail() {
 
   // Caricamento dati full backend (convenzione + corsi + anni)
   useEffect(() => {
-    if (!codice) return;
+    if (!codice) {
+      setForm({});
+      setCorsi([]);
+      setYears([]);
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     fetch(`/api/convenzioni/${codice}/full`)
       .then((res) => res.json())
@@ -397,7 +462,6 @@ export default function ConvenzioneDetail() {
       return;
     }
     await showAlert("✅ Dettagli convenzione salvati");
-    navigate("/convenzioni");
   };
 
   const renderLocationField = (key: string) => {
@@ -596,6 +660,11 @@ export default function ConvenzioneDetail() {
 
   if (loading) return <p className="p-4 text-gray-500">Caricamento…</p>;
 
+  const activeAddressField = getPlatformAddressField(form.piattaforma);
+  const activeAddressTier =
+    PLATFORM_ADDRESS_TIERS.find((tier) => tier.field === activeAddressField) ??
+    PLATFORM_ADDRESS_TIERS[1];
+
   return (
     <div className="p-6 space-y-6">
       <h1 className="text-xl font-semibold">Gestione Convenzione</h1>
@@ -611,15 +680,7 @@ export default function ConvenzioneDetail() {
               📌 Convenzione / Commerciale
             </summary>
             <div className="p-3 grid grid-cols-1 gap-3">
-              {[
-                ["Codice", "Codice"],
-                ["Name", "Nome convenzione"],
-                ["tipo", "Tipologia"],
-                ["piattaforma", "Piattaforma"],
-                ["indirizzoweb", "Indirizzo web"],
-                ["mailbcc", "Mail BCC"],
-                ["excel", "Nome Excel"],
-              ].map(([key, label]) => (
+              {COMMERCIAL_FIELDS_BEFORE_ADDRESSES.map(([key, label]) => (
                 <div key={key}>
                   <label className="text-xs text-gray-500">{label}</label>
                   <input
@@ -627,6 +688,50 @@ export default function ConvenzioneDetail() {
                     value={(form as any)[key] ?? ""}
                     onChange={handleFormChange}
                     readOnly={readonly && key !== "Codice"}
+                    className="border rounded p-2 w-full text-sm"
+                  />
+                </div>
+              ))}
+
+              <div className="border rounded-lg bg-gray-50 p-3 space-y-3">
+                <div className="flex items-center justify-between text-[11px] text-gray-500">
+                  <span>Indirizzi piattaforma (2011 → 2025+)</span>
+                  <span className="font-semibold text-blue-600">
+                    Attiva: {activeAddressTier.title}
+                  </span>
+                </div>
+                <div className="space-y-3">
+                  {PLATFORM_ADDRESS_TIERS.map((tier) => (
+                    <div key={tier.field} className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <label className="text-xs text-gray-500">{tier.title}</label>
+                        {activeAddressField === tier.field && (
+                          <span className="text-[11px] font-semibold text-emerald-600">
+                            Attiva
+                          </span>
+                        )}
+                      </div>
+                      <input
+                        name={tier.field}
+                        value={(form as any)[tier.field] ?? ""}
+                        onChange={handleFormChange}
+                        readOnly={readonly}
+                        className={`border rounded p-2 w-full text-sm ${readonly ? "bg-gray-100" : "bg-white"}`}
+                      />
+                      <p className="text-[11px] text-gray-500">{tier.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {COMMERCIAL_FIELDS_AFTER_ADDRESSES.map(([key, label]) => (
+                <div key={key}>
+                  <label className="text-xs text-gray-500">{label}</label>
+                  <input
+                    name={key}
+                    value={(form as any)[key] ?? ""}
+                    onChange={handleFormChange}
+                    readOnly={readonly}
                     className="border rounded p-2 w-full text-sm"
                   />
                 </div>

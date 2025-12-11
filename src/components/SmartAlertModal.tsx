@@ -99,6 +99,17 @@ export function AlertProvider({ children }: any) {
                                     {modal.results.map((result, idx) => {
                                         const success = (result.esitoIscrizione || "").toLowerCase() === "ok" && !result.error;
                                         const fullName = [result.nome, result.cognome].filter(Boolean).join(" ") || result.email || `Corsista ${idx + 1}`;
+                                        const pecValue = (result.pec || "").trim();
+                                        const bccValue = (result.bccEmail || "").trim();
+                                        const hasPec = Boolean(pecValue) && pecValue !== "—";
+                                        const hasBcc = Boolean(bccValue) && bccValue !== "—";
+                                        const bccStatus = hasBcc
+                                            ? (result.bccEsito && result.bccEsito.toLowerCase() === "ko" ? "OK" : result.bccEsito || "OK")
+                                            : result.bccEsito || "N/A";
+                                        const bccSuccess = hasBcc;
+                                        const pecClass = `rounded border px-2 py-1 ${hasPec ? "border-current bg-white text-slate-900" : "border-red-400 bg-red-50 text-red-900"}`;
+                                        const bccClass = `rounded border px-2 py-1 ${bccSuccess ? "border-current bg-green-50 text-green-900" : "border-red-400 bg-red-50 text-red-900"}`;
+
                                         return (
                                             <div
                                                 key={`${result.email || idx}-${idx}`}
@@ -123,15 +134,25 @@ export function AlertProvider({ children }: any) {
                                                         <p className="truncate">{result.email || "—"}</p>
                                                         <p className="font-semibold mt-1">Esito: {result.mailEsito || "N/A"}</p>
                                                     </div>
-                                                    <div className="rounded border border-current px-2 py-1">
+                                                    <div className={pecClass}>
                                                         <p className="font-semibold">PEC</p>
                                                         <p className="truncate">{result.pec || "—"}</p>
                                                         <p className="font-semibold mt-1">Esito: {result.pecEsito || "N/A"}</p>
+                                                        {!hasPec && (
+                                                            <p className="text-xs font-semibold text-red-600 mt-1">
+                                                                Nessuna PEC registrata
+                                                            </p>
+                                                        )}
                                                     </div>
-                                                    <div className="rounded border border-current px-2 py-1">
+                                                    <div className={bccClass}>
                                                         <p className="font-semibold">BCC</p>
                                                         <p className="truncate">{result.bccEmail || "—"}</p>
-                                                        <p className="font-semibold mt-1">Esito: {result.bccEsito || "N/A"}</p>
+                                                        <p className="font-semibold mt-1">Esito: {bccStatus}</p>
+                                                        {!hasBcc && (
+                                                            <p className="text-xs font-semibold text-red-600 mt-1">
+                                                                Nessun BCC impostato
+                                                            </p>
+                                                        )}
                                                     </div>
                                                 </div>
                                             </div>
