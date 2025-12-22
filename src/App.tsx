@@ -29,7 +29,7 @@ import LoginConvenzione from "./pages/Login";
 import ReportConvenzione from "./pages/Report/ReportConvenzioni";
 import Template from "./pages/MailFormatEditor";
 import ReportCorsi from "./pages/ReportCorsi";
-import ReportFatturatoOrdini from "./pages/ReportFatturatoOrdini";
+import ReportFatturatoOrdiniRoute from "./pages/ReportFatturatoOrdiniRoute";
 import FineCorso from "./pages/FineCorso";
 import PublicSlotSettings from "./pages/Calendario/PublicSlotSettings";
 import PublicSlots from "./pages/PublicSlots";
@@ -41,6 +41,11 @@ export default function App() {
     <Routes>
       {/* ✅ LOGIN — libero */}
       <Route path="/login" element={<LoginConvenzione />} />
+
+      <Route
+        path="/report/fatturato-ordini"
+        element={<ReportFatturatoOrdiniRoute />}
+      />
 
       {/* ✅ AREA CONVENZIONE */}
       <Route
@@ -77,7 +82,6 @@ export default function App() {
         <Route path="/mail-check" element={<MailCheck />} />
         <Route path="/reminder" element={<Reminder />} />
         <Route path="/report/fatturato" element={<ReportCorsi />} />
-        <Route path="/report/fatturato-ordini" element={<ReportFatturatoOrdini />} />
         <Route path="/finecorso" element={<FineCorso />} />
         <Route path="/utenti" element={<RicercaUtenti />} />
         <Route path="/simulazione" element={<Simulazione />} />
