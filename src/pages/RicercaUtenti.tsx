@@ -99,6 +99,7 @@ export default function RicercaUtenti() {
           firstname: user.firstname,
           lastname: user.lastname,
           user_entry: user.user_entry,
+          idst: String(user.idst),
         });
         const res = await fetch(`/api/utenti/detail?${params.toString()}`);
         const data = await res.json();
@@ -131,21 +132,21 @@ export default function RicercaUtenti() {
 
         <input
           name="nome"
-          placeholder="Nome"
+          placeholder="Nome (ricerca esatta)"
           value={filters.nome}
           onChange={handleChange}
           className="border rounded px-3 py-2 text-sm"
         />
         <input
           name="cognome"
-          placeholder="Cognome"
+          placeholder="Cognome (ricerca esatta)"
           value={filters.cognome}
           onChange={handleChange}
           className="border rounded px-3 py-2 text-sm"
         />
         <input
           name="nominativo"
-          placeholder="Codice fiscale o email"
+          placeholder=" nome e cognome o email ricerca carattere"
           value={filters.nominativo}
           onChange={handleChange}
           className="border rounded px-3 py-2 text-sm"
@@ -191,15 +192,15 @@ export default function RicercaUtenti() {
                 </div>
 
                 <table className="min-w-full text-sm text-left">
-                    <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
-                      <tr>
-                        <th className="px-3 py-2 w-12">#</th>
-                        <th className="px-3 py-2">Nome</th>
-                        <th className="px-3 py-2">Cognome</th>
-                        <th className="px-3 py-2">Codice Fiscale</th>
-                        <th className="px-3 py-2">ID Utente</th>
-                      </tr>
-                    </thead>
+                  <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
+                    <tr>
+                      <th className="px-3 py-2 w-12">#</th>
+                      <th className="px-3 py-2">Nome</th>
+                      <th className="px-3 py-2">Cognome</th>
+                      <th className="px-3 py-2">Codice Fiscale</th>
+                      <th className="px-3 py-2">ID Utente</th>
+                    </tr>
+                  </thead>
                   <tbody>
                     {Array.isArray(rows) && rows.length > 0 ? (
                       rows.map((r) => {
@@ -223,7 +224,7 @@ export default function RicercaUtenti() {
                               <td className="px-3 py-2">{r.firstname}</td>
                               <td className="px-3 py-2">{r.lastname}</td>
                               <td className="px-3 py-2">{r.user_entry}</td>
-                             <td className="px-3 py-2">{r.idst}</td>
+                              <td className="px-3 py-2">{r.idst}</td>
                             </tr>
                             {isExpanded && (
                               <tr>

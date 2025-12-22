@@ -54,6 +54,24 @@ interface Props {
   onAction?: (action: string, course: Course) => void;
 }
 
+const pad = (value: number) => value.toString().padStart(2, "0");
+
+const formatDate = (value?: string, includeTime = false) => {
+  if (!value) return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  const day = pad(date.getDate());
+  const month = pad(date.getMonth() + 1);
+  const year = date.getFullYear();
+  if (!includeTime) {
+    return `${day}/${month}/${year}`;
+  }
+  const hours = pad(date.getHours());
+  const minutes = pad(date.getMinutes());
+  const seconds = pad(date.getSeconds());
+  return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+};
+
 export function CambiaSlideModal({ db, idcourse, iduser, onClose }: any) {
   const [orgs, setOrgs] = useState<any[]>([]);
   const [slides, setSlides] = useState<string[]>([]);
@@ -662,13 +680,16 @@ export default function UtenteDettaglio({ detail }: Props) {
       {/* ✅ CORSI */}
       {courseList.map((c) => {
         const isCourseCompleted = Number(c.status) === 2;
+        const documentDate = formatDate(c.doc_generated_at, true);
+        const invioDate = formatDate(c.date_invio);
         return (
           <div
             key={c.idCourse}
             className="bg-white border rounded-lg p-4 shadow-sm mb-4"
           >
             <p className="text-sm mb-2">
-              <b className="text-red-600">{c.code}</b> — {c.name}
+              <b className="text-red-600">{c.code}</b> — {c.name}{" "}
+              <span className="text-xs text-slate-500">(ID {c.idCourse ?? "N/D"})</span>
             </p>
 
             <div className="text-sm space-y-1 text-gray-700">
@@ -676,6 +697,26 @@ export default function UtenteDettaglio({ detail }: Props) {
               <p><b>Data Completamento:</b> {c.date_complete || "N/D"}</p>
               <p><b>Ultimo Accesso Corso:</b> {c.last_access_course || "—"}</p>
               <p><b>Ultimo Accesso Piattaforma:</b> {c.last_access_platform || "—"}</p>
+              <p>
+                <b>Documento fine corso:</b>{" "}
+                {c.has_doc
+                  ? `1 - Generato il ${documentDate || c.doc_generated_at || "N/D"}`
+                  : "0"}
+                {c.doc_generated_at && (
+                  <span className="ml-2 text-xs text-slate-500">
+                    (campo on_date in learning_certificate_assign)
+                  </span>
+                )}
+              </p>
+              <p>
+                <b>Invio Attestato:</b>{" "}
+                {invioDate || c.date_invio || "N/D"}
+                {c.date_invio && (
+                  <span className="ml-2 text-xs text-slate-500">
+                    (data_invio in learning_certificate_assign)
+                  </span>
+                )}
+              </p>
               <p className="flex items-center gap-2">
                 <b>Stato:</b> {getStatusBadge(c.status)}
               </p>

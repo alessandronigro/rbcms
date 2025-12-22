@@ -55,6 +55,8 @@ export default function TopNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
   const closeMobileMenu = () => setMobileMenuOpen(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const toggleUserMenu = () => setUserMenuOpen((prev) => !prev);
 
   const logoutAdmin = async () => {
     await fetch("/api/auth/logout", {
@@ -180,13 +182,37 @@ export default function TopNav() {
         </div>
 
         {/* UTENTE */}
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600">Benvenuto, Admin</span>
+        <div className="relative flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggleUserMenu}
+            className="text-sm text-gray-600 hover:text-blue-600 focus:outline-none"
+          >
+            Benvenuto, Admin
+          </button>
           <LogOut
             size={18}
             onClick={logoutAdmin}
             className="text-gray-500 hover:text-red-500 cursor-pointer"
           />
+          {userMenuOpen && (
+            <div className="absolute right-0 top-full mt-2 w-40 rounded border border-gray-200 bg-white shadow-lg">
+              <a
+                href="/mail-check"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                onClick={() => setUserMenuOpen(false)}
+              >
+                Mail check
+              </a>
+              <a
+                href="/simulazione"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                onClick={() => setUserMenuOpen(false)}
+              >
+                Simulazione
+              </a>
+            </div>
+          )}
         </div>
       </div>
       {mobileMenuOpen && (
@@ -222,22 +248,35 @@ export default function TopNav() {
               ))}
             </div>
 
-            <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-600">
-              <span>Benvenuto, Admin</span>
-              <button
-                type="button"
-                onClick={() => {
-                  closeMobileMenu();
-                  logoutAdmin();
-                }}
-                className="flex items-center gap-1 text-gray-600 hover:text-red-600 focus:outline-none"
-              >
-                <LogOut size={16} />
-                Esci
-              </button>
-            </div>
-          </nav>
-        </div>
+              <div className="space-y-1 border-t border-gray-100 pt-3">
+                <a
+                  href="/mail-check"
+                  className="block px-2 py-1 text-sm text-gray-600 hover:bg-gray-100"
+                  onClick={closeMobileMenu}
+                >
+                  Mail check
+                </a>
+                <a
+                  href="/simulazione"
+                  className="block px-2 py-1 text-sm text-gray-600 hover:bg-gray-100"
+                  onClick={closeMobileMenu}
+                >
+                  Simulazione
+                </a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    closeMobileMenu();
+                    logoutAdmin();
+                  }}
+                  className="flex items-center gap-1 text-gray-600 hover:text-red-600 focus:outline-none"
+                >
+                  <LogOut size={16} />
+                  Esci
+                </button>
+              </div>
+            </nav>
+          </div>
       )}
     </header>
   );

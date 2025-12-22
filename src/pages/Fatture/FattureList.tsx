@@ -15,10 +15,14 @@ interface Row {
   readfatt: 0 | 1;
   xml?: string;
   html_file?: string;
+  xml_file?: string;
   nomeattachment?: string;
+  allegati?: string[];
+  allegati_html?: string;
   folder: string;
   fatturaxml?: string;
   fatturapdf?: string;
+  fatturahtml?: string;
 }
 
 export default function FattureList({ which }: { which: Which }) {
@@ -29,13 +33,21 @@ export default function FattureList({ which }: { which: Which }) {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(false);
   const [meta, setMeta] = useState<{ total?: number } | null>(null);
+  const [showAll, setShowAll] = useState(true);
   const { alert: showAlert } = useAlert();
 
-  const fetchData = async () => {
+  const fetchData = async (opts?: { all?: boolean }) => {
     setLoading(true);
     try {
+      const effectiveAll = opts?.all ?? showAll;
+      const params = new URLSearchParams();
+      if (!effectiveAll) {
+        params.set("month", month);
+        params.set("year", year);
+      }
+      const query = params.toString();
       const res = await fetch(
-        `/api/fatture/${which}?month=${month}&year=${year}`,
+        `/api/fatture/${which}${query ? `?${query}` : ""}`,
       );
       const j = await res.json();
       setRows(j.rows || []);
@@ -49,9 +61,23 @@ export default function FattureList({ which }: { which: Which }) {
   };
 
   useEffect(() => {
-    fetchData();
+    setShowAll(true);
+    fetchData({ all: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [which]);
+
+  const handleShowAll = () => {
+    setShowAll(true);
+    fetchData({ all: true });
+  };
+
+  const handleSearch = () => {
+    setShowAll(false);
+    fetchData({ all: false });
+  };
+
+  const renderLinkFor = (filename?: string) =>
+    filename ? `/api/fatture/${which}/render/${encodeURIComponent(filename)}` : "";
 
   const fmtDate = (v?: string) => {
     if (!v) return "";
@@ -146,7 +172,16 @@ export default function FattureList({ which }: { which: Which }) {
         </div>
 
         <button
-          onClick={fetchData}
+          onClick={handleShowAll}
+          className={`px-3 py-1 rounded h-9 border ${
+            showAll ? "border-blue-600 bg-blue-600 text-white" : "border-gray-300 bg-white text-gray-700"
+          }`}
+        >
+          Tutte le fatture
+        </button>
+
+        <button
+          onClick={handleSearch}
           className="px-3 py-1 bg-blue-600 text-white rounded h-9"
         >
           Cerca
@@ -228,9 +263,17 @@ export default function FattureList({ which }: { which: Which }) {
                 </td>
 
                 {/* 🔹 Allegati */}
-                <td className="p-2">
-                  {r.nomeattachment ? (
+                <td className="p-2 max-w-[240px] whitespace-normal break-words">
+                  {r.allegati_html ? (
                     <div
+                      className="whitespace-normal break-words"
+                      dangerouslySetInnerHTML={{ __html: r.allegati_html }}
+                    />
+                  ) : r.allegati && r.allegati.length ? (
+                    r.allegati.join(", ")
+                  ) : r.nomeattachment ? (
+                    <div
+                      className="whitespace-normal break-words"
                       dangerouslySetInnerHTML={{ __html: r.nomeattachment }}
                     />
                   ) : (
@@ -249,11 +292,29 @@ export default function FattureList({ which }: { which: Which }) {
 
                 {/* 🔹 HTML */}
                 <td className="p-2">
-                  {r.fatturapdf ? (
-                    <div dangerouslySetInnerHTML={{ __html: r.fatturapdf }} />
-                  ) : (
-                    "-"
-                  )}
+                  {(() => {
+                    const xmlFile = r.xml_file || r.xml || r.html_file;
+                    const renderLink = renderLinkFor(xmlFile);
+                    const linkToUse = r.fatturahtml || r.fatturapdf;
+                    if (renderLink) {
+                      return (
+                        <a
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-blue-600 hover:underline"
+                          href={renderLink}
+                        >
+                          Fattura HTML
+                        </a>
+                      );
+                    }
+
+                    if (linkToUse) {
+                      return <div dangerouslySetInnerHTML={{ __html: linkToUse }} />;
+                    }
+
+                    return "-";
+                  })()}
                 </td>
               </tr>
             ))}

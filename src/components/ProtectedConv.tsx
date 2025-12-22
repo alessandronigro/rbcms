@@ -1,8 +1,9 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useConv } from "@/context/ConvContext";
 
 export default function ProtectedConv({ children }: { children: JSX.Element }) {
   const { conv, loading } = useConv();
+  const location = useLocation();
 
   if (loading) {
     return (
@@ -11,7 +12,7 @@ export default function ProtectedConv({ children }: { children: JSX.Element }) {
   }
 
   if (!conv?.authenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={`/login${location.search}`} replace />;
   }
 
   if (conv.role !== "conv") {

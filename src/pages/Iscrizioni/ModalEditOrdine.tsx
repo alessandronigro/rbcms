@@ -4,9 +4,10 @@ interface Props {
   ordine: any;
   onClose: () => void;
   onSaved: () => void;
+  db?: string;
 }
 
-export default function ModalEditOrdine({ ordine, onClose, onSaved }: Props) {
+export default function ModalEditOrdine({ ordine, onClose, onSaved, db }: Props) {
   const [form, setForm] = useState<any>({
     intestazione_fattura: ordine.intestazione_fattura || "",
     billing_email: ordine.billing_email || "",
@@ -31,7 +32,7 @@ export default function ModalEditOrdine({ ordine, onClose, onSaved }: Props) {
 
   const save = async () => {
     const res = await fetch(
-      `/api/iscrizioni/ordini/${encodeURIComponent(ordine.order_id)}`,
+      `/api/iscrizioni/ordini/${encodeURIComponent(ordine.order_id)}${db ? `?db=${db}` : ""}`,
       {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },

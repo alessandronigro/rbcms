@@ -13,6 +13,7 @@ const { getConnection } = require("../dbManager");
 const { invioMail, invioMailPEC } = require("../utils/mailerBrevo");
 const { ConversationsAgentOnlinePingPostRequest } = require("@getbrevo/brevo");
 const { writeLog, logError } = require("./logger");
+const { buildAutoLoginLink, AUTO_LOGIN_LINK_TTL_MINUTES, FORM_LOGIN_PATH } = require("./autoLogin");
 
 
 const BASE_DIR = path.resolve(__dirname, "..");
@@ -239,6 +240,7 @@ async function reinviamail({
     const conn = await getConnection(db);
     try {
         // 🔹 Recupera dati anagrafici
+        console.log(`[reinviamail] Anagrafica da db=${db} iduser=${iduser}`);
         const [fields] = await conn.query(
             `SELECT a.id_common, b.translation, a.user_entry
              FROM core_field_userentry a
@@ -249,7 +251,7 @@ async function reinviamail({
         );
 
         const getField = (id) =>
-            fields.find((r) => r.id_common === id)?.user_entry?.toString() || "";
+            fields.find((r) => String(r.id_common) === String(id))?.user_entry?.toString() || "";
 
         const nominativo = `${nome || ""} ${cognome || ""}`.trim();
         const cf = getField(23);
@@ -259,8 +261,12 @@ async function reinviamail({
             typeof f.translation === "string" && /email.*fatturazione/i.test(f.translation)
         )?.user_entry?.toString();
         const pecutente = getField(31);
-        const convenzione = getField(25);
+        let convenzione = getField(25);
         const passwordreal = getField(26);
+        const normalizedDb = String(db || "").toLowerCase();
+        const rbAcademyDb = (process.env.MYSQL_formazionecondorb || "formazionecondorb").toLowerCase();
+        const isRbAcademy = normalizedDb === rbAcademyDb;
+        const fallbackConvenzioneName = isRbAcademy ? "RB Academy" : "Formazione Intermediari";
 
         // 🔹 Recupera info convenzione (db wpacquisti)
         const connW = await getConnection("wpacquisti");
@@ -272,32 +278,41 @@ async function reinviamail({
         // Aggiungi email fattura (campo 15) alla lista BCC se presente
         if (invoiceAlternative) bccList.push(invoiceAlternative);
 
-        if (convenzione) {
-            const [convRows] = await connW.query(
-                `SELECT name, piattaforma, indirizzoweb, newindirizzoweb, oldindirizzoweb, mailbcc 
-                 FROM newconvenzioni WHERE name LIKE ? LIMIT 1`,
-                [`%${convenzione}%`]
+        if (isRbAcademy && convenzione && convenzione.trim().toLowerCase() === "formazione intermediari") {
+            convenzione = "";
+        }
+
+        const loadConvenzioneRow = async (value) => {
+            if (!value) return null;
+            const [rows] = await connW.query(
+                `SELECT name, codice, piattaforma, indirizzoweb, newindirizzoweb, oldindirizzoweb, mailbcc
+                 FROM newconvenzioni
+                 WHERE name LIKE ? OR codice = ?
+                 LIMIT 1`,
+                [`%${value}%`, value]
             );
+            return rows[0] || null;
+        };
 
-            if (convRows.length) {
-                const conv = convRows[0];
-                if (db === "formazionein") nomesito = conv.oldindirizzoweb;
-                else if (db === process.env.MYSQL_FORMA4) nomesito = conv.newindirizzoweb;
-                else nomesito = conv.indirizzoweb;
-
-                piattaforma = conv.piattaforma;
-                if (conv.mailbcc) bccList.push(conv.mailbcc);
+        let conv = null;
+        if (convenzione) {
+            conv = await loadConvenzioneRow(convenzione);
+            if (!conv && isRbAcademy) {
+                convenzione = fallbackConvenzioneName;
+                conv = await loadConvenzioneRow(convenzione);
             }
         } else {
-            const [defaultConv] = await connW.query(
-                `SELECT name, piattaforma, indirizzoweb, mailbcc 
-                 FROM newconvenzioni WHERE name='Formazione Intermediari' LIMIT 1`
-            );
-            const def = defaultConv[0];
-            if (db === "formazionein") nomesito = def.oldindirizzoweb;
-            else nomesito = def.indirizzoweb;
-            piattaforma = def.piattaforma;
-            if (def.mailbcc) bccList.push(def.mailbcc);
+            convenzione = fallbackConvenzioneName;
+            conv = await loadConvenzioneRow(convenzione);
+        }
+
+        if (conv) {
+            if (db === "formazionein") nomesito = conv.oldindirizzoweb;
+            else if (db === process.env.MYSQL_FORMA4) nomesito = conv.newindirizzoweb;
+            else nomesito = conv.indirizzoweb;
+
+            piattaforma = conv.piattaforma;
+            if (conv.mailbcc) bccList.push(conv.mailbcc);
         }
 
         // 🔹 Recupera nome corso se mancante
@@ -562,6 +577,23 @@ async function SendBenvenuto({
     let body = "";
     const mode = getTemplateMode();
     const blockCred = `• Username: <b>${username}</b><br/>• Password: <b>${password}</b>`;
+    const safeBaseSite = (nomesito || "https://ifad.formazioneintermediari.com").replace(/\/+$/, "");
+    let loginAction = safeBaseSite;
+    try {
+        loginAction = new URL(FORM_LOGIN_PATH, safeBaseSite).toString();
+    } catch {
+        loginAction = `${safeBaseSite}${FORM_LOGIN_PATH}`;
+    }
+    const autoLoginLink = buildAutoLoginLink({
+        username,
+        password,
+        formAction: loginAction,
+        nominativo,
+    });
+    const autoLoginSection = autoLoginLink
+        ? `<p style='margin-top:1rem;font-size:12pt'>Per accedere in un click <a href='${autoLoginLink}' target='_blank' rel='noreferrer'>clicchi qui</a>. Link valido per circa ${AUTO_LOGIN_LINK_TTL_MINUTES} minuti.</p>`
+        : "";
+    const withAutoLoginSection = (html) => (autoLoginSection ? `${html}${autoLoginSection}` : html);
 
 
     // --- Case: ASSIAC - Concetta
@@ -574,32 +606,69 @@ Da questo momento può accedere ...<br>${blockCred}<br>
 ... (testo invariato dal VB.NET) ...
 </span></div>`;
         body = mode === "raw" ? fixTyposRaw(body) : cleanHTML(fixTyposRaw(body));
+        const finalBody = withAutoLoginSection(body);
         if (pec) {
-            const es1 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: body, attachments: file ? [file] : [] });
-            const es2 = await invioMail({ from: "info@rbconsulenza.com", to: email, subject, html: body, bcc, attachments: file ? [file] : [] });
+            const es1 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: finalBody, attachments: file ? [file] : [] });
+            const es2 = await invioMail({ from: "info@rbconsulenza.com", to: email, subject, html: finalBody, bcc, attachments: file ? [file] : [] });
             return `${es1} ${es2}`;
         }
-        return await invioMail({ from: "info@rbconsulenza.com", to: email, subject, html: body, bcc, attachments: file ? [file] : [] });
+        return await invioMail({ from: "info@rbconsulenza.com", to: email, subject, html: finalBody, bcc, attachments: file ? [file] : [] });
     }
 
     // --- Case: Assiac / RB Academy (stesso testo VB)
     if (/^(Assiac|RB Academy)$/i.test(convenzione)) {
+        // --- DEFAULT: Formazione Intermediari
         body = `<div style='text-align:justify'><span style='font-family:Times New Roman;font-size:14pt;color:#00314C'>
 Gentile Utente <b>${nominativo}</b>,<br>
 benvenuto al corso e-learning <b>"${nomecorso}"</b>.<br>
-${blockCred}<br>
-<p>Accesso:<br>• da pc: <a href='${nomesito}'>${nomesito}</a>;<br>• da dispositivo mobile: <a href='${nomesito}'>${nomesito}</a>.</p>
-Il corso ha validità di 1 anno dalla data di attivazione...
-<p style='text-align:justify;line-height:130%'><center><b><u><span style='font-family:Times New Roman;font-size:14pt;color:#00314C'>SERVIZIO ASSISTENZA CLIENTI</span></u></b></center></p>
-<p>• via Mail: info@rb-academy.it<br>• via Telefono: 800.69.99.92</p>
-${piedinorbacademy}</span></div>`;
+Da questo momento può accedere alla piattaforma e ai suoi contenuti come utente regolarmente iscritto con le seguenti credenziali:<br>
+${blockCred}
+
+<p>
+  Di seguito le diverse modalità per accedere alla piattaforma didattica:<br>
+  • da pc: <a href="${nomesito}" target="_blank">${nomesito}</a>;<br>
+  • da dispositivo mobile: <a href="${nomesito}" target="_blank">${nomesito}</a>
+  (la piattaforma è compatibile con smartphone e tablet).<br><br>
+</p>
+
+<p style="text-align:justify;line-height:130%">
+  <center>
+    <b><u>
+      <span style="font-family:Times New Roman;font-size:14pt;color:#00314C">
+        SERVIZIO ASSISTENZA CLIENTI
+      </span>
+    </u></b>
+  </center>
+</p>
+
+<p>
+  Per qualsiasi dubbio o richiesta di informazioni che riguardino la didattica, il sito e la piattaforma di formazione, ci contatti:<br>
+  • via <b>Mail</b>, 24h su 24h, 7 giorni su 7: 
+    <a href="mailto:info@formazioneintermediari.com">info@rb-academy.it</a>
+    oppure 
+    <a href="mailto:info@rb-academy.it">info@rb-academy.it</a>;<br>
+  • via <b>Telefono</b>, dal Lunedì al Venerdì dalle 09.30 alle 13.00 e dalle 14.00 alle 18.00, al numero: 
+    <b>800.69.99.92</b>.<br>
+  Eventuali problemi al sistema saranno risolti al massimo nelle 24 ore successive.
+</p>
+
+<p>
+  Restiamo a Sua disposizione per qualsiasi chiarimento, auspicando che il corso possa essere di Suo gradimento oltre che utile all'esercizio della Sua attività professionale.
+</p>
+
+<p>Cordiali saluti,</p>
+
+${piedinorbacademy}
+
+</span></div>`;
         body = mode === "raw" ? fixTyposRaw(body) : cleanHTML(fixTyposRaw(body));
+        const finalBody = withAutoLoginSection(body);
         if (pec) {
-            const es1 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: body });
-            const es2 = await invioMail({ from: "info@rb-academy.it", to: email, subject, html: body, bcc });
+            const es1 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: finalBody });
+            const es2 = await invioMail({ from: "info@rb-academy.it", to: email, subject, html: finalBody, bcc });
             return `${es1} ${es2}`;
         }
-        return await invioMail({ from: "info@rb-academy.it", to: email, subject, html: body, bcc });
+        return await invioMail({ from: "info@rb-academy.it", to: email, subject, html: finalBody, bcc });
     }
 
     // --- Case: NOVASTUDIA
@@ -614,12 +683,13 @@ Il corso ha validità di 1 anno dalla data di attivazione...
 <p>• via Mail: supporto@novastudia.academy<br>• via Telefono: 800.69.99.92</p>
 ${piedinonovastudia}</span></div>`;
         body = mode === "raw" ? fixTyposRaw(body) : cleanHTML(fixTyposRaw(body));
+        const finalBody = withAutoLoginSection(body);
         if (pec) {
-            const es1 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: body });
-            const es2 = await invioMail({ from: "info@novastudia.academy", to: email, subject, html: body, bcc });
+            const es1 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: finalBody });
+            const es2 = await invioMail({ from: "info@novastudia.academy", to: email, subject, html: finalBody, bcc });
             return `${es1} ${es2}`;
         }
-        return await invioMail({ from: "info@novastudia.academy", to: email, subject, html: body, bcc });
+        return await invioMail({ from: "info@novastudia.academy", to: email, subject, html: finalBody, bcc });
     }
 
 
@@ -639,14 +709,15 @@ ${piedino}
 Via Cesare Beccaria 16 - 00196 Roma <br/>tel. +39 0687153554 • cel. +39 3335799654<br/>
 PEC: ventiduebrokersrl@legalmail.it • Contatti: info@ventiduebroker.it</span></i></div>`;
         body = mode === "raw" ? fixTyposRaw(body) : cleanHTML(fixTyposRaw(body));
+        const finalBody = withAutoLoginSection(body);
         if (pec) {
-            const es1 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: body });
-            const es2 = await invioMail({ from: "info@formazioneintermediari.com", to: email, subject, html: body, bcc });
+            const es1 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: finalBody });
+            const es2 = await invioMail({ from: "info@formazioneintermediari.com", to: email, subject, html: finalBody, bcc });
             return `${es1} ${es2}`;
         }
         // solo se ifsend true come VB
         if (ifsend) {
-            return await invioMail({ from: "info@formazioneintermediari.com", to: email, subject, html: body, bcc });
+            return await invioMail({ from: "info@formazioneintermediari.com", to: email, subject, html: finalBody, bcc });
         }
         return "";
     }
@@ -696,13 +767,14 @@ ${piedino}
 
 </span></div>`;
     body = mode === "raw" ? fixTyposRaw(body) : cleanHTML(fixTyposRaw(body));
+    const finalBody = withAutoLoginSection(body);
     if (pec) {
-        const es1 = await invioMail({ from: "info@formazioneintermediari.com", to: email, subject, html: body, bcc, attachments: file ? [file] : [] });
-        const es2 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: body, attachments: file ? [file] : [] });
+        const es1 = await invioMail({ from: "info@formazioneintermediari.com", to: email, subject, html: finalBody, bcc, attachments: file ? [file] : [] });
+        const es2 = await invioMailPEC({ from: "didattica@pec.rbconsulenza.com", to: pec, subject, html: finalBody, attachments: file ? [file] : [] });
         return `${es1} ${es2}`;
     }
     if (ifsend) {
-        return await invioMail({ from: "info@formazioneintermediari.com", to: email, subject, html: body, bcc, attachments: file ? [file] : [] });
+        return await invioMail({ from: "info@formazioneintermediari.com", to: email, subject, html: finalBody, bcc, attachments: file ? [file] : [] });
     }
     return "";
 }
@@ -1224,7 +1296,7 @@ async function getLastTest(lastid, idcourse, firstname, lastname, db, savefile =
         // 4️⃣ Costruzione HTML
         let html = `
       <center>${header}<h3><u><b>Test di verifica finale - questionario somministrato</b><br>
-      <b>${await getNomeCorsoById(idcourse, conn)}</b></u></h3><br></center>
+      <b>${await getNomeCorsoById(idcourse, db)}</b></u></h3><br></center>
       - Nome utente: <b>${firstname} ${lastname}</b><br>
       - Data fine test: <b>${dayjs(dateendattempt).format("DD/MM/YYYY HH:MM")}</b><br>
       - Punteggio test: <b>${voto}</b><br>
@@ -1458,13 +1530,18 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
         `;
 
         let durataTot = 0;
+        let durataVisioneTot = 0;
         scormRows.forEach((r) => {
-            durataTot += Number(r.duration) || 0;
+            const durataItem = toSeconds(r.duration);
+            const durataVisione = toSeconds(r.total_time);
+            durataTot += durataItem;
+            durataVisioneTot += durataVisione;
             html += `<tr><td>${r.modulo || ""} - ${r.title}</td>
-                        <td>${Math.floor(r.duration / 60)} min</td>
+                        <td>${formatSecondsHms(durataItem)}</td>
                         <td>${decodeTime(r.total_time) || "0:00"}</td></tr>`;
         });
-        html += `<tr><td><b>Totali</b></td><td><b>${Math.floor(durataTot / 60)} min</b></td><td><b>${decodeTime(tempivideocorso)}</b></td></tr>`;
+        const totaleVisione = durataVisioneTot > 0 ? durataVisioneTot : toSeconds(tempivideocorso);
+        html += `<tr><td><b>Totali</b></td><td><b>${formatSecondsHms(durataTot)}</b></td><td><b>${formatSecondsHms(totaleVisione)}</b></td></tr>`;
         html += `</table>`;
         console.log("Videocorsi trovati:", scormRows.length);
 
@@ -1559,7 +1636,7 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
         html += `<h2>Numero Connessioni</h2>
         <table><tr><th>#</th><th>Inizio</th><th>Fine</th><th>Durata</th><th>Operazioni</th></tr>`;
         connRows.forEach((r, i) => {
-            const dur = `${Math.floor(r.duration / 60)} min`;
+            const dur = formatSecondsHms(r.duration);
             html += `<tr><td>${i + 1}</td><td>${dayjs(r.entertime).format("DD/MM/YYYY HH:mm")}</td>
                      <td>${dayjs(r.lasttime).format("DD/MM/YYYY HH:mm")}</td><td>${dur}</td><td>${r.numop}</td></tr>`;
         });
@@ -1771,25 +1848,56 @@ function convertSecToDate(seconds) {
     return `${h}h ${m}m ${s} s`;
 }
 
-function decodeTime(v) {
-    try {
-        if (!v || v === "PT0H0M0S") {
-            return "non tracciato";
+function toSeconds(value) {
+    if (value == null) return 0;
+
+    if (typeof value === "number" && Number.isFinite(value)) {
+        return Math.max(0, Math.floor(value));
+    }
+
+    if (typeof value === "string") {
+        const trimmed = value.trim();
+
+        // HH:MM:SS
+        const hmsMatch = trimmed.match(/^(\d{1,2}):(\d{1,2}):(\d{1,2})$/);
+        if (hmsMatch) {
+            const hours = parseInt(hmsMatch[1], 10) || 0;
+            const minutes = parseInt(hmsMatch[2], 10) || 0;
+            const seconds = parseInt(hmsMatch[3], 10) || 0;
+            return hours * 3600 + minutes * 60 + seconds;
         }
 
-        // Normalizza stringa (es. PT0001H30M41S -> PT1H30M41S)
-        v = v.replace(/^PT0+/, "PT");
+        // ISO 8601 (PT1H30M41S)
+        const isoMatch = trimmed.match(/^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/i);
+        if (isoMatch) {
+            const hours = parseInt(isoMatch[1] || "0", 10);
+            const minutes = parseInt(isoMatch[2] || "0", 10);
+            const seconds = parseInt(isoMatch[3] || "0", 10);
+            return hours * 3600 + minutes * 60 + seconds;
+        }
 
-        // Estrai ore, minuti, secondi con regex
-        const match = v.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-        if (!match) return v;
+        const num = Number(trimmed);
+        if (Number.isFinite(num)) {
+            return Math.max(0, Math.floor(num));
+        }
+    }
 
-        const hours = parseInt(match[1] || "0");
-        const minutes = parseInt(match[2] || "0");
-        const seconds = parseInt(match[3] || "0");
+    return 0;
+}
 
-        // Restituisce in formato “xh ym zs”
-        return `${hours}h ${minutes}m ${seconds} s`;
+function formatSecondsHms(value) {
+    const totalSeconds = toSeconds(value);
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+    return `${pad2(h)}h ${pad2(m)}m ${pad2(s)}s`;
+}
+
+function decodeTime(v) {
+    try {
+        const seconds = toSeconds(v);
+        if (!v || seconds === 0) return "non tracciato";
+        return formatSecondsHms(seconds);
     } catch (err) {
         console.error("decodeTime error:", err);
         return v;

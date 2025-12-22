@@ -86,7 +86,7 @@ async function loadAttachment(file, baseDir = "backend/public/certificati") {
 /* ======================================================
    🔹 INVIO PEC (SMTP Aruba)
    ====================================================== */
-async function invioMailPEC({ da, a, from, to, subject, body, attachments = [] }) {
+async function invioMailPEC({ da, a, from, to, subject, body, html, attachments = [] }) {
     try {
         // Supporto alias (helper.js usa from/to, qui usavamo da/a)
         const mittente = da || from;
@@ -165,11 +165,12 @@ async function invioMailPEC({ da, a, from, to, subject, body, attachments = [] }
             }
         }
 
+        const htmlBody = body || html || "";
         const mailOptions = {
             from: mittente,
             to: destinatario,
             subject,
-            html: body,
+            html: htmlBody,
             attachments: attachArray,
         };
 

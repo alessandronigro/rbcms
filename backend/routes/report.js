@@ -396,15 +396,22 @@ router.get("/convenzione/corsi", requireConv, async (req, res) => {
 
             { id: "codoama%", pattern: /^codOAMa/i, label: "Corso Agenti OAM" },
             { id: "codoampv%", pattern: /^codOAMpv/i, label: "Corso Prova Valutativa OAM" },
-            { id: "codoam30%", pattern: /^codOAM(?!a|pv)/i, label: "Corso aggiornamento OAM 30" },
-            { id: "codoam15%", pattern: /^codOAM(?!a|pv)/i, label: "Corso aggiornamento OAM 15" },
-            { id: "codoam45%", pattern: /^codOAM(?!a|pv)/i, label: "Corso aggiornamento OAM 45" },
+            { id: "codoam30%", pattern: /^codOAM30/i, label: "Corso aggiornamento OAM 30" },
+            { id: "codoam15%", pattern: /^codOAM15/i, label: "Corso aggiornamento OAM 15" },
+            { id: "codoam45%", pattern: /^codOAM45/i, label: "Corso aggiornamento OAM 45" },
 
             { id: "codprivacy%", pattern: /^codPrivacy/i, label: "Corso Privacy" },
             { id: "codtrasp%", pattern: /^codTrasparenza/i, label: "Corso Trasparenza" },
 
             { id: "codsi%", pattern: /^codsi|^codsic/i, label: "Sicurezza Lavoro" },
-            { id: "codre%", pattern: /^codrespantiric/i, label: "Responsabile Antiriciclaggio" }
+            { id: "codre%", pattern: /^codrespantiric/i, label: "Responsabile Antiriciclaggio" },
+            { id: "codOAMsp%", pattern: /^codOAMsp/i, label: "Corso OAM prima formazione servizi di pagamento" },
+            { id: "codOAM9%", pattern: /^codOAM9/i, label: "Corso OAM aggiornamento servizi di pagamento" },
+            { id: "codOCFA%", pattern: /^codOCFA/i, label: "Corso di aggiornamento per consulente finanziario" },
+            { id: "codOCFA15%", pattern: /^codOCFA15/i, label: "Corso di aggiornamento per consulente finanziario 15h" },
+            { id: "codOCFP%", pattern: /^codOCFP/i, label: "Corso di preparazione per consulente finanziario" },
+
+
         ];
 
         const groups = {};
@@ -472,12 +479,14 @@ router.get("/convenzione", requireConv, async (req, res) => {
         let finalRows = [];
         const overallStart = Date.now();
 
+        const iduserParam = req.query.iduser ? Number(req.query.iduser) : null;
         for (const db of DBS) {
             console.log("🗄️ Interrogo DB:", db);
 
             const conn = await getConnection(db);
             const queryStart = Date.now();
 
+            const idClause = iduserParam ? "AND cu.idUser = ?" : "";
             const sql = `
                 SELECT 
                     cu.idUser      AS iduser,
@@ -502,26 +511,22 @@ router.get("/convenzione", requireConv, async (req, res) => {
 
                 WHERE cu.date_inscr BETWEEN ? AND ?
                 AND cf_conv.user_entry = ?
+                ${idClause}
                 AND c.code IN (?)
                 ORDER BY cu.date_inscr DESC
             `;
+            const params = [from, to, conv.nome_convenzione];
+            if (iduserParam) {
+                params.push(iduserParam);
+            }
+            params.push(expandedCodes);
 
             console.log("🧾 Report convenzione query:", {
                 db,
                 sql: sql.trim(),
-                params: [
-                    from,
-                    to,
-                    conv.nome_convenzione,
-                    expandedCodes
-                ],
+                params,
             });
-            const [rows] = await conn.query(sql, [
-                from,
-                to,
-                conv.nome_convenzione,
-                expandedCodes
-            ]);
+            const [rows] = await conn.query(sql, params);
             const durationMs = Date.now() - queryStart;
             console.log(`⏱️ Query ${db} completata in ${(durationMs / 1000).toFixed(2)}s`);
 
@@ -532,6 +537,52 @@ router.get("/convenzione", requireConv, async (req, res) => {
 
             rows.forEach(r => {
                 r.cf = cfMap.get(r.id) || null;
+            });
+
+            // conteggio oggetti aperti per utente/corso
+            const openItemsCombos = Array.from(
+                new Set(rows.map((row) => `${row.iduser}::${row.idcourse}`))
+            )
+                .map((combo) => {
+                    const [iduser, idcourse] = combo.split("::");
+                    return {
+                        iduser: Number(iduser),
+                        idcourse: Number(idcourse),
+                    };
+                })
+                .filter((combo) => Number.isFinite(combo.iduser) && Number.isFinite(combo.idcourse));
+
+            const openItemsMap = new Map();
+            if (openItemsCombos.length) {
+                const tuplePlaceholders = openItemsCombos.map(() => "(?, ?)").join(", ");
+                const params = openItemsCombos.flatMap((combo) => [combo.iduser, combo.idcourse]);
+
+                const [openItemsRows] = await conn.query(
+                    `
+                    SELECT 
+                        a.idUser AS iduser,
+                        b.idCourse AS idcourse,
+                        COUNT(*) AS noggettiopen
+                    FROM learning_commontrack a
+                    JOIN learning_organization b ON a.idReference = b.idOrg
+                    WHERE (a.idUser, b.idCourse) IN (${tuplePlaceholders})
+                    GROUP BY a.idUser, b.idCourse
+                    `,
+                    params
+                );
+
+                openItemsRows.forEach((row) => {
+                    const key = `${row.iduser}::${row.idcourse}`;
+                    openItemsMap.set(key, Number(row.noggettiopen || 0));
+                });
+            }
+
+            rows.forEach((r) => {
+                const key = `${r.iduser}::${r.idcourse}`;
+                if (!openItemsMap.has(key)) openItemsMap.set(key, 0);
+                const openCount = openItemsMap.get(key);
+                r.openItems = openCount;
+                r.noggettiopen = openCount;
             });
 
             console.log(`📦 ${db} → trovati ${rows.length} utenti`);
@@ -553,10 +604,15 @@ router.get("/convenzione", requireConv, async (req, res) => {
             if (r.date_complete) {
                 percent = 100;
                 stato = "Completato";
-            }
-            else if (r.lastenter) {
-                percent = 50;
-                stato = "In corso";
+            } else {
+                const openObjects = Number(r.openItems ?? r.noggettiopen ?? 0);
+                if (openObjects > 0) {
+                    percent = openObjects;
+                    stato = "In corso";
+                } else {
+                    percent = 0;
+                    stato = "Iscritto";
+                }
             }
 
             return { ...r, percent, stato };
@@ -783,101 +839,128 @@ router.get("/fatturato-ordini", async (req, res) => {
             ? segments
             : [{ range: [from, to], hostKey: "IFAD", dbName: process.env.MYSQL_FORMA4 }];
 
+        const orderMap = new Map();
         const orderIds = new Set();
-        const orderAggregates = new Map();
         const corsistiSet = new Set();
+        const orderConn = await getConnection("newformazione");
+        const [orderRows] = await orderConn.query(
+            `
+            SELECT
+                order_id,
+                billing_nome,
+                billing_cognome,
+                billing_email,
+                nome_convenzione,
+                fatturato,
+                order_status,
+                metodo_di_pagamento,
+                date_ins
+            FROM wp_woocommerce_rb_ordini
+            WHERE order_id IS NOT NULL
+              AND order_id <> ''
+              AND (nome_convenzione IS NULL OR nome_convenzione = '' OR nome_convenzione = '-')
+              AND order_status = 'completed'
+              AND date_ins BETWEEN ? AND ?
+            `,
+            [from, to],
+        );
 
-        for (const target of targetSegments) {
-            const conn = await getConnection(target.dbName);
-            const [rows] = await conn.query(
-                `
-                SELECT
-                    cu.order_id,
-                    cu.date_inscr,
-                    cu.iduser,
-                    cu.idcourse,
-                    c.code,
-                    c.name,
-                    u.firstname,
-                    u.lastname,
-                    u.email
-                FROM learning_courseuser cu
-                LEFT JOIN learning_course c ON c.idCourse = cu.idCourse
-                LEFT JOIN core_user u ON u.idst = cu.iduser
-                WHERE cu.order_id IS NOT NULL
-                  AND cu.order_id <> ''
-                  AND cu.date_inscr BETWEEN ? AND ?
-                ORDER BY cu.date_inscr DESC
-                `,
-                [target.range[0], target.range[1]],
-            );
+        orderRows.forEach((order) => {
+            const normalized = String(order.order_id || "").trim();
+            if (!normalized) return;
+            orderIds.add(normalized);
+            orderMap.set(normalized, order);
+        });
 
-            rows.forEach((row) => {
-                const orderId = String(row.order_id || "").trim();
-                if (!orderId) return;
-                corsistiSet.add(row.iduser);
-                orderIds.add(orderId);
-
-                if (!orderAggregates.has(orderId)) {
-                    orderAggregates.set(orderId, {
-                        orderId,
-                        enrollmentAt: row.date_inscr,
-                        billingNome: row.firstname || "",
-                        billingCognome: row.lastname || "",
-                        billingEmail: row.email || "",
-                        courseCodes: new Set(),
-                        courseNames: new Set(),
-                        sourceDbs: new Set(),
-                        itemCount: 0,
-                    });
-                }
-
-                const aggregate = orderAggregates.get(orderId);
-                aggregate.itemCount += 1;
-                aggregate.sourceDbs.add(target.dbName);
-                if (row.code) aggregate.courseCodes.add(row.code.trim());
-                if (row.name) aggregate.courseNames.add(row.name.trim());
-                if (new Date(row.date_inscr) < new Date(aggregate.enrollmentAt)) {
-                    aggregate.enrollmentAt = row.date_inscr;
-                }
+        if (!orderIds.size) {
+            return res.json({
+                success: true,
+                rows: [],
+                month: monthParam,
+                from,
+                to,
+                total: 0,
+                totalRevenue: 0,
+                corsistiCount: 0,
             });
         }
 
-        if (!orderAggregates.size) {
-            return res.json({ success: true, rows: [], month: monthParam, from, to, total: 0, totalRevenue: 0, corsistiCount: corsistiSet.size });
-        }
+        const orderAggregates = new Map();
 
-        const orderMap = new Map();
-        if (orderIds.size) {
-            const orderConn = await getConnection("newformazione");
-            const idsArray = Array.from(orderIds);
-            const chunkSize = 250;
+        const idsArray = Array.from(orderIds);
+        const chunkSize = 250;
+        for (const target of targetSegments) {
+            const conn = await getConnection(target.dbName);
             for (let i = 0; i < idsArray.length; i += chunkSize) {
                 const chunk = idsArray.slice(i, i + chunkSize);
                 const placeholders = chunk.map(() => "?").join(",");
-                const [orderRows] = await orderConn.query(
+                const [rows] = await conn.query(
                     `
                     SELECT
-                        order_id,
-                        billing_nome,
-                        billing_cognome,
-                        billing_email,
-                        nome_convenzione,
-                        fatturato,
-                        order_status,
-                        metodo_di_pagamento,
-                        date_ins
-                    FROM wp_woocommerce_rb_ordini
-                    WHERE order_id IN (${placeholders})
-                      AND (nome_convenzione IS NULL OR nome_convenzione = '' OR nome_convenzione = '-')
-                    `,
+                        cu.order_id,
+                        cu.date_inscr,
+                        cu.iduser,
+                        cu.idcourse,
+                        c.code,
+                        c.name,
+                        u.firstname,
+                        u.lastname,
+                        u.email
+                    FROM learning_courseuser cu
+                    LEFT JOIN learning_course c ON c.idCourse = cu.idCourse
+                    LEFT JOIN core_user u ON u.idst = cu.iduser
+                    WHERE cu.order_id IN (${placeholders})
+                `,
                     chunk,
                 );
-                orderRows.forEach((order) => {
-                    orderMap.set(String(order.order_id), order);
+
+                rows.forEach((row) => {
+                    const orderId = String(row.order_id || "").trim();
+                    if (!orderId) return;
+                    corsistiSet.add(row.iduser);
+
+                    if (!orderAggregates.has(orderId)) {
+                        orderAggregates.set(orderId, {
+                            orderId,
+                            enrollmentAt: row.date_inscr,
+                            billingNome: row.firstname || "",
+                            billingCognome: row.lastname || "",
+                            billingEmail: row.email || "",
+                            courseCodes: new Set(),
+                            courseNames: new Set(),
+                            sourceDbs: new Set(),
+                            itemCount: 0,
+                        });
+                    }
+
+                    const aggregate = orderAggregates.get(orderId);
+                    aggregate.itemCount += 1;
+                    aggregate.sourceDbs.add(target.dbName);
+                    if (row.code) aggregate.courseCodes.add(row.code.trim());
+                    if (row.name) aggregate.courseNames.add(row.name.trim());
+                    if (new Date(row.date_inscr) < new Date(aggregate.enrollmentAt)) {
+                        aggregate.enrollmentAt = row.date_inscr;
+                    }
                 });
             }
         }
+
+        idsArray.forEach((orderId) => {
+            if (!orderAggregates.has(orderId)) {
+                const orderInfo = orderMap.get(orderId);
+                orderAggregates.set(orderId, {
+                    orderId,
+                    enrollmentAt: orderInfo?.date_ins || "",
+                    billingNome: orderInfo?.billing_nome || "",
+                    billingCognome: orderInfo?.billing_cognome || "",
+                    billingEmail: orderInfo?.billing_email || "",
+                    courseCodes: new Set(),
+                    courseNames: new Set(),
+                    sourceDbs: new Set(),
+                    itemCount: 0,
+                });
+            }
+        });
 
         const output = [];
         for (const aggregate of orderAggregates.values()) {

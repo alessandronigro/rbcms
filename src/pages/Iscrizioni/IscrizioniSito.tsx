@@ -53,6 +53,10 @@ export default function IscrizioniSito() {
     corsista: Corsista;
     orderId: string;
   }>(null);
+  const [periodFilter, setPeriodFilter] = useState<{
+    month: number | null;
+    year: number | null;
+  }>({ month: null, year: null });
   const { alert: showAlert, confirm: showConfirm } = useAlert();
   const askConfirm = async (message: string) => {
     try {
@@ -63,6 +67,22 @@ export default function IscrizioniSito() {
     }
   };
   const limit = 50;
+  const monthNames = [
+    "Gennaio",
+    "Febbraio",
+    "Marzo",
+    "Aprile",
+    "Maggio",
+    "Giugno",
+    "Luglio",
+    "Agosto",
+    "Settembre",
+    "Ottobre",
+    "Novembre",
+    "Dicembre",
+  ];
+  const currentYear = new Date().getFullYear();
+  const yearOptions = Array.from({ length: 5 }, (_, i) => currentYear - i);
 
   const formatDateTime = (isoString: string) => {
     if (!isoString) return "";
@@ -71,7 +91,11 @@ export default function IscrizioniSito() {
     return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
   };
 
-  const fetchOrdini = async (p = 1, term = searchTerm) => {
+  const fetchOrdini = async (
+    p = 1,
+    term = searchTerm,
+    period = periodFilter,
+  ) => {
     setLoading(true);
     try {
       const params = new URLSearchParams({
@@ -79,6 +103,10 @@ export default function IscrizioniSito() {
         limit: String(limit),
       });
       if (term.trim()) params.append("search", term.trim());
+      if (period.month && period.year) {
+        params.append("month", String(period.month));
+        params.append("year", String(period.year));
+      }
       const res = await fetch(`/api/iscrizioni/sito?${params.toString()}`);
       const json = await res.json();
       const data = json.rows || [];
@@ -111,6 +139,22 @@ export default function IscrizioniSito() {
     return () => clearTimeout(handler);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm, didMount]);
+
+  const handlePeriodChange = (
+    field: "month" | "year",
+    value: string,
+  ) => {
+    const normalized = value ? Number(value) : null;
+    const next = { ...periodFilter, [field]: normalized };
+    setPeriodFilter(next);
+    fetchOrdini(1, searchTerm, next);
+  };
+
+  const resetPeriodFilter = () => {
+    const next = { month: null, year: null };
+    setPeriodFilter(next);
+    fetchOrdini(1, searchTerm, next);
+  };
 
   const fetchCorsisti = async (orderId: string) => {
     setLoadingSub((p) => ({ ...p, [orderId]: true }));
@@ -328,24 +372,72 @@ export default function IscrizioniSito() {
         📦 Iscrizioni RBINTERMEDIARI
       </h1>
 
-      <div className="flex flex-wrap gap-3 items-center">
-        <label className="text-sm text-gray-600 flex items-center gap-2">
-          Cerca ordine:
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              setOpenRowId(null);
-            }}
-            placeholder="ID ordine, convenzione, intestazione, email..."
-            className="border rounded px-2 py-1 text-sm"
-          />
-        </label>
-        <span className="text-xs text-gray-500">
-          Totale risultati: {total}
-        </span>
-      </div>
+          <div className="flex flex-wrap gap-3 items-center">
+            <label className="text-sm text-gray-600 flex items-center gap-2">
+              Cerca ordine:
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setOpenRowId(null);
+                }}
+                placeholder="ID ordine, convenzione, intestazione, email..."
+                className="border rounded px-2 py-1 text-sm"
+              />
+            </label>
+            <span className="text-xs text-gray-500">
+              Totale risultati: {total}
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-3 items-center text-xs text-gray-500">
+            <div className="flex gap-2 items-center">
+              <label className="flex items-center gap-1">
+                <span>Mese:</span>
+                <select
+                  value={periodFilter.month ?? ""}
+                  onChange={(e) => handlePeriodChange("month", e.target.value)}
+                  className="border rounded px-2 py-1 text-xs"
+                >
+                  <option value="">Tutti</option>
+                  {monthNames.map((label, idx) => (
+                    <option key={label} value={idx + 1}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="flex items-center gap-1">
+                <span>Anno:</span>
+                <select
+                  value={periodFilter.year ?? ""}
+                  onChange={(e) => handlePeriodChange("year", e.target.value)}
+                  className="border rounded px-2 py-1 text-xs"
+                >
+                  <option value="">Tutti</option>
+                  {yearOptions.map((year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <button
+                type="button"
+                onClick={resetPeriodFilter}
+                className="px-2 py-1 border rounded text-xs bg-white hover:bg-gray-100"
+              >
+                Azzera filtro
+              </button>
+            </div>
+            <span>
+              {periodFilter.month && periodFilter.year
+                ? `${monthNames[periodFilter.month - 1] || "Mese"} ${
+                    periodFilter.year
+                  }`
+                : "Tutti i mesi"}
+            </span>
+          </div>
 
       {loading ? (
         <p className="text-center text-gray-500">Caricamento...</p>

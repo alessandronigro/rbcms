@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useConv } from "@/context/ConvContext";
 
 export default function Login() {
@@ -8,37 +8,56 @@ export default function Login() {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
   const { setConv } = useConv();
   const year = new Date().getFullYear();
+  const [autoLoginAttempted, setAutoLoginAttempted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const loginWithCode = useCallback(
+    async (loginCode: string) => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code: loginCode }),
+        });
+
+        const j = await res.json();
+        if (!j.success) throw new Error(j.error || "Credenziali errate");
+
+        const me = await fetch("/api/auth/me", { credentials: "include" }).then((r) => r.json());
+        if (!me.authenticated) throw new Error("Sessione non valida");
+
+        setConv(me.user);
+        if (me.user.role === "admin") navigate("/");
+        else navigate("/report");
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [navigate, setConv]
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
-
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code }),
-      });
-
-      const j = await res.json();
-      if (!j.success) throw new Error(j.error || "Credenziali errate");
-
-      const me = await fetch("/api/auth/me", { credentials: "include" }).then((r) => r.json());
-      if (!me.authenticated) throw new Error("Sessione non valida");
-
-      setConv(me.user);
-      if (me.user.role === "admin") navigate("/");
-      else navigate("/report");
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+    loginWithCode(code);
   };
+
+  useEffect(() => {
+    if (autoLoginAttempted) return;
+    const params = new URLSearchParams(location.search);
+    const directValue = params.get("direct")?.trim();
+    if (!directValue || directValue !== "9547") return;
+    setAutoLoginAttempted(true);
+    setCode(directValue);
+    void loginWithCode(directValue);
+  }, [autoLoginAttempted, location.search, loginWithCode]);
 
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden bg-slate-950 text-white">
@@ -101,7 +120,7 @@ export default function Login() {
             RB CONSULTING <span className="text-blue-300">Portal</span>
           </h1>
           <p className="text-base text-slate-200 max-w-lg">
-            Gestisci reportistica, iscrizioni e strumenti dedicati alla tua convenzione in un’unica area riservata.
+            Gestisci reportistica e strumenti dedicati alla tua convenzione in un’unica area riservata.
           </p>
         </div>
 
@@ -118,7 +137,7 @@ export default function Login() {
 
           <div className="text-center space-y-1">
             <h2 className="text-2xl font-semibold text-white">Area riservata convenzioni</h2>
-            <p className="text-sm text-blue-100">Inserisci il codice univoco fornito dal team RB Consulenza.</p>
+            <p className="text-sm text-blue-100">Inserisci il codice univoco fornito dal team RB Formazione.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">

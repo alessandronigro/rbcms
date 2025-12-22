@@ -104,10 +104,10 @@ router.post("/sblocca", async (req, res) => {
  * Reinvia email iscrizione
  */
 router.post("/reinvia-mail", async (req, res) => {
-    const { db, iduser, idcourse, nome, cognome, email, userid } = req.body;
+    const { db, iduser, idcourse, nome, cognome, email, userid, courseName } = req.body;
     log(`📧 Reinvia mail → ${email}, ${nome} ${cognome}`);
     try {
-        const result = await reinviamail({ db, iduser, idcourse, nome, cognome, email, userid });
+        const result = await reinviamail({ db, iduser, idcourse, nome, cognome, email, userid, corso: courseName });
         res.json({ success: true, message: "Mail reinviata correttamente", result });
     } catch (err) {
         console.error("❌ reinvia-mail:", err);

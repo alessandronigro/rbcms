@@ -16,12 +16,14 @@ interface Props {
   corsista: Corsista;
   onClose: () => void;
   onSaved: () => void;
+  db?: string;
 }
 
 export default function ModalEditCorsista({
   corsista,
   onClose,
   onSaved,
+  db,
 }: Props) {
   const [form, setForm] = useState<Corsista>({ ...corsista });
   const { alert: showAlert } = useAlert();
@@ -39,7 +41,7 @@ export default function ModalEditCorsista({
     }
 
     const res = await fetch(
-      `/api/iscrizioni/corsisti/${encodeURIComponent(targetId)}`,
+      `/api/iscrizioni/corsisti/${encodeURIComponent(targetId)}${db ? `?db=${db}` : ""}`,
       {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },

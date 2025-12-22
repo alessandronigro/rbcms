@@ -35,6 +35,7 @@ import PublicSlotSettings from "./pages/Calendario/PublicSlotSettings";
 import PublicSlots from "./pages/PublicSlots";
 import Reminder from "./pages/Reminder";
 import Simulazione from "./pages/Simulazione";
+import MailCheck from "./pages/MailCheck";
 export default function App() {
   return (
     <Routes>
@@ -73,6 +74,7 @@ export default function App() {
         <Route path="/iscrizioni/aca" element={<IscrizioniAca />} />
         <Route path="/iscrizioni/nova" element={<IscrizioniNova />} />
         <Route path="/template" element={<Template />} />
+        <Route path="/mail-check" element={<MailCheck />} />
         <Route path="/reminder" element={<Reminder />} />
         <Route path="/report/fatturato" element={<ReportCorsi />} />
         <Route path="/report/fatturato-ordini" element={<ReportFatturatoOrdini />} />

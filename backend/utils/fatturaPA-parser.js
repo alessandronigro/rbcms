@@ -34,7 +34,8 @@ function parseFatturaPA(xmlFilePath) {
                 iva: 0,
                 totale: 0
             },
-            allegati: []
+            allegati: [],
+            allegatiDettaglio: []
         };
 
         // Estrai importi dai DatiRiepilogo
@@ -52,13 +53,20 @@ function parseFatturaPA(xmlFilePath) {
         // Calcola il totale
         result.importi.totale = result.importi.imponibile + result.importi.iva;
 
-        // Estrai allegati
-        const allegatiMatch = xmlContent.match(/<Allegati>[\s\S]*?<\/Allegati>/g);
+        // Estrai allegati con nome e payload base64
+        const allegatiMatch = xmlContent.match(/<Allegati[\s\S]*?<\/Allegati>/gi);
         if (allegatiMatch) {
-            allegatiMatch.forEach(allegato => {
+            allegatiMatch.forEach((allegato) => {
                 const nomeAttachment = extractValue(allegato, 'NomeAttachment');
+                const attachmentContentMatch = allegato.match(
+                    /<(?:\w+:)?Attachment[^>]*>([\s\S]*?)<\/(?:\w+:)?Attachment>/i
+                );
+                const base64 = attachmentContentMatch ? attachmentContentMatch[1].replace(/\s+/g, '') : null;
+
                 if (nomeAttachment) {
-                    result.allegati.push(nomeAttachment);
+                    const nome = nomeAttachment.trim();
+                    result.allegati.push(nome);
+                    result.allegatiDettaglio.push({ nome, base64 });
                 }
             });
         }

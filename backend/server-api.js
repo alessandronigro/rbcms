@@ -45,6 +45,7 @@ app.use("/api/finecorso", require("./routes/finecorso"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/monitor", require("./routes/monitor"));
 app.use("/api/simulazione", require("./routes/simulazione"));
+app.use("/api/mailcheck", require("./routes/mailcheck"));
 
 app.use("/public", express.static(path.join(process.cwd(), "public")));
 

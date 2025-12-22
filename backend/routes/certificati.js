@@ -12,10 +12,11 @@ const BACKEND_URL = process.env.BACKEND_URL;
 
 const TEMPLATES_BASE = "/var/www/rbcms/backend/templates/attestato";
 const TEMPLATES = "/var/www/rbcms/backend/templates";
-const CERT_DIR = path.join(process.cwd(), "/public/certificati/");
-if (!fs.existsSync(CERT_DIR)) fs.mkdirSync(CERT_DIR, { recursive: true });
-const CERT_PATH = path.join(process.cwd(), "backend/public/certificati");
-if (!fs.existsSync(CERT_PATH)) fs.mkdirSync(CERT_PATH, { recursive: true });
+const BACKEND_ROOT = path.resolve(__dirname, "..");
+const PUBLIC_CERTIFICATI = path.join(BACKEND_ROOT, "public/certificati");
+if (!fs.existsSync(PUBLIC_CERTIFICATI)) fs.mkdirSync(PUBLIC_CERTIFICATI, { recursive: true });
+const CERT_DIR = PUBLIC_CERTIFICATI;
+const CERT_PATH = PUBLIC_CERTIFICATI;
 
 /* -----------------------------------------------------
    PLACEHOLDERS (UGUALI AI TUOI)
@@ -197,7 +198,16 @@ function buildPlaceholders(ctx) {
 async function generateCertificateUnified({ templatePath, data, iduser, corso, code, nominativo }) {
 
     const tmpDocx = fillDocxTemplate(templatePath, data);
-    const tmpPdf = convertDocxToPdf(tmpDocx, CERT_PATH);
+    logwrite(`🟢 generateCertificateUnified → Docx temporaneo creato: ${tmpDocx}`);
+
+    let tmpPdf;
+    try {
+        tmpPdf = convertDocxToPdf(tmpDocx, CERT_PATH);
+        logwrite(`🟢 generateCertificateUnified → PDF temporaneo generato da LibreOffice: ${tmpPdf}`);
+    } catch (err) {
+        logwrite(`❌ Errore convertDocxToPdf: ${err.message}`);
+        throw err;
+    }
     // 3️⃣ Nome finale
 
     const safeCorso = (corso || code || "Corso").replace(/[\\/:*?"<>|]/g, "_");
@@ -210,6 +220,9 @@ async function generateCertificateUnified({ templatePath, data, iduser, corso, c
 
     logwrite(`✅ PDF generato: ${pdfFinal}`);
 
+    if (fs.existsSync(pdfFinal)) {
+        fs.unlinkSync(pdfFinal);
+    }
     fs.renameSync(tmpPdf, pdfFinal);
     fs.unlinkSync(tmpDocx);
 
@@ -372,7 +385,7 @@ function convertDocxToPdf(inputDocx, outputDir) {
     const proc = spawnSync("soffice", args, { encoding: "utf8" });
     if (proc.error) throw proc.error;
     if (proc.status !== 0) {
-        console.error(proc.stdout || proc.stderr);
+        logwrite(`❌ LibreOffice fallito (status=${proc.status}): ${proc.stderr || proc.stdout}`);
         throw new Error(`LibreOffice errore ${proc.status}`);
     }
 
@@ -384,6 +397,8 @@ function convertDocxToPdf(inputDocx, outputDir) {
     if (!fs.existsSync(producedPdf)) {
         throw new Error("PDF non prodotto da LibreOffice");
     }
+
+    logwrite(`✅ LibreOffice ha prodotto il PDF: ${producedPdf}`);
 
     return producedPdf;
 }
@@ -461,7 +476,7 @@ router.post("/generate", async (req, res) => {
         console.log(ctx)
         return res.json({
             success: true,
-            file: `${BACKEND_URL}/backend/public/certificati/${path.basename(finalPdf)}`,
+            file: `${BACKEND_URL}/public/certificati/${path.basename(finalPdf)}`,
             debug: { data }
         });
 

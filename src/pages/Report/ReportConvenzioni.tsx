@@ -69,6 +69,7 @@ export default function ReportConvenzione() {
   const [q, setQ] = useState("");
   const [filterStato, setFilterStato] = useState("tutti");
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: "asc" | "desc" } | null>(null);
+  const [idUserFilter, setIdUserFilter] = useState("");
 
   const loadingRef = useRef(false);
   const { conv: me } = useConv();
@@ -156,6 +157,9 @@ export default function ReportConvenzione() {
         idcourse: courseId,
         db: me?.piattaforma,
       });
+      if (idUserFilter.trim()) {
+        qs.append("iduser", idUserFilter.trim());
+      }
 
       const res = await fetch(`/api/report/convenzione?${qs.toString()}`, {
         credentials: "include",
@@ -467,6 +471,13 @@ export default function ReportConvenzione() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Nome, email, CF..."
+          />
+          <input
+            type="text"
+            className="border rounded px-3 py-2 w-full mt-2 text-xs"
+            value={idUserFilter}
+            onChange={(e) => setIdUserFilter(e.target.value)}
+            placeholder="ID utente (per duplicati, serve ri-elaborazione)"
           />
         </div>
 

@@ -53,6 +53,57 @@ export default function ReportFatturatoOrdini() {
             minimumFractionDigits: 2,
         }).format(value);
 
+    const exportToExcel = async () => {
+        if (!rows.length) {
+            await showAlert("Carica prima un report per esportarlo");
+            return;
+        }
+        const quote = (value: string | number | null | undefined) =>
+            `"${String(value ?? "").replace(/"/g, '""')}"`;
+        const header = [
+            "Data iscrizione",
+            "Order ID",
+            "Data ordine",
+            "Nome",
+            "Email",
+            "Codici corsi",
+            "Nomi corsi",
+            "Item",
+            "Fatturato",
+            "Stato / Pagamento",
+            "DB fonte",
+        ];
+        const lines = rows.map((row) => [
+            row.enrollmentAt ? dayjs(row.enrollmentAt).format("DD/MM/YYYY") : "-",
+            row.orderId,
+            row.orderPlacedAt ? dayjs(row.orderPlacedAt).format("DD/MM/YYYY") : "-",
+            row.billingNome || "-",
+            row.billingEmail || "-",
+            (row.courseCodes || []).join(", ") || "-",
+            (row.courseNames || []).join(", ") || "-",
+            row.itemCount ?? 0,
+            formatEuro(row.fatturato || 0),
+            `${row.orderStatus || "-"} / ${row.paymentMethod || "-"}`,
+            (row.sourceDbs || []).join(", ") || "-",
+        ]);
+
+        const csv =
+            [header.map(quote).join(";")]
+                .concat(lines.map((line) => line.map(quote).join(";")))
+                .join("\n");
+
+        const blob = new Blob([csv], {
+            type: "text/csv;charset=utf-8;",
+        });
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        const safeMonth = loadedMonth || month || dayjs().format("YYYY-MM");
+        anchor.download = `report-fatturato-ordini-${safeMonth}.csv`;
+        anchor.click();
+        URL.revokeObjectURL(url);
+    };
+
     return (
         <div className="p-6">
             <h1 className="text-2xl font-bold mb-6">📋 Report Fatturato Ordini</h1>
@@ -102,8 +153,16 @@ export default function ReportFatturatoOrdini() {
                             <span className="text-lg font-semibold">{loadedMonth}</span>
                         </div>
                     ) : null}
+                    <Button
+                        variant="outline"
+                        className="text-sm h-10"
+                        onClick={exportToExcel}
+                    >
+                        Esporta Excel
+                    </Button>
                 </div>
             )}
+
 
             {loading ? (
                 <p>Caricamento in corso...</p>
@@ -113,61 +172,57 @@ export default function ReportFatturatoOrdini() {
                         <thead className="bg-gray-100 text-left text-xs uppercase">
                             <tr>
                                 <th className="p-2 border">Data iscrizione</th>
-                                <th className="p-2 border">Order ID</th>
-                                <th className="p-2 border">Data ordine</th>
+                                <th className="p-2 border">N. ordine</th>
+                                <th className="p-2 border">Data</th>
+                                <th className="p-2 border">Convenzione</th>
+                                <th className="p-2 border">Intestazione Fattura</th>
+                                <th className="p-2 border">Modalità</th>
+                                <th className="p-2 border">Esito</th>
                                 <th className="p-2 border">Nome</th>
                                 <th className="p-2 border">Email</th>
-                                <th className="p-2 border">Codici corsi</th>
-                                <th className="p-2 border">Nomi corsi</th>
                                 <th className="p-2 border text-center">Item</th>
-                                <th className="p-2 border text-right">Fatturato</th>
-                                <th className="p-2 border">Stato / Pagamento</th>
-                                <th className="p-2 border">DB fonte</th>
+                                <th className="p-2 border text-right">Tot €</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {rows.map((row, index) => (
-                                <tr key={`${row.orderId}-${index}`} className="even:bg-white odd:bg-gray-50">
-                                    <td className="p-2 border">
-                                        {row.enrollmentAt
-                                            ? dayjs(row.enrollmentAt).format("DD/MM/YYYY")
-                                            : "-"}
-                                    </td>
-                                    <td className="p-2 border">{row.orderId}</td>
-                                    <td className="p-2 border">
-                                        {row.orderPlacedAt
-                                            ? dayjs(row.orderPlacedAt).format("DD/MM/YYYY")
-                                            : "-"}
-                                    </td>
-                                    <td className="p-2 border">{row.billingNome || "-"}</td>
-                                    <td className="p-2 border">{row.billingEmail || "-"}</td>
-                                    <td className="p-2 border">
-                                        {(row.courseCodes || []).join(", ") || "-"}
-                                    </td>
-                                    <td className="p-2 border">{(row.courseNames || []).join(", ") || "-"}</td>
-                                    <td className="p-2 border text-center">{row.itemCount || 0}</td>
-                                    <td className="p-2 border text-right">
-                                        {formatEuro(row.fatturato || 0)}
-                                    </td>
-                                    <td className="p-2 border">
-                                        <div>{row.orderStatus || "-"}</div>
-                                        <div className="text-xs text-gray-500">
-                                            {row.paymentMethod || "-"}
-                                        </div>
-                                    </td>
-                                    <td className="p-2 border">
-                                        {(row.sourceDbs || []).join(", ") || "-"}
-                                    </td>
-                                </tr>
-                            ))}
+                            {rows.map((row, index) => {
+                                const invoiceHeader = [row.billingNome, row.billingCognome]
+                                    .filter(Boolean)
+                                    .join(" ")
+                                    .trim();
+                                return (
+                                    <tr key={`${row.orderId}-${index}`} className="even:bg-white odd:bg-gray-50">
+                                        <td className="p-2 border">
+                                            {row.enrollmentAt
+                                                ? dayjs(row.enrollmentAt).format("DD/MM/YYYY")
+                                                : "-"}
+                                        </td>
+                                        <td className="p-2 border">{row.orderId}</td>
+                                        <td className="p-2 border">
+                                            {row.orderPlacedAt
+                                                ? dayjs(row.orderPlacedAt).format("DD/MM/YYYY")
+                                                : "-"}
+                                        </td>
+                                        <td className="p-2 border">{row.nomeConvenzione || "-"}</td>
+                                        <td className="p-2 border">{invoiceHeader || "-"}</td>
+                                        <td className="p-2 border">{row.paymentMethod || "-"}</td>
+                                        <td className="p-2 border">{row.orderStatus || "-"}</td>
+                                        <td className="p-2 border">{row.billingNome || "-"}</td>
+                                        <td className="p-2 border">{row.billingEmail || "-"}</td>
+                                        <td className="p-2 border text-center">{row.itemCount || 0}</td>
+                                        <td className="p-2 border text-right">
+                                            {formatEuro(row.fatturato || 0)}
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                         <tfoot className="font-bold bg-gray-100">
                             <tr>
-                                <td colSpan={8} className="p-2 text-right">
+                                <td colSpan={10} className="p-2 text-right">
                                     Totale
                                 </td>
                                 <td className="p-2 text-right">{formatEuro(total)}</td>
-                                <td colSpan={2} />
                             </tr>
                         </tfoot>
                     </table>

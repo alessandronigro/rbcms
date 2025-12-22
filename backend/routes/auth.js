@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const { getConnection } = require("../dbManager");
 const jwt = require("jsonwebtoken");
+const { decryptAutoLoginToken, AUTO_LOGIN_LINK_ENABLED } = require("../utils/autoLogin");
 
 // ✅ LOGIN
 router.post("/login", async (req, res) => {
@@ -88,6 +89,69 @@ router.get("/me", (req, res) => {
 router.post("/logout", (req, res) => {
     res.clearCookie("conv_session");
     return res.json({ success: true });
+});
+
+router.get("/autologin", (req, res) => {
+    if (!AUTO_LOGIN_LINK_ENABLED) {
+        return res.status(404).send("Auto login disabilitato");
+    }
+
+    const token = String(req.query.token || "");
+    if (!token) {
+        return res.status(400).send("Parametro token obbligatorio");
+    }
+
+    try {
+        const payload = decryptAutoLoginToken(token);
+        const { username, password, formAction, nominativo = "" } = payload;
+        if (!username || !password || !formAction) {
+            return res.status(400).send("Token non valido: credenziali mancanti");
+        }
+
+        const escapeHtml = (value) =>
+            value
+                .toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+
+        const htmlAction = escapeHtml(formAction);
+        const htmlUser = escapeHtml(username);
+        const htmlPass = escapeHtml(password);
+        const friendlyName = nominativo ? escapeHtml(nominativo) : "utente";
+
+        const html = `<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <title>Accesso automatico</title>
+    <style>body{font-family:Arial,sans-serif;background:#f4f5f7;color:#1d1d1f;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}.card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 6px 24px rgba(15,23,42,.1);max-width:480px;width:100%;text-align:center}a{color:#2563eb;text-decoration:none}</style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Accesso in corso</h1>
+      <p>Stiamo collegando ${friendlyName} alla piattaforma.</p>
+      <form id="autoLogin" method="post" action="${htmlAction}">
+        <input type="hidden" name="login_userid" value="${htmlUser}">
+        <input type="hidden" name="login_pwd" value="${htmlPass}">
+        <noscript>
+          <p>Il browser non supporta JavaScript, clicchi sul pulsante per procedere.</p>
+          <button type="submit">Accedi</button>
+        </noscript>
+      </form>
+      <p><small>Se non viene reindirizzato automaticamente, <a href="#" onclick="document.getElementById('autoLogin').submit();return false">clicchi qui</a>.</small></p>
+    </div>
+    <script>document.getElementById("autoLogin").submit();</script>
+  </body>
+</html>`;
+
+        return res.send(html);
+    } catch (err) {
+        console.error("autologin ERR:", err);
+        return res.status(400).send("Link non valido o scaduto");
+    }
 });
 
 module.exports = router;

@@ -202,11 +202,13 @@ async function getCourseByCode(cn, codecorso, fallbackTitle = "") {
     let code = (codecorso || "").trim();
     if (/-/.test(code)) code = code.split("-")[0].trim(); // "cod3035 - titolo"
     if (code.toLowerCase() === "codivass30oam15") {
+        const [nameRows] = await cn.query("SELECT code,name FROM learning_course WHERE code='codIVASS30OAM15' LIMIT 1");
         const [rows] = await cn.query("SELECT code,idCourse,name FROM learning_course WHERE code='cod3035' LIMIT 1");
         if (!rows.length) throw new Error("Corso 'cod3035' non trovato per pacchetto codIVASS30OAM15");
         const resolvedId = resolveCourseIdFromRow(rows[0]);
         if (!resolvedId) throw new Error("Corso 'cod3035' trovato ma manca l'id");
-        return { idcourse: resolvedId, codeFinal: "codIVASS30OAM15", title: rows[0].name };
+        const title = nameRows?.[0]?.name || rows[0].name || fallbackTitle;
+        return { idcourse: resolvedId, codeFinal: "codIVASS30OAM15", title };
     }
     const [rows] = await cn.query("SELECT code,idCourse,name FROM learning_course WHERE code=? LIMIT 1", [code]);
     if (!rows.length) throw new Error(`Corso '${code}' non trovato`);
@@ -248,9 +250,10 @@ const CAMPI_SUPPLEMENTARI = {
     comune: 40,
 };
 
+const RBACADEMY_DB = (process.env.MYSQL_formazionecondorb || "formazionecondorb").toLowerCase();
 const FALLBACK_PLATFORMS = {
     newformazione: process.env.MYSQL_FORMA4?.toLowerCase() || "forma4",
-    rbacademy: "formazionecondorb",
+    rbacademy: RBACADEMY_DB,
     novastudia: "efadnovastdia",
 };
 
@@ -417,8 +420,13 @@ async function processEnrollRows({
             const cell = String(src.cell || src.cellulare || src.telefonoCell || convInfo.cell || "").trim();
             const sedeVal = String(src.sede || src.sedeFattura || convInfo.sededistaccata || convInfo.sede || "").trim();
             const ragSoc = String(src.ragionesocialefatt || src.societa || convInfo.ragsoc || convInfo.societa || "").trim();
-            const intestatarioFatt = String(
-                src.intestatarioFattura || src.intestatario_fattura || ragSoc || convInfo.intestatario_fattura || `${nome} ${cognome}`
+            const intestazioneFattura = String(
+                src.intestazione_fattura ||
+                src.intestatarioFattura ||
+                src.intestatario_fattura ||
+                ragSoc ||
+                convInfo.intestatario_fattura ||
+                `${nome} ${cognome}`
             ).trim();
             const partitaIva = String(src.piva || src.partitaiva || src.partitaIva || convInfo.piva || convInfo.pi || "").toUpperCase().trim();
             const emailFatt = String(src.emailFattura || src.emailfatt || convInfo.email_fattura || convInfo.email || "").toLowerCase().trim();
@@ -508,7 +516,7 @@ async function processEnrollRows({
 
             // details
             const detailData = {
-                Intestatario_fattura: billingName || intestatarioFatt,
+                Intestatario_fattura: billingName || intestazioneFattura,
                 telefono: tel || orderTelefono,
                 data_nascita: src.data_nascita || src.dataNascita || "",
                 fax,
@@ -761,18 +769,36 @@ router.post("/weborders", async (req, res) => {
             return res.status(404).json({ error: "Ordine non trovato" });
 
         const codiceConv = ordine.codice_convenzione || "";
-        const conv = await loadConvenzioneByCodeOrName(codiceConv);
+        let convLookup = ordine.codice_convenzione || ordine.nome_convenzione || "";
+        if (webDbName === "rbacademy" && !convLookup) {
+            convLookup = "RB Academy";
+        }
+        let conv = await loadConvenzioneByCodeOrName(convLookup);
+        const convNameRaw = (conv?.name || conv?.Name || conv?.Codice || conv?.codice || "").toString().trim().toLowerCase();
+        if (webDbName === "rbacademy" && (!convLookup || convNameRaw === "formazione intermediari")) {
+            conv = await loadConvenzioneByCodeOrName("RB Academy");
+        }
 
         if (!conv)
             return res.status(400).json({ error: "Convenzione non valida o non trovata" });
 
 
         const nomesito = conv.newindirizzoweb || conv.indirizzoweb || "";
-        const convName = conv.name || conv.Name || conv.Codice || conv.codice || codiceConv || "Senza nome";
+        let convName = conv.name || conv.Name || conv.Codice || conv.codice || convLookup || "Senza nome";
 
         let piattaforma = (conv.piattaforma || conv.Piattaforma || "").toLowerCase();
         if (!piattaforma) {
             piattaforma = FALLBACK_PLATFORMS[webDbName] || "";
+        }
+        if (webDbName === "rbacademy") {
+            const resolved = FALLBACK_PLATFORMS.rbacademy;
+            if (resolved) {
+                piattaforma = resolved;
+            }
+            const convNameLower = (convName || "").toLowerCase();
+            if (!convName || convNameLower === "formazione intermediari" || convNameLower === "senza nome") {
+                convName = ordine.nome_convenzione || "RB Academy";
+            }
         }
 
         if (!piattaforma) {
@@ -886,6 +912,7 @@ router.post("/weborders", async (req, res) => {
                 convenzione: convName,
                 sede: `${row.sede_esame || ""}${row.wdm_user_custom_data || ""}`,
                 order_id: idordine,
+                intestazione_fattura: ordine.intestazione_fattura || "",
                 corso: row.corso,
                 bccEmail: normalizeBccList(billingEmail, convMailbcc),
                 orderMeta,
@@ -1104,28 +1131,35 @@ router.get("/sito", async (req, res) => {
         const search = (req.query.search || "").toString().trim();
         const convenzioneFilter = (req.query.convenzione || "").toString().trim();
         const esitoFilter = (req.query.esito || "").toString().trim().toLowerCase();
-        const requestedMonth = parseInt(req.query.month, 10);
-        const requestedYear = parseInt(req.query.year, 10);
-        const current = new Date();
-        const resolvedYear = Number.isInteger(requestedYear)
-            ? requestedYear
-            : current.getFullYear();
-        const resolvedMonth =
-            Number.isInteger(requestedMonth) && requestedMonth >= 1 && requestedMonth <= 12
-                ? requestedMonth
-                : current.getMonth() + 1;
-        const startDate = new Date(resolvedYear, resolvedMonth - 1, 1);
-        const endDate = new Date(startDate);
-        endDate.setMonth(endDate.getMonth() + 1);
+        const requestedMonth = Number.isFinite(Number(req.query.month)) ? parseInt(req.query.month, 10) : NaN;
+        const requestedYear = Number.isFinite(Number(req.query.year)) ? parseInt(req.query.year, 10) : NaN;
+        let resolvedMonth = null;
+        let resolvedYear = null;
+        let monthStart = null;
+        let nextMonthStart = null;
+
         const formatMysqlDate = (date) => {
             const pad = (n) => (n < 10 ? `0${n}` : `${n}`);
             return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(
                 date.getHours(),
             )}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
         };
-        const monthStart = formatMysqlDate(startDate);
-        const nextMonthStart = formatMysqlDate(endDate);
 
+        if (
+            Number.isInteger(requestedYear) &&
+            requestedYear > 0 &&
+            Number.isInteger(requestedMonth) &&
+            requestedMonth >= 1 &&
+            requestedMonth <= 12
+        ) {
+            resolvedYear = requestedYear;
+            resolvedMonth = requestedMonth;
+            const startDate = new Date(resolvedYear, resolvedMonth - 1, 1);
+            const endDate = new Date(startDate);
+            endDate.setMonth(endDate.getMonth() + 1);
+            monthStart = formatMysqlDate(startDate);
+            nextMonthStart = formatMysqlDate(endDate);
+        }
         const db = await getConnection("newformazione");
 
         const filters = [];
@@ -1145,8 +1179,10 @@ router.get("/sito", async (req, res) => {
             filters.push("LOWER(order_status) = ?");
             params.push(esitoFilter);
         }
-        filters.push("date_ins >= ? AND date_ins < ?");
-        params.push(monthStart, nextMonthStart);
+        if (monthStart && nextMonthStart) {
+            filters.push("date_ins >= ? AND date_ins < ?");
+            params.push(monthStart, nextMonthStart);
+        }
 
         const whereClause = filters.length ? `WHERE ${filters.join(" AND ")}` : "";
 
@@ -1168,7 +1204,10 @@ router.get("/sito", async (req, res) => {
         res.json({
             rows,
             total,
-            period: { month: resolvedMonth, year: resolvedYear },
+            period:
+                resolvedMonth && resolvedYear
+                    ? { month: resolvedMonth, year: resolvedYear }
+                    : null,
             page,
             limit,
             hasMore: offset + rows.length < total,
@@ -1357,6 +1396,12 @@ router.post("/ordini/:order_id/sync-billing-fields", async (req, res) => {
         let piattaforma = (conv?.piattaforma || conv?.Piattaforma || "").toString().trim().toLowerCase();
         if (!piattaforma) {
             piattaforma = FALLBACK_PLATFORMS[webDbName] || "";
+        }
+        if (webDbName === "rbacademy" && piattaforma === "formazionecondorb") {
+            const resolved = FALLBACK_PLATFORMS.rbacademy;
+            if (resolved && resolved !== piattaforma) {
+                piattaforma = resolved;
+            }
         }
         if (!piattaforma) {
             return res.status(400).json({ error: "Impossibile determinare la piattaforma di destinazione" });

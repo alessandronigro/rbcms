@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import ModalEditOrdine from "./ModalEditOrdine";
 import ModalEditCorsista from "./ModalEditCorsista";
 import { useAlert } from "../../components/SmartAlertModal";
@@ -41,17 +41,18 @@ export default function IscrizioniAca() {
   const [rows, setRows] = useState<Iscrizione[]>([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [didMount, setDidMount] = useState(false);
   const [openRowId, setOpenRowId] = useState<string | null>(null);
   const [subgrid, setSubgrid] = useState<Record<string, Corsista[]>>({});
   const [loading, setLoading] = useState(true);
   const [loadingSub, setLoadingSub] = useState<Record<string, boolean>>({});
-  const [editOrdine, setEditOrdine] = useState<null | { order: Iscrizione }>(
-    null
-  );
-  const [editCorsista, setEditCorsista] = useState<null | {
-    corsista: Corsista;
-    orderId: string;
-  }>(null);
+  const [editOrdine, setEditOrdine] = useState<null | { order: Iscrizione }>(null);
+  const [editCorsista, setEditCorsista] = useState<null | { corsista: Corsista; orderId: string }>(null);
+  const [periodFilter, setPeriodFilter] = useState<{ month: number | null; year: number | null }>({
+    month: null,
+    year: null,
+  });
   const { alert: showAlert, confirm: showConfirm } = useAlert();
   const askConfirm = async (message: string) => {
     try {
@@ -63,33 +64,55 @@ export default function IscrizioniAca() {
   };
 
   const limit = 50;
+  const monthNames = [
+    "Gennaio",
+    "Febbraio",
+    "Marzo",
+    "Aprile",
+    "Maggio",
+    "Giugno",
+    "Luglio",
+    "Agosto",
+    "Settembre",
+    "Ottobre",
+    "Novembre",
+    "Dicembre",
+  ];
+  const currentYear = new Date().getFullYear();
+  const yearOptions = Array.from({ length: 5 }, (_, i) => currentYear - i);
 
   const formatDateTime = (isoString: string) => {
     if (!isoString) return "";
     const d = new Date(isoString);
     const pad = (n: number) => (n < 10 ? "0" + n : n);
-    return `${pad(d.getDate())}/${pad(
-      d.getMonth() + 1
-    )}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(
+      d.getMinutes(),
+    )}`;
   };
 
   // =============================
   // FETCH ORDINI
   // =============================
-  const fetchOrdini = async (p = 1) => {
+  const fetchOrdini = async (p = 1, term = searchTerm, period = periodFilter) => {
     setLoading(true);
     try {
-      const res = await fetch(
-        `/api/iscrizioni/aca?page=${p}&limit=${limit}&db=rbacademy`
-      );
+      const params = new URLSearchParams({
+        page: String(p),
+        limit: String(limit),
+        db: "rbacademy",
+      });
+      if (term.trim()) params.append("search", term.trim());
+      if (period.month && period.year) {
+        params.append("month", String(period.month));
+        params.append("year", String(period.year));
+      }
+      const res = await fetch(`/api/iscrizioni/aca?${params.toString()}`);
       const json = await res.json();
       const data = json.rows || [];
 
       const normalized = data.map((r: any) => ({
         ...r,
-        fatturato:
-          (Number(r.costo_imponibile || 0) - Number(r.billing_discount || 0)) *
-          1.22,
+        fatturato: (Number(r.costo_imponibile || 0) - Number(r.billing_discount || 0)) * 1.22,
       }));
 
       setRows(normalized);
@@ -103,8 +126,31 @@ export default function IscrizioniAca() {
   };
 
   useEffect(() => {
-    fetchOrdini(1);
+    fetchOrdini(1, searchTerm).finally(() => setDidMount(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!didMount) return;
+    const handler = setTimeout(() => {
+      fetchOrdini(1, searchTerm);
+    }, 400);
+    return () => clearTimeout(handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm, didMount]);
+
+  const handlePeriodChange = (field: "month" | "year", value: string) => {
+    const normalized = value ? Number(value) : null;
+    const next = { ...periodFilter, [field]: normalized };
+    setPeriodFilter(next);
+    fetchOrdini(1, searchTerm, next);
+  };
+
+  const resetPeriodFilter = () => {
+    const next = { month: null, year: null };
+    setPeriodFilter(next);
+    fetchOrdini(1, searchTerm, next);
+  };
 
   // =============================
   // FETCH CORSISTI
@@ -112,11 +158,7 @@ export default function IscrizioniAca() {
   const fetchCorsisti = async (orderId: string) => {
     setLoadingSub((p) => ({ ...p, [orderId]: true }));
     try {
-      const res = await fetch(
-        `/api/iscrizioni/ordini/${encodeURIComponent(
-          orderId
-        )}/corsisti?db=rbacademy`
-      );
+      const res = await fetch(`/api/iscrizioni/ordini/${encodeURIComponent(orderId)}/corsisti?db=rbacademy`);
       const data = await res.json();
       setSubgrid((p) => ({ ...p, [orderId]: data }));
     } catch (err) {
@@ -145,55 +187,53 @@ export default function IscrizioniAca() {
     return row.interrompi === 1 ? `${full} (invii disattivati)` : full;
   };
 
-  // =============================
-  // AZIONI
-  // =============================
+  // ====== AZIONI ======
   const EditIscrizionesito = (r: Iscrizione) => setEditOrdine({ order: r });
 
   const reinvia = async (orderId: string) => {
-    if (!(await askConfirm(`Reinvia email ordine #${orderId}?`))) return;
-
-    const res = await fetch(
-      `/api/iscrizioni/ordini/${encodeURIComponent(
-        orderId
-      )}/reinvia?db=rbacademy`,
-      { method: "POST" }
-    );
+    if (!(await askConfirm(`Reinvia email ordine #${orderId} a billing_email?`))) return;
+    const res = await fetch(`/api/iscrizioni/ordini/${encodeURIComponent(orderId)}/reinvia?db=rbacademy`, {
+      method: "POST",
+    });
     const j = await res.json();
     await showAlert(j.success ? "Email reinviata" : j.error || "Errore invio email");
   };
 
   const segnala = async (orderId: string) => {
-    if (!(await askConfirm(`Inviare sollecito pagamento ordine #${orderId}?`))) return;
-
-    const res = await fetch(
-      `/api/iscrizioni/ordini/${encodeURIComponent(
-        orderId
-      )}/segnala?db=rbacademy`,
-      { method: "POST" }
-    );
+    if (!(await askConfirm(`Inviare sollecito pagamento per ordine #${orderId}?`))) return;
+    const res = await fetch(`/api/iscrizioni/ordini/${encodeURIComponent(orderId)}/segnala?db=rbacademy`, {
+      method: "POST",
+    });
     const j = await res.json();
-    await showAlert(j.success ? "Sollecito inviato" : j.error || "Errore sollecito");
+    await showAlert(j.success ? "Sollecito inviato" : j.error || "Errore invio sollecito");
+  };
+
+  const elimina = async (orderId: string) => {
+    if (!(await askConfirm(`Eliminare ordine #${orderId} e corsisti associati?`))) return;
+    const res = await fetch(`/api/iscrizioni/ordini/${encodeURIComponent(orderId)}?db=rbacademy`, {
+      method: "DELETE",
+    });
+    const j = await res.json();
+    if (res.ok && j.success) {
+      await showAlert("Ordine eliminato");
+      setOpenRowId(null);
+      fetchOrdini(page, searchTerm, periodFilter);
+      return;
+    }
+    await showAlert(j.error || "Errore eliminazione ordine");
   };
 
   const interrompi = async (orderId: string) => {
     if (!(await askConfirm("Interrompere le segnalazioni automatiche?"))) return;
-
-    await fetch(
-      `/api/iscrizioni/ordini/${encodeURIComponent(orderId)}?db=rbacademy`,
-      {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ interrompi: 1 }),
-      }
-    );
-
-    fetchOrdini(page);
+    await fetch(`/api/iscrizioni/ordini/${encodeURIComponent(orderId)}?db=rbacademy`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ interrompi: 1 }),
+    });
+    fetchOrdini(page, searchTerm, periodFilter);
   };
 
-  // =============================
-  // ISCRIZIONE INTERO ORDINE
-  // =============================
+  // Iscrivi (ordine intero o singolo)
   const iscrivisito = async (idordine: number, nuovo: boolean) => {
     const body = {
       idordine,
@@ -202,25 +242,21 @@ export default function IscrizioniAca() {
       chkexist: !nuovo,
       sendmail: true,
     };
-
-    const res = await fetch(`/api/iscrizioni/weborders?db=rbacademy`, {
+    const res = await fetch("/api/iscrizioni/weborders?db=rbacademy", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-
     const json = await res.json();
 
     const message = json.message || "Iscrizione completata";
     const results = Array.isArray(json.results) ? json.results : undefined;
-
     if (!json.success) {
       await showAlert(json.error || message, { title: "Esiti iscrizioni", results });
       return;
     }
-
     const mapEsiti: Record<string, { to: any; bcc: any; pec: any } | undefined> = {};
-    (results || []).forEach((r: any) => {
+    (json.results || []).forEach((r: any) => {
       mapEsiti[String(r.email).toLowerCase()] = r.esitoEmail;
     });
     setSubgrid((prev) => {
@@ -233,19 +269,11 @@ export default function IscrizioniAca() {
       });
       return out;
     });
-
     await showAlert(message, { title: "Esiti iscrizioni", results });
-    fetchOrdini(page);
+    fetchOrdini(page, searchTerm, periodFilter);
   };
 
-  // =============================
-  // ISCRIZIONE SINGOLO CORSISTA
-  // =============================
-  const iscrivisitosingolo = async (
-    orderId: string,
-    nuovo: boolean,
-    corsistaId: number
-  ) => {
+  const iscrivisitosingolo = async (orderId: string, nuovo: boolean, corsistaId: number) => {
     const body = {
       idordine: orderId,
       table: "woocommerce",
@@ -254,13 +282,11 @@ export default function IscrizioniAca() {
       sendmail: true,
       corsistaId,
     };
-
-    const res = await fetch(`/api/iscrizioni/weborders?db=rbacademy`, {
+    const res = await fetch("/api/iscrizioni/weborders?db=rbacademy", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-
     const j = await res.json();
     const singleMessage = j.message || "Iscrizione singolo completata";
     const singleResults = Array.isArray(j.results) ? j.results : undefined;
@@ -268,44 +294,110 @@ export default function IscrizioniAca() {
       await showAlert(j.error || singleMessage, { title: "Esiti iscrizione", results: singleResults });
       return;
     }
-
+    const es = j.result?.[0]?.esitoEmail;
+    if (es) {
+      setSubgrid((prev) => {
+        const out = { ...prev };
+        const list = (out[orderId] || []).map((c) => (c.id === corsistaId ? { ...c, esitoEmail: es } : c));
+        out[orderId] = list;
+        return out;
+      });
+    }
     await showAlert(singleMessage, { title: "Esiti iscrizione", results: singleResults });
-    fetchOrdini(page);
+    fetchOrdini(page, searchTerm, periodFilter);
   };
 
-  // =============================
-  // COMPUTE TOTALI
-  // =============================
-  const totale = useMemo(
-    () => rows.reduce((s, r) => s + (r.fatturato || 0), 0),
-    [rows]
-  );
+  // Totale pagina
+  const visibleRows = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return rows;
+    return rows.filter((row) => {
+      const fields = [row.order_id, row.nome_convenzione, row.intestazione_fattura, row.metodo_di_pagamento]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return fields.includes(term);
+    });
+  }, [rows, searchTerm]);
+
+  const totale = useMemo(() => visibleRows.reduce((s, r) => s + (r.fatturato || 0), 0), [visibleRows]);
 
   const badge = (val?: "ok" | "ko" | "-") => {
     const color =
-      val === "ok"
-        ? "bg-green-100 text-green-700"
-        : val === "ko"
-          ? "bg-red-100 text-red-700"
-          : "bg-gray-100 text-gray-600";
-
+      val === "ok" ? "bg-green-100 text-green-700" : val === "ko" ? "bg-red-100 text-red-700" : "bg-gray-100 text-gray-600";
     return (
-      <span
-        className={`px-1.5 py-0.5 rounded text-[11px] font-semibold ${color}`}
-      >
+      <span className={`px-1.5 py-0.5 rounded text-[11px] font-semibold ${color}`}>
         {val || "-"}
       </span>
     );
   };
 
-  // =============================
-  // RENDER
-  // =============================
   return (
     <div className="p-4 sm:p-6 space-y-4">
-      <h1 className="text-lg sm:text-xl font-semibold">
-        📦 Iscrizioni RBACADEMY
-      </h1>
+      <h1 className="text-lg sm:text-xl font-semibold">📦 Iscrizioni RBACADEMY</h1>
+
+      <div className="flex flex-wrap gap-3 items-center">
+        <label className="text-sm text-gray-600 flex items-center gap-2">
+          Cerca ordine:
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setOpenRowId(null);
+            }}
+            placeholder="ID ordine, convenzione, intestazione, email..."
+            className="border rounded px-2 py-1 text-sm"
+          />
+        </label>
+        <span className="text-xs text-gray-500">Totale risultati: {total}</span>
+      </div>
+      <div className="flex flex-wrap gap-3 items-center text-xs text-gray-500">
+        <div className="flex gap-2 items-center">
+          <label className="flex items-center gap-1">
+            <span>Mese:</span>
+            <select
+              value={periodFilter.month ?? ""}
+              onChange={(e) => handlePeriodChange("month", e.target.value)}
+              className="border rounded px-2 py-1 text-xs"
+            >
+              <option value="">Tutti</option>
+              {monthNames.map((label, idx) => (
+                <option key={label} value={idx + 1}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex items-center gap-1">
+            <span>Anno:</span>
+            <select
+              value={periodFilter.year ?? ""}
+              onChange={(e) => handlePeriodChange("year", e.target.value)}
+              className="border rounded px-2 py-1 text-xs"
+            >
+              <option value="">Tutti</option>
+              {yearOptions.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button
+            type="button"
+            onClick={resetPeriodFilter}
+            className="px-2 py-1 border rounded text-xs bg-white hover:bg-gray-100"
+          >
+            Azzera filtro
+          </button>
+        </div>
+        <span>
+          {periodFilter.month && periodFilter.year
+            ? `${monthNames[periodFilter.month - 1] || "Mese"} ${periodFilter.year}`
+            : "Tutti i mesi"}
+        </span>
+      </div>
 
       {loading ? (
         <p className="text-center text-gray-500">Caricamento...</p>
@@ -326,7 +418,7 @@ export default function IscrizioniAca() {
               </tr>
             </thead>
             <tbody>
-              {rows.map((row, index) => {
+              {visibleRows.map((row, index) => {
                 const rowKey = String(row.id || row.order_id || index);
                 const isOpen = openRowId === rowKey;
                 const orderKey = String(row.order_id);
@@ -335,12 +427,7 @@ export default function IscrizioniAca() {
 
                 return (
                   <React.Fragment key={rowKey}>
-                    <tr
-                      className={`border-t hover:bg-gray-50 ${row.order_status === "completed"
-                        ? "bg-orange-50"
-                        : ""
-                        }`}
-                    >
+                    <tr className={`border-t hover:bg-gray-50 ${row.order_status === "completed" ? "bg-orange-50" : ""}`}>
                       <td
                         className="text-center cursor-pointer select-none"
                         onClick={() => toggleRow(rowKey, orderKey)}
@@ -359,18 +446,14 @@ export default function IscrizioniAca() {
                           </button>
                           <button
                             title="Iscrivi"
-                            onClick={() =>
-                              iscrivisito(Number(row.order_id), false)
-                            }
+                            onClick={() => iscrivisito(Number(row.order_id), false)}
                             className="px-2 py-1 text-xs bg-red-500 hover:bg-red-600 text-white rounded"
                           >
                             Iscrivi
                           </button>
                           <button
                             title="Iscrivi nuovo"
-                            onClick={() =>
-                              iscrivisito(Number(row.order_id), true)
-                            }
+                            onClick={() => iscrivisito(Number(row.order_id), true)}
                             className="px-2 py-1 text-xs bg-blue-500 hover:bg-blue-600 text-white rounded"
                           >
                             Nuovo
@@ -383,17 +466,18 @@ export default function IscrizioniAca() {
                             Reinvia
                           </button>
                           <button
-                            title={
-                              row.interrompi === 1
-                                ? "Invio solleciti disattivato"
-                                : "Invia sollecito"
-                            }
+                            title="Elimina ordine e corsisti"
+                            onClick={() => elimina(orderKey)}
+                            className="px-2 py-1 text-xs bg-red-800 hover:bg-red-900 text-white rounded"
+                          >
+                            🗑️
+                          </button>
+                          <button
+                            title={row.interrompi === 1 ? "Invio solleciti disattivato" : "Invia sollecito"}
                             onClick={() => segnala(orderKey)}
                             disabled={row.interrompi === 1}
                             className={`px-2 py-1 text-xs rounded text-white ${
-                              row.interrompi === 1
-                                ? "bg-gray-400 cursor-not-allowed"
-                                : "bg-yellow-500 hover:bg-yellow-600"
+                              row.interrompi === 1 ? "bg-gray-400 cursor-not-allowed" : "bg-yellow-500 hover:bg-yellow-600"
                             }`}
                           >
                             ⚠️
@@ -412,42 +496,28 @@ export default function IscrizioniAca() {
 
                       <td className="p-2">
                         <div className="font-semibold">{row.order_id}</div>
-                        {segInfo && (
-                          <div className="text-[11px] text-gray-500">{segInfo}</div>
-                        )}
+                        {segInfo && <div className="text-[11px] text-gray-500">{segInfo}</div>}
                       </td>
                       <td className="p-2">{formatDateTime(row.date_ins)}</td>
                       <td className="p-2">{row.nome_convenzione || "-"}</td>
                       <td className="p-2">{row.intestazione_fattura || "-"}</td>
                       <td className="p-2">{row.metodo_di_pagamento || "-"}</td>
-                      <td className="p-2">
-                        {row.order_status === "completed"
-                          ? "Iscritto"
-                          : row.order_status || "-"}
-                      </td>
-                      <td className="p-2 text-right">
-                        {row.fatturato
-                          ? row.fatturato.toLocaleString("it-IT")
-                          : "-"}
-                      </td>
+                      <td className="p-2">{row.order_status === "completed" ? "Iscritto" : row.order_status || "-"}</td>
+                      <td className="p-2 text-right">{row.fatturato ? row.fatturato.toLocaleString("it-IT") : "-"}</td>
                     </tr>
 
                     {isOpen && (
                       <tr>
                         <td colSpan={9} className="bg-gray-50 p-3">
-                          <h3 className="text-sm font-semibold mb-2">
-                            👥 Corsisti ordine #{row.order_id}
-                          </h3>
+                          <h3 className="text-sm font-semibold mb-2">👥 Corsisti ordine #{row.order_id}</h3>
 
                           {loadingSub[orderKey] ? (
                             <div className="text-center text-gray-500 py-2">
-                              <div className="animate-spin inline-block w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full mr-2"></div>
+                              <div className="animate-spin inline-block w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full mr-2" />
                               Caricamento corsisti...
                             </div>
                           ) : corsisti.length === 0 ? (
-                            <p className="text-gray-500 text-sm">
-                              Nessun corsista associato.
-                            </p>
+                            <p className="text-gray-500 text-sm">Nessun corsista associato.</p>
                           ) : (
                             <div className="overflow-x-auto">
                               <table className="w-full border text-xs bg-white min-w-[980px]">
@@ -469,74 +539,41 @@ export default function IscrizioniAca() {
                                   {corsisti.map((c, idx) => {
                                     const corsistaKey = `${orderKey}-${c.id ?? idx}`;
                                     return (
-                                      <tr
-                                        key={corsistaKey}
-                                        className="border-t hover:bg-gray-50"
-                                      >
+                                      <tr key={corsistaKey} className="border-t hover:bg-gray-50">
                                         <td className="p-2">
                                           <div className="flex flex-wrap gap-1">
                                             <button
-                                              onClick={() =>
-                                                setEditCorsista({
-                                                  orderId: orderKey,
-                                                  corsista: c,
-                                                })
-                                              }
+                                              onClick={() => setEditCorsista({ orderId: orderKey, corsista: c })}
                                               className="px-2 py-1 bg-yellow-500 text-white text-xs rounded"
                                             >
                                               Modifica
                                             </button>
                                             <button
-                                              onClick={() =>
-                                                iscrivisitosingolo(
-                                                  orderKey,
-                                                  false,
-                                                  c.id
-                                                )
-                                              }
+                                              onClick={() => iscrivisitosingolo(orderKey, false, c.id)}
                                               className="px-2 py-1 bg-blue-500 text-white text-xs rounded"
                                             >
                                               Iscrivi
                                             </button>
                                             <button
-                                              onClick={() =>
-                                                iscrivisitosingolo(
-                                                  orderKey,
-                                                  true,
-                                                  c.id
-                                                )
-                                              }
+                                              onClick={() => iscrivisitosingolo(orderKey, true, c.id)}
                                               className="px-2 py-1 bg-green-600 text-white text-xs rounded"
                                             >
                                               Nuovo
                                             </button>
                                           </div>
                                         </td>
+                                        <td className="p-2">{c.corsista_first_name}</td>
+                                        <td className="p-2">{c.corsista_last_name}</td>
+                                        <td className="p-2">{c.corsista_email}</td>
+                                        <td className="p-2">{c.corsista_pec || "-"}</td>
+                                        <td className="p-2">{c.corsista_cf || "-"}</td>
                                         <td className="p-2">
-                                          {c.corsista_first_name}
+                                          <div className="font-semibold">{c.codice_corso}</div>
+                                          <div className="text-[11px] text-gray-500">{c.corso_title}</div>
                                         </td>
-                                        <td className="p-2">
-                                          {c.corsista_last_name}
-                                        </td>
-                                        <td className="p-2">
-                                          {c.corsista_email}
-                                        </td>
-                                        <td className="p-2">
-                                          {c.corsista_pec}
-                                        </td>
-                                        <td className="p-2">{c.corsista_cf}</td>
-                                        <td className="p-2">
-                                          {c.codice_corso} - {c.corso_title}
-                                        </td>
-                                        <td className="p-2 text-center">
-                                          {badge(c.esitoEmail?.to)}
-                                        </td>
-                                        <td className="p-2 text-center">
-                                          {badge(c.esitoEmail?.bcc)}
-                                        </td>
-                                        <td className="p-2 text-center">
-                                          {badge(c.esitoEmail?.pec)}
-                                        </td>
+                                        <td className="p-2 text-center">{badge(c.esitoEmail?.to)}</td>
+                                        <td className="p-2 text-center">{badge(c.esitoEmail?.bcc)}</td>
+                                        <td className="p-2 text-center">{badge(c.esitoEmail?.pec)}</td>
                                       </tr>
                                     );
                                   })}
@@ -552,51 +589,25 @@ export default function IscrizioniAca() {
               })}
             </tbody>
           </table>
-
-          <div className="flex flex-col sm:flex-row justify-between items-center text-sm p-3 border-t bg-gray-50 gap-2">
-            <span>
-              Pagina {page} / {Math.ceil(total / limit)} (
-              {total.toLocaleString("it-IT")} ordini)
-            </span>
-            <div className="flex gap-2">
-              <button
-                onClick={() => fetchOrdini(Math.max(1, page - 1))}
-                disabled={page === 1}
-                className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded disabled:opacity-50"
-              >
-                ← Precedente
-              </button>
-              <button
-                onClick={() => fetchOrdini(page + 1)}
-                disabled={page * limit >= total}
-                className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded disabled:opacity-50"
-              >
-                Successiva →
-              </button>
-            </div>
-          </div>
         </div>
       )}
 
-      {!loading && (
-        <div className="pt-4 text-right text-sm text-gray-700 font-semibold">
-          Totale pagina:{" "}
-          {totale.toLocaleString("it-IT", {
-            style: "currency",
-            currency: "EUR",
-          })}
-        </div>
-      )}
+      <div className="text-sm text-gray-700">
+        Totale pagina:{" "}
+        <span className="font-semibold">
+          {totale ? totale.toLocaleString("it-IT", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "0,00"}
+        </span>
+      </div>
 
-      {/* MODALI */}
       {editOrdine && (
         <ModalEditOrdine
           ordine={editOrdine.order}
           onClose={() => setEditOrdine(null)}
           onSaved={() => {
             setEditOrdine(null);
-            fetchOrdini(page);
+            fetchOrdini(page, searchTerm, periodFilter);
           }}
+          db="rbacademy"
         />
       )}
 
@@ -606,11 +617,11 @@ export default function IscrizioniAca() {
           onClose={() => setEditCorsista(null)}
           onSaved={() => {
             setEditCorsista(null);
-            if (openRowId) fetchCorsisti(String(editCorsista.orderId));
+            fetchCorsisti(editCorsista.orderId);
           }}
+          db="rbacademy"
         />
       )}
-
     </div>
   );
 }

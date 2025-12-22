@@ -122,22 +122,34 @@ router.get("/multi", async (req, res) => {
 });
 
 router.get("/detail", async (req, res) => {
-    const { db, firstname, lastname, user_entry } = req.query;
-    if (!db || !firstname || !lastname || !user_entry)
-        return res.status(400).json({ error: "Parametri mancanti" });
-
+    const { db, firstname, lastname, user_entry, idst } = req.query;
+    if (!db) return res.status(400).json({ error: "Database mancante" });
 
     const conn = await getConnection(db);
     const connwp = await getConnection("wpacquisti");
+
+    const filters = ["b.id_common = 23"];
+    const params = [];
+    if (idst) {
+        filters.push("a.idst = ?");
+        params.push(idst);
+    } else if (firstname && lastname && user_entry) {
+        filters.push("lastname = ? AND firstname = ? AND b.id_common = 23 AND user_entry = ?");
+        params.push(lastname, firstname, user_entry);
+    } else {
+        return res
+            .status(400)
+            .json({ error: "Parametri mancanti: fornire idst oppure firstname+lastname+user_entry" });
+    }
 
     // 1️⃣ Utente base
     const [userRows] = await conn.query(
         `SELECT firstname, lastname, userid, idst,lastenter,  DATE_FORMAT(register_date, '%d/%m/%Y %H:%i:%s') AS register_date, email
          FROM core_user a
          JOIN core_field_userentry b ON a.idst = b.id_user
-         WHERE lastname = ? AND firstname = ? AND b.id_common = 23 AND user_entry = ?
+         WHERE ${filters.join(" AND ")}
          ORDER BY register_date ASC`,
-        [lastname, firstname, user_entry]
+        params
     );
     if (userRows.length === 0) return res.status(404).json({ error: "Utente non trovato" });
     const user = userRows[0];

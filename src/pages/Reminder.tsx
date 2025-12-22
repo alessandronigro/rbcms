@@ -120,14 +120,6 @@ const parseConditionCourseCodes = (value: string) =>
     .map((code) => code.trim())
     .filter(Boolean);
 
-const createConditionGroup = (): ConditionGroup => ({
-  id: `${Date.now()}-${Math.random()}`,
-  matchMode: "any",
-  courses: "",
-  notEnrolledThisYear: true,
-  excludeCourses: "",
-});
-
 interface Filters {
   period: PeriodFilter;
   from: string;
@@ -183,29 +175,6 @@ export default function Reminder() {
   const [filterHint, setFilterHint] = useState("Seleziona almeno un filtro e premi «Applica filtri» per caricare i corsisti.");
   const editorRef = useRef<any>(null);
   const [savingTemplate, setSavingTemplate] = useState(false);
-
-  const addCondition = () => {
-    setFilters((prev) => ({
-      ...prev,
-      conditions: [...prev.conditions, createConditionGroup()],
-    }));
-  };
-
-  const removeCondition = (id: string) => {
-    setFilters((prev) => ({
-      ...prev,
-      conditions: prev.conditions.filter((condition) => condition.id !== id),
-    }));
-  };
-
-  const updateCondition = (id: string, updates: Partial<ConditionGroup>) => {
-    setFilters((prev) => ({
-      ...prev,
-      conditions: prev.conditions.map((condition) =>
-        condition.id === id ? { ...condition, ...updates } : condition,
-      ),
-    }));
-  };
 
   const updateSubject = (value: string) => {
     setSubject(value);
@@ -360,6 +329,73 @@ export default function Reminder() {
     },
     [backendUrl],
   );
+
+  const fetchPresetUsers = useCallback(
+    async (presetKey: "oam" | "ivass") => {
+      setLoadingUsers(true);
+      try {
+        const baseCandidates = backendUrl ? [backendUrl, ""] : [""];
+        const urls = baseCandidates.map((base) => `${base || ""}/api/reminder/presets/${presetKey}`);
+
+        let response: Response | null = null;
+        let lastError: Error | null = null;
+        for (const url of urls) {
+          try {
+            const candidate = await fetch(url, { credentials: "include" });
+            if (candidate.ok) {
+              response = candidate;
+              break;
+            }
+            lastError = new Error(`Reminder preset ${url} risponde ${candidate.status}`);
+            console.warn("Reminder preset fetch fallita:", candidate.status, candidate.statusText, url);
+          } catch (error) {
+            lastError = error as Error;
+            console.warn("Reminder preset fetch errore:", url, error);
+          }
+        }
+
+        if (!response || !response.ok) {
+          throw lastError ?? new Error("Nessuna risposta valida dal backend reminder");
+        }
+
+        const payload = await response.json();
+        if (Array.isArray(payload?.users)) {
+          setUsers(payload.users);
+          setSelectedIds([]);
+          setFiltersApplied(true);
+          const reasonMessage = payload.debug?.reason || "";
+          setFilterHint(reasonMessage);
+          setFilters((prev) => ({
+            ...prev,
+            period: "tutti",
+            from: "",
+            to: "",
+            course: "",
+            convenzione: "",
+            status: "tutti",
+            conditions: [],
+          }));
+          if (payload.debug?.queries) {
+            console.info("Reminder preset queries:", payload.debug.queries);
+          }
+          return;
+        }
+        throw new Error("Risposta reminder preset priva di utenti");
+      } catch (error) {
+        console.error("Errore caricamento utenti reminder preset:", error);
+        setFilterHint("Impossibile caricare i corsisti per il reminder selezionato.");
+        setFiltersApplied(true);
+        setUsers(MOCK_USERS);
+        setSelectedIds([]);
+      } finally {
+        setLoadingUsers(false);
+      }
+    },
+    [backendUrl],
+  );
+
+  const handleReminderOam = useCallback(() => fetchPresetUsers("oam"), [fetchPresetUsers]);
+  const handleReminderIvass = useCallback(() => fetchPresetUsers("ivass"), [fetchPresetUsers]);
 
   const loadMetadata = useCallback(async () => {
     if (!backendUrl) return;
@@ -722,115 +758,30 @@ export default function Reminder() {
         )}
 
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
-          <button
-            type="button"
-            onClick={handleApplyFilters}
-            className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded hover:bg-blue-700"
-          >
-            Applica filtri
-          </button>
-        </div>
-      </section>
-
-      <section className="bg-white border rounded-lg shadow p-4 space-y-4">
-        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-sm font-semibold text-gray-800">Condizioni avanzate</p>
-            <p className="text-xs text-gray-500 max-w-3xl">
-              Combina codici corso completati l’anno scorso e, se serve, escludi i corsisti iscritti quest’anno.
-            </p>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={handleApplyFilters}
+              className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded hover:bg-blue-700"
+            >
+              Applica filtri
+            </button>
+            <button
+              type="button"
+              onClick={handleReminderOam}
+              className="px-4 py-2 text-sm font-semibold text-white bg-emerald-600 rounded hover:bg-emerald-700"
+            >
+              Reminder OAM
+            </button>
+            <button
+              type="button"
+              onClick={handleReminderIvass}
+              className="px-4 py-2 text-sm font-semibold text-white bg-sky-600 rounded hover:bg-sky-700"
+            >
+              Reminder IVASS
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={addCondition}
-            className="text-xs font-semibold text-blue-600 underline-offset-2 hover:text-blue-800"
-          >
-            + Aggiungi condizione
-          </button>
         </div>
-
-        {filters.conditions.length === 0 && (
-          <p className="text-xs text-gray-500">
-            Aggiungi una condizione per indicare gruppi di codici da combinare (es. cod3034 + cod6034 o cod1534).
-          </p>
-        )}
-
-        {filters.conditions.length > 0 && (
-          <div className="space-y-3">
-            {filters.conditions.map((condition, index) => (
-              <div key={condition.id} className="border rounded-lg p-3 space-y-3">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="text-xs uppercase font-semibold tracking-wide text-gray-500">
-                    Condizione {index + 1}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => removeCondition(condition.id)}
-                    className="text-xs font-semibold text-red-600 hover:text-red-800"
-                  >
-                    Rimuovi
-                  </button>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3">
-                  <label className="text-xs uppercase font-semibold text-gray-500">Modalità</label>
-                  <select
-                    value={condition.matchMode}
-                    onChange={(event) =>
-                      updateCondition(condition.id, { matchMode: event.target.value as ConditionMatchMode })
-                    }
-                    className="border rounded px-3 py-2 text-sm"
-                  >
-                    <option value="any">Almeno uno dei codici</option>
-                    <option value="all">Tutti i codici indicati</option>
-                  </select>
-                  <label className="text-xs flex items-center gap-2 text-gray-600">
-                    <input
-                      type="checkbox"
-                      checked={condition.notEnrolledThisYear}
-                      onChange={(event) =>
-                        updateCondition(condition.id, { notEnrolledThisYear: event.target.checked })
-                      }
-                      className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                    />
-                    Non iscritti quest'anno
-                  </label>
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-xs uppercase font-semibold text-gray-500">Codici corso</label>
-                  <textarea
-                    value={condition.courses}
-                    onChange={(event) =>
-                      updateCondition(condition.id, { courses: event.target.value })
-                    }
-                    placeholder="cod3034, cod6034 oppure cod1534"
-                    rows={2}
-                    className="w-full border rounded px-3 py-2 text-sm"
-                  />
-                  <p className="text-xs text-gray-400">
-                    Separare i codici con virgole, spazi o newline. Il sistema filtra solo i corsisti che hanno completato quei codici l’anno scorso.
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <label className="text-xs uppercase font-semibold text-gray-500">Escludi codici quest'anno</label>
-                  <textarea
-                    value={condition.excludeCourses}
-                    onChange={(event) =>
-                      updateCondition(condition.id, { excludeCourses: event.target.value })
-                    }
-                    placeholder="cod3035, cod1525"
-                    rows={2}
-                    className="w-full border rounded px-3 py-2 text-sm"
-                  />
-                  <p className="text-xs text-gray-400">
-                    I corsisti verranno esclusi se risultano iscritti a uno di questi corsi sull’anno corrente.
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
       </section>
 
       <section className="bg-white border rounded-lg shadow">
