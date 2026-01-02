@@ -7,8 +7,16 @@ const PizZip = require("pizzip");
 const Docxtemplater = require("docxtemplater");
 
 const { getConnection } = require("../dbManager");
-const { logwrite, getBCC, SaveAndSend, gettime, getLastTest, PATHS } = require("../utils/helper");
+const { getBCC, SaveAndSend, gettime, getLastTest, PATHS } = require("../utils/helper");
+const { writeLog, logError } = require("../utils/logger");
+const { inspect } = require("util");
 const BACKEND_URL = process.env.BACKEND_URL;
+
+const formatLogData = (payload) =>
+    inspect(payload, { depth: 4, maxArrayLength: 50, breakLength: 160 });
+const logAttestati = (message, level = "INFO") => writeLog("attestati", message, level);
+const logAttestatiError = (message, errorObject = null) =>
+    logError("attestati", message, errorObject);
 
 const TEMPLATES_BASE = "/var/www/rbcms/backend/templates/attestato";
 const TEMPLATES = "/var/www/rbcms/backend/templates";
@@ -198,14 +206,14 @@ function buildPlaceholders(ctx) {
 async function generateCertificateUnified({ templatePath, data, iduser, corso, code, nominativo }) {
 
     const tmpDocx = fillDocxTemplate(templatePath, data);
-    logwrite(`🟢 generateCertificateUnified → Docx temporaneo creato: ${tmpDocx}`);
+    logAttestati(`generateCertificateUnified -> Docx temporaneo creato: ${tmpDocx}`);
 
     let tmpPdf;
     try {
         tmpPdf = convertDocxToPdf(tmpDocx, CERT_PATH);
-        logwrite(`🟢 generateCertificateUnified → PDF temporaneo generato da LibreOffice: ${tmpPdf}`);
+        logAttestati(`generateCertificateUnified -> PDF temporaneo generato da LibreOffice: ${tmpPdf}`);
     } catch (err) {
-        logwrite(`❌ Errore convertDocxToPdf: ${err.message}`);
+        logAttestatiError("Errore convertDocxToPdf", err);
         throw err;
     }
     // 3️⃣ Nome finale
@@ -218,7 +226,7 @@ async function generateCertificateUnified({ templatePath, data, iduser, corso, c
     );
 
 
-    logwrite(`✅ PDF generato: ${pdfFinal}`);
+    logAttestati(`PDF generato: ${pdfFinal}`);
 
     if (fs.existsSync(pdfFinal)) {
         fs.unlinkSync(pdfFinal);
@@ -243,7 +251,7 @@ async function getDocenti(code, dbName) {
 
         return rows[0].docenti || "-";
     } catch (err) {
-        console.error("getDocenti ERR:", err);
+        logAttestatiError("getDocenti ERR", err);
         return "--";
     }
 }
@@ -261,7 +269,7 @@ async function getProgramma(code, dbName) {
 
         return rows[0].programma || "-";
     } catch (err) {
-        console.error("getProgramma ERR:", err);
+        logAttestatiError("getProgramma ERR", err);
         return "--";
     }
 }
@@ -281,7 +289,7 @@ function resolveTemplatePath({ code, convenzione }) {
         const p = path.join(TEMPLATES_BASE, "AttestatoSceltaNew.docx");
         if (fs.existsSync(p)) return p;
 
-        console.warn(`⚠️ Template NEW mancante, uso default: ${defaultTemplate}`);
+        logAttestati(`Template NEW mancante, uso default: ${defaultTemplate}`, "WARN");
         return defaultTemplate;
     }
 
@@ -306,24 +314,24 @@ function resolveTemplatePath({ code, convenzione }) {
         const specific = path.join(folder, `${code}.docx`);
 
         if (fs.existsSync(specific)) {
-            console.log(`📄 Template specifico usato: ${specific}`);
+            logAttestati(`Template specifico usato: ${specific}`);
             return specific;
         }
 
-        console.warn(`⚠️ Template NON trovato in ${variants[key]}: ${specific}`);
-        console.warn(`→ Cerco nella cartella generale...`);
+        logAttestati(`Template NON trovato in ${variants[key]}: ${specific}`, "WARN");
+        logAttestati("Cerco nella cartella generale...", "WARN");
     }
 
     // 4️⃣ Cerco template nella cartella generale /attestati
     const general = path.join(TEMPLATES_BASE, `${code}.docx`);
 
     if (fs.existsSync(general)) {
-        console.log(`📄 Template generale usato: ${general}`);
+        logAttestati(`Template generale usato: ${general}`);
         return general;
     }
 
     // 5️⃣ Nessun template trovato → uso default
-    console.error(`❌ Template NON trovato per code="${code}" → uso default: ${defaultTemplate}`);
+    logAttestati(`Template NON trovato per code="${code}" -> uso default: ${defaultTemplate}`, "ERROR");
 
     return defaultTemplate;
 }
@@ -344,7 +352,7 @@ function fillDocxTemplate(templatePath, replacements) {
             end: "||"
         }
     });
-    console.log(replacements);
+    logAttestati(`replacements: ${formatLogData(replacements)}`);
     // docxtemplater accetta placeholder come {{FIRSTNAME}}, non [FIRSTNAME]
     const normalized = {};
     for (const [key, value] of Object.entries(replacements)) {
@@ -380,12 +388,12 @@ function convertDocxToPdf(inputDocx, outputDir) {
         inputDocx,
     ];
 
-    console.log("▶️  LibreOffice:", "soffice", args.join(" "));
+    logAttestati(`LibreOffice: soffice ${args.join(" ")}`);
 
     const proc = spawnSync("soffice", args, { encoding: "utf8" });
     if (proc.error) throw proc.error;
     if (proc.status !== 0) {
-        logwrite(`❌ LibreOffice fallito (status=${proc.status}): ${proc.stderr || proc.stdout}`);
+        logAttestati(`LibreOffice fallito (status=${proc.status}): ${proc.stderr || proc.stdout}`, "ERROR");
         throw new Error(`LibreOffice errore ${proc.status}`);
     }
 
@@ -398,7 +406,7 @@ function convertDocxToPdf(inputDocx, outputDir) {
         throw new Error("PDF non prodotto da LibreOffice");
     }
 
-    logwrite(`✅ LibreOffice ha prodotto il PDF: ${producedPdf}`);
+    logAttestati(`LibreOffice ha prodotto il PDF: ${producedPdf}`);
 
     return producedPdf;
 }
@@ -473,7 +481,7 @@ router.post("/generate", async (req, res) => {
             code: ctx.code,
             nominativo
         });
-        console.log(ctx)
+        logAttestati(`ctx: ${formatLogData(ctx)}`);
         return res.json({
             success: true,
             file: `${BACKEND_URL}/public/certificati/${path.basename(finalPdf)}`,
@@ -481,7 +489,7 @@ router.post("/generate", async (req, res) => {
         });
 
     } catch (err) {
-        await logwrite("❌ ERRORE certificati/generate: " + err.message);
+        logAttestatiError("ERRORE certificati/generate", err);
         return res.status(500).json({ error: err.message });
     }
 });
@@ -492,7 +500,7 @@ router.post("/generate", async (req, res) => {
 router.post("/sendcertificate", async (req, res) => {
     const { iduser, idcorso, webdb } = req.body;
 
-    console.log("🔵 [SENDCERT] → INIZIO ROUTE", { iduser, idcorso, webdb });
+    logAttestati(`[SENDCERT] INIZIO ROUTE ${formatLogData({ iduser, idcorso, webdb })}`);
 
     if (!iduser || !idcorso || !webdb) {
         return res.status(400).json({ error: "Parametri mancanti" });
@@ -500,10 +508,10 @@ router.post("/sendcertificate", async (req, res) => {
 
     try {
         const conn = await getConnection(webdb);
-        console.log("🔵 [SENDCERT] 1. Connessione DB OK:", webdb);
+        logAttestati(`[SENDCERT] 1. Connessione DB OK: ${webdb}`);
 
         // 1️⃣ DATI BASE
-        console.log("🔵 [SENDCERT] 2. Query dati base...");
+        logAttestati("[SENDCERT] 2. Query dati base...");
         const [rows] = await conn.query(`
             SELECT a.firstname, a.lastname, a.userid, a.email,
                    c.name AS nomecorso, c.code,
@@ -519,7 +527,7 @@ router.post("/sendcertificate", async (req, res) => {
 
         if (!rows.length) throw new Error("Utente o corso non trovato");
 
-        console.log("🟢 [SENDCERT] 2b. Dati utente/corso OK");
+        logAttestati("[SENDCERT] 2b. Dati utente/corso OK");
 
         const u = rows[0];
         const nominativo = `${u.firstname} ${u.lastname}`;
@@ -528,30 +536,30 @@ router.post("/sendcertificate", async (req, res) => {
         const BASE_URL = process.env.BACKEND_URL;
 
         // 2️⃣ GESTIONE "già evaso"
-        console.log("🔵 [SENDCERT] 3. Verifica evaso...");
+        logAttestati("[SENDCERT] 3. Verifica evaso...");
         const [ev] = await conn.query(
             "SELECT evaso2 FROM learning_certificate_assign WHERE id_user=? AND id_course=?",
             [iduser, idcorso]
         );
 
-        console.log("🟢 [SENDCERT] 3b. Evaso status:", ev[0]);
+        logAttestati(`[SENDCERT] 3b. Evaso status: ${formatLogData(ev[0])}`);
 
         // 3️⃣ GENERA ATTESTATO (NUOVO SISTEMA)
-        console.log("🔵 [SENDCERT] 4. Generazione attestato → fetch POST /api/attestati/generate");
+        logAttestati("[SENDCERT] 4. Generazione attestato -> fetch POST /api/attestati/generate");
 
         const attRes = await fetch(`${BASE_URL}/api/attestati/generate`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ iduser, idcorso, webdb })
         }).then(r => {
-            console.log("🟢 [SENDCERT] 4a. fetch response status:", r.status);
+            logAttestati(`[SENDCERT] 4a. fetch response status: ${r.status}`);
             return r.json();
         }).catch(err => {
-            console.error("❌ [SENDCERT] 4b. ERRORE FETCH:", err.message);
+            logAttestatiError("[SENDCERT] 4b. ERRORE FETCH", err);
             throw new Error("Errore fetch attestati/generate: " + err.message);
         });
 
-        console.log("🟢 [SENDCERT] 4c. Risposta generate:", attRes);
+        logAttestati(`[SENDCERT] 4c. Risposta generate: ${formatLogData(attRes)}`);
 
         if (!attRes.success) throw new Error(attRes.error || "Errore generazione attestato");
 
@@ -561,34 +569,34 @@ router.post("/sendcertificate", async (req, res) => {
             path.basename(attestatoUrl)
         ); let attachments = [attestatoPath];
 
-        console.log("🟢 [SENDCERT] 4d. Attestato generato:", attestatoPath);
+        logAttestati(`[SENDCERT] 4d. Attestato generato: ${attestatoPath}`);
 
         // 4️⃣ REPORT
         try {
-            console.log("🔵 [SENDCERT] 5. Generazione REPORT gettime...");
+            logAttestati("[SENDCERT] 5. Generazione REPORT gettime...");
             const report = await gettime(iduser, idcorso, u.firstname, u.lastname, webdb, true, "", null);
 
-            console.log("🟢 [SENDCERT] 5a. Risultato gettime:", report);
+            logAttestati(`[SENDCERT] 5a. Risultato gettime: ${report}`);
 
             if (report && fs.existsSync(report)) attachments.push(report);
         } catch (err) {
-            console.log("⚠️ [SENDCERT] gettime ERR:", err.message);
+            logAttestati(`[SENDCERT] gettime ERR: ${err.message}`, "WARN");
         }
 
         // 5️⃣ TEST
         try {
-            console.log("🔵 [SENDCERT] 6. Generazione TEST getLastTest...");
+            logAttestati("[SENDCERT] 6. Generazione TEST getLastTest...");
             const testFile = await getLastTest(iduser, idcorso, u.firstname, u.lastname, webdb, true, "", null);
 
-            console.log("🟢 [SENDCERT] 6a. Risultato getLastTest:", testFile);
+            logAttestati(`[SENDCERT] 6a. Risultato getLastTest: ${testFile}`);
 
             if (testFile && fs.existsSync(testFile)) attachments.push(testFile);
         } catch (err) {
-            console.log("⚠️ [SENDCERT] getLastTest ERR:", err.message);
+            logAttestati(`[SENDCERT] getLastTest ERR: ${err.message}`, "WARN");
         }
 
         // 6️⃣ UPDATE DB
-        console.log("🔵 [SENDCERT] 7. Aggiornamento DB...");
+        logAttestati("[SENDCERT] 7. Aggiornamento DB...");
         await conn.query(`
             UPDATE learning_certificate_assign
             SET pathattestato=?, evaso2=1, data_invio=NOW()
@@ -601,10 +609,10 @@ router.post("/sendcertificate", async (req, res) => {
             WHERE iduser=? AND idcourse=?
         `, [iduser, idcorso]);
 
-        console.log("🟢 [SENDCERT] 7b. DB aggiornato");
+        logAttestati("[SENDCERT] 7b. DB aggiornato");
 
         // 7️⃣ INVIO EMAIL
-        console.log("🔵 [SENDCERT] 8. Invio email...");
+        logAttestati("[SENDCERT] 8. Invio email...");
 
         const bcc = await getBCC(iduser);
 
@@ -621,7 +629,7 @@ router.post("/sendcertificate", async (req, res) => {
             format: "attestato"
         });
 
-        console.log("🟢 [SENDCERT] 8b. Risposta SaveAndSend:", sendRes);
+        logAttestati(`[SENDCERT] 8b. Risposta SaveAndSend: ${formatLogData(sendRes)}`);
 
         return res.json({
             success: true,
@@ -630,7 +638,7 @@ router.post("/sendcertificate", async (req, res) => {
         });
 
     } catch (err) {
-        console.error("❌ [SENDCERT] ERRORE GENERALE:", err.message);
+        logAttestatiError("[SENDCERT] ERRORE GENERALE", err);
         return res.status(500).json({ error: err.message });
     }
 });

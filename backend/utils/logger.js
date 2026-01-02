@@ -3,19 +3,25 @@ const path = require('path');
 const dayjs = require('dayjs');
 
 /**
- * Scrive un log su file organizzato per funzionalità e data.
- * Struttura: public/log/<scope>/YYYY-MM-DD.log
- * 
- * @param {string} scope - La funzionalità o modulo (es. 'fatture', 'mail', 'corsi').
+ * Scrive un log su file organizzato per funzionalita e data.
+ * Struttura: public/log/<scope>/logDDmmm.txt (es. log30dic.txt)
+ *
+ * @param {string} scope - La funzionalita o modulo (es. 'fatture', 'mail', 'corsi').
  * @param {string} message - Il messaggio da loggare.
  * @param {string} level - Livello del log (INFO, ERROR, WARN). Default: INFO.
  */
 function writeLog(scope, message, level = 'INFO') {
     try {
-        const today = dayjs().format('YYYY-MM-DD');
+        const monthNames = [
+            "gen", "feb", "mar", "apr", "mag", "giu",
+            "lug", "ago", "set", "ott", "nov", "dic"
+        ];
+        const today = dayjs();
+        const day = String(today.date()).padStart(2, "0");
+        const month = monthNames[today.month()] || "unk";
         const timestamp = dayjs().format('HH:mm:ss');
         const logDir = path.join(__dirname, '../public/log', scope);
-        const logFile = path.join(logDir, `${today}.log`);
+        const logFile = path.join(logDir, `log${day}${month}.txt`);
 
         // Assicura che la cartella esista
         if (!fs.existsSync(logDir)) {

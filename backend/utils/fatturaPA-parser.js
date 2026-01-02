@@ -19,10 +19,12 @@ function parseFatturaPA(xmlFilePath) {
             return null;
         }
 
+        const dataDocumento = extractValueFromSection(xmlContent, 'DatiGeneraliDocumento', 'Data');
         const result = {
             tipoDocumento: extractValue(xmlContent, 'TipoDocumento'),
             numero: extractValue(xmlContent, 'Numero'),
-            data: extractValue(xmlContent, 'Data'),
+            data: dataDocumento || extractValue(xmlContent, 'Data'),
+            dataDocumento,
             cedentePrestatore: {
                 denominazione: extractValue(xmlContent, 'DenominazioneCedentePrestatore') ||
                     extractValue(xmlContent, 'Denominazione'),
@@ -90,6 +92,23 @@ function extractValue(xml, tagName) {
     const regex = new RegExp(`<(?:\\w+:)?${tagName}[^>]*>([^<]*)<\\/(?:\\w+:)?${tagName}>`, 'i');
     const match = xml.match(regex);
     return match ? match[1].trim() : null;
+}
+
+/**
+ * Estrae un valore da un tag figlio dentro una sezione XML
+ * @param {string} xml - Contenuto XML
+ * @param {string} sectionTag - Tag sezione (es. DatiGeneraliDocumento)
+ * @param {string} tagName - Tag figlio da estrarre
+ * @returns {string|null} Valore estratto o null
+ */
+function extractValueFromSection(xml, sectionTag, tagName) {
+    const sectionRegex = new RegExp(
+        `<(?:\\w+:)?${sectionTag}[^>]*>([\\s\\S]*?)<\\/(?:\\w+:)?${sectionTag}>`,
+        'i',
+    );
+    const sectionMatch = xml.match(sectionRegex);
+    if (!sectionMatch) return null;
+    return extractValue(sectionMatch[1], tagName);
 }
 
 /**

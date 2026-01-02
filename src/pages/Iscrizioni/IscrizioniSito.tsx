@@ -328,22 +328,7 @@ export default function IscrizioniSito() {
   // Modifica corsista
 
   // Totale pagina
-  const visibleRows = useMemo(() => {
-    const term = searchTerm.trim().toLowerCase();
-    if (!term) return rows;
-    return rows.filter((row) => {
-      const fields = [
-        row.order_id,
-        row.nome_convenzione,
-        row.intestazione_fattura,
-        row.metodo_di_pagamento,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-      return fields.includes(term);
-    });
-  }, [rows, searchTerm]);
+  const visibleRows = rows;
 
   const totale = useMemo(
     () => visibleRows.reduce((s, r) => s + (r.fatturato || 0), 0),
@@ -382,7 +367,7 @@ export default function IscrizioniSito() {
                   setSearchTerm(e.target.value);
                   setOpenRowId(null);
                 }}
-                placeholder="ID ordine, convenzione, intestazione, email..."
+                placeholder="ID ordine, convenzione, intestazione, email, corsista..."
                 className="border rounded px-2 py-1 text-sm"
               />
             </label>

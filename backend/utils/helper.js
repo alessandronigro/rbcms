@@ -240,7 +240,7 @@ async function reinviamail({
     const conn = await getConnection(db);
     try {
         // 🔹 Recupera dati anagrafici
-        console.log(`[reinviamail] Anagrafica da db=${db} iduser=${iduser}`);
+        logIscrizioni(`[reinviamail] Anagrafica da db=${db} iduser=${iduser}`);
         const [fields] = await conn.query(
             `SELECT a.id_common, b.translation, a.user_entry
              FROM core_field_userentry a
@@ -378,7 +378,8 @@ async function SaveAndSend({
     let esito = "";
     let flags = { emailOk: false, bccOk: false, pecOk: false };
 
-    console.log(
+    logMailByFormat(
+        format,
         `[SaveAndSend] corso=${nomecorso || code} nominativo=${nominativo} email=${email} pec=${pec || "N/A"} bcc=${bcc || "N/A"}`
     );
 
@@ -826,13 +827,13 @@ async function getMailFormat(format = "mailformat") {
         );
 
         if (!rows.length) {
-            console.error("⚠️ getMailFormat: Nessun template trovato per", format);
+            logAttestati(`getMailFormat: Nessun template trovato per ${format}`, "WARN");
             return "";
         }
 
         return rows[0].meta_value;
     } catch (err) {
-        console.error("❌ getMailFormat ERR:", err.message);
+        logAttestatiError("getMailFormat ERR", err);
         return "";
     }
 }
@@ -904,6 +905,23 @@ function logwrite(message) {
     writeLog("general", message);
 }
 
+function logIscrizioni(message, level = "INFO") {
+    writeLog("iscrizioni", message, level);
+}
+
+function logAttestati(message, level = "INFO") {
+    writeLog("attestati", message, level);
+}
+
+function logAttestatiError(message, errorObject = null) {
+    logError("attestati", message, errorObject);
+}
+
+function logMailByFormat(format, message, level = "INFO") {
+    const scope = format === "attestato" ? "attestati" : "iscrizioni";
+    writeLog(scope, message, level);
+}
+
 async function downloadRemoteFile(url, destFolder = "certificati") {
     try {
         const dir = path.join(process.cwd(), destFolder);
@@ -914,7 +932,7 @@ async function downloadRemoteFile(url, destFolder = "certificati") {
         fs.writeFileSync(destPath, response.data);
         return destPath;
     } catch (err) {
-        console.error("Errore download file:", err.message);
+        logError("general", "Errore download file", err);
         return null;
     }
 }
@@ -1058,7 +1076,7 @@ async function getBCC(iduser) {
 
         return checkEmail("", emailfattura, mailbcc);
     } catch (err) {
-        console.error("❌ getBCC ERR:", err.message);
+        logAttestatiError("getBCC ERR", err);
         return "";
     }
 }
@@ -1160,9 +1178,8 @@ async function getVoto(conn, iduser, idcorso) {
         const r = rows[0];
         return `${r.score}/${r.score_max}`;
     } catch (err1) {
-        console.error("❌ getVoto ERR:", err1.message);
+        logAttestatiError("getVoto ERR", err1);
         return "";
-
     }
 }
 
@@ -1200,7 +1217,7 @@ async function getLastTest(lastid, idcourse, firstname, lastname, db, savefile =
         `, [idcourse, idcourse, lastid]);
 
         if (!rows || rows.length === 0) {
-            console.log("Nessun test trovato per l’utente:", lastid);
+            logAttestati(`Nessun test trovato per l'utente: ${lastid}`, "WARN");
             if (res) {
                 return res.status(404).json({
                     success: false,
@@ -1292,7 +1309,7 @@ async function getLastTest(lastid, idcourse, firstname, lastname, db, savefile =
 
         const [dtquest] = await conn.query(sqlquest, [idlog, idtest]);
         const voto = await getVoto(conn, lastid, idcourse);
-        console.log("il voto è", voto);
+        logAttestati(`il voto e ${voto}`);
         // 4️⃣ Costruzione HTML
         let html = `
       <center>${header}<h3><u><b>Test di verifica finale - questionario somministrato</b><br>
@@ -1337,7 +1354,7 @@ async function getLastTest(lastid, idcourse, firstname, lastname, db, savefile =
         if (!fs.existsSync(reportsDir)) fs.mkdirSync(reportsDir, { recursive: true });
         const filename = `Test Finale - ${code} - ${nomeutente} - ${lastid}.pdf`;
         const pdfFile = path.join(reportsDir, filename);
-        console.log("🧾 Generazione test per:", nomeutente);
+        logAttestati(`Generazione test per: ${nomeutente}`);
 
         // 🔹 Generazione PDF
         const browser = await puppeteer.launch({
@@ -1363,8 +1380,8 @@ async function getLastTest(lastid, idcourse, firstname, lastname, db, savefile =
         });
 
         await browser.close();
-        console.log("✅ Test generato:", pdfFile);
-        console.log("📂 File exists after write?", fs.existsSync(pdfFile));
+        logAttestati(`Test generato: ${pdfFile}`);
+        logAttestati(`File exists after write? ${fs.existsSync(pdfFile)}`);
 
         // 🔹 Comportamento diverso in base al contesto
         if (savefile) {
@@ -1373,20 +1390,20 @@ async function getLastTest(lastid, idcourse, firstname, lastname, db, savefile =
         } else if (res) {
             // Chiamato via API → invia file
             if (!fs.existsSync(pdfFile)) {
-                console.error("❌ File non trovato dopo generazione:", pdfFile);
+                logAttestati(`File non trovato dopo generazione: ${pdfFile}`, "ERROR");
                 return res.status(500).json({ success: false, error: "File non generato" });
             }
             res.setHeader("Content-Type", "application/pdf");
             res.setHeader("Content-Disposition", `attachment; filename="${path.basename(pdfFile)}"`);
             const stream = fs.createReadStream(pdfFile);
-            console.log("📤 Invio file report:", pdfFile);
+            logAttestati(`Invio file report: ${pdfFile}`);
             stream.pipe(res);
             return;
         }
 
         return pdfFile;
     } catch (err) {
-        console.error("Errore in getLastTest:", err);
+        logAttestatiError("Errore in getLastTest", err);
         return null;
     }
 }
@@ -1427,8 +1444,8 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
         );
 
         const [currentDb] = await conn.query("SELECT DATABASE() AS db");
-        console.log("🧠 Params:", { iduser, courseId });
-        console.log("🔍 DB attivo:", currentDb[0].db);
+        logAttestati(`Params: ${JSON.stringify({ iduser, courseId })}`);
+        logAttestati(`DB attivo: ${currentDb[0].db}`);
         const courseRow = rows?.[0];
 
         if (!courseRow) throw new Error("Corso non trovato", courseId, iduser);
@@ -1473,19 +1490,19 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
         let tempivideocorso = "N/D";
         try {
             const url = `${addressDocebo}/gettime.php?database=${db}&idCourse=${courseId}&iduser=${iduser}`;
-            console.log("🌐 Richiesta ore_video:", url);
+            logAttestati(`Richiesta ore_video: ${url}`);
             const r = await axios.get(url);
 
             if (r && r.data) {
                 tempivideocorso = r.data;
             } else {
-                console.warn("⚠️ Nessun dato ricevuto da gettime.php", r);
+                logAttestati(`Nessun dato ricevuto da gettime.php ${JSON.stringify(r)}`, "WARN");
                 logwrite("Nessun dato ricevuto da gettime.php");
                 tempivideocorso = "N/D";
             }
         } catch (err) {
             logwrite("Errore chiamata gettime.php: " + err.message);
-            console.error("❌ Errore chiamata gettime.php:", err.message);
+            logAttestati(`Errore chiamata gettime.php: ${err.message}`, "ERROR");
             tempivideocorso = "N/D";
         }
 
@@ -1501,7 +1518,7 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
              ORDER BY a.path ASC`,
             [courseId, iduser]
         );
-        console.log("Scorm rows:", scormRows.length);
+        logAttestati(`Scorm rows: ${scormRows.length}`);
         // 🔹 Costruzione HTML
         let html = `
         <html>
@@ -1543,7 +1560,7 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
         const totaleVisione = durataVisioneTot > 0 ? durataVisioneTot : toSeconds(tempivideocorso);
         html += `<tr><td><b>Totali</b></td><td><b>${formatSecondsHms(durataTot)}</b></td><td><b>${formatSecondsHms(totaleVisione)}</b></td></tr>`;
         html += `</table>`;
-        console.log("Videocorsi trovati:", scormRows.length);
+        logAttestati(`Videocorsi trovati: ${scormRows.length}`);
 
 
         // 🔍 Query base identica al VB
@@ -1644,7 +1661,7 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
 
 
 
-        console.log("🧾 Generazione report per:", nomeutente);
+        logAttestati(`Generazione report per: ${nomeutente}`);
         // 🔹 Generazione file PDF
         // Percorso assoluto corretto, indipendente da come viene avviato Node
         const reportsDir = path.resolve(__dirname, "../public/reports");
@@ -1653,7 +1670,7 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
         const filename = `Report - ${courseRow.code} - ${nome} ${cognome} - ${iduser}.pdf`;
         const pdfFile = path.join(reportsDir, filename);
 
-        console.log("📁 Report path (reale):", pdfFile);
+        logAttestati(`Report path (reale): ${pdfFile}`);
 
         // 🔹 Generazione PDF
         const browser = await puppeteer.launch({
@@ -1676,8 +1693,8 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
         });
 
         await browser.close();
-        console.log("✅ Report generato:", pdfFile);
-        console.log("📂 File exists after write?", fs.existsSync(pdfFile));
+        logAttestati(`Report generato: ${pdfFile}`);
+        logAttestati(`File exists after write? ${fs.existsSync(pdfFile)}`);
 
         // 🔹 Comportamento diverso in base al contesto
         if (savefile) {
@@ -1686,20 +1703,20 @@ async function gettime(iduser, idcourse, nome, cognome, db, savefile, res) {
         } else if (res) {
             // Chiamato via API → invia file
             if (!fs.existsSync(pdfFile)) {
-                console.error("❌ File non trovato dopo generazione:", pdfFile);
+                logAttestati(`File non trovato dopo generazione: ${pdfFile}`, "ERROR");
                 return res.status(500).json({ success: false, error: "File non generato" });
             }
             res.setHeader("Content-Type", "application/pdf");
             res.setHeader("Content-Disposition", `attachment; filename = "${path.basename(pdfFile)}"`);
             const stream = fs.createReadStream(pdfFile);
-            console.log("📤 Invio file report:", pdfFile);
+            logAttestati(`Invio file report: ${pdfFile}`);
             stream.pipe(res);
             return;
         }
 
         return pdfFile;
     } catch (err) {
-        console.error("❌ getTime error:", err);
+        logAttestatiError("getTime error", err);
         if (res && !res.headersSent) {
             res.status(500).json({ success: false, error: err.message });
         }
@@ -1721,7 +1738,7 @@ async function getLastAccess(iduser) {
         );
         return rows?.[0]?.lastenter || "";
     } catch (err) {
-        console.error("Errore in getLastAccess:", err);
+        logError("general", "Errore in getLastAccess", err);
         return "";
     }
 }
@@ -1740,7 +1757,7 @@ async function getLastCourseAccess(idcourse, iduser) {
         );
         return rows?.[0]?.lasttime || "";
     } catch (err) {
-        console.error("Errore in getLastCourseAccess:", err);
+        logError("general", "Errore in getLastCourseAccess", err);
         return "";
     }
 }
@@ -1758,14 +1775,18 @@ async function getNomeCorsoById(idcourse, db = process.env.MYSQL_FORMA4) {
         `, [idcourse]);
 
         if (!rows.length) {
-            console.warn(`⚠️ Nessun corso trovato con idcourse = ${idcourse} nel DB ${db} `);
+            writeLog(
+                "general",
+                `Nessun corso trovato con idcourse = ${idcourse} nel DB ${db}`,
+                "WARN"
+            );
             return null;
         }
 
         const { code, name } = rows[0];
         return `${code} | ${name} `;
     } catch (err) {
-        console.error("❌ Errore in getNomeCorsoById:", err);
+        logError("general", "Errore in getNomeCorsoById", err);
         return null;
     } finally {
         conn.release?.();
@@ -1828,7 +1849,7 @@ async function getPercentuale(iduser, idcorso, status) {
                 return "N/D";
         }
     } catch (err) {
-        console.error("Errore in getPercentuale:", err);
+        logAttestatiError("Errore in getPercentuale", err);
         return "Errore calcolo";
     }
 }
@@ -1899,7 +1920,7 @@ function decodeTime(v) {
         if (!v || seconds === 0) return "non tracciato";
         return formatSecondsHms(seconds);
     } catch (err) {
-        console.error("decodeTime error:", err);
+        logAttestatiError("decodeTime error", err);
         return v;
     }
 }
@@ -1932,7 +1953,7 @@ function getCorrect(idanswer, stranswer, dtresult = []) {
             correct: false
         };
     } catch (err) {
-        console.error("Errore in getCorrect:", err);
+        logAttestatiError("Errore in getCorrect", err);
         return { html: stranswer, correct: false };
     }
 }
@@ -1945,8 +1966,10 @@ async function retryQuery(pool, sql, params = [], retries = 3, delay = 2000) {
         } catch (err) {
             const transient = ["ETIMEDOUT", "ECONNRESET", "PROTOCOL_CONNECTION_LOST"];
             if (transient.includes(err.code) && i < retries - 1) {
-                console.warn(
-                    `⚠️ Tentativo ${i + 1} fallito (${err.code}) → ritento in ${delay}ms`
+                writeLog(
+                    "general",
+                    `Tentativo ${i + 1} fallito (${err.code}) -> ritento in ${delay}ms`,
+                    "WARN"
                 );
                 await new Promise((r) => setTimeout(r, delay));
                 continue;

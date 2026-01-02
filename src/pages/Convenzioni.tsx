@@ -200,71 +200,58 @@ export default function Convenzioni() {
       {loading ? (
         <p className="text-center text-gray-500 mt-4">Caricamento...</p>
       ) : (
-        <div className="overflow-x-auto border rounded-md mt-4">
-          <table className="min-w-full text-sm">
-            <thead className="bg-gray-100 text-gray-600">
+        <div className="overflow-x-auto border rounded-md shadow-sm mt-4">
+          <table className="min-w-[980px] border-collapse text-sm table-fixed w-full">
+            <thead className="bg-green-600 text-white sticky top-0 z-10">
               <tr>
-                <th className="p-2">Azioni</th>
-                <th className="p-2">Convenzione</th>
-                <th className="p-2">Codice</th>
-                <th className="p-2">Tipo</th>
-                <th className="p-2">Indirizzo</th>
-                <th className="p-2">Indirizzo 2025</th>
-                <th className="p-2">Referente</th>
-                <th className="p-2">Excel</th>
+                <th className="w-[240px] p-2 text-left">Azioni</th>
+                <th className="w-[320px] p-2 text-left">Convenzione</th>
+                <th className="w-[120px] p-2">Codice</th>
+                <th className="w-[120px] p-2">Tipo</th>
+                <th className="w-[320px] p-2 text-left">Indirizzo</th>
+                <th className="w-[180px] p-2">Referente</th>
+                <th className="w-[120px] p-2">Excel</th>
               </tr>
             </thead>
             <tbody>
               {data.map((row: any) => (
                 <tr key={row.Codice} className="border-t hover:bg-gray-50">
-                  <td className="p-2 flex gap-2">
+                  <td className="p-2">
+                    <div className="flex flex-wrap gap-2">
                     <button
                       onClick={() => apriDettaglio(row.Codice)}
                       title="Modifica"
-                      className="text-green-600 hover:text-green-800"
+                      className="px-3 py-1.5 text-sm bg-yellow-400 hover:bg-yellow-500 text-white rounded"
                     >
                       ✏️
                     </button>
                     <button
                       onClick={() => apriDettaglio(row.Codice, true)}
                       title="Visualizza"
-                      className="text-yellow-600 hover:text-yellow-800"
+                      className="px-3 py-1.5 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded"
                     >
                       👁️
                     </button>
                     <button
                       onClick={() => elimina(row.Codice)}
                       title="Elimina"
-                      className="text-red-500 hover:text-red-700"
+                      className="px-3 py-1.5 text-sm bg-red-600 hover:bg-red-700 text-white rounded"
                     >
                       🗑️
                     </button>
                     <a
                       href={`/convenzioni/${row.Codice}/delegati`}
                       title="Delegati"
-                      className="text-blue-600 hover:text-blue-800"
+                      className="px-3 py-1.5 text-sm bg-green-600 hover:bg-green-700 text-white rounded"
                     >
                       👥
                     </a>
+                    </div>
                   </td>
                   <td className="p-2">{row.Name}</td>
                   <td className="p-2">{row.Codice}</td>
                   <td className="p-2">{row.tipo}</td>
-                  <td className="p-2">
-                    {row.indirizzoweb ? (
-                      <a
-                        href={row.indirizzoweb}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-blue-500 underline"
-                      >
-                        {row.indirizzoweb}
-                      </a>
-                    ) : (
-                      <span className="text-gray-500">—</span>
-                    )}
-                  </td>
-                  <td className="p-2">
+                  <td className="p-2 break-all">
                     {row.newindirizzoweb ? (
                       <a
                         href={row.newindirizzoweb}

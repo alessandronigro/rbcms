@@ -289,7 +289,7 @@ async function ensureInvoiceRecord(invoice, src, conn, folderPath) {
 
     const whereSql = lookupClauses.length ? lookupClauses.join(" OR ") : "0";
     const [existingRows] = await conn.query(
-        `SELECT id, xml, nomeattachment, imponibile, IVA, importofattura FROM ${src.table} 
+        `SELECT id, xml, nomeattachment, imponibile, IVA, importofattura, dataemissionefattura FROM ${src.table} 
          WHERE ${whereSql}
          LIMIT 1`,
         params,
@@ -311,65 +311,103 @@ async function ensureInvoiceRecord(invoice, src, conn, folderPath) {
     ]
         .map(parseDbAmount)
         .every((value) => value === 0);
-    const shouldProcess = needsDownload || totalsAreZero;
+    const normalizeDateOnly = (value) => {
+        if (!value) return "";
+        const str = String(value).trim();
+        const match = str.match(/\d{4}-\d{2}-\d{2}/);
+        if (match) return match[0];
+        const d = new Date(value);
+        if (isNaN(d.getTime())) return "";
+        return d.toISOString().slice(0, 10);
+    };
+    const existingXmlPath = xmlCandidates.find(
+        (p) => fs.existsSync(p) && !isInvalidXmlPlaceholder(p) && !p.toLowerCase().endsWith(".p7m"),
+    );
+    const parsedExisting = existingXmlPath ? parseFatturaPA(existingXmlPath) : null;
+    const xmlEmissione = parsedExisting?.dataDocumento || parsedExisting?.data || "";
+    const dbDate = normalizeDateOnly(existing?.dataemissionefattura);
+    const xmlDate = normalizeDateOnly(xmlEmissione);
+    const dateMismatch = Boolean(existing && xmlDate && dbDate !== xmlDate);
+    const shouldDownload = needsDownload || totalsAreZero;
+    const shouldProcess = shouldDownload || dateMismatch;
 
     if (!shouldProcess) {
         console.log(`⏭️  Fattura già presente e file OK: ${numeroFattura} - ${intestatario}`);
         return { processed: false };
     }
 
+    if (dateMismatch && !shouldDownload) {
+        console.log(`🔁 Aggiorno data emissione da XML per ${numeroFattura}`);
+    }
+
     if (totalsAreZero && !needsDownload) {
         console.log(`🔁 Ricalcolo importi da XML esistente per ${numeroFattura}`);
     }
 
-    const xmlPlainBuffer = await fetchPlainXmlBuffer(filexml, src);
-
-    console.log(`📥 Download: ${filename}`);
-    const { buffer: fileData, source: downloadSource } = await downloadInvoiceFile(invoice, src, filexml);
-    fs.writeFileSync(filePath, fileData);
-    console.log(`📁 Salvato ${filename} da ${downloadSource} in ${folderPath}`);
-
-    // Se abbiamo un XML "pulito", salvalo; altrimenti, se il download è XML, usa quello
     const plainXmlPath = path.join(folderPath, filexml);
-    if (xmlPlainBuffer && xmlPlainBuffer.length) {
-        fs.writeFileSync(plainXmlPath, xmlPlainBuffer);
-        console.log(`📄 Salvato XML pulito ${filexml}`);
-    } else if (looksLikeXml(fileData)) {
-        fs.writeFileSync(plainXmlPath, fileData);
-        console.log(`📄 Salvato XML dal download ${filexml}`);
-    }
+    let fileData = null;
+    let downloadSource = "";
+    let xmlPlainBuffer = null;
 
-    // 🛟 Fallback Aruba: se non abbiamo ancora un XML valido, prova a scaricarlo dalle API Aruba
-    if (!fs.existsSync(plainXmlPath) || looksLikeHtmlOrNotFound(fs.readFileSync(plainXmlPath))) {
-        try {
-            console.log(`🛟 Aruba fallback attivato per ${numeroFattura} (${filename})`);
-            logFatture(`Aruba fallback start -> file=${filexml} numero=${numeroFattura}`);
-            const got = await fetchInvoiceXmlFromAruba({
-                invoiceNumber: numeroFattura,
-                invoiceFilename: filename,
-                outputPath: plainXmlPath,
-                invoiceDate: invoice.invoices?.[0]?.date || invoice.lastUpdate,
-            });
-            if (got) {
-                console.log(`🟢 Aruba fallback: scaricato XML per ${numeroFattura}`);
-                logFatture(`Aruba fallback OK -> file=${filexml} numero=${numeroFattura}`);
-            } else {
-                console.warn(`⚠️ Aruba fallback: nessun XML trovato per ${numeroFattura}`);
+    if (shouldDownload) {
+        xmlPlainBuffer = await fetchPlainXmlBuffer(filexml, src);
+
+        console.log(`📥 Download: ${filename}`);
+        const downloadResult = await downloadInvoiceFile(invoice, src, filexml);
+        fileData = downloadResult.buffer;
+        downloadSource = downloadResult.source;
+        fs.writeFileSync(filePath, fileData);
+        console.log(`📁 Salvato ${filename} da ${downloadSource} in ${folderPath}`);
+
+        // Se abbiamo un XML "pulito", salvalo; altrimenti, se il download è XML, usa quello
+        if (xmlPlainBuffer && xmlPlainBuffer.length) {
+            fs.writeFileSync(plainXmlPath, xmlPlainBuffer);
+            console.log(`📄 Salvato XML pulito ${filexml}`);
+        } else if (looksLikeXml(fileData)) {
+            fs.writeFileSync(plainXmlPath, fileData);
+            console.log(`📄 Salvato XML dal download ${filexml}`);
+        }
+
+        // 🛟 Fallback Aruba: se non abbiamo ancora un XML valido, prova a scaricarlo dalle API Aruba
+        if (!fs.existsSync(plainXmlPath) || looksLikeHtmlOrNotFound(fs.readFileSync(plainXmlPath))) {
+            try {
+                console.log(`🛟 Aruba fallback attivato per ${numeroFattura} (${filename})`);
+                logFatture(`Aruba fallback start -> file=${filexml} numero=${numeroFattura}`);
+                const got = await fetchInvoiceXmlFromAruba({
+                    invoiceNumber: numeroFattura,
+                    invoiceFilename: filename,
+                    outputPath: plainXmlPath,
+                    invoiceDate: invoice.invoices?.[0]?.date || invoice.lastUpdate,
+                });
+                if (got) {
+                    console.log(`🟢 Aruba fallback: scaricato XML per ${numeroFattura}`);
+                    logFatture(`Aruba fallback OK -> file=${filexml} numero=${numeroFattura}`);
+                } else {
+                    console.warn(`⚠️ Aruba fallback: nessun XML trovato per ${numeroFattura}`);
+                }
+            } catch (err) {
+                console.warn(`⚠️ Aruba fallback errore (${numeroFattura}): ${err.message}`);
             }
-        } catch (err) {
-            console.warn(`⚠️ Aruba fallback errore (${numeroFattura}): ${err.message}`);
         }
     }
-
-    const dataEmissione = invoice.invoices?.[0]?.date || invoice.lastUpdate;
     let imponibile = 0;
     let iva = 0;
     let importo = 0;
     let nomeattachment = "";
     let savedAttachmentNames = [];
 
-    const parseSource = fs.existsSync(plainXmlPath) ? plainXmlPath : filePath;
-    const parsedData = parseFatturaPA(parseSource);
+    let parseSource = null;
+    if (fs.existsSync(plainXmlPath)) {
+        parseSource = plainXmlPath;
+    } else if (existingXmlPath) {
+        parseSource = existingXmlPath;
+    } else {
+        parseSource = filePath;
+    }
+    const parsedData =
+        parseSource === existingXmlPath && parsedExisting
+            ? parsedExisting
+            : parseFatturaPA(parseSource);
     logFatture(
         `XML parse -> file=${filexml} imp=${parsedData?.importi?.imponibile ?? "?"} iva=${parsedData?.importi?.iva ?? "?"} tot=${parsedData?.importi?.totale ?? "?"} allegati=${(parsedData?.allegati || []).join(",")}`,
     );
@@ -422,6 +460,11 @@ async function ensureInvoiceRecord(invoice, src, conn, folderPath) {
         nomeattachment = savedAttachmentNames.join(", ");
     }
 
+    const dataEmissione =
+        parsedData?.dataDocumento ||
+        parsedData?.data ||
+        invoice.invoices?.[0]?.date ||
+        invoice.lastUpdate;
     const symbol = tipoDoc === "TD04" ? "-" : "";
 
     const convertToMysqlDateTime = (dateStr) => {

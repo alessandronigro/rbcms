@@ -12,7 +12,6 @@ const { getConnection } = require("../dbManager");
 const {
     // helper già nel tuo helper.js
 
-    logwrite,
     Normalizza,
     FormattaNominativo,
     GetIfUserExist,
@@ -26,6 +25,14 @@ const {
     // pipeline
     IscriviaSimulazione,
 } = require("../utils/helper");
+const { writeLog, logError } = require("../utils/logger");
+const { inspect } = require("util");
+
+const formatLogData = (payload) =>
+    inspect(payload, { depth: 4, maxArrayLength: 50, breakLength: 160 });
+const logIscrizioni = (message, level = "INFO") => writeLog("iscrizioni", message, level);
+const logIscrizioniError = (message, errorObject = null) =>
+    logError("iscrizioni", message, errorObject);
 
 const PACKAGE_COURSE_CREDITS = {
     77: 4,
@@ -102,7 +109,7 @@ async function selectRandomPackageCourseCodes(dbName, targetCredits, attempts = 
             }
         }
     } catch (err) {
-        console.warn("selectRandomPackageCourseCodes WARN:", err.message);
+        logIscrizioni(`selectRandomPackageCourseCodes WARN: ${err.message}`, "WARN");
     }
     return [];
 }
@@ -188,7 +195,7 @@ async function attachSegnalazioniInfo(rows) {
             row.segnalazioni_dates = data?.dates || "";
         });
     } catch (err) {
-        console.warn("segInfo WARN:", err.message);
+        logIscrizioni(`segInfo WARN: ${err.message}`, "WARN");
     }
     return rows;
 }
@@ -382,7 +389,7 @@ async function processEnrollRows({
     const targetDb = (db || piattaforma || "").trim();
     const convName = convenzioneName || convenzioneFallback || rows?.[0]?.convenzione || "";
     if (!targetDb) throw new Error("Database destinazione non specificato per processEnrollRows");
-    console.log(`[processEnrollRows] START rows=${rows?.length || 0} db=${targetDb} convenzione=${convName || ""}`);
+    logIscrizioni(`[processEnrollRows] START rows=${rows?.length || 0} db=${targetDb} convenzione=${convName || ""}`);
 
     const cn = await getConnection(targetDb);
     const billingOverrides = normalizeBillingData(fatturazione);
@@ -509,7 +516,7 @@ async function processEnrollRows({
                     res.error = "Utente già iscritto allo stesso corso";
                     res.note = "Utente già iscritto allo stesso corso";
                     results.push(res);
-                    console.warn(`[processEnrollRows] DUPLICATO email=${email} idcourse=${idcourse}`);
+                    logIscrizioni(`[processEnrollRows] DUPLICATO email=${email} idcourse=${idcourse}`, "WARN");
                     continue;
                 }
             }
@@ -577,7 +584,9 @@ async function processEnrollRows({
                     throw new Error(`Nessun corso trovato per Pacchetto ${pacchettoOre} ore`);
                 }
 
-                console.log(`Pacchetto ${pacchettoOre}h → corsi reali:`, realCourseIds);
+                logIscrizioni(
+                    `Pacchetto ${pacchettoOre}h -> corsi reali: ${formatLogData(realCourseIds)}`
+                );
             }
 
             // -------------------------------------------
@@ -656,8 +665,8 @@ async function processEnrollRows({
 
             // email
             if (shouldSendMail) {
-                console.log(`[BCCemail] ${nome} ${cognome} (${email}) -> ${src.bccEmail || "N/A"}`);
-                logwrite(`[weborders] SaveAndSend invocato per ${email} ${title || codeFinal}`);
+                logIscrizioni(`[BCCemail] ${nome} ${cognome} (${email}) -> ${src.bccEmail || "N/A"}`);
+                logIscrizioni(`[weborders] SaveAndSend invocato per ${email} ${title || codeFinal}`);
                 const esito = await SaveAndSend({
                     idcourse: idcourse,
                     file: "",
@@ -678,12 +687,12 @@ async function processEnrollRows({
                     datattivazione: now.toLocaleDateString("it-IT"),
                     codfis: cf,
                 });
-                logwrite(`[weborders] Invio mail ${email} esito=${esito.emailOk ? "OK" : "KO"} ${esito.esito || ""}`);
+                logIscrizioni(`[weborders] Invio mail ${email} esito=${esito.emailOk ? "OK" : "KO"} ${esito.esito || ""}`);
                 res.mailEsito = esito?.emailOk ? "OK" : "KO";
                 res.bccEsito = esito?.bccOk ? "OK" : "KO";
                 res.pecEsito = src.pec ? (esito?.pecOk ? "OK" : "KO") : "N/A";
             } else if (ifSendMail && src.suppressEmail) {
-                logwrite(`[weborders] Mail skippata per ${email} (suppressEmail attivo)`);
+                logIscrizioni(`[weborders] Mail skippata per ${email} (suppressEmail attivo)`);
                 res.mailEsito = "SKIPPED";
                 res.bccEsito = src.bccEmail ? "SKIPPED" : "N/A";
                 res.pecEsito = src.pec ? "SKIPPED" : "N/A";
@@ -691,19 +700,20 @@ async function processEnrollRows({
 
             // web update opzionale
             if (typeof webOrderUpdate === "function") {
-                try { await webOrderUpdate(src.order_id); } catch (e) { await logwrite("webOrderUpdate: " + e.message); }
+                try { await webOrderUpdate(src.order_id); } catch (e) { logIscrizioni(`webOrderUpdate: ${e.message}`, "WARN"); }
             }
 
             res.esitoIscrizione = "OK";
             res.note = "";
             results.push(res);
-            console.log(
+            logIscrizioni(
                 `[processEnrollRows] OK email=${email} idst=${idst} idcourse=${idcourse} convenzione=${convName || ""}`
             );
         } catch (err) {
-            await logwrite("Enroll ERR: " + err);
-            console.log(
-                `[processEnrollRows] KO email=${src?.email || ""} convenzione=${convName || ""} reason=${err.message}`
+            logIscrizioniError("Enroll ERR", err);
+            logIscrizioni(
+                `[processEnrollRows] KO email=${src?.email || ""} convenzione=${convName || ""} reason=${err.message}`,
+                "ERROR"
             );
             res.stato = "ERRORE";
             res.error = err.message;
@@ -717,7 +727,7 @@ async function processEnrollRows({
 
     const okCount = results.filter(r => r.stato === "OK").length;
     const koCount = results.filter(r => r.stato !== "OK").length;
-    console.log(`[processEnrollRows] END ok=${okCount} ko=${koCount} convenzione=${convName || ""}`);
+    logIscrizioni(`[processEnrollRows] END ok=${okCount} ko=${koCount} convenzione=${convName || ""}`);
 
     return results;
 }
@@ -752,7 +762,7 @@ function normalizeBccList(...values) {
 router.post("/weborders", async (req, res) => {
     try {
         const { idordine, chkexist = true, sendmail = true } = req.body;
-        console.log(`[API:weborders] idordine=${idordine} chkexist=${chkexist} sendmail=${sendmail}`);
+        logIscrizioni(`[API:weborders] idordine=${idordine} chkexist=${chkexist} sendmail=${sendmail}`);
         const webDbName = (req.query.db || req.body.webdb || "newformazione").toString().trim().toLowerCase();
 
         if (!idordine)
@@ -938,8 +948,9 @@ router.post("/weborders", async (req, res) => {
             }
 
             if (!selection.length) {
-                console.warn(
+                logIscrizioni(
                     `[weborders] pacchetto ${packageMeta.packageId} (${packageMeta.credits}h) ordine ${idordine} senza corsi`,
+                    "WARN"
                 );
                 expandedUsers.push(baseEntry);
                 continue;
@@ -997,7 +1008,7 @@ router.post("/weborders", async (req, res) => {
         });
 
     } catch (err) {
-        await logwrite("weborders ERR: " + err.message);
+        logIscrizioniError("weborders ERR", err);
         return res.status(500).json({ error: err.message });
     }
 });
@@ -1006,7 +1017,7 @@ router.post("/weborders", async (req, res) => {
 router.post("/excel", async (req, res) => {
     try {
         const { convenzione, corso, utenti, fatturazione } = req.body;
-        console.log("DEBUG utenti ricevuti:", utenti);
+        logIscrizioni(`DEBUG utenti ricevuti: ${formatLogData(utenti)}`);
         if (!Array.isArray(utenti) || utenti.length === 0) {
             return res.status(400).json({ error: "Lista utenti mancante o vuota" });
         }
@@ -1039,7 +1050,7 @@ router.post("/excel", async (req, res) => {
         const utentiNormalized = utenti.map((u, idx) => {
             // 🔍 Log per sicurezza
             if (typeof u !== "object") {
-                console.warn("❌ FORMATO NON OGGETTO all'indice:", idx, "→", u);
+                logIscrizioni(`FORMATO NON OGGETTO all'indice: ${idx} -> ${formatLogData(u)}`, "WARN");
                 throw new Error("Formato utente non valido (atteso oggetto)");
             }
 
@@ -1052,7 +1063,7 @@ router.post("/excel", async (req, res) => {
 
             // 🔎 Validazione minima
             if (!cognome || !nome || !email || !cf) {
-                console.warn("⚠️ Dati mancanti all'indice:", idx, u);
+                logIscrizioni(`Dati mancanti all'indice: ${idx} ${formatLogData(u)}`, "WARN");
                 throw new Error("Formato utente non valido: campi mancanti");
             }
 
@@ -1069,7 +1080,7 @@ router.post("/excel", async (req, res) => {
             };
         });
 
-        console.log("📌 Excel →", convName, targetDb, utenti.length);
+        logIscrizioni(`Excel -> ${convName} ${targetDb} ${utenti.length}`);
 
         // ✅ Connessione piattaforma target
         const cn = await getConnection(targetDb);
@@ -1085,7 +1096,7 @@ router.post("/excel", async (req, res) => {
                     [order_id]
                 );
             } catch (err) {
-                console.warn("⚠️ Update stato ordine fallito:", err.message);
+                logIscrizioni(`Update stato ordine fallito: ${err.message}`, "WARN");
             }
         };
 
@@ -1118,7 +1129,7 @@ router.post("/excel", async (req, res) => {
         });
 
     } catch (err) {
-        console.error("❌ Errore /api/iscrizioni/excel:", err);
+        logIscrizioniError("Errore /api/iscrizioni/excel", err);
         return res.status(500).json({ error: err.message });
     }
 });
@@ -1167,9 +1178,19 @@ router.get("/sito", async (req, res) => {
         if (search) {
             const like = `%${search}%`;
             filters.push(
-                `(order_id LIKE ? OR COALESCE(nome_convenzione,'') LIKE ? OR COALESCE(intestazione_fattura,'') LIKE ? OR COALESCE(billing_email,'') LIKE ?)`,
+                `(order_id LIKE ? OR COALESCE(nome_convenzione,'') LIKE ? OR COALESCE(intestazione_fattura,'') LIKE ? OR COALESCE(billing_email,'') LIKE ? OR EXISTS (
+                    SELECT 1
+                    FROM wp_woocommerce_rb_corsisti c
+                    WHERE c.order_id = wp_woocommerce_rb_ordini.order_id
+                      AND (
+                        COALESCE(c.corsista_first_name,'') LIKE ?
+                        OR COALESCE(c.corsista_last_name,'') LIKE ?
+                        OR CONCAT_WS(' ', c.corsista_first_name, c.corsista_last_name) LIKE ?
+                        OR CONCAT_WS(' ', c.corsista_last_name, c.corsista_first_name) LIKE ?
+                      )
+                ))`,
             );
-            params.push(like, like, like, like);
+            params.push(like, like, like, like, like, like, like, like);
         }
         if (convenzioneFilter) {
             filters.push("nome_convenzione = ?");
@@ -1213,7 +1234,7 @@ router.get("/sito", async (req, res) => {
             hasMore: offset + rows.length < total,
         });
     } catch (err) {
-        console.error("Errore /iscrizioni/sito:", err);
+        logIscrizioniError("Errore /iscrizioni/sito", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -1257,7 +1278,7 @@ router.get("/aca", async (req, res) => {
 
         res.json({ rows, total });
     } catch (err) {
-        console.error("Errore /iscrizioni/sito:", err);
+        logIscrizioniError("Errore /iscrizioni/sito", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -1301,7 +1322,7 @@ router.get("/nova", async (req, res) => {
 
         res.json({ rows, total });
     } catch (err) {
-        console.error("Errore /iscrizioni/sito:", err);
+        logIscrizioniError("Errore /iscrizioni/sito", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -1347,7 +1368,7 @@ router.patch("/ordini/:order_id", async (req, res) => {
         );
         return res.json({ success: true });
     } catch (err) {
-        console.error("❌ Errore /ordini/:order_id PATCH:", err);
+        logIscrizioniError("Errore /ordini/:order_id PATCH", err);
         return res.status(500).json({ error: err.message });
     }
 });
@@ -1374,7 +1395,7 @@ router.delete("/ordini/:order_id", async (req, res) => {
 
         return res.json({ success: true });
     } catch (err) {
-        console.error("❌ Errore /ordini/:order_id DELETE:", err);
+        logIscrizioniError("Errore /ordini/:order_id DELETE", err);
         return res.status(500).json({ error: err.message });
     }
 });
@@ -1493,7 +1514,7 @@ router.post("/ordini/:order_id/sync-billing-fields", async (req, res) => {
             message: `Aggiornati ${summary.updated} utenti`,
         });
     } catch (err) {
-        console.error("❌ Errore sincronizzazione campi fatturazione:", err);
+        logIscrizioniError("Errore sincronizzazione campi fatturazione", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -1517,7 +1538,7 @@ router.get("/ordini/:order_id/corsisti", async (req, res) => {
 
         res.json(rows);
     } catch (err) {
-        console.error("❌ Errore /ordini/:order_id/corsisti:", err);
+        logIscrizioniError("Errore /ordini/:order_id/corsisti", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -1593,7 +1614,7 @@ router.patch("/corsisti/:id", async (req, res) => {
         );
         return res.json({ success: true });
     } catch (err) {
-        console.error("❌ Errore /corsisti/:id PATCH:", err);
+        logIscrizioniError("Errore /corsisti/:id PATCH", err);
         return res.status(500).json({ error: err.message });
     }
 });
@@ -1802,7 +1823,7 @@ router.post("/ordini/:order_id/reinvia", async (req, res) => {
 
         res.json({ success: true, message: "Email inviata" });
     } catch (err) {
-        console.error("❌ reinvia ordine:", err);
+        logIscrizioniError("reinvia ordine", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -1874,7 +1895,7 @@ Via Crescenzio, 25<br />
 
         res.json({ success: true, message: "Sollecito inviato" });
     } catch (err) {
-        console.error("❌ segnala ordine:", err);
+        logIscrizioniError("segnala ordine", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -1896,7 +1917,7 @@ router.get("/convenzioni", async (req, res) => {
             }))
         );
     } catch (err) {
-        console.error("❌ convenzioni:", err);
+        logIscrizioniError("convenzioni", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -1955,7 +1976,7 @@ router.get("/corsi", async (req, res) => {
             }))
         );
     } catch (err) {
-        console.error("❌ corsi convenzione:", err);
+        logIscrizioniError("corsi convenzione", err);
         res.status(500).json({ error: err.message });
     }
 });

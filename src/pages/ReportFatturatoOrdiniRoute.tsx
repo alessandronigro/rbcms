@@ -5,7 +5,18 @@ import ReportFatturatoOrdini from "./ReportFatturatoOrdini";
 
 export default function ReportFatturatoOrdiniRoute() {
   const [params] = useSearchParams();
-  const cod = params.get("cod")?.trim();
+  const codFromParams = params.get("cod");
+  const codFromLocation =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("cod")
+      : null;
+  const cod = (codFromParams || codFromLocation || "").trim();
+  console.log("[fatturato-ordini] cod param:", {
+    codFromParams,
+    codFromLocation,
+    cod,
+    href: typeof window !== "undefined" ? window.location.href : "",
+  });
 
   if (cod) {
     return (
